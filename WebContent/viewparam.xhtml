@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+>
+
+	<f:metadata>
+		<o:viewParam name="test" value="#{viewParamBean.test}" required="true" converter="viewparamTest" />
+	</f:metadata>	
+
+    <h:body>
+     
+         <h:form>
+         
+         	<p>
+         		This page demonstrates the stateless viewParam component.
+         	</p>
+
+			<p>         	
+	         	If this page is requested by a non-Faces request without a parameter, it should display the message: <br/>
+	         	
+	         	"test: Validation Error: Value is required."
+			</p>
+			
+			Message: <h:messages /> <br/>
+
+			<p>
+				Clicking the link below initiates a new GET request with a parameter. Every time this
+				request is issued, a converter runs that attaches an ever increasing number to the displayed
+				value below: <br/>
+		        
+	        	<h:link value="Do GET request" outcome="viewparam">
+	        		<f:param name="test" value="foo"/>       	
+	        	</h:link>
+        	</p>
+        	
+        	<p>
+				Clicking the link below initiates a POST-BACK request. This should not convert
+				the value again and thus the number should not change. The POST-BACK should also
+				not cause the required validation to be triggered.
+				 <br/>
+		        
+	        	<h:commandLink value="Do POST request" action="#{viewParamBean.action}" />
+        	</p>
+        	
+        	
+        	The value: <br/>
+        	
+        	#{viewParamBean.test} 	
+         	
+			
+			<b>Code:</b>
+			
+<pre>
+
+&lt;f:metadata&gt;
+	&lt;o:viewParam name="test" value="\#{viewParamBean.test}" required="true" converter="viewparamTest" /&gt;
+&lt;/f:metadata&gt;	
+
+&lt;p&gt;
+	This page demonstrates the stateless viewParam component.
+&lt;/p&gt;
+
+&lt;p&gt;         	
+       	If this page is requested by a non-Faces request without a parameter, it should display the message: &lt;br/&gt;
+       	
+       	"test: Validation Error: Value is required."
+&lt;/p&gt;
+
+Message: &lt;h:messages /&gt; &lt;br/&gt;
+
+&lt;p&gt;
+	Clicking the link below initiates a new GET request with a parameter. Every time this
+	request is issued, a converter runs that attaches an ever increasing number to the displayed
+	value below: &lt;br/&gt;
+       
+	&lt;h:link value="Do GET request" outcome="viewparam"&gt;
+		&lt;f:param name="test" value="foo"/&gt;       	
+	&lt;/h:link&gt;
+&lt;/p&gt;
+
+&lt;p&gt;				
+Clicking the link below initiates a POST-BACK request. This should not convert
+the value again and thus the number should not change. The POST-BACK should also
+not cause the required validation to be triggered.
+ &lt;br/&gt;
+ 
+	&lt;h:commandLink value="Do POST request" action="\#{viewParamBean.action}" /&gt;
+&lt;/p&gt;
+
+The value: &lt;br/&gt;
+
+\#{viewParamBean.test} 			
+</pre>
+			
+			         
+         </h:form>
+    </h:body>   
+</html>
