@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:test="http://org.omnifaces/test"
+>
+
+    <h:body>
+     
+         <h:form>
+         
+         	<p>
+         		This page demonstrates the methodParam handler. An EL reference to a method is passed
+         		to a Facelet tag in a variety of different ways.
+         	</p>
+         
+         
+         	Action invoked: #{methodParamBean.actionInvoked} <br/>
+         	Listener invoked: #{methodParamBean.listenerInvoked} <br/>
+         	Lisitener with event invoked: #{methodParamBean.listenerWithEventInvoked} <br/>
+         	
+         	<h3>Actions</h3>
+         	
+         	<p>
+         		Passing method with zero arguments
+				<test:actionmethod action="#{methodParamBean.doAction}" />
+			</p>
+         
+         	<p>
+         		Passing method with zero arguments but explicit parenthesis
+				<test:actionmethod action="#{methodParamBean.doAction()}" />
+			</p>
+			
+			<p>
+         		Passing method with 1 view provided argument: 
+				<test:actionmethod action="#{methodParamBean.doActionWithParam('test')}" />
+			</p>
+			
+			<p>
+         		Passing method to second bean with 1 view provided argument: 
+				<test:actionmethod action="#{methodParamBean.bean.doActionWithParam('test')}" />
+			</p>
+			
+			
+			<h3>Listeners</h3>
+			
+			<p>
+         		Passing listener method with zero arguments (always needs trick to pass!)
+				<test:actionlistenertrick listener="#{methodParamBean.actionListener}" />
+			</p>
+			
+			<p>
+         		Passing listener method with zero arguments but explicit parenthesis (needs trick on older EL impl. like JBoss 6, not needed on AS 7)
+				<test:actionlistenertrick listener="#{methodParamBean.actionListener()}" />
+			</p>
+			
+			<p>
+         		Passing listener method with 1 view provided argument: 
+				<test:actionlistener listener="#{methodParamBean.actionListenerWithParam('test')}" />
+			</p>
+			
+			<p>
+         		Passing listener method with declared event parameter, no provided arguments
+				<test:actionlistener listener="#{methodParamBean.actionListenerWithClientParam}" />
+			</p>
+			
+			
+			<h3>Direct bindings</h3>
+			
+			<p>
+         		Direct binding (no method passing) with zero arguments: 
+				<h:commandButton value="test" action="#{methodParamBean.doAction()}" />
+			</p>
+			
+			        
+			         
+         </h:form>
+    </h:body>   
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<o:methodParam name="method" value="#{listener}" />
+	
+	<!-- This is only needed for the "Passing listener method with zero arguments" test.
+		
+		The problem is that JSF copies a method expression based on the literal EL expression only, which
+		means the variable mapper isn't copied. As it's the variable mapper that contain the reference
+		to our method, this copied expression can't be resolved.
+		
+		A workaround is to put the method into request scope with nested visibility via the ui:repeat trick.
+		
+	  -->
+	<ui:repeat var="method" value="#{method}">
+		<h:commandButton value="test" actionListener="#{method}" />
+	</ui:repeat>
+	
+</ui:composition>
