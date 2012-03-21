@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:o="http://omnifaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:test="http://org.omnifaces/test"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:body>
+    
+        <p>This page demonstrates the outputLabel component.</p>
+    
+        <p>
+            The output label automatically sets the label attribute of the component identified by its "for" attribute. 
+            After submitting the form without having entered a value, a validation message is posted that should contain
+            the label printed before the input instead of some generated ID.
+        </p>
+            
+            Message: <h:messages />
+        <br /><br />
+        
+        <h4>Dynamic label:</h4>
+        <h:form>
+    
+            <o:outputLabel for="input" value="#{outputLabelBean.label}" /> &nbsp;
+            <h:inputText id="input" value="#{viewParamBean.test}" required="true" />
+            <br />
+    
+            <h:commandLink value="Submit" action="#{viewParamBean.action}" />
+    
+        </h:form>
+        
+        <hr/>
+        
+        <h4>Static label:</h4>
+        <h:form>
+    
+            <o:outputLabel for="input" value="My Label" /> &nbsp;
+            <h:inputText id="input" value="#{viewParamBean.test}" required="true" />
+            <br />
+    
+            <h:commandLink value="Submit" action="#{viewParamBean.action}" />
+    
+        </h:form>
+        
+    </h:body>
+</html>
