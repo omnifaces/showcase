@@ -1,12 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:o="http://omnifaces.org/ui"
-    xmlns:test="http://org.omnifaces/test"
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:test="http://org.omnifaces/test"
 >
-
-    <h:body>
+	<ui:define name="content">
             <p>
                 Welcome to the OmniFaces Showcase application.                
             </p>
@@ -41,6 +42,5 @@
             OmniFaces Homepage: <a href="http://code.google.com/p/omnifaces">code.google.com/p/omnifaces</a> <br/>
             Full source code for all demos: <a href="http://code.google.com/p/omnifaces-showcase/source/browse">code.google.com/p/omnifaces-showcase/source/browse</a>           
 
-    </h:body> 
-         
-</html>
+	</ui:define>
+</ui:composition>

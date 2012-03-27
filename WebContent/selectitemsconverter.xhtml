@@ -1,16 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:o="http://omnifaces.org/ui"
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:test="http://org.omnifaces/test"
 >
-
-	<h:head/>
-
-    <h:body> 
-    
-          <h:link value="Home" outcome="index"/>
-    
+	<ui:define name="content">
          <h:form>
          
          	<p>
@@ -102,8 +99,5 @@
 			
 			         
          </h:form>
-         
-         <h:link value="Home" outcome="index"/>
-         
-    </h:body>   
-</html>
+	</ui:define>
+</ui:composition>
