@@ -7,8 +7,10 @@
 >
 
     <h:body>
+    
+	   <h:link value="Home" outcome="index"/>
      
-         <h:form>
+	   <h:form>
          
          	<p>
          		This page demonstrates the methodParam handler. An EL reference to a method is passed
@@ -73,8 +75,68 @@
 				<h:commandButton value="test" action="#{methodParamBean.doAction()}" />
 			</p>
 			
-			        
-			         
          </h:form>
-    </h:body>   
+         
+         <br/><br/>
+                    
+        <b>Code:</b>
+            
+<pre>
+
+&lt;p&gt;
+	Passing method with zero arguments
+	&lt;test:actionmethod action="\#{methodParamBean.doAction}" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	Passing method with zero arguments but explicit parenthesis
+	&lt;test:actionmethod action="\#{methodParamBean.doAction()}" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	Passing method with 1 view provided argument: 
+	&lt;test:actionmethod action="\#{methodParamBean.doActionWithParam('test')}" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	Passing method to second bean with 1 view provided argument: 
+	&lt;test:actionmethod action="\#{methodParamBean.bean.doActionWithParam('test')}" /&gt;
+&lt;/p&gt;
+
+
+&lt;h3&gt;Listeners&lt;/h3&gt;
+
+&lt;p&gt;
+	Passing listener method with zero arguments (always needs trick to pass!)
+	&lt;test:actionlistenertrick listener="\#{methodParamBean.actionListener}" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	Passing listener method with zero arguments but explicit parenthesis (needs trick on older EL impl. like JBoss 6, not needed on AS 7)
+	&lt;test:actionlistenertrick listener="\#{methodParamBean.actionListener()}" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	Passing listener method with 1 view provided argument: 
+	&lt;test:actionlistener listener="\#{methodParamBean.actionListenerWithParam('test')}" /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;
+	Passing listener method with declared event parameter, no provided arguments
+	&lt;test:actionlistener listener="\#{methodParamBean.actionListenerWithClientParam}" /&gt;
+&lt;/p&gt;
+
+
+&lt;h3&gt;Direct bindings&lt;/h3&gt;
+
+&lt;p&gt;
+	Direct binding (no method passing) with zero arguments: 
+	&lt;h:commandButton value="test" action="\#{methodParamBean.doAction()}" /&gt;
+&lt;/p&gt;
+</pre>      
+         
+    </h:body>
+    
+    <h:link value="Home" outcome="index"/>
+    
 </html>

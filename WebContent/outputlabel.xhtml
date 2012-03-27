@@ -9,6 +9,8 @@
 
     <h:body>
     
+          <h:link value="Home" outcome="index"/>
+    
         <p>This page demonstrates the outputLabel component.</p>
     
         <p>
@@ -17,7 +19,7 @@
             the label printed before the input instead of some generated ID.
         </p>
             
-            Message: <h:messages />
+        Message: <h:messages />
         <br /><br />
         
         <h4>Dynamic label:</h4>
@@ -44,5 +46,43 @@
     
         </h:form>
         
+        <br/><br/>
+                    
+        <b>Code:</b>
+            
+<pre>
+
+Message: &lt;h:messages /&gt;
+&lt;br /&gt;&lt;br /&gt;
+        
+&lt;h4&gt;Dynamic label:&lt;/h4&gt;
+&lt;h:form&gt;
+
+    &lt;o:outputLabel for="input" value="\#{outputLabelBean.label}" /&gt; &nbsp;
+    &lt;h:inputText id="input" value="\#{viewParamBean.test}" required="true" /&gt;
+    &lt;br /&gt;
+
+    &lt;h:commandLink value="Submit" action="\#{viewParamBean.action}" /&gt;
+
+&lt;/h:form&gt;
+
+&lt;hr/&gt;
+
+&lt;h4&gt;Static label:&lt;/h4&gt;
+&lt;h:form&gt;
+
+    &lt;o:outputLabel for="input" value="My Label" /&gt; &nbsp;
+    &lt;h:inputText id="input" value="\#{viewParamBean.test}" required="true" /&gt;
+    &lt;br /&gt;
+
+    &lt;h:commandLink value="Submit" action="\#{viewParamBean.action}" /&gt;
+
+&lt;/h:form&gt;        
+&lt;/pre&gt;
+</pre>      
+        
     </h:body>
+    
+    <h:link value="Home" outcome="index"/>
+    
 </html>
