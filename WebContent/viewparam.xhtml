@@ -7,11 +7,9 @@
 	xmlns:of="http://omnifaces.org/functions"
 	xmlns:test="http://omnifaces.org/test"
 >
-	<ui:define name="bean" value="#{viewParamBean}" />
-
 	<ui:define name="example">
 		<f:metadata>
-			<o:viewParam name="test" value="#{bean.test}" required="true" converter="viewparamTest" />
+			<o:viewParam name="test" value="#{viewParamBean.test}" required="true" converter="viewparamTest" />
 		</f:metadata>
 
 		<h:form>
@@ -33,7 +31,7 @@
 				request is issued, a converter runs that attaches an ever increasing number to the displayed
 				value below:
 				<br/>
-				<h:link value="Do GET request" outcome="viewparam">
+				<h:link value="Do GET request">
 					<f:param name="test" value="foo"/>
 				</h:link>
 			</p>
@@ -43,11 +41,11 @@
 				the value again and thus the number should not change. The POST-BACK should also
 				not cause the required validation to be triggered.
 				<br/>
-				<h:commandLink value="Do POST request" action="#{bean.action}" />
+				<h:commandLink value="Do POST request" action="#{viewParamBean.action}" />
 			</p>
 
 			<p>
-				The value: #{bean.test}
+				The value: #{viewParamBean.test}
 			</p>
 		 </h:form>
 	 </ui:define>
