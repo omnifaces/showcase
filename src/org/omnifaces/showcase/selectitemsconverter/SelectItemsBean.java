@@ -1,4 +1,4 @@
-package selectitemsconverter;
+package org.omnifaces.showcase.selectitemsconverter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,33 +25,32 @@ public class SelectItemsBean {
 		exampleEntities.add(new ExampleEntity("Amsterdam", 1));
 		exampleEntities.add(new ExampleEntity("Frankfurt", 2));
 		exampleEntities.add(new ExampleEntity("London", 3));
-		
+
 		selectItems = new SelectItemsBuilder()
 							.add(new ExampleEntity("Amsterdam", 1), "Amsterdam")
 							.add(new ExampleEntity("Frankfurt", 2), "Frankfurt")
 							.add(new ExampleEntity("London", 3), "London")
 							.buildList();
-		
+
 		selectItemArray = new SelectItemsBuilder()
 							.add(new ExampleEntity("Amsterdam", 1), "Amsterdam")
 							.add(new ExampleEntity("Frankfurt", 2), "Frankfurt")
 							.add(new ExampleEntity("London", 3), "London")
 							.build();
-		
 	}
-	
+
 	public List<ExampleEntity> getExampleEntities() {
 		return exampleEntities;
 	}
-	
+
 	public List<SelectItem> getSelectItems() {
 		return selectItems;
 	}
-	
+
 	public SelectItem[] getSelectItemArray() {
 		return selectItemArray;
 	}
-	
+
 	public ExampleEntity getSelectedEntity() {
 		return selectedEntity;
 	}
@@ -59,5 +58,5 @@ public class SelectItemsBean {
 	public void setSelectedEntity(ExampleEntity selectedEntity) {
 		this.selectedEntity = selectedEntity;
 	}
-	
+
 }

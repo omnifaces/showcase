@@ -4,31 +4,18 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
     metadata-complete="false"
 >
-
-	<display-name>OmniFace showcase</display-name>
+	<display-name>OmniFaces Showcase</display-name>
 	
 	<context-param>
 		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
-		<param-value>
-			/WEB-INF/showcase.taglib.xml
-		</param-value>
-	</context-param>
-	<context-param>
-		<param-name>javax.faces.FACELETS_DEVELOPMENT</param-name>
-		<param-value>true</param-value>
+		<param-value>/WEB-INF/showcase.taglib.xml</param-value>
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
-	<context-param>
-		<!--This is a workaround for Mojarra issue 2215 wherein session is created after response is committed. -->
-		<param-name>com.sun.faces.writeStateAtFormEnd</param-name>
-		<param-value>false</param-value>
-	</context-param>
 
 	<servlet>
-		<description>The JSF Servlet</description>
 		<servlet-name>facesServlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
@@ -42,4 +29,20 @@
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 
+	<error-page>
+		<exception-type>javax.faces.application.ViewExpiredException</exception-type>
+		<location>/WEB-INF/errorpages/expired.xhtml</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.sql.SQLException</exception-type>
+		<location>/WEB-INF/errorpages/database.xhtml</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.RuntimeException</exception-type>
+		<location>/WEB-INF/errorpages/bug.xhtml</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/errorpages/500.xhtml</location>
+	</error-page>
 </web-app>

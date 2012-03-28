@@ -1,4 +1,4 @@
-package selectitemsconverter;
+package org.omnifaces.showcase.selectitemsconverter;
 
 public class ExampleEntity {
 

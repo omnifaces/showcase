@@ -1,103 +1,54 @@
-<ui:composition template="/WEB-INF/templates/layout.xhtml"
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
-	xmlns:test="http://org.omnifaces/test"
+	xmlns:test="http://omnifaces.org/test"
 >
-	<ui:define name="content">
-         <h:form>
-         
-         	<p>
-         		This page demonstrates the SelectItemsConverter converter. <br/>
-         		The SelectItemsConverter allows you to populate e.g. a drop-down with complex Java model objects
-         		and have JSF convert those automatically back.
-         	</p>
-         	
-         	<p>
-         		<h:outputText id="selected_item" value="Selected item: #{selectItemsBean.selectedEntity.name}" /> 
-         	</p>
-         	
-         	<br/>
-         
-         	<h:outputLabel for="iterator" value="Items with iterator: " />
-			<h:selectOneMenu id="iterator" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
-				<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
-				<f:selectItems value="#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
-				<f:ajax render="selected_item" />
-			</h:selectOneMenu>
+	<ui:define name="example">
+		 <h:form>
+			<p>
+				This page demonstrates the SelectItemsConverter converter.
+			</p>
+			<p>
+				The SelectItemsConverter allows you to populate e.g. a drop-down with complex Java model objects
+				and have JSF convert those automatically back.
+			</p>
+			<p>
+				<h:outputText id="selected_item" value="Selected item: #{selectItemsBean.selectedEntity.name}" /> 
+			</p>
 			
-			<br/>
-			
-			<h:outputLabel for="iterator_def_value" value="Items with iterator (default value): " />
-			<h:selectOneMenu id="iterator_def_value" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
-				<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
-				<f:selectItems value="#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.name}" />
-				<f:ajax render="selected_item" />
-			</h:selectOneMenu>
-			
-			<br/>
-			
-			<h:outputLabel for="selectitems" value="Items with SelectItem list: " />
-			<h:selectOneMenu id="selectitems" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
-				<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
-				<f:selectItems value="#{selectItemsBean.selectItems}" />
-				<f:ajax render="selected_item" />
-			</h:selectOneMenu>
-			
-			<br/>
-			
-			<h:outputLabel for="selectitems_array" value="Items with SelectItem array: " />
-			<h:selectOneMenu id="selectitems_array" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
-				<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
-				<f:selectItems value="#{selectItemsBean.selectItemArray}" />
-				<f:ajax render="selected_item" />
-			</h:selectOneMenu>
-         				
-			<br/><br/>
-			
-			<b>Code:</b>			
-<pre>
-&lt;h:outputLabel for="iterator" value="Items with iterator: " /&gt;
-&lt;h:selectOneMenu id="iterator" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter"&gt;
-	&lt;f:selectItem itemLabel="Choose item" noSelectionOption="true" /&gt;
-	&lt;f:selectItems value="\#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" /&gt;
-	&lt;f:ajax render="selected_item" /&gt;
-&lt;/h:selectOneMenu&gt;
+			<h:panelGrid columns="2">
+				<h:outputLabel for="iterator" value="Items with iterator: " />
+				<h:selectOneMenu id="iterator" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.name}" itemValue="#{entity}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
 
-&lt;br/&gt;
+				<h:outputLabel for="iterator_def_value" value="Items with iterator (default value): " />
+				<h:selectOneMenu id="iterator_def_value" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.name}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
 
-&lt;h:outputLabel for="iterator_def_value" value="Items with iterator (default value): " /&gt;
-&lt;h:selectOneMenu id="iterator_def_value" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter"&gt;
-	&lt;f:selectItem itemLabel="Choose item" noSelectionOption="true" /&gt;
-	&lt;f:selectItems value="\#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.name}" /&gt;
-	&lt;f:ajax render="selected_item" /&gt;
-&lt;/h:selectOneMenu&gt;
+				<h:outputLabel for="selectitems" value="Items with SelectItem list: " />
+				<h:selectOneMenu id="selectitems" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.selectItems}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
 
-&lt;br/&gt;
-
-&lt;h:outputLabel for="selectitems" value="Items with SelectItem list: " /&gt;
-&lt;h:selectOneMenu id="selectitems" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter"&gt;
-	&lt;f:selectItem itemLabel="Choose item" noSelectionOption="true" /&gt;
-	&lt;f:selectItems value="\#{selectItemsBean.selectItems}" /&gt;
-	&lt;f:ajax render="selected_item" /&gt;
-&lt;/h:selectOneMenu&gt;
-
-&lt;br/&gt;
-
-&lt;h:outputLabel for="selectitems_array" value="Items with SelectItem array: " /&gt;
-&lt;h:selectOneMenu id="selectitems_array" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter"&gt;
-	&lt;f:selectItem itemLabel="Choose item" noSelectionOption="true" /&gt;
-	&lt;f:selectItems value="\#{selectItemsBean.selectItemArray}" /&gt;
-	&lt;f:ajax render="selected_item" /&gt;
-&lt;/h:selectOneMenu&gt;
-
-		
-</pre>
-			
-			         
-         </h:form>
+				<h:outputLabel for="selectitems_array" value="Items with SelectItem array: " />
+				<h:selectOneMenu id="selectitems_array" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.selectItemArray}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+		</h:form>
 	</ui:define>
 </ui:composition>

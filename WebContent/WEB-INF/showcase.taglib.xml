@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibary_2_0.xsd"
     version="2.0">
 
-    <namespace>http://org.omnifaces/test</namespace>
+    <namespace>http://omnifaces.org/test</namespace>
 
 	<tag>
   		<tag-name>actionmethod</tag-name>
@@ -21,5 +21,11 @@
   		<tag-name>actionlistenertrick</tag-name>
   		<source>tags/actionlistenertrick.xhtml</source>
 	</tag>
+	
+	<function>
+		<function-name>printViewSourceCode</function-name>
+		<function-class>org.omnifaces.showcase.Functions</function-class>
+		<function-signature>java.lang.String printViewSourceCode()</function-signature>
+	</function>
 	
 </facelet-taglib>

@@ -1,0 +1,30 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="example">
+		<o:tree value="#{treeBean.menu}" var="page" varNode="node">
+			<o:treeNode level="0">
+				<o:treeNodeItem>
+					<h3>#{node.index} <a href="#{page.url}">#{page.label}</a></h3>
+					<o:treeInsertChildren />
+				</o:treeNodeItem>
+			</o:treeNode>
+		 	<o:treeNode>
+		 		<ul>
+			   		<o:treeNodeItem>
+				    	<li>
+				     		#{node.index} <a href="#{page.url}">#{page.label}</a>
+				     		<o:treeInsertChildren />
+				    	</li>
+					</o:treeNodeItem>
+		 		</ul>
+			</o:treeNode>		
+		</o:tree>
+	</ui:define>
+</ui:composition>

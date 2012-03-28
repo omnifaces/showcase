@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<h:head>
+		<title>Error - OmniFaces Showcase</title>
+	</h:head>
+
+	<h:body>
+		<p>
+			<h:button value="Home" outcome="/index" />
+		</p>
+		<h1><ui:insert name="header">Error</ui:insert></h1>
+		<ui:insert name="content">
+			<ul>
+				<li>Date/time: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
+				<li>HTTP user agent: #{header['user-agent']}</li>
+				<li>Request URI: <a href="#{requestScope['javax.servlet.error.request_uri']}">#{requestScope['javax.servlet.error.request_uri']}</a></li>
+				<li>Ajax request: #{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}</li>
+				<li>Status code: #{requestScope['javax.servlet.error.status_code']}</li>
+				<li>Exception type: #{requestScope['javax.servlet.error.exception_type']}</li>
+				<li>Exception message: #{requestScope['javax.servlet.error.message']}</li>
+				<li>Stack trace: <pre>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</pre></li>
+			</ul>
+			<p>
+				<h:button value="Home" outcome="/index" />
+			</p>
+		</ui:insert>
+	</h:body>
+</html>

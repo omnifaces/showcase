@@ -1,38 +1,24 @@
-<ui:composition template="/WEB-INF/templates/layout.xhtml"
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
-	xmlns:test="http://org.omnifaces/test"
+	xmlns:test="http://omnifaces.org/test"
 >
-	<ui:define name="content">
-         <h:form>
-         
-         	<p>
-         		This page demonstrates the resourceInclude component.
-         	</p>
-         
-         	Content before Servlet include <br/>
-         
-			<o:resourceInclude path="/testservlet" /> <br/>
-			
-			Content after Servlet include <br/>
-			
-			<br/>
-			
-			<b>Code:</b>
-			
-<pre>
-Content before Servlet include &lt;br/&gt;
-      
-&lt;o:resourceInclude path="/testservlet" /&gt; &lt;br/&gt;
-
-Content after Servlet include &lt;br/&gt;			
-</pre>
-			
-			         
-         </h:form>
+	<ui:define name="example">
+		 <h:form>
+			<p>
+				This page demonstrates the resourceInclude component.
+			</p>
+			<p>
+				Content before Servlet include
+				<br/>
+				<o:resourceInclude path="/testservlet" />
+				<br/>
+				Content after Servlet include
+			</p>
+		 </h:form>
 	</ui:define>
 </ui:composition>

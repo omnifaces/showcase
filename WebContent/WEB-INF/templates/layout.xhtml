@@ -4,6 +4,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:test="http://omnifaces.org/test"
 >
 	<h:head>
 		<title>
@@ -28,16 +31,6 @@
 	</h:head>
 
 	<h:body>
-		<p>
-			<h:button value="Home" outcome="index" />
-			<h:button value="Refresh page" />
-		</p>
-
 		<ui:insert name="content" />
-
-		<p>
-			<h:button value="Home" outcome="index" />
-			<h:button value="Refresh page" />
-		</p>
 	</h:body>
 </html>

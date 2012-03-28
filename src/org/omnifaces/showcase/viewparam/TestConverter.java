@@ -1,4 +1,4 @@
-package viewparam;
+package org.omnifaces.showcase.viewparam;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -9,24 +9,24 @@ import javax.faces.convert.FacesConverter;
 
 @FacesConverter("viewparamTest")
 public class TestConverter implements Converter {
-	
+
 	private static final AtomicInteger counter = new AtomicInteger();
-	
+
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		if (value == null) {
 			return null;
 		}
-		
-		return value + "-" + counter.getAndIncrement();				
+
+		return value + "-" + counter.getAndIncrement();
 	}
-	
+
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value == null) {
 			return null;
 		}
-		
+
 		return value.toString();
 	}
 

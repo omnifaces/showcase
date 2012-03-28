@@ -5,42 +5,68 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
-	xmlns:test="http://org.omnifaces/test"
+	xmlns:test="http://omnifaces.org/test"
 >
 	<ui:define name="content">
-            <p>
-                Welcome to the OmniFaces Showcase application.                
-            </p>
-            
-            <p>
-                This demonstrates several of the OmniFaces components and utilities. Note that this is still
-                barely more than a quick prototype, extremely basic and admittedly not very good looking without
-                any styling. Don't worry, this will be addressed in due time.
-            </p>
-            
-            Demos:
-                
-            <ul>
-                <li>
-                    <h:link value="MethodParam" outcome="methodparam"/>                    
-                </li>
-                <li>
-                    <h:link value="OutputLabel" outcome="outputlabel"/>                    
-                </li>
-                <li>
-                    <h:link value="ResourceInclude" outcome="resourceinclude"/>                    
-                </li>
-                <li>
-                    <h:link value="SelectItemsConverter" outcome="selectitemsconverter"/>                    
-                </li>
-                <li>
-                    <h:link value="ViewParam" outcome="viewparam"/>                    
-                </li>
-            
-            </ul>
-            
-            OmniFaces Homepage: <a href="http://code.google.com/p/omnifaces">code.google.com/p/omnifaces</a> <br/>
-            Full source code for all demos: <a href="http://code.google.com/p/omnifaces-showcase/source/browse">code.google.com/p/omnifaces-showcase/source/browse</a>           
+		<h1>Welcome to the OmniFaces Showcase application</h1>
 
+		<p>
+			This demonstrates several of the OmniFaces components and utilities. Note that this is still
+			barely more than a quick prototype, extremely basic and admittedly not very good looking without
+			any styling. Don't worry, this will be addressed in due time.
+		</p>
+
+		<h2>Demos</h2>
+
+		<ul>
+			<li>
+				<h:link value="FullAjaxExceptionHandler" outcome="fullajaxexceptionhandler"/>
+			</li>
+			<li>
+				<h:link value="Highlight" outcome="highlight"/>
+			</li>
+			<li>
+				<h:link value="MethodParam" outcome="methodparam"/>
+			</li>
+			<li>
+				<h:link value="OutputLabel" outcome="outputlabel"/>
+			</li>
+			<li>
+				<h:link value="ResourceInclude" outcome="resourceinclude"/>
+			</li>
+			<li>
+				<h:link value="ResetInputAjaxActionListener" outcome="resetinputajaxactionlistener"/>
+			</li>
+			<li>
+				<h:link value="SelectItemsConverter" outcome="selectitemsconverter"/>
+			</li>
+			<li>
+				<h:link value="Tree" outcome="tree"/>
+			</li>
+			<li>
+				<h:link value="ValidateAllOrNone" outcome="validateallornone"/>
+			</li>
+			<li>
+				<h:link value="ValidateEqual" outcome="validateequal"/>
+			</li>
+			<li>
+				<h:link value="ValidateOneOrMore" outcome="validateoneormore"/>
+			</li>
+			<li>
+				<h:link value="ValidateOrder" outcome="validateorder"/>
+			</li>
+			<li>
+				<h:link value="ValidateUnique" outcome="validateunique"/>
+			</li>
+			<li>
+				<h:link value="ViewParam" outcome="viewparam"/>
+			</li>
+
+		</ul>
+
+		<p>
+			OmniFaces Homepage: <a href="http://code.google.com/p/omnifaces">code.google.com/p/omnifaces</a> <br/>
+			Full source code for all demos: <a href="http://code.google.com/p/omnifaces-showcase/source/browse">code.google.com/p/omnifaces-showcase/source/browse</a>
+		</p>
 	</ui:define>
 </ui:composition>

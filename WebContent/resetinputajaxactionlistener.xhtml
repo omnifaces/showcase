@@ -1,0 +1,64 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:param name="bean" value="#{resetInputAjaxActionListenerBean}" />
+
+	<ui:define name="example">
+		<h2>Form without ResetInputAjaxActionListener</h2>
+		<h:form id="form1">
+			<p>input1: Enter something (but don't enter "Updated!").</p>
+			<p>
+				<h:inputText id="input1" value="#{bean.input1}" required="true" />
+				<h:message for="input1" />
+			</p>
+			<p>input2: Leave this field empty or enter a non-numeric value to cause a validation failure.</p>
+			<p>
+				<h:inputText id="input2" value="#{bean.input2}" required="true" />
+				<h:message for="input2" />
+			</p>
+			<p>Press "submit" and then "update". The "update" simulates changing model values externally.</p>
+			<p>
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:commandButton value="Update" action="#{bean.update}" >
+					<f:ajax execute="@this" render="@form" />
+				</h:commandButton>
+			</p>
+			<p><b>Problem</b>: input1 is not updated with text "Updated!" and input2 is still marked invalid!</p>
+			<o:highlight />
+		</h:form>
+
+		<h2>Same form, with ResetInputAjaxActionListener on "update"</h2>
+		<h:form id="form2">
+			<p>input1: Enter something (but don't enter "Updated!").</p>
+			<p>
+				<h:inputText id="input1" value="#{bean.input1}" required="true" />
+				<h:message for="input1" />
+			</p>
+			<p>input2: Leave this field empty or enter a non-numeric value to cause a validation failure.</p>
+			<p>
+				<h:inputText id="input2" value="#{bean.input2}" required="true" />
+				<h:message for="input2" />
+			</p>
+			<p>Press "submit" and then "update". The "update" simulates changing model values externally.</p>
+			<p>
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:commandButton value="Update">
+					<f:ajax listener="#{bean.update}" render="@form" />
+					<f:actionListener type="org.omnifaces.event.ResetInputAjaxActionListener" />
+				</h:commandButton>
+			</p>
+			<p><b>Solved</b>: input1 is now updated with text "Updated!" and input2 is not marked invalid anymore!</p>
+			<o:highlight />
+		</h:form>
+	</ui:define>		
+</ui:composition>

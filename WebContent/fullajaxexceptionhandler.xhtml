@@ -1,0 +1,35 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:test="http://omnifaces.org/test"
+>
+	<ui:param name="bean" value="#{fullAjaxExceptionHandlerBean}" />
+
+	<ui:define name="example">
+		<h:form>
+			<h:commandButton value="throw runtime exception on ajax request" action="#{bean.throwRuntimeException}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+		</h:form>
+		<h:form>
+			<h:commandButton value="throw runtime exception on normal request" action="#{bean.throwRuntimeException}" />
+		</h:form>
+		<h:form>
+			<h:commandButton value="throw SQL exception on ajax request" action="#{bean.throwSQLException}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+		</h:form>
+		<h:form>
+			<h:commandButton value="throw SQL exception on normal request" action="#{bean.throwSQLException}" />
+		</h:form>
+		<p>
+			If you wait #{session.maxInactiveInterval / 60} minutes or manually delete the jsessionid cookie and then 
+			click any of the above buttons, you'll get a view expired exception which will also end up in a specific 
+			error page.
+		</p>
+	</ui:define>
+</ui:composition>
