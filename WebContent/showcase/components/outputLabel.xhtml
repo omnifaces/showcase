@@ -9,17 +9,22 @@
 >
 	<ui:define name="description">
 		<p>
-			The <code>&lt;o:outputLabel&gt;</code> automatically sets the label attribute of the component identified by its "for" attribute. 
+			The <code>&lt;o:outputLabel&gt;</code> automatically sets the <code>label</code> attribute of the input component
+			identified by its "for" attribute with the value of the <code>&lt;o:outputLabel&gt;</code>. This way there's
+			no need to duplicate the very same label into the <code>label</code> attribute of the input component. 
 			After submitting the form without having entered a value, a validation message is posted that should contain
 			the label printed before the input instead of some generated ID.
+		</p>
+		<p>
+			Submit the following forms without entering anything to see it.
 		</p>
 	</ui:define>
 
 	<ui:define name="example">
-		<h3>Dynamic label:</h3>
+		<h3>With standard h:outputLabel:</h3>
 		<h:form>
 			<h:panelGrid columns="3">
-				<o:outputLabel for="input" value="#{now.toString()}" />
+				<h:outputLabel for="input" value="Foo" />
 				<h:inputText id="input" required="true" />
 				<h:message for="input" />
 
@@ -32,11 +37,28 @@
 				</h:panelGroup>
 			</h:panelGrid>
 		</h:form>
-		
-		<h3>Static label:</h3>
+
+		<h3>With OmniFaces o:outputLabel:</h3>
 		<h:form>
 			<h:panelGrid columns="3">
 				<o:outputLabel for="input" value="Foo" />
+				<h:inputText id="input" required="true" />
+				<h:message for="input" />
+
+				<h:panelGroup />
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+		<h3>Dynamic o:outputLabel:</h3>
+		<h:form>
+			<h:panelGrid columns="3">
+				<o:outputLabel for="input" value="#{now.toString()}" />
 				<h:inputText id="input" required="true" />
 				<h:message for="input" />
 
