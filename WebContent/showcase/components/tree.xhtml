@@ -1,0 +1,67 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:os="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+
+	</ui:define>
+
+	<ui:define name="example">
+		<h3>Static tree</h3>
+		<o:tree value="#{treeBean.tree}" var="exampleEntity" varNode="node">
+			<o:treeNode level="0">
+				<o:treeNodeItem>
+					<h4>#{node.index} #{exampleEntity.value}</h4>
+					<o:treeInsertChildren />
+				</o:treeNodeItem>
+			</o:treeNode>
+			<o:treeNode level="3">
+				<o:treeNodeItem>
+					<i>#{node.index} #{exampleEntity.value}</i>
+					<o:treeInsertChildren />
+				</o:treeNodeItem>
+			</o:treeNode>
+			<o:treeNode>
+				<ul>
+					<o:treeNodeItem>
+						<li>#{node.index} #{exampleEntity.value} <o:treeInsertChildren />
+						</li>
+					</o:treeNodeItem>
+				</ul>
+			</o:treeNode>
+		</o:tree>
+
+		<hr/>
+
+		<h3>Editable tree</h3>
+		<h:form id="form">
+			<o:tree id="tree" value="#{treeBean.tree}" var="exampleEntity" varNode="node">
+				<o:treeNode>
+					<ul>
+						<o:treeNodeItem>
+							<li>
+								#{node.index}
+								<h:inputText id="value" value="#{exampleEntity.value}" required="true" />
+								<h:message for="value" />
+								<o:treeInsertChildren />
+							</li>
+						</o:treeNodeItem>
+					</ul>
+				</o:treeNode>
+			</o:tree>
+			<h:commandButton value="Save">
+				<f:ajax execute="@form" render=":example" />
+			</h:commandButton> (only for this view scope ;) )
+			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="documentation">
+
+	</ui:define>
+</ui:composition>

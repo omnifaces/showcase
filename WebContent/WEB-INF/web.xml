@@ -24,7 +24,16 @@
 		<servlet-name>facesServlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>		
 	</servlet-mapping>
-	
+
+	<filter>
+		<filter-name>facesExceptionFilter</filter-name>
+		<filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>facesExceptionFilter</filter-name>
+		<servlet-name>facesServlet</servlet-name>
+	</filter-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>

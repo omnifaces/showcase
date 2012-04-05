@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 public class TestServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       response.getWriter().write("Output from Servlet");       
+       response.getWriter().write("Output from Servlet");
     }
 
 }

@@ -1,0 +1,75 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:os="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+
+	</ui:define>
+
+	<ui:define name="example">
+		<h:form>
+			<h3>Please fill out the same value for all of those fields.</h3>
+			<o:validateEqual id="equal" components="foo bar baz" />
+
+			<h:panelGrid columns="3">
+				<o:outputLabel for="foo" value="Foo" />
+				<h:inputText id="foo" />
+				<h:message for="foo" />
+
+				<o:outputLabel for="bar" value="Bar" />
+				<h:inputText id="bar" />
+				<h:message for="bar" />
+
+				<o:outputLabel for="baz" value="Baz" />
+				<h:inputText id="baz" />
+				<h:message for="baz" />
+
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:message for="equal" />
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+		<h:form>
+			<h3>Please enter the same password.</h3>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel for="password" value="Enter password" />
+				<h:inputSecret id="password" redisplay="true" required="true" requiredMessage="Please enter password" />
+				<h:panelGroup>
+					<h:message for="password" />
+					<h:message for="equal" />
+				</h:panelGroup>
+				
+				<h:outputLabel for="confirm" value="Confirm password" />
+				<h:inputSecret id="confirm" redisplay="true" required="true" requiredMessage="Please confirm password" />
+				<h:panelGroup>
+					<h:message for="confirm" />
+					<o:validateEqual id="equal" components="password confirm" message="Passwords are not equal" />
+				</h:panelGroup>
+		
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="documentation">
+	
+	</ui:define>
+</ui:composition>

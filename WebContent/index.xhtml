@@ -1,69 +1,15 @@
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
-	xmlns:test="http://omnifaces.org/test"
 >
-	<ui:define name="content">
-		<h1>Welcome to the OmniFaces Showcase application</h1>
+	<ui:define name="contentTitle">Welcome to the OmniFaces Showcase application!</ui:define>
 
+	<ui:define name="content">
 		<p>
 			This demonstrates several of the OmniFaces components and utilities. Note that this is still
 			barely more than a quick prototype, extremely basic and admittedly not very good looking without
 			any styling. Don't worry, this will be addressed in due time.
 		</p>
-
-		<h2>Demos</h2>
-
-		<ul>
-			<li>
-				<h:link value="FullAjaxExceptionHandler" outcome="fullajaxexceptionhandler"/>
-			</li>
-			<li>
-				<h:link value="Highlight" outcome="highlight"/>
-			</li>
-			<li>
-				<h:link value="MethodParam" outcome="methodparam"/>
-			</li>
-			<li>
-				<h:link value="OutputLabel" outcome="outputlabel"/>
-			</li>
-			<li>
-				<h:link value="ResourceInclude" outcome="resourceinclude"/>
-			</li>
-			<li>
-				<h:link value="ResetInputAjaxActionListener" outcome="resetinputajaxactionlistener"/>
-			</li>
-			<li>
-				<h:link value="SelectItemsConverter" outcome="selectitemsconverter"/>
-			</li>
-			<li>
-				<h:link value="Tree" outcome="tree"/>
-			</li>
-			<li>
-				<h:link value="ValidateAllOrNone" outcome="validateallornone"/>
-			</li>
-			<li>
-				<h:link value="ValidateEqual" outcome="validateequal"/>
-			</li>
-			<li>
-				<h:link value="ValidateOneOrMore" outcome="validateoneormore"/>
-			</li>
-			<li>
-				<h:link value="ValidateOrder" outcome="validateorder"/>
-			</li>
-			<li>
-				<h:link value="ValidateUnique" outcome="validateunique"/>
-			</li>
-			<li>
-				<h:link value="ViewParam" outcome="viewparam"/>
-			</li>
-
-		</ul>
-
 		<p>
 			OmniFaces Homepage: <a href="http://code.google.com/p/omnifaces">code.google.com/p/omnifaces</a> <br/>
 			Full source code for all demos: <a href="http://code.google.com/p/omnifaces-showcase/source/browse">code.google.com/p/omnifaces-showcase/source/browse</a>

@@ -3,25 +3,41 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
-	xmlns:test="http://omnifaces.org/test"
+	xmlns:os="http://omnifaces.org/showcase"
 >
 	<ui:define name="content">
-		<p>
-			<h:button value="Home" outcome="/index" />
-			<h:button value="Refresh page" />
-		</p>
+		<h:outputStylesheet library="showcase" name="prettify/prettify.css" target="head" />
+		<h:outputScript library="showcase" name="prettify/prettify.js" target="head" />
+		<h:outputScript target="body">prettyPrint();</h:outputScript>
 
-		<h1>#{view.viewId}</h1>
-		<ui:insert name="example" />
+		<p:panel id="description" header="Description">
+			<ui:insert name="description" />
+		</p:panel>
 
-		<h3>Facelets source code</h3>
-		<pre>#{test:printViewSourceCode()}</pre>
+		<br/>
 
-		<p>
-			<h:button value="Home" outcome="/index" />
-			<h:button value="Refresh page" />
-		</p>
+		<p:panel id="example" header="Example">
+			<ui:insert name="example" />
+			<o:highlight />
+		</p:panel>
+
+		<br/>
+
+		<p:panel id="source" header="Source code">
+			<p:tabView value="#{page.current.sources}" var="source">
+				<p:tab title="#{source.title}">
+					<pre class="prettyprint"><code class="lang-#{source.type}">#{source.code}</code></pre>
+				</p:tab>
+			</p:tabView>
+		</p:panel>
+
+		<br/>
+		
+		<p:panel id="documentation" header="Documentation">
+			<ui:insert name="documentation" />
+		</p:panel>
 	</ui:define>
 </ui:composition>

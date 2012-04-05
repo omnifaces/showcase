@@ -1,0 +1,64 @@
+body {
+	width: 1280px;
+	margin: 0 auto;
+	padding: 3px 0;
+	overflow-y: scroll;
+}
+
+#header {
+	position: relative;
+	margin-bottom: 3px;
+}
+
+#poweredBy {
+	position: absolute;
+	top: -3px;
+	right: 3px;
+	font-size: .8em;
+	text-align: right;
+	white-space: pre;
+}
+
+#menu {
+	float: left;
+	width: 250px;
+}
+
+#menu ul {
+	padding: 0;
+	margin: 10px 0;
+	list-style-type: none;
+	font-weight: bold;
+}
+
+#menu ul ul {
+	margin-top: 3px;
+	padding: 0 20px;
+	list-style-type: disc;
+	font-weight: normal;
+}
+
+#menu li {
+	padding: 3px;
+}
+
+#content {
+	float: right;
+	width: 1015px;
+}
+
+.ui-widget {
+	font-size: .8em;
+}
+
+.error {
+	background-color: #fee;
+}
+
+a:hover, a.active {
+	background: #ddd;
+}
+
+code, #menu ul ul li {
+	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+}

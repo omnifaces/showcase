@@ -1,0 +1,79 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:os="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+
+	</ui:define>
+
+	<ui:define name="example">
+		<h:form>
+			<h3>Please fill out the values of all those fields in order.</h3>
+			<o:validateOrder id="order" components="foo bar baz" />
+
+			<h:panelGrid columns="3">
+				<o:outputLabel for="foo" value="Foo" />
+				<h:inputText id="foo" />
+				<h:message for="foo" />
+
+				<o:outputLabel for="bar" value="Bar" />
+				<h:inputText id="bar" />
+				<h:message for="bar" />
+
+				<o:outputLabel for="baz" value="Baz" />
+				<h:inputText id="baz" />
+				<h:message for="baz" />
+
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:message for="order" />
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+		<h:form>
+			<h3>Please enter a valid start and end date.</h3>
+
+			<h:panelGrid columns="3">
+				<h:outputLabel for="startDate" value="Start date" />
+				<h:inputText id="startDate" required="true" requiredMessage="Please enter start date" converterMessage="Date must be in format yyyy-MM-dd">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:inputText>
+				<h:panelGroup>
+					<h:message for="startDate" />
+				</h:panelGroup>
+				
+				<h:outputLabel for="endDate" value="End date" />
+				<h:inputText id="endDate" required="true" requiredMessage="Please enter end date"  converterMessage="Date must be in format yyyy-MM-dd">
+					<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:inputText>
+				<h:panelGroup>
+					<h:message for="endDate" />
+					<o:validateOrder id="order" components="startDate endDate" message="End date must be after start date" />
+					<h:message for="order" />
+				</h:panelGroup>
+		
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="documentation">
+	
+	</ui:define>
+</ui:composition>

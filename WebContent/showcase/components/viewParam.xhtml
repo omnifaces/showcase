@@ -1,0 +1,63 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:os="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+		<p>
+			This page demonstrates the stateless viewParam component.
+		</p>
+		<p>
+			If this page is requested by a non-Faces request without a parameter, it should display the message: <br/>
+			"test: Validation Error: Value is required."
+		</p>
+		<p>
+			Clicking the GET link initiates a new GET request with a parameter. Every time this
+			request is issued, a converter runs that attaches an ever increasing number to the displayed
+			value.
+		</p>
+		<p>
+			Clicking the POST link below initiates a POST-BACK request. This should not convert
+			the value again and thus the number should not change. The POST-BACK should also
+			not cause the required validation to be triggered.
+		</p>
+	</ui:define>
+
+	<ui:define name="example">
+		<f:metadata>
+			<o:viewParam id="test" name="test" value="#{viewParamBean.test}" required="true" converter="viewparamTest" />
+		</f:metadata>
+
+		<p>
+			<b>The message: </b>
+			<h:message for="test" />
+		</p>
+
+		<p>
+			<b>The GET link: </b>
+			<h:link value="Do GET request">
+				<f:param name="test" value="foo"/>
+			</h:link>
+		</p>
+
+		<p>
+			<h:form>
+				<b>The POST link: </b>
+				<h:commandLink value="Do POST request" action="#{viewParamBean.action}" />
+			</h:form>
+		</p>
+			
+		<p>
+			<b>The value: </b>
+			#{viewParamBean.test}
+		</p>
+	</ui:define>
+
+	<ui:define name="documentation">
+	
+	</ui:define>
+</ui:composition>

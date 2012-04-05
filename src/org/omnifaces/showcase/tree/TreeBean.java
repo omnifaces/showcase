@@ -1,56 +1,43 @@
 package org.omnifaces.showcase.tree;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
+import org.omnifaces.showcase.model.ExampleEntity;
 
 @ManagedBean
-@RequestScoped
-public class TreeBean {
+@ViewScoped
+public class TreeBean implements Serializable {
 
-	private TreeModel<Page> menu;
+	private static final long serialVersionUID = 1L;
+
+	private TreeModel<ExampleEntity> tree;
 
 	@PostConstruct
 	public void init() {
-		menu = new ListTreeModel<Page>();
-		menu.addChild(new Page("http://code.google.com/p/omnifaces/", "OmniFaces Homepage")).getParent()
-			.addChild(new Page("index.xhtml", "OmniFaces Showcase"))
-				.addChild(new Page(null, "Components"))
-					.addChild(new Page("highlight.xhtml", "o:highlight")).getParent()
-					.addChild(new Page("outputlabel.xhtml", "o:outputLabel")).getParent()
-					.addChild(new Page("resourceinclude.xhtml", "o:resourceInclude")).getParent()
-					.addChild(new Page("tree.xhtml", "o:tree")).getParent()
-					.addChild(new Page("viewparam.xhtml", "o:viewParam")).getParent()
+		tree = new ListTreeModel<ExampleEntity>();
+		tree.addChild(new ExampleEntity(1L, "One"))
+				.addChild(new ExampleEntity(2L, "Two")).getParent()
+				.addChild(new ExampleEntity(3L, "Three"))
+					.addChild(new ExampleEntity(4L, "Four")).getParent()
+					.addChild(new ExampleEntity(5L, "Five"))
+						.addChild(new ExampleEntity(6L, "Six")).getParent()
+						.getParent()
 					.getParent()
-				.addChild(new Page(null, "Tag Handlers"))
-					.addChild(new Page("methodparam.xhtml", "o:methodParam")).getParent()
-					.getParent()
-				.addChild(new Page(null, "Validators"))
-					.addChild(new Page("validateallornone.xhtml", "o:validateAllOrNone")).getParent()
-					.addChild(new Page("validateequal.xhtml", "o:validateEqual")).getParent()
-					.addChild(new Page("validateoneormore.xhtml", "o:validateOneOrMore")).getParent()
-					.addChild(new Page("validateorder.xhtml", "o:validateOrder")).getParent()
-					.addChild(new Page("validateunique.xhtml", "o:validateUnique")).getParent()
-					.getParent()
-				.addChild(new Page(null, "Converters"))
-					.addChild(new Page("selectitemsconverter.xhtml", "omnifaces.SelectItemsConverter")).getParent()
-					.getParent()
-				.addChild(new Page(null, "Event Listeners"))
-					.addChild(new Page("resetinputajaxactionlistener.xhtml", "org.omnifaces.event.ResetInputAjaxActionListener")).getParent()
-					.getParent()
-				.addChild(new Page(null, "Exception Handlers"))
-					.addChild(new Page("fullajaxexceptionhandler.xhtml", "org.omnifaces.exceptionhandler.FullAjaxExceptionHandler")).getParent()
-					.getParent()
+				.addChild(new ExampleEntity(7L, "Seven")).getParent()
+				.addChild(new ExampleEntity(8L, "Eight")).getParent()
 				.getParent()
-			.getParent()
-		;
+			.addChild(new ExampleEntity(9L, "Nine"))
+				.addChild(new ExampleEntity(10L, "Ten"));
 	}
 
-	public TreeModel<Page> getMenu() {
-		return menu;
+	public TreeModel<ExampleEntity> getTree() {
+		return tree;
 	}
 
 }

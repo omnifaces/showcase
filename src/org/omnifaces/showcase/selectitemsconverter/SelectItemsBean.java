@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.model.SelectItem;
 
+import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.selectitems.SelectItemsBuilder;
 
 @ManagedBean
@@ -22,20 +23,20 @@ public class SelectItemsBean {
 	@PostConstruct
 	public void init() {
 		exampleEntities = new ArrayList<ExampleEntity>();
-		exampleEntities.add(new ExampleEntity("Amsterdam", 1));
-		exampleEntities.add(new ExampleEntity("Frankfurt", 2));
-		exampleEntities.add(new ExampleEntity("London", 3));
+		exampleEntities.add(new ExampleEntity(1L, "Amsterdam"));
+		exampleEntities.add(new ExampleEntity(2L, "Frankfurt"));
+		exampleEntities.add(new ExampleEntity(3L, "London"));
 
 		selectItems = new SelectItemsBuilder()
-							.add(new ExampleEntity("Amsterdam", 1), "Amsterdam")
-							.add(new ExampleEntity("Frankfurt", 2), "Frankfurt")
-							.add(new ExampleEntity("London", 3), "London")
+							.add(new ExampleEntity(4L, "New York"), "New York")
+							.add(new ExampleEntity(5L, "Miami"), "Miami")
+							.add(new ExampleEntity(6L, "Los Angeles"), "Los Angeles")
 							.buildList();
 
 		selectItemArray = new SelectItemsBuilder()
-							.add(new ExampleEntity("Amsterdam", 1), "Amsterdam")
-							.add(new ExampleEntity("Frankfurt", 2), "Frankfurt")
-							.add(new ExampleEntity("London", 3), "London")
+							.add(new ExampleEntity(7L, "Willemstad"), "Willemstad")
+							.add(new ExampleEntity(8L, "Oranjestad"), "Oranjestad")
+							.add(new ExampleEntity(9L, "Kralendijk"), "Kralendijk")
 							.build();
 	}
 

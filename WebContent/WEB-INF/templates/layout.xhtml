@@ -4,19 +4,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
-	xmlns:test="http://omnifaces.org/test"
 >
 	<h:head>
 		<title>
-			<ui:insert name="title">OmniFaces Showcase</ui:insert>
+			<ui:insert name="title">OmniFaces Showcase - #{page.current.title}</ui:insert>
 		</title>
-		<style>
-			.error {
-				background-color: #fee;
-			}
-		</style>
+		<h:outputStylesheet library="layout" name="css/layout.css" />
 		<script>
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-29559297-3']);
@@ -31,6 +27,32 @@
 	</h:head>
 
 	<h:body>
-		<ui:insert name="content" />
+		<p:panel id="header">
+			<h1>OmniFaces Showcase</h1>
+			<div id="poweredBy">
+				<strong>Powered by</strong><br/>#{app.poweredBy}
+			</div>
+		</p:panel>
+
+		<p:panel id="menu">
+			<o:tree value="#{app.menu}" var="page">
+				<o:treeNode>
+					<ul>
+						<o:treeNodeItem>
+							<li>
+								<h:link value="#{page.title}" outcome="#{page.path}" styleClass="#{page.path == view.viewId ? 'active' : ''}" rendered="#{not empty page.path}" />
+								<h:outputText value="#{page.title}" rendered="#{empty page.path}" />
+								<o:treeInsertChildren />
+							</li>
+						</o:treeNodeItem>
+					</ul>
+				</o:treeNode>
+			</o:tree>
+		</p:panel>
+
+		<p:panel id="content">
+			<h2><ui:insert name="contentTitle"><code>#{page.current.title}</code></ui:insert></h2>
+			<ui:insert name="content" />
+		</p:panel>
 	</h:body>
 </html>

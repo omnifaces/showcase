@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<facelet-taglib 
+<facelet-taglib id="os"
     xmlns="http://java.sun.com/xml/ns/javaee"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibary_2_0.xsd"
     version="2.0">
 
-    <namespace>http://omnifaces.org/test</namespace>
+    <namespace>http://omnifaces.org/showcase</namespace>
 
 	<tag>
   		<tag-name>actionmethod</tag-name>
@@ -21,11 +21,5 @@
   		<tag-name>actionlistenertrick</tag-name>
   		<source>tags/actionlistenertrick.xhtml</source>
 	</tag>
-	
-	<function>
-		<function-name>printViewSourceCode</function-name>
-		<function-class>org.omnifaces.showcase.Functions</function-class>
-		<function-signature>java.lang.String printViewSourceCode()</function-signature>
-	</function>
 	
 </facelet-taglib>
