@@ -13,10 +13,27 @@
 			is presented regardless of if it's an ajax request or not.
 		</p>	
 		<p>
-			If you wait #{session.maxInactiveInterval / 60} minutes or manually delete the jsessionid cookie and then 
+			If you wait #{session.maxInactiveInterval / 60} minutes or manually delete the <code>JSESSIONID</code> cookie and then 
 			click any of the buttons, you'll get a view expired exception which will also end up in a specific 
 			error page.
 		</p>
+		<p>
+			The showcase webapp has for this purpose the following error pages configured in <code>/WEB-INF/web.xml</code>:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;error-page&gt;
+    &lt;exception-type&gt;javax.faces.application.ViewExpiredException&lt;/exception-type&gt;
+    &lt;location&gt;/WEB-INF/errorpages/expired.xhtml&lt;/location&gt;
+&lt;/error-page&gt;
+&lt;error-page&gt;
+    &lt;exception-type&gt;java.sql.SQLException&lt;/exception-type&gt;
+    &lt;location&gt;/WEB-INF/errorpages/database.xhtml&lt;/location&gt;
+&lt;/error-page&gt;
+&lt;error-page&gt;
+    &lt;exception-type&gt;java.lang.RuntimeException&lt;/exception-type&gt;
+    &lt;location&gt;/WEB-INF/errorpages/bug.xhtml&lt;/location&gt;
+&lt;/error-page&gt;
+		</code></pre>
 	</ui:define>		
 
 	<ui:define name="example">
@@ -39,6 +56,9 @@
 	</ui:define>
 
 	<ui:define name="documentation">
-	
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html"><code>FullAjaxExceptionHandler</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.java"><code>FullAjaxExceptionHandler</code> source code</a></li>
+		</ul>
 	</ui:define>		
 </ui:composition>

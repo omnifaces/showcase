@@ -1,5 +1,5 @@
 body {
-	width: 1280px;
+	width: 1250px;
 	margin: 0 auto;
 	padding: 3px 0;
 	overflow-y: scroll;
@@ -44,7 +44,7 @@ body {
 
 #content {
 	float: right;
-	width: 1015px;
+	width: 985px;
 }
 
 .ui-widget {

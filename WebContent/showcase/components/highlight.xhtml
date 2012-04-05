@@ -7,6 +7,14 @@
 	xmlns:of="http://omnifaces.org/functions"
 	xmlns:os="http://omnifaces.org/showcase"
 >
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:highlight&gt;</code> is a helper component which highlights all invalid <code>UIInput</code> 
+			components by adding an error style class to them. Additionally, it by default focuses the first invalid 
+			<code>UIInput</code> component.
+		</p>
+	</ui:define>
+
 	<ui:define name="example">
 		<h:form>
 			<h3>Please fill out all of those fields.</h3>
@@ -35,5 +43,13 @@
 		</h:form>
 		
 		<o:highlight /> <!-- Note: just for demo, another one is already included in showcase.xhtml template. -->
+	</ui:define>
+	
+	<ui:define name="documentation">
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/o/highlight.html"><code>o:highlight</code> VDL documentation</a></li>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/component/highlight/Highlight.html"><code>Highlight</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/component/highlight/Highlight.java"><code>Highlight</code> source code</a></li>
+		</ul>
 	</ui:define>
 </ui:composition>

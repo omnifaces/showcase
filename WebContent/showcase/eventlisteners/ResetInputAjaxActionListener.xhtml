@@ -8,7 +8,11 @@
 	xmlns:os="http://omnifaces.org/showcase"
 >
 	<ui:define name="description">
-	
+		<p>
+			The <code>org.omnifaces.event.ResetInputAjaxActionListener</code> will reset input fields which are not 
+			executed during ajax submit, but which are rendered/updated during ajax response. This will prevent those
+			input fields to remain in an invalidated state because of a validation failure during a previous request.
+		</p>
 	</ui:define>		
 
 	<ui:define name="example">
@@ -32,6 +36,7 @@
 				<h:commandButton value="Update" action="#{resetInputBean.update}" >
 					<f:ajax execute="@this" render="@form" />
 				</h:commandButton>
+				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 			</p>
 			<p><b>Problem</b>: input1 is not updated with text "Updated!" and input2 is still marked invalid!</p>
 		</h:form>
@@ -57,12 +62,16 @@
 					<f:ajax listener="#{resetInputBean.update}" render="@form" />
 					<f:actionListener type="org.omnifaces.event.ResetInputAjaxActionListener" />
 				</h:commandButton>
+				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 			</p>
 			<p><b>Solved</b>: input1 is now updated with text "Updated!" and input2 is not marked invalid anymore!</p>
 		</h:form>
 	</ui:define>		
 
 	<ui:define name="documentation">
-	
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/event/ResetInputAjaxActionListener.html"><code>ResetInputAjaxActionListener</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/event/ResetInputAjaxActionListener.java"><code>ResetInputAjaxActionListener</code> source code</a></li>
+		</ul>
 	</ui:define>		
 </ui:composition>

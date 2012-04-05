@@ -9,7 +9,12 @@
 >
 	<ui:define name="description">
 		<p>
-			This page demonstrates the stateless viewParam component.
+			The <code>&lt;o:viewParam&gt;</code> extends the standard <code>&lt;f:viewParam&gt;</code> and provides a
+			stateless mode of operation. The standard <code>&lt;f:viewParam&gt;</code> implementation calls the model
+			setter again after postback. This is not always desired when being bound to a view scoped beans and can 
+			lead to performance problems when combined with an expensive converter. It also provides a default for the 
+			<code>label</code> atrribute. When the <code>label</code> attribute is omitted, the <code>name</code>
+			attribute will be used as label.
 		</p>
 		<p>
 			If this page is requested by a non-Faces request without a parameter, it should display the message: <br/>
@@ -58,6 +63,10 @@
 	</ui:define>
 
 	<ui:define name="documentation">
-	
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/o/viewParam.html"><code>o:viewParam</code> VDL documentation</a></li>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/component/viewparam/ViewParam.html"><code>ViewParam</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/component/viewparam/ViewParam.java"><code>ViewParam</code> source code</a></li>
+		</ul>
 	</ui:define>
 </ui:composition>

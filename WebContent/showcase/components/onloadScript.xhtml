@@ -12,6 +12,12 @@
 			When the page loads, you should see the annoying alert "Hi, I am the o:onloadScript function!". You should 
 			see the same alert again when you submit the form, also on ajax submits.
 		</p>
+		<p>
+			Note that the point of the <code>&lt;o:onloadScript&gt;</code> is not the annoying alert, but that a particular piece
+			of JavaScript code is re-executed on every successful ajax response. This is particularly useful if you want
+			to re-execute a specific helper script to manipulate the HTML DOM tree, such as (re-)adding fancy tooltips,
+			performing highlights, etcetera, also after changes in the HTML DOM tree on ajax responses.
+		</p>
 	</ui:define>
 
 	<ui:define name="example">
@@ -31,6 +37,10 @@
 	</ui:define>
 
 	<ui:define name="documentation">
-	
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/o/onloadScript.html"><code>o:onloadScript</code> VDL documentation</a></li>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/component/script/OnloadScript.html"><code>OnloadScript</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/component/script/OnloadScript.java"><code>OnloadScript</code> source code</a></li>
+		</ul>
 	</ui:define>
 </ui:composition>

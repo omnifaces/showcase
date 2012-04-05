@@ -9,7 +9,13 @@
 >
 	<ui:define name="description">
 		<p>
-			This page demonstrates the resourceInclude component.
+			The <code>&lt;o:resourceInclude&gt;</code> component can be used to catch the output from a JSP or Servlet
+			resource and render it as output to the JSF writer. In effect, this allows you to include both Servlets and
+			JSP pages in e.g. Facelets.
+		</p>
+		<p>
+			Note that this isn't recommended as a lasting solution, but it might ease a migration from legacy JSP with
+			smelly scriptlets and all on them to a more sane and modern Facelets application.
 		</p>
 	</ui:define>
 
@@ -26,6 +32,10 @@
 	</ui:define>
 
 	<ui:define name="documentation">
-	
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/o/resourceInclude.html"><code>o:resourceInclude</code> VDL documentation</a></li>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/component/resourceinclude/ResourceInclude.html"><code>ResourceInclude</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/component/resourceinclude/ResourceInclude.java"><code>ResourceInclude</code> source code</a></li>
+		</ul>
 	</ui:define>
 </ui:composition>

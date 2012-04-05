@@ -93,7 +93,8 @@ public class App implements Serializable {
 		pageSources.add(new Source("Example", "xhtml", loadSourceCode(pagePath)
 			.split("<ui:define name=\"example\">")[1]
 			.split("</ui:define>")[0]
-			.replace("\n        ", "\n"))); // Trim 8 leading spaces so that the whole block is indented back.
+			.replace("\n        ", "\n") // Trim 8 leading spaces so that the whole block is indented back.
+			.trim()));
 
 		String propertyKey = "sources." + pageName;
 		String sourceKeys = properties.getProperty(propertyKey);
@@ -154,7 +155,7 @@ public class App implements Serializable {
 		Package jsfPackage = FacesContext.class.getPackage();
 		return String.format("%s %s%nOmniFaces %s%nPrimeFaces %s%n%s",
 			jsfPackage.getImplementationTitle(), jsfPackage.getImplementationVersion(),
-			"0.06", // Ugh, hardcoded :( Let's to the same as Mojarra; it's done by MANIFEST.MF.
+			"0.06", // TODO: Hardcoded :( Let's do the same as Mojarra; it's done by MANIFEST.MF.
 			org.primefaces.util.Constants.VERSION,
 			Faces.getServletContext().getServerInfo());
 	}

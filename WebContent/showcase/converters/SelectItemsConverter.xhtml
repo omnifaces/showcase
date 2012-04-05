@@ -9,11 +9,9 @@
 >
 	<ui:define name="description">
 		<p>
-			This page demonstrates the SelectItemsConverter converter.
-		</p>
-		<p>
-			The SelectItemsConverter allows you to populate e.g. a drop-down with complex Java model objects
-			and have JSF convert those automatically back.
+			The <code>omnifaces.SelectItemsConverter</code> allows you to populate e.g. a drop-down with complex Java 
+			model objects and have JSF convert those automatically back without the need to provide a custom converter
+			which may need to do the job based on possibly expensive service/DAO operations.
 		</p>
 	</ui:define>
 
@@ -56,6 +54,9 @@
 	</ui:define>
 	
 	<ui:define name="documentation">
-	
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/converter/SelectItemsConverter.html"><code>SelectItemsConverter</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/converter/SelectItemsConverter.java"><code>SelectItemsConverter</code> source code</a></li>
+		</ul>
 	</ui:define>
 </ui:composition>
