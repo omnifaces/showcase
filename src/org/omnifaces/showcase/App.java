@@ -57,8 +57,6 @@ public class App implements Serializable {
 	}
 
 	private static void fillMenu(TreeModel<Page> menu) {
-		menu.addChild(Page.INDEX);
-
 		Properties properties = loadProperties();
 		ServletContext context = Faces.getServletContext();
 		Set<String> groupPaths = new TreeSet<String>(context.getResourcePaths(SHOWCASE_PATH));

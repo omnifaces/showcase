@@ -12,8 +12,6 @@ import javax.faces.bean.RequestScoped;
 public class Page implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static final String INDEX_PATH = "/index.xhtml";
-	public static final Page INDEX = new Page("home", INDEX_PATH, null);
 
 	private String title;
 	private String path;

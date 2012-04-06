@@ -27,22 +27,36 @@
 	</h:head>
 
 	<h:body>
-		<p:panel id="header">
+		<p:panel id="header" styleClass="ui-widget-header">
 			<h1>OmniFaces Showcase</h1>
 			<div id="poweredBy">
 				<strong>Powered by</strong><br/>#{app.poweredBy}
 			</div>
+			<h:form /><!-- Hack for JSF issue 2277 -->
 		</p:panel>
 
 		<p:panel id="menu">
-			<o:tree value="#{app.menu}" var="page">
+			<p:panel header="omnifaces">
+				<ul>
+					<li><h:link value="Showcase homepage" outcome="/index.xhtml" styleClass="#{view.viewId == '/index.xhtml' ? 'active' : ''}" /></li>
+					<li><h:outputLink value="http://code.google.com/p/omnifaces">Project homepage</h:outputLink></li>
+					<li><h:outputLink value="http://wiki.omnifaces.googlecode.com/hg/javadoc/index.html">API documentation</h:outputLink></li>
+					<li><h:outputLink value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/index.html">VDL documentation</h:outputLink></li>
+				</ul>
+			</p:panel>
+			<o:tree value="#{app.menu}" var="page" varNode="node">
+				<o:treeNode level="0">
+					<o:treeNodeItem>
+						<p:panel header="#{page.title}">
+							<o:treeInsertChildren />
+						</p:panel>
+					</o:treeNodeItem>
+				</o:treeNode>
 				<o:treeNode>
 					<ul>
 						<o:treeNodeItem>
 							<li>
-								<h:link value="#{page.title}" outcome="#{page.path}" styleClass="#{page.path == view.viewId ? 'active' : ''}" rendered="#{not empty page.path}" />
-								<h:outputText value="#{page.title}" rendered="#{empty page.path}" />
-								<o:treeInsertChildren />
+								<h:link value="#{page.title}" outcome="#{page.path}" styleClass="code#{view.viewId == page.path ? ' active' : ''}" />
 							</li>
 						</o:treeNodeItem>
 					</ul>

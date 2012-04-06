@@ -21,7 +21,7 @@
 	</ui:define>
 
 	<ui:define name="example">
-		<h3>With standard h:outputLabel:</h3>
+		<h3>With standard <code>h:outputLabel</code></h3>
 		<h:form>
 			<h:panelGrid columns="3">
 				<h:outputLabel for="input" value="Foo" />
@@ -38,7 +38,7 @@
 			</h:panelGrid>
 		</h:form>
 
-		<h3>With OmniFaces o:outputLabel:</h3>
+		<h3>With OmniFaces <code>o:outputLabel</code></h3>
 		<h:form>
 			<h:panelGrid columns="3">
 				<o:outputLabel for="input" value="Foo" />
@@ -55,7 +55,7 @@
 			</h:panelGrid>
 		</h:form>
 
-		<h3>Dynamic o:outputLabel:</h3>
+		<h3>Dynamic <code>o:outputLabel</code></h3>
 		<h:form>
 			<h:panelGrid columns="3">
 				<o:outputLabel for="input" value="#{now.toString()}" />

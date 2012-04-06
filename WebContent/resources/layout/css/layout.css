@@ -1,7 +1,8 @@
 body {
-	width: 1250px;
+	width: 1250px; /* Target minimum of 1280x1024 */
 	margin: 0 auto;
 	padding: 3px 0;
+	background: #eee;
 	overflow-y: scroll;
 }
 
@@ -17,6 +18,7 @@ body {
 	font-size: .8em;
 	text-align: right;
 	white-space: pre;
+	line-height: 1.3em;
 }
 
 #menu {
@@ -25,29 +27,28 @@ body {
 }
 
 #menu ul {
+	margin: 0;
 	padding: 0;
-	margin: 10px 0;
 	list-style-type: none;
 	font-weight: bold;
 }
 
-#menu ul ul {
-	margin-top: 3px;
-	padding: 0 20px;
-	list-style-type: disc;
-	font-weight: normal;
+#menu .ui-panel, #content .ui-panel {
+	margin: 1em 0;
 }
 
-#menu li {
-	padding: 3px;
+#menu>.ui-panel-content, #content>.ui-panel-content {
+	padding: 0 1em;
 }
 
 #content {
 	float: right;
 	width: 985px;
+	margin-bottom: 1000px; /* Just some spacing to avoid page shifts when switching between source code tabs. */
 }
 
 .ui-widget {
+	font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif !important;
 	font-size: .8em;
 }
 
@@ -59,6 +60,6 @@ a:hover, a.active {
 	background: #ddd;
 }
 
-code, #menu ul ul li {
-	font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+code, .code {
+	font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
 }
