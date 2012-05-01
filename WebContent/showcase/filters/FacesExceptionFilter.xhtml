@@ -1,0 +1,37 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			This filter will solve 2 problems with faces exceptions.
+		</p>
+		<ul>
+			<li>Mojarra's <code>FacesFileNotFoundException</code> needs to be interpreted as 404.</li>
+			<li>Root cause of <code>FacesException</code> needs to be unwrapped to utilize standard Servlet API error page handling.</li>
+		</ul>
+		<p>
+			To get it to run, map this filter on the <code>&lt;servlet-name&gt;</code> of the <code>FacesServlet</code>.
+		</p>	
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;filter&gt;
+  &lt;filter-name&gt;facesExceptionFilter&lt;/filter-name&gt;
+  &lt;filter-class&gt;org.omnifaces.filter.FacesExceptionFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+  &lt;filter-name&gt;facesExceptionFilter&lt;/filter-name&gt;
+  &lt;servlet-name&gt;facesServlet&lt;/servlet-name&gt;
+&lt;/filter-mapping&gt;
+		</code></pre>			
+	</ui:define>		
+
+	<ui:define name="documentation">
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/filter/FacesExceptionFilter.html"><code>FacesExceptionFilter</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/filter/FacesExceptionFilter.java"><code>FacesExceptionFilter</code> source code</a></li>
+		</ul>
+	</ui:define>		
+</ui:composition>

@@ -4,8 +4,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
-	xmlns:os="http://omnifaces.org/showcase"
 >
 	<ui:define name="description">
 		<p>
@@ -13,9 +11,30 @@
 			executed during ajax submit, but which are rendered/updated during ajax response. This will prevent those
 			input fields to remain in an invalidated state because of a validation failure during a previous request.
 		</p>
-	</ui:define>		
+		<p>
+			<i>Either</i> register it as <code>&lt;action-listener&gt;</code> in <code>faces-config.xml</code>. It'll be 
+			applied to every single ajax action throughout the webapp, including the standalone <code>&lt;f:ajax&gt;</code>
+			actions on <code>UIInput</code> components such as <code>&lt;h:selectOneMenu&gt;</code>.
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;application&gt;
+  &lt;action-listener&gt;org.omnifaces.event.ResetInputAjaxActionListener&lt;/action-listener&gt;
+&lt;/application&gt;
+ 		</code></pre>
+		<p>
+			<i>Or</i> register it as <code>&lt;f:actionListener&gt;</code> on the invidivual <code>UICommand</code> components 
+			where this action listener is absolutely necessary to solve the concrete problem. It is not possible to register 
+			it on the standalone <code>&lt;f:ajax&gt;</code> actions on <code>UIInput</code> components.
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;h:commandButton&gt;
+  &lt;f:ajax listener="\#{bean.updateOtherInputs}" render="otherInputs" /&gt;
+  &lt;f:actionListener type="org.omnifaces.event.ResetInputAjaxActionListener" /&gt;
+&lt;/h:commandButton&gt;
+ 		</code></pre>
+ 	</ui:define>		
 
-	<ui:define name="example">
+	<ui:define name="demo">
 		<h3>Form without <code>ResetInputAjaxActionListener</code></h3>
 		<h:form id="form1">
 			<p>input1: Enter something (but don't enter "Updated!").</p>

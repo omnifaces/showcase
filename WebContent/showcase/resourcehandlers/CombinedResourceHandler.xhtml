@@ -1,0 +1,65 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			This <code>ResourceHandler</code> implementation will remove all separate script and stylesheet resources 
+			from the head and create a combined one for all scripts and another combined one for all stylesheets.
+			This has the benefit that the amount of necessary HTTP requests is reduced.
+		</p>
+		<p>
+			This handler must be registered as follows in <code>faces-config.xml</code> in order to get it to run:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;application&gt;
+  &lt;resource-handler&gt;org.omnifaces.resourcehandler.CombinedResourceHandler&lt;/resource-handler&gt;
+&lt;/application&gt;
+		</code></pre>
+		<p>
+			This resource handler is enabled in this showcase web application. 
+			Rightclick the page and <i>View Source</i>.
+			It is recognizeable by library name <code>omnifaces.combined</code>. It are the following ones:
+		</p>
+		<ui:param name="resourceBaseURL" value="#{request.contextPath}/javax.faces.resource/" /> 
+		<ul>
+			<ui:repeat value="#{view.getComponentResources(facesContext, 'head')}" var="res">
+				<ui:param name="resourceRequestPath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
+				<li><a href="#{resourceBaseURL}#{resourceRequestPath}">#{resourceRequestPath}</a></li>
+			</ui:repeat>
+		</ul>
+		<p>
+			The CSS one has combined the three CSS files
+			<a href="#{resourceBaseURL}css/layout.css.xhtml?ln=layout">layout.css</a>, 
+			<a href="#{resourceBaseURL}primefaces.css.xhtml?ln=primefaces&amp;v=3.2">primefaces.css</a> and 
+			<a href="#{resourceBaseURL}prettify/prettify.css.xhtml?ln=showcase">prettify.css</a>. 
+			The JS one has combined the five JS files 
+			<a href="#{resourceBaseURL}jquery/jquery.js.xhtml?ln=primefaces&amp;v=3.2">jquery.js</a>,
+			<a href="#{resourceBaseURL}primefaces.js.xhtml?ln=primefaces&amp;v=3.2">primefaces.js</a>,
+			<a href="#{resourceBaseURL}jsf.js.xhtml?ln=javax.faces">jsf.js</a>,
+			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
+			<a href="#{resourceBaseURL}prettify/prettify.js.xhtml?ln=showcase">prettify.js</a>. 
+			Note that the PrimeFaces theme CSS file cannot be combined because it's not been added as a JSF resource,
+			but hardcoded in PrimeFaces' <code>HeadRenderer</code> so that it could be generated as the very first CSS link
+			to avoid CSS inheritance problems in custom CSS files which are supposed to override PrimeFaces default CSS.
+		</p>
+		<p>
+			The generated combined resource URL also includes the "<code>v</code>" request parameter which is the last
+			modified time of the newest individual resource in minutes, so that the browser will always be forced to
+			request the latest version whenever one of the individual resources has changed.
+		</p>
+ 	</ui:define>
+
+	<ui:define name="documentation">
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/resourcehandler/CombinedResourceHandler.html"><code>CombinedResourceHandler</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/resourcehandler/CombinedResourceHandler.java"><code>CombinedResourceHandler</code> source code</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/resourcehandler/CombinedResourceInfo.java"><code>CombinedResourceInfo</code> source code</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/resourcehandler/CombinedResource.java"><code>CombinedResource</code> source code</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/resourcehandler/CombinedResourceInputStream.java"><code>CombinedResourceInputStream</code> source code</a></li>
+		</ul>
+	</ui:define>		
+</ui:composition>

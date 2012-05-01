@@ -4,21 +4,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
-	xmlns:os="http://omnifaces.org/showcase"
 >
 	<ui:define name="description">
 		<p>
-			The buttons below will each purposefully throw an exception. You'll see that an error page template
-			is presented regardless of if it's an ajax request or not.
-		</p>	
-		<p>
-			If you wait #{session.maxInactiveInterval / 60} minutes or manually delete the <code>JSESSIONID</code> cookie and then 
-			click any of the buttons, you'll get a view expired exception which will also end up in a specific 
-			error page.
+			This exception handler enables you to show the full error page in its entirety to the enduser in case of 
+			exceptions during ajax requests. This exception handler will parse the <code>web.xml</code> to find the 
+			error page locations of the HTTP error code 500 and all declared specific exception types.
 		</p>
 		<p>
-			The showcase webapp has for this purpose the following error pages configured in <code>/WEB-INF/web.xml</code>:
+			This handler must be registered by a factory as follows in <code>faces-config.xml</code> in order to get it to run:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;factory&gt;
+  &lt;exception-handler-factory&gt;org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory&lt;/exception-handler-factory&gt;
+&lt;/factory&gt;
+		</code></pre>
+		<p>
+			The buttons in the below example will each purposefully throw an exception. You'll see that an error page template
+			is presented regardless of if it's an ajax request or not. Also, if you wait #{session.maxInactiveInterval / 60} 
+			minutes or manually delete the <code>JSESSIONID</code> cookie and then click any of the buttons, you'll get a 
+			view expired exception which will also end up in a specific error page.
+		</p>
+		<p>
+			The showcase webapp has the following error pages configured in <code>web.xml</code>:
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
 &lt;error-page&gt;
@@ -36,7 +44,7 @@
 		</code></pre>
 	</ui:define>		
 
-	<ui:define name="example">
+	<ui:define name="demo">
 		<h:form>
 			<h:commandButton value="throw runtime exception on ajax request" action="#{exceptionBean.throwRuntimeException}">
 				<f:ajax execute="@form" render="@form" />

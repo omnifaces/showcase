@@ -13,10 +13,13 @@
 		color: #396
 	}
 	.typ {
-		color: #606
+		color: #000
 	}
 	.lit {
 		color: #066
+	}
+	.lang-java .lit {
+		color: #999;
 	}
 	.pun,.opn,.clo {
 		color: #000

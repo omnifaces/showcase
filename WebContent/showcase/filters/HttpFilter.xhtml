@@ -1,0 +1,54 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			This is an abstract filter for HTTP requests. It provides a convenient abstract <code>doFilter()</code>
+			method providing the HTTP servlet request, response and session so that there's no need to cast them everytime
+			in the <code>doFilter()</code> implementation. Also, default implementations of <code>init(FilterConfig)</code>
+			and <code>destroy()</code> are provided, so that there's no need to implement them everytime even when not really needed.
+		</p>
+		<p>
+			It's a bit the idea of using the convenient 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/servlet/http/HttpServlet.html"><code>HttpServlet</code></a> 
+			class instead of the barebones 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/servlet/Servlet.html"><code>Servlet</code></a>
+			interface.
+		</p>
+		<p>
+			To use it, just let your <code>Filter</code> extend <code>org.omnifaces.filter.HttpFilter</code> instead.
+			For example:
+		</p>
+
+		<pre class="prettyprint"><code class="lang-java">
+@WebFilter("/app/*")
+public class LoginFilter extends HttpFilter {
+
+    @Override
+    public void doFilter
+        (HttpServletRequest request, HttpServletResponse response, HttpSession session, FilterChain chain)
+            throws ServletException, IOException
+    {
+        if (session != null &amp;&amp; session.getAttribute("user") != null) {
+            chain.doFilter(request, response);
+        }
+        else {
+            response.sendRedirect(request.getContextPath() + "/login.xhtml");
+        }
+    }
+
+}
+		</code></pre>
+	</ui:define>		
+
+	<ui:define name="documentation">
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/filter/HttpFilter.html"><code>HttpFilter</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/filter/HttpFilter.java"><code>HttpFilter</code> source code</a></li>
+		</ul>
+	</ui:define>		
+</ui:composition>

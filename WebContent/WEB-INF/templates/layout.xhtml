@@ -1,3 +1,15 @@
+<!-- 
+ - Copyright 2012 OmniFaces.
+ -
+ - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ - the License. You may obtain a copy of the License at
+ -
+ -     http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ - an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ - specific language governing permissions and limitations under the License.
+ -->
 <!DOCTYPE html>
 <html lang="en"
 	xmlns="http://www.w3.org/1999/xhtml"
@@ -6,14 +18,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
 >
 	<h:head>
 		<title>
 			<ui:insert name="title">OmniFaces Showcase - #{page.current.title}</ui:insert>
 		</title>
 		<h:outputStylesheet library="layout" name="css/layout.css" />
-		<script>
+		<h:outputScript>
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-29559297-3']);
 			_gaq.push(['_trackPageview']);
@@ -23,7 +34,7 @@
 				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
-		</script>
+		</h:outputScript>
 	</h:head>
 
 	<h:body>
@@ -38,9 +49,9 @@
 			<p:panel header="omnifaces">
 				<ul>
 					<li><h:link value="Showcase homepage" outcome="/index.xhtml" styleClass="#{view.viewId == '/index.xhtml' ? 'active' : ''}" /></li>
-					<li><h:outputLink value="http://code.google.com/p/omnifaces">Project homepage</h:outputLink></li>
-					<li><h:outputLink value="http://wiki.omnifaces.googlecode.com/hg/javadoc/index.html">API documentation</h:outputLink></li>
-					<li><h:outputLink value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/index.html">VDL documentation</h:outputLink></li>
+					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
+					<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/index.html">API documentation</a></li>
+					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/index.html">VDL documentation</a></li>
 				</ul>
 			</p:panel>
 			<o:tree value="#{app.menu}" var="page" varNode="node">
@@ -55,7 +66,8 @@
 					<ul>
 						<o:treeNodeItem>
 							<li>
-								<h:link value="#{page.title}" outcome="#{page.path}" styleClass="code#{view.viewId == page.path ? ' active' : ''}" />
+								<h:link value="#{page.title}" outcome="#{page.viewId}" styleClass="code#{view.viewId == page.viewId ? ' active' : ''}" />
+								<o:treeInsertChildren />
 							</li>
 						</o:treeNodeItem>
 					</ul>

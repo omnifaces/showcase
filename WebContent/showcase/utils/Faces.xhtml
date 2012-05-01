@@ -1,0 +1,54 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			Collection of utility methods for the JSF API that are mainly shortcuts for obtaining stuff from the thread
+			local <code>FacesContext</code>. In effects, it 'flattens' the hierarchy of nested objects. Do note that 
+			using the hierarchy is actually a better software design practice, but can lead to verbose code.
+		</p>
+		<p>
+			Next to those oneliner delegate calls, there are also some helpful methods which eliminates multiline 
+			boilerplate code, such as
+			<a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/util/Faces.html#getLocale()"><code>getLocale()</code></a>
+			which returns sane fallback values, a more convenient
+			<a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/util/Faces.html#redirect(java.lang.String)"><code>redirect()</code></a>
+			which automatically prepends the context path when the path does not start with <code>/</code>, and several useful
+			<a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/util/Faces.html#sendFile(java.io.File, boolean)"><code>sendFile()</code></a>
+			methods which allows you to provide a <code>File</code>, <code>byte[]</code> or <code>InputStream</code> as a download to the client.
+		</p>
+		<p>
+			Some examples:
+		</p>
+		<pre class="prettyprint"><code class="lang-java">
+// Get a session attribute.
+User user = Faces.getSessionAttribute("user");
+
+// Evaluate EL programmatically.
+Item item = Faces.evaluateExpressionGet("item");
+
+// Get a cookie value.
+String cookieValue = Faces.getRequestCookie("cookieName");
+
+// Invalidate the session and send a redirect.
+Faces.invalidateSession();
+Faces.redirect("login.xhtml");
+
+// Provide a file as attachment.
+public void download() throws IOException {
+	Faces.sendFile(new File("/path/to/file.ext"), true);
+}
+		</code></pre>
+	</ui:define>		
+
+	<ui:define name="documentation">
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/util/Faces.html"><code>Faces</code> API documentation</a></li>
+			<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/util/Faces.java"><code>Faces</code> source code</a></li>
+		</ul>
+	</ui:define>		
+</ui:composition>

@@ -34,11 +34,11 @@ body {
 }
 
 #menu .ui-panel, #content .ui-panel {
-	margin: 1em 0;
+	margin: 10px 0;
 }
 
 #menu>.ui-panel-content, #content>.ui-panel-content {
-	padding: 0 1em;
+	padding: 0 10px;
 }
 
 #content {
@@ -48,8 +48,8 @@ body {
 }
 
 .ui-widget {
-	font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif !important;
-	font-size: .8em;
+	font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif;
+	font-size: 12px !important;
 }
 
 .error {
@@ -61,5 +61,5 @@ a:hover, a.active {
 }
 
 code, .code {
-	font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;
+	font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 }
