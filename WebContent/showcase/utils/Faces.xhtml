@@ -29,7 +29,7 @@
 User user = Faces.getSessionAttribute("user");
 
 // Evaluate EL programmatically.
-Item item = Faces.evaluateExpressionGet("item");
+Item item = Faces.evaluateExpressionGet("#{item}");
 
 // Get a cookie value.
 String cookieValue = Faces.getRequestCookie("cookieName");
@@ -40,7 +40,7 @@ Faces.redirect("login.xhtml");
 
 // Provide a file as attachment.
 public void download() throws IOException {
-	Faces.sendFile(new File("/path/to/file.ext"), true);
+    Faces.sendFile(new File("/path/to/file.ext"), true);
 }
 		</code></pre>
 	</ui:define>		

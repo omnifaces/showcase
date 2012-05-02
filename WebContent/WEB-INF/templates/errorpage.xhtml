@@ -1,5 +1,6 @@
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:of="http://omnifaces.org/functions"
 >
@@ -17,5 +18,7 @@
 			<li>Exception message: #{requestScope['javax.servlet.error.message']}</li>
 			<li>Stack trace: <pre><code>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</code></pre></li>
 		</ul>
+		
+		<h:outputScript>scrollTo(0, 0);</h:outputScript>
 	</ui:define>
 </ui:composition>
