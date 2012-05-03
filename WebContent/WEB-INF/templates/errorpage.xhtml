@@ -7,18 +7,19 @@
 	<ui:define name="contentTitle">Error</ui:define>
 
 	<ui:define name="content">
-		<ul>
-			<li>Date/time: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
-			<li>User agent: #{header['user-agent']}</li>
-			<li>User IP: #{request.remoteAddr}</li>
-			<li>Request URI: <a href="#{requestScope['javax.servlet.error.request_uri']}">#{requestScope['javax.servlet.error.request_uri']}</a></li>
-			<li>Ajax request: #{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}</li>
-			<li>Status code: #{requestScope['javax.servlet.error.status_code']}</li>
-			<li>Exception type: #{requestScope['javax.servlet.error.exception_type']}</li>
-			<li>Exception message: #{requestScope['javax.servlet.error.message']}</li>
-			<li>Stack trace: <pre><code>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</code></pre></li>
-		</ul>
-		
+		<ui:insert name="errorContent">
+			<ul>
+				<li>Date/time: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
+				<li>User agent: #{header['user-agent']}</li>
+				<li>User IP: #{request.remoteAddr}</li>
+				<li>Request URI: <a href="#{requestScope['javax.servlet.error.request_uri']}">#{requestScope['javax.servlet.error.request_uri']}</a></li>
+				<li>Ajax request: #{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}</li>
+				<li>Status code: #{requestScope['javax.servlet.error.status_code']}</li>
+				<li>Exception type: #{requestScope['javax.servlet.error.exception_type']}</li>
+				<li>Exception message: #{requestScope['javax.servlet.error.message']}</li>
+				<li>Stack trace: <pre><code>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</code></pre></li>
+			</ul>
+		</ui:insert>
 		<h:outputScript>scrollTo(0, 0);</h:outputScript>
 	</ui:define>
 </ui:composition>

@@ -1,6 +1,10 @@
 package org.omnifaces.showcase.model;
 
-public class ExampleEntity {
+import java.io.Serializable;
+
+public class ExampleEntity implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String value;

@@ -77,8 +77,8 @@
 				<h:commandButton value="Submit">
 					<f:ajax execute="@form" render="@form" />
 				</h:commandButton>
-				<h:commandButton value="Update">
-					<f:ajax listener="#{resetInputBean.update}" render="@form" />
+				<h:commandButton value="Update" action="#{resetInputBean.update}" >
+					<f:ajax execute="@this" render="@form" />
 					<f:actionListener type="org.omnifaces.event.ResetInputAjaxActionListener" />
 				</h:commandButton>
 				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
