@@ -7,10 +7,10 @@
 >
 	<ui:define name="description">
 		<p>
-			This filter will solve 2 problems with faces exceptions.
+			This filter will solve 2 problems with faces exceptions coming from Mojarra.
 		</p>
 		<ul>
-			<li>Mojarra's <code>FacesFileNotFoundException</code> needs to be interpreted as 404.</li>
+			<li>Mojarra's <code>FacesFileNotFoundException</code> which extends <code>FileNotFoundException</code> needs to be interpreted as 404.</li>
 			<li>Root cause of <code>FacesException</code> needs to be unwrapped to utilize standard Servlet API error page handling.</li>
 		</ul>
 		<p>
@@ -25,7 +25,13 @@
   &lt;filter-name&gt;facesExceptionFilter&lt;/filter-name&gt;
   &lt;servlet-name&gt;facesServlet&lt;/servlet-name&gt;
 &lt;/filter-mapping&gt;
-		</code></pre>			
+		</code></pre>
+		<p>
+			The <code>FacesExceptionFilter</code> is also configured on this showcase application. To see the proper 
+			handling of 404 yourself, try entering a random URL matching the <code>*.xhtml</code> URL pattern of the
+			<code>FacesServlet</code> on this showcase web application. For example, 
+			<a href="thisdoesnotexist.xhtml">thisdoesnotexist.xhtml</a>.
+		</p>			
 	</ui:define>		
 
 	<ui:define name="documentation">

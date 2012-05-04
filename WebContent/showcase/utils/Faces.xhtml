@@ -29,7 +29,7 @@
 User user = Faces.getSessionAttribute("user");
 
 // Evaluate EL programmatically.
-Item item = Faces.evaluateExpressionGet("#{item}");
+Item item = Faces.evaluateExpressionGet("\#{item}");
 
 // Get a cookie value.
 String cookieValue = Faces.getRequestCookie("cookieName");
