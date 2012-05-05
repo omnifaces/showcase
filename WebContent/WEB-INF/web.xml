@@ -5,7 +5,7 @@
     metadata-complete="false"
 >
 	<display-name>OmniFaces Showcase</display-name>
-	
+
 	<context-param>
 		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
 		<param-value>/WEB-INF/showcase.taglib.xml</param-value>
@@ -18,7 +18,7 @@
 		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
 		<param-value>65535</param-value>	
 	</context-param>
-	
+
 	<servlet>
 		<servlet-name>facesServlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
