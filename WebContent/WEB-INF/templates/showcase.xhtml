@@ -27,21 +27,33 @@
 			<ui:insert name="description" />
 		</p:panel>
 
-		<p:panel id="demo" header="Demo" rendered="#{not empty page.current.sources}">
-			<ui:insert name="demo" />
-			<o:highlight />
-		</p:panel>
+		<ui:fragment rendered="#{not empty page.current.sources}">
+			<p:panel id="demo" header="Demo">
+				<ui:insert name="demo" />
+				<o:highlight />
+			</p:panel>
 
-		<p:panel id="source" header="Source code" rendered="#{not empty page.current.sources}">
-			<p:tabView value="#{page.current.sources}" var="source">
-				<p:tab title="#{source.title}">
-					<pre class="prettyprint"><code class="lang-#{source.type}">#{source.code}</code></pre>
-				</p:tab>
-			</p:tabView>
-		</p:panel>
+			<p:panel id="source" header="Source code">
+				<p:tabView value="#{page.current.sources}" var="source">
+					<p:tab title="#{source.title}">
+						<pre class="prettyprint"><code class="lang-#{source.type}">#{source.code}</code></pre>
+					</p:tab>
+				</p:tabView>
+			</p:panel>
+		</ui:fragment>
 
-		<p:panel id="documentation" header="Documentation">
-			<ui:insert name="documentation" />
+		<p:panel id="documentation" header="Documentation" rendered="#{not empty page.current.documentation.apidocs}">
+			<ul>
+				<ui:repeat value="#{page.current.documentation.vdldocs}" var="path">
+					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{path}.html"><code>#{path.replace('/', ':')}</code> VDL documentation</a></li>
+				</ui:repeat>
+				<ui:repeat value="#{page.current.documentation.apidocs}" var="path">
+					<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/org/omnifaces/#{path}.html"><code>org.omnifaces.#{path.replace('/', '.')}</code> API documentation</a></li>
+				</ui:repeat>
+				<ui:repeat value="#{page.current.documentation.codes}" var="path">
+					<li><a href="http://code.google.com/p/omnifaces/source/browse/src/org/omnifaces/#{path}.java"><code>org.omnifaces.#{path.replace('/', '.')}</code> source code</a></li>
+				</ui:repeat>
+			</ul>
 		</p:panel>
 	</ui:define>
 </ui:composition>

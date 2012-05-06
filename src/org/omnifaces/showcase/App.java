@@ -31,6 +31,7 @@ import javax.servlet.ServletContext;
 
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
+import org.omnifaces.showcase.Page.Documentation;
 import org.omnifaces.showcase.Page.Source;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Utils;
@@ -71,7 +72,7 @@ public class App {
 		Set<String> groupPaths = new TreeSet<String>(context.getResourcePaths(SHOWCASE_PATH));
 
 		for (String groupPath : groupPaths) {
-			TreeModel<Page> group = menu.addChild(new Page(groupPath.split("/")[2], null, null));
+			TreeModel<Page> group = menu.addChild(new Page(groupPath.split("/")[2], null, null, null));
 			Set<String> pagePaths = new TreeSet<String>(context.getResourcePaths(groupPath));
 
 			for (String pagePath : pagePaths) {
@@ -103,16 +104,13 @@ public class App {
 				.trim()));
 		}
 
-		String propertyKey = title + ".sources";
-		String sourceKeys = properties.getProperty(propertyKey);
+		String sourcesKey = title + ".sources";
 
-		if (sourceKeys != null) {
-			for (String sourceKey : sourceKeys.split("\\s*,\\s*")) {
-				sources.add(createSource(properties, propertyKey + "." + sourceKey));
-			}
+		for (String sourceKey : getCommaSeparatedProperty(properties, sourcesKey)) {
+			sources.add(createSource(properties, sourcesKey + "." + sourceKey));
 		}
 
-		return new Page(title, viewId, sources);
+		return new Page(title, viewId, sources, createDocumentation(properties, title + ".documentation"));
 	}
 
 	private static String loadSourceCode(String path) {
@@ -139,6 +137,23 @@ public class App {
 		String type = path.substring(path.lastIndexOf('.') + 1);
 		String code = loadSourceCode(path);
 		return new Source(title, type, code);
+	}
+
+	private static Documentation createDocumentation(Properties properties, String documentationKey) {
+		String[] vdldocs = getCommaSeparatedProperty(properties, documentationKey + ".vdl.paths");
+		String[] apidocs = getCommaSeparatedProperty(properties, documentationKey + ".api.paths");
+		String[] codes = getCommaSeparatedProperty(properties, documentationKey + ".code.paths");
+		return new Documentation(vdldocs, apidocs, codes.length == 0 ? apidocs : codes);
+	}
+
+	private static String[] getCommaSeparatedProperty(Properties properties, String key) {
+		String property = properties.getProperty(key);
+
+		if (property == null) {
+			return new String[0];
+		}
+
+		return property.split("\\s*,\\s*");
 	}
 
 	private static String getMandatoryProperty(Properties properties, String key) {

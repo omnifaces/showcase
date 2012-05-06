@@ -34,6 +34,7 @@ public class Page {
 	private String title;
 	private String viewId;
 	private List<Source> sources;
+	private Documentation documentation;
 
 	@ManagedProperty("#{app.pages[view.viewId]}")
 	private Page current;
@@ -44,10 +45,11 @@ public class Page {
 		// Keep default c'tor alive for JSF @ManagedBean.
 	}
 
-	public Page(String title, String viewId, List<Source> sources) {
+	public Page(String title, String viewId, List<Source> sources, Documentation documentation) {
 		this.title = title;
 		this.viewId = viewId;
 		this.sources = sources;
+		this.documentation = documentation;
 	}
 
 	// Getters/setters ------------------------------------------------------------------------------------------------
@@ -62,6 +64,10 @@ public class Page {
 
 	public List<Source> getSources() {
 		return sources;
+	}
+
+	public Documentation getDocumentation() {
+		return documentation;
 	}
 
 	public Page getCurrent() {
@@ -128,6 +134,41 @@ public class Page {
 
 		public String getCode() {
 			return code;
+		}
+
+	}
+
+	/**
+	 * This class represents the documentation associated with the current page.
+	 *
+	 * @author Bauke Scholtz
+	 */
+	public static class Documentation {
+
+		private String[] vdldocs;
+		private String[] apidocs;
+		private String[] codes;
+
+		// Contructors ------------------------------------------------------------------------------------------------
+
+		public Documentation(String[] vdldocs, String[] apidocs, String[] codes) {
+			this.vdldocs = vdldocs;
+			this.apidocs = apidocs;
+			this.codes = codes;
+		}
+
+		// Getters/setters --------------------------------------------------------------------------------------------
+
+		public String[] getVdldocs() {
+			return vdldocs;
+		}
+
+		public String[] getApidocs() {
+			return apidocs;
+		}
+
+		public String[] getCodes() {
+			return codes;
 		}
 
 	}
