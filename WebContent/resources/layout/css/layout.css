@@ -2,19 +2,21 @@ body {
 	width: 1250px; /* Target minimum of 1280x1024 */
 	margin: 0 auto;
 	padding: 3px 0;
-	background: #eee;
+	background: #eee; /* url(#{resource['layout:img/carbon-bg.png']}) 0 2px; */
 	overflow-y: scroll;
 }
 
 #header {
 	position: relative;
+	padding: 0;
 	margin-bottom: 3px;
+	height: 83px;
 }
 
 #poweredBy {
 	position: absolute;
-	top: -3px;
-	right: 3px;
+	top: 1px;
+	right: 10px;
 	font-size: .8em;
 	text-align: right;
 	white-space: pre;
@@ -24,6 +26,7 @@ body {
 #menu {
 	float: left;
 	width: 250px;
+	margin-bottom: 3px;
 }
 
 #menu ul {
@@ -47,13 +50,19 @@ body {
 	margin-bottom: 1000px; /* Just some spacing to avoid page shifts when switching between source code tabs. */
 }
 
-.ui-widget {
-	font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif;
-	font-size: 12px !important;
+h1 {
+	margin: 0;
+	padding: 2px 0;
+	height: 70px;
 }
 
-.error {
-	background-color: #fee;
+h1 a, h1 a:hover {
+	text-decoration: none;
+	background: none;
+}
+
+h1 img {
+	vertical-align: middle;
 }
 
 a:hover, a.active {
@@ -62,4 +71,13 @@ a:hover, a.active {
 
 code, .code {
 	font-family: Consolas, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+}
+
+.ui-widget {
+	font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif;
+	font-size: 12px !important;
+}
+
+.error {
+	background-color: #fee;
 }

@@ -1,0 +1,35 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			Collection of utility methods for the JSF API with respect to working with <code>UIComponent</code>.
+			There are several traversal/lookup methods, there are several <code>UIForm</code> and <code>UIInput</code>
+			related methods which makes it easier to deal with forms and inputs.
+		</p>
+		<p>
+			Some examples:
+		</p>
+		<pre class="prettyprint"><code class="lang-java">
+// Get closest parent of given type.
+UIForm form = Components.getClosestParent(someUIInputComponent, UIForm.class);		
+
+// Get currently submitted form.
+UIForm form = Components.getCurrentForm();
+
+// Get all UIInput components which are currently in an invalid state.
+List&lt;UIInput&gt; invalidInputs = Components.getInvalidInputs();
+
+// Get the label of the given UIInput component as JSF uses for validation messages.
+String label = Components.getLabel(someUIInputComponent);
+
+// Inside decode() and/or encode() of some custom component, validate if it has no children.
+Components.validateHasNoChildren(this);
+		</code></pre>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+</ui:composition>

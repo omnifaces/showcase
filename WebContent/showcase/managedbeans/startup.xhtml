@@ -1,0 +1,25 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			The builtin managed bean <code>\#{startup}</code> returns you the 
+			<a href="http://docs.oracle.com/javase/7/docs/api/java/util/Date.html"><code>java.util.Date</code></a>
+			instance representing the server's startup time.
+		</p>
+	</ui:define>		
+
+	<ui:define name="demo">
+		<p>
+			Raw <code>Date#toString()</code> value of <code>\#{startup}</code>: #{startup}
+		</p>
+		<p>
+			Formatted date using <code>of:formatDate()</code> function: #{of:formatDate(startup, 'yyyy-MM-dd HH:mm:ss')}
+		</p>
+	</ui:define>
+</ui:composition>

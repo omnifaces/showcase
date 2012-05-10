@@ -1,0 +1,38 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			Collection of utility methods for the JSF API with respect to working with Faces events. So far now there
+			are only some helper methods which eases adding a callback method which should execute before or after
+			the given phase ID of the current <code>UIViewRoot</code>.
+		</p>
+		<p>
+			Here's a rather awkward example which should make the point clear enough:
+		</p>
+		<pre class="prettyprint"><code class="lang-java">
+private Object requestBasedProperty;
+
+@PostConstruct // Inside a @ViewScoped
+public void init() {
+    // Perform some cleanup after render response phase to keep the property request based.
+    Events.addAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
+        @Override
+        public void invoke() {
+            requestBasedProperty = null;
+        }
+    });
+}
+		</code></pre>
+		<p>
+			An useful use case can be found in source code of 
+			<h:link outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler.xhtml" value="FullAjaxExceptionHandler" styleClass="code" />
+			which clears the exception from the request scope to prevent Tomcat/JBoss to continue handling the exception.
+		</p>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+</ui:composition>

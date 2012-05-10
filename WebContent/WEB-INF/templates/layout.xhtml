@@ -39,7 +39,12 @@
 
 	<h:body>
 		<p:panel id="header" styleClass="ui-widget-header">
-			<h1>OmniFaces Showcase</h1>
+			<h1>
+				<a href="#{request.contextPath}/">
+					<h:graphicImage library="layout" name="img/logo-70x70.png" alt="logo" width="70" height="70" />
+					OmniFaces Showcase
+				</a>
+			</h1>
 			<div id="poweredBy">
 				<strong>Powered by</strong><br/>#{app.poweredBy}
 			</div>
