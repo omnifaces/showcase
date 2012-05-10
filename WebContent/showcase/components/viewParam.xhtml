@@ -7,26 +7,30 @@
 >
 	<ui:define name="description">
 		<p>
-			The <code>&lt;o:viewParam&gt;</code> extends the standard <code>&lt;f:viewParam&gt;</code> and provides a
-			stateless mode of operation. The standard <code>&lt;f:viewParam&gt;</code> implementation calls the model
-			setter again after postback. This is not always desired when being bound to a view scoped bean and can 
-			lead to performance problems when combined with an expensive converter. It also provides a default for the 
-			<code>label</code> atrribute. When the <code>label</code> attribute is omitted, the <code>name</code>
-			attribute will be used as label.
+			The <code>&lt;o:viewParam&gt;</code> is designed to be used in combination with view scoped beans only. 
+			It extends the standard <code>&lt;f:viewParam&gt;</code> and provides a stateless mode of operation. 
+			The standard <code>&lt;f:viewParam&gt;</code> implementation calls the model setter again after postback.
+			This is not always desired when being bound to a view scoped bean and can lead to performance problems when
+			combined with an expensive converter. The <code>required="true"</code> validator is also skipped on postbacks,
+			so you don't need to retain it on every single command link/button by <code>&lt;f:param&gt;</code> 
+			It also provides a default for the <code>label</code> atrribute. When the <code>label</code> attribute is 
+			omitted, the <code>name</code> attribute will be used as label.
 		</p>
 		<p>
-			If this page is requested by a non-Faces request without a parameter, it should display the message: <br/>
+			If this page is requested by a request without a <code>test</code> parameter, it should display the message
+			with the <code>name</code> of the <code>&lt;o:viewParam&gt;</code> as label instead of its client ID:
+			<br/>
 			"test: Validation Error: Value is required."
 		</p>
 		<p>
-			Clicking the GET link initiates a new GET request with a parameter. Every time this
+			Clicking the GET link initiates a new GET request with a <code>test</code> parameter. Every time this
 			request is issued, a converter runs that attaches an ever increasing number to the displayed
 			value.
 		</p>
 		<p>
-			Clicking the POST link initiates a POST-BACK request. This should not convert
-			the value again and thus the number should not change. The POST-BACK should also
-			not cause the required validation to be triggered.
+			Clicking the POST link initiates a POST request. This should not convert
+			the value again and thus the number should not change. The POST request should also
+			not cause the <code>required="true"</code> validator to be triggered.
 		</p>
 	</ui:define>
 

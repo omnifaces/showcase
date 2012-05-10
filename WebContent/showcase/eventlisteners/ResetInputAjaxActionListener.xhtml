@@ -10,6 +10,8 @@
 			The <code>org.omnifaces.event.ResetInputAjaxActionListener</code> will reset input fields which are not 
 			executed during ajax submit, but which are rendered/updated during ajax response. This will prevent those
 			input fields to remain in an invalidated state because of a validation failure during a previous request.
+			This is very useful for cases where you need to update one form from another form by for example a modal
+			dialog, or when you need a cancel/clear button. 
 		</p>
 		<p>
 			<i>Either</i> register it as <code>&lt;action-listener&gt;</code> in <code>faces-config.xml</code>. It'll be 

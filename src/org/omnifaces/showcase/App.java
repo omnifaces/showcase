@@ -100,7 +100,7 @@ public class App {
 		if (demo.length > 1) {
 			sources.add(new Source("Demo", "xhtml", demo[1]
 				.split("</ui:define>")[0] // Yes, ugly, but it's faster than a XML parser and it's internal code anyway.
-				.replace("\n        ", "\n") // Trim 8 leading spaces so that the whole example block is indented back.
+				.replace("\n        ", "\n") // Trim 8 leading spaces so that the whole demo code block is indented back.
 				.trim()));
 		}
 
