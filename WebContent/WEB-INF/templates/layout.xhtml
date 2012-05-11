@@ -20,9 +20,9 @@
 	xmlns:o="http://omnifaces.org/ui"
 >
 	<h:head>
-		<title>
-			<ui:insert name="title">OmniFaces Showcase - #{page.current.title}</ui:insert>
-		</title>
+		<title><ui:insert name="title">OmniFaces Showcase - #{page.current.title}</ui:insert></title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+		<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
 		<h:outputStylesheet library="layout" name="css/layout.css" />
 		<h:outputScript>
 			var _gaq = _gaq || [];
