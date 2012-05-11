@@ -3,7 +3,6 @@ body {
 	margin: 0 auto;
 	padding: 3px 0;
 	background: #eee; /* url(#{resource['layout:img/carbon-bg.png']}) 0 2px repeat; */
-	overflow-y: scroll;
 }
 
 #header {
