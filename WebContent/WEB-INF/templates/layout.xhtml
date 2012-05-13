@@ -59,7 +59,7 @@
 					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/index.html">VDL documentation</a></li>
 				</ul>
 			</p:panel>
-			<o:tree value="#{app.menu}" var="page" varNode="node">
+			<o:tree value="#{app.menu}" var="page">
 				<o:treeNode level="0">
 					<o:treeNodeItem>
 						<p:panel header="#{page.title}">
@@ -72,7 +72,6 @@
 						<o:treeNodeItem>
 							<li>
 								<h:link value="#{page.title}" outcome="#{page.viewId}" styleClass="code#{view.viewId == page.viewId ? ' active' : ''}" />
-								<o:treeInsertChildren />
 							</li>
 						</o:treeNodeItem>
 					</ul>
