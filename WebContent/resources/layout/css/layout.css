@@ -1,8 +1,12 @@
+html {
+	overflow-y: scroll; /* Sticky vertical scrollbar to prevent horizontal shifts on navigation. */
+}
+
 body {
 	width: 1250px; /* Target minimum of 1280x1024 */
 	margin: 0 auto;
 	padding: 3px 0;
-	background: #eee; /* url(#{resource['layout:img/carbon-bg.png']}) 0 2px repeat; */
+	background: #eee;
 }
 
 #header {
@@ -55,7 +59,7 @@ body {
 #content {
 	float: right;
 	width: 985px;
-	margin-bottom: 1000px; /* Just some spacing to avoid page shifts when switching between source code tabs. */
+	margin-bottom: 1000px; /* Just some spacing to avoid vertical page shifts when switching between source code tabs. */
 }
 
 h1 {
