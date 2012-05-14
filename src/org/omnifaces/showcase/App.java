@@ -27,7 +27,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.FacesException;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.servlet.ServletContext;
 
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
@@ -68,12 +67,11 @@ public class App {
 
 	private static void fillMenu(TreeModel<Page> menu) {
 		Properties properties = loadProperties();
-		ServletContext context = Faces.getServletContext();
-		Set<String> groupPaths = new TreeSet<String>(context.getResourcePaths(SHOWCASE_PATH));
+		Set<String> groupPaths = new TreeSet<String>(Faces.getResourcePaths(SHOWCASE_PATH));
 
 		for (String groupPath : groupPaths) {
 			TreeModel<Page> group = menu.addChild(new Page(groupPath.split("/")[2], null, null, null));
-			Set<String> pagePaths = new TreeSet<String>(context.getResourcePaths(groupPath));
+			Set<String> pagePaths = new TreeSet<String>(Faces.getResourcePaths(groupPath));
 
 			for (String pagePath : pagePaths) {
 				group.addChild(createPage(properties, pagePath));
