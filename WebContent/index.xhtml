@@ -1,5 +1,6 @@
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 >
 	<ui:define name="contentTitle">Welcome to the OmniFaces Showcase application!</ui:define>
@@ -7,14 +8,39 @@
 	<ui:define name="content">
 		<p>
 			Live examples of the <a href="http://code.google.com/p/omnifaces/">OmniFaces</a> components and utilities
-            can be tried out here.
+            can be tried out here. Check out them by the left menu.
 		</p>
 		<p>
-			OmniFaces is a fully open source component library for JSF 2, and additionally this showcase application itself is also fully open source.
-        </p>
-        <p>
-			The showcase application project homepage is available at <a href="http://code.google.com/p/omnifaces-showcase/">code.google.com/p/omnifaces-showcase</a>.<br/>
-			Full source code for all demos is available at <a href="http://code.google.com/p/omnifaces-showcase/source/browse/">code.google.com/p/omnifaces-showcase/source/browse</a>.
+			OmniFaces is a library for JSF 2.x that focusses on utilities that ease everyday tasks. An important design 
+			goal will be to have as few dependencies as possible and to be minimally invasive. So far, it only requires
+			JSF 2.0, EL 2.1 and Servlet 2.5 APIs which is already minimally available in a bit modern container serving
+			a JSF 2.0 web application. As such, OmniFaces should principally integrate perfectly well with most other JSF 
+			libraries. Even more, this showcase application uses PrimeFaces 3.2 which works perfectly fine together with
+			OmniFaces.
+		</p>
+		<p>
+			Characteristic of OmniFaces will be that it will not just be about components, but instead will have an 
+			equally strong focus on providing utility classes for working with the JSF API from Java code, such as 
+			<h:link value="Faces" outcome="/showcase/utils/Faces.xhtml" />
+			and
+			<h:link value="Messages" outcome="/showcase/utils/Messages.xhtml" />.
+		</p>
+		<p>
+			Besides components and utility classes, OmniFaces will include various general converters, validators and 
+			Facelets tag handlers. These will range from 
+			<h:link value="'all-or-none' validators" outcome="/showcase/validators/validateAllOrNone.xhtml" /> 
+			to 
+			<h:link value="converters which automatically convert Java models" outcome="/showcase/converters/SelectItemsConverter.xhtml" />
+			for usage in e.g. a drop-down menu. There is also a 
+			<h:link value="full ajax exception handler" outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler.xhtml" />
+			which will automatically handle all ajax exceptions with the default <code>web.xml</code> error-page mechanisms.
+		</p>
+		<p>
+			OmniFaces is a fully open source component library for JSF 2, and additionally this showcase application 
+			itself is also fully open source. The showcase application project homepage is available at
+			<a href="http://code.google.com/p/omnifaces-showcase/">code.google.com/p/omnifaces-showcase</a>.
+			Full source code for all demos is available at 
+			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/">code.google.com/p/omnifaces-showcase/source/browse</a>.
 		</p>
 	</ui:define>
 </ui:composition>

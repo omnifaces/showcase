@@ -11,14 +11,18 @@
 			It extends the standard <code>&lt;f:viewParam&gt;</code> and provides a stateless mode of operation. 
 			The standard <code>&lt;f:viewParam&gt;</code> implementation calls the model setter again after postback.
 			This is not always desired when being bound to a view scoped bean and can lead to performance problems when
-			combined with an expensive converter. The <code>required="true"</code> validator is also skipped on postbacks,
-			so you don't need to retain it on every single command link/button by <code>&lt;f:param&gt;</code> 
+			combined with an expensive converter.
+		</p>
+		<p>
+			The <code>required="true"</code> validator is also skipped on postbacks,
+			so you don't need to retain it on every single command link/button by <code>&lt;f:param&gt;</code>. 
 			It also provides a default for the <code>label</code> atrribute. When the <code>label</code> attribute is 
 			omitted, the <code>name</code> attribute will be used as label.
 		</p>
 		<p>
-			If this page is requested by a request without a <code>test</code> parameter, it should display the message
-			with the <code>name</code> of the <code>&lt;o:viewParam&gt;</code> as label instead of its client ID:
+			As to the demo below, if this page is requested by a request without a <code>test</code> parameter, it should
+			display the message	with the <code>name</code> of the <code>&lt;o:viewParam&gt;</code> as label instead of 
+			its client ID:
 			<br/>
 			"test: Validation Error: Value is required."
 		</p>
