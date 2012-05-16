@@ -1,0 +1,50 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			Collection of EL functions for data conversion: <code>of:formatBytes()</code>, <code>of:setToList()</code>,  
+			<code>of:mapToList()</code> and <code>of:printStackTrace()</code>.
+		</p>
+		<p>
+			Notes:
+		</p>
+		<ul>
+			<li>
+				Since JSF 2.2 it should be possible to use <code>Set&lt;E&gt;</code> and <code>Map&lt;K, V&gt;</code>
+				in <code>&lt;ui:repeat&gt;</code>. The <code>\#{of:setToList}</code> and <code>\#{of:mapToList}</code>
+				are then only useful for JSF 2.0 and 2.1.
+			</li>
+			<li>
+				There's also an <code>\#{of:printStackTrace}</code>. See it in action in 
+				<h:link value="FullAjaxExceptionHandler" outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler.xhtml" styleClass="code" />
+				page.
+			</li>
+		</ul>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+	
+	<ui:define name="demo">
+		<p>
+			Format a given amount of bytes with IEC binary unit: 
+			#{of:formatBytes(1023)}, #{of:formatBytes(1024)}, #{of:formatBytes(500000)}, #{of:formatBytes(1048576)}
+		</p>
+		<p>
+			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code>:
+			<ui:repeat value="#{of:setToList(testBean.set)}" var="item" varStatus="loop">
+				#{item}#{!loop.last ? ', ' : ''}
+			</ui:repeat>
+		</p>
+		<p>
+			Convert <code>Map&lt;K, V&gt;</code> to <code>List&lt;Entry&lt;K, V&gt;&gt;</code>:
+			<ui:repeat value="#{of:mapToList(testBean.map)}" var="entry" varStatus="loop">
+				#{entry.key}=#{entry.value}#{!loop.last ? ', ' : ''}
+			</ui:repeat>
+		</p>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,55 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			Collection of EL functions for date and time: <code>of:formatDate()</code>, <code>of:formatDateWithTimezone()</code>,  
+			<code>of:getMonths()</code> and <code>of:getShortMonths()</code>.
+		</p>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+	
+	<ui:define name="demo">
+		<f:view locale="#{not empty sessionScope.testLocale ? sessionScope.testLocale : 'en'}">
+			<p>
+				Format current date with system default timezone: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}
+			</p>
+			<p>
+				Format current date with GMT timezone: #{of:formatDateWithTimezone(now, 'yyyy-MM-dd HH:mm:ss', 'GMT')}
+			</p>
+			<p>
+				Get all months for the current locale:
+				<h:selectOneMenu value="#{bean.monthNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
+					<f:selectItems value="#{of:getMonths()}" />
+				</h:selectOneMenu>
+			</p>
+			<p>
+				Get all short months for the current locale:
+				<h:selectOneMenu value="#{bean.monthNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
+					<f:selectItems value="#{of:getShortMonths()}" />
+				</h:selectOneMenu>
+			</p>
+			<h:form>
+				<p>
+					Switch locale and see month names changing:
+					<h:selectOneMenu value="#{sessionScope.testLocale}">
+						<f:selectItem itemValue="en" itemLabel="English" />
+						<f:selectItem itemValue="es" itemLabel="Español (Spanish)" />
+						<f:selectItem itemValue="fr" itemLabel="Français (French)" />
+						<f:selectItem itemValue="de" itemLabel="Deutsch (German)" />
+						<f:selectItem itemValue="nl" itemLabel="Nederlands (Dutch)" />
+						<f:selectItem itemValue="ar" itemLabel="العربية (Arabic)" />
+						<f:selectItem itemValue="he" itemLabel="עִבְרִית (Hebrew)" />
+						<f:selectItem itemValue="zh" itemLabel="汉语 (Chinese)" />
+						<f:ajax render=":demo" />
+					</h:selectOneMenu>
+				</p>
+			</h:form>
+		</f:view>
+	</ui:define>
+</ui:composition>

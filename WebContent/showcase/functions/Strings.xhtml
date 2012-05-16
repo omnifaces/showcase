@@ -1,0 +1,42 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			Collection of EL functions for string manipulation: <code>of:abbreviate()</code>, <code>of:concat()</code>,  
+			<code>of:prettyURL()</code>, <code>of:encodeURL()</code> and <code>of:escapeJS()</code>.
+		</p>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+	
+	<ui:define name="demo">
+		<p>
+			Abbreviate a long string: #{of:abbreviate(stringsBean.string1, 20)}
+		</p>
+		<p>
+			Concat 2 strings: #{of:concat(stringsBean.string2, stringsBean.string3)}
+		</p>
+		<p>
+			Following functions deal with the following string: "#{stringsBean.string4}"
+		</p>
+		<ul>
+			<li>
+				Create a pretty URL (part): #{of:prettyURL(stringsBean.string4)} 
+				<a href="#{of:prettyURL(stringsBean.string4)}">check link URL</a> (don't click :) )
+			</li>
+			<li>
+				URL-encode with UTF-8: #{of:encodeURL(stringsBean.string4)} 
+				<a href="?test=#{of:encodeURL(stringsBean.string4)}">click link</a> #{param.test}
+			</li>
+			<li>
+				Escape for usage in JavaScript: #{of:escapeJS(stringsBean.string4)} 
+				<a href="javascript:alert('#{of:escapeJS(stringsBean.string4)}')">click to see alert</a>
+			</li>
+		</ul>
+	</ui:define>
+</ui:composition>
