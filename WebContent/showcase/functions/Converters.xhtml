@@ -36,13 +36,13 @@
 		</p>
 		<p>
 			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code>:
-			<ui:repeat value="#{of:setToList(testBean.set)}" var="item" varStatus="loop">
+			<ui:repeat value="#{of:setToList(convertersBean.set)}" var="item" varStatus="loop">
 				#{item}#{!loop.last ? ', ' : ''}
 			</ui:repeat>
 		</p>
 		<p>
 			Convert <code>Map&lt;K, V&gt;</code> to <code>List&lt;Entry&lt;K, V&gt;&gt;</code>:
-			<ui:repeat value="#{of:mapToList(testBean.map)}" var="entry" varStatus="loop">
+			<ui:repeat value="#{of:mapToList(convertersBean.map)}" var="entry" varStatus="loop">
 				#{entry.key}=#{entry.value}#{!loop.last ? ', ' : ''}
 			</ui:repeat>
 		</p>

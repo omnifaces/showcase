@@ -15,27 +15,31 @@
 	</ui:define>		
 	
 	<ui:define name="demo">
+		<ui:param name="string1" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+		<ui:param name="string2" value="left" />
+		<ui:param name="string3" value="right" />
+		<ui:param name="string4" value="STRING with díãçrïtìcs" />
 		<p>
-			Abbreviate a long string: #{of:abbreviate(stringsBean.string1, 20)}
+			Abbreviate a long string: #{of:abbreviate(string1, 20)}
 		</p>
 		<p>
-			Concat 2 strings: #{of:concat(stringsBean.string2, stringsBean.string3)}
+			Concat 2 strings: #{of:concat(string2, string3)}
 		</p>
 		<p>
-			Following functions deal with the following string: "#{stringsBean.string4}"
+			Following functions deal with the following string: "#{string4}"
 		</p>
 		<ul>
 			<li>
-				Create a pretty URL (part): #{of:prettyURL(stringsBean.string4)} 
-				<a href="#{of:prettyURL(stringsBean.string4)}">check link URL</a> (don't click :) )
+				Create a pretty URL (part): #{of:prettyURL(string4)} 
+				<a href="#{of:prettyURL(string4)}">check link URL</a> (don't click :) )
 			</li>
 			<li>
-				URL-encode with UTF-8: #{of:encodeURL(stringsBean.string4)} 
-				<a href="?test=#{of:encodeURL(stringsBean.string4)}">click link</a> #{param.test}
+				URL-encode with UTF-8: #{of:encodeURL(string4)} 
+				<a href="?test=#{of:encodeURL(string4)}">click link</a> #{param.test}
 			</li>
 			<li>
-				Escape for usage in JavaScript: #{of:escapeJS(stringsBean.string4)} 
-				<a href="javascript:alert('#{of:escapeJS(stringsBean.string4)}')">click to see alert</a>
+				Escape for usage in JavaScript: #{of:escapeJS(string4)} 
+				<a href="javascript:alert('#{of:escapeJS(string4)}')">click to see alert</a>
 			</li>
 		</ul>
 	</ui:define>
