@@ -51,7 +51,7 @@
 		</p:panel>
 
 		<p:panel id="menu">
-			<p:panel header="omnifaces">
+			<p:panel id="panel" header="omnifaces">
 				<ul>
 					<li><h:link value="Showcase homepage" outcome="/index.xhtml" styleClass="#{view.viewId == '/index.xhtml' ? 'active' : ''}" /></li>
 					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
@@ -59,10 +59,10 @@
 					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/index.html">VDL documentation</a></li>
 				</ul>
 			</p:panel>
-			<o:tree value="#{app.menu}" var="page">
+			<o:tree id="menu_tree" value="#{app.menu}" var="page">
 				<o:treeNode level="0">
 					<o:treeNodeItem>
-						<p:panel header="#{page.title}">
+						<p:panel id="panel" header="#{page.title}">
 							<o:treeInsertChildren />
 						</p:panel>
 					</o:treeNodeItem>

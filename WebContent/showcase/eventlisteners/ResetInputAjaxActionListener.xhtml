@@ -7,7 +7,7 @@
 >
 	<ui:define name="description">
 		<p>
-			The <code>org.omnifaces.event.ResetInputAjaxActionListener</code> will reset input fields which are not 
+			The <code>org.omnifaces.eventlistener.ResetInputAjaxActionListener</code> will reset input fields which are not 
 			executed during ajax submit, but which are rendered/updated during ajax response. This will prevent those
 			input fields to remain in an invalidated state because of a validation failure during a previous request.
 			This is very useful for cases where you need to update one form from another form by for example a modal
@@ -20,7 +20,7 @@
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
 &lt;application&gt;
-  &lt;action-listener&gt;org.omnifaces.event.ResetInputAjaxActionListener&lt;/action-listener&gt;
+    &lt;action-listener&gt;org.omnifaces.eventlistener.ResetInputAjaxActionListener&lt;/action-listener&gt;
 &lt;/application&gt;
  		</code></pre>
 		<p>
@@ -30,8 +30,8 @@
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
 &lt;h:commandButton&gt;
-  &lt;f:ajax listener="\#{bean.updateOtherInputs}" render="otherInputs" /&gt;
-  &lt;f:actionListener type="org.omnifaces.event.ResetInputAjaxActionListener" /&gt;
+    &lt;f:ajax listener="\#{bean.updateOtherInputs}" render="otherInputs" /&gt;
+    &lt;f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" /&gt;
 &lt;/h:commandButton&gt;
  		</code></pre>
  	</ui:define>		
@@ -81,7 +81,7 @@
 				</h:commandButton>
 				<h:commandButton value="Update" action="#{resetInputBean.update}" >
 					<f:ajax execute="@this" render="@form" />
-					<f:actionListener type="org.omnifaces.event.ResetInputAjaxActionListener" />
+					<f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
 				</h:commandButton>
 				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 			</p>

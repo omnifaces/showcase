@@ -12,7 +12,7 @@
 			related methods which makes it easier to deal with forms and inputs.
 		</p>
 		<p>
-			Some examples:
+			Some examples (for the full list, check the API documentation):
 		</p>
 		<pre class="prettyprint"><code class="lang-java">
 // Get closest parent of given type.
@@ -20,9 +20,6 @@ UIForm form = Components.getClosestParent(someUIInputComponent, UIForm.class);
 
 // Get currently submitted form.
 UIForm form = Components.getCurrentForm();
-
-// Get all UIInput components which are currently in an invalid state.
-List&lt;UIInput&gt; invalidInputs = Components.getInvalidInputs();
 
 // Get the label of the given UIInput component as JSF uses for validation messages.
 String label = Components.getLabel(someUIInputComponent);

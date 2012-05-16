@@ -30,7 +30,11 @@
 			The <code>FacesExceptionFilter</code> is also configured on this showcase application. To see the proper 
 			handling of 404 yourself, try entering a random URL matching the <code>*.xhtml</code> URL pattern of the
 			<code>FacesServlet</code> on this showcase web application. For example, 
-			<a href="thisdoesnotexist.xhtml">thisdoesnotexist.xhtml</a>.
+			<a href="thisdoesnotexist.xhtml">thisdoesnotexist.xhtml</a>. To see the proper handling of 
+			<code>FacesException</code> yourself, invoke the "normal request" buttons on the
+			<h:link value="FullAjaxExceptionHandler" outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler.xhtml" styleClass="code" />
+			showcase page. Without the filter, the <code>RuntimeException</code> and <code>SQLException</code> would end
+			up in an generic HTTP 500 error page instead of the one specific to the exception.
 		</p>			
 	</ui:define>		
 </ui:composition>

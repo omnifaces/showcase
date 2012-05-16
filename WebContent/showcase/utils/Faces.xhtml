@@ -22,21 +22,26 @@
 			methods which allows you to provide a <code>File</code>, <code>byte[]</code> or <code>InputStream</code> as a download to the client.
 		</p>
 		<p>
-			Some examples:
+			Some examples (for the full list, check the API documentation):
 		</p>
 		<pre class="prettyprint"><code class="lang-java">
-// Get a session attribute.
+// Get a session attribute (no explicit cast necessary!).
 User user = Faces.getSessionAttribute("user");
 
-// Evaluate EL programmatically.
+// Evaluate EL programmatically (no explicit cast necessary!).
 Item item = Faces.evaluateExpressionGet("\#{item}");
 
 // Get a cookie value.
 String cookieValue = Faces.getRequestCookie("cookieName");
 
+// Get all supported locales with default locale as first item.
+List&lt;Locale&gt; supportedLocales = Faces.getSupportedLocales();
+
 // Invalidate the session and send a redirect.
-Faces.invalidateSession();
-Faces.redirect("login.xhtml");
+public void logout() throws IOException {
+    Faces.invalidateSession();
+    Faces.redirect("login.xhtml"); // Can by the way also be done by return "login?faces-redirect=true" if in action method.
+}
 
 // Provide a file as attachment.
 public void download() throws IOException {

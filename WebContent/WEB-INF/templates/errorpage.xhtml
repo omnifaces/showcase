@@ -20,6 +20,6 @@
 				<li>Stack trace: <pre><code>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</code></pre></li>
 			</ul>
 		</ui:insert>
-		<h:outputScript>scrollTo(0, 0);</h:outputScript>
+		<h:outputScript>scrollTo(0, 0);</h:outputScript> <!-- Just to scroll to top in case of ajax update. -->
 	</ui:define>
 </ui:composition>
