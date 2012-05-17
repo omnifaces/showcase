@@ -43,7 +43,6 @@ public class App {
 
 	private static final String SHOWCASE_PATH = "/showcase/";
 	private static final String SHOWCASE_PROPERTIES_PATH = "/WEB-INF/showcase.properties";
-	private static final String SHOWCASE_SOURCE_PATH = "/WEB-INF/classes/org/omnifaces/showcase/";
 
 	private static final String ERROR_LOADING_SHOWCASE_PROPERTIES = "Unable to load " + SHOWCASE_PROPERTIES_PATH;
 	private static final String ERROR_LOADING_PAGE_SOURCE = "Unable to load source code of %s";
@@ -134,7 +133,7 @@ public class App {
 		String title = getMandatoryProperty(properties, sourceKey + ".title");
 		String path = getMandatoryProperty(properties, sourceKey + ".path");
 		String type = path.substring(path.lastIndexOf('.') + 1);
-		String code = loadSourceCode(SHOWCASE_SOURCE_PATH + path);
+		String code = loadSourceCode(path);
 		return new Source(title, type, code);
 	}
 
