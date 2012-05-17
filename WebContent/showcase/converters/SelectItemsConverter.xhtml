@@ -8,8 +8,41 @@
 	<ui:define name="description">
 		<p>
 			The <code>omnifaces.SelectItemsConverter</code> allows you to populate e.g. a drop-down with complex Java 
-			model objects and have JSF convert those automatically back without the need to provide a custom converter
-			which may need to do the job based on possibly expensive service/DAO operations.
+			model objects as value of <code>&lt;f:selectItems&gt;</code> and have JSF convert those automatically back 
+			without the need to provide a custom converter which may need to do the job based on possibly expensive 
+			service/DAO operations.
+		</p>
+		<p>
+			The base converter uses by default the <code>toString()</code> method of the object to uniquely identify 
+			the object during the conversion. Since this is not the typical use case for <code>toString()</code>, it is
+			recommended to extend the <code>SelectItemsConverter</code> class and override <b>only</b> the 
+			<code>getAsString</code> method wherein the desired implementation is provided.
+		</p>
+		<p>
+			For example:
+		</p>
+		<pre class="prettyprint"><code class="code-java">
+@FacesConverter("exampleEntitySelectItemsConverter")
+public class ExampleEntitySelectItemsConverter extends SelectItemsConverter {
+
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
+        Long id = (value instanceof ExampleEntity) ? ((ExampleEntity) value).getId() : null;
+        return (id != null) ? String.valueOf(id) : null;
+    }
+
+}
+		</code></pre>
+		<p>
+			Again, you do not need to override the <code>getAsObject()</code> method which would only need to perform
+			possibly expensive service/DAO operations. The <code>SelectItemsConverter</code> base converter will do it
+			automatically based on the available items.
+		</p>
+		<p>
+			The below demo uses the base converter only, as <code>ExampleEntity</code> already returns its unique 
+			idenfifier in the <code>toString()</code> method. If you intend to use the extended select items converter
+			for your entities based on the above example, then just specify the converter as 
+			<code>converter="exampleEntitySelectItemsConverter"</code> instead.
 		</p>
 	</ui:define>
 
