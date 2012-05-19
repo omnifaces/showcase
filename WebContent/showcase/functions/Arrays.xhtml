@@ -23,11 +23,11 @@
 		</p>
 		<p>
 			Create an integer array with specified start and end:
-			<h:selectOneMenu value="#{bean.dayAsInteger}">
+			<h:selectOneMenu value="#{bean.dayAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
 				<f:selectItems value="#{of:createIntegerArray(1, 31)}" />
 			</h:selectOneMenu>
 			<ui:param name="year" value="#{of:formatDate(now, 'yyyy')}" />
-			<h:selectOneMenu value="#{bean.yearAsInteger}">
+			<h:selectOneMenu value="#{bean.yearAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
 				<f:selectItems value="#{of:createIntegerArray(year, year - 10)}" />
 			</h:selectOneMenu>
 		</p>

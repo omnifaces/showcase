@@ -56,12 +56,12 @@
 
 		<h3>Editable tree</h3>
 		<h:form id="form">
-			<o:tree id="tree" value="#{treeBean.tree}" var="exampleEntity" varNode="node">
+			<o:tree id="tree" value="#{treeBean.tree}" var="exampleEntity">
 				<o:treeNode>
 					<ul>
 						<o:treeNodeItem>
 							<li>
-								#{node.index}
+								<o:outputLabel for="value" value="ID #{exampleEntity.id}" />
 								<h:inputText id="value" value="#{exampleEntity.value}" required="true" />
 								<h:message for="value" />
 								<o:treeInsertChildren />
