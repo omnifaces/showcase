@@ -35,6 +35,20 @@ public class ExampleEntity implements Serializable {
 	}
 
 	@Override
+	public boolean equals(Object other) {
+		return (other instanceof ExampleEntity) && (id != null)
+			? id.equals(((ExampleEntity) other).id)
+			: (other == this);
+	}
+
+	@Override
+	public int hashCode() {
+		return (id != null)
+			? (this.getClass().hashCode() + id.hashCode())
+			: super.hashCode();
+	}
+
+	@Override
 	public String toString() {
 		return String.valueOf(id);
 	}
