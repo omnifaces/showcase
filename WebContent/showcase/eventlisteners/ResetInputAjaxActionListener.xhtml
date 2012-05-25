@@ -29,8 +29,8 @@
 			it on the standalone <code>&lt;f:ajax&gt;</code> actions on <code>UIInput</code> components.
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
-&lt;h:commandButton&gt;
-    &lt;f:ajax listener="\#{bean.updateOtherInputs}" render="otherInputs" /&gt;
+&lt;h:commandButton action="\#{bean.updateOtherInputs}"&gt;
+    &lt;f:ajax execute="@this" render="otherInputs" /&gt;
     &lt;f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" /&gt;
 &lt;/h:commandButton&gt;
  		</code></pre>
