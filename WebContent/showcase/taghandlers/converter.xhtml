@@ -9,14 +9,16 @@
 	<ui:define name="description">
 		<p>
 			The <code>&lt;o:converter&gt;</code> basically extends the <code>&lt;f:converter&gt;</code> tag family with the
-			possibility to evaluate the value expression in all attributes on a per request basis instead of on a per view
-			build time basis. This allows the developer to change the attributes on a per request basis.
+			possibility to evaluate EL in all attributes during view render time instead of during view build time. 
+			This allows the developer to evaluate the attributes dynamically on a per request basis or even on a per
+			iteration basis inside a repeater component.
 		</p>
 		<p>
 			When you specify for example the standard <code>&lt;f:convertDateTime&gt;</code> by
 			<code>converterId="javax.faces.DateTime"</code>, then you'll be able to use all its attribuces such as
-			<code>pattern</code> and <code>locale</code> as per its documentation, but then with the possibility to supply
-			request based value expressions.
+			<code>pattern</code> and <code>locale</code> as per 
+			<a href="http://docs.oracle.com/javaee/6/javaserverfaces/2.1/docs/vdldocs/facelets/f/convertDateTime.html" rel="ext">its documentation</a>,
+			but then with the possibility to supply render time value expressions.
 		</p>
 		<pre class="prettyprint"><code class="xhtml">
 &lt;o:converter converterId="javax.faces.DateTime" pattern="\#{item.pattern}" locale="\#{item.locale}" /&gt;
@@ -31,25 +33,33 @@
 			In the below demo, it was the intent to use <code>&lt;f:convertDateTime&gt;</code> as follows:
 		</p>
 		<pre class="prettyprint"><code class="xhtml">
-&lt;f:convertDateTime pattern="\#{item.pattern}" locale="\#{item.locale}" /&gt;
+&lt;f:convertDateTime type="both" dateStyle="full" timeStyle="full" locale="\#{locale}" /&gt;
 		</code></pre>
 		<p>
-			But this wouldn't even run, it will throw a <code>javax.faces.view.facelets.TagAttributeException</code> 
-			that the attribute values are <code>null</code>. It works as intuitively expected with the 
-			<code>&lt;o:converter&gt;</code> as it allows a render time evaluation of attributes.
+			But this wouldn't even run, it will throw the following exception.
+		</p>
+		<pre>
+javax.faces.view.facelets.TagAttributeException: /showcase/taghandlers/converter.xhtml @62,92 
+locale="#{locale}" Attribute did not evaluate to a String or Locale: null
+    at com.sun.faces.facelets.tag.jsf.ComponentSupport.getLocale(ComponentSupport.java:297)
+    at com.sun.faces.facelets.tag.jsf.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:127)
+    at com.sun.faces.facelets.tag.jsf.ConverterTagHandlerDelegateImpl.applyAttachedObject(ConverterTagHandlerDelegateImpl.java:130)
+		</pre>
+		<p>
+			It works as intuitively expected with the <code>&lt;o:converter&gt;</code> as it allows a render time evaluation of attributes.
 		</p>
 	</ui:define>
 
 	<ui:define name="demo">
-		<h:dataTable value="#{converterBean.items}" var="item">
+		<h:dataTable value="#{converterBean.locales}" var="locale">
 			<h:column>
 				<f:facet name="header">Language</f:facet>
-				#{item.locale.displayLanguage}
+				#{locale.displayLanguage}
 			</h:column>
 			<h:column>
 				<f:facet name="header">Full date time pattern</f:facet>
 				<h:outputText value="#{now}">
-					<o:converter converterId="javax.faces.DateTime" pattern="#{item.pattern}" locale="#{item.locale}" />
+					<o:converter converterId="javax.faces.DateTime" type="both" dateStyle="full" timeStyle="full" locale="#{locale}" />
 				</h:outputText>
 			</h:column>
 		</h:dataTable>

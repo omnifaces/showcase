@@ -9,21 +9,22 @@
 	<ui:define name="description">
 		<p>
 			The <code>&lt;o:validator&gt;</code> basically extends the <code>&lt;f:validator&gt;</code> tag family with the
-			possibility to evaluate the value expression in all attributes on a per request basis instead of on a per view
-			build time basis. This allows the developer to change the attributes on a per request basis, such as the
-			<code>disabled</code> attribute.
+			possibility to evaluate EL in all attributes during view render time instead of during view build time. 
+			This allows the developer to evaluate the attributes dynamically on a per request basis or even on a per
+			iteration basis inside a repeater component, such as the <code>disabled</code> attribute.
 		</p>
 		<pre class="prettyprint"><code class="xhtml">
 &lt;o:validator validatorId="someValidatorId" disabled="\#{param.disableValidation}" /&gt;
 		</code></pre>
 		<p>
-			When you specify for example the standard <code>&lt;f:validateLongRange&gt;</code> by
-			<code>validatorId="javax.faces.LongRange"</code>, then you'll be able to use all its attributes such as
-			<code>minimum</code> and <code>maximum</code> as per its documentation, but then with the possibility to supply
-			request based value expressions.
+			When you specify for example the standard <code>&lt;f:validateLength&gt;</code> by
+			<code>validatorId="javax.faces.Length"</code>, then you'll be able to use all its attributes such as
+			<code>minimum</code> and <code>maximum</code> as per 
+			<a href="http://docs.oracle.com/javaee/6/javaserverfaces/2.1/docs/vdldocs/facelets/f/validateLength.html" rel="ext">its documentation</a>,
+			but then with the possibility to supply render time value expressions.
 		</p>
 		<pre class="prettyprint"><code class="xhtml">
-&lt;o:validator validatorId="javax.faces.LongRange" minimum="\#{item.minimum}" maximum="\#{item.maximum}" /&gt;
+&lt;o:validator validatorId="javax.faces.Length" minimum="\#{item.minimum}" maximum="\#{item.maximum}" /&gt;
 		</code></pre>
 		<p>
 			The validator ID of al standard JSF validators can be found in 
