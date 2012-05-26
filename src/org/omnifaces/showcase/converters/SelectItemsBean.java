@@ -1,4 +1,4 @@
-package org.omnifaces.showcase.selectitemsconverter;
+package org.omnifaces.showcase.converters;
 
 import java.io.Serializable;
 import java.util.ArrayList;

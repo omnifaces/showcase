@@ -1,4 +1,4 @@
-package org.omnifaces.showcase.fullajaxexceptionhandler;
+package org.omnifaces.showcase.exceptionhandlers;
 
 import java.sql.SQLException;
 

@@ -1,4 +1,4 @@
-package org.omnifaces.showcase.tree;
+package org.omnifaces.showcase.components;
 
 import java.io.Serializable;
 

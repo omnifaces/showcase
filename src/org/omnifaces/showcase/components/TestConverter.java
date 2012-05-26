@@ -1,4 +1,4 @@
-package org.omnifaces.showcase.viewparam;
+package org.omnifaces.showcase.components;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

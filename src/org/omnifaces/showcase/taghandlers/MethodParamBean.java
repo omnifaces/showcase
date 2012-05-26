@@ -1,4 +1,4 @@
-package org.omnifaces.showcase.methodparam;
+package org.omnifaces.showcase.taghandlers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

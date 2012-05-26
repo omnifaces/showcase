@@ -1,0 +1,100 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:validator&gt;</code> basically extends the <code>&lt;f:validator&gt;</code> tag family with the
+			possibility to evaluate the value expression in all attributes on a per request basis instead of on a per view
+			build time basis. This allows the developer to change the attributes on a per request basis, such as the
+			<code>disabled</code> attribute.
+		</p>
+		<pre class="prettyprint"><code class="xhtml">
+&lt;o:validator validatorId="someValidatorId" disabled="\#{param.disableValidation}" /&gt;
+		</code></pre>
+		<p>
+			When you specify for example the standard <code>&lt;f:validateLongRange&gt;</code> by
+			<code>validatorId="javax.faces.LongRange"</code>, then you'll be able to use all its attributes such as
+			<code>minimum</code> and <code>maximum</code> as per its documentation, but then with the possibility to supply
+			request based value expressions.
+		</p>
+		<pre class="prettyprint"><code class="xhtml">
+&lt;o:validator validatorId="javax.faces.LongRange" minimum="\#{item.minimum}" maximum="\#{item.maximum}" /&gt;
+		</code></pre>
+		<p>
+			The validator ID of al standard JSF validators can be found in 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/validator/package-summary.html" rel="ext">their javadocs</a>.
+			First go to the javadoc of the class of interest, then go to <code>VALIDATOR_ID</code> in its field summary 
+			and finally click the Constant Field Values link to see the value.
+		</p>
+		<p>
+			In the below demo, the validators are supposed to be disabled based on the currently selected contact method.
+			Change the contact method to phone and enter a valid phone number, e.g. <code>0123456789</code>, you'll see
+			that with the <code>&lt;f:validator&gt;</code>, the email validator is still been used because that was the
+			one which was set during view build time. The <code>&lt;o:validator&gt;</code> allows a render time evaluation
+			of attributes and hence works as intuitively expected. 
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>With <code>&lt;f:validator&gt;</code> - phone is still validated as email</h3>
+		<h:form>
+			<h:panelGrid columns="3">
+				<o:outputLabel for="contactMethod" value="Contact method" />
+				<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod}">
+					<f:selectItem itemLabel="Email" itemValue="email" />
+					<f:selectItem itemLabel="Phone" itemValue="phone" />
+					<f:ajax render="contact contactMessage" />
+				</h:selectOneMenu>
+				<h:panelGroup />
+			
+				<o:outputLabel for="contact" value="Contact address" />
+				<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod}">
+					<f:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod != 'email'}" />
+					<f:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod != 'phone'}" />
+				</h:inputText>
+				<h:message id="contactMessage" for="contact" />
+
+				<h:panelGroup />
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+		<h3>With <code>&lt;o:validator&gt;</code> - disabled attribute now works request based</h3>
+		<h:form>
+			<h:panelGrid columns="3">
+				<o:outputLabel for="contactMethod" value="Contact method" />
+				<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod}">
+					<f:selectItem itemLabel="Email" itemValue="email" />
+					<f:selectItem itemLabel="Phone" itemValue="phone" />
+					<f:ajax render="contact contactMessage" />
+				</h:selectOneMenu>
+				<h:panelGroup />
+			
+				<o:outputLabel for="contact" value="Contact address" />
+				<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod}">
+					<o:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod != 'email'}" />
+					<o:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod != 'phone'}" />
+				</h:inputText>
+				<h:message id="contactMessage" for="contact" />
+
+				<h:panelGroup />
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

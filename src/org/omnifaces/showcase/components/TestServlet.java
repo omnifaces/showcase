@@ -1,4 +1,4 @@
-package org.omnifaces.showcase.resourceinclude;
+package org.omnifaces.showcase.components;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package org.omnifaces.showcase.resetinputajaxactionlistener;
+package org.omnifaces.showcase.eventlisteners;
 
 import java.io.Serializable;
 
