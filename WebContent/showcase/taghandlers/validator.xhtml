@@ -45,21 +45,20 @@
 		<h3>With <code>&lt;f:validator&gt;</code> - phone is still validated as email</h3>
 		<h:form>
 			<h:panelGrid columns="3">
-				<o:outputLabel for="contactMethod" value="Contact method" />
-				<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod}">
-					<f:selectItem itemLabel="Email" itemValue="email" />
-					<f:selectItem itemLabel="Phone" itemValue="phone" />
-					<f:ajax render="contact contactMessage" />
-				</h:selectOneMenu>
-				<h:panelGroup />
-			
-				<o:outputLabel for="contact" value="Contact address" />
-				<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod}">
-					<f:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod != 'email'}" />
-					<f:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod != 'phone'}" />
-				</h:inputText>
+				<o:outputLabel for="contact" value="Contact" />
+				<h:panelGroup>
+					<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod1}">
+						<f:selectItem itemLabel="Email" itemValue="email" />
+						<f:selectItem itemLabel="Phone" itemValue="phone" />
+						<f:ajax render="contact contactMessage" />
+					</h:selectOneMenu>
+					<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod1}">
+						<f:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod1 != 'email'}" />
+						<f:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod1 != 'phone'}" />
+					</h:inputText>
+				</h:panelGroup>
 				<h:message id="contactMessage" for="contact" />
-
+			
 				<h:panelGroup />
 				<h:commandButton value="Submit">
 					<f:ajax execute="@form" render="@form" />
@@ -73,21 +72,20 @@
 		<h3>With <code>&lt;o:validator&gt;</code> - disabled attribute now works request based</h3>
 		<h:form>
 			<h:panelGrid columns="3">
-				<o:outputLabel for="contactMethod" value="Contact method" />
-				<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod}">
-					<f:selectItem itemLabel="Email" itemValue="email" />
-					<f:selectItem itemLabel="Phone" itemValue="phone" />
-					<f:ajax render="contact contactMessage" />
-				</h:selectOneMenu>
-				<h:panelGroup />
-			
-				<o:outputLabel for="contact" value="Contact address" />
-				<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod}">
-					<o:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod != 'email'}" />
-					<o:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod != 'phone'}" />
-				</h:inputText>
+				<o:outputLabel for="contact" value="Contact" />
+				<h:panelGroup>
+					<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod2}">
+						<f:selectItem itemLabel="Email" itemValue="email" />
+						<f:selectItem itemLabel="Phone" itemValue="phone" />
+						<f:ajax render="contact contactMessage" />
+					</h:selectOneMenu>
+					<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod2}">
+						<o:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod2 != 'email'}" />
+						<o:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod2 != 'phone'}" />
+					</h:inputText>
+				</h:panelGroup>
 				<h:message id="contactMessage" for="contact" />
-
+			
 				<h:panelGroup />
 				<h:commandButton value="Submit">
 					<f:ajax execute="@form" render="@form" />
