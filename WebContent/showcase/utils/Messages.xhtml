@@ -23,7 +23,7 @@ Messages.addError("someFormId:someInputId", "This is also invalid.");
 Messages.addGlobalError("Unknown login, please try again.");
 		
 // In a managed bean action method which uses Post-Redirect-Get.
-Messages.addFlashGlobalInfo("New item is successfully added.");
+Messages.addFlashGlobalInfo("New item with id {0} is successfully added.", item.getId());
 return "items?faces-redirect=true";
 		</code></pre>
 		<p>

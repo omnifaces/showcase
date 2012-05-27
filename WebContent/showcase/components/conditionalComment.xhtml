@@ -17,7 +17,15 @@
 &lt;![endif]--&gt;
 		</code></pre>
 		<p>
-			However, Facelets renders them HTML-escaped and if <code>javax.faces.FACELETS_SKIP_COMMENTS</code> context param is
+			However, Facelets renders the comment's contents HTML-escaped which makes it unusable.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;!--[if lte IE 7]&amp;gt;
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;ie6-ie7.css&amp;quot; /&amp;gt;
+&amp;lt;![endif]--&gt;
+		</code></pre>
+		<p>
+			Also, if <code>javax.faces.FACELETS_SKIP_COMMENTS</code> context param is
 			set to <code>true</code> then it will even not be rendered at all. You would need to workaround this with an ugly
 			<code>&lt;h:outputText escape="false"&gt;</code>.
 		</p>

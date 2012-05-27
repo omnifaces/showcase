@@ -1,12 +1,16 @@
 package org.omnifaces.showcase.taghandlers;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class ValidatorBean {
+public class ValidatorBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private String contactMethod1;
 	private String contactMethod2;

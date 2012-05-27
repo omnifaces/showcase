@@ -6,10 +6,10 @@ import java.util.Locale;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class ConverterBean {
 
 	private List<Locale> locales;
