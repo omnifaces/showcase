@@ -53,7 +53,7 @@
 		<p:panel id="menu">
 			<p:panel id="panel" header="omnifaces">
 				<ul>
-					<li><h:link value="Showcase homepage" outcome="/index.xhtml" styleClass="#{view.viewId == '/index.xhtml' ? 'active' : ''}" /></li>
+					<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">Showcase homepage</a></li>
 					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
 					<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/index.html">API documentation</a></li>
 					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/index.html">VDL documentation</a></li>

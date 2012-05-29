@@ -19,9 +19,9 @@
 	xmlns:o="http://omnifaces.org/ui"
 >
 	<ui:define name="content">
-		<h:outputStylesheet library="showcase" name="prettify/prettify.css" target="head" />
-		<h:outputScript library="showcase" name="prettify/prettify.js" target="head" />
-		<h:outputScript target="body">prettyPrint();</h:outputScript>
+		<h:outputStylesheet library="showcase" name="css/prettify.css" target="head" />
+		<h:outputScript library="showcase" name="js/prettify.js" target="head" />
+		<h:outputScript library="showcase" name="js/onload.js" target="body" />
 
 		<p:panel id="description" header="Description">
 			<ui:insert name="description" />
