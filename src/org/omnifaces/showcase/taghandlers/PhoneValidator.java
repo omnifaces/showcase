@@ -14,7 +14,7 @@ import org.omnifaces.util.Messages;
 public class PhoneValidator implements Validator {
 
 	private static final Pattern PATTERN_REMOVE = Pattern.compile("[\\s()+\\-\\.]|ext", Pattern.CASE_INSENSITIVE);
-	private static final Pattern PATTERN_MATCH = Pattern.compile("\\d{7,}");
+	private static final Pattern PATTERN_MATCH = Pattern.compile("\\d{7,15}");
 
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {

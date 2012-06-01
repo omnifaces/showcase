@@ -14,26 +14,36 @@
 			dialog, or when you need a cancel/clear button. 
 		</p>
 		<p>
-			<i>Either</i> register it as <code>&lt;action-listener&gt;</code> in <code>faces-config.xml</code>. It'll be 
-			applied to every single ajax action throughout the webapp, including the standalone <code>&lt;f:ajax&gt;</code>
-			actions on <code>UIInput</code> components such as <code>&lt;h:selectOneMenu&gt;</code>.
+			Register it as <code>&lt;phase-listener&gt;</code> in <tt>faces-config.xml</tt>. It'll be applied
+			to <strong>every single</strong> ajax action throughout the webapp, on both <code>UIInput</code> and
+			<code>UICommand</code> components.
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;lifecycle&gt;
+    &lt;phase-listener&gt;org.omnifaces.eventlistener.ResetInputAjaxActionListener&lt;/phase-listener&gt;
+&lt;/lifecycle&gt;
+		</code></pre>
+		<p>
+			<i>Or</i> register it as <code>&lt;action-listener&gt;</code> in <tt>faces-config.xml</tt>. It'll
+			<strong>only</strong> be applied to ajax actions which are invoked by an <code>UICommand</code> component such as
+			<code>&lt;h:commandButton&gt;</code> and <code>&lt;h:commandLink&gt;</code>.
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
 &lt;application&gt;
     &lt;action-listener&gt;org.omnifaces.eventlistener.ResetInputAjaxActionListener&lt;/action-listener&gt;
 &lt;/application&gt;
- 		</code></pre>
+		</code></pre>
 		<p>
-			<i>Or</i> register it as <code>&lt;f:actionListener&gt;</code> on the invidivual <code>UICommand</code> components 
-			where this action listener is absolutely necessary to solve the concrete problem. It is not possible to register 
-			it on the standalone <code>&lt;f:ajax&gt;</code> actions on <code>UIInput</code> components.
+			<i>Or</i> register it as <code>&lt;f:actionListener&gt;</code> on the invidivual <code>UICommand</code>
+			components where this action listener is absolutely necessary to solve the concrete problem. Note that it isn't
+			possible to register it on the individual <code>UIInput</code> components using the standard JSF tags.
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
-&lt;h:commandButton action="\#{bean.updateOtherInputs}"&gt;
-    &lt;f:ajax execute="@this" render="otherInputs" /&gt;
+&lt;h:commandButton value="Update" action="#{bean.updateOtherInputs}"&gt;
+    &lt;f:ajax execute="currentInputs" render="otherInputs" /&gt;
     &lt;f:actionListener type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" /&gt;
 &lt;/h:commandButton&gt;
- 		</code></pre>
+		</code></pre>
  	</ui:define>		
 
 	<ui:define name="demo">
