@@ -50,6 +50,11 @@
 			</div>
 		</p:panel>
 
+		<p:panel id="content">
+			<h2><ui:insert name="contentTitle"><code>#{page.current.title}</code></ui:insert></h2>
+			<ui:insert name="content" />
+		</p:panel>
+
 		<p:panel id="menu">
 			<p:panel id="panel" header="omnifaces">
 				<ul>
@@ -75,11 +80,6 @@
 					</ul>
 				</o:treeNode>
 			</o:tree>
-		</p:panel>
-
-		<p:panel id="content">
-			<h2><ui:insert name="contentTitle"><code>#{page.current.title}</code></ui:insert></h2>
-			<ui:insert name="content" />
 		</p:panel>
 	</h:body>
 </html>
