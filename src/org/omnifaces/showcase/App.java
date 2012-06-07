@@ -52,6 +52,7 @@ public class App {
 
 	private TreeModel<Page> menu;
 	private Map<String, Page> pages;
+	private String version;
 	private String poweredBy;
 
 	// Initialization -------------------------------------------------------------------------------------------------
@@ -62,7 +63,8 @@ public class App {
 		fillMenu(menu);
 		pages = new HashMap<String, Page>();
 		fillPages(pages, menu);
-		poweredBy = initPoweredBy();
+		version = Faces.class.getPackage().getSpecificationVersion();
+		poweredBy = initPoweredBy(version);
 	}
 
 	private static void fillMenu(TreeModel<Page> menu) {
@@ -177,10 +179,10 @@ public class App {
 		}
 	}
 
-	private static String initPoweredBy() {
+	private static String initPoweredBy(String omniFacesVersion) {
 		return String.format("%s%nOmniFaces %s%nPrimeFaces %s%n%s",
 			Faces.getImplInfo(),
-			Faces.class.getPackage().getSpecificationVersion(),
+			omniFacesVersion,
 			org.primefaces.util.Constants.VERSION,
 			Faces.getServerInfo());
 	}
@@ -193,6 +195,10 @@ public class App {
 
 	public Map<String, Page> getPages() {
 		return pages;
+	}
+
+	public String getVersion() {
+		return version;
 	}
 
 	public String getPoweredBy() {

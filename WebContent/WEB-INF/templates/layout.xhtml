@@ -60,8 +60,8 @@
 				<ul>
 					<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">Showcase homepage</a></li>
 					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
-					<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/index.html">API documentation</a></li>
-					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/index.html">VDL documentation</a></li>
+					<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{app.version}/index.html">API documentation</a></li>
+					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{app.version}/index.html">VDL documentation</a></li>
 				</ul>
 			</p:panel>
 			<o:tree id="menu_tree" value="#{app.menu}" var="page">
