@@ -18,11 +18,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
 >
+	<ui:param name="apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{app.version}/" />
+	<ui:param name="vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{app.version}/" />
+	<ui:param name="srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" />
+
 	<h:head>
 		<title><ui:insert name="title">OmniFaces Showcase - #{page.current.title}</ui:insert></title>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-		<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico" />
+		<base href="#{app.baseURL}" />
+		<link rel="shortcut icon" href="favicon.ico" />
 		<h:outputStylesheet library="layout" name="css/layout.css" />
 		<h:outputScript>
 			var _gaq = _gaq || [];
@@ -40,13 +46,15 @@
 	<h:body>
 		<p:panel id="header" styleClass="ui-widget-header">
 			<h1>
-				<a href="#{request.contextPath}/">
+				<a href=".">
 					<h:graphicImage library="layout" name="img/logo-70x70.png" alt="logo" width="70" height="70" />
 					OmniFaces Showcase
 				</a>
 			</h1>
 			<div id="poweredBy">
-				<strong>Powered by</strong><br/>#{app.poweredBy}
+				<strong>Powered by</strong>
+				#{app.poweredBy}
+				Server (re)started at #{of:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm:ss', 'UTC')} UTC
 			</div>
 		</p:panel>
 
@@ -58,10 +66,10 @@
 		<p:panel id="menu">
 			<p:panel id="panel" header="omnifaces">
 				<ul>
-					<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">Showcase homepage</a></li>
+					<li><a href="." class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">Showcase homepage</a></li>
 					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
-					<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{app.version}/index.html">API documentation</a></li>
-					<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{app.version}/index.html">VDL documentation</a></li>
+					<li><a href="#{apiURL}index.html">API documentation</a></li>
+					<li><a href="#{vdlURL}index.html">VDL documentation</a></li>
 				</ul>
 			</p:panel>
 			<o:tree id="menu_tree" value="#{app.menu}" var="page">

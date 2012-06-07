@@ -24,24 +24,23 @@
 			Rightclick the page and <i>View Source</i>.
 			It is recognizeable by library name <code>omnifaces.combined</code>. It are the following ones:
 		</p>
-		<ui:param name="resourceBaseURL" value="#{request.contextPath}/javax.faces.resource/" /> 
 		<ul>
 			<ui:repeat value="#{view.getComponentResources(facesContext, 'head')}" var="res">
-				<ui:param name="resourceRequestPath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
-				<li><a href="#{resourceBaseURL}#{resourceRequestPath}">#{resourceRequestPath}</a></li>
+				<ui:param name="resourcePath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
+				<li><a href="javax.faces.resource/#{resourcePath}">#{resourcePath}</a></li>
 			</ui:repeat>
 		</ul>
 		<p>
 			The CSS one has combined the three CSS files
-			<a href="#{resourceBaseURL}css/layout.css.xhtml?ln=layout">layout.css</a>, 
-			<a href="#{resourceBaseURL}primefaces.css.xhtml?ln=primefaces&amp;v=3.2">primefaces.css</a> and 
-			<a href="#{resourceBaseURL}css/prettify.css.xhtml?ln=showcase">prettify.css</a>. 
+			<a href="javax.faces.resource/css/layout.css.xhtml?ln=layout">layout.css</a>, 
+			<a href="javax.faces.resource/primefaces.css.xhtml?ln=primefaces&amp;v=3.2">primefaces.css</a> and 
+			<a href="javax.faces.resource/css/prettify.css.xhtml?ln=showcase">prettify.css</a>. 
 			The JS one has combined the five JS files 
-			<a href="#{resourceBaseURL}jquery/jquery.js.xhtml?ln=primefaces&amp;v=3.2">jquery.js</a>,
-			<a href="#{resourceBaseURL}primefaces.js.xhtml?ln=primefaces&amp;v=3.2">primefaces.js</a>,
-			<a href="#{resourceBaseURL}jsf.js.xhtml?ln=javax.faces">jsf.js</a>,
-			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
-			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a>. 
+			<a href="javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&amp;v=3.2">jquery.js</a>,
+			<a href="javax.faces.resource/primefaces.js.xhtml?ln=primefaces&amp;v=3.2">primefaces.js</a>,
+			<a href="javax.faces.resource/jsf.js.xhtml?ln=javax.faces">jsf.js</a>,
+			<a href="javax.faces.resource/omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
+			<a href="javax.faces.resource/js/prettify.js.xhtml?ln=showcase">prettify.js</a>. 
 			Note that the PrimeFaces theme CSS file cannot be combined because it's not been added as a JSF resource,
 			but hardcoded in PrimeFaces' <code>HeadRenderer</code> so that it could be generated as the very first CSS link
 			to avoid CSS inheritance problems in custom CSS files which are supposed to override PrimeFaces default CSS.

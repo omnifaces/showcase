@@ -11,7 +11,7 @@
         <p>
             Instead, Facelets source files can be put into the special <code>/WEB-INF/faces-views</code>
             directory, from where they will be automatically scanned. See the 
-            <a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{app.version}/org/omnifaces/facesviews/package-summary.html">package documentation</a>
+            <a href="#{apiURL}org/omnifaces/facesviews/package-summary.html">package documentation</a>
             for additional details.
         </p>
     </ui:define>
@@ -19,13 +19,12 @@
     <ui:define name="demo">
         <p>
             Navigate to FacesViews pages without an extension: 
-            <a href="#{request.contextPath}/viewsdemo">#{request.contextPath}/viewsdemo</a>
+            <a href="viewsdemo">viewsdemo</a>
         </p>
 
         <p>
             Navigate to FacesViews pages with extension: 
-            <a href="#{request.contextPath}/viewsdemo.xhtml">#{request.contextPath}/viewsdemo.xhtml</a>
+            <a href="viewsdemo.xhtml">viewsdemo.xhtml</a>
         </p>
-
     </ui:define>
 </ui:composition>

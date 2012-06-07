@@ -1,7 +1,10 @@
-<ui:composition template="/WEB-INF/templates/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:o="http://omnifaces.org/ui">
-
+<ui:composition template="/WEB-INF/templates/layout.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:o="http://omnifaces.org/ui"
+>
     <ui:define name="contentTitle">Viewsdemo</ui:define>
 
     <ui:define name="content">
@@ -15,7 +18,9 @@
             without.
         </p>
 
-        <h:link value="Link to other FacesViews scanned page" outcome="/other/second" />
+        <p>
+        	<h:link value="Link to other FacesViews scanned page" outcome="/other/second" />
+        </p>
 
         <p>
             Command button that invokes an action and afterwards redirects to the "second" page:
@@ -26,9 +31,9 @@
         </h:form>
 
         <hr />
-        <h:link value="Back to entry demo page" outcome="/showcase/facesviews/ExtensionlessURLs.xhtml" />
 
+        <p>
+	        <h:link value="Back to entry demo page" outcome="/showcase/facesviews/ExtensionlessURLs.xhtml" />
+	    </p>
     </ui:define>
-
-
 </ui:composition>
