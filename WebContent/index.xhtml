@@ -10,6 +10,8 @@
 			Live examples of the <a href="http://code.google.com/p/omnifaces/">OmniFaces</a> components and utilities
             can be tried out here. Please check out the left side menu.
 		</p>
+
+		<h3>What is OmniFaces?</h3>
 		<p>
 			OmniFaces is a library for JSF 2.x that focuses on utilities that ease everyday tasks. An important design 
 			goal will be to have as few dependencies as possible and to be minimally invasive. So far, it only requires
@@ -32,7 +34,7 @@
 			<h:link value="'all-or-none' validators" outcome="/showcase/validators/validateAllOrNone.xhtml" /> 
 			to 
 			<h:link value="converters which automatically convert Java models" outcome="/showcase/converters/SelectItemsConverter.xhtml" />
-			for usage in e.g. a drop-down menu. There is also a 
+			for usage in f:selectItem(s). There is also a 
 			<h:link value="full ajax exception handler" outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler.xhtml" />
 			which will automatically handle all ajax exceptions with the default <code>web.xml</code> error-page mechanisms.
 		</p>
@@ -42,6 +44,45 @@
 			<a href="http://code.google.com/p/omnifaces-showcase/">code.google.com/p/omnifaces-showcase</a>.
 			Full source code for all demos is available at 
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/">code.google.com/p/omnifaces-showcase/source/browse</a>.
+		</p>
+
+		<h3>Installation</h3>
+		<p>
+			It is a matter of dropping
+			<a href="http://code.google.com/p/omnifaces/downloads/list">the JAR file</a> 
+			in <code>/WEB-INF/lib</code>. The OmniFaces UI components/taghandlers and EL functions are available under 
+			the following XML namespaces:
+		</p>
+		<blockquote>
+			<code>xmlns:o="http://omnifaces.org/ui"</code><br/>
+			<code>xmlns:of="http://omnifaces.org/functions"</code><br/>
+		</blockquote>
+		<p>
+			Maven integration is currently being worked on. Please have a bit of patience. As first mandatory step, 
+			we have recently registered the omnifaces.org domain for that.
+		</p>
+		
+		<h3>Documentation</h3>
+		<ul>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/1.0/index.html">OmniFaces 1.0 API documentation</a></li>
+			<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/1.0/index.html">OmniFaces 1.0 VDL documentation</a></li>
+		</ul>
+
+		<h3>Support</h3>
+		<p>
+			If you have specific programming problems or questions related to the OmniFaces library, feel free to post
+			a question on 
+			<a href="http://stackoverflow.com">stackoverflow.com</a> using at least the 
+			<a href="http://stackoverflow.com/questions/tagged/jsf">[jsf]</a> and 
+			<a href="http://stackoverflow.com/questions/tagged/omnifaces">[omnifaces]</a> tags.
+		</p>
+		<p>
+			If you have found bugs or have new ideas, feel free to open a 
+			<a href="http://code.google.com/p/omnifaces/issues/list">new issue</a>. Use 
+			<a href="http://code.google.com/p/omnifaces/issues/entry?template=Defect%20report%20from%20user">"defect report" template</a>
+			to report a (possible) bug and use 
+			<a href="http://code.google.com/p/omnifaces/issues/entry?template=Feature%20request%20from%20user">"feature request" template</a>
+			to request a new feature or enhancement.
 		</p>
 	</ui:define>
 </ui:composition>

@@ -206,7 +206,7 @@ public class App {
 	}
 
 	public String getBaseURL() {
-		return Faces.getRequestBaseURL();
+		return Faces.getRequestBaseURL().split(":", 2)[1];
 	}
 
 }
