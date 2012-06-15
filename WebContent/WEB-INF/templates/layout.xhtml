@@ -29,7 +29,6 @@
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<base href="#{app.baseURL}" />
 		<link rel="shortcut icon" href="favicon.ico" />
-		<h:outputStylesheet library="layout" name="css/layout.css" />
 		<h:outputScript>
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-29559297-3']);
@@ -44,6 +43,8 @@
 	</h:head>
 
 	<h:body>
+		<h:outputStylesheet library="layout" name="css/layout.css" />
+
 		<p:panel id="header" styleClass="ui-widget-header">
 			<h1>
 				<a href=".">
@@ -81,7 +82,7 @@
 					</o:treeNodeItem>
 				</o:treeNode>
 				<o:treeNode>
-					<ul>
+					<ul class="group clearleft">
 						<o:treeNodeItem>
 							<li><h:link value="#{page.title}" outcome="#{page.viewId}" styleClass="code#{view.viewId == page.viewId ? ' active' : ''}" /></li>
 						</o:treeNodeItem>
