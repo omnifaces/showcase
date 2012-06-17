@@ -1,0 +1,84 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:o="http://omnifaces.org/ui"
+>
+    <ui:define name="description">
+        <p>
+            The <code>&lt;o:componentIdParam&gt;</code> component allows to render just one or more components on a view via a GET
+            parameter.
+        </p>
+        <p>
+            Components can be identified via both their client id or simple component id. Via the former it's possible to
+            e.g. render only a specific row in a table. For specific cases, it's possible to render only the parent
+            component and omit any children.
+        </p>
+        <p>
+            Among the use cases for this is creating simple mashups from various JSF based views, and scripts needing to obtain
+            markup for specific components on an initial (non-faces) request.
+        </p>
+        <p>
+            Note that this is a rather specialized component and for many common use cases the user is advised to investigate if the existing
+            AJAX and partial page requests in JSF don't already cover the requirements. For the moment this component only supports the 
+            direct output of the original markup and does not wrap it into any "partial response" envelope.
+        </p>
+    </ui:define>
+
+    <ui:define name="demo">
+        <f:metadata>
+            <o:componentIdParam componentIdName="component" clientIdName="client" />
+        </f:metadata>
+       
+        <h:outputText id="foo" value="Foo component" /><br/><br/>
+
+        Form: <br/>
+        <h:form id="form">
+            Submitted value: #{componentParamBean.boo}
+            <h:inputText value="#{componentParamBean.boo}" />
+            <h:commandButton value="submit" action="#{componentParamBean.doAction}" />
+        </h:form><br/>
+
+        <h:outputText id="bar" value="Bar Component" /><br/><br/>
+
+        Table: <br/>
+        <h:dataTable id="table" value="#{componentParamBean.items}" var="item">
+            <h:column>
+                <h:panelGroup id="pop">
+                    <h:outputText id="row" value="Row #{item}" />
+                </h:panelGroup>
+            </h:column>
+        </h:dataTable><br/>
+        
+        <hr/>
+        
+        <h:link>
+            <f:param name="component" value="table"/>
+            Render only table component on new page
+        </h:link>
+        <br/>
+        <h:link>
+            <f:param name="client" value="table:1:row"/>
+            Render single table row on new page
+        </h:link>
+        <br/>
+        <h:link>
+            <f:param name="component" value="foo"/>
+            <f:param name="component" value="bar"/>
+            Render foo and bar components on new page
+        </h:link>
+        <br/>
+         <h:link>
+            <f:param name="component" value="form"/>
+            Render form on new page
+        </h:link>
+        <br />
+        <a href="#" onClick="$('#contentDiv').load('#{request.requestURI}?component=table'); return false;">
+           Load table into DIV using jQuery
+        </a>
+        <div id="contentDiv"></div>
+
+    </ui:define>
+    
+</ui:composition>

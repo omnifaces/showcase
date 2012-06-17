@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE project>
+<!--
+
+  OmniFaces ANT Build file that copies the actual Java source files to the build directory, from
+  where it will be included in the war build.
+  
+-->
+<project name="copy_source" default="copy">
+	<target name="copy">
+		<copy todir="./build/classes" overwrite="false">
+			<fileset dir="src" includes="**/*.java"/>
+		</copy>
+	</target>
+</project>
