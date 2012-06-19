@@ -64,7 +64,7 @@ public class App {
 		pages = new HashMap<String, Page>();
 		fillPages(pages, menu);
 		version = initVersion();
-		poweredBy = initPoweredBy(version);
+		poweredBy = initPoweredBy();
 	}
 
 	private static void fillMenu(TreeModel<Page> menu) {
@@ -184,10 +184,10 @@ public class App {
 		return (version != null && !version.contains("SNAPSHOT")) ? version : null;
 	}
 
-	private static String initPoweredBy(String omniFacesVersion) {
+	private static String initPoweredBy() {
 		return String.format("%s%nOmniFaces %s%nPrimeFaces %s%n%s",
 			Faces.getImplInfo(),
-			omniFacesVersion,
+			Faces.class.getPackage().getSpecificationVersion(),
 			org.primefaces.util.Constants.VERSION,
 			Faces.getServerInfo());
 	}
