@@ -16,7 +16,11 @@
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
-		<param-value>65535</param-value>	
+		<param-value>65535</param-value> <!-- 64KB -->
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
+		<param-value>3628800000</param-value> <!-- 6 weeks -->	
 	</context-param>
 
 	<servlet>
@@ -35,6 +39,14 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>facesExceptionFilter</filter-name>
+		<servlet-name>facesServlet</servlet-name>
+	</filter-mapping>
+	<filter>
+		<filter-name>gzipResponseFilter</filter-name>
+		<filter-class>org.omnifaces.filter.GzipResponseFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>gzipResponseFilter</filter-name>
 		<servlet-name>facesServlet</servlet-name>
 	</filter-mapping>
 

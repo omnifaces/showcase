@@ -63,7 +63,7 @@ public class App {
 		fillMenu(menu);
 		pages = new HashMap<String, Page>();
 		fillPages(pages, menu);
-		version = Faces.class.getPackage().getSpecificationVersion();
+		version = initVersion();
 		poweredBy = initPoweredBy(version);
 	}
 
@@ -177,6 +177,11 @@ public class App {
 
 			fillPages(pages, node);
 		}
+	}
+
+    private static String initVersion() {
+		String version = Faces.class.getPackage().getSpecificationVersion();
+		return (version != null && !version.contains("SNAPSHOT")) ? version : null;
 	}
 
 	private static String initPoweredBy(String omniFacesVersion) {

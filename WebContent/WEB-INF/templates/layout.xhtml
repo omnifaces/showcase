@@ -20,9 +20,10 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:param name="apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{app.version}/" />
-	<ui:param name="vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{app.version}/" />
-	<ui:param name="srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" />
+	<ui:param name="_versionPath" value="#{empty app.version ? '' : of:concat(app.version, '/')}" />
+	<ui:param name="_apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{_versionPath}" />
+	<ui:param name="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_versionPath}" />
+	<ui:param name="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" />
 
 	<h:head>
 		<title><ui:insert name="title">OmniFaces Showcase - #{page.current.title}</ui:insert></title>
@@ -69,8 +70,8 @@
 				<ul>
 					<li><a href="." class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">Showcase homepage</a></li>
 					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
-					<li><a href="#{apiURL}index.html">API documentation</a></li>
-					<li><a href="#{vdlURL}index.html">VDL documentation</a></li>
+					<li><a href="#{_apiURL}index.html">API documentation</a></li>
+					<li><a href="#{_vdlURL}index.html">VDL documentation</a></li>
 				</ul>
 			</p:panel>
 			<o:tree id="menu_tree" value="#{app.menu}" var="page">
