@@ -48,6 +48,8 @@
 	<filter-mapping>
 		<filter-name>gzipResponseFilter</filter-name>
 		<servlet-name>facesServlet</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
 
 	<welcome-file-list>
