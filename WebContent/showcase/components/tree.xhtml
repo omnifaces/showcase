@@ -21,7 +21,7 @@
 		<p>
 			In the below editable tree example, all input values are required. Clear some of them and then submit to see
 			proper validation message handling. If all values are valid, then the static tree will also be updated with
-			submitted values.
+			submitted values. You can also dynamically add/remove nodes.
 		</p>
 	</ui:define>
 
@@ -49,25 +49,46 @@
 		<hr/>
 
 		<h3>Editable tree</h3>
+		<ui:param name="saveButtonPressed" value="#{param['javax.faces.source'] == 'form:save'}" />
 		<h:form id="form">
-			<o:tree id="tree" value="#{treeBean.tree}" var="exampleEntity">
+			<o:tree id="tree" value="#{treeBean.tree}" var="exampleEntity" varNode="node">
 				<o:treeNode>
 					<ul>
 						<o:treeNodeItem>
 							<li>
-								<o:outputLabel for="value" value="ID #{exampleEntity.id}" />
-								<h:inputText id="value" value="#{exampleEntity.value}" required="true" />
+								<h:inputText id="value" value="#{exampleEntity.value}" styleClass="treeinput"
+									required="#{saveButtonPressed}" requiredMessage="Please enter value"
+									autofocus="#{facesContext.postback and empty component.value}" />
+								<h:commandButton value="Add new child" action="#{treeBean.addChild(node)}">
+									<f:ajax execute="@form" render="@form" />
+								</h:commandButton>
+								<h:commandButton value="Remove node" action="#{treeBean.remove(node)}">
+									<f:ajax execute="@form" render="@form" />
+								</h:commandButton>
 								<h:message for="value" />
 								<o:treeInsertChildren />
 							</li>
 						</o:treeNodeItem>
+						<h:commandButton value="Add new node" action="#{treeBean.addChild(node)}" 
+							rendered="#{node.level == 0 or not empty node.children}">
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton>
 					</ul>
 				</o:treeNode>
 			</o:tree>
-			<h:commandButton value="Save">
+			<h:commandButton id="save" value="Save" action="#{treeBean.save}">
 				<f:ajax execute="@form" render=":demo" />
 			</h:commandButton> (only for this view scope ;) )
 			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		</h:form>
+
+		<o:onloadScript>
+			$(".treeinput").on("keypress", function(event) {
+				if (event.keyCode == 13) {
+					$(this).closest("form").find("[id$=save]").click();
+					return false;
+				}
+			});
+		</o:onloadScript>
 	</ui:define>
 </ui:composition>

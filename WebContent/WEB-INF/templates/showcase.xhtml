@@ -17,6 +17,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
+	xmlns:os="http://omnifaces.org/showcase"
 >
 	<ui:define name="content">
 		<h:outputStylesheet library="showcase" name="css/prettify.css" target="head" />
@@ -42,18 +43,10 @@
 			</p:panel>
 		</ui:fragment>
 
-		<p:panel id="documentation" header="Documentation" rendered="#{not empty page.current.documentation.apidocs}">
-			<ul>
-				<ui:repeat value="#{page.current.documentation.vdldocs}" var="path">
-					<li><a href="#{_vdlURL}#{path}.html"><code>#{path.replace('/', ':')}</code> VDL documentation</a></li>
-				</ui:repeat>
-				<ui:repeat value="#{page.current.documentation.apidocs}" var="path">
-					<li><a href="#{_apiURL}org/omnifaces/#{path}.html"><code>org.omnifaces.#{path.replace('/', '.')}</code> API documentation</a></li>
-				</ui:repeat>
-				<ui:repeat value="#{page.current.documentation.codes}" var="path">
-					<li><a href="#{_srcURL}org/omnifaces/#{path}.java#{empty app.version ? '' : of:concat('?name=', app.version)}"><code>org.omnifaces.#{path.replace('/', '.')}</code> source code</a></li>
-				</ui:repeat>
-			</ul>
+		<p:panel id="documentation" header="Documentation" rendered="#{not empty page.current.documentation}">
+			<os:listdocs header="VDL" docs="vdldocs" url="#{_vdlURL}#{path}.html" label="#{path.replace('/', ':')}" />
+			<os:listdocs header="API" docs="apidocs" url="#{_apiURL}org/omnifaces/#{path}.html" label="org.omnifaces.#{path.replace('/', '.')}" />
+			<os:listdocs header="Source code" docs="codes" url="#{_srcURL}org/omnifaces/#{path}.java#{_srcVersionParam}" label="org.omnifaces.#{path.replace('/', '.')}" />
 		</p:panel>
 	</ui:define>
 </ui:composition>

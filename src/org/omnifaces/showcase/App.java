@@ -143,7 +143,9 @@ public class App {
 		String[] vdldocs = getCommaSeparatedProperty(properties, documentationKey + ".vdl.paths");
 		String[] apidocs = getCommaSeparatedProperty(properties, documentationKey + ".api.paths");
 		String[] codes = getCommaSeparatedProperty(properties, documentationKey + ".code.paths");
-		return new Documentation(vdldocs, apidocs, codes.length == 0 ? apidocs : codes);
+		return (vdldocs.length + apidocs.length + codes.length > 0)
+			? new Documentation(vdldocs, apidocs, codes.length == 0 ? apidocs : codes)
+			: null;
 	}
 
 	private static String[] getCommaSeparatedProperty(Properties properties, String key) {

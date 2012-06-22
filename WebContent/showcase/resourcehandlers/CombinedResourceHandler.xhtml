@@ -7,9 +7,9 @@
 >
 	<ui:define name="description">
 		<p>
-			This <code>ResourceHandler</code> implementation will remove all separate script and stylesheet resources 
-			from the head and create a combined one for all scripts and another combined one for all stylesheets.
-			This has the benefit that the amount of necessary HTTP requests is reduced.
+			This <code>ResourceHandler</code> implementation will remove all separate script and stylesheet resources which have the
+			<code>target</code> attribute set to <code>"head"</code> from the <code>UIViewRoot</code> and create a combined one
+			for all scripts and another combined one for all stylesheets.
 		</p>
 		<p>
 			This handler must be registered as follows in <code>faces-config.xml</code> in order to get it to run:
@@ -18,6 +18,19 @@
 &lt;application&gt;
     &lt;resource-handler&gt;org.omnifaces.resourcehandler.CombinedResourceHandler&lt;/resource-handler&gt;
 &lt;/application&gt;
+		</code></pre>
+		<p>
+			Note that the <code>target</code> attribute of <code>&lt;h:outputStylesheet&gt;</code> already defaults to
+			<code>"head"</code> but the one of <code>&lt;h:outputScript&gt;</code> not. So if you have placed this inside the
+			<code>&lt;h:head&gt;</code>, then you would still need to explicitly set its <code>target</code> attribute to
+			<code>"head"</code>, otherwise it will be treated as an inline script and not be combined. This is a design
+			limitation.
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;h:head&gt;
+    &lt;h:outputStylesheet name="style.css" /&gt;
+    &lt;h:outputScript name="script.js" target="head" /&gt;
+&lt;/h:head&gt;
 		</code></pre>
 		<p>
 			This resource handler is enabled in this showcase web application. 

@@ -20,9 +20,10 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:param name="_versionPath" value="#{empty app.version ? '' : of:concat(app.version, '/')}" />
-	<ui:param name="_apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{_versionPath}" />
-	<ui:param name="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_versionPath}" />
+	<ui:param name="_docVersionPath" value="#{empty app.version ? '' : of:concat(app.version, '/')}" />
+	<ui:param name="_srcVersionParam" value="#{empty app.version ? '' : of:concat('?name=', app.version)}" />
+	<ui:param name="_apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{_docVersionPath}" />
+	<ui:param name="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_docVersionPath}" />
 	<ui:param name="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" />
 
 	<h:head>

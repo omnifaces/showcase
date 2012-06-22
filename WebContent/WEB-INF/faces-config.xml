@@ -12,4 +12,9 @@
  	<factory>
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
 	</factory>
+
+	<render-kit>
+		<render-kit-id>HTML_BASIC</render-kit-id>
+		<render-kit-class>org.omnifaces.renderkit.Html5RenderKit</render-kit-class>
+	</render-kit>
 </faces-config>

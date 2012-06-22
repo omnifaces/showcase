@@ -1,0 +1,115 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			This HTML5 render kit adds support for HTML5 specific attributes which are unsupported by the JSF <code>UIForm</code> and
+			<code>UIInput</code> components. So far in JSF 2.0 and 2.1 only the <code>autocomplete</code> attribute is supported in
+			<code>UIInput</code> components. All other attributes are by design ignored by the JSF standard HTML render kit. This
+			HTML5 render kit supports the following HTML5 specific attributes:
+		</p>
+		<ul>
+			<li><code>UIForm</code>: <ul><li><code>autocomplete</code></li></ul></li>
+			<li><code>UISelectBoolean</code>, <code>UISelectOne</code> and <code>UISelectMany</code>:
+			<ul><li><code>autofocus</code></li></ul></li>
+			<li><code>HtmlInputTextarea</code>: <ul><li><code>autofocus</code></li><li><code>maxlength</code></li>
+			<li><code>placeholder</code></li><li><code>wrap</code></li></ul></li>
+			<li><code>HtmlInputText</code>: <ul><li><code>type</code> (supported values are
+			<code>text</code> (default), <code>search</code>, <code>email</code>, <code>url</code>, <code>tel</code>,
+			<code>range</code>, <code>number</code> and <code>date</code>)</li><li><code>autofocus</code></li>
+			<li><code>list</code></li><li><code>pattern</code></li><li><code>placeholder</code></li><li><code>min</code></li>
+			<li><code>max</code></li><li><code>step</code></li></ul>(the latter three are only supported on <code>type</code> of
+			<code>range</code>, <code>number</code> and <code>date</code>)</li>
+		</ul>
+		<p>
+			Note: the <code>list</code> attribute expects a <code>&lt;datalist&gt;</code> element which needs to be coded in
+			"plain vanilla" HTML (and is currently, June 2012, only supported in Firefox 4 and Opera 11). See also
+			<a href="http://www.html5tutorial.info/html5-datalist.php">HTML5 tutorial</a>.
+		</p>
+		<p>
+			To use the HTML5 render kit, register it as follows in <code>faces-config.xml</code>:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;render-kit&gt;
+    &lt;render-kit-id&gt;HTML_BASIC&lt;/render-kit-id&gt;
+    &lt;render-kit-class&gt;org.omnifaces.renderkit.Html5RenderKit&lt;/render-kit-class&gt;
+&lt;/render-kit&gt;
+		</code></pre>
+		<p>
+			This HTML5 render kit is enabled in this showcase web application. The below demo shows that the HTML5 
+			attributes on JSF components are actually been rendered instead of ignored. Note that this page should have
+			scrolled down to the demo when you opened it, this is because of the <code>autofocus</code> field :)
+		</p>
+ 	</ui:define>
+
+ 	<ui:define name="demo">
+ 		<h:form>
+		    <h:panelGrid columns="3">
+		        <h:outputLabel for="text" value="Normal text" />
+		        <h:inputText id="text" value="#{html5Bean.text1}" />
+		        <h:outputText value="Supported in all browsers" />
+
+		        <h:outputLabel for="placeholder" value="With placeholder" />
+		        <h:inputText id="placeholder" value="#{html5Bean.text2}" placeholder="type here" />
+		        <h:outputText value="Since Firefox 4, Safari 4, Chrome 10, Opera 11.10 and IE 10" />
+
+		        <h:outputLabel for="autofocus" value="With autofocus" />
+		        <h:inputText id="autofocus" value="#{html5Bean.text3}" autofocus="true" />
+		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 11 and IE 10" />
+
+		        <h:outputLabel for="search" value="Search" />
+		        <h:inputText id="search" type="search" value="#{html5Bean.search}" />
+		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 9" />
+
+		        <h:outputLabel for="email" value="Email" />
+		        <h:inputText id="email" type="email" value="#{html5Bean.email}" />
+		        <h:outputText value="Since Firefox 4, Chrome 6, Opera 10.6 and IE 10" />
+
+		        <h:outputLabel for="url" value="URL" />
+		        <h:inputText id="url" type="url" value="#{html5Bean.url}" />
+		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 10" />
+
+		        <h:outputLabel for="phone" value="Phone" />
+		        <h:inputText id="phone" type="tel" value="#{html5Bean.phone}" />
+		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 10" />
+
+		        <h:outputLabel for="range" value="Range (between 1 and 10)" />
+		        <h:inputText id="range" type="range" value="#{html5Bean.range}" min="1" max="10" />
+		        <h:outputText value="Since Safari 4, Chrome 6, Opera 11 and IE 10" />
+
+		        <h:outputLabel for="number" value="Number (between 7 and 13)" />
+		        <h:inputText id="number" type="number" value="#{html5Bean.number}" min="7" max="13" />
+		        <h:outputText value="Since Safari 4, Chrome 9 and Opera 11" />
+
+		        <h:outputLabel for="date" value="Date" />
+		        <h:inputText id="date" type="date" value="#{html5Bean.date}" converterMessage="Format must be yyyy-MM-dd">
+		            <f:convertDateTime pattern="yyyy-MM-dd" />
+		        </h:inputText>
+		        <h:panelGroup>
+		            <h:outputText value="Since Opera 10.6" rendered="#{not facesContext.validationFailed}" />
+		            <h:message for="date" />
+		        </h:panelGroup>
+
+		        <h:outputLabel for="textarea1" value="Textarea with maxlength of 20" />
+		        <h:inputTextarea id="textarea1" value="#{html5Bean.text4}" maxlength="20" cols="22" />
+		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 11 and IE 10" />
+
+		        <h:outputLabel for="textarea2" value="Textarea with placeholder" />
+		        <h:inputTextarea id="textarea2" value="#{html5Bean.text5}" placeholder="some text" cols="22" />
+		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 10, Opera 11.50 and IE 10" />
+
+		        <h:panelGroup />
+		        <h:commandButton value="submit">
+		            <f:ajax execute="@form" render="@form" />
+		        </h:commandButton>
+		        <h:panelGroup>
+		            <h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+		        </h:panelGroup>
+		    </h:panelGrid>
+		</h:form>
+ 	</ui:define>
+</ui:composition>

@@ -6,7 +6,9 @@
     version="2.0"
 >
     <namespace>http://omnifaces.org/showcase</namespace>
+    <composite-library-name>showcase</composite-library-name>
 
+	<!-- Demo tags, used in methodParam page only. -->
 	<tag>
   		<tag-name>actionmethod</tag-name>
   		<source>tags/actionmethod.xhtml</source>

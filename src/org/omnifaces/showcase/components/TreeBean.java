@@ -23,17 +23,22 @@ public class TreeBean implements Serializable {
 		tree = new ListTreeModel<ExampleEntity>();
 		tree.addChild(new ExampleEntity(1L, "One"))
 				.addChild(new ExampleEntity(2L, "Two")).getParent()
-				.addChild(new ExampleEntity(3L, "Three"))
-					.addChild(new ExampleEntity(4L, "Four")).getParent()
-					.addChild(new ExampleEntity(5L, "Five"))
-						.addChild(new ExampleEntity(6L, "Six")).getParent()
-						.getParent()
-					.getParent()
-				.addChild(new ExampleEntity(7L, "Seven")).getParent()
-				.addChild(new ExampleEntity(8L, "Eight")).getParent()
+				.addChild(new ExampleEntity(3L, "Three")).getParent()
 				.getParent()
-			.addChild(new ExampleEntity(9L, "Nine"))
-				.addChild(new ExampleEntity(10L, "Ten"));
+			.addChild(new ExampleEntity(4L, "Four"))
+				.addChild(new ExampleEntity(5L, "Five"));
+	}
+
+	public void addChild(TreeModel<ExampleEntity> node) {
+		node.addChild(new ExampleEntity());
+	}
+
+	public void remove(TreeModel<ExampleEntity> node) {
+		node.remove();
+	}
+
+	public void save() {
+		//
 	}
 
 	public TreeModel<ExampleEntity> getTree() {
