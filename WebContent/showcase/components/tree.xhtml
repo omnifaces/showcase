@@ -27,7 +27,7 @@
 
 	<ui:define name="demo">
 		<h3>Static tree</h3>
-		<o:tree value="#{treeBean.tree}" var="exampleEntity" varNode="node">
+		<o:tree id="staticTree" value="#{treeBean.tree}" var="exampleEntity" varNode="node">
 			<o:treeNode level="0">
 				<o:treeNodeItem>
 					<h4>#{node.index} #{exampleEntity.value}</h4>
@@ -77,12 +77,13 @@
 				</o:treeNode>
 			</o:tree>
 			<h:commandButton id="save" value="Save" action="#{treeBean.save}">
-				<f:ajax execute="@form" render=":demo" />
+				<f:ajax execute="@form" render="@form" />
 			</h:commandButton> (only for this view scope ;) )
 			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		</h:form>
 
 		<o:onloadScript>
+			// Force input elements to invoke "Save" button on enter key instead of one of those "add"/"remove" buttons.
 			$(".treeinput").on("keypress", function(event) {
 				if (event.keyCode == 13) {
 					$(this).closest("form").find("[id$=save]").click();
