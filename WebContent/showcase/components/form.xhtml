@@ -1,0 +1,51 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			The	<code>&lt;o:form&gt;</code>	extends the standard <code>&lt;h:form&gt;</code>
+			and provides support for including view parameters in the URL that's used for the post-back.
+		</p>
+		<p>
+			By setting the new <b><code>includeViewParams</code></b> parameter to true (default is false),
+			the current value of every view parameter will be added to the action URL that will be rendered
+			on the form. This is similar to how the parameter of the same name can be used on the
+			<code>&lt;h:link&gt;</code> and	<code>&lt;h:button&gt;</code> components.
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<f:metadata>
+			<o:viewParam id="test" name="test" value="#{viewParamBean.test}" />
+		</f:metadata>
+
+		<p>
+			First do a GET request to the current page to start using a view parameter.<br />
+			<h:link value="Do GET request">
+				<f:param name="test" value="foo" />
+			</h:link>
+		</p>
+
+		<p>
+			<o:form includeViewParams="true">
+				Secondly, do one or more POSTs in an o:form to see that the GET parameter
+				is preserved. <br />
+				<h:commandLink value="POST-BACK o:form" action="#{viewParamBean.action}" />
+			</o:form>
+		</p>
+
+		<p>
+			<h:form>
+                Finally, do a POST via an h:form to see that the GET parameter disappears. <br />
+				<h:commandLink value="POST-BACK f:form" action="#{viewParamBean.action}" />
+			</h:form>
+		</p>
+
+		<p>
+			<b>The value: </b> #{viewParamBean.test}
+		</p>
+	</ui:define>
+</ui:composition>
