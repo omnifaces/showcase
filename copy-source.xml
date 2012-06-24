@@ -11,5 +11,6 @@
 		<copy todir="./build/classes" overwrite="false">
 			<fileset dir="src" includes="**/*.java"/>
 		</copy>
+		<eclipse.refreshLocal resource="omnifaces-showcase/build" depth="infinite" />
 	</target>
 </project>
