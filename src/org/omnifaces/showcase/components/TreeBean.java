@@ -5,11 +5,11 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.model.ExampleEntity;
+import org.omnifaces.util.Faces;
 
 @ManagedBean
 @ViewScoped
@@ -39,9 +39,7 @@ public class TreeBean implements Serializable {
 	}
 
 	public void save() {
-		// ...
-
-		FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("staticTree");
+		Faces.addRenderIds("staticTree");
 	}
 
 	public TreeModel<ExampleEntity> getTree() {

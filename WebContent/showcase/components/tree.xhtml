@@ -27,24 +27,26 @@
 
 	<ui:define name="demo">
 		<h3>Static tree</h3>
-		<o:tree id="staticTree" value="#{treeBean.tree}" var="exampleEntity" varNode="node">
-			<o:treeNode level="0">
-				<o:treeNodeItem>
-					<h4>#{node.index} #{exampleEntity.value}</h4>
-					<o:treeInsertChildren />
-				</o:treeNodeItem>
-			</o:treeNode>
-			<o:treeNode>
-				<ul>
+		<h:panelGroup id="staticTree">
+			<o:tree value="#{treeBean.tree}" var="exampleEntity" varNode="node">
+				<o:treeNode level="0">
 					<o:treeNodeItem>
-						<li>
-							#{node.index} #{exampleEntity.value}
-							<o:treeInsertChildren />
-						</li>
+						<h4>#{node.index} #{exampleEntity.value}</h4>
+						<o:treeInsertChildren />
 					</o:treeNodeItem>
-				</ul>
-			</o:treeNode>
-		</o:tree>
+				</o:treeNode>
+				<o:treeNode>
+					<ul>
+						<o:treeNodeItem>
+							<li>
+								#{node.index} #{exampleEntity.value}
+								<o:treeInsertChildren />
+							</li>
+						</o:treeNodeItem>
+					</ul>
+				</o:treeNode>
+			</o:tree>
+		</h:panelGroup>
 
 		<hr/>
 
@@ -59,17 +61,17 @@
 								<h:inputText id="value" value="#{exampleEntity.value}" styleClass="treeinput"
 									required="#{saveButtonPressed}" requiredMessage="Please enter value"
 									autofocus="#{facesContext.postback and empty component.value}" />
-								<h:commandButton value="Add new child" action="#{treeBean.addChild(node)}">
+								<h:commandButton id="addChild" value="Add new child" action="#{treeBean.addChild(node)}">
 									<f:ajax execute="@form" render="@form" />
 								</h:commandButton>
-								<h:commandButton value="Remove node" action="#{treeBean.remove(node)}">
+								<h:commandButton id="remove" value="Remove node" action="#{treeBean.remove(node)}">
 									<f:ajax execute="@form" render="@form" />
 								</h:commandButton>
 								<h:message for="value" />
 								<o:treeInsertChildren />
 							</li>
 						</o:treeNodeItem>
-						<h:commandButton value="Add new node" action="#{treeBean.addChild(node)}" 
+						<h:commandButton id="addNode" value="Add new node" action="#{treeBean.addChild(node)}" 
 							rendered="#{node.level == 0 or not empty node.children}">
 							<f:ajax execute="@form" render="@form" />
 						</h:commandButton>
