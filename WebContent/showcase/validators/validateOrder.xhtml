@@ -47,21 +47,24 @@
 
 			<h:panelGrid columns="3">
 				<h:outputLabel for="startDate" value="Start date" />
-				<h:inputText id="startDate" required="true" requiredMessage="Please enter start date" converterMessage="Date must be in format yyyy-MM-dd">
+				<h:inputText id="startDate" required="true" requiredMessage="Please enter start date" 
+					converterMessage="Date must be in format yyyy-MM-dd">
 					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
 				<h:panelGroup>
 					<h:message for="startDate" />
+					<h:message for="order" />
 				</h:panelGroup>
 				
 				<h:outputLabel for="endDate" value="End date" />
-				<h:inputText id="endDate" required="true" requiredMessage="Please enter end date"  converterMessage="Date must be in format yyyy-MM-dd">
+				<h:inputText id="endDate" required="true" requiredMessage="Please enter end date"  
+					converterMessage="Date must be in format yyyy-MM-dd">
 					<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
 				<h:panelGroup>
 					<h:message for="endDate" />
-					<o:validateOrder id="order" components="startDate endDate" message="End date must be after start date" />
-					<h:message for="order" />
+					<o:validateOrder id="order" type="lte" components="startDate endDate" 
+						message="Start date may not be after end date" />
 				</h:panelGroup>
 		
 				<h:panelGroup />
