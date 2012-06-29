@@ -27,6 +27,23 @@ Messages.addFlashGlobalInfo("New item with id {0} is successfully added.", item.
 return "items?faces-redirect=true";
 		</code></pre>
 		<p>
+			There is also a builder which also allows you to set the message detail. Some examples:
+		</p>
+		<pre class="prettyprint"><code class="lang-java">
+// In a validator.
+throw new ValidatorException(Messages.create("Invalid input.").detail("Value {0} is not expected.", value));
+
+// In a validator, as extra message on another component.
+Messages.create("This is also invalid.").error().add("someFormId:someInputId");
+	
+// In a managed bean action method.
+Messages.create("Unknown login, please try again.").error().add();
+		
+// In a managed bean action method which uses Post-Redirect-Get.
+Messages.create("New item with id {0} is successfully added.", item.getId()).flash().add();
+return "items?faces-redirect=true";
+		</code></pre>
+		<p>
 			It also offers the possibility to set a custom message resolver so that you can control the way how messages
 			are been resolved. You can for example supply an implementation wherein the message is been treated as for
 			example a resource bundle key. Here's an example:
@@ -45,7 +62,7 @@ Messages.setResolver(new Messages.Resolver() {
 		</code></pre>
  		<p>
 	 		There is already a default resolver which just delegates the message and the parameters straight to 
-	 		<a href="http://docs.oracle.com/javase/6/docs/api/java/text/MessageFormat.html#format(java.lang.String, java.lang.Object...)"><code>MessageFormat.format(String, Object...)</code></a>.
+	 		<a href="http://docs.oracle.com/javase/7/docs/api/java/text/MessageFormat.html#format(java.lang.String, java.lang.Object...)"><code>MessageFormat.format(String, Object...)</code></a>.
 	 		Note that the resolver can be set only once. It's recommend to do it early during webapp's startup, for example with a
 	 		<a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletContextListener.html"><code>ServletContextListener</code></a>,
 	 		or a Servlet 3.0

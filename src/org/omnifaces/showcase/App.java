@@ -180,7 +180,7 @@ public class App {
 		}
 	}
 
-    private static String initVersion() {
+	private static String initVersion() {
 		String version = Faces.class.getPackage().getSpecificationVersion();
 		return (version != null && !version.contains("SNAPSHOT")) ? version : null;
 	}
