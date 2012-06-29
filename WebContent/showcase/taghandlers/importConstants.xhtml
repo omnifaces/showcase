@@ -1,0 +1,79 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:importConstants&gt;</code> allows the developer to have a mapping of all constant field values of
+			the given type in the EL scope. The constant field values are those public static final fields. This works for
+			classes, interfaces and enums. For example:
+		</p>
+		<pre class="prettyprint"><code class="java">
+public class Foo {
+    public static final String FOO1 = "foo1";
+    public static final String FOO2 = "foo2";
+}
+
+public interface Bar {
+    public static final String BAR1 = "bar1";
+    public static final String BAR2 = "bar2";
+}
+
+public enum Baz {
+    BAZ1, BAZ2;
+}
+		</code></pre>
+		<p>
+			The constant field values of the above types can be mapped into the EL scope as follows:
+		</p>
+		<pre class="prettyprint"><code class="xhtml">
+&lt;o:importConstants type="com.example.Foo" /&gt;
+&lt;o:importConstants type="com.example.Bar" /&gt;
+&lt;o:importConstants type="com.example.Baz" var="Bazzz" /&gt;
+...
+\#{Foo.FOO1}, \#{Foo.FOO2}, \#{Bar.BAR1}, \#{Bar.BAR2}, \#{Bazzz.BAZ1}, \#{Bazzz.BAZ2}
+		</code></pre>
+		<p>
+			The map is by default stored in the EL scope by the simple name of the type as variable name. You can override
+			this by explicitly specifying the <code>var</code> attribute, as demonstrated for <code>com.example.Baz</code> in
+			the above example.
+		</p>
+		<p>
+			The resolved constants are by reference stored in the cache to improve retrieving performance.
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<o:importConstants type="org.omnifaces.showcase.taghandlers.ConstantsBean" />
+		<o:importConstants type="org.omnifaces.showcase.model.ExampleEnum" />
+
+		<h3>All constants of <code>ConstantsBean</code></h3>
+		<ul>
+			<li>#{ConstantsBean.CONSTANT1}</li>
+			<li>#{ConstantsBean.CONSTANT2}</li>
+		</ul>
+
+		<h3>All values of <code>ExampleEnum</code></h3>
+		<ul>
+			<li>#{ExampleEnum.ONE}</li>
+			<li>#{ExampleEnum.TWO}</li>
+			<li>#{ExampleEnum.THREE}</li>
+		</ul>
+		
+		<h3>Providing enum values as dropdown items</h3>
+		<h:form>
+			<h:selectOneMenu value="#{constantsBean.exampleEnum}">
+				<f:selectItem itemValue="Please select one" noSelectionOption="true" />
+				<f:selectItems value="#{ExampleEnum}" />
+				<f:ajax render="@form" />
+			</h:selectOneMenu>
+			<p>Selected: #{constantsBean.exampleEnum}</p>
+			<p>Is it <code>TWO</code>? #{constantsBean.exampleEnum == ExampleEnum.TWO}</p>
+			<!-- Note that you can also just do #{constantsBean.exampleEnum == 'TWO'} -->
+		</h:form>		
+	</ui:define>
+</ui:composition>

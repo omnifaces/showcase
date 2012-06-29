@@ -7,15 +7,25 @@
 >
 	<ui:define name="description">
 		<p>
-			The <code>&lt;o:validateOrder&gt;</code> validates if the values of the given <code>UIInput</code> components
-			are in the order from least to greatest without duplicates, exactly as specified in the 
-			<code>components</code> attribute.
+			<code>&lt;o:validateOrder&gt;</code> validates if the values of the given <code>UIInput</code> components as specified in
+			the <code>components</code> attribute are in the order as specified by the <code>type</code> attribute which accepts
+			the following values:
+		</p>
+		<ul>
+			<li><code>lt</code> (default): from least to greatest, without duplicates.</li>
+			<li><code>lte</code>: from least to greatest, allowing duplicates (equal values next to each other).</li>
+			<li><code>gt</code>: from greatest to least, without duplicates.</li>
+			<li><code>gte</code>: from greatest to least, allowing duplicates (equal values next to each other).</li>
+		</ul>
+		<p>
+			This validator has the additional requirement that the to-be-validated values must implement 
+			<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html"><code>Comparable</code></a>.
 		</p>
 	</ui:define>
 
 	<ui:define name="demo">
 		<h:form>
-			<h3>Please fill out the values of all those fields in order.</h3>
+			<h3>Please fill out the values of all those fields in order</h3>
 			<o:validateOrder id="order" components="foo bar baz" />
 
 			<h:panelGrid columns="3">
@@ -43,7 +53,7 @@
 		</h:form>
 
 		<h:form>
-			<h3>Please enter a valid start and end date.</h3>
+			<h3>Please enter a valid start and end date</h3>
 
 			<h:panelGrid columns="3">
 				<h:outputLabel for="startDate" value="Start date" />

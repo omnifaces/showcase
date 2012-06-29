@@ -51,17 +51,20 @@
 		<hr/>
 
 		<h3>Editable tree</h3>
-		<ui:param name="saveButtonPressed" value="#{param['javax.faces.source'] == 'form:save'}" />
 		<h:form id="form">
+			<ui:param name="saveButtonPressed" value="#{param['javax.faces.source'] == 'form:save'}" />
+			<h:commandButton id="addNode" value="Add new node" action="#{treeBean.addChild(treeBean.tree)}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
 			<o:tree id="tree" value="#{treeBean.tree}" var="exampleEntity" varNode="node">
 				<o:treeNode>
 					<ul>
 						<o:treeNodeItem>
 							<li>
 								<h:inputText id="value" value="#{exampleEntity.value}" styleClass="treeinput"
-									required="#{saveButtonPressed}" requiredMessage="Please enter value"
-									autofocus="#{facesContext.postback and empty component.value}" />
-								<h:commandButton id="addChild" value="Add new child" action="#{treeBean.addChild(node)}">
+									required="#{saveButtonPressed}" requiredMessage="Please enter value" />
+								<h:commandButton id="addChild" value="Add new child" action="#{treeBean.addChild(node)}"
+									rendered="#{node.level lt 5}">
 									<f:ajax execute="@form" render="@form" />
 								</h:commandButton>
 								<h:commandButton id="remove" value="Remove node" action="#{treeBean.remove(node)}">
@@ -71,10 +74,6 @@
 								<o:treeInsertChildren />
 							</li>
 						</o:treeNodeItem>
-						<h:commandButton id="addNode" value="Add new node" action="#{treeBean.addChild(node)}" 
-							rendered="#{node.level == 0 or not empty node.children}">
-							<f:ajax execute="@form" render="@form" />
-						</h:commandButton>
 					</ul>
 				</o:treeNode>
 			</o:tree>
@@ -86,12 +85,13 @@
 
 		<o:onloadScript>
 			// Force input elements to invoke "Save" button on enter key instead of one of those "add"/"remove" buttons.
+			// Additionally, focus the first empty input.
 			$(".treeinput").on("keypress", function(event) {
 				if (event.keyCode == 13) {
 					$(this).closest("form").find("[id$=save]").click();
 					return false;
 				}
-			});
+			}).filter("[value='']").first().focus();
 		</o:onloadScript>
 	</ui:define>
 </ui:composition>
