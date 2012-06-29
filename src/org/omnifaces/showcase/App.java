@@ -28,7 +28,6 @@ import javax.faces.FacesException;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.Page.Documentation;
 import org.omnifaces.showcase.Page.Source;
@@ -50,7 +49,7 @@ public class App {
 
 	// Properties -----------------------------------------------------------------------------------------------------
 
-	private TreeModel<Page> menu;
+	private Page menu;
 	private Map<String, Page> pages;
 	private String version;
 	private String poweredBy;
@@ -59,7 +58,7 @@ public class App {
 
 	@PostConstruct
 	public void init() {
-		menu = new ListTreeModel<Page>();
+		menu = new Page();
 		fillMenu(menu);
 		pages = new HashMap<String, Page>();
 		fillPages(pages, menu);
@@ -67,16 +66,16 @@ public class App {
 		poweredBy = initPoweredBy();
 	}
 
-	private static void fillMenu(TreeModel<Page> menu) {
+	private static void fillMenu(Page menu) {
 		Properties properties = loadProperties();
 		Set<String> groupPaths = new TreeSet<String>(Faces.getResourcePaths(SHOWCASE_PATH));
 
 		for (String groupPath : groupPaths) {
-			TreeModel<Page> group = menu.addChild(new Page(groupPath.split("/")[2], null, null, null));
+			TreeModel<Page> group = menu.addChildNode(new Page(groupPath.split("/")[2], null, null, null));
 			Set<String> pagePaths = new TreeSet<String>(Faces.getResourcePaths(groupPath));
 
 			for (String pagePath : pagePaths) {
-				group.addChild(createPage(properties, pagePath));
+				group.addChildNode(createPage(properties, pagePath));
 			}
 		}
 	}
@@ -168,16 +167,16 @@ public class App {
 		return property;
 	}
 
-	private static void fillPages(Map<String, Page> pages, TreeModel<Page> tree) {
-		for (TreeModel<Page> node : tree) {
-			Page page = node.getData();
-			String viewId = page.getViewId();
+	private static void fillPages(Map<String, Page> pages, Page page) {
+		for (TreeModel<Page> child : page) {
+			Page childPage = (Page) child;
+			String viewId = childPage.getViewId();
 
 			if (viewId != null) {
-				pages.put(viewId, page);
+				pages.put(viewId, childPage);
 			}
 
-			fillPages(pages, node);
+			fillPages(pages, childPage);
 		}
 	}
 
@@ -213,7 +212,7 @@ public class App {
 	}
 
 	public String getBaseURL() {
-		return Faces.getRequestBaseURL().split(":", 2)[1];
+		return Faces.getRelativeRequestBaseURL();
 	}
 
 }

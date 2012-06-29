@@ -12,11 +12,14 @@
  */
 package org.omnifaces.showcase;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+
+import org.omnifaces.model.tree.ListTreeModel;
 
 /**
  * This class represents a page. All pages are available as a tree model by {@link App#getMenu()} and are by their view
@@ -27,7 +30,11 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class Page {
+public class Page extends ListTreeModel<Page> {
+
+	// Constants ------------------------------------------------------------------------------------------------------
+
+	private static final long serialVersionUID = 1L;
 
 	// Properties -----------------------------------------------------------------------------------------------------
 
@@ -106,7 +113,11 @@ public class Page {
 	 *
 	 * @author Bauke Scholtz
 	 */
-	public static class Source {
+	public static class Source implements Serializable {
+
+		// Constants --------------------------------------------------------------------------------------------------
+
+		private static final long serialVersionUID = 1L;
 
 		// Properties -------------------------------------------------------------------------------------------------
 
@@ -143,7 +154,13 @@ public class Page {
 	 *
 	 * @author Bauke Scholtz
 	 */
-	public static class Documentation {
+	public static class Documentation implements Serializable {
+
+		// Constants --------------------------------------------------------------------------------------------------
+
+		private static final long serialVersionUID = 1L;
+
+		// Properties -------------------------------------------------------------------------------------------------
 
 		private String[] vdldocs;
 		private String[] apidocs;

@@ -1,0 +1,61 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+	<ui:define name="contentTitle">What's new in OmniFaces 1.1?</ui:define>
+
+	<ui:define name="content">
+		<h3>Added in OmniFaces 1.1</h3>
+		<ul>
+			<li><h:link value="Rendering specific components by a GET request parameter" outcome="showcase/components/componentIdParam" /></li>
+			<li><h:link value="Form with support to include view parameters in action URL" outcome="showcase/components/form" /></li>
+			<li><h:link value="f:event hook for pre and post invoke action phase" outcome="showcase/eventlisteners/InvokeActionEventListener" /></li>
+			<li><h:link value="GZIP compression filter for HTTP responses" outcome="showcase/filters/GzipResponseFilter" /></li>
+			<li><h:link value="of:capitalize() function to capitalize a string" outcome="showcase/functions/Strings" /></li>
+			<li><h:link value="HTML5 render kit which adds support for several HTML5 specific attributes to UIForm and UIInput components" outcome="showcase/renderkits/Html5RenderKit" /></li>
+			<li><h:link value="Importing constant values into EL scope" outcome="showcase/taghandlers/importConstants" /></li>
+			<li><h:link value="New Messages builder" outcome="showcase/utils/Messages" /></li>
+			<li><h:link value="A whole bunch of new utility methods in Faces" outcome="showcase/utils/Faces" /></li>
+			<li>Maven integration</li>
+		</ul>
+		<h3>Changed in OmniFaces 1.1</h3>
+		<ul>
+			<li><h:link value="Support for action components inside o:tree and new TreeModel#remove() method" outcome="showcase/components/tree" /></li>
+			<li><h:link value="Support for web-fragment.xml in FullAjaxExceptionHandler" outcome="showcase/exceptionhandlers/FullAjaxExceptionHandler" /></li>
+			<li><h:link value="Support to exclude or suppress specific resources in CombinedResourceHandler" outcome="showcase/resourcehandlers/CombinedResourceHandler" /></li>
+			<li><h:link value="Support for specific ordering type inside o:validateOrder" outcome="showcase/validators/validateOrder" /></li>
+		</ul>
+		<h3>Bugfixed in OmniFaces 1.1</h3>
+		<ul>
+			<li><h:link value="Broken behaviour inside UIData components in ResetInputAjaxActionListener" outcome="showcase/eventlisteners/ResetInputAjaxActionListener" /></li>
+			<li><h:link value="Incorrect behaviour on synchronous postbacks and NPE on inline scripts in CombinedResourceHandler" outcome="showcase/resourcehandlers/CombinedResourceHandler" /></li>
+		</ul>
+
+		<h3>Features already available in initial OmniFaces 1.0 release</h3>
+		<ul>
+			<li><h:link value="Conditional comment rendering for IE" outcome="showcase/components/conditionalComment" /></li>
+			<li><h:link value="Highlighting fields that failed validation" outcome="showcase/components/highlight" /></li>
+			<li><h:link value="Executing scripts on load of every (ajax) response" outcome="showcase/components/onloadScript" /></li>
+			<li><h:link value="OutputLabel automatically setting label of associated input component" outcome="showcase/components/outputLabel" /></li>
+			<li><h:link value="Include Servlets and JSP pages in Facelets" outcome="showcase/components/resourceInclude" /></li>
+			<li><h:link value="Tree with full custom markup per level (useable for various recursive use cases)" outcome="showcase/components/tree" /></li>
+			<li><h:link value="Stateless view parameter" outcome="showcase/components/viewParam" /></li>
+			<li><h:link value="Automatic conversion of model objects in drop-downs and other select components" outcome="showcase/converters/SelectItemsConverter" /></li>
+			<li><h:link value="Simplified PhaseListener requiring less boiler plate" outcome="showcase/eventlisteners/DefaultPhaseListener" /></li>
+			<li><h:link value="Reset for input fields making them always updateable via ajax" outcome="showcase/eventlisteners/ResetInputAjaxActionListener" /></li>
+			<li><h:link value="Ajax aware exception handler" outcome="showcase/exceptionhandlers/FullAjaxExceptionHandler" /></li>
+			<li><h:link value="Extensionless URLs without need to register individual pages" outcome="showcase/facesviews/ExtensionlessURLs" /></li>
+			<li><h:link value="Proper 404 for FacesFileNotFoundException" outcome="showcase/filters/FacesExceptionFilter" /></li>
+			<li><h:link value="HttpFilter convenience class as analogy to HttpServlet" outcome="showcase/filters/HttpFilter" /></li>
+			<li>Collections of EL functions for dealing with <h:link value="arrays" outcome="showcase/functions/Arrays" />, <h:link value="conversion" outcome="showcase/functions/Converters" />, <h:link value="dates" outcome="showcase/functions/Dates" /> and <h:link value="strings" outcome="showcase/functions/Strings" /></li>
+			<li>Convenience managed beans for the <h:link value="current time" outcome="showcase/managedbeans/now" /> and <h:link value="server startup time" outcome="showcase/managedbeans/startup" /></li>
+			<li><h:link value="Combining separate scripts and stylesheets to reduce HTTP requests" outcome="showcase/resourcehandlers/CombinedResourceHandler" /></li>
+			<li>Render-time evaluation for <h:link value="f:converter" outcome="showcase/taghandlers/converter" /> and <h:link value="f:validator" outcome="showcase/taghandlers/validator" /> attributes</li>
+			<li><h:link value="Passing a method expression into Facelets tag" outcome="showcase/taghandlers/methodParam" /></li>
+			<li>Collection of Java methods for dealing with <h:link value="components" outcome="showcase/utils/Components" />, <h:link value="events" outcome="showcase/utils/Events" />, <h:link value="exceptions" outcome="showcase/utils/Exceptions" />, <h:link value="messages" outcome="showcase/utils/Messages" /> and <h:link value="JSF in general" outcome="showcase/utils/Faces" /></li>
+			<li><h:link value="Checkbox with required attribute that works intuitively" outcome="showcase/validators/RequiredCheckboxValidator" /></li>
+			<li>Multi-field validators, for "<h:link value="all or none" outcome="showcase/validators/validateAllOrNone" />", "<h:link value="all equal" outcome="showcase/validators/validateEqual" />", "<h:link value="one or more" outcome="showcase/validators/validateOneOrMore" />", "<h:link value="all in order" outcome="showcase/validators/validateOrder" />" and "<h:link value="all unique" outcome="showcase/validators/validateUnique" />" validations</li>
+		</ul>
+	</ui:define>
+</ui:composition>

@@ -27,7 +27,7 @@
 	<ui:param name="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" />
 
 	<h:head>
-		<title><ui:insert name="title">OmniFaces Showcase - #{page.current.title}</ui:insert></title>
+		<title><ui:insert name="title">OmniFaces Showcase</ui:insert></title>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 		<base href="#{app.baseURL}" />
 		<link rel="shortcut icon" href="favicon.ico" />
@@ -62,7 +62,7 @@
 		</p:panel>
 
 		<p:panel id="content">
-			<h2><ui:insert name="contentTitle"><code>#{page.current.title}</code></ui:insert></h2>
+			<h2><ui:insert name="contentTitle">#{page.current.title}</ui:insert></h2>
 			<ui:insert name="content" />
 		</p:panel>
 
@@ -73,9 +73,10 @@
 					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
 					<li><a href="#{_apiURL}index.html">API documentation</a></li>
 					<li><a href="#{_vdlURL}index.html">VDL documentation</a></li>
+					<li><a href="whatsnew.xhtml" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces 1.1?</a></li>
 				</ul>
 			</p:panel>
-			<o:tree id="menu_tree" value="#{app.menu}" var="page">
+			<o:tree id="menu_tree" value="#{app.menu}" varNode="page">
 				<o:treeNode level="0">
 					<o:treeNodeItem>
 						<p:panel id="panel" header="#{page.title}">
