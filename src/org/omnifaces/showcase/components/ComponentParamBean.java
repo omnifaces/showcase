@@ -21,6 +21,7 @@ public class ComponentParamBean {
 	}
 
 	public void doAction() {
+		//
 	}
 
 	public List<String> getItems() {
