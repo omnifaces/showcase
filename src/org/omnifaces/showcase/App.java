@@ -211,8 +211,4 @@ public class App {
 		return poweredBy;
 	}
 
-	public String getBaseURL() {
-		return Faces.getRelativeRequestBaseURL();
-	}
-
 }

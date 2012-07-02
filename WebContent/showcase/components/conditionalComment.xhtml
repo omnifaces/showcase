@@ -50,7 +50,7 @@
 
 	<ui:define name="demo">
 		<o:conditionalComment if="IE">
-			<link rel="stylesheet" href="resources/layout/css/ie.css" />
+			<link rel="stylesheet" href="#{request.contextPath}/resources/layout/css/ie.css" />
 		</o:conditionalComment>
 		<p>
 			Only if you're using IE, regardless of the version, you should see a pinkish background.

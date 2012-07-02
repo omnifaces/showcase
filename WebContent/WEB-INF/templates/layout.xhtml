@@ -29,7 +29,6 @@
 	<h:head>
 		<title><ui:insert name="title">OmniFaces Showcase</ui:insert></title>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-		<base href="#{app.baseURL}" />
 		<link rel="shortcut icon" href="favicon.ico" />
 		<h:outputScript>
 			var _gaq = _gaq || [];
@@ -49,7 +48,7 @@
 
 		<p:panel id="header" styleClass="ui-widget-header">
 			<h1>
-				<a href=".">
+				<a href="#{request.contextPath}/">
 					<h:graphicImage library="layout" name="img/logo-70x70.png" alt="logo" width="70" height="70" />
 					OmniFaces Showcase
 				</a>
@@ -62,18 +61,18 @@
 		</p:panel>
 
 		<p:panel id="content">
-			<h2><ui:insert name="contentTitle">#{page.current.title}</ui:insert></h2>
+			<h2 id="contentTitle"><ui:insert name="contentTitle">#{page.current.title}</ui:insert></h2>
 			<ui:insert name="content" />
 		</p:panel>
 
 		<p:panel id="menu">
 			<p:panel id="panel" header="omnifaces">
 				<ul>
-					<li><a href="." class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">Showcase homepage</a></li>
+					<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">Showcase homepage</a></li>
 					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
 					<li><a href="#{_apiURL}index.html">API documentation</a></li>
 					<li><a href="#{_vdlURL}index.html">VDL documentation</a></li>
-					<li><a href="whatsnew.xhtml" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces 1.1?</a></li>
+					<li><a href="#{request.contextPath}/whatsnew.xhtml" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces 1.1?</a></li>
 				</ul>
 			</p:panel>
 			<o:tree id="menu_tree" value="#{app.menu}" varNode="page">
@@ -85,7 +84,7 @@
 					</o:treeNodeItem>
 				</o:treeNode>
 				<o:treeNode>
-					<ul class="group clearleft">
+					<ul>
 						<o:treeNodeItem>
 							<li><h:link value="#{page.title}" outcome="#{page.viewId}" styleClass="code#{view.viewId == page.viewId ? ' active' : ''}" /></li>
 						</o:treeNodeItem>
