@@ -21,7 +21,17 @@
 >
 	<ui:define name="title">OmniFaces Showcase - #{page.current.title}</ui:define>
 
-	<ui:define name="contentTitle">#{page.current.parent.title} - <code>#{page.current.title}</code></ui:define>
+	<ui:define name="contentTitle">
+		<ui:param name="parent" value="#{page.current.parent}" />
+		<p:selectOneMenu id="groups" value="#{parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" effect="fade">
+			<f:selectItems value="#{parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" itemDisabled="#{parent.children[0].viewId == _parent.children[0].viewId}" />
+		</p:selectOneMenu>
+		-
+		<p:selectOneMenu id="pages" value="#{page.current.viewId}" onchange="window.location='#{request.contextPath}' + this.value" effect="fade" rendered="#{page.current.parent.childCount gt 1}">
+			<f:selectItems value="#{page.current.parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" itemDisabled="#{page.current.viewId == _page.viewId}" />
+		</p:selectOneMenu>
+		<h:outputText value="#{page.current.title}" styleClass="code" rendered="#{page.current.parent.childCount == 1}" />
+	</ui:define>
 
 	<ui:define name="content">
 		<h:outputStylesheet library="showcase" name="css/prettify.css" target="head" />
