@@ -85,15 +85,20 @@
 			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		</h:form>
 
-		<o:onloadScript>
-			// Force input elements to invoke "Save" button on enter key instead of one of those "add"/"remove" buttons.
-			// Additionally, focus the first empty input.
-			$(".treeinput").on("keypress", function(event) {
-				if (event.keyCode == 13) {
-					$(this).closest("form").find("[id$=save]").click();
-					return false;
-				}
-			}).filter("[value='']").first().focus();
-		</o:onloadScript>
+		<h:outputScript>
+			/**
+			 * Force input elements to invoke "Save" button on enter key instead of one of those "add"/"remove" buttons.
+			 * Additionally, focus the first empty input.
+			 */
+			function applyKeypressHandlerAndFocus() {
+				$(".treeinput").on("keypress", function(event) {
+					if (event.keyCode == 13) {
+						$(this).closest("form").find("[id$=save]").click();
+						return false;
+					}
+				}).filter("[value='']:first").focus();
+			}
+		</h:outputScript>
+		<o:onloadScript>applyKeypressHandlerAndFocus();</o:onloadScript>
 	</ui:define>
 </ui:composition>
