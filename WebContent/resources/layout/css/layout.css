@@ -104,6 +104,7 @@ code,
 }
 
 #contentTitle .ui-selectonemenu {
+	height: 28px;
 	border: 1px solid #eee;
 	background: none;
 	vertical-align: middle;

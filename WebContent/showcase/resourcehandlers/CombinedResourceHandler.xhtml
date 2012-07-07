@@ -33,6 +33,16 @@
 &lt;/h:head&gt;
 		</code></pre>
 		<p>
+			If you want them to appear <em>after</em> any auto-included resources of standard JSF implementation or JSF
+			component libraries, then move the declarations to the <code>&lt;h:body&gt;</code>.
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;h:body&gt;
+    &lt;h:outputStylesheet name="style.css" /&gt;
+    &lt;h:outputScript name="script.js" target="head" /&gt;
+&lt;/h:body&gt;
+		</code></pre>
+		<p>
 			This resource handler is enabled in this showcase web application. 
 			Rightclick the page and <i>View Source</i>.
 			It is recognizeable by library name <code>omnifaces.combined</code>. It are the following ones:
@@ -55,9 +65,13 @@
 			<a href="#{resourceBaseURL}jsf.js.xhtml?ln=javax.faces">jsf.js</a>,
 			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
 			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a>. 
-			Note that the PrimeFaces theme CSS file cannot be combined because it's not been added as a JSF resource,
+			Note that the PrimeFaces <code>theme.css</code> file cannot be combined because it's not been added as a JSF resource,
 			but hardcoded in PrimeFaces' <code>HeadRenderer</code> so that it could be generated as the very first CSS link
 			to avoid CSS inheritance problems in custom CSS files which are supposed to override PrimeFaces default CSS.
+			There's however a way to get it to be included anyway, but this requires a custom renderer for the 
+			<code>&lt;head&gt;</code> wherein the theme name is been hardcoded as <code>@ResourceDependency</code>. 
+			See also 
+			<a href="http://code.google.com/p/omnifaces/wiki/CombinedResourceHandlerPrimeFacesThemeCss">How to combine PrimeFaces theme.css using CombinedResourceHandler anyway?</a>
 		</p>
 		<p>
 			The generated combined resource URL also includes the "<code>v</code>" request parameter which is the last

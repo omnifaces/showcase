@@ -33,7 +33,7 @@ import org.omnifaces.filter.HttpFilter;
  * @link http://code.google.com/p/primefaces/issues/detail?id=2223
  * @link http://stackoverflow.com/a/9839362/157882
  */
-@WebFilter(servletNames="facesServlet")
+@WebFilter("/*")
 public class CharacterEncodingFilter extends HttpFilter {
 
 	@Override

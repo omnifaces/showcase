@@ -34,10 +34,9 @@
 			To use the HTML5 render kit, register it as follows in <code>faces-config.xml</code>:
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
-&lt;render-kit&gt;
-    &lt;render-kit-id&gt;HTML_BASIC&lt;/render-kit-id&gt;
-    &lt;render-kit-class&gt;org.omnifaces.renderkit.Html5RenderKit&lt;/render-kit-class&gt;
-&lt;/render-kit&gt;
+&lt;factory&gt;
+    &lt;render-kit-factory&gt;org.omnifaces.renderkit.Html5RenderKitFactory&lt;/render-kit-factory&gt;
+&lt;/factory&gt;
 		</code></pre>
 		<p>
 			This HTML5 render kit is enabled in this showcase web application. The below demo shows that the HTML5 
@@ -79,18 +78,24 @@
 
 		        <h:outputLabel for="range" value="Range (between 1 and 10)" />
 		        <h:inputText id="range" type="range" value="#{html5Bean.range}" min="1" max="10" />
-		        <h:outputText value="Since Safari 4, Chrome 6, Opera 11 and IE 10" />
+		        <h:panelGroup>
+			        <h:outputText value="Since Safari 4, Chrome 6, Opera 11 and IE 10" rendered="#{not facesContext.validationFailed}" />
+		            <h:message for="range" />
+		        </h:panelGroup>
 
 		        <h:outputLabel for="number" value="Number (between 7 and 13)" />
 		        <h:inputText id="number" type="number" value="#{html5Bean.number}" min="7" max="13" />
-		        <h:outputText value="Since Safari 4, Chrome 9 and Opera 11" />
+		        <h:panelGroup>
+			        <h:outputText value="Since Safari 4, Chrome 9 and Opera 11" rendered="#{not facesContext.validationFailed}" />
+		            <h:message for="number" />
+		        </h:panelGroup>
 
 		        <h:outputLabel for="date" value="Date" />
 		        <h:inputText id="date" type="date" value="#{html5Bean.date}" converterMessage="Format must be yyyy-MM-dd">
 		            <f:convertDateTime pattern="yyyy-MM-dd" />
 		        </h:inputText>
 		        <h:panelGroup>
-		            <h:outputText value="Since Opera 10.6" rendered="#{not facesContext.validationFailed}" />
+		            <h:outputText value="Since Chrome 20 and Opera 10.6" rendered="#{not facesContext.validationFailed}" />
 		            <h:message for="date" />
 		        </h:panelGroup>
 
