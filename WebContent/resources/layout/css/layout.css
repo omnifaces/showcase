@@ -119,15 +119,15 @@ code,
 #contentTitle .ui-selectonemenu-label,
 #contentTitle .ui-selectonemenu.ui-state-hover, 
 #contentTitle .ui-selectonemenu.ui-state-focus, 
-#groups_panel,
-#pages_panel {
+.groups.ui-selectonemenu-panel,
+.pages.ui-selectonemenu-panel {
 	-moz-box-shadow:none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
 
 #contentTitle .ui-selectonemenu-label,
-#groups_panel .ui-selectonemenu-list-item {
+.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	font-weight: bold;
 }
 
@@ -135,32 +135,32 @@ code,
 	display: none;
 }
 
-#pages,
-#pages_panel .ui-selectonemenu-list-item {
+.pages.ui-selectonemenu,
+.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace;
 	font-size: 1em;
 }
 
-#groups_panel .ui-selectonemenu-list {
+.groups.ui-selectonemenu-panel .ui-selectonemenu-list {
 	padding: 1px;
 }
 
-#pages_panel .ui-selectonemenu-list {
+.pages.ui-selectonemenu-panel .ui-selectonemenu-list {
 	padding: 5px 8px;
 }
 
-#groups_panel .ui-selectonemenu-list-item {
+.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	margin: 2px;
 	padding: 4px 8px;
 }
 
-#pages_panel .ui-selectonemenu-list-item {
+.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	margin: 1px;
 	padding: 1px 0;
 	text-decoration: underline;
 }
 
-#groups_panel .ui-selectonemenu-list-item.ui-state-highlight {
+.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-highlight {
 	padding: 3px 7px;
 	border: 1px solid #a8a8a8;
 	background: #c4c4c4 url("#{resource['primefaces-aristo:images/ui-bg_highlight-soft_100_c4c4c4_1x100.png']}") 50% 50% repeat-x;
@@ -169,14 +169,14 @@ code,
 	text-shadow: 0px 1px 0px rgba(255,255,255,0.7);
 }
 
-#pages_panel .ui-selectonemenu-list-item.ui-state-highlight {
+.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-highlight {
 	background: #ddd;
 	text-shadow: none;
 	color: inherit;
 }
 
-#groups_panel .ui-selectonemenu-list-item.ui-state-disabled,
-#pages_panel .ui-selectonemenu-list-item.ui-state-disabled {
+.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-disabled,
+.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-disabled {
 	display: none;
 }
 
@@ -195,11 +195,11 @@ code,
 }
 
 .clearleft:after {
-    content: "";
-    display: table;
-    clear: left;
+	content: "";
+	display: table;
+	clear: left;
 }
 
 .clearleft {
-    *zoom: 1; /* IE6/7. */
+	*zoom: 1; /* IE6/7. */
 }
