@@ -22,6 +22,11 @@
 		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
 		<param-value>3628800000</param-value> <!-- 6 weeks -->	
 	</context-param>
+	
+	<context-param>
+		<param-name>org.omnifaces.CACHE_SETTING_SESSION_MAX_CAPACITY</param-name>
+		<param-value>4</param-value>
+	</context-param>
 
 	<servlet>
 		<servlet-name>facesServlet</servlet-name>
