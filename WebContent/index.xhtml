@@ -63,17 +63,25 @@
 		<p>
 			It is a matter of dropping
 			<a href="http://code.google.com/p/omnifaces/downloads/list">the JAR file</a> 
-			in <code>/WEB-INF/lib</code>. The OmniFaces UI components/taghandlers and EL functions are available under 
-			the following XML namespaces:
+			in <code>/WEB-INF/lib</code>.
 		</p>
-		<blockquote>
-			<code>xmlns:o="http://omnifaces.org/ui"</code><br/>
-			<code>xmlns:of="http://omnifaces.org/functions"</code><br/>
-		</blockquote>
 		<p>
-			Maven integration is currently being worked on. Please have a bit of patience. As first mandatory step, 
-			we have recently registered the <a href="http://omnifaces.org">omnifaces.org</a> domain for that.
+			Maven users can add OmniFaces by adding the following Maven coordinates to <code>pom.xml</code>:
 		</p>
+		<blockquote><pre>
+&lt;dependency&gt;
+    &lt;groupId&gt;org.omnifaces&lt;/groupId&gt;
+    &lt;artifactId&gt;omnifaces&lt;/artifactId&gt;
+    &lt;version&gt;1.1&lt;/version&gt;
+&lt;/dependency&gt;
+		</pre></blockquote>
+		<p>
+			The OmniFaces UI components/taghandlers and EL functions are available under the following XML namespaces:
+		</p>
+		<blockquote><pre>
+xmlns:o="http://omnifaces.org/ui"
+xmlns:of="http://omnifaces.org/functions"
+		</pre></blockquote>
 		
 		<h3>Documentation</h3>
 		<ul>
