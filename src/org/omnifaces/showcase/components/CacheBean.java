@@ -13,7 +13,7 @@ import javax.faces.bean.ViewScoped;
 public class CacheBean {
 	
 	private List<String> items;
-	private int key;
+	private long key;
 
 	@PostConstruct
 	public void init() {
@@ -28,11 +28,11 @@ public class CacheBean {
 		return items;
 	}
 
-	public int getKey() {
+	public long getKey() {
 		return key;
 	}
 
-	public void setKey(int key) {
+	public void setKey(long key) {
 		this.key = key;
 	}
 
