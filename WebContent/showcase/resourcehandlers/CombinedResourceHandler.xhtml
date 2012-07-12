@@ -65,13 +65,12 @@
 			<a href="#{resourceBaseURL}jsf.js.xhtml?ln=javax.faces">jsf.js</a>,
 			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
 			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a>. 
-			Note that the PrimeFaces <code>theme.css</code> file cannot be combined because it's not been added as a JSF resource,
-			but hardcoded in PrimeFaces' <code>HeadRenderer</code> so that it could be generated as the very first CSS link
-			to avoid CSS inheritance problems in custom CSS files which are supposed to override PrimeFaces default CSS.
-			There's however a way to get it to be included anyway, but this requires a custom renderer for the 
-			<code>&lt;head&gt;</code> wherein the theme name is been hardcoded as <code>@ResourceDependency</code>. 
-			See also 
+			Note that the PrimeFaces <code>theme.css</code> file cannot be combined because it's not been added as a JSF 
+			resource, but hardcoded in PrimeFaces' <code>HeadRenderer</code>. There's however a way to get it to be 
+			included anyway, but this requires a custom renderer for the <code>&lt;head&gt;</code> wherein the theme 
+			name is been hardcoded as <code>@ResourceDependency</code>. See also 
 			<a href="http://code.google.com/p/omnifaces/wiki/CombinedResourceHandlerPrimeFacesThemeCss">How to combine PrimeFaces theme.css using CombinedResourceHandler anyway?</a>
+			RichFaces has the same problem with several JS files, but this is so far not exactly trivial to workaround.
 		</p>
 		<p>
 			The generated combined resource URL also includes the "<code>v</code>" request parameter which is the last

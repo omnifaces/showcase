@@ -69,7 +69,7 @@
 				</h:commandButton>
 				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 			</p>
-			<p><b>Problem</b>: input1 is not updated with text "Updated!" and input2 is still marked invalid!</p>
+			<p><b>Problem</b>: input1 is not updated with text "Updated!".</p>
 		</h:form>
 
 		<h3>Same form, with <code>ResetInputAjaxActionListener</code> on "update"</h3>
@@ -95,7 +95,7 @@
 				</h:commandButton>
 				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 			</p>
-			<p><b>Solved</b>: input1 is now updated with text "Updated!" and input2 is not marked invalid anymore!</p>
+			<p><b>Solved</b>: input1 is now updated with text "Updated!".</p>
 		</h:form>
 	</ui:define>		
 </ui:composition>
