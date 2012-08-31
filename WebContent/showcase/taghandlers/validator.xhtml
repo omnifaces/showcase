@@ -36,8 +36,15 @@
 			In the below demo, the validators are supposed to be disabled based on the currently selected contact method.
 			Change the contact method to phone and enter a valid phone number, e.g. <code>0123456789</code>, you'll see
 			that with the <code>&lt;f:validator&gt;</code>, the email validator is still been used because that was the
-			one which was set during view build time. The <code>&lt;o:validator&gt;</code> allows a render time evaluation
-			of attributes and hence works as intuitively expected. 
+			one which was set during view build time which would due to
+			<a href="http://java.net/jira/browse/JAVASERVERFACES-1492">JSF issue 1492</a>
+			use a completely different view scoped bean instance. The <code>&lt;o:validator&gt;</code> allows a render
+			time evaluation of attributes and hence works as intuitively expected as it wouldn't create a brand new
+			instance of the view scoped bean, but just reuse the one as is been used during the ajax request.
+		</p>
+		<p>
+			For another related use case, checkout the 
+			<h:link outcome="converter"><code>&lt;o:converter&gt;</code> showcase page</h:link>.
 		</p>
 	</ui:define>
 

@@ -9,7 +9,7 @@
 	<ui:define name="description">
 		<p>
 			Collection of EL functions for string manipulation: <code>of:abbreviate()</code>, <code>of:capitalize()</code>, <code>of:concat()</code>,  
-			<code>of:prettyURL()</code>, <code>of:encodeURL()</code> and <code>of:escapeJS()</code>.
+			<code>of:prettyURL()</code>, <code>of:encodeURL()</code>, <code>of:escapeJS()</code> and <code>of:formatX()</code>.
 		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
@@ -44,6 +44,16 @@
 				Escape for usage in JavaScript: #{of:escapeJS(string4)} 
 				<a href="javascript:alert('#{of:escapeJS(string4)}')">click to see alert</a>
 			</li>
+		</ul>
+		<p>
+			Format strings in EL:
+		</p>
+		<ul>
+			<li>#{of:format1('one {0}', 'two')}</li>
+			<li>#{of:format2('one {0} three {1}', 'two', 'four')}</li>
+			<li>#{of:format3('one {0} three {1} five {2}', 'two', 'four', 'six')}</li>
+			<li>#{of:format4('one {0} three {1} five {2} seven {3}', 'two', 'four', 'six', 'eight')}</li>
+			<li>#{of:format5('one {0} three {1} five {2} seven {3} nine {4}', 'two', 'four', 'six', 'eight', 'ten')}</li>
 		</ul>
 	</ui:define>
 </ui:composition>

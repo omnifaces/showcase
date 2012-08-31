@@ -20,6 +20,10 @@
 		<p>
 			This validator has the additional requirement that the to-be-validated values must implement 
 			<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html"><code>Comparable</code></a>.
+			Note that when this validator is placed <em>before</em> all of the components, then it will only compare the raw
+			unconverted submitted string values, not the converted object values. If you need to compare by the converted
+			object values, then you need to place this validator <em>after</em> all of the components, like as demonstrated
+			in the second example with dates below.
 		</p>
 	</ui:define>
 

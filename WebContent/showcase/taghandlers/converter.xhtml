@@ -36,7 +36,9 @@
 &lt;f:convertDateTime type="both" dateStyle="full" timeStyle="full" locale="\#{locale}" /&gt;
 		</code></pre>
 		<p>
-			But this wouldn't even run, it will throw the following exception.
+			But this wouldn't even run, it will throw the following exception because the <code>\#{locale}</code> isn't 
+			available during view build time (for a background explanation, check 
+			<a href="http://stackoverflow.com/questions/3342984/jstl-in-jsf2-facelets-makes-sense">this Stack Overflow answer</a>).
 		</p>
 		<pre>
 javax.faces.view.facelets.TagAttributeException: /showcase/taghandlers/converter.xhtml @62,92 
@@ -47,6 +49,10 @@ locale="#{locale}" Attribute did not evaluate to a String or Locale: null
 		</pre>
 		<p>
 			It works as intuitively expected with the <code>&lt;o:converter&gt;</code> as it allows a render time evaluation of attributes.
+		</p>
+		<p>
+			For another related use case, checkout the 
+			<h:link outcome="validator"><code>&lt;o:validator&gt;</code> showcase page</h:link>.
 		</p>
 	</ui:define>
 

@@ -1,0 +1,78 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			This <code>ResourceHandler</code> implementation allows the developer to provide CDN URLs instead of the default local
+			URLs for JSF resources as provided by <code>&lt;h:outputScript&gt;</code>, <code>&lt;h:outputStylesheet&gt;</code>
+			and <code>&lt;h:graphicImage&gt;</code> when the current JSF project stage is <strong>not</strong> set to
+			<code>Development</code>.
+		</p>
+		<p>
+			To get it to run, this handler needs be registered as follows in <code>faces-config.xml</code>:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;application&gt;
+    &lt;resource-handler&gt;org.omnifaces.resourcehandler.CDNResourceHandler&lt;/resource-handler&gt;
+&lt;/application&gt;
+		</code></pre>
+
+		<h3>Configuration</h3>
+		<p>
+			To configure the CDN URLs, a <code>org.omnifaces.CDN_RESOURCE_HANDLER_URLS</code>
+			context parameter has to be provided wherein the CDN resources are been specified as a commaseparated string of
+			<code>libraryName:resourceName=http://cdn.example.com/url</code> key=value pairs. The key represents the default
+			JSF resource identifier and the value represents the full CDN URL, including the scheme. The CDN URL is not validated
+			by this resource handler, so you need to make absolutely sure yourself that it is valid. Here's an example:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;context-param&gt;
+    &lt;param-name&gt;org.omnifaces.CDN_RESOURCE_HANDLER_URLS&lt;/param-name&gt;
+    &lt;param-value&gt;
+        js/script1.js=http://cdn.example.com/js/script1.js,
+        somelib:js/script2.js=http://cdn.example.com/somelib/js/script2.js,
+        otherlib:style.css=http://cdn.example.com/otherlib/style.css,
+        images/logo.png=http://cdn.example.com/logo.png
+    &lt;/param-value&gt;
+&lt;/context-param&gt;
+		</code></pre>
+		<p>
+			With the above configuration, the following resources:
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:outputScript name="js/script1.js" /&gt;
+&lt;h:outputScript library="somelib" name="js/script2.js" /&gt;
+&lt;h:outputStylesheet library="otherlib" name="style.css" /&gt;
+&lt;h:graphicImage name="images/logo.png" /&gt;
+		</code></pre>
+		<p>
+			Will during <strong>non</strong>-<code>Development</code> stage be rendered as:
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;script type="text/javascript" src="http://cdn.example.com/js/script1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://cdn.example.com/somelib/js/script2.js"&gt;&lt;/script&gt;
+&lt;link type="text/css" rel="stylesheet" href="http://cdn.example.com/otherlib/style.css" /&gt;
+&lt;img src="http://cdn.example.com/logo.png" /&gt;
+		</code></pre>
+		<p>
+			Note that you can also use this on resources provided as {@link ResourceDependency} by the JSF implementation and/or
+			component libraries. For example, JSF's own <code>javax.faces:jsf.js</code> resource which is been used by
+			<code>&lt;f:ajax&gt;</code> can be provided by a CDN URL using the following syntax:
+		</p>
+		<pre><code>
+javax.faces:jsf.js=http://cdn.example.com/jsf.js
+		</code></pre>
+
+		<h3>CombinedResourceHandler</h3>
+		<p>
+			If you're also using the <h:link outcome="CombinedResourceHandler" styleClass="code">CombinedResourceHandler</h:link>, then you need to understand that CDN resources can
+			simply not be combined, as that would defeat the CDN purpose. The <code>CombinedResourceHandler</code> will therefore
+			automatically exclude all CDN resources from combining when the current JSF project stage is <strong>not</strong>
+			set to <code>Development</code>.
+		</p>
+ 	</ui:define>		
+</ui:composition>

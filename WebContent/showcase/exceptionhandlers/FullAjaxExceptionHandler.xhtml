@@ -7,9 +7,16 @@
 >
 	<ui:define name="description">
 		<p>
-			This exception handler enables you to show the full error page in its entirety to the enduser in case of 
-			exceptions during ajax requests. This exception handler will parse the <code>web.xml</code> and
-			<code>web-fragment.xml</code> files to find the error page locations of the HTTP error code 500 and all 
+			By default, when an exception occurs during a JSF ajax request, the enduser would not get any form of feedback
+			if the action was successfully performed or not. In Mojarra, only when the project stage is set to 
+			<code>Development</code>, the enduser would see a bare JavaScript alert with only the exception type and message.
+			It would make sense if exceptions during ajax requests are handled the same way as exceptions during synchronous 
+			requests, which is utilizing the standard Servlet API <code>&lt;error-page&gt;</code> mechanisms in <code>web.xml</code>.
+		</p>
+		<p>
+			This <code>FullAjaxExceptionHandler</code> enables you to show the full error page in its entirety to the 
+			enduser in case of exceptions during ajax requests. This exception handler will parse the <code>web.xml</code> 
+			and <code>web-fragment.xml</code> files to find the error page locations of the HTTP error code 500 and all 
 			declared specific exception types.
 		</p>
 		<p>

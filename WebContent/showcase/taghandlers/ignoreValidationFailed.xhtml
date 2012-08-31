@@ -1,0 +1,67 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:ignoreValidationFailed&gt;</code> allows the developer to ignore validation failures when
+			executing an <code>UICommand</code> action. This taghandler must be placed inside an <code>UICommand</code> component and the
+			parent <code>UIForm</code> must be an <code>&lt;o:form&gt;</code>. When executing an ajax action, make sure that the
+			parent <code>UIForm</code> is also included in the <code>&lt;f:ajax execute&gt;</code>.
+		</p>
+		<p>
+			For example:
+		</p>
+		<pre class="prettyprint"><code class="xhtml">
+&lt;o:form&gt;
+  ...
+  &lt;h:commandButton value="save valid data" action="#{bean.saveValidData}"&gt;
+    &lt;o:ignoreValidationFailed /&gt;
+    &lt;f:ajax execute="@form" /&gt;
+  &lt;/h:commandButton&gt;
+&lt;/o:form&gt;
+		</code></pre>
+		<p>
+			Note that the model values will (obviously) only be updated for components which have actually passed the validation.
+			Also the validation messages will still be displayed. If you prefer to not display them, then you'd need to exclude
+			them from rendering by <code>&lt;f:ajax render&gt;</code>, or to put a proper condition in the <code>rendered</code>
+			attribute.
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<o:form>
+			<h3>Please fill out all of those fields.</h3>
+
+			<h:panelGrid columns="3">
+				<o:outputLabel for="input1" value="Foo" />
+				<h:inputText id="input1" required="true" />
+				<h:message for="input1" />
+
+				<o:outputLabel for="input2" value="Bar" />
+				<h:inputText id="input2" required="true" />
+				<h:message for="input2" />
+
+				<o:outputLabel for="input3" value="Baz" />
+				<h:inputText id="input3" required="true" />
+				<h:message for="input3" />
+
+				<h:panelGroup />
+				<h:commandButton value="save">
+					<f:ajax execute="@form" render="@form" />
+					<o:ignoreValidationFailed />
+				</h:commandButton>
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</o:form>		
+	</ui:define>
+</ui:composition>

@@ -39,6 +39,14 @@
 	</servlet-mapping>
 
 	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.omnifaces.filter.CharacterEncodingFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
 		<filter-name>facesExceptionFilter</filter-name>
 		<filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
 	</filter>

@@ -13,7 +13,9 @@
 			respectively. This actually offers a better hook on invoking actions after the 
 			<code>&lt;f:viewParam&gt;</code> values been set than the <code>preRenderView</code> event. In some 
 			circumstances the <code>preRenderView</code> event might be too late. For example, when you need to set a 
-			faces message in the flash scope and send a redirect.
+			faces message in the flash scope and send a redirect. Also, it won't be invoked when the validations phase
+			has failed for one of the <code>&lt;f:viewParam&gt;</code> values, in contrary to the 
+			<code>preRenderView</code> event.
 		</p>
 		<p>
 			Note that the upcoming JSF 2.2 will come with a <code>&lt;f:viewAction&gt;</code> tag which should actually
