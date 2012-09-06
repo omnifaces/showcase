@@ -194,6 +194,14 @@ code,
 	background-color: #fee;
 }
 
+.snapshot {
+	padding: 0 5px;
+	background: #ff9;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+}
+
 .clearleft:after {
 	content: "";
 	display: table;

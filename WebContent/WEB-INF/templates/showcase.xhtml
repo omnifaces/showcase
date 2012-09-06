@@ -18,11 +18,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:os="http://omnifaces.org/showcase"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 >
 	<ui:define name="title">OmniFaces Showcase - #{page.current.title}</ui:define>
 
 	<ui:define name="contentTitle">
-		<ui:param name="parent" value="#{page.current.parent}" />
+		<c:set var="parent" value="#{page.current.parent}" />
 		<p:selectOneMenu id="groups" value="#{parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
 			styleClass="groups" panelStyleClass="groups" effect="fade" disabled="#{facesContext.postback and not facesContext.renderResponse}">
 			<f:selectItems value="#{parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 

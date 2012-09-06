@@ -16,6 +16,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 >
 	<cc:interface>
 		<cc:attribute name="header" required="true" />
@@ -24,7 +25,7 @@
 		<cc:attribute name="label" required="true" />
 	</cc:interface>
 	<cc:implementation>
-		<ui:param name="docs" value="#{page.current.documentation[cc.attrs.docs]}" />
+		<c:set var="docs" value="#{page.current.documentation[cc.attrs.docs]}" />
 		<ui:fragment rendered="#{not empty docs}">
 			<h3>#{cc.attrs.header}</h3>
 			<ul>

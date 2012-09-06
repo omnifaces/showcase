@@ -19,12 +19,14 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 >
-	<ui:param name="_docVersionPath" value="#{empty app.version ? '' : of:concat(app.version, '/')}" />
-	<ui:param name="_srcVersionParam" value="#{empty app.version ? '' : of:concat('?name=', app.version)}" />
-	<ui:param name="_apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{_docVersionPath}" />
-	<ui:param name="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_docVersionPath}" />
-	<ui:param name="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" />
+	<c:set var="_snapshot" value="#{empty app.version}" scope="application" />
+	<c:set var="_docVersionPath" value="#{_snapshot ? '' : of:concat(app.version, '/')}" scope="application" />
+	<c:set var="_srcVersionParam" value="#{_snapshot ? '' : of:concat('?name=', app.version)}" scope="application" />
+	<c:set var="_apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{_docVersionPath}" scope="application" />
+	<c:set var="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_docVersionPath}" scope="application" />
+	<c:set var="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" scope="application" />
 
 	<h:head>
 		<title><ui:insert name="title">OmniFaces Showcase</ui:insert></title>
@@ -50,7 +52,7 @@
 			<h1>
 				<a href="#{request.contextPath}/">
 					<h:graphicImage library="layout" name="img/logo-70x70.png" alt="logo" width="70" height="70" />
-					OmniFaces Showcase
+					OmniFaces Showcase <h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{_snapshot}" />
 				</a>
 			</h1>
 			<div id="poweredBy">

@@ -10,6 +10,12 @@
 			Live examples of the <a href="http://code.google.com/p/omnifaces/">OmniFaces</a> components and utilities
             can be tried out here. Please check out the left side menu.
 		</p>
+		<ui:fragment rendered="#{_snapshot}">
+			<p class="snapshot">
+				This showcase shows the SNAPSHOT version of OmniFaces! For the showcase of the stable version of
+				OmniFaces, please go to <a href="http://omnifaces.org">omnifaces.org</a>.
+			</p>
+		</ui:fragment>
 
 		<h3>What is OmniFaces?</h3>
 		<p>
@@ -85,8 +91,8 @@ xmlns:of="http://omnifaces.org/functions"
 		
 		<h3>Documentation</h3>
 		<ul>
-			<li><a href="http://wiki.omnifaces.googlecode.com/hg/javadoc/1.1/index.html">OmniFaces 1.1 API documentation</a></li>
-			<li><a href="http://wiki.omnifaces.googlecode.com/hg/vdldoc/1.1/index.html">OmniFaces 1.1 VDL documentation</a></li>
+			<li><a href="#{_apiURL}index.html">OmniFaces 1.1 API documentation</a></li>
+			<li><a href="#{_vdlURL}index.html">OmniFaces 1.1 VDL documentation</a></li>
 		</ul>
 
 		<h3>Support</h3>
