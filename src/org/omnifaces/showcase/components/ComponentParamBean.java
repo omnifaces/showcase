@@ -1,39 +1,70 @@
 package org.omnifaces.showcase.components;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
 
 @ManagedBean
+@RequestScoped
 public class ComponentParamBean {
 
-	private List<String> items;
-	private String boo;
+	private String input;
+	private List<String> tableItems;
+
+	@ManagedProperty("#{param.start}")
+	private int start;
+	private List<String> listItems;
+	private String selectedItem;
 
 	@PostConstruct
 	public void init() {
-		items = new ArrayList<String>();
-		items.add("A");
-		items.add("B");
-		items.add("C");
+		// Fill table items.
+		tableItems = Arrays.asList("row1", "row2", "row3");
+
+		// Fill list items.
+		listItems = new ArrayList<String>();
+		int size = start + 3;
+
+		for (int i = start; i < size; i++) {
+			listItems.add("item " + (i + 1));
+		}
 	}
 
-	public void doAction() {
-		//
+	public String getInput() {
+		return input;
 	}
 
-	public List<String> getItems() {
-		return items;
+	public void setInput(String input) {
+		this.input = input;
 	}
 
-	public String getBoo() {
-		return boo;
+	public List<String> getTableItems() {
+		return tableItems;
 	}
 
-	public void setBoo(String boo) {
-		this.boo = boo;
+	public void setStart(int start) {
+		this.start = start;
+	}
+
+	public int getStart() {
+		return start;
+	}
+
+	public List<String> getListItems() {
+		return listItems;
+	}
+
+	public String getSelectedItem() {
+		return selectedItem;
+	}
+
+	public void setSelectedItem(String selectedItem) {
+		this.selectedItem = selectedItem;
 	}
 
 }

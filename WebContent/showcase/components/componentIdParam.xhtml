@@ -5,9 +5,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:param name="_vdlPaths" value="o/componentIdParam" />
-	<ui:param name="_apiPaths" value="component/input/ComponentIdParam" />
-
 	<ui:define name="description">
 		<p>
 			The <code>&lt;o:componentIdParam&gt;</code> component allows to render just one or more components on a view via a GET
@@ -34,56 +31,89 @@
 			<o:componentIdParam componentIdName="component" clientIdName="client" />
 		</f:metadata>
 	   
+		<h3>Output</h3>
 		<p><h:outputText id="foo" value="Foo component" /></p>
-
-		<p>Form:</p>
-		<h:form id="form">
-			Submitted value: #{componentParamBean.boo}
-			<h:inputText value="#{componentParamBean.boo}" />
-			<h:commandButton value="submit" action="#{componentParamBean.doAction}" />
-		</h:form>
-
 		<p><h:outputText id="bar" value="Bar Component" /></p>
-
-		<p>Table:</p>
-		<h:dataTable id="table" value="#{componentParamBean.items}" var="item">
-			<h:column>
-				<h:panelGroup id="pop">
-					<h:outputText id="row" value="Row #{item}" />
-				</h:panelGroup>
-			</h:column>
-		</h:dataTable>
-		
-		<hr/>
-		
 		<p>
-			<h:link>
-				<f:param name="component" value="table"/>
-				Render only table component on new page
-			</h:link>
-			<br/>
-			<h:link>
-				<f:param name="client" value="table:1:row"/>
-				Render single table row on new page
-			</h:link>
-			<br/>
-			<h:link>
+			<h:link target="_blank">
 				<f:param name="component" value="foo"/>
 				<f:param name="component" value="bar"/>
 				Render foo and bar components on new page
 			</h:link>
-			<br/>
-			<h:link>
+		</p>
+		
+		<hr/>
+
+		<h3>Form</h3>
+		<h:form id="form">
+			Submitted value: #{componentParamBean.input}
+			<h:inputText value="#{componentParamBean.input}" />
+			<h:commandButton value="submit" />
+		</h:form>
+		<p>
+			<h:link target="_blank">
 				<f:param name="component" value="form"/>
 				Render form on new page
 			</h:link>
-			<br />
-			<a href="#" onclick="$('#contentDiv').load('#{request.requestURI}?component=table'); return false;">
-			   Load table into DIV using jQuery
-			</a>
 		</p>
 
+		<hr/>
+
+		<h3>Table</h3>
+		<h:dataTable id="table" value="#{componentParamBean.tableItems}" var="item">
+			<h:column>
+				<h:panelGroup id="pop">
+					<h:outputText id="row" value="#{item}" />
+				</h:panelGroup>
+			</h:column>
+		</h:dataTable>
+		<p>
+			<h:link target="_blank">
+				<f:param name="component" value="table"/>
+				Render only table component on new page
+			</h:link>
+			<br/>
+			<h:link target="_blank">
+				<f:param name="client" value="table:1:row"/>
+				Render single table row on new page
+			</h:link>
+			<br/>
+			<a href="#" onclick="$('#contentDiv').load('#{request.requestURI}?component=table'); return false;">
+			   Load table into below <code>&lt;div&gt;</code> using jQuery
+			</a>
+		</p>
 		<div id="contentDiv"></div>
+		
+		<hr/>
+
+		<h3>Expanendable list</h3>
+		<ul id="list">
+			<ui:repeat id="listRepeater" value="#{componentParamBean.listItems}" var="item">
+				<li>
+					<h:form>
+						#{item}
+						<h:commandLink value="select" action="#{componentParamBean.setSelectedItem(item)}">
+							<f:param name="start" value="#{componentParamBean.start}" />
+							<f:ajax render=":selectedItem" />
+						</h:commandLink>
+					</h:form>
+				</li>
+			</ui:repeat>
+		</ul>
+		<p><input type="button" id="showMore" value="Show more using jQuery" /></p>
+		<p>
+			Remember to pass start index as <code>&lt;f:param&gt;</code> along command links/buttons inside repeated item.
+			Selected item: <strong><h:outputText id="selectedItem" value="#{componentParamBean.selectedItem}" /></strong>
+		</p>
+		<h:outputScript>
+            $("#showMore").click(function() {
+                $list = $("#list");
+                var params = { start: $list.find("li").length, component: "listRepeater" };
+                $.get(location, params, function(html) {
+                    $list.append(html);
+                });
+            });
+        </h:outputScript>
 	</ui:define>
 	
 </ui:composition>
