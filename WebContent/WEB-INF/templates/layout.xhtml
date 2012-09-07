@@ -16,10 +16,10 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"
 >
 	<c:set var="_snapshot" value="#{empty app.version}" scope="application" />
 	<c:set var="_docVersionPath" value="#{_snapshot ? '' : of:concat(app.version, '/')}" scope="application" />

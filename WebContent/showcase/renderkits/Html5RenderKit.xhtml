@@ -108,9 +108,7 @@
 		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 10, Opera 11.50 and IE 10" />
 
 		        <h:panelGroup />
-		        <h:commandButton value="submit">
-		            <f:ajax execute="@form" render="@form" />
-		        </h:commandButton>
+		        <h:commandButton value="submit" />
 		        <h:panelGroup>
 		            <h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		        </h:panelGroup>

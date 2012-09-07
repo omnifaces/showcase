@@ -2,6 +2,7 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
 >
 	<ui:define name="contentTitle">Welcome to the OmniFaces Showcase application!</ui:define>
 
@@ -26,10 +27,14 @@
 		</p>
 		<p>
 			An important design goal will be to have as few dependencies as possible and to be minimally invasive. 
-			So far, it only requires JSF 2.0, EL 2.1 and Servlet 2.5 APIs which is already minimally available in a bit
-			modern container serving a JSF 2 web application. As such, OmniFaces should principally integrate 
-			perfectly well with most other JSF libraries. Even more, this showcase application uses 
-			<a href="http://primefaces.org">PrimeFaces 3.3</a> which works perfectly fine together with OmniFaces.
+			So far, it only requires JSF 2.0, EL 2.1 and Servlet 2.5 APIs 
+			(<a href="http://code.google.com/p/omnifaces/wiki/JavaEE5and6Compatibility">Java EE 6 details</a>) 
+			which is already minimally available in a fairly modern container serving a JSF 2 web application. As such, 
+			OmniFaces should principally integrate perfectly well with most other JSF libraries. Even more, this showcase 
+			application uses 
+			<o:importConstants type="org.primefaces.util.Constants" var="PrimeFaces" />
+			<a href="http://primefaces.org">PrimeFaces #{PrimeFaces.VERSION}</a>
+			which works perfectly fine together with OmniFaces.
 		</p>
 		<p>
 			Contrary to some of the other excellent JSF 2 libraries out there (like 
@@ -71,16 +76,18 @@
 			<a href="http://code.google.com/p/omnifaces/downloads/list">the JAR file</a> 
 			in <code>/WEB-INF/lib</code>.
 		</p>
-		<p>
-			Maven users can add OmniFaces by adding the following Maven coordinates to <code>pom.xml</code>:
-		</p>
-		<blockquote><pre>
+		<ui:fragment rendered="#{not _snapshot}">
+			<p>
+				Maven users can add OmniFaces by adding the following Maven coordinates to <code>pom.xml</code>:
+			</p>
+			<blockquote><pre>
 &lt;dependency&gt;
     &lt;groupId&gt;org.omnifaces&lt;/groupId&gt;
     &lt;artifactId&gt;omnifaces&lt;/artifactId&gt;
-    &lt;version&gt;1.1&lt;/version&gt;
+    &lt;version&gt;#{app.version}&lt;/version&gt;
 &lt;/dependency&gt;
-		</pre></blockquote>
+			</pre></blockquote>
+		</ui:fragment>
 		<p>
 			The OmniFaces UI components/taghandlers and EL functions are available under the following XML namespaces:
 		</p>
@@ -91,8 +98,8 @@ xmlns:of="http://omnifaces.org/functions"
 		
 		<h3>Documentation</h3>
 		<ul>
-			<li><a href="#{_apiURL}index.html">OmniFaces 1.1 API documentation</a></li>
-			<li><a href="#{_vdlURL}index.html">OmniFaces 1.1 VDL documentation</a></li>
+			<li><a href="#{_apiURL}index.html">OmniFaces #{app.version} API documentation</a></li>
+			<li><a href="#{_vdlURL}index.html">OmniFaces #{app.version} VDL documentation</a></li>
 		</ul>
 
 		<h3>Support</h3>

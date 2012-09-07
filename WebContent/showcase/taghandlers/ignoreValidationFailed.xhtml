@@ -51,13 +51,15 @@
 				<h:message for="input3" />
 
 				<h:panelGroup />
-				<h:commandButton value="save">
-					<f:ajax execute="@form" render="@form" />
-					<o:ignoreValidationFailed />
-				</h:commandButton>
-				<h:commandButton value="submit">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
+				<h:panelGroup>
+					<h:commandButton value="save">
+						<f:ajax execute="@form" render="@form" />
+						<o:ignoreValidationFailed />
+					</h:commandButton>
+					<h:commandButton value="submit">
+						<f:ajax execute="@form" render="@form" />
+					</h:commandButton>
+				</h:panelGroup>
 				<h:panelGroup>
 					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 				</h:panelGroup>
