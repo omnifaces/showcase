@@ -2,6 +2,7 @@
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:of="http://omnifaces.org/functions"
 >
 	<ui:define name="contentTitle">Error</ui:define>
@@ -11,7 +12,7 @@
 			<ul>
 				<li>Date/time: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
 				<li>User agent: #{header['user-agent']}</li>
-				<li>User IP: #{request.remoteAddr}</li>
+				<li>User IP: #{empty header['x-forwarded-for'] ? request.remoteAddr : fn:split(header['x-forwarded-for'], ',')[0]}</li>
 				<li>Request URI: <a href="#{requestScope['javax.servlet.error.request_uri']}">#{requestScope['javax.servlet.error.request_uri']}</a></li>
 				<li>Ajax request: #{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}</li>
 				<li>Status code: #{requestScope['javax.servlet.error.status_code']}</li>
