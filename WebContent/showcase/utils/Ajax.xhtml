@@ -1,0 +1,61 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			Collection of utility methods for working with <code>PartialViewContext</code>. There are also shortcuts to the current
+			<code>OmniPartialViewContext</code> instance.
+		</p>
+		<p>
+			This utility class allows an easy way of programmaticaly (from inside a managed bean method) specifying new
+			client IDs which should be ajax-updated, callback scripts which should be execute on complete of the ajax 
+			response and adding arguments to the JavaScript scope. The added arguments are during the "on complete" 
+			phase as a JSON object available by <code>OmniFaces.Ajax.data</code>. The JSON object is been encoded by
+			<code>Json#encode()</code> which supports at most the standard Java types, not complex types.
+		</p>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>
+	
+	<ui:define name="demo">
+		<h3>Update a component programmatically</h3>
+		<h:form id="form">
+			<h:commandButton value="submit" action="#{ajaxBean.update}">
+				<f:ajax />
+			</h:commandButton>
+			<p>It's now <h:outputText id="timestamp" value="#{now.toString()}" /></p>
+		</h:form>
+
+		<hr />
+		
+		<h3>Execute a callback script programmatically</h3>
+		<h:form>
+			<h:commandButton value="submit" action="#{ajaxBean.callback}">
+				<f:ajax />
+			</h:commandButton>
+		</h:form>
+
+		<hr />
+		
+		<h3>Add arguments to the JavaScript scope</h3>
+		<h:form>
+			<h:commandButton value="submit" action="#{ajaxBean.argument}" onclick="$('#showData').empty()">
+				<f:ajax />
+			</h:commandButton>
+		</h:form>
+		<ul id="showData"></ul>
+		<h:outputScript>
+			function showData() {
+				var data = OmniFaces.Ajax.data;
+				var $showData = $("#showData");
+				
+				$.each(data, function(key, value) {
+					$("&lt;li&gt;").text(key + "=" + value).appendTo($showData);
+				});
+			}
+		</h:outputScript>
+	</ui:define>
+</ui:composition>

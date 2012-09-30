@@ -9,7 +9,8 @@
 		<p>
 			This <code>ResourceHandler</code> implementation will remove all separate script and stylesheet resources which have the
 			<code>target</code> attribute set to <code>"head"</code> from the <code>UIViewRoot</code> and create a combined one
-			for all scripts and another combined one for all stylesheets.
+			for all scripts and another combined one for all stylesheets when the current JSF project stage is <strong>not</strong> set to
+			<code>Development</code>.
 		</p>
 		<p>
 			This handler must be registered as follows in <code>faces-config.xml</code> in order to get it to run:

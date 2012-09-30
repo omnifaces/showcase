@@ -100,10 +100,14 @@
 				</li>
 			</ui:repeat>
 		</ul>
-		<p><input type="button" id="showMore" value="Show more using jQuery" /></p>
 		<p>
-			Remember to pass start index as <code>&lt;f:param&gt;</code> along command links/buttons inside repeated item.
+			<input type="button" id="showMore" value="Show more using jQuery" />
 			Selected item: <strong><h:outputText id="selectedItem" value="#{componentParamBean.selectedItem}" /></strong>
+		</p>
+		<p>
+			Remember to pass start index as <code>&lt;f:param&gt;</code> along command links/buttons inside repeated item, 
+			so that the model can properly be preinitialized to identify the repeated item on which the action is invoked.
+			See also the command link source code of this example.
 		</p>
 		<h:outputScript>
             $("#showMore").click(function() {
