@@ -25,13 +25,13 @@
 	<ui:define name="contentTitle">
 		<c:set var="parent" value="#{page.current.parent}" />
 		<p:selectOneMenu id="groups" value="#{parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="groups" panelStyleClass="groups" effect="fade" disabled="#{not facesContext.renderResponse}">
+			styleClass="groups" panelStyleClass="groups" effect="fade" disabled="#{facesContext.postback and not facesContext.renderResponse}">
 			<f:selectItems value="#{parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
 				itemDisabled="#{parent.children[0].viewId == _parent.children[0].viewId}" />
 		</p:selectOneMenu>
 		-
 		<p:selectOneMenu id="pages" value="#{page.current.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="pages" panelStyleClass="pages" effect="fade" disabled="#{not facesContext.renderResponse}" rendered="#{parent.childCount gt 1}">
+			styleClass="pages" panelStyleClass="pages" effect="fade" disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{parent.childCount gt 1}">
 			<f:selectItems value="#{parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
 				itemDisabled="#{page.current.viewId == _page.viewId}" />
 		</p:selectOneMenu>
@@ -40,6 +40,7 @@
 	</ui:define>
 
 	<ui:define name="content">
+		<h:outputStylesheet library="showcase" name="css/showcase.css" target="head" />
 		<h:outputStylesheet library="showcase" name="css/prettify.css" target="head" />
 		<h:outputScript library="showcase" name="js/prettify.js" target="head" />
 		<h:outputScript library="showcase" name="js/onload.js" target="body" />
