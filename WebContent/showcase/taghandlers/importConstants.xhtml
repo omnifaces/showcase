@@ -43,7 +43,9 @@ public enum Baz {
 			the above example.
 		</p>
 		<p>
-			The resolved constants are by reference stored in the cache to improve retrieving performance.
+			The resolved constants are by reference stored in the cache to improve retrieving performance. There is also a
+			runtime (no, not compiletime as that's just not possible in EL) check during retrieving the constant value.
+			If a constant value doesn't exist, then an <code>IllegalArgumentException</code> will be thrown.
 		</p>
 	</ui:define>
 
@@ -56,6 +58,8 @@ public enum Baz {
 			<li>#{ConstantsBean.CONSTANT1}</li>
 			<li>#{ConstantsBean.CONSTANT2}</li>
 		</ul>
+		
+		<hr />
 
 		<h3>All values of <code>ExampleEnum</code></h3>
 		<ul>
@@ -64,6 +68,8 @@ public enum Baz {
 			<li>#{ExampleEnum.THREE}</li>
 		</ul>
 		
+		<hr />
+
 		<h3>Providing enum values as dropdown items</h3>
 		<h:form>
 			<h:selectOneMenu value="#{constantsBean.exampleEnum}">
@@ -76,6 +82,8 @@ public enum Baz {
 			<!-- Note that you can also just do #{constantsBean.exampleEnum == 'TWO'} -->
 		</h:form>		
 		
+		<hr />
+
 		<h3>Providing enum values as dropdown items by var</h3>
 		<h:form>
 			<h:selectOneMenu value="#{constantsBean.exampleEnum}">

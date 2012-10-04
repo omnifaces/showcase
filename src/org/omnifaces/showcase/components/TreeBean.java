@@ -9,7 +9,7 @@ import javax.faces.bean.ViewScoped;
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.model.ExampleEntity;
-import org.omnifaces.util.Faces;
+import org.omnifaces.util.Ajax;
 
 @ManagedBean
 @ViewScoped
@@ -39,7 +39,7 @@ public class TreeBean implements Serializable {
 	}
 
 	public void save() {
-		Faces.addRenderIds("staticTree");
+		Ajax.update("staticTree");
 	}
 
 	public TreeModel<ExampleEntity> getTree() {

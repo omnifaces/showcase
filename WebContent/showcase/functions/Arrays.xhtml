@@ -3,6 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
@@ -26,7 +27,7 @@
 			<h:selectOneMenu value="#{bean.dayAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
 				<f:selectItems value="#{of:createIntegerArray(1, 31)}" />
 			</h:selectOneMenu>
-			<ui:param name="year" value="#{of:formatDate(now, 'yyyy')}" />
+			<c:set var="year" value="#{of:formatDate(now, 'yyyy')}" />
 			<h:selectOneMenu value="#{bean.yearAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
 				<f:selectItems value="#{of:createIntegerArray(year, year - 10)}" />
 			</h:selectOneMenu>

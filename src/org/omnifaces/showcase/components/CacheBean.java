@@ -1,5 +1,6 @@
 package org.omnifaces.showcase.components;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,8 +11,10 @@ import javax.faces.bean.ViewScoped;
 
 @ViewScoped
 @ManagedBean
-public class CacheBean {
-	
+public class CacheBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private List<String> items;
 	private long key;
 
