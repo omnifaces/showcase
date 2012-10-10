@@ -1,0 +1,105 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			The <code>omnifaces.GenericEnumConverter</code> is intented for use in <code>UISelectMany</code> components
+			(such as <code>&lt;h:selectManyCheckbox&gt;</code>, <code>&lt;h:selectManyListbox&gt;</code> and <code>&lt;h:selectManyMenu&gt;</code>) 
+			whose value is been bound to a <code>List&lt;T&gt;</code> property. Even though JSF has already a builtin 
+			<a href=""><code>EnumConverter</code></a>,
+			this doesn't work for a <code>List&lt;T&gt;</code> property as the generic type infomation <code>T</code> is
+			lost during runtime. The list would be filled with unconverted <code>String</code> values instead which may
+			in turn cause <code>ClassCastException</code> during postprocessing in the business logic.
+		</p>
+		<p>
+			This can be solved by using a <code>T[]</code> property instead of <code>List&lt;T&gt;</code>
+			(e.g. <code>Role[]</code> in case of a <code>Role</code> enum). If this is however is not an option due to 
+			some design restrictions (e.g. JPA <code>@ElementCollection</code>, etc), then you'd need to create an 
+			explicit converter for the enum type like follows:
+		</p>
+		<pre class="prettyprint"><code class="code-java">
+@FacesConverter(value="roleConverter")
+public class RoleConverter extends EnumConverter {
+    public RoleConverter() {
+        super(Role.class);
+    }
+}
+		</code>
+		<code class="code-xhtml">
+&lt;h:selectManyCheckbox value="\#{bean.selectedRoles}" converter="roleConverter"&gt;
+    &lt;f:selectItems value="\#{bean.availableRoles}" /&gt;
+&lt;/h:selectManyCheckbox&gt;
+		</code></pre>
+		<p>
+			However, creating a new converter for every single enum type, only and only for use in <code>UISelectMany</code>
+			with a <code>List&lt;T&gt;</code> property, may be a bit clumsy. This generic enum converter is intented to remove the need
+			to create a new enum converter everytime.
+		</p>
+		<p>
+			This converter is available by converter ID <code>omnifaces.GenericEnumConverter</code>. Here is a basic 
+			usage example:
+		</p>
+		<pre class="prettyprint"><code class="code-xhtml">
+&lt;h:selectManyCheckbox value="\#{bean.selectedEnums}" converter="omnifaces.GenericEnumConverter"&gt;
+    &lt;f:selectItems value="\#{bean.availableEnums}" /&gt;
+&lt;/h:selectManyCheckbox&gt;
+		</code></pre>
+	</ui:define>
+
+	<ui:define name="demo">
+		<o:importConstants type="org.omnifaces.showcase.model.ExampleEnum" />
+	
+		<h3>With <code>ExampleEnum[]</code> - works fine</h3>
+		<h:form>
+			<h:selectManyCheckbox value="#{genericEnumBean.enumArray}">
+				<f:selectItems value="#{ExampleEnum}" />
+				<f:ajax render="showSelected" />
+			</h:selectManyCheckbox>
+			<p>Selected:
+				<h:panelGroup id="showSelected">
+					<ui:repeat value="#{genericEnumBean.enumArray}" var="item" varStatus="loop">
+						#{item} (#{item['class'].simpleName})#{loop.last ? '' : ','}
+					</ui:repeat>
+				</h:panelGroup>
+			</p>
+		</h:form>
+
+		<hr />
+
+		<h3>With <code>List&lt;ExampleEnum&gt;</code> - wrong type has been set!</h3>
+		<h:form>
+			<h:selectManyCheckbox value="#{genericEnumBean.enumList}">
+				<f:selectItems value="#{ExampleEnum}" />
+				<f:ajax render="showSelected" />
+			</h:selectManyCheckbox>
+			<p>Selected:
+				<h:panelGroup id="showSelected">
+					<ui:repeat value="#{genericEnumBean.enumList}" var="item" varStatus="loop">
+						#{item} (#{item['class'].simpleName})#{loop.last ? '' : ','}
+					</ui:repeat>
+				</h:panelGroup>
+			</p>
+		</h:form>
+
+		<hr />
+
+		<h3>With <code>List&lt;ExampleEnum&gt;</code> and <code>omnifaces.GenericEnumConverter</code> - works fine</h3>
+		<h:form>
+			<h:selectManyCheckbox value="#{genericEnumBean.enumListConverted}" converter="omnifaces.GenericEnumConverter">
+				<f:selectItems value="#{ExampleEnum}" />
+				<f:ajax render="showSelected" />
+			</h:selectManyCheckbox>
+			<p>Selected:
+				<h:panelGroup id="showSelected">
+					<ui:repeat value="#{genericEnumBean.enumListConverted}" var="item" varStatus="loop">
+						#{item} (#{item['class'].simpleName})#{loop.last ? '' : ','}
+					</ui:repeat>
+				</h:panelGroup>
+			</p>
+		</h:form>
+	</ui:define>
+</ui:composition>

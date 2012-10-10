@@ -95,6 +95,13 @@ public enum Baz {
 			<p>Selected: #{constantsBean.exampleEnum.friendlyName}</p>
 			<p>Is it <code>Two</code>? #{constantsBean.exampleEnum == ExampleEnum.TWO}</p>
 			<!-- Note that you can also just do #{constantsBean.exampleEnum == 'TWO'} -->
+		</h:form>
+
+		<hr />
+		<h3>Try to access an invalid constant</h3>
+		<p>This should throw an IllegalArgumentException as <code>ExampleEnum.FOUR</code> doesn't exist.</p>
+		<h:form>
+			<h:commandButton value="Try to access ExampleEnum.FOUR" action="#{constantsBean.setExampleEnum(ExampleEnum.FOUR)}" />
 		</h:form>		
 	</ui:define>
 </ui:composition>
