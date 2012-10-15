@@ -8,8 +8,8 @@
 >
 	<ui:define name="description">
 		<p>
-			Collection of EL functions for data conversion: <code>of:formatBytes()</code>, <code>of:setToList()</code>,  
-			<code>of:mapToList()</code> and <code>of:printStackTrace()</code>.
+			Collection of EL functions for data conversion: <code>of:setToList()</code>, <code>of:mapToList()</code> and
+			<code>of:printStackTrace()</code>.
 		</p>
 		<p>
 			Notes:
@@ -30,10 +30,6 @@
 	</ui:define>		
 	
 	<ui:define name="demo">
-		<p>
-			Format a given amount of bytes with IEC binary unit: 
-			#{of:formatBytes(1023)}, #{of:formatBytes(1024)}, #{of:formatBytes(500000)}, #{of:formatBytes(1048576)}
-		</p>
 		<p>
 			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code>:
 			<ui:repeat value="#{of:setToList(convertersBean.set)}" var="item" varStatus="loop">

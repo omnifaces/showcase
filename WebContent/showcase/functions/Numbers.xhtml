@@ -1,0 +1,31 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			Collection of EL functions for number formatting: <code>of:formatBytes()</code>, <code>of:formatCurrency()</code>,  
+			and <code>of:formatNumber()</code>.
+		</p>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+	
+	<ui:define name="demo">
+		<p>
+			Format a given amount of bytes with IEC binary unit: 
+			#{of:formatBytes(1023)}, #{of:formatBytes(1024)}, #{of:formatBytes(500000)}, #{of:formatBytes(1048576)}
+		</p>
+		<p>
+			Format a number as currency using given currency symbol:
+			#{of:formatCurrency(123.4567, '$')}
+		</p>
+		<p>
+			Format a number using given pattern:
+			#{of:formatNumber(123.4567, '#.00')}
+		</p>
+	</ui:define>
+</ui:composition>

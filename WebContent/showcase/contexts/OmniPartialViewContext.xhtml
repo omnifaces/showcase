@@ -1,0 +1,41 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>This OmniFaces partial view context extends and improves the standard partial view context as follows:</p>
+		<ul>
+			<li>Support for executing callback scripts in ajax response by 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/context/PartialResponseWriter.html#startEval()"><code>PartialResponseWriter#startEval()</code></a>.
+			</li>
+			<li>Support for adding arguments to JavaScript scope in ajax response.</li>
+			<li>Buffers the ajax response until 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/context/ExternalContext.html#getResponseBufferSize()"><code>ExternalContext#getResponseBufferSize()</code></a>
+			regardless of 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/context/ResponseWriter.html#flush()"><code>ResponseWriter#flush()</code></a>
+			calls. The buffer size defaults to the value of context parameter <code>javax.faces.FACELETS_BUFFER_SIZE</code>
+			which in turn defaults to 1KB in Mojarra (note that the average servletcontainer may by itself in turn also 
+			have a default buffer size which is often 2KB). The advantage of buffering regardless of flush calls is that
+			exceptions during rendering of ajax response can be properly handled by 
+			<h:link value="FullAjaxExceptionHandler" outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler.xhtml" styleClass="code" /> 
+			within the buffer size limits. As long as the rendering of the response hasn't reached the buffer size limit,
+			then it can be resetted and reused for the error page.</li>
+			<li>Fixes the no-feedback problem when a <code>ViewExpiredException</code> occurs during an ajax request on a 
+			page which is restricted by <code>web.xml</code> <code>&lt;security-constraint&gt;</code>. The enduser will
+			now properly be redirected to the login page instead of retrieving an ajax response with only a changed 
+			view state (and effectively thus no visual feedback at all).</li>
+		</ul>
+		<p>
+			You can use the <h:link value="Ajax" outcome="/showcase/utils/Ajax.xhtml" styleClass="code" /> utility class to 
+			easily add callback scripts and arguments.
+		</p>
+		<p>
+			This partial view context is already registered by OmniFaces' own <code>faces-config.xml</code> and thus gets
+			auto-initialized when the OmniFaces JAR is bundled in a webapp, so end-users do not need to register this 
+			partial view context explicitly themselves.
+		</p>
+	</ui:define>
+</ui:composition>
