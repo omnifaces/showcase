@@ -8,9 +8,27 @@
 	<ui:define name="description">
 		<p>
 			The <code>&lt;o:highlight&gt;</code> is a helper component which highlights all invalid <code>UIInput</code> 
-			components by adding an error style class to them. Additionally, it by default focuses the first invalid 
-			<code>UIInput</code> component.
+			components and the associated labels by adding an error style class to them. Additionally, it by default 
+			focuses the first invalid <code>UIInput</code> component.
 		</p>
+		<p>
+			This showcase application has the following CSS configured for the purpose:
+		</p>
+		<pre class="prettyprint"><code class="lang-css">
+label.error {
+    color: #c66;
+}
+
+input.error, select.error, textarea.error {
+    background-color: #fee;
+}
+		</code></pre>
+		<p>
+			The default style class name is <code>error</code> and this can be changed as follows:
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;o:highlight styleClass="invalid" /&gt;
+		</code></pre>
 	</ui:define>
 
 	<ui:define name="demo">
