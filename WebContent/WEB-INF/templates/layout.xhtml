@@ -77,10 +77,10 @@
 					<li><a href="#{request.contextPath}/whatsnew.xhtml" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces 1.2?</a></li>
 				</ul>
 			</p:panel>
-			<o:tree id="menu_tree" value="#{app.menu}" varNode="page">
+			<o:tree id="menu_tree" value="#{app.menu}" varNode="_page">
 				<o:treeNode level="0">
 					<o:treeNodeItem>
-						<p:panel id="panel" header="#{page.title}">
+						<p:panel id="panel" header="#{_page.title}">
 							<o:treeInsertChildren />
 						</p:panel>
 					</o:treeNodeItem>
@@ -88,7 +88,7 @@
 				<o:treeNode>
 					<ul><!-- class="group clearleft" -->
 						<o:treeNodeItem>
-							<li><h:link value="#{page.title}" outcome="#{page.viewId}" styleClass="code#{view.viewId == page.viewId ? ' active' : ''}" /></li>
+							<li><h:link value="#{_page.title}" outcome="#{_page.viewId}" styleClass="code#{_page == page.current ? ' active' : ''}" /></li>
 						</o:treeNodeItem>
 					</ul>
 				</o:treeNode>

@@ -27,13 +27,13 @@
 		<p:selectOneMenu id="groups" value="#{parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
 			styleClass="groups" panelStyleClass="groups" effect="fade" disabled="#{facesContext.postback and not facesContext.renderResponse}">
 			<f:selectItems value="#{parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
-				itemDisabled="#{parent.children[0].viewId == _parent.children[0].viewId}" />
+				itemDisabled="#{_parent.children[0] == parent.children[0]}" />
 		</p:selectOneMenu>
 		-
 		<p:selectOneMenu id="pages" value="#{page.current.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
 			styleClass="pages" panelStyleClass="pages" effect="fade" disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{parent.childCount gt 1}">
 			<f:selectItems value="#{parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
-				itemDisabled="#{page.current.viewId == _page.viewId}" />
+				itemDisabled="#{_page == page.current}" />
 		</p:selectOneMenu>
 		<h:outputText value="#{page.current.title}" styleClass="code" rendered="#{parent.childCount == 1}" />
 		<!-- They're disabled in other phases than render response, because they otherwise complain that the model value cannot be set even though there's no form. -->
