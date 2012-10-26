@@ -1,0 +1,44 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:enableRestorableView&gt;</code> instructs the view handler to recreate the entire view whenever the
+			view has been expired, i.e. whenever <code>#restoreView(FacesContext, String)</code> returns <code>null</code> and the
+			current request is a postback. This effectively prevents <code>ViewExpiredException</code> on the view. This tag needs to
+			be placed in <code>&lt;f:metadata&gt;</code> of the view.
+		</p>
+		<p>
+			There are however technical design limitations: the recreated view is exactly the same as during the initial request,
+			so any modifications which are made thereafter, either by taghandlers or conditionally rendered components based on
+			some view or even session scoped variables, are completely lost. In order to recreate exactly the desired view, you
+			would need to make sure that those modifications are made based on request scoped variables (read: request
+			parameters) instead of view or session scoped variables. In other words, the state of the restorable view should not
+			depend on view or session scoped managed beans, but purely on request scoped managed beans.
+		</p>
+		<p>
+			To enable the restorable view, just add the <code>&lt;o:enableRestorableView&gt;</code> to the view metadata.
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;f:metadata&gt;
+    &lt;o:enableRestorableView/&gt;
+&lt;/f:metadata&gt;
+		</code></pre>
+	</ui:define>
+
+	<ui:define name="demo">
+		<p>
+			The demo is shown as "login and logout" use case on 2 different pages, 
+			one with restorable view enabled and other with restorable view disabled:
+		</p>
+		<ul>
+			<li><h:link value="Page with restorable view enabled" outcome="/demo/restorableView-enabled" /></li>
+			<li><h:link value="Page with restorable view disabled" outcome="/demo/restorableView-disabled" /></li>
+		</ul>
+	</ui:define>
+</ui:composition>

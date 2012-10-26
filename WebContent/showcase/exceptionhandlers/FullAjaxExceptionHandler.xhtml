@@ -28,10 +28,15 @@
 &lt;/factory&gt;
 		</code></pre>
 		<p>
-			The buttons in the below example will each purposefully throw an exception. You'll see that an error page template
+			The buttons in the below demo will each purposefully throw an exception. You'll see that an error page template
 			is presented regardless of if it's an ajax request or not. Also, if you wait #{session.maxInactiveInterval / 60} 
-			minutes or manually delete the <code>JSESSIONID</code> cookie and then click any of the buttons, you'll get a 
-			view expired exception which will also end up in a specific error page.
+			minutes or manually delete the <code>JSESSIONID</code> cookie or press the below "Invalidate session" button 
+			and then click any of the buttons on the demo, then you'll get a view expired exception which will also end up 
+			in a specific error page.
+		</p>
+		<p>
+			<h:button value="Invalidate session" 
+				onclick="$.get('#{request.contextPath}/invalidatesession', alert('Session invalidated!')); return false;" />
 		</p>
 		<p>
 			This exception handler is also  

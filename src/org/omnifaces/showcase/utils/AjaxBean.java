@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIData;
 
 import org.omnifaces.util.Ajax;
 
@@ -33,6 +34,14 @@ public class AjaxBean {
 		data.put("list", Arrays.asList("one", "two", "three"));
 		Ajax.data(data);
 		Ajax.oncomplete("showData()");
+	}
+
+	public void updateRow(UIData table, int index) {
+		Ajax.updateRow(table, index);
+	}
+
+	public void updateColumn(UIData table, int index) {
+		Ajax.updateColumn(table, index);
 	}
 
 }

@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
+	xmlns:p="http://primefaces.org/ui"
 >
 	<ui:define name="description">
 		<p>
@@ -13,10 +14,11 @@
 		</p>
 		<p>
 			This utility class allows an easy way of programmaticaly (from inside a managed bean method) specifying new
-			client IDs which should be ajax-updated, callback scripts which should be executed on complete of the ajax 
-			response and adding arguments to the JavaScript scope. The added arguments are during the "on complete" 
-			phase as a JSON object available by <code>OmniFaces.Ajax.data</code>. The JSON object is been encoded by
-			<code>Json#encode()</code> which supports at most the standard Java types, not complex types.
+			client IDs which should be ajax-updated, also <code>UIData</code> rows or columns on specific index, 
+			specifying callback scripts which should be executed on complete of the ajax response and adding arguments 
+			to the JavaScript scope. The added arguments are during the "on complete" phase as a JSON object available 
+			by <code>OmniFaces.Ajax.data</code>. The JSON object is been encoded by <code>Json#encode()</code> which
+			supports at most the standard Java types, not complex types.
 		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>
@@ -58,5 +60,26 @@
 				});
 			}
 		</h:outputScript>
+		
+		<hr />
+		
+		<h3>Update specific UIData rows and columns (PrimeFaces example)</h3>
+		<h:form>
+			<p:dataTable binding="#{table}" value="#{of:createArray(3)}">
+				<p:column headerText="col1"><h:panelGroup id="col1">#{now}</h:panelGroup></p:column>
+				<p:column headerText="col2"><h:panelGroup id="col2">#{now}</h:panelGroup></p:column>
+				<p:column headerText="col3"><h:panelGroup id="col3">#{now}</h:panelGroup></p:column>
+			</p:dataTable>
+
+			<p>
+				<p:commandButton value="update row1" action="#{ajaxBean.updateRow(table, 0)}" />
+				<p:commandButton value="update row2" action="#{ajaxBean.updateRow(table, 1)}" />
+				<p:commandButton value="update row3" action="#{ajaxBean.updateRow(table, 2)}" />
+				<p:commandButton value="update col1" action="#{ajaxBean.updateColumn(table, 0)}" />
+				<p:commandButton value="update col2" action="#{ajaxBean.updateColumn(table, 1)}" />
+				<p:commandButton value="update col3" action="#{ajaxBean.updateColumn(table, 2)}" />
+			</p>
+		</h:form>
+		
 	</ui:define>
 </ui:composition>

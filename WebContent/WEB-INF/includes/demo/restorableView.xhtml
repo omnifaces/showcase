@@ -1,0 +1,52 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<h:form rendered="#{empty user}">
+		<h3>Login</h3>
+		<p>Here's an example login form. The password is just "password".</p>
+		
+		<h:panelGrid columns="3">
+			<o:outputLabel for="username" value="Username" />
+			<h:inputText id="username" value="#{auth.username}" required="true" />
+			<h:message for="username" />
+
+			<o:outputLabel for="password" value="Password" />
+			<h:inputSecret id="password" value="#{auth.password}" required="true" />
+			<h:message for="password" />
+
+			<h:panelGroup />
+			<h:commandButton value="Login" action="#{auth.login}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:messages globalOnly="true" layout="table" />
+		</h:panelGrid>
+	</h:form>
+		
+	<h:form rendered="#{not empty user}">
+		<h3>You're logged in as #{user}</h3>
+		<p>Press the below button to logout.</p>
+		<p><h:commandButton value="Logout" action="#{auth.logout}" /></p>
+	</h:form>
+
+	<p>
+		Pressing the below button will invalidate the session on the server side by ajax. When restorable view is 
+		<strong>not</strong> enabled, then this should result in a <code>ViewExpiredException</code> error when login 
+		or logout button is pressed afterwards. This exception is handled by a "Sorry... The session has expired!" 
+		error page. See also
+		<h:link value="FullAjaxExceptionHandler" outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler" /> 
+		showcase page for source code of error pages.
+	</p>
+	<p>
+		<h:button value="Invalidate session" 
+			onclick="$.get('#{request.contextPath}/invalidatesession', alert('Session invalidated!')); return false;" />
+	</p>
+
+	<p>
+		<h:link value="Back to main enableRestorableView showcase page" outcome="/showcase/taghandlers/enableRestorableView" />.
+	</p>
+	<o:highlight />
+</ui:composition>
