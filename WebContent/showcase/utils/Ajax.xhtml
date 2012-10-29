@@ -34,6 +34,46 @@
 
 		<hr />
 		
+		<h3>Update specific UIData rows and columns programmatically (standard JSF example)</h3>
+		<h:form>
+			<h:dataTable binding="#{table1}" value="#{of:createArray(3)}" width="100%">
+				<h:column headerText="col1"><h:panelGroup id="col1">#{now}</h:panelGroup></h:column>
+				<h:column headerText="col2"><h:panelGroup id="col2">#{now}</h:panelGroup></h:column>
+				<h:column headerText="col3"><h:panelGroup id="col3">#{now}</h:panelGroup></h:column>
+			</h:dataTable>
+
+			<p>
+				<h:commandButton value="update row1" action="#{ajaxBean.updateRow(table1, 0)}"><f:ajax /></h:commandButton>
+				<h:commandButton value="update row2" action="#{ajaxBean.updateRow(table1, 1)}"><f:ajax /></h:commandButton>
+				<h:commandButton value="update row3" action="#{ajaxBean.updateRow(table1, 2)}"><f:ajax /></h:commandButton>
+				<h:commandButton value="update col1" action="#{ajaxBean.updateColumn(table1, 0)}"><f:ajax /></h:commandButton>
+				<h:commandButton value="update col2" action="#{ajaxBean.updateColumn(table1, 1)}"><f:ajax /></h:commandButton>
+				<h:commandButton value="update col3" action="#{ajaxBean.updateColumn(table1, 2)}"><f:ajax /></h:commandButton>
+			</p>
+		</h:form>
+
+		<hr />
+
+		<h3>Update specific UIData rows and columns programmatically (PrimeFaces example)</h3>
+		<h:form>
+			<p:dataTable binding="#{table2}" value="#{of:createArray(3)}">
+				<p:column headerText="col1"><h:panelGroup id="col1">#{now}</h:panelGroup></p:column>
+				<p:column headerText="col2"><h:panelGroup id="col2">#{now}</h:panelGroup></p:column>
+				<p:column headerText="col3"><h:panelGroup id="col3">#{now}</h:panelGroup></p:column>
+			</p:dataTable>
+
+			<p>
+				<p:commandButton value="update row1" action="#{ajaxBean.updateRow(table2, 0)}" />
+				<p:commandButton value="update row2" action="#{ajaxBean.updateRow(table2, 1)}" />
+				<p:commandButton value="update row3" action="#{ajaxBean.updateRow(table2, 2)}" />
+				<p:commandButton value="update col1" action="#{ajaxBean.updateColumn(table2, 0)}" />
+				<p:commandButton value="update col2" action="#{ajaxBean.updateColumn(table2, 1)}" />
+				<p:commandButton value="update col3" action="#{ajaxBean.updateColumn(table2, 2)}" />
+			</p>
+		</h:form>
+
+		<hr />
+		
 		<h3>Execute a callback script programmatically</h3>
 		<h:form>
 			<h:commandButton value="submit" action="#{ajaxBean.callback}">
@@ -60,26 +100,5 @@
 				});
 			}
 		</h:outputScript>
-		
-		<hr />
-		
-		<h3>Update specific UIData rows and columns (PrimeFaces example)</h3>
-		<h:form>
-			<p:dataTable binding="#{table}" value="#{of:createArray(3)}">
-				<p:column headerText="col1"><h:panelGroup id="col1">#{now}</h:panelGroup></p:column>
-				<p:column headerText="col2"><h:panelGroup id="col2">#{now}</h:panelGroup></p:column>
-				<p:column headerText="col3"><h:panelGroup id="col3">#{now}</h:panelGroup></p:column>
-			</p:dataTable>
-
-			<p>
-				<p:commandButton value="update row1" action="#{ajaxBean.updateRow(table, 0)}" />
-				<p:commandButton value="update row2" action="#{ajaxBean.updateRow(table, 1)}" />
-				<p:commandButton value="update row3" action="#{ajaxBean.updateRow(table, 2)}" />
-				<p:commandButton value="update col1" action="#{ajaxBean.updateColumn(table, 0)}" />
-				<p:commandButton value="update col2" action="#{ajaxBean.updateColumn(table, 1)}" />
-				<p:commandButton value="update col3" action="#{ajaxBean.updateColumn(table, 2)}" />
-			</p>
-		</h:form>
-		
 	</ui:define>
 </ui:composition>

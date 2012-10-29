@@ -1,5 +1,11 @@
 prettyPrint();
 
 jsf.ajax.addOnEvent(function(data) {
-	data.source.style.cursor = document.body.style.cursor = (data.status == "begin") ? "progress" : "auto";
+	$("html").toggleClass("progress", data.status == "begin");
+});
+
+$(document).ajaxStart(function() {
+	$("html").addClass("progress");
+}).ajaxStop(function() {
+	$("html").removeClass("progress");
 });

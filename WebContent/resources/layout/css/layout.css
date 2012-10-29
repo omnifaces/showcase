@@ -113,6 +113,10 @@ code,
 	margin: 8px 0;	
 }
 
+html.progress, html.progress * {
+	cursor: progress !important;
+}
+
 label.error {
 	color: #c66;
 }
