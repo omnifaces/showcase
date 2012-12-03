@@ -1,0 +1,47 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:validateBean&gt;</code> allows the developer to control bean validation on a per-<code>UICommand</code>
+			or <code>UIInput</code> component basis. The standard <code>&lt;f:validateBean&gt;</code> only allows that on a per-form
+			or a per-request basis (by using multiple tags and conditional EL expressions in its attributes) which may end up in
+			boilerplate code.
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Leave either the field blank, or enter less than 6 characters</h3>
+		<h:form>
+			<h:panelGrid columns="3">
+				<o:outputLabel for="value" value="Value" />
+				<h:inputText id="value" value="#{validateBean.value}" />
+				<h:message for="value" />
+
+				<h:panelGroup />
+				<h:panelGroup>
+					<f:ajax execute="@form" render="@form">
+						<h:commandButton value="submit (only default validation)" />
+						<br/>
+						<h:commandButton value="submit (only MyValidationGroup validation)">
+							<o:validateBean validationGroups="org.omnifaces.showcase.validators.MyValidationGroup" />
+						</h:commandButton>
+						<br/>
+						<h:commandButton value="submit (both default and MyValidationGroup validation)">
+							<o:validateBean validationGroups="javax.validation.groups.Default,org.omnifaces.showcase.validators.MyValidationGroup" />
+						</h:commandButton>
+						<br/>
+						<h:commandButton value="submit (no validation)">
+							<o:validateBean disabled="true" />
+						</h:commandButton>
+					</f:ajax>
+				</h:panelGroup>
+				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

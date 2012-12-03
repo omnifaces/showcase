@@ -22,7 +22,7 @@
 			explicit converter for the enum type like follows:
 		</p>
 		<pre class="prettyprint"><code class="code-java">
-@FacesConverter(value="roleConverter")
+@FacesConverter("roleConverter")
 public class RoleConverter extends EnumConverter {
     public RoleConverter() {
         super(Role.class);

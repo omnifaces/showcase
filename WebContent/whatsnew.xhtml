@@ -11,6 +11,18 @@
 		<ul>
 			<li><h:link value="Update specific UIData rows and columns programmatically" outcome="showcase/utils/Ajax" /></li>
 			<li><h:link value="Enable restorable view" outcome="showcase/taghandlers/enableRestorableView" /></li>
+			<li><h:link value="New validationFailed attribute on &lt;o:validateXxx&gt; multi field validators" outcome="showcase/validators/validateOne" /></li>
+			<li><h:link value="&lt;o:validateBean&gt; which allows controlling bean validation on a per-UIInput and UICommand basis" outcome="showcase/validators/validateBean" /></li>
+			<li><h:link value="&lt;o:validateUniqueColumn&gt; to validate input elements in single UIColumn on uniqueness" outcome="showcase/validators/validateUniqueColumn" /></li>
+			<li><h:link value="of:formatNumberDefault() shortcut EL function to substitute &lt;f:convertNumber&gt; without pattern" outcome="showcase/functions/Numbers" /></li>
+			<li><h:link value="SelectItemsIndexConverter which converts select items by their index" outcome="showcase/converters/SelectItemsIndexConverter.xhtml" /></li>
+			<li><h:link value="New of:joinArray(), of:joinCollection() and of:joinMap() functions" outcome="showcase/functions/Converters" /></li>
+		</ul>
+		<h3>Bugfixed in OmniFaces 1.3</h3>
+		<ul>
+			<li><h:link value="Broken delegation of OmniPartialViewContext in RichFaces (caused by RichFaces specific design error)" outcome="showcase/contexts/OmniPartialViewContext" /></li>
+			<li><h:link value="Broken delegation of OmniPartialResponseWriter in MyFaces (caused by MyFaces specific design error)" outcome="showcase/contexts/OmniPartialViewContext" /></li>
+			<li><h:link value="Broken initial state of EditableValueHolderStateHelper which is used in o:tree (which would only cause input components to appear in an invalidated state on initial request &#8212; and thus also incorrect highlighting in e.g. PrimeFaces) and added check on visit hint to skip iteration" outcome="showcase/components/tree" /></li>
 		</ul>
 		
 		<p:separator />

@@ -8,39 +8,79 @@
 >
 	<ui:define name="description">
 		<p>
-			Collection of EL functions for data conversion: <code>of:setToList()</code>, <code>of:mapToList()</code> and
-			<code>of:printStackTrace()</code>.
+			Collection of EL functions for data conversion: <code>of:setToList()</code>, <code>of:mapToList()</code>, 
+			<code>of:joinArray()</code>, <code>of:joinCollection()</code> and <code>of:joinMap()</code>.
 		</p>
 		<p>
-			Notes:
+			As to the <code>of:xxxToList()</code> functions, the <code>&lt;ui:repeat&gt;</code> (and <code>&lt;h:dataTable&gt;</code>) 
+			doesn't support <code>Set</code> and <code>Map</code> directly, so those functions may be handy for them.
+			If however EL 2.2 is been used, then <code>\#{bean.set.toArray()}</code> and <code>\#{bean.map.entrySet().toArray()}</code> could be used.
+			But if EL 2.2 is not supported, then the provided EL functions could be used.
 		</p>
-		<ul>
-			<li>
-				Since JSF 2.2 it should be possible to use <code>Set&lt;E&gt;</code> and <code>Map&lt;K, V&gt;</code>
-				in <code>&lt;ui:repeat&gt;</code>. The <code>\#{of:setToList}</code> and <code>\#{of:mapToList}</code>
-				are then only useful for JSF 2.0 and 2.1.
-			</li>
-			<li>
-				There's also an <code>\#{of:printStackTrace(exception)}</code>. See it in action in 
-				<h:link value="FullAjaxExceptionHandler" outcome="/showcase/exceptionhandlers/FullAjaxExceptionHandler.xhtml" styleClass="code" />
-				page.
-			</li>
-		</ul>
+		<p>
+			The <code>of:joinXxx()</code> functions basically joins the elements of the array, collection or map to a 
+			string using the given separator.
+		</p>
+		<p>
+			Note that since JSF 2.2 it should be possible to use <code>\#{bean.set}</code> directly in <code>&lt;ui:repeat&gt;</code> (and <code>&lt;h:dataTable&gt;</code>).
+			The <code>of:setToList()</code> is then only useful for JSF 2.0 and 2.1.
+		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 	
 	<ui:define name="demo">
+		<h3>Using <code>of:xxxToList()</code> functions</h3>
 		<p>
-			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code>:
-			<ui:repeat value="#{of:setToList(convertersBean.set)}" var="item" varStatus="loop">
-				#{item}#{!loop.last ? ', ' : ''}
-			</ui:repeat>
+			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code> using <code>\#{of:setToList()}</code>:
+			<strong>
+				<ui:repeat value="#{of:setToList(convertersBean.set)}" var="item" varStatus="loop">
+					#{item}#{!loop.last ? ', ' : ''}
+				</ui:repeat>
+			</strong>
 		</p>
 		<p>
-			Convert <code>Map&lt;K, V&gt;</code> to <code>List&lt;Entry&lt;K, V&gt;&gt;</code>:
-			<ui:repeat value="#{of:mapToList(convertersBean.map)}" var="entry" varStatus="loop">
-				#{entry.key}=#{entry.value}#{!loop.last ? ', ' : ''}
-			</ui:repeat>
+			Convert <code>Map&lt;K, V&gt;</code> to <code>List&lt;Entry&lt;K, V&gt;&gt;</code> using <code>\#{of:mapToList()}</code>:
+			<strong>
+				<ui:repeat value="#{of:mapToList(convertersBean.map)}" var="entry" varStatus="loop">
+					#{entry.key}=#{entry.value}#{!loop.last ? ', ' : ''}
+				</ui:repeat>
+			</strong>
+		</p>
+		
+		<hr />
+
+		<h3>Just to show EL 2.2 ability to invoke non-getter methods, so that <code>of:xxxToList()</code> are not necessary</h3>
+		<p>
+			Use <code>\#{bean.set.toArray()}</code> directly:
+			<strong>
+				<ui:repeat value="#{convertersBean.set.toArray()}" var="item" varStatus="loop">
+					#{item}#{!loop.last ? ', ' : ''}
+				</ui:repeat>
+			</strong>
+		</p>
+		<p>
+			Use <code>\#{bean.map.entrySet().toArray()}</code> directly:
+			<strong>
+				<ui:repeat value="#{convertersBean.map.entrySet().toArray()}" var="entry" varStatus="loop">
+					#{entry.key}=#{entry.value}#{!loop.last ? ', ' : ''}
+				</ui:repeat>
+			</strong>
+		</p>
+		
+		<hr />
+		
+		<h3>Using <code>of:joinXxx()</code> functions</h3>
+		<p>
+			Join array to string using <code>\#{of:joinArray()}</code>: 
+			<strong>#{of:joinArray(convertersBean.array, ', ')}</strong>
+		</p>
+		<p>
+			Join collection to string using <code>\#{of:joinCollection()}</code>:
+			<strong>#{of:joinCollection(convertersBean.set, ', ')}</strong>
+		</p>
+		<p>
+			Join map to string using <code>\#{of:joinMap()}</code>: 
+			<strong>#{of:joinMap(convertersBean.map, '=', ', ')}</strong>
 		</p>
 	</ui:define>
 </ui:composition>

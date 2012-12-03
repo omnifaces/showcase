@@ -1,0 +1,63 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			<strong>ValidateUniqueColumn</strong> validates if the given <code>UIInput</code> component in an <code>UIData</code> component
+			has an unique value throughout all rows, also those not visible by pagination. This validator works directly on the
+			data model and may therefore not work as expected if the data model does not represent <strong>all</strong> available
+			rows of the <code>UIData</code> component (e.g. when there's means of lazy loading).
+		</p>
+		<p>
+			Usage example:
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:dataTable value="\#{bean.items}" var="item"&gt;
+    &lt;h:column&gt;
+        &lt;h:inputText value="\#{item.value}"&gt;
+            &lt;o:validateUniqueColumn /&gt;
+        &lt;/h:inputText&gt;
+    &lt;/h:column&gt;
+&lt;/h:dataTable&gt;
+		</code></pre>
+		<p>
+			In an invalidating case, only the first row on which the value is actually changed (i.e. the value change event has
+			been fired on the input component in the particular row) will be marked invalid and a faces message will be added
+			on the client ID of the input component in the particular row. The default message can be changed by the
+			<code>message</code> attribute. Any "{0}" placeholder in the message will be substituted with the label of the
+			input component. Any "{1}" placeholder in the message will be substituted with the 1-based row index of the data
+			model. Note that this does not take pagination into account and that this needs if necessary to be taken care of in
+			the custom message yourself.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;o:validateUniqueColumn message="Duplicate value!" /&gt;
+		</code></pre>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h:form>
+			<h3>Please fill out an unique value in all inputs of this column.</h3>
+			<h:dataTable value="#{validateUniqueColumnBean.entities}" var="entity">
+				<h:column>
+					#{component.rowIndex + 1}
+				</h:column>
+				<h:column>
+					<h:inputText id="value" label="Value" value="#{entity.value}" required="true">
+						<o:validateUniqueColumn />
+					</h:inputText>
+				</h:column>
+				<h:column>
+					<h:message id="message" for="value" />
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="Submit">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+		</h:form>
+	</ui:define>
+</ui:composition>

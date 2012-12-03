@@ -13,11 +13,14 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class ConvertersBean {
 
+	private String[] array;
 	private Set<String> set;
 	private Map<String, String> map;
 
 	@PostConstruct
 	public void init() {
+		array = new String[] { "item1", "item2", "item3" };
+
 		set = new LinkedHashSet<String>(3);
 		set.add("item1");
 		set.add("item2");
@@ -27,6 +30,10 @@ public class ConvertersBean {
 		map.put("key1", "value1");
 		map.put("key2", "value2");
 		map.put("key3", "value3");
+	}
+
+	public String[] getArray() {
+		return array;
 	}
 
 	public Set<String> getSet() {

@@ -31,15 +31,16 @@
 
 		<p>
 			<o:form includeViewParams="true">
-				Secondly, do one or more POSTs in an o:form to see that the GET parameter
-				is preserved. <br />
+				Secondly, do one or more POSTs in an o:form to see that the GET parameter in URL is preserved.
+				<br />
 				<h:commandLink value="POST-BACK o:form" action="#{viewParamBean.action}" />
 			</o:form>
 		</p>
 
 		<p>
 			<h:form>
-                Finally, do a POST via an h:form to see that the GET parameter disappears. <br />
+                Finally, do a POST via an h:form to see that the GET parameter in URL disappears.
+                <br />
 				<h:commandLink value="POST-BACK h:form" action="#{viewParamBean.action}" />
 			</h:form>
 		</p>

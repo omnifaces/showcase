@@ -3,6 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:o="http://omnifaces.org/ui"
 >
 	<ui:define name="description">
@@ -49,10 +50,10 @@
 			on this showcase web application. Rightclick the page and <i>View Source</i> and explore the included CSS/JS
 			resources. It is recognizeable by library name <code>omnifaces.combined</code>. It are the following ones:
 		</p>
-		<ui:param name="resourceBaseURL" value="#{request.contextPath}/javax.faces.resource/" />
+		<c:set var="resourceBaseURL" value="#{request.contextPath}/javax.faces.resource/" />
 		<ul>
 			<ui:repeat value="#{view.getComponentResources(facesContext, 'head')}" var="res">
-				<ui:param name="resourcePath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
+				<c:set var="resourcePath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
 				<li><a href="#{resourceBaseURL}#{resourcePath}">#{resourcePath}</a></li>
 			</ui:repeat>
 		</ul>

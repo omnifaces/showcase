@@ -43,12 +43,14 @@
 			</h:dataTable>
 
 			<p>
-				<h:commandButton value="update row1" action="#{ajaxBean.updateRow(table1, 0)}"><f:ajax /></h:commandButton>
-				<h:commandButton value="update row2" action="#{ajaxBean.updateRow(table1, 1)}"><f:ajax /></h:commandButton>
-				<h:commandButton value="update row3" action="#{ajaxBean.updateRow(table1, 2)}"><f:ajax /></h:commandButton>
-				<h:commandButton value="update col1" action="#{ajaxBean.updateColumn(table1, 0)}"><f:ajax /></h:commandButton>
-				<h:commandButton value="update col2" action="#{ajaxBean.updateColumn(table1, 1)}"><f:ajax /></h:commandButton>
-				<h:commandButton value="update col3" action="#{ajaxBean.updateColumn(table1, 2)}"><f:ajax /></h:commandButton>
+				<f:ajax>
+					<h:commandButton value="update row1" action="#{ajaxBean.updateRow(table1, 0)}" />
+					<h:commandButton value="update row2" action="#{ajaxBean.updateRow(table1, 1)}" />
+					<h:commandButton value="update row3" action="#{ajaxBean.updateRow(table1, 2)}" />
+					<h:commandButton value="update col1" action="#{ajaxBean.updateColumn(table1, 0)}" />
+					<h:commandButton value="update col2" action="#{ajaxBean.updateColumn(table1, 1)}" />
+					<h:commandButton value="update col3" action="#{ajaxBean.updateColumn(table1, 2)}" />
+				</f:ajax>
 			</p>
 		</h:form>
 

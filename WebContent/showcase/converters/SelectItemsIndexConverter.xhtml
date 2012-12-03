@@ -1,0 +1,76 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			The <code>omnifaces.SelectItemsIndexConverter</code> allows you to populate e.g. a drop-down with complex Java 
+			model objects as value of <code>&lt;f:selectItems&gt;</code> and have JSF convert those automatically back 
+			without the need to provide a custom converter which may need to do the job based on possibly expensive 
+			service/DAO operations.
+		</p>
+		<p>
+			This converter automatically converts between the index of the select
+			item value and the select item value itself based on its position in the associated select items for the component
+			for which conversion is taking place.
+		</p>
+		<p>
+			This converter has the following advantages over <h:link value="SelectItemsConverter" outcome="SelectItemsConverter" styleClass="code" />:
+		</p>
+		<ul>
+			<li>No need to rely on <code>toString()</code> method of the object.</li>
+			<li>No need to extend the <code>SelectItemsConverter</code> when <code>toString()</code> method of the object cannot be used.</li>
+			<li>No need to expose the object's unique key if that's a problem.</li>
+		</ul>
+		<p>
+			This converter has the following disadvantage over <code>SelectItemsConverter</code>:
+		</p>
+		<ul>
+			<li>The "Validation Error: value is not valid" will never occur anymore for the case that the available select items
+			has incompatibly changed during the postback due to a developer's mistake. The developer should make absolutely sure
+			that exactly the same list is preserved on postback (e.g. by making it a property of a view scoped or broader scoped
+			bean).</li>
+		</ul>
+	</ui:define>
+
+	<ui:define name="demo">
+		 <h:form>
+			<p>
+				<h:outputText id="selected_item" value="Last selected item: #{selectItemsBean.selectedEntity.value}" /> 
+			</p>
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel for="iterator" value="Items with iterator: " />
+				<h:selectOneMenu id="iterator" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsIndexConverter">
+					<f:selectItem itemValue="#{null}" itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.value}" itemValue="#{entity}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
+
+				<h:outputLabel for="iterator_def_value" value="Items with iterator (default value): " />
+				<h:selectOneMenu id="iterator_def_value" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsIndexConverter">
+					<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.exampleEntities}" var="entity" itemLabel="#{entity.value}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
+
+				<h:outputLabel for="selectitems" value="Items with SelectItem list: " />
+				<h:selectOneMenu id="selectitems" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsIndexConverter">
+					<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.selectItems}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
+
+				<h:outputLabel for="selectitems_array" value="Items with SelectItem array: " />
+				<h:selectOneMenu id="selectitems_array" value="#{selectItemsBean.selectedEntity}" converter="omnifaces.SelectItemsIndexConverter">
+					<f:selectItem itemLabel="Choose item" noSelectionOption="true" />
+					<f:selectItems value="#{selectItemsBean.selectItemArray}" />
+					<f:ajax render="selected_item" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

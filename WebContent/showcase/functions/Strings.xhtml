@@ -3,6 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
@@ -15,10 +16,10 @@
 	</ui:define>		
 	
 	<ui:define name="demo">
-		<ui:param name="string1" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-		<ui:param name="string2" value="left" />
-		<ui:param name="string3" value="right" />
-		<ui:param name="string4" value="STRING with díãçrïtìcs" />
+		<c:set var="string1" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+		<c:set var="string2" value="left" />
+		<c:set var="string3" value="right" />
+		<c:set var="string4" value="STRING with díãçrïtìcs" />
 		<p>
 			Abbreviate a long string: #{of:abbreviate(string1, 20)}
 		</p>
