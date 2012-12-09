@@ -1,10 +1,14 @@
 package org.omnifaces.showcase.taghandlers;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
+import org.omnifaces.showcase.model.ExampleEntity;
 
 @ManagedBean
 @ViewScoped
@@ -14,10 +18,12 @@ public class ValidatorBean implements Serializable {
 
 	private String contactMethod1;
 	private String contactMethod2;
+	private List<ExampleEntity> entities;
 
 	@PostConstruct
 	public void init() {
 		contactMethod1 = contactMethod2 = "email";
+		entities = Arrays.asList(new ExampleEntity(), new ExampleEntity(), new ExampleEntity());
 	}
 
 	public String getContactMethod1() {
@@ -34,6 +40,10 @@ public class ValidatorBean implements Serializable {
 
 	public void setContactMethod2(String contactMethod2) {
 		this.contactMethod2 = contactMethod2;
+	}
+
+	public List<ExampleEntity> getEntities() {
+		return entities;
 	}
 
 }

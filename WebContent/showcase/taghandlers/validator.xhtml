@@ -3,8 +3,9 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:o="http://omnifaces.org/ui"
-	xmlns:demo="http://omnifaces.org/showcase"
+	xmlns:of="http://omnifaces.org/functions"
 >
 	<ui:define name="description">
 		<p>
@@ -46,6 +47,13 @@
 			For another related use case, checkout the 
 			<h:link outcome="converter"><code>&lt;o:converter&gt;</code> showcase page</h:link>.
 		</p>
+		<p>
+			Further, the <code>&lt;o:validator&gt;</code> also allows setting the validation message on a per-validator basis
+			by the <code>message</code> attribute. This is not possible with <code>&lt;f:validator&gt;</code> and the 
+			<code>validatorMessage</code> attribute of the parent input component applies to <i>all</i> validators.
+			Note that the <code>message</code> attribute of <code>&lt;o:validator&gt;</code> has <i>no</i> effect when the
+			<code>validatorMessage</code> attribute of the parent input component has already been set.
+		</p>
 	</ui:define>
 
 	<ui:define name="demo">
@@ -76,6 +84,8 @@
 			</h:panelGrid>
 		</h:form>
 
+		<hr />
+
 		<h3>With <code>&lt;o:validator&gt;</code> - disabled attribute now works request based</h3>
 		<h:form>
 			<h:panelGrid columns="3">
@@ -101,6 +111,29 @@
 					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 				</h:panelGroup>
 			</h:panelGrid>
+		</h:form>
+
+		<hr />
+
+		<h3>Set validator message on a per-validator basis</h3>
+		<h:form>
+			<h:messages />
+			<h:dataTable binding="#{table}" value="#{validatorBean.entities}" var="entity">
+				<h:column>
+					<c:set var="label" value="Input #{table.rowIndex + 1}" />
+					<o:outputLabel for="input" value="#{label}" />
+				</h:column>
+				<h:column>
+					<h:inputText id="input" value="#{entity.value}" required="true" requiredMessage="#{label} is required">
+						<o:validator validatorId="javax.faces.Length" minimum="5" message="{0} must be at least 5 chars" />
+						<o:validator validatorId="javax.faces.RegularExpression" pattern="\\d+" message="{0} must contain digits only" />
+					</h:inputText>
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="Submit">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		</h:form>
 	</ui:define>
 </ui:composition>

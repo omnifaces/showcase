@@ -1,0 +1,56 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:commandScript&gt;</code> is an extension to <code>&lt;h:commandXxx&gt;</code> which generates a JavaScript
+			function in the global JavaScript scope which allows the enduser to execute a JSF ajax request by a just function
+			call <code>functionName()</code> in the JavaScript context.
+		</p>
+		<p>
+			The component is required to be enclosed in an <code>UIForm</code> component.
+			The <code>name</code> attribute is required and it represents the JavaScript function name. 
+			The <code>execute</code> and <code>render</code> attributes work exactly the same as in <code>&lt;f:ajax&gt;</code>.
+			The <code>onbegin</code> and <code>oncomplete</code> attributes must represent (valid!) JavaScript code which 
+			will be executed before sending the ajax request and after processing the ajax response respectively.
+			The <code>action</code>, <code>actionListener</code> and <code>immediate</code> attributes work exactly the same as in <code>&lt;h:commandXxx&gt;</code>.
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Update a component only when the current form is successfully submitted</h3>
+		<h:form>
+			<o:outputLabel for="input" value="Input" />
+			<h:inputText id="input" required="true" />
+			<h:commandButton value="submit">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:message for="input" />
+			<h:outputScript rendered="#{facesContext.postback and not facesContext.validationFailed}">
+				updateGroup1();
+			</h:outputScript>
+		</h:form>
+		<h:form>
+			<o:commandScript name="updateGroup1" render=":group1" />
+		</h:form>
+		<h:panelGroup id="group1">
+			<p>It is now #{now}</p>
+		</h:panelGroup>
+		
+		<hr />
+		
+		<h3>Poll every second</h3>
+		<h:panelGroup id="group2">
+			<p>It is now #{now}</p>
+		</h:panelGroup>
+		<h:form>
+			<o:commandScript name="updateGroup2" render=":group2" />
+			<input type="button" value="Start poll" onclick="if (!window.poll) poll = setInterval(updateGroup2, 1000)" />
+			<input type="button" value="Stop poll" onclick="if (window.poll) { clearInterval(poll); poll = null; }" />
+		</h:form>
+	</ui:define>
+</ui:composition>
