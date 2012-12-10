@@ -4,6 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
 >
 	<ui:define name="description">
 		<p>
@@ -22,34 +23,34 @@
 	</ui:define>
 
 	<ui:define name="demo">
-		<h3>Update a component only when the current form is successfully submitted</h3>
-		<h:form>
-			<o:outputLabel for="input" value="Input" />
-			<h:inputText id="input" required="true" />
-			<h:commandButton value="submit">
-				<f:ajax execute="@form" render="@form" />
-			</h:commandButton>
-			<h:message for="input" />
-			<h:outputScript rendered="#{facesContext.postback and not facesContext.validationFailed}">
-				updateGroup1();
-			</h:outputScript>
+		<h3>Pass hash fragment change to JSF</h3>
+		<p>
+			<a href="#foo">#foo</a> <a href="#bar">#bar</a> <a href="#baz">#baz</a> 
+			(you can even specify your own in browser address bar!)
+		</p> 
+		<p>
+			Hash fragments so far: 
+			<h:outputText id="hashFragments" value="#{of:joinCollection(commandScriptBean.hashFragments, ', ')}" />
+		</p>
+		<h:form prependId="false">
+			<h:inputHidden id="hashFragment" value="#{commandScriptBean.hashFragment}" />
+			<o:commandScript name="addHashFragment" execute="@form" action="#{commandScriptBean.addHashFragment}" 
+				render=":hashFragments" oncomplete="alert('Hash fragment ' + location.hash + ' added!')"/>
 		</h:form>
-		<h:form>
-			<o:commandScript name="updateGroup1" render=":group1" />
-		</h:form>
-		<h:panelGroup id="group1">
-			<p>It is now #{now}</p>
-		</h:panelGroup>
+		<h:outputScript target="body">
+			window.onhashchange = function() {
+				$("#hashFragment").val(location.hash);
+				addHashFragment();
+			}
+		</h:outputScript>
 		
 		<hr />
 		
 		<h3>Poll every second</h3>
-		<h:panelGroup id="group2">
-			<p>It is now #{now}</p>
-		</h:panelGroup>
+		<p>It is now <h:outputText id="timestamp" value="#{now}" /></p>
 		<h:form>
-			<o:commandScript name="updateGroup2" render=":group2" />
-			<input type="button" value="Start poll" onclick="if (!window.poll) poll = setInterval(updateGroup2, 1000)" />
+			<o:commandScript name="updateTimestamp" render=":timestamp" />
+			<input type="button" value="Start poll" onclick="if (!window.poll) poll = setInterval(updateTimestamp, 1000)" />
 			<input type="button" value="Stop poll" onclick="if (window.poll) { clearInterval(poll); poll = null; }" />
 		</h:form>
 	</ui:define>
