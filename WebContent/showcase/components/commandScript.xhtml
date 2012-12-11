@@ -53,5 +53,9 @@
 			<input type="button" value="Start poll" onclick="if (!window.poll) poll = setInterval(updateTimestamp, 1000)" />
 			<input type="button" value="Stop poll" onclick="if (window.poll) { clearInterval(poll); poll = null; }" />
 		</h:form>
+		<p><i>
+			Note: the progress indicator on the mouse cursor isn't JSF default, it's specific to this showcase application.
+			So, if you actually didn't want to show one for polls in your application, you're by default already set.
+		</i></p>
 	</ui:define>
 </ui:composition>
