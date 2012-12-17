@@ -3,13 +3,15 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
 	<ui:define name="description">
 		<p>
 			Collection of EL functions for date and time: <code>of:formatDate()</code>, <code>of:formatDateWithTimezone()</code>,  
-			<code>of:getMonths()</code> and <code>of:getShortMonths()</code>.
+			<code>of:addXxx()</code> like <code>of:addDays()</code>, <code>of:xxxBetween()</code> like <code>of:daysBetween()</code>,   
+			<code>of:getMonths()</code>, <code>of:getShortMonths()</code>, <code>of:getDaysOfWeek()</code> and <code>of:getShortDaysOfWeek()</code>.
 		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
@@ -23,6 +25,13 @@
 				Format current date with GMT timezone: #{of:formatDateWithTimezone(now, 'yyyy-MM-dd HH:mm:ss', 'GMT')}
 			</p>
 			<p>
+				<c:set var="threeMonthsLater" value="#{of:addMonths(now, 3)}" scope="request" />
+				Add 3 months to today and format it with system default timezone: #{of:formatDate(threeMonthsLater, 'yyyy-MM-dd HH:mm:ss')}
+			</p>
+			<p>
+				Count months between the date representing "now" and the date representing "3 months later":  #{of:monthsBetween(now, threeMonthsLater)} months
+			</p>
+			<p>
 				Get all months for the current locale:
 				<h:selectOneMenu value="#{bean.monthNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
 					<f:selectItems value="#{of:getMonths()}" />
@@ -34,9 +43,21 @@
 					<f:selectItems value="#{of:getShortMonths()}" />
 				</h:selectOneMenu>
 			</p>
+			<p>
+				Get all days of week for the current locale:
+				<h:selectOneMenu value="#{bean.dayOfWeekNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
+					<f:selectItems value="#{of:getDaysOfWeek()}" />
+				</h:selectOneMenu>
+			</p>
+			<p>
+				Get all short days of week for the current locale:
+				<h:selectOneMenu value="#{bean.dayOfWeekNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
+					<f:selectItems value="#{of:getShortDaysOfWeek()}" />
+				</h:selectOneMenu>
+			</p>
 			<h:form>
 				<p>
-					Switch locale and see month names changing:
+					Switch locale and see month and day of week names changing:
 					<h:selectOneMenu value="#{sessionScope.testLocale}">
 						<f:selectItem itemValue="en" itemLabel="English" />
 						<f:selectItem itemValue="es" itemLabel="Español (Spanish)" />
