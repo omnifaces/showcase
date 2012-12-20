@@ -36,12 +36,12 @@ public class AjaxBean {
 		Ajax.oncomplete("showData()");
 	}
 
-	public void updateRow(UIData table, int index) {
-		Ajax.updateRow(table, index);
+	public void updateRow(UIData table, long index) {
+		Ajax.updateRow(table, (int) index); // Due to JBoss 7.0 bug, we can't use int argument. This is fixed in 7.1.
 	}
 
-	public void updateColumn(UIData table, int index) {
-		Ajax.updateColumn(table, index);
+	public void updateColumn(UIData table, long index) {
+		Ajax.updateColumn(table, (int) index); // Due to JBoss 7.0 bug, we can't use int argument. This is fixed in 7.1.
 	}
 
 }
