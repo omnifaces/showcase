@@ -8,13 +8,14 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.omnifaces.util.Faces;
+
 @ManagedBean
 @ViewScoped
 public class CommandScriptBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String hashFragment;
 	private List<String> hashFragments;
 
 	@PostConstruct
@@ -23,15 +24,7 @@ public class CommandScriptBean implements Serializable {
 	}
 
 	public void addHashFragment() {
-		hashFragments.add(hashFragment);
-	}
-
-	public String getHashFragment() {
-		return hashFragment;
-	}
-
-	public void setHashFragment(String hashFragment) {
-		this.hashFragment = hashFragment;
+		hashFragments.add(Faces.getRequestParameter("hashFragment"));
 	}
 
 	public List<String> getHashFragments() {

@@ -35,8 +35,8 @@
 			in a specific error page.
 		</p>
 		<p>
-			<h:button value="Invalidate session" 
-				onclick="$.get('#{request.contextPath}/invalidatesession', alert('Session invalidated!')); return false;" />
+			<input type="button" value="Invalidate session"
+				onclick="$.get('#{request.contextPath}/invalidatesession', alert('Session invalidated!'))" />
 		</p>
 		<p>
 			This exception handler is also  
@@ -59,6 +59,10 @@
     &lt;location&gt;/WEB-INF/errorpages/bug.xhtml&lt;/location&gt;
 &lt;/error-page&gt;
 		</code></pre>
+		
+		<p>
+			Please note that the error page <strong>must</strong> be a valid Facelets page.
+		</p>
 	</ui:define>		
 
 	<ui:define name="demo">

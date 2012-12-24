@@ -20,6 +20,10 @@
 			by <code>OmniFaces.Ajax.data</code>. The JSON object is been encoded by <code>Json#encode()</code> which
 			supports at most the standard Java types, not complex types.
 		</p>
+		<p>
+			Note that <code>Ajax#updateRow()</code> and <code>Ajax#updateColumn()</code> can only update cell content
+			when it has been wrapped in some container component with a fixed ID.
+		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>
 	
@@ -37,9 +41,9 @@
 		<h3>Update specific UIData rows and columns programmatically (standard JSF example)</h3>
 		<h:form>
 			<h:dataTable binding="#{table1}" value="#{of:createArray(3)}" width="100%">
-				<h:column headerText="col1"><h:panelGroup id="col1">#{now}</h:panelGroup></h:column>
-				<h:column headerText="col2"><h:panelGroup id="col2">#{now}</h:panelGroup></h:column>
-				<h:column headerText="col3"><h:panelGroup id="col3">#{now}</h:panelGroup></h:column>
+				<h:column><f:facet name="header">col1</f:facet><h:panelGroup id="col1">#{now}</h:panelGroup></h:column>
+				<h:column><f:facet name="header">col2</f:facet><h:panelGroup id="col2">#{now}</h:panelGroup></h:column>
+				<h:column><f:facet name="header">col3</f:facet><h:panelGroup id="col3">#{now}</h:panelGroup></h:column>
 			</h:dataTable>
 
 			<p>
