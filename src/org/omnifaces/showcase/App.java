@@ -28,6 +28,7 @@ import javax.faces.FacesException;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
+import org.omnifaces.facesviews.FacesViewsUtils;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.Page.Documentation;
 import org.omnifaces.showcase.Page.Source;
@@ -68,7 +69,10 @@ public class App {
 
 	private static void fillMenu(Page menu) {
 		Properties properties = loadProperties();
-		Set<String> groupPaths = new TreeSet<String>(Faces.getResourcePaths(SHOWCASE_PATH));
+		
+		Set<String> resourcePaths = Faces.getResourcePaths(SHOWCASE_PATH);
+		
+		Set<String> groupPaths = new TreeSet<String>(resourcePaths);
 
 		for (String groupPath : groupPaths) {
 			TreeModel<Page> group = menu.addChildNode(new Page(groupPath.split("/")[2], null, null, null));
@@ -109,7 +113,10 @@ public class App {
 			sources.add(createSource(properties, sourcesKey + "." + sourceKey));
 		}
 
-		return new Page(title, viewId, sources, createDocumentation(properties, title + ".documentation"));
+		return new Page(
+			title, FacesViewsUtils.stripPrefixPath(SHOWCASE_PATH, viewId), 
+			sources, createDocumentation(properties, title + ".documentation")
+		);
 	}
 
 	private static String loadSourceCode(String path) {
@@ -174,6 +181,7 @@ public class App {
 
 			if (viewId != null) {
 				pages.put(viewId, childPage);
+				pages.put(SHOWCASE_PATH + viewId.substring(1) , childPage);
 			}
 
 			fillPages(pages, childPage);
