@@ -1,5 +1,7 @@
 package org.omnifaces.showcase.components;
 
+import static org.omnifaces.util.Utils.coalesce;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +19,7 @@ public class ComponentParamBean {
 	private List<String> tableItems;
 
 	@ManagedProperty("#{param.start}")
-	private int start;
+	private Integer start;
 	private List<String> listItems;
 	private String selectedItem;
 
@@ -47,12 +49,12 @@ public class ComponentParamBean {
 		return tableItems;
 	}
 
-	public void setStart(int start) {
-		this.start = start;
+	public void setStart(Integer start) {
+		this.start = coalesce(start, 0);
 	}
 
-	public int getStart() {
-		return start;
+	public Integer getStart() {
+		return coalesce(start, 0);
 	}
 
 	public List<String> getListItems() {

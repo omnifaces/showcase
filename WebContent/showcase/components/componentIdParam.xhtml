@@ -25,12 +25,15 @@
 			direct output of the original markup and does not wrap it into any "partial response" envelope.
 		</p>
 	</ui:define>
-
-	<ui:define name="demo">
+    
+    <ui:define name="demo-meta">
 		<f:metadata>
 			<o:componentIdParam componentIdName="component" clientIdName="client" />
 		</f:metadata>
-	   
+	</ui:define>
+
+	<ui:define name="demo">
+
 		<h3>Output</h3>
 		<p><h:outputText id="foo" value="Foo component" /></p>
 		<p><h:outputText id="bar" value="Bar Component" /></p>

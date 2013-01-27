@@ -96,4 +96,11 @@
 		<error-code>404</error-code>
 		<location>/WEB-INF/errorpages/404.xhtml</location>
 	</error-page>
+	
+	<!-- Silence WebLogic's annoying JSF1091: No mime type could be found for file warning -->
+	<mime-mapping>
+		<extension>xhtml</extension>
+		<mime-type>text/html</mime-type>
+	</mime-mapping>
+	
 </web-app>
