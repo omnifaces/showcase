@@ -6,11 +6,14 @@
 >
 	<ui:define name="contentTitle">Restorable view - ENABLED</ui:define>
 
-	<ui:define name="content">
+	<ui:define name="meta">
 		<f:metadata>
 			<o:enableRestorableView />
 		</f:metadata>
+	</ui:define>
 
+	<ui:define name="content">
 		<ui:include src="/WEB-INF/includes/demo/restorableView.xhtml" />
 	</ui:define>
+	
 </ui:composition>

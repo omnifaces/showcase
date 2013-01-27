@@ -6,10 +6,9 @@
 >
 	<display-name>OmniFaces Showcase</display-name>
 
-	<context-param>
-		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
-		<param-value>3628800000</param-value> <!-- 6 weeks -->	
-	</context-param>
+
+	<!-- Standard JSF settings  -->
+	
 	<context-param>
 		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
 		<param-value>65535</param-value> <!-- 64KB -->
@@ -22,13 +21,38 @@
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	
+	
+	<!-- Mojarra/RI specific settings  -->
+	
+	<context-param>
+		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
+		<param-value>3628800000</param-value> <!-- 6 weeks -->	
+	</context-param>
+	
+	
+	<!-- MyFaces specific settings  -->
+	
+	<!-- MyFaces and Mojarra don't agree on the default setting for actually serializing state
+		 in the session as opposed to just storing a reference. Mojarra's default is false, but
+		 can be switched to true. MyFaces' default is true, and can be switched to false, which
+		 we thus do below. See http://jdevelopment.nl/jsf-22/#1127
+	 -->
+    <context-param>
+        <param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
+        <param-value>false</param-value>
+    </context-param>
+	
+	
+	<!-- OmniFaces specific settings -->
+	
 	<context-param>
 		<param-name>org.omnifaces.CACHE_SETTING_SESSION_MAX_CAPACITY</param-name>
 		<param-value>4</param-value>
 	</context-param>
 	<context-param>
 		<param-name>org.omnifaces.FACES_VIEWS_SCAN_PATHS</param-name>
-		<param-value>/showcase/,/etc/</param-value>
+		<param-value>/showcase/,/etc/,/demo/</param-value>
 	</context-param>
 	<context-param>
 		<param-name>org.omnifaces.FACES_VIEWS_SCANNED_VIEWS_ALWAYS_EXTENSIONLESS</param-name>

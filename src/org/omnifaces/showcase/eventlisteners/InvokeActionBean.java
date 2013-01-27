@@ -1,15 +1,19 @@
 package org.omnifaces.showcase.eventlisteners;
 
+import static org.omnifaces.facesviews.FacesViewsUtils.stripExtension;
+import static org.omnifaces.util.Faces.getRequestURI;
+import static org.omnifaces.util.Faces.redirect;
+import static org.omnifaces.util.Utils.isEmpty;
+
 import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.ComponentSystemEvent;
 
-import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
-import org.omnifaces.util.Utils;
 
 @ManagedBean
 @ViewScoped
@@ -21,9 +25,9 @@ public class InvokeActionBean implements Serializable {
 	private String input;
 
 	public void initParam() throws IOException {
-		if (!Utils.isEmpty(param)) {
+		if (!isEmpty(param)) {
 			Messages.addFlashInfo("param", "Param \"{0}\" is successfully set and you have been redirected!", param);
-			Faces.redirect(Faces.getRequestURI());
+			redirect(stripExtension(getRequestURI()));
 		}
 	}
 

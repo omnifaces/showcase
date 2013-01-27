@@ -16,11 +16,15 @@
 			<code>&lt;h:link&gt;</code> and	<code>&lt;h:button&gt;</code> components.
 		</p>
 	</ui:define>
-
-	<ui:define name="demo">
+	
+	<ui:define name="demo-meta">
 		<f:metadata>
 			<o:viewParam id="test" name="test" value="#{viewParamBean.test}" />
 		</f:metadata>
+	</ui:define>
+	
+
+	<ui:define name="demo">
 
 		<p>
 			First do a GET request to the current page to start using a view parameter.<br />

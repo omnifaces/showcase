@@ -17,7 +17,7 @@
 	</ui:define>		
 	
 	<ui:define name="demo">
-		<f:view locale="#{not empty sessionScope.testLocale ? sessionScope.testLocale : 'en'}">
+		<f:view locale="#{localeManager.language}">
 			<p>
 				Format current date with system default timezone: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}
 			</p>
@@ -31,34 +31,48 @@
 			<p>
 				Count months between the date representing "now" and the date representing "3 months later":  #{of:monthsBetween(now, threeMonthsLater)} months
 			</p>
+			
 			<p>
-				Get all months for the current locale:
-				<h:selectOneMenu value="#{bean.monthNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
-					<f:selectItems value="#{of:getMonths()}" />
-				</h:selectOneMenu>
+				Chosen month number as integer: #{functionsBean.monthNumberAsInteger}
 			</p>
+			
 			<p>
-				Get all short months for the current locale:
-				<h:selectOneMenu value="#{bean.monthNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
-					<f:selectItems value="#{of:getShortMonths()}" />
-				</h:selectOneMenu>
+				Chosen day of week number as integer: #{functionsBean.dayOfWeekNumberAsInteger}
 			</p>
-			<p>
-				Get all days of week for the current locale:
-				<h:selectOneMenu value="#{bean.dayOfWeekNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
-					<f:selectItems value="#{of:getDaysOfWeek()}" />
-				</h:selectOneMenu>
-			</p>
-			<p>
-				Get all short days of week for the current locale:
-				<h:selectOneMenu value="#{bean.dayOfWeekNumberAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
-					<f:selectItems value="#{of:getShortDaysOfWeek()}" />
-				</h:selectOneMenu>
-			</p>
+			
 			<h:form>
 				<p>
+					Get all months for the current locale:
+					<h:selectOneMenu value="#{functionsBean.monthNumberAsInteger}">
+						<f:selectItems value="#{of:getMonths()}" />
+						<f:ajax render=":demo" />
+					</h:selectOneMenu>
+				</p>
+				<p>
+					Get all short months for the current locale:
+					<h:selectOneMenu value="#{functionsBean.monthNumberAsInteger}">
+						<f:selectItems value="#{of:getShortMonths()}" />
+						<f:ajax render=":demo" />
+					</h:selectOneMenu>
+				</p>
+				<p>
+					Get all days of week for the current locale:
+					<h:selectOneMenu value="#{functionsBean.dayOfWeekNumberAsInteger}">
+						<f:selectItems value="#{of:getDaysOfWeek()}" />
+						<f:ajax render=":demo" />
+					</h:selectOneMenu>
+				</p>
+				<p>
+					Get all short days of week for the current locale:
+					<h:selectOneMenu value="#{functionsBean.dayOfWeekNumberAsInteger}">
+						<f:selectItems value="#{of:getShortDaysOfWeek()}" />
+						<f:ajax render=":demo" />
+					</h:selectOneMenu>
+				</p>
+			
+				<p>
 					Switch locale and see month and day of week names changing:
-					<h:selectOneMenu value="#{sessionScope.testLocale}">
+					<h:selectOneMenu value="#{localeManager.language}">
 						<f:selectItem itemValue="en" itemLabel="English" />
 						<f:selectItem itemValue="es" itemLabel="Español (Spanish)" />
 						<f:selectItem itemValue="fr" itemLabel="Français (French)" />

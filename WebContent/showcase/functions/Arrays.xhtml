@@ -22,16 +22,32 @@
 				#{loop.index}#{!loop.last ? ', ' : ''}
 			</ui:repeat>
 		</p>
+		
+		
 		<p>
-			Create an integer array with specified start and end:
-			<h:selectOneMenu value="#{bean.dayAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
-				<f:selectItems value="#{of:createIntegerArray(1, 31)}" />
-			</h:selectOneMenu>
-			<c:set var="year" value="#{of:formatDate(now, 'yyyy')}" />
-			<h:selectOneMenu value="#{bean.yearAsInteger}"> <!-- Note: just for demo, bean doesn't exist. -->
-				<f:selectItems value="#{of:createIntegerArray(year, year - 10)}" />
-			</h:selectOneMenu>
+			Chosen day number as integer: #{functionsBean.dayAsInteger}
 		</p>
+		
+		<p>
+			Chosen year as integer: #{functionsBean.yearAsInteger}
+		</p>
+		
+		<h:form>
+			<p>
+				Create an integer array with specified start and end:
+				<h:selectOneMenu value="#{functionsBean.dayAsInteger}">
+					<f:selectItems value="#{of:createIntegerArray(1, 31)}" />
+					<f:ajax render=":demo" />
+				</h:selectOneMenu>
+				
+				<c:set var="year" value="#{of:formatDate(now, 'yyyy')}" />
+				<h:selectOneMenu value="#{functionsBean.yearAsInteger}">
+					<f:selectItems value="#{of:createIntegerArray(year, year - 10)}" />
+					<f:ajax render=":demo" />
+				</h:selectOneMenu>
+			</p>
+		</h:form>
+		
 		<p>
 			Check if an array contains the specified value: 
 			<a href="?test=7&amp;test=42&amp;test=69">clicking here should print true</a>:

@@ -73,10 +73,11 @@ public enum Baz {
 		<h3>Providing enum values as dropdown items</h3>
 		<h:form>
 			<h:selectOneMenu value="#{constantsBean.exampleEnum}">
-				<f:selectItem itemValue="Please select one" noSelectionOption="true" />
+				<f:selectItem itemLabel="Please select one" noSelectionOption="true" />
 				<f:selectItems value="#{ExampleEnum}" />
 				<f:ajax render="@form" />
 			</h:selectOneMenu>
+			
 			<p>Selected: #{constantsBean.exampleEnum}</p>
 			<p>Is it <code>TWO</code>? #{constantsBean.exampleEnum == ExampleEnum.TWO}</p>
 			<!-- Note that you can also just do #{constantsBean.exampleEnum == 'TWO'} -->
@@ -87,11 +88,12 @@ public enum Baz {
 		<h3>Providing enum values as dropdown items by var</h3>
 		<h:form>
 			<h:selectOneMenu value="#{constantsBean.exampleEnum}">
-				<f:selectItem itemValue="Please select one" noSelectionOption="true" />
+				<f:selectItem itemLabel="Please select one" noSelectionOption="true" />
 				<f:selectItems value="#{ExampleEnum.values()}" var="exampleEnum" 
 					itemValue="#{exampleEnum}" itemLabel="#{exampleEnum.friendlyName}" />
 				<f:ajax render="@form" />
 			</h:selectOneMenu>
+			
 			<p>Selected: #{constantsBean.exampleEnum.friendlyName}</p>
 			<p>Is it <code>Two</code>? #{constantsBean.exampleEnum == ExampleEnum.TWO}</p>
 			<!-- Note that you can also just do #{constantsBean.exampleEnum == 'TWO'} -->
@@ -103,6 +105,7 @@ public enum Baz {
 		<p>This should throw an IllegalArgumentException as <code>ExampleEnum.FOUR</code> doesn't exist.</p>
 		<h:form>
 			<h:commandButton value="Try to access ExampleEnum.FOUR" action="#{constantsBean.setExampleEnum(ExampleEnum.FOUR)}" />
-		</h:form>		
+		</h:form>
+			
 	</ui:define>
 </ui:composition>

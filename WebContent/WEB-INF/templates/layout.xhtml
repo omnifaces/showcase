@@ -45,7 +45,11 @@
 		</h:outputScript>
 	</h:head>
     
+    <!-- Client templates can insert f:metadata here, and this will show up in the source code  -->
     <ui:insert name="demo-meta"/>
+    
+    <!-- Client templates can insert f:metadata here, and this will NOT show up in the source code -->
+    <ui:insert name="meta"/>
 
 	<h:body>
 		<h:outputStylesheet library="layout" name="css/layout.css" />

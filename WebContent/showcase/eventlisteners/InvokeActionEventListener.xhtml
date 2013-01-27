@@ -29,48 +29,52 @@
 			manner.
 		</p>
 		<p>			
-			As this phase listener has totally no impact on webapp's default behaviour, this phase listener is already 
-			registered by OmniFaces own <code>faces-config.xml</code> and thus get auto-initialized when OmniFaces JAR 
-			is bundled in webapp, so endusers do not need to register this phase listener explicitly themself.
+			As this phase listener has totally no impact on a webapp's default behavior, this phase listener is already 
+			registered by OmniFaces own <code>faces-config.xml</code> and thus gets auto-initialized when the OmniFaces JAR 
+			is bundled in a webapp, so endusers do not need to register this phase listener explicitly themselves.
 		</p>
  	</ui:define>		
 
-	<ui:define name="demo">
-		<f:view>
-			<h3>Replacement for <code>preRenderView</code> event</h3>
-			<f:metadata>
-				<f:viewParam id="param" name="param" value="#{invokeActionBean.param}" />
-				<f:event type="postInvokeAction" listener="#{invokeActionBean.initParam}" />
-			</f:metadata>
-			<p>
-				Clicking <h:link value="this link" outcome="#{view.viewId}?param=test" /> with a "test" request parameter 
-				should force a redirect with a faces message in the flash scope which should appear below. This wouldn't
-				have worked when <code>preRenderView</code> event is been used.
-			</p>
-			<p>
-				Message: <h:message for="param" />
-			</p>
+	
+	<ui:define name="demo-meta">
+		<f:metadata>
+			<f:viewParam id="param" name="param" value="#{invokeActionBean.param}" />
+			<f:event type="postInvokeAction" listener="#{invokeActionBean.initParam}" />
+		</f:metadata>
+	</ui:define>
 
-			<hr />
+
+	<ui:define name="demo">
+		<h3>Replacement for <code>preRenderView</code> event</h3>
 		
-			<h3>Invoking multiple action listeners in <code>UIInput</code> and <code>UICommand</code> components</h3>
-			<p>
-				Typing in the input field and clicking the submit button of the below demo form should invoke several 
-				action listeners which should each set a global faces message.
-			</p>
-			<h:form>
-				<h:inputText value="#{invokeActionBean.input}">
-					<f:ajax event="keyup" execute="@this" listener="#{invokeActionBean.inputListener}" render=":messages" />
-					<f:event type="preInvokeAction" listener="#{invokeActionBean.preInvokeAction}" />
-					<f:event type="postInvokeAction" listener="#{invokeActionBean.postInvokeAction}" />
-				</h:inputText>
-				<h:commandButton value="submit" action="#{invokeActionBean.submit}">
-					<f:ajax execute="@form" render=":messages" />
-					<f:event type="preInvokeAction" listener="#{invokeActionBean.preInvokeAction}" />
-					<f:event type="postInvokeAction" listener="#{invokeActionBean.postInvokeAction}" />
-				</h:commandButton>
-			</h:form>
-			<h:messages id="messages" globalOnly="true" />
-		</f:view>
+		<p>
+			Clicking <h:link value="this link" outcome="#{view.viewId}?param=test" /> with a "test" request parameter 
+			should force a redirect with a faces message in the flash scope which should appear below. This wouldn't
+			have worked when <code>preRenderView</code> event is been used.
+		</p>
+		<p>
+			Message: <h:message for="param" />
+		</p>
+
+		<hr />
+	
+		<h3>Invoking multiple action listeners in <code>UIInput</code> and <code>UICommand</code> components</h3>
+		<p>
+			Typing in the input field and clicking the submit button of the below demo form should invoke several 
+			action listeners which should each set a global faces message.
+		</p>
+		<h:form>
+			<h:inputText value="#{invokeActionBean.input}">
+				<f:ajax event="keyup" execute="@this" listener="#{invokeActionBean.inputListener()}" render=":messages" />
+				<f:event type="preInvokeAction" listener="#{invokeActionBean.preInvokeAction}" />
+				<f:event type="postInvokeAction" listener="#{invokeActionBean.postInvokeAction}" />
+			</h:inputText>
+			<h:commandButton value="submit" action="#{invokeActionBean.submit}">
+				<f:ajax execute="@form" render=":messages" />
+				<f:event type="preInvokeAction" listener="#{invokeActionBean.preInvokeAction}" />
+				<f:event type="postInvokeAction" listener="#{invokeActionBean.postInvokeAction}" />
+			</h:commandButton>
+		</h:form>
+		<h:messages id="messages" globalOnly="true" />
 	</ui:define>		
 </ui:composition>

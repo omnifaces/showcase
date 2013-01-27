@@ -40,10 +40,11 @@
 
 	<ui:define name="demo">
 		<h:form>
-			<h3>Please fill out an unique value in all inputs of this column.</h3>
+			<h3>Please fill out a unique value in all inputs of this column.</h3>
+			
 			<h:dataTable value="#{validateUniqueColumnBean.entities}" var="entity">
 				<h:column>
-					#{component.rowIndex + 1}
+					#{component.namingContainer.rowIndex + 1}
 				</h:column>
 				<h:column>
 					<h:inputText id="value" label="Value" value="#{entity.value}" required="true">
@@ -54,10 +55,13 @@
 					<h:message id="message" for="value" />
 				</h:column>
 			</h:dataTable>
+			
 			<h:commandButton value="Submit">
 				<f:ajax execute="@form" render="@form" />
 			</h:commandButton>
+			
 			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		</h:form>
 	</ui:define>
+	
 </ui:composition>
