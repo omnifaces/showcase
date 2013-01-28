@@ -21,6 +21,12 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
+    <!-- Client templates can insert f:metadata here, and this will NOT show up in the showcase page source code -->
+    <ui:insert name="meta"/>
+
+    <!-- Client templates can insert f:metadata here, and this will show up in the showcase page source code -->
+    <ui:insert name="demo-meta"/>
+    
 	<c:set var="_snapshot" value="#{empty app.version}" scope="application" />
 	<c:set var="_docVersionPath" value="#{_snapshot ? '' : of:concat(app.version, '/')}" scope="application" />
 	<c:set var="_srcVersionParam" value="#{_snapshot ? '' : of:concat('?name=', app.version)}" scope="application" />
@@ -44,12 +50,6 @@
 			})();
 		</h:outputScript>
 	</h:head>
-    
-    <!-- Client templates can insert f:metadata here, and this will show up in the source code  -->
-    <ui:insert name="demo-meta"/>
-    
-    <!-- Client templates can insert f:metadata here, and this will NOT show up in the source code -->
-    <ui:insert name="meta"/>
 
 	<h:body>
 		<h:outputStylesheet library="layout" name="css/layout.css" />

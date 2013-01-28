@@ -69,9 +69,9 @@ public class App {
 
 	private static void fillMenu(Page menu) {
 		Properties properties = loadProperties();
-		
+
 		Set<String> resourcePaths = Faces.getResourcePaths(SHOWCASE_PATH);
-		
+
 		Set<String> groupPaths = new TreeSet<String>(resourcePaths);
 
 		for (String groupPath : groupPaths) {
@@ -98,13 +98,24 @@ public class App {
 	private static Page createPage(Properties properties, String viewId) {
 		String title = viewId.split("/")[3].split("\\.")[0];
 		List<Source> sources = new ArrayList<Source>();
-		String[] demo = loadSourceCode(viewId).split("<ui:define name=\"demo\">");
+
+		String sourceCode = loadSourceCode(viewId);
+		String[] meta = sourceCode.split("<ui:define name=\"demo-meta\">");
+		String[] demo = sourceCode.split("<ui:define name=\"demo\">");
+		StringBuilder demoSourceCode = new StringBuilder();
+
+		if (meta.length > 1) {
+			// Yes, ugly, but it's faster than a XML parser and it's internal code anyway.
+			// The 8 leading spaces are trimmed so that the whole demo code block is indented back.
+			demoSourceCode.append(meta[1].split("</ui:define>")[0].trim()).append("\n\n");
+		}
 
 		if (demo.length > 1) {
-			sources.add(new Source("Demo", "xhtml", demo[1]
-				.split("</ui:define>")[0] // Yes, ugly, but it's faster than a XML parser and it's internal code anyway.
-				.replace("\n        ", "\n") // Trim 8 leading spaces so that the whole demo code block is indented back.
-				.trim()));
+			demoSourceCode.append(demo[1].split("</ui:define>")[0].trim());
+		}
+
+		if (demoSourceCode.length() > 0) {
+			sources.add(new Source("Demo", "xhtml", demoSourceCode.toString().replace("\n        ", "\n").trim()));
 		}
 
 		String sourcesKey = title + ".sources";
@@ -114,7 +125,7 @@ public class App {
 		}
 
 		return new Page(
-			title, FacesViewsUtils.stripPrefixPath(SHOWCASE_PATH, viewId), 
+			title, FacesViewsUtils.stripPrefixPath(SHOWCASE_PATH, viewId),
 			sources, createDocumentation(properties, title + ".documentation")
 		);
 	}

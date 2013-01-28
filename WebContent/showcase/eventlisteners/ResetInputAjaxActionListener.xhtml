@@ -11,7 +11,8 @@
 			executed during ajax submit, but which are rendered/updated during ajax response. This will prevent those
 			input fields to remain in an invalidated state because of a validation failure during a previous request.
 			This is very useful for cases where you need to update one form from another form by for example a modal
-			dialog, or when you need a cancel/clear button. 
+			dialog, or when you need a cancel/clear button. For a more detailed explanation, check 
+			<a href="http://stackoverflow.com/a/6845800/157882">this Stack Overflow answer</a>)
 		</p>
 		<p>
 			Register it as <code>&lt;phase-listener&gt;</code> in <code>faces-config.xml</code>. It'll be applied

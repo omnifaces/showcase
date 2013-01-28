@@ -3,45 +3,45 @@ package org.omnifaces.showcase.functions;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-@ViewScoped
 @ManagedBean
+@ViewScoped
 public class FunctionsBean {
-	
-	int dayAsInteger = 1;
-	int yearAsInteger = 2003;
-	int monthNumberAsInteger = 1;
-	int dayOfWeekNumberAsInteger = 1;
 
-	public int getDayAsInteger() {
-		return dayAsInteger;
+	private int day = 1;
+	private int year = 2003;
+	private int month = 1;
+	private int dayOfWeek = 1;
+
+	public int getDay() {
+		return day;
 	}
 
-	public void setDayAsInteger(int dayAsInteger) {
-		this.dayAsInteger = dayAsInteger;
+	public void setDay(int day) {
+		this.day = day;
 	}
 
-	public int getYearAsInteger() {
-		return yearAsInteger;
+	public int getYear() {
+		return year;
 	}
 
-	public void setYearAsInteger(int yearAsInteger) {
-		this.yearAsInteger = yearAsInteger;
+	public void setYear(int year) {
+		this.year = year;
 	}
 
-	public int getMonthNumberAsInteger() {
-		return monthNumberAsInteger;
+	public int getMonth() {
+		return month;
 	}
 
-	public void setMonthNumberAsInteger(int monthNumberAsInteger) {
-		this.monthNumberAsInteger = monthNumberAsInteger;
+	public void setMonth(int month) {
+		this.month = month;
 	}
 
-	public int getDayOfWeekNumberAsInteger() {
-		return dayOfWeekNumberAsInteger;
+	public int getDayOfWeek() {
+		return dayOfWeek;
 	}
 
-	public void setDayOfWeekNumberAsInteger(int dayOfWeekNumberAsInteger) {
-		this.dayOfWeekNumberAsInteger = dayOfWeekNumberAsInteger;
+	public void setDayOfWeek(int dayOfWeek) {
+		this.dayOfWeek = dayOfWeek;
 	}
 
 }

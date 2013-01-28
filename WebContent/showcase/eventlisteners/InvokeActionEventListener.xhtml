@@ -35,7 +35,6 @@
 		</p>
  	</ui:define>		
 
-	
 	<ui:define name="demo-meta">
 		<f:metadata>
 			<f:viewParam id="param" name="param" value="#{invokeActionBean.param}" />
@@ -43,10 +42,9 @@
 		</f:metadata>
 	</ui:define>
 
-
 	<ui:define name="demo">
 		<h3>Replacement for <code>preRenderView</code> event</h3>
-		
+
 		<p>
 			Clicking <h:link value="this link" outcome="#{view.viewId}?param=test" /> with a "test" request parameter 
 			should force a redirect with a faces message in the flash scope which should appear below. This wouldn't
@@ -57,7 +55,7 @@
 		</p>
 
 		<hr />
-	
+
 		<h3>Invoking multiple action listeners in <code>UIInput</code> and <code>UICommand</code> components</h3>
 		<p>
 			Typing in the input field and clicking the submit button of the below demo form should invoke several 

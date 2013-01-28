@@ -37,17 +37,14 @@
 			not cause the <code>required="true"</code> validator to be triggered.
 		</p>
 	</ui:define>
-	
-	
+
 	<ui:define name="demo-meta">
 		<f:metadata>
 			<o:viewParam id="test" name="test" value="#{viewParamBean.test}" required="true" converter="testConverter" />
 		</f:metadata>
 	</ui:define>
 
-
 	<ui:define name="demo">
-
 		<p>
 			<b>The message: </b>
 			<h:message for="test" />
