@@ -20,49 +20,57 @@
 
 		<h3>What is OmniFaces?</h3>
 		<p>
-			OmniFaces is an <strong>utility library</strong> for JSF 2 that focuses on utilities that ease everyday tasks. OmniFaces is a 
-			response to frequently recurring problems encountered during ages of professional JSF development of the 
+			Tired of reinventing JSFUtils or FacesUtils utility classes for every JSF web application and/or homebrewing custom components, taghandlers, etc to workaround or enhance some general shortcomings in JSF? 
+			OmniFaces may be what you're looking for!
+		</p>
+		<p>
+			OmniFaces is an utility library for JSF 2 that focusses on utilities that ease everyday tasks with the standard JSF API. 
+			OmniFaces is a response to frequently recurring problems encountered during ages of professional JSF development of the 
 			<a href="http://jdevelopment.nl">JDevelopment</a> team and from questions being asked on 
 			<a href="http://stackoverflow.com">Stack Overflow</a>.
 		</p>
 		<p>
 			An important design goal will be to have as few dependencies as possible and to be minimally invasive. 
-			So far, it only requires JSF 2.0, EL 2.1 and Servlet 2.5 APIs 
+			So far, it only requires JSF 2.0, EL 2.1 and Servlet 2.5 APIs
 			(<a href="http://code.google.com/p/omnifaces/wiki/JavaEE5and6Compatibility">Java EE 6 details</a>) 
-			which is already minimally available in a fairly modern container serving a JSF 2 web application. As such, 
-			OmniFaces should principally integrate perfectly well with most other JSF libraries. Even more, this showcase 
-			application uses 
+			which is already minimally available in a fairly modern container serving a JSF 2 web application. 
+			As such, OmniFaces should principally integrate perfectly well with most other JSF component libraries. 
+			Even more, this showcase application uses 
 			<o:importConstants type="org.primefaces.util.Constants" var="PrimeFaces" />
 			<a href="http://primefaces.org">PrimeFaces #{PrimeFaces.VERSION}</a>
 			which works perfectly fine together with OmniFaces.
+			Note that OmniFaces is <strong>not</strong> designed for portlets.
 		</p>
 		<p>
 			Contrary to some of the other excellent JSF 2 libraries out there (like 
-			<a href="http://primefaces.org">PrimeFaces</a>, or <a href="http://jboss.org/richfaces">RichFaces</a>), OmniFaces 
-			does not contain much if any of the beautiful visually oriented components that those other libraries are 
-			already known and loved for. As such, OmniFaces does not and probably will never contain things like rich 
-			table or datagrid components.  OmniFaces is more geared toward "utilities" that solve everyday practical 
-			problems and workarounds for small shortcomings in the JSF API. Such utilities and workarounds can be based
-			on components, but OmniFaces does not necessarily strive to be a "component library" perse.
+			<a href="http://primefaces.org">PrimeFaces</a>, or 
+			<a href="http://jboss.org/richfaces">RichFaces</a>), 
+			OmniFaces does not contain much if any of the beautiful visually oriented components that those other libraries are already known and loved for.
+			As such, OmniFaces does not and probably will never contain things like rich table or datagrid components.
+			OmniFaces is more geared toward "utilities" that solve everyday practical problems and workarounds for small shortcomings in the JSF API. 
+			Such utilities and workarounds can be based on components, but OmniFaces does not necessarily strive to be a "component library" perse.
 		</p>
 		<p>
-			Besides utility and enhanced components, such as
-			<h:link value="&lt;o:highlight&gt;" outcome="/components/highlight.xhtml" />
+			Besides utility classes for working with the JSF API from Java code, such as 
+			<h:link value="Faces" outcome="/utils/Faces" />
 			and
-			<h:link value="&lt;o:viewParam&gt;" outcome="/components/viewParam.xhtml" />, 
-			and utility classes for working with the JSF API from Java code, such as 
-			<h:link value="Faces" outcome="/utils/Faces.xhtml" />
+			<h:link value="Messages" outcome="/utils/Messages" />,
+			and utility and enhanced components, such as
+			<h:link value="&lt;o:highlight&gt;" outcome="/components/highlight" />
 			and
-			<h:link value="Messages" outcome="/utils/Messages.xhtml" />,
+			<h:link value="&lt;o:viewParam&gt;" outcome="/components/viewParam" />, 
 			OmniFaces will include various general converters, validators and Facelets tag handlers. These will range from 
-			<h:link value="'all-or-none' validators" outcome="/validators/validateAllOrNone.xhtml" /> 
+			<h:link value="'all-or-none' validators" outcome="/validators/validateAllOrNone" /> 
 			to 
-			<h:link value="converters which automatically convert Java models" outcome="/converters/SelectItemsConverter.xhtml" />
-			for usage in f:selectItem(s). There is also a 
-			<h:link value="full ajax exception handler" outcome="/exceptionhandlers/FullAjaxExceptionHandler.xhtml" />
-			which will automatically handle all ajax exceptions with the default <code>web.xml</code> error-page mechanisms.
+			<h:link value="converters which automatically convert Java models" outcome="/converters/SelectItemsConverter" />
+			for usage in f:selectItem(s). 
+			There are also specialized handlers, such as a 
+			<h:link value="full ajax exception handler" outcome="/exceptionhandlers/FullAjaxExceptionHandler" />
+			which will automatically handle all ajax exceptions with the default <code>web.xml</code> error-page mechanisms and a
+			<h:link value="combined resource handler" outcome="/resourcehandlers/CombinedResourceHandler" />
+			which will automatically combine all separate CSS/JS resources into a single resource.
 		</p>
-		<p>
+		<p> 
 			OmniFaces is fully open source, and additionally this showcase application itself is also fully open source.
 			The showcase application project homepage is available at
 			<a href="http://code.google.com/p/omnifaces-showcase/">code.google.com/p/omnifaces-showcase</a>.
