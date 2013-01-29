@@ -12,6 +12,7 @@ public class Html5Bean {
 	private String text1;
 	private String text2;
 	private String text3;
+	private String secret;
 	private String search;
 	private String email;
 	private String url;
@@ -21,6 +22,7 @@ public class Html5Bean {
 	private Date date;
 	private String text4;
 	private String text5;
+	private String text6;
 
 	public String getText1() {
 		return text1;
@@ -44,6 +46,14 @@ public class Html5Bean {
 
 	public void setText3(String text3) {
 		this.text3 = text3;
+	}
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
 	}
 
 	public String getSearch() {
@@ -116,6 +126,14 @@ public class Html5Bean {
 
 	public void setText5(String text5) {
 		this.text5 = text5;
+	}
+
+	public String getText6() {
+		return text6;
+	}
+
+	public void setText6(String text6) {
+		this.text6 = text6;
 	}
 
 }

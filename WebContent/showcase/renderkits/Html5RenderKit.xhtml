@@ -17,13 +17,14 @@
 			<li><code>UISelectBoolean</code>, <code>UISelectOne</code> and <code>UISelectMany</code>:
 			<ul><li><code>autofocus</code></li></ul></li>
 			<li><code>HtmlInputTextarea</code>: <ul><li><code>autofocus</code></li><li><code>maxlength</code></li>
-			<li><code>placeholder</code></li><li><code>wrap</code></li></ul></li>
+			<li><code>placeholder</code></li><li><code>spellcheck</code></li><li><code>wrap</code></li></ul></li>
 			<li><code>HtmlInputText</code>: <ul><li><code>type</code> (supported values are
 			<code>text</code> (default), <code>search</code>, <code>email</code>, <code>url</code>, <code>tel</code>,
 			<code>range</code>, <code>number</code> and <code>date</code>)</li><li><code>autofocus</code></li>
-			<li><code>list</code></li><li><code>pattern</code></li><li><code>placeholder</code></li><li><code>min</code></li>
-			<li><code>max</code></li><li><code>step</code></li></ul>(the latter three are only supported on <code>type</code> of
+			<li><code>list</code></li><li><code>pattern</code></li><li><code>placeholder</code></li><li><code>spellcheck</code></li>
+			<li><code>min</code></li><li><code>max</code></li><li><code>step</code></li></ul>(the latter three are only supported on <code>type</code> of
 			<code>range</code>, <code>number</code> and <code>date</code>)</li>
+			<li><code>HtmlInputSecret</code>: <ul><li><code>autofocus</code></li><li><code>pattern</code></li><li><code>placeholder</code></li></ul></li>
 			<li><code>HtmlCommandButton</code>: <ul><li><code>autofocus</code></li></ul></li>
 		</ul>
 		<p>
@@ -53,41 +54,45 @@
 		        <h:inputText id="text" value="#{html5Bean.text1}" />
 		        <h:outputText value="Supported in all browsers" />
 
-		        <h:outputLabel for="placeholder" value="With placeholder" />
-		        <h:inputText id="placeholder" value="#{html5Bean.text2}" placeholder="type here" />
-		        <h:outputText value="Since Firefox 4, Safari 4, Chrome 10, Opera 11.10 and IE 10" />
-
 		        <h:outputLabel for="autofocus" value="With autofocus" />
-		        <h:inputText id="autofocus" value="#{html5Bean.text3}" autofocus="true" />
-		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 11 and IE 10" />
+		        <h:inputText id="autofocus" value="#{html5Bean.text2}" autofocus="true" />
+		        <h:outputLink value="http://www.wufoo.com/html5/attributes/02-autofocus.html">Since Firefox 4, Safari 5, Chrome 6, Opera 11 and IE 10</h:outputLink>
+
+		        <h:outputLabel for="placeholder" value="With placeholder" />
+		        <h:inputText id="placeholder" value="#{html5Bean.text3}" placeholder="username" />
+		        <h:outputLink value="http://www.wufoo.com/html5/attributes/01-placeholder.html">Since Firefox 4, Safari 4, Chrome 10, Opera 11.10 and IE 10</h:outputLink>
+
+		        <h:outputLabel for="passwordPlaceholder" value="Password with placeholder" />
+		        <h:inputSecret id="passwordPlaceholder" value="#{html5Bean.secret}" placeholder="password" />
+		        <h:outputLink value="http://www.wufoo.com/html5/attributes/01-placeholder.html">Since Firefox 4, Safari 4, Chrome 10, Opera 11.10 and IE 10</h:outputLink>
 
 		        <h:outputLabel for="search" value="Search" />
 		        <h:inputText id="search" type="search" value="#{html5Bean.search}" />
-		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 9" />
+		        <h:outputLink value="http://www.wufoo.com/html5/types/5-search.html">Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 9</h:outputLink>
 
 		        <h:outputLabel for="email" value="Email" />
 		        <h:inputText id="email" type="email" value="#{html5Bean.email}" />
-		        <h:outputText value="Since Firefox 4, Chrome 6, Opera 10.6 and IE 10" />
+		        <h:outputLink value="http://www.wufoo.com/html5/types/1-email.html">Since Firefox 4, Chrome 6, Opera 10.6 and IE 10</h:outputLink>
 
 		        <h:outputLabel for="url" value="URL" />
 		        <h:inputText id="url" type="url" value="#{html5Bean.url}" />
-		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 10" />
+		        <h:outputLink value="http://www.wufoo.com/html5/types/3-url.html">Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 10</h:outputLink>
 
-		        <h:outputLabel for="phone" value="Phone" />
+		        <h:outputLabel for="phone" value="Phone (tel)" />
 		        <h:inputText id="phone" type="tel" value="#{html5Bean.phone}" />
-		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 10" />
+		        <h:outputLink value="http://www.wufoo.com/html5/types/2-tel.html">Since Firefox 4, Safari 5, Chrome 6, Opera 10.6 and IE 10</h:outputLink>
 
 		        <h:outputLabel for="range" value="Range (between 1 and 10)" />
 		        <h:inputText id="range" type="range" value="#{html5Bean.range}" min="1" max="10" />
 		        <h:panelGroup>
-			        <h:outputText value="Since Safari 4, Chrome 6, Opera 11 and IE 10" rendered="#{not facesContext.validationFailed}" />
+			        <h:outputLink value="http://www.wufoo.com/html5/types/8-range.html" rendered="#{not facesContext.validationFailed}">Since Safari 4, Chrome 6, Opera 11 and IE 10</h:outputLink>
 		            <h:message for="range" />
 		        </h:panelGroup>
 
 		        <h:outputLabel for="number" value="Number (between 7 and 13)" />
 		        <h:inputText id="number" type="number" value="#{html5Bean.number}" min="7" max="13" />
 		        <h:panelGroup>
-			        <h:outputText value="Since Safari 4, Chrome 9 and Opera 11" rendered="#{not facesContext.validationFailed}" />
+			        <h:outputLink value="http://www.wufoo.com/html5/types/7-number.html" rendered="#{not facesContext.validationFailed}">Since Safari 4, Chrome 9 and Opera 11</h:outputLink>
 		            <h:message for="number" />
 		        </h:panelGroup>
 
@@ -96,17 +101,21 @@
 		            <f:convertDateTime pattern="yyyy-MM-dd" />
 		        </h:inputText>
 		        <h:panelGroup>
-		            <h:outputText value="Since Chrome 20 and Opera 10.6" rendered="#{not facesContext.validationFailed}" />
+		            <h:outputLink value="http://www.wufoo.com/html5/types/4-date.html" rendered="#{not facesContext.validationFailed}">Since Safari 5, Chrome 6 and Opera 10.6</h:outputLink>
 		            <h:message for="date" />
 		        </h:panelGroup>
 
 		        <h:outputLabel for="textarea1" value="Textarea with maxlength of 20" />
 		        <h:inputTextarea id="textarea1" value="#{html5Bean.text4}" maxlength="20" cols="22" />
-		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 6, Opera 11 and IE 10" />
+		        <h:outputLink value="http://www.wufoo.com/html5/attributes/03-maxlength.html">Since Firefox 4, Safari 5, Chrome 6, Opera 11 and IE 10</h:outputLink>
 
 		        <h:outputLabel for="textarea2" value="Textarea with placeholder" />
 		        <h:inputTextarea id="textarea2" value="#{html5Bean.text5}" placeholder="some text" cols="22" />
-		        <h:outputText value="Since Firefox 4, Safari 5, Chrome 10, Opera 11.50 and IE 10" />
+		        <h:outputLink value="http://www.wufoo.com/html5/attributes/01-placeholder.html">Since Firefox 4, Safari 5, Chrome 10, Opera 11.50 and IE 10</h:outputLink>
+
+		        <h:outputLabel for="textarea3" value="Textarea with spellcheck" />
+		        <h:inputTextarea id="textarea3" value="#{html5Bean.text6}" spellcheck="true" cols="22" />
+		        <h:outputLink value="http://www.wufoo.com/html5/attributes/17-spellcheck.html">Since Firefox 4, Safari 4, Chrome 10, Opera 11 and IE 10</h:outputLink>
 
 		        <h:panelGroup />
 		        <h:commandButton value="submit" />

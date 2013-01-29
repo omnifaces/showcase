@@ -17,8 +17,13 @@
 			client IDs which should be ajax-updated, also <code>UIData</code> rows or columns on specific index, 
 			specifying callback scripts which should be executed on complete of the ajax response and adding arguments 
 			to the JavaScript scope. The added arguments are during the "on complete" phase as a JSON object available 
-			by <code>OmniFaces.Ajax.data</code>. The JSON object is been encoded by <code>Json#encode()</code> which
-			supports at most the standard Java types, not complex types.
+			by <code>OmniFaces.Ajax.data</code>.
+		</p>
+		<p>
+			The JSON object is been encoded by <code>Json#encode()</code> which supports standard Java types 
+			<code>Boolean</code>, <code>Number</code>, <code>CharSequence</code> and <code>Date</code> and also arrays, 
+			<code>Collection</code>s and <code>Map</code>s of them and as last resort it will use the introspector to 
+			examine it as a Javabean and encode it like a <code>Map</code>.
 		</p>
 		<p>
 			Note that <code>Ajax#updateRow()</code> and <code>Ajax#updateColumn()</code> can only update cell content

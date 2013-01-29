@@ -38,6 +38,17 @@ String cookieValue = Faces.getRequestCookie("cookieName");
 // Get all supported locales with default locale as first item.
 List&lt;Locale&gt; supportedLocales = Faces.getSupportedLocales();
 
+// Check in e.g. preRenderView if session has been timed out.
+if (Faces.hasSessionTimedOut()) {
+    Messages.addGlobalWarn("Oops, you have been logged out because your session was been timed out!");
+}
+
+// Get value of &lt;f:metadata&gt;&lt;f:attribute name="foo"&gt; of different view without building it.
+String foo = Faces.getMetadataAttribute("/other.xhtml", "foo");
+
+// Send a redirect with parameters UTF-8 encoded in query string.
+Faces.redirect("product.xhtml?id=%d&amp;name=%s", product.getId(), product.getName());
+
 // Invalidate the session and send a redirect.
 public void logout() throws IOException {
     Faces.invalidateSession();

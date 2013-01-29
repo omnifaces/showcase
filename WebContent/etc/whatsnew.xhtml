@@ -4,9 +4,32 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 1.3?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 1.4?</ui:define>
 
 	<ui:define name="content">
+		<h3>Added in OmniFaces 1.4</h3>
+		<ul>
+			<li><h:link value="New Faces#getMetadataAttribute() and getMetadataAttributes() methods" outcome="/utils/Faces" /></li>
+		</ul>
+	
+		<h3>Changed in OmniFaces 1.4</h3>
+		<ul>
+			<li><h:link value="Support for Javabeans in Json#encode() as used by Ajax#data()" outcome="/utils/Ajax" /></li>
+			<li><h:link value="Support for custom location and extension in FacesViews" outcome="/facesviews/ExtensionlessURLs" /></li>
+			<li><h:link value="Recognize and workaround JUEL 2.2.5 bug in &lt;o:methodParam&gt;" outcome="/taghandlers/methodParam" /></li>
+			<li><h:link value="Changed Html5RenderKit to support spellcheck attribute on HtmlInputText and HtmlInputTextarea" outcome="/renderkits/Html5RenderKit" /></li>
+			<li><h:link value="Changed Html5RenderKit to support autofocus, pattern and placeholder attributes on HtmlInputSecret" outcome="/renderkits/Html5RenderKit" /></li>
+			<li><h:link value="Changed FullAjaxExceptionHandler to delegate rendering to JSF when currently not in render response phase" outcome="/exceptionhandlers/FullAjaxExceptionHandler" /></li>
+		</ul>
+	
+		<h3>Bugfixed in OmniFaces 1.4</h3>
+		<ul>
+			<li><h:link value="GzipResponseFilter incorrectly skipped gzip when total written content length is between threshold size and server's default response buffer size" outcome="/filters/GzipResponseFilter" /></li>
+			<li><h:link value="Fix initializaiton ordering problem of FacesViews in among others Glassfish server and removed accidentally introduced Servlet 3.0 dependency" outcome="/facesviews/ExtensionlessURLs" /></li>
+		</ul>
+	
+		<p:separator />
+
 		<h3>Added in OmniFaces 1.3</h3>
 		<ul>
 			<li><h:link value="Update specific UIData rows and columns programmatically" outcome="/utils/Ajax" /></li>
