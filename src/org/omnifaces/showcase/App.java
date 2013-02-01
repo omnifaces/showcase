@@ -44,6 +44,7 @@ public class App {
 	private static final String SHOWCASE_PATH = "/showcase/";
 	private static final String SHOWCASE_PROPERTIES_PATH = "/WEB-INF/showcase.properties";
 
+	private static final String ERROR_MISSING_VERSION = "OmniFaces package is missing specification version.";
 	private static final String ERROR_LOADING_SHOWCASE_PROPERTIES = "Unable to load " + SHOWCASE_PROPERTIES_PATH;
 	private static final String ERROR_LOADING_PAGE_SOURCE = "Unable to load source code of %s";
 	private static final String ERROR_MISSING_PROPERTY = "Property '%s' is missing in " + SHOWCASE_PROPERTIES_PATH;
@@ -53,6 +54,7 @@ public class App {
 	private Page menu;
 	private Map<String, Page> pages;
 	private String version;
+	private boolean snapshot;
 	private String poweredBy;
 
 	// Initialization -------------------------------------------------------------------------------------------------
@@ -64,14 +66,13 @@ public class App {
 		pages = new HashMap<String, Page>();
 		fillPages(pages, menu);
 		version = initVersion();
+		snapshot = version.contains("SNAPSHOT");
 		poweredBy = initPoweredBy();
 	}
 
 	private static void fillMenu(Page menu) {
 		Properties properties = loadProperties();
-
 		Set<String> resourcePaths = Faces.getResourcePaths(SHOWCASE_PATH);
-
 		Set<String> groupPaths = new TreeSet<String>(resourcePaths);
 
 		for (String groupPath : groupPaths) {
@@ -125,7 +126,7 @@ public class App {
 		}
 
 		return new Page(
-			title, FacesViewsUtils.stripPrefixPath(SHOWCASE_PATH, viewId),
+			title, FacesViewsUtils.stripPrefixPath(SHOWCASE_PATH, viewId.split("\\.")[0]),
 			sources, createDocumentation(properties, title + ".documentation")
 		);
 	}
@@ -191,8 +192,8 @@ public class App {
 			String viewId = childPage.getViewId();
 
 			if (viewId != null) {
-				pages.put(viewId, childPage);
-				pages.put(SHOWCASE_PATH + viewId.substring(1) , childPage);
+				pages.put(viewId + ".xhtml", childPage);
+				pages.put(SHOWCASE_PATH + viewId.substring(1) + ".xhtml", childPage);
 			}
 
 			fillPages(pages, childPage);
@@ -201,7 +202,12 @@ public class App {
 
 	private static String initVersion() {
 		String version = Faces.class.getPackage().getSpecificationVersion();
-		return (version != null && !version.contains("SNAPSHOT")) ? version : null;
+
+		if (version == null) {
+			throw new FacesException(ERROR_MISSING_VERSION);
+		}
+
+		return version.replaceAll("-\\d+$", "");
 	}
 
 	private static String initPoweredBy() {
@@ -224,6 +230,10 @@ public class App {
 
 	public String getVersion() {
 		return version;
+	}
+
+	public boolean isSnapshot() {
+		return snapshot;
 	}
 
 	public String getPoweredBy() {

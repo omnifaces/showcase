@@ -8,25 +8,26 @@
 
 	<ui:define name="content">
 		<p>
-			Live examples of the <a href="http://code.google.com/p/omnifaces/">OmniFaces</a> components and utilities
-            can be tried out here. Please check out the left side menu.
+			Live examples of the <a href="http://code.google.com/p/omnifaces/">OmniFaces</a> components and utilities can be tried out here.
+			Please check out the left side menu.
 		</p>
-		<ui:fragment rendered="#{_snapshot}">
+		<ui:fragment rendered="#{app.snapshot}">
 			<p class="snapshot">
-				This showcase shows the SNAPSHOT version of OmniFaces! For the showcase of the stable version of
-				OmniFaces, please go to <a href="http://omnifaces.org">omnifaces.org</a>.
+				This showcase shows the SNAPSHOT version of OmniFaces!
+				For the showcase of the stable version of OmniFaces, please go to <a href="http://omnifaces.org">omnifaces.org</a>.
 			</p>
 		</ui:fragment>
 
 		<h3>What is OmniFaces?</h3>
 		<p>
-			Tired of reinventing JSFUtils or FacesUtils utility classes for every JSF web application and/or homebrewing custom components, taghandlers, etc to workaround or enhance some general shortcomings in JSF? 
+			Tired of reinventing <code>JSFUtils</code> or <code>FacesUtils</code> utility classes for every JSF web application and/or homebrewing custom components, taghandlers, etc to workaround or enhance some general shortcomings in JSF? 
 			OmniFaces may be what you're looking for!
 		</p>
 		<p>
-			OmniFaces is an utility library for JSF 2 that focusses on utilities that ease everyday tasks with the standard JSF API. 
+			OmniFaces is an <strong>utility library</strong> for JSF 2 that focusses on utilities that ease everyday tasks with the standard JSF API. 
 			OmniFaces is a response to frequently recurring problems encountered during ages of professional JSF development of the 
-			<a href="http://jdevelopment.nl">JDevelopment</a> team and from questions being asked on 
+			<a href="http://jdevelopment.nl">JDevelopment</a>
+			team and from questions being asked on 
 			<a href="http://stackoverflow.com">Stack Overflow</a>.
 		</p>
 		<p>
@@ -43,7 +44,8 @@
 		</p>
 		<p>
 			Contrary to some of the other excellent JSF 2 libraries out there (like 
-			<a href="http://primefaces.org">PrimeFaces</a>, or 
+			<a href="http://primefaces.org">PrimeFaces</a>,
+			or 
 			<a href="http://jboss.org/richfaces">RichFaces</a>), 
 			OmniFaces does not contain much if any of the beautiful visually oriented components that those other libraries are already known and loved for.
 			As such, OmniFaces does not and probably will never contain things like rich table or datagrid components.
@@ -84,18 +86,18 @@
 			<a href="http://code.google.com/p/omnifaces/downloads/list">the JAR file</a> 
 			in <code>/WEB-INF/lib</code>.
 		</p>
-		<ui:fragment rendered="#{not _snapshot}">
-			<p>
-				Maven users can add OmniFaces by adding the following Maven coordinates to <code>pom.xml</code>:
-			</p>
-			<blockquote><pre>
+		<p>
+			Maven users can add OmniFaces 
+			<h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{app.snapshot}" />
+			by adding the following Maven coordinates to <code>pom.xml</code>:
+		</p>
+		<blockquote><pre>
 &lt;dependency&gt;
     &lt;groupId&gt;org.omnifaces&lt;/groupId&gt;
     &lt;artifactId&gt;omnifaces&lt;/artifactId&gt;
     &lt;version&gt;#{app.version}&lt;/version&gt;
 &lt;/dependency&gt;
-			</pre></blockquote>
-		</ui:fragment>
+		</pre></blockquote>
 		<p>
 			The OmniFaces UI components/taghandlers and EL functions are available under the following XML namespaces:
 		</p>
@@ -106,21 +108,24 @@ xmlns:of="http://omnifaces.org/functions"
 		
 		<h3>Documentation</h3>
 		<ul>
-			<li><a href="#{_apiURL}index.html">OmniFaces #{app.version} API documentation</a></li>
-			<li><a href="#{_vdlURL}index.html">OmniFaces #{app.version} VDL documentation</a></li>
+			<li><a href="#{_apiURL}index.html">OmniFaces <h:outputText value="#{app.version}" rendered="#{not app.snapshot}" /> API documentation</a></li>
+			<li><a href="#{_vdlURL}index.html">OmniFaces <h:outputText value="#{app.version}" rendered="#{not app.snapshot}" /> VDL documentation</a></li>
 		</ul>
 
 		<h3>Support</h3>
 		<p>
-			If you have specific programming problems or questions related to the OmniFaces library, feel free to post
-			a question on 
-			<a href="http://stackoverflow.com">Stack Overflow</a> using at least the 
-			<a href="http://stackoverflow.com/questions/tagged/jsf">[jsf]</a> and 
-			<a href="http://stackoverflow.com/questions/tagged/omnifaces">[omnifaces]</a> tags.
+			If you have specific programming problems or questions related to the OmniFaces library, feel free to post a question on 
+			<a href="http://stackoverflow.com">Stack Overflow</a>
+			using at least the 
+			<a href="http://stackoverflow.com/questions/tagged/jsf">[jsf]</a>
+			and 
+			<a href="http://stackoverflow.com/questions/tagged/omnifaces">[omnifaces]</a>
+			tags.
 		</p>
 		<p>
 			If you have found bugs or have new ideas, feel free to open a 
-			<a href="http://code.google.com/p/omnifaces/issues/list">new issue</a>. Use 
+			<a href="http://code.google.com/p/omnifaces/issues/list">new issue</a>.
+			Use 
 			<a href="http://code.google.com/p/omnifaces/issues/entry?template=Defect%20report%20from%20user">"defect report" template</a>
 			to report a (possible) bug and use 
 			<a href="http://code.google.com/p/omnifaces/issues/entry?template=Feature%20request%20from%20user">"feature request" template</a>

@@ -27,9 +27,8 @@
     <!-- Client templates can insert f:metadata here, and this will show up in the showcase page source code -->
     <ui:insert name="demo-meta"/>
     
-	<c:set var="_snapshot" value="#{empty app.version}" scope="application" />
-	<c:set var="_docVersionPath" value="#{_snapshot ? '' : of:concat(app.version, '/')}" scope="application" />
-	<c:set var="_srcVersionParam" value="#{_snapshot ? '' : of:concat('?name=', app.version)}" scope="application" />
+	<c:set var="_docVersionPath" value="#{app.snapshot ? '' : of:concat(app.version, '/')}" scope="application" />
+	<c:set var="_srcVersionParam" value="#{app.snapshot ? '' : of:concat('?name=', app.version)}" scope="application" />
 	<c:set var="_apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{_docVersionPath}" scope="application" />
 	<c:set var="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_docVersionPath}" scope="application" />
 	<c:set var="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" scope="application" />
@@ -58,7 +57,7 @@
 			<h1>
 				<a href="#{request.contextPath}/">
 					<h:graphicImage library="layout" name="img/logo-70x70.png" alt="logo" width="70" height="70" />
-					OmniFaces Showcase <h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{_snapshot}" />
+					OmniFaces Showcase <h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{app.snapshot}" />
 				</a>
 			</h1>
 			<div id="poweredBy">
