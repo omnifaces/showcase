@@ -19,8 +19,10 @@
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/src/org/omnifaces/showcase/App.java"><code>App</code> source code</a>,
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/src/org/omnifaces/showcase/Page.java"><code>Page</code> source code</a> and
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/WebContent/WEB-INF/templates/layout.xhtml"><code>layout.xhtml</code> source code</a>.
-			Also note that <code>Page</code> extends <code>ListTreeModel</code>, this is not necessary per se, but it 
-			eases accessing the parent and sister pages in EL as is done in the navigation menu here above. See also
+			Also note that <code>Page</code> extends <code>ListTreeModel</code>, this is not necessary per se, 
+			but it eases accessing the parent and sister pages in EL as is done in the navigation menu here above,
+			and the siblings as is done in the quick navigation buttons right above. 
+			See also
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/WebContent/WEB-INF/templates/showcase.xhtml"><code>showcase.xhtml</code> source code</a>.
 		</p>
 		<p>
@@ -69,7 +71,7 @@
 								<h:inputText id="value" value="#{exampleEntity.value}" styleClass="treeinput"
 									required="#{saveButtonPressed}" requiredMessage="Please enter value" />
 								<h:commandButton id="addChild" value="Add new child" action="#{treeBean.addChild(node)}"
-									rendered="#{node.level lt 5}">
+									rendered="#{node.level lt 10}">
 									<f:ajax execute="@form" render="@form" />
 								</h:commandButton>
 								<h:commandButton id="remove" value="Remove node" action="#{treeBean.remove(node)}">

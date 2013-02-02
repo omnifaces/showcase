@@ -30,6 +30,11 @@
 	display: none;
 }
 
+#quickNavigation {
+	float: right;
+	font-size: .7em;
+}
+
 .pages.ui-selectonemenu,
 .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace;

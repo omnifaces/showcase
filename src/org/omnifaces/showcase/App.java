@@ -107,7 +107,6 @@ public class App {
 
 		if (meta.length > 1) {
 			// Yes, ugly, but it's faster than a XML parser and it's internal code anyway.
-			// The 8 leading spaces are trimmed so that the whole demo code block is indented back.
 			demoSourceCode.append(meta[1].split("</ui:define>")[0].trim()).append("\n\n");
 		}
 
@@ -116,7 +115,9 @@ public class App {
 		}
 
 		if (demoSourceCode.length() > 0) {
-			sources.add(new Source("Demo", "xhtml", demoSourceCode.toString().replace("\n        ", "\n").trim()));
+			// The 8 leading spaces are trimmed so that the whole demo code block is indented back.
+			String source = demoSourceCode.toString().replace("\n        ", "\n").trim();
+			sources.add(new Source("Demo", "xhtml", source));
 		}
 
 		String sourcesKey = title + ".sources";

@@ -35,6 +35,13 @@ functionName({ name1: "value1", name2: "value2" });
 String name1 = Faces.getRequestParameter("name1"); // value1
 String name2 = Faces.getRequestParameter("name2"); // value2
 		</code></pre>
+		<p>
+			This is much similar to PrimeFaces 
+			<a href="http://www.primefaces.org/showcase/ui/remoteCommand.jsf"><code>&lt;p:remoteCommand&gt;</code></a>, 
+			expect that the <code>&lt;o:commandScript&gt;</code> uses the standard JSF ajax API instead of the PrimeFaces/jQuery ajax API. 
+			So it wouldn't trigger jQuery-specific event listeners, but only JSF-specific event listeners
+			(e.g. <code>jsf.ajax.addOnEvent()</code> and so on).
+		</p>
 	</ui:define>
 
 	<ui:define name="demo">

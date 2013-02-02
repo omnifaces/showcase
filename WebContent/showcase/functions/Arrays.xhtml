@@ -23,9 +23,16 @@
 			</ui:repeat>
 		</p>
 
+		<p>
+			Create an integer array from 10 to 20:
+			<ui:repeat value="#{of:createIntegerArray(10, 20)}" var="i" varStatus="loop">
+				#{i}#{!loop.last ? ', ' : ''}
+			</ui:repeat>
+		</p>
+
 		<h:form>
 			<p>
-				Create an integer array with specified start and end:
+				Create an integer array for <code>&lt;f:selectItems&gt;</code>:
 				<h:selectOneMenu value="#{functionsBean.day}">
 					<f:selectItems value="#{of:createIntegerArray(1, 31)}" />
 					<f:ajax render="day" />
@@ -37,17 +44,15 @@
 					<f:ajax render="year" />
 				</h:selectOneMenu>
 
-				<strong>
-					chosen: <h:outputText id="day" value="#{functionsBean.day}" />
-					and <h:outputText id="year" value="#{functionsBean.year}" />
-				</strong>
+				chosen: <strong><h:outputText id="day" value="#{functionsBean.day}" /></strong>
+				and <strong><h:outputText id="year" value="#{functionsBean.year}" /></strong>
 			</p>
 		</h:form>
 
 		<p>
 			Check if an array contains the specified value: 
 			<a href="?test=7&amp;test=42&amp;test=69">clicking here should print true</a>:
-			#{of:contains(paramValues.test, 42)}
+			<strong>#{of:contains(paramValues.test, 42)}</strong>
 		</p>
 	</ui:define>
 </ui:composition>

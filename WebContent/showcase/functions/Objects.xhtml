@@ -1,0 +1,22 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			Collection of EL functions for objects (there's so far only one): <code>of:coalesce()</code>.
+		</p>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+	
+	<ui:define name="demo">
+		<p>
+			Return the first non-null value: #{of:coalesce(thisIsNull, 'thisIsNotNull')}
+		</p>
+	</ui:define>
+</ui:composition>
