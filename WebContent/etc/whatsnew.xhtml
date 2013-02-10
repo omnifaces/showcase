@@ -13,9 +13,10 @@
 			<li><h:link value="New 'for' attribute in &lt;o:validator&gt; so that it can target inputs in composites" outcome="/taghandlers/validator" /></li>
 			<li><h:link value="New TreeModel#getNextSibling() and getPreviousSibling() methods" outcome="/components/tree" /></li>
 			<li><h:link value="New of:coalesce() function" outcome="/functions/Objects" /></li>
+			<li><h:link value="New &lt;o:importFunctions&gt; taghandler to import public static non-void methods of a given type as EL functions" outcome="/taghandlers/importFunctions" /></li>
 		</ul>
-	
-		<h3>Changed in OmniFaces 1.4</h3>
+
+ 		<h3>Changed in OmniFaces 1.4</h3>
 		<ul>
 			<li><h:link value="Support for Javabeans in Json#encode() as used by Ajax#data()" outcome="/utils/Ajax" /></li>
 			<li><h:link value="Support for custom location and extension in FacesViews" outcome="/facesviews/ExtensionlessURLs" /></li>
@@ -23,11 +24,14 @@
 			<li><h:link value="Changed Html5RenderKit to support spellcheck attribute on HtmlInputText and HtmlInputTextarea" outcome="/renderkits/Html5RenderKit" /></li>
 			<li><h:link value="Changed Html5RenderKit to support autofocus, pattern and placeholder attributes on HtmlInputSecret" outcome="/renderkits/Html5RenderKit" /></li>
 			<li><h:link value="Changed FullAjaxExceptionHandler to delegate rendering to JSF when currently not in render response phase" outcome="/exceptionhandlers/FullAjaxExceptionHandler" /></li>
+			<li><h:link value="Changed FullAjaxExceptionHandler to skip AbortProcessingException" outcome="/exceptionhandlers/FullAjaxExceptionHandler" /></li>
+			<li><h:link value="Changed of:formatDateWithTimezone() to support java.util.TimeZone" outcome="/functions/Dates" /></li>
+			<li><h:link value="Changed &lt;o:importConstants&gt; to support com.example.SomeClass.SomeEnum on top of com.example.SomeClass$SomeEnum notation for inner enums" outcome="/taghandlers/importConstants" /></li>
 		</ul>
 	
 		<h3>Bugfixed in OmniFaces 1.4</h3>
 		<ul>
-			<li><h:link value="GzipResponseFilter incorrectly skipped gzip when total written content length is between threshold size and server's default response buffer size" outcome="/filters/GzipResponseFilter" /></li>
+			<li><h:link value="GzipResponseFilter incorrectly skipped gzip when the written data was not within servletcontainer's and Facelets buffer size" outcome="/filters/GzipResponseFilter" /></li>
 			<li><h:link value="Fix initializaiton ordering problem of FacesViews in among others Glassfish server and removed accidentally introduced Servlet 3.0 dependency" outcome="/facesviews/ExtensionlessURLs" /></li>
 		</ul>
 	
