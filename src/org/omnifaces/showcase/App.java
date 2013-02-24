@@ -12,6 +12,8 @@
  */
 package org.omnifaces.showcase;
 
+import static org.omnifaces.util.ResourcePaths.stripPrefixPath;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,7 +30,6 @@ import javax.faces.FacesException;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
-import org.omnifaces.facesviews.FacesViewsUtils;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.Page.Documentation;
 import org.omnifaces.showcase.Page.Source;
@@ -127,7 +128,7 @@ public class App {
 		}
 
 		return new Page(
-			title, FacesViewsUtils.stripPrefixPath(SHOWCASE_PATH, viewId.split("\\.")[0]),
+			title, stripPrefixPath(SHOWCASE_PATH, viewId.split("\\.")[0]),
 			sources, createDocumentation(properties, title + ".documentation")
 		);
 	}
