@@ -14,6 +14,8 @@
 			servletcontainer independent way of configuring GZIP compression and also allows enabling GZIP compression anyway
 			on 3rd party hosts where you have no control over servletcontainer configuration.
 		</p>
+		
+		<h3>Installation</h3>
 		<p>
 			To get it to run, map this filter on the desired <code>&lt;url-pattern&gt;</code> or maybe even on the
 			<code>&lt;servlet-name&gt;</code> of the <code>FacesServlet</code>. A <code>Filter</code> is by default dispatched
@@ -32,6 +34,8 @@
     &lt;dispatcher&gt;ERROR&lt;/dispatcher&gt;
 &lt;/filter-mapping&gt;
 		</code></pre>
+
+		<h3>Configuration (optional)</h3>
 		<p>
 			This filter supports two initialization parameters which needs to be placed in <code>&lt;filter&gt;</code> element
 			as follows:
@@ -67,6 +71,8 @@
 			mentioned mime types are already the default values. Note that GZIP does not have any benefit when applied on
 			binary mimetypes like images, office documents, PDF files, etcetera. So setting it for them is not recommended.
 		</p>
+
+		<h3>Demo</h3>
 		<p>
 			The <code>GzipResponseFilter</code> is also 
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/WebContent/WEB-INF/web.xml">configured</a>

@@ -45,6 +45,12 @@
 			attributes on JSF components are actually been rendered instead of ignored. Note that this page should have
 			scrolled down to the demo when you opened it, this is because of the <code>autofocus</code> field :)
 		</p>
+		<p>
+			Note that <code>&lt;f:ajax&gt;</code> of Mojarra 2.0.0-2.1.13 explicitly checks for <code>&lt;input type="text"&gt;</code>
+			and ignores other types while preparing request parameters for ajax submit, resulting in <code>null</code> values
+			in managed bean after an ajax submit. This has been reported as <a href="http://java.net/jira/browse/JAVASERVERFACES-2532">Mojarra issue 2532</a>
+			and is fixed in Mojarra 2.1.14. This problem is thus completely unrelated to <code>Html5RenderKit</code>.
+		</p>
  	</ui:define>
 
  	<ui:define name="demo">

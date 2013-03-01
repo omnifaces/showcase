@@ -13,13 +13,14 @@
 			You can use it the same way as <code>&lt;f:param&gt;</code>, you only need to change <code>f:</code> into
 			<code>o:</code> to get the extra support for a <code>Converter</code> by usual means via the <code>converter</code>
 			attribute of the tag, or the nested <code>&lt;f:converter&gt;</code> tag, or just automatically if a converter is
-			already registered for the target class.
+			already registered for the target class via e.g. <code>@FacesConverter(forClass)</code>.
 		</p>
 	</ui:define>
 
 	<ui:define name="demo">
 		<p>
-			We want to pass this example entity as request parameter: <strong>#{paramBean.exampleEntity}</strong>
+			We want to pass this example entity referenced by <code>\#{paramBean.exampleEntity}</code> as request parameter:
+			<strong>#{paramBean.exampleEntity}</strong>
 		</p>
 		<p>
 			<h:link value="f:param, check the link URL, it's merely printing the example entity's toString()">
@@ -30,6 +31,10 @@
 			<h:link value="o:param with converter, the param in the link URL represents the converted value">
 				<o:param name="exampleEntity" value="#{paramBean.exampleEntity}" converter="exampleEntityConverter" />
 			</h:link>
+		</p>
+		<p>
+			We could of course also have used <code>\#{paramBean.exampleEntity.id}</code> as param value, but this is not
+			DRY if you already have a converter for the entity and this is thus potentially maintenance-unfriendly.
 		</p>
 	</ui:define>
 </ui:composition>

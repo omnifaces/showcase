@@ -107,11 +107,11 @@
 					##{table.rowIndex}
 				</p:column>
 				<p:column headerText="Start date">
-					<p:calendar id="startDate" required="true" 
+					<p:calendar id="startDate" pattern="yyyy-MM-dd" required="true" 
 						requiredMessage="Please enter start date ##{table.rowIndex}" />
 				</p:column>
 				<p:column headerText="End date">
-					<p:calendar id="endDate" required="true" 
+					<p:calendar id="endDate" pattern="yyyy-MM-dd" required="true" 
 						requiredMessage="Please enter end date ##{table.rowIndex}" />
 					<o:validateOrder components="startDate endDate" 
 						message="End date ##{table.rowIndex} must be after start date ##{table.rowIndex}" />

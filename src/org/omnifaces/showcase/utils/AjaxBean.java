@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIData;
 
+import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.Ajax;
 
 @ManagedBean
@@ -32,6 +33,7 @@ public class AjaxBean {
 		data.put("date", new Date());
 		data.put("array", new Integer[] { 1, 2, 3, 4, 5 });
 		data.put("list", Arrays.asList("one", "two", "three"));
+		data.put("beans", Arrays.asList(new ExampleEntity(1L, "one"), new ExampleEntity(2L, "two")));
 		Ajax.data(data);
 		Ajax.oncomplete("showData()");
 	}

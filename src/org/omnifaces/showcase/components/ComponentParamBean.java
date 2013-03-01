@@ -1,6 +1,6 @@
 package org.omnifaces.showcase.components;
 
-import static org.omnifaces.util.Utils.coalesce;
+import static org.omnifaces.util.Utils.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,6 +48,9 @@ public class ComponentParamBean {
 	public List<String> getTableItems() {
 		return tableItems;
 	}
+
+	// Those coalesce()s are necessary because they cannot be declared as int as MyFaces would throw NPE
+	// when the request parameter is absent (Mojarra auto-coerces it to 0).
 
 	public void setStart(Integer start) {
 		this.start = coalesce(start, 0);

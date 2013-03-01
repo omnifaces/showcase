@@ -107,7 +107,7 @@
 				var $showData = $("#showData");
 				
 				$.each(data, function(key, value) {
-					$("&lt;li&gt;").text(key + "=" + value).appendTo($showData);
+					$("&lt;li&gt;").text(key + "=" + JSON.stringify(value)).appendTo($showData);
 				});
 			}
 		</h:outputScript>

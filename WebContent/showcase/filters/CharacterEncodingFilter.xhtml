@@ -15,6 +15,8 @@
 			building/restoring the view, which will implicitly set the request body character encoding to the server-default
 			value, which is not UTF-8 per se.
 		</p>
+		
+		<h3>Installation</h3>
 		<p>
 			To get this filter to run, map it as follows in <code>web.xml</code>:
 		</p>
@@ -28,6 +30,8 @@
     &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
 &lt;/filter-mapping&gt;
 		</code></pre>
+
+		<h3>Configuration (optional)</h3>
 		<p>
 			As JSF2/Facelets uses by default UTF-8 everywhere, the default charset is also set to UTF-8. When really
 			necessary for some reason, then it can be overridden by specifying the <code>encoding</code> initialization
@@ -49,6 +53,8 @@
 			HTTP responses in any way. For HTTP responses, you should be specifying the charset in
 			<code>&lt;f:view encoding&gt;</code>, which also already defaults to UTF-8 by the way.
 		</p>
+
+		<h3>Demo</h3>
 		<p>
 			The <code>CharacterEncodingFilter</code> is also 
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/WebContent/WEB-INF/web.xml">configured</a>
