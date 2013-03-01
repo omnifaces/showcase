@@ -8,17 +8,17 @@
 >
 	<ui:define name="description">
 		<p>
-			he <code>&lt;o:importFunctions&gt;</code> allows the developer to have access to all functions of the given
+			The <code>&lt;o:importFunctions&gt;</code> allows the developer to have access to all functions of the given
 			fully qualified name of a type in the EL scope using the usual EL functions syntax without the need to register them
 			in <code>.taglib.xml</code> file. The functions are those <code>public static</code> methods with a
 			<strong>non</strong>-<code>void</code> return type. For example:
 		</p>
 		<pre><code>
-&lt;o:importFunctions type="java.lang.Math" /&gt;
+&lt;o:importFunctions type="java.lang.Math" var="m" /&gt;
 &lt;o:importFunctions type="org.omnifaces.util.Faces" /&gt;
 ...
-\#{Math:abs(-10)}
-\#{Math:max(bean.number1, bean.number2)}
+\#{m:abs(-10)}
+\#{m:max(bean.number1, bean.number2)}
 ...
 &lt;base href="\#{Faces:getRequestBaseURL()}" /&gt;
 		</code></pre>
@@ -28,11 +28,11 @@
 			the one with the least amount of parameters will be used. If there are multiple function methods with exactly the
 			same name and amount of parameters, then the choice is unspecified (technically, JVM-dependent) and should not be
 			relied upon. So if you absolutely need to differentiate functions in such case, give them each a different name.</p>
-			<p>Note the colon <code>:</code> notation to invoke the method is as required by EL functions spec. It's by design
-			not easily possible to change it to <code>.</code>. Also note that in case of <code>org.omnifaces.util.Faces</code>
-			it's considered poor practice if the same functionality is already available through the implicit EL variables
-			<code>\#{facesContext}</code>, <code>\#{view}</code>, <code>\#{request}</code>, etc such as
-			<code>\#{request.contextPath}</code> which should be preferred over <code>\#{Faces:getRequestContextPath()}</code>.
+			<p>Note that the colon <code>:</code> operator to invoke the method is as required by EL functions spec. It's by design
+			not easily possible to change it to the period <code>.</code> operator. Also note that in case of the 
+			<code>org.omnifaces.util.Faces</code> example it's considered poor practice if the same functionality is already 
+			available through the implicit EL variables <code>\#{facesContext}</code>, <code>\#{view}</code>, <code>\#{request}</code>,
+			etc such as <code>\#{request.contextPath}</code> which should be preferred over <code>\#{Faces:getRequestContextPath()}</code>.
 		</p>
 		<p>
 			The resolved functions are by reference stored in the cache to improve retrieving performance.
@@ -40,16 +40,16 @@
 	</ui:define>
 
 	<ui:define name="demo">
-		<o:importFunctions type="java.lang.Math" />
+		<o:importFunctions type="java.lang.Math" var="m" />
 
 		<h3>The functions of <code>java.lang.Math</code></h3>
 		<ul>
-			<li><code>abs(-10)</code>: #{Math:abs(-10)}</li>
-			<li><code>min(-10, 20)</code>: #{Math:min(-10, 20)}</li>
-			<li><code>max(-10, 20)</code>: #{Math:max(-10, 20)}</li>
-			<li><code>floor(12.34)</code>: #{Math:floor(12.34)}</li>
-			<li><code>ceil(12.34)</code>: #{Math:ceil(12.34)}</li>
-			<li><code>random()</code>: #{Math:random()}</li>
+			<li><code>abs(-10)</code>: #{m:abs(-10)}</li>
+			<li><code>min(-10, 20)</code>: #{m:min(-10, 20)}</li>
+			<li><code>max(-10, 20)</code>: #{m:max(-10, 20)}</li>
+			<li><code>floor(12.34)</code>: #{m:floor(12.34)}</li>
+			<li><code>ceil(12.34)</code>: #{m:ceil(12.34)}</li>
+			<li><code>random()</code>: #{m:random()}</li>
 		</ul>
 	</ui:define>
 </ui:composition>

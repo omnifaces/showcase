@@ -60,18 +60,20 @@
 	text-decoration: underline;
 }
 
-.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-highlight {
+.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
 	padding: 3px 7px;
 	border: 1px solid #a8a8a8;
 	background: #c4c4c4 url("#{resource['primefaces-aristo:images/ui-bg_highlight-soft_100_c4c4c4_1x100.png']}") 50% 50% repeat-x;
 	color: #333;
 	font-weight: bold;
 	text-shadow: 0px 1px 0px rgba(255,255,255,0.7);
+	box-shadow: none;
 }
 
-.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-highlight {
+.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
 	background: #ddd;
 	text-shadow: none;
+	box-shadow: none;
 	color: inherit;
 }
 

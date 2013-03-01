@@ -39,7 +39,7 @@
 		</p:selectOneMenu>
 		-
 		<p:selectOneMenu id="pages" value="#{page.current.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="pages" panelStyleClass="pages" height="#{(19 * (fn:length(parent.children) - 1)) + 9}" effect="fade" 
+			styleClass="pages" panelStyleClass="pages" height="#{(19 * (fn:length(parent.children) - 1)) + 10}" effect="fade" 
 			disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{parent.childCount gt 1}">
 			<f:selectItems value="#{parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
 				itemDisabled="#{_page == page.current}" />

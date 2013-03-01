@@ -50,7 +50,7 @@ public class ExampleEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.valueOf(id);
+		return String.format("ExampleEntity[%d, %s]", id, value);
 	}
 
 }

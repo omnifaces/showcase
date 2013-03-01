@@ -7,7 +7,7 @@
 	<display-name>OmniFaces Showcase</display-name>
 
 
-	<!-- Standard JSF settings  -->
+	<!-- Standard JSF settings. -->
 	
 	<context-param>
 		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
@@ -23,29 +23,34 @@
 	</context-param>
 	
 	
-	<!-- Mojarra/RI specific settings  -->
-	
+	<!-- Mojarra/RI specific settings. -->
+
 	<context-param>
 		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
 		<param-value>3628800000</param-value> <!-- 6 weeks -->	
 	</context-param>
-	
-	
-	<!-- MyFaces specific settings  -->
-	
-	<!-- MyFaces and Mojarra don't agree on the default setting for actually serializing state
-		 in the session as opposed to just storing a reference. Mojarra's default is false, but
-		 can be switched to true. MyFaces' default is true, and can be switched to false, which
-		 we thus do below. See http://jdevelopment.nl/jsf-22/#1127
-	 -->
+
+
+	<!-- MyFaces specific settings. -->
+
+	<context-param>
+		<param-name>org.apache.myfaces.RESOURCE_MAX_TIME_EXPIRES</param-name>
+		<param-value>3628800000</param-value> <!-- 6 weeks -->	
+	</context-param>
     <context-param>
+		<!--
+			MyFaces and Mojarra don't agree on the default setting for actually serializing state
+			in the session as opposed to just storing a reference. Mojarra's default is false, but
+			can be switched to true. MyFaces' default is true, and can be switched to false, which
+			we thus do below. See http://jdevelopment.nl/jsf-22/#1127
+		 -->
         <param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
         <param-value>false</param-value>
     </context-param>
-	
-	
-	<!-- OmniFaces specific settings -->
-	
+
+
+	<!-- OmniFaces specific settings. -->
+
 	<context-param>
 		<param-name>org.omnifaces.CACHE_SETTING_SESSION_MAX_CAPACITY</param-name>
 		<param-value>4</param-value>
@@ -58,6 +63,9 @@
 		<param-name>org.omnifaces.FACES_VIEWS_SCANNED_VIEWS_ALWAYS_EXTENSIONLESS</param-name>
 		<param-value>true</param-value>
 	</context-param>
+
+
+	<!-- Servlets and filters. -->
 
 	<servlet>
 		<servlet-name>facesServlet</servlet-name>
@@ -96,6 +104,9 @@
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
 
+
+	<!-- Welcome files, error pages and mime types. -->
+
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
@@ -120,11 +131,11 @@
 		<error-code>404</error-code>
 		<location>/WEB-INF/errorpages/404.xhtml</location>
 	</error-page>
-	
-	<!-- Silence WebLogic's annoying JSF1091: No mime type could be found for file warning -->
+
 	<mime-mapping>
+		<!-- Silence WebLogic's annoying JSF1091: No mime type could be found for file warning. -->
 		<extension>xhtml</extension>
 		<mime-type>text/html</mime-type>
 	</mime-mapping>
-	
+
 </web-app>

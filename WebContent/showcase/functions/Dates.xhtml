@@ -20,7 +20,7 @@
 		<f:view locale="#{localeManager.language}">
 			<p>
 				Format current date with system default timezone:
-				#{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}
+				#{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss z')}
 			</p>
 			<p>
 				Format current date with GMT timezone:
@@ -29,7 +29,7 @@
 			<p>
 				<c:set var="threeMonthsLater" value="#{of:addMonths(now, 3)}" scope="request" />
 				Add 3 months to today and format it with system default timezone: 
-				#{of:formatDate(threeMonthsLater, 'yyyy-MM-dd HH:mm:ss')}
+				#{of:formatDate(threeMonthsLater, 'yyyy-MM-dd HH:mm:ss z')}
 			</p>
 			<p>
 				Count months between the date representing "now" and the date representing "3 months later": 
@@ -39,12 +39,24 @@
 			<hr />
 
 			<p>
-				Chosen month number
-				<strong><h:outputText id="month" value="#{functionsBean.month}" /></strong>
+				<h:panelGroup id="month">
+					Chosen month number:
+					<strong>#{functionsBean.month}</strong>
+					- Name:
+					<strong>#{of:getMonth(functionsBean.month)}</strong>
+					- Short name:
+					<strong>#{of:getShortMonth(functionsBean.month)}</strong>
+				</h:panelGroup>
 			</p>
 			<p>
-				Chosen day of week number:
-				<strong><h:outputText id="dayOfWeek" value="#{functionsBean.dayOfWeek}" /></strong>
+				<h:panelGroup id="dayOfWeek">
+					Chosen day of week number:
+					<strong>#{functionsBean.dayOfWeek}</strong>
+					- Name:
+					<strong>#{of:getDayOfWeek(functionsBean.dayOfWeek)}</strong>
+					- Short name:
+					<strong>#{of:getShortDayOfWeek(functionsBean.dayOfWeek)}</strong>
+				</h:panelGroup>
 			</p>
 
 			<h:form>

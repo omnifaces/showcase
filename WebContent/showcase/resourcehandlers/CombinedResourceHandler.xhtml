@@ -13,6 +13,8 @@
 			for all scripts and another combined one for all stylesheets when the current JSF project stage is <strong>not</strong> set to
 			<code>Development</code>.
 		</p>
+
+		<h3>Installation</h3>
 		<p>
 			This handler must be registered as follows in <code>faces-config.xml</code> in order to get it to run:
 		</p>
@@ -21,8 +23,10 @@
     &lt;resource-handler&gt;org.omnifaces.resourcehandler.CombinedResourceHandler&lt;/resource-handler&gt;
 &lt;/application&gt;
 		</code></pre>
+
+		<h3>Usage</h3>
 		<p>
-			Note that the <code>target</code> attribute of <code>&lt;h:outputStylesheet&gt;</code> already defaults to
+			Note should be that the <code>target</code> attribute of <code>&lt;h:outputStylesheet&gt;</code> already defaults to
 			<code>"head"</code> but the one of <code>&lt;h:outputScript&gt;</code> not. So if you have placed this inside the
 			<code>&lt;h:head&gt;</code>, then you would still need to explicitly set its <code>target</code> attribute to
 			<code>"head"</code>, otherwise it will be treated as an inline script and not be combined. This is a design
@@ -44,6 +48,8 @@
     &lt;h:outputScript name="script.js" target="head" /&gt;
 &lt;/h:body&gt;
 		</code></pre>
+
+		<h3>Demo</h3>
 		<p>
 			This resource handler is also  
 			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/WebContent/WEB-INF/faces-config.xml">configured</a>

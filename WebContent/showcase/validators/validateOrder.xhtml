@@ -4,6 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:p="http://primefaces.org/ui"
 >
 	<ui:define name="description">
 		<p>
@@ -91,6 +93,34 @@
 					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 				</h:panelGroup>
 			</h:panelGrid>
+		</h:form>
+
+		<hr />
+
+		<h:form>
+			<h3>Please choose a valid start and end date in all rows (PrimeFaces example)</h3>
+
+			<p:messages id="messages" />
+
+			<p:dataTable binding="#{table}" value="#{of:createArray(3)}">
+				<p:column headerText="#">
+					##{table.rowIndex}
+				</p:column>
+				<p:column headerText="Start date">
+					<p:calendar id="startDate" required="true" 
+						requiredMessage="Please enter start date ##{table.rowIndex}" />
+				</p:column>
+				<p:column headerText="End date">
+					<p:calendar id="endDate" required="true" 
+						requiredMessage="Please enter end date ##{table.rowIndex}" />
+					<o:validateOrder components="startDate endDate" 
+						message="End date ##{table.rowIndex} must be after start date ##{table.rowIndex}" />
+				</p:column>
+			</p:dataTable>
+			
+			<p>
+				<p:commandButton value="Submit" update="@form" />
+			</p>
 		</h:form>
 	</ui:define>
 </ui:composition>

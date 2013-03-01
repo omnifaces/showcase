@@ -1,0 +1,85 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			This <code>ResourceHandler</code> implementation allows the developer to map JSF resources on an URL pattern of
+			<code>/javax.faces.resource/*</code> (basically, the value of the 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/application/ResourceHandler.html#RESOURCE_IDENTIFIER" class="code">ResourceHandler.RESOURCE_IDENTIFIER</a>
+			constant) without the need for an additional <code>FacesServlet</code> prefix or suffic URL
+			pattern in the default produced resource URLs, such as <code>/javax.faces.resource/faces/css/style.css</code> or
+			<code>/javax.faces.resource/css/style.css.xhtml</code>. This resource handler will produce unmapped URLs like
+			<code>/javax.faces.resource/css/style.css</code>. This has the major advantage that the developer don't need the
+			<code>\#{resource}</code> EL expression anymore in order to properly reference relative URLs to images in CSS files.
+		</p>
+		<p>
+			So, given the following folder structure,
+		</p>
+		<pre>
+	WebContent
+	 `-- resources
+	      `-- css
+	           |-- images
+	           |    `-- background.png
+	           `-- style.css
+		</pre>
+		<p>
+			you can in <code>css/style.css</code> just use
+		</p>
+		<pre class="prettyprint"><code class="lang-css">
+	body {
+	    background: url("images/background.png");
+	}
+		</code></pre>
+		<p>
+			instead of
+		</p>
+		<pre class="prettyprint"><code class="lang-css">
+	body {
+	    background: url("\#{resource['css/images/background.png']}");
+	}
+		</code></pre>
+
+		<h3>Installation</h3>
+		<p>
+			To get it to run, this handler needs be registered as follows in <code>faces-config.xml</code>:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;application&gt;
+    &lt;resource-handler&gt;org.omnifaces.resourcehandler.UnmappedResourceHandler&lt;/resource-handler&gt;
+&lt;/application&gt;
+		</code></pre>
+		<p>
+			And the <code>FacesServlet</code> needs to have an additional mapping <code>/javax.faces.resource/*</code> in
+			<code>web.xml</code>. For example, assuming that you've already a mapping on <code>*.xhtml</code>:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;facesServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;*.xhtml&lt;/url-pattern&gt;
+    &lt;url-pattern&gt;/javax.faces.resource/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;
+		</code></pre>
+
+		<h3>CombinedResourceHandler</h3>
+		<p>
+			If you're also using the <h:link value="CombinedResourceHandler" outcome="CombinedResourceHandler" styleClass="code" />
+			or any other custom resource handler, then you need to ensure that this is in <code>faces-config.xml</code> 
+			declared <strong>before</strong> the <code>UnmappedResourceHandler</code>. Thus, like so:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;application&gt;
+    &lt;resource-handler&gt;org.omnifaces.resourcehandler.CombinedResourceHandler&lt;/resource-handler&gt;
+    &lt;resource-handler&gt;org.omnifaces.resourcehandler.UnmappedResourceHandler&lt;/resource-handler&gt;
+&lt;/application&gt;
+		</code></pre>
+		<p>
+			Otherwise the combined resource handler will still produce mapped URLs. In essence, the one which is later
+			registered wraps the previously registered one.
+		</p>
+ 	</ui:define>		
+</ui:composition>
