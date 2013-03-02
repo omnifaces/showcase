@@ -32,6 +32,8 @@
 			"plain vanilla" HTML (and is currently, June 2012, only supported in Firefox 4 and Opera 11). See also
 			<a href="http://www.html5tutorial.info/html5-datalist.php">HTML5 tutorial</a>.
 		</p>
+		
+		<h3>Installation</h3>
 		<p>
 			To use the HTML5 render kit, register it as follows in <code>faces-config.xml</code>:
 		</p>
@@ -40,11 +42,15 @@
     &lt;render-kit-factory&gt;org.omnifaces.renderkit.Html5RenderKitFactory&lt;/render-kit-factory&gt;
 &lt;/factory&gt;
 		</code></pre>
+
+		<h3>Demo</h3>
 		<p>
 			This HTML5 render kit is enabled in this showcase web application. The below demo shows that the HTML5 
 			attributes on JSF components are actually been rendered instead of ignored. Note that this page should have
 			scrolled down to the demo when you opened it, this is because of the <code>autofocus</code> field :)
 		</p>
+
+		<h3>Mojarra ajax bug</h3>
 		<p>
 			Note that <code>&lt;f:ajax&gt;</code> of Mojarra 2.0.0-2.1.13 explicitly checks for <code>&lt;input type="text"&gt;</code>
 			and ignores other types while preparing request parameters for ajax submit, resulting in <code>null</code> values

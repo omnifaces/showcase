@@ -19,6 +19,8 @@
 			and <code>web-fragment.xml</code> files to find the error page locations of the HTTP error code 500 and all 
 			declared specific exception types.
 		</p>
+		
+		<h3>Installation</h3>
 		<p>
 			This handler must be registered by a factory as follows in <code>faces-config.xml</code> in order to get it to run:
 		</p>
@@ -27,6 +29,8 @@
     &lt;exception-handler-factory&gt;org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory&lt;/exception-handler-factory&gt;
 &lt;/factory&gt;
 		</code></pre>
+
+		<h3>Demo</h3>
 		<p>
 			The buttons in the below demo will each purposefully throw an exception. You'll see that an error page template
 			is presented regardless of if it's an ajax request or not. Also, if you wait #{session.maxInactiveInterval / 60} 
@@ -61,9 +65,9 @@
 		</code></pre>
 		
 		<p>
-			Please note that the error page <strong>must</strong> be a valid Facelets page.
+			Please note that the error page <strong>must</strong> be a valid Facelets page! JSP is not supported.
 		</p>
-	</ui:define>		
+	</ui:define>
 
 	<ui:define name="demo">
 		<h:form>
