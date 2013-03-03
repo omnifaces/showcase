@@ -57,7 +57,7 @@
 	</context-param>
 	<context-param>
 		<param-name>org.omnifaces.FACES_VIEWS_SCAN_PATHS</param-name>
-		<param-value>/showcase/,/etc/,/demo/</param-value>
+		<param-value>/showcase,/etc,/demo</param-value>
 	</context-param>
 	<context-param>
 		<!-- Redirects the faces views scanned /showcase/[PAGE].xhtml to /[PAGE]. 
@@ -65,7 +65,7 @@
 			 already has published /showcase/[PAGE].xhtml
 		-->
 		<param-name>org.omnifaces.FACES_VIEWS_PATH_ACTION</param-name>
-		<param-value>REDIRECT_TO_SCANNED_EXTENTIONLESS</param-value>
+		<param-value>REDIRECT_TO_SCANNED_EXTENSIONLESS</param-value>
 	</context-param>
 	
 

@@ -13,9 +13,8 @@
             <code>viewsdemo.xhtml</code>
             and has been automatically scanned by FacesViews. It can be requested with both its
             original extension (<code>viewsdemo.xhtml</code>) as well as without its extension 
-            (<code>viewsdemo</code>). 
-            In the first case, the following link will be rendered with an extension, otherwise
-            without.
+            (<code>viewsdemo</code>). When <a href="#{request.contextPath}/viewsdemo.xhtml">requesting with an extension</a> 
+            a redirect will take place to its extensionless variant.
         </p>
 
         <p>
@@ -33,7 +32,7 @@
         <hr />
 
         <p>
-	        <h:link value="Back to entry demo page" outcome="/facesviews/ExtensionlessURLs.xhtml" />
+	        <h:link value="Back to entry demo page" outcome="/facesviews/ExtensionlessURLs" />
 	    </p>
     </ui:define>
 </ui:composition>

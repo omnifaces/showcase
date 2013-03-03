@@ -11,21 +11,37 @@
             without the need to enlist individual Facelet source files in some configuration file.
         </p>
         <p>
-            Instead, Facelets source files can be put into the special <code>/WEB-INF/faces-views</code>
-            directory, from where they will be automatically scanned. See the 
-            <a href="#{_apiURL}org/omnifaces/facesviews/package-summary.html">package documentation</a>
+            Instead, Facelets source files can be put into either the special <code>/WEB-INF/faces-views</code>
+            directory, from where they will be automatically scanned (no configuration whatsoever required) or an
+            explicit directory can be configured to be scanned. The web app root is supported as well.
+        </p>
+        
+        <p>
+        	Example of configuring FacesViews to make all Facelets found in the root and its sub-directories (excluding /WEB-INF, /META-INF and /resources)
+        	available as extensionless URLs:
+        	
+    			<pre class="prettyprint"><code class="lang-xml">
+&lt;context-param&gt;
+    &lt;param-name&gt;org.omnifaces.FACES_VIEWS_SCAN_PATHS&lt;/param-name&gt;
+    &lt;param-value&gt;/*.xhtml&lt;/param-value&gt;
+&lt;/context-param&gt;
+		</code></pre>
+        </p>
+           
+        <p> 
+        	<a href="#{_apiURL}org/omnifaces/facesviews/package-summary.html">package documentation</a>
             for additional details.
         </p>
     </ui:define>
 
     <ui:define name="demo">
+    	<p>
+    		The showcase application runs on FacesViews and is thus an implicit demo. An extra demo
+    		is given below:
+    	</p>
         <p>
             Navigate to FacesViews pages without an extension: 
             <a href="#{request.contextPath}/viewsdemo">viewsdemo</a>
-        </p>
-        <p>
-            Navigate to FacesViews pages with extension: 
-			<a href="#{request.contextPath}/viewsdemo.xhtml">viewsdemo.xhtml</a>
         </p>
     </ui:define>
 </ui:composition>
