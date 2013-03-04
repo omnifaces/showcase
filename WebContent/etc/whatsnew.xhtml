@@ -8,7 +8,7 @@
 
 	<ui:define name="content">
 	
-		<em>Release date: 3 March, 2013</em>
+		<em>Release date: 4 March, 2013</em>
 	
 		<h3>Added in OmniFaces 1.4</h3>
 		<ul>
@@ -20,10 +20,9 @@
 			<li><h:link value="of:getMonth(), of:getShortMonth(), of:getDayOfWeek() and of:getShortDayOfWeek() functions" outcome="/functions/Dates" /></li>
 			<li><h:link value="&lt;o:param&gt; which extends &lt;f:param&gt; with support for a Converter" outcome="/components/param" /></li>
 			<li><h:link value="UnmappedResourceHandler which removes the JSF prefix/suffix mapping from resource paths" outcome="/resourcehandlers/UnmappedResourceHandler" /></li>
-			<li><a href="#{_srcURL}org/omnifaces/eventlistener/VersionLoggerEventListener.java#{_srcVersionParam}">OmniFaces version will now be logged to webapp log in this format: <code>INFO: Using OmniFaces version 1.4</code></a></li>
 			<li><h:link value="Major overhaul of FacesViews; support for custom locations (including root) and extension, plus configurable actions when resource with extension or resource on configured path is requested" outcome="/facesviews/ExtensionlessURLs" /></li>
-			<li>Programmatically getting list of welcome pages from web.xml</li>
-			<li>New utility method for checking if access is allowed to a URL according to security constraints in web.xml</li>
+			<li><h:link value="Programmatically getting list of welcome pages and checking if access is allowed to a URL according to security constraints" outcome="utils/WebXml" /></li>
+			<li><a href="#{_srcURL}org/omnifaces/eventlistener/VersionLoggerEventListener.java#{_srcVersionParam}">OmniFaces version will now be logged to webapp log in this format: <code>INFO: Using OmniFaces version 1.4</code></a></li>
 		</ul>
 
  		<h3>Changed in OmniFaces 1.4</h3>
@@ -37,6 +36,8 @@
 			<li><h:link value="Support java.util.TimeZone argument in of:formatDateWithTimezone()" outcome="/functions/Dates" /></li>
 			<li><h:link value="Support com.example.SomeClass.SomeEnum on top of com.example.SomeClass$SomeEnum notation for inner enums in &lt;o:importConstants&gt;" outcome="/taghandlers/importConstants" /></li>
 			<li><h:link value="Skip unrendered components during component tree visit of ResetInputAjaxActionListener" outcome="/eventlisteners/ResetInputAjaxActionListener" /></li>
+			<li><h:link value="ELException will now also be unwrapped by FacesExceptionFilter in order to improve exception handling in MyFaces" outcome="/filters/FacesExceptionFilter" /></li>
+			<li><h:link value="ELException will now also be unwrapped by FullAjaxExceptionFilter in order to improve ajax exception handling in MyFaces" outcome="/exceptionhandlers/FullAjaxExceptionHandler" /></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 1.4</h3>
