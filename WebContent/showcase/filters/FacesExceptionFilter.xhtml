@@ -7,11 +7,11 @@
 >
 	<ui:define name="description">
 		<p>
-			This filter will solve 2 problems with faces exceptions coming from Mojarra.
+			This filter will solve 2 problems with faces exceptions coming from JSF/EL.
 		</p>
 		<ul>
 			<li>Mojarra's <code>FacesFileNotFoundException</code> which extends <code>FileNotFoundException</code> needs to be interpreted as 404.</li>
-			<li>Root cause of <code>FacesException</code> needs to be unwrapped to utilize standard Servlet API error page handling.</li>
+			<li>Root cause of <code>FacesException</code> (Mojarra) and <code>ELException</code> (MyFaces) needs to be unwrapped to utilize standard Servlet API error page handling.</li>
 		</ul>
 		
 		<h3>Installation</h3>
