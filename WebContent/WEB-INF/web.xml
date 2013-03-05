@@ -56,6 +56,11 @@
 		<param-value>4</param-value>
 	</context-param>
 	<context-param>
+		<!-- 
+			All files in the 3 paths defined below will be scanned and made available
+			as extensionless JSF views. Since no explicit extension is given for scanning,
+			these paths should contain ONLY JSF (Facelets) files.
+		 -->
 		<param-name>org.omnifaces.FACES_VIEWS_SCAN_PATHS</param-name>
 		<param-value>/showcase,/etc,/demo</param-value>
 	</context-param>
@@ -90,6 +95,7 @@
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 	<filter>
 		<filter-name>facesExceptionFilter</filter-name>
 		<filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
@@ -98,6 +104,7 @@
 		<filter-name>facesExceptionFilter</filter-name>
 		<servlet-name>facesServlet</servlet-name>
 	</filter-mapping>
+	
 	<filter>
 		<filter-name>gzipResponseFilter</filter-name>
 		<filter-class>org.omnifaces.filter.GzipResponseFilter</filter-class>
@@ -113,6 +120,10 @@
 	<!-- Welcome files, error pages and mime types. -->
 
 	<welcome-file-list>
+		<!-- 
+			Note that an extension is used here, since the index file resides within the
+			root which has not been configured for FacesViews scanning.
+		-->
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 
