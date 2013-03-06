@@ -63,15 +63,17 @@
 				<li><a href="#{resourceBaseURL}#{resourcePath}">#{resourcePath}</a></li>
 			</ui:repeat>
 		</ul>
+		<o:importConstants type="org.primefaces.util.Constants" var="PrimeFaces" />
 		<p>
 			The CSS one has combined the four CSS files
-			<a href="#{resourceBaseURL}primefaces.css.xhtml?ln=primefaces&amp;v=3.2">primefaces.css</a>,
+			<a href="#{resourceBaseURL}primefaces.css.xhtml?ln=primefaces&amp;v=#{PrimeFaces.VERSION}">primefaces.css</a>,
 			<a href="#{resourceBaseURL}css/layout.css.xhtml?ln=layout">layout.css</a>,
 			<a href="#{resourceBaseURL}css/showcase.css.xhtml?ln=showcase">showcase.css</a> and 
 			<a href="#{resourceBaseURL}css/prettify.css.xhtml?ln=showcase">prettify.css</a>. 
-			The JS one has combined the five JS files 
-			<a href="#{resourceBaseURL}jquery/jquery.js.xhtml?ln=primefaces&amp;v=3.2">jquery.js</a>,
-			<a href="#{resourceBaseURL}primefaces.js.xhtml?ln=primefaces&amp;v=3.2">primefaces.js</a>,
+			The JS one has combined the six JS files 
+			<a href="#{resourceBaseURL}jquery/jquery.js.xhtml?ln=primefaces&amp;v=#{PrimeFaces.VERSION}">jquery.js</a>,
+			<a href="#{resourceBaseURL}primefaces.js.xhtml?ln=primefaces&amp;v=#{PrimeFaces.VERSION}">primefaces.js</a>,
+			<a href="#{resourceBaseURL}jquery/jquery-plugins.js.xhtml?ln=primefaces&amp;v=#{PrimeFaces.VERSION}">jquery-plugins.js</a>,
 			<a href="#{resourceBaseURL}jsf.js.xhtml?ln=javax.faces">jsf.js</a>,
 			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
 			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a>. 
