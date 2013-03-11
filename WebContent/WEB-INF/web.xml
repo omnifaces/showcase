@@ -118,6 +118,13 @@
 
 
 	<!-- Welcome files, error pages and mime types. -->
+	
+	<session-config>
+		<cookie-config>
+			<http-only>true</http-only>
+		</cookie-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
 
 	<welcome-file-list>
 		<!--
