@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-    metadata-complete="false"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	metadata-complete="false"
 >
 	<display-name>OmniFaces Showcase</display-name>
 
 
 	<!-- Standard JSF settings. -->
-	
+
 	<context-param>
 		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
 		<param-value>65535</param-value> <!-- 64KB -->
@@ -21,13 +21,13 @@
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
-	
-	
+
+
 	<!-- Mojarra/RI specific settings. -->
 
 	<context-param>
 		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
-		<param-value>3628800000</param-value> <!-- 6 weeks -->	
+		<param-value>3628800000</param-value> <!-- 6 weeks -->
 	</context-param>
 
 
@@ -35,18 +35,18 @@
 
 	<context-param>
 		<param-name>org.apache.myfaces.RESOURCE_MAX_TIME_EXPIRES</param-name>
-		<param-value>3628800000</param-value> <!-- 6 weeks -->	
+		<param-value>3628800000</param-value> <!-- 6 weeks -->
 	</context-param>
-    <context-param>
+	<context-param>
 		<!--
 			MyFaces and Mojarra don't agree on the default setting for actually serializing state
 			in the session as opposed to just storing a reference. Mojarra's default is false, but
 			can be switched to true. MyFaces' default is true, and can be switched to false, which
 			we thus do below. See http://jdevelopment.nl/jsf-22/#1127
 		 -->
-        <param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
-        <param-value>false</param-value>
-    </context-param>
+		<param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
+		<param-value>false</param-value>
+	</context-param>
 
 
 	<!-- OmniFaces specific settings. -->
@@ -56,7 +56,7 @@
 		<param-value>4</param-value>
 	</context-param>
 	<context-param>
-		<!-- 
+		<!--
 			All files in the 3 paths defined below will be scanned and made available
 			as extensionless JSF views. Since no explicit extension is given for scanning,
 			these paths should contain ONLY JSF (Facelets) files.
@@ -65,14 +65,14 @@
 		<param-value>/showcase,/etc,/demo</param-value>
 	</context-param>
 	<context-param>
-		<!-- Redirects the faces views scanned /showcase/[PAGE].xhtml to /[PAGE]. 
-			 A 404 would normally be preferred (and this is thus the default), but the showcase app
-			 already has published /showcase/[PAGE].xhtml
+		<!--
+			Redirects the faces views scanned /showcase/[PAGE].xhtml to /[PAGE].
+			A 404 would normally be preferred (and this is thus the default), but the showcase app
+			already has published /showcase/[PAGE].xhtml
 		-->
 		<param-name>org.omnifaces.FACES_VIEWS_PATH_ACTION</param-name>
 		<param-value>REDIRECT_TO_SCANNED_EXTENSIONLESS</param-value>
 	</context-param>
-	
 
 
 	<!-- Servlets and filters. -->
@@ -84,7 +84,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>facesServlet</servlet-name>
-		<url-pattern>*.xhtml</url-pattern>		
+		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
 	<filter>
@@ -95,7 +95,7 @@
 		<filter-name>characterEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>facesExceptionFilter</filter-name>
 		<filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
@@ -104,7 +104,7 @@
 		<filter-name>facesExceptionFilter</filter-name>
 		<servlet-name>facesServlet</servlet-name>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>gzipResponseFilter</filter-name>
 		<filter-class>org.omnifaces.filter.GzipResponseFilter</filter-class>
@@ -120,7 +120,7 @@
 	<!-- Welcome files, error pages and mime types. -->
 
 	<welcome-file-list>
-		<!-- 
+		<!--
 			Note that an extension is used here, since the index file resides within the
 			root which has not been configured for FacesViews scanning.
 		-->
@@ -149,7 +149,9 @@
 	</error-page>
 
 	<mime-mapping>
-		<!-- Silence WebLogic's annoying JSF1091: No mime type could be found for file warning. -->
+		<!--
+			Silence WebLogic's annoying "JSF1091: No mime type could be found for file" warning.
+		-->
 		<extension>xhtml</extension>
 		<mime-type>text/html</mime-type>
 	</mime-mapping>
