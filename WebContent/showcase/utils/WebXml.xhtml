@@ -16,7 +16,7 @@
 // Get the &lt;welcome-file-list&gt; (which are essentially path-relative filenames which needs to be served when a folder is requested).
 List&lt;String&gt; welcomeFiles = WebXml.INSTANCE.getWelcomeFiles();
 
-// Get a mapping all error page locations by exception type (a key of null represents the default error page location, if any).
+// Get a mapping of all error page locations by exception type (a key of null represents the default error page location, if any).
 Map&lt;Class&lt;Throwable&gt;, String&gt; errorPageLocations = WebXml.INSTANCE.getErrorPageLocations();
 
 // Get the &lt;form-login-page&gt; (which is a context-relative URL to the login page of FORM based authentication).
