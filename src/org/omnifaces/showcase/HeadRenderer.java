@@ -28,23 +28,23 @@ import javax.faces.render.Renderer;
 @ResourceDependency(library="primefaces-aristo", name="theme.css")
 public class HeadRenderer extends Renderer {
 
-    @Override
-    public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
-        context.getResponseWriter().startElement("head", component);
-    }
+	@Override
+	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
+		context.getResponseWriter().startElement("head", component);
+	}
 
-    @Override
-    public void encodeChildren(FacesContext context, UIComponent component) throws IOException {
-        // NOOP.
-    }
+	@Override
+	public void encodeChildren(FacesContext context, UIComponent component) throws IOException {
+		// NOOP.
+	}
 
-    @Override
-    public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
-        for (UIComponent resource : context.getViewRoot().getComponentResources(context, "head")) {
-            resource.encodeAll(context);
-        }
+	@Override
+	public void encodeEnd(FacesContext context, UIComponent component) throws IOException {
+		for (UIComponent resource : context.getViewRoot().getComponentResources(context, "head")) {
+			resource.encodeAll(context);
+		}
 
-        context.getResponseWriter().endElement("head");
-    }
+		context.getResponseWriter().endElement("head");
+	}
 
 }
