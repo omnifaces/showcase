@@ -65,7 +65,8 @@
 		</ul>
 		<o:importConstants type="org.primefaces.util.Constants" var="PrimeFaces" />
 		<p>
-			The CSS one has combined the four CSS files
+			The CSS one has combined the five CSS files
+			<a href="#{resourceBaseURL}theme.css.xhtml?ln=primefaces-aristo&amp;v=#{PrimeFaces.VERSION}">theme.css</a>,
 			<a href="#{resourceBaseURL}primefaces.css.xhtml?ln=primefaces&amp;v=#{PrimeFaces.VERSION}">primefaces.css</a>,
 			<a href="#{resourceBaseURL}css/layout.css.xhtml?ln=layout">layout.css</a>,
 			<a href="#{resourceBaseURL}css/showcase.css.xhtml?ln=showcase">showcase.css</a> and 
@@ -76,12 +77,19 @@
 			<a href="#{resourceBaseURL}jquery/jquery-plugins.js.xhtml?ln=primefaces&amp;v=#{PrimeFaces.VERSION}">jquery-plugins.js</a>,
 			<a href="#{resourceBaseURL}jsf.js.xhtml?ln=javax.faces">jsf.js</a>,
 			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
-			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a>. 
-			Note that the PrimeFaces <code>theme.css</code> file cannot be combined because it's not been added as a JSF 
-			resource, but hardcoded in PrimeFaces' <code>HeadRenderer</code>. There's however a way to get it to be 
-			included anyway, but this requires a custom renderer for the <code>&lt;head&gt;</code> wherein the theme 
-			name is been hardcoded as <code>@ResourceDependency</code>. See also 
+			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a>.
+		</p>
+		<p> 
+			Note that the PrimeFaces <code>theme.css</code> file can by default not be combined because it's not been 
+			added as a JSF resource, but hardcoded in PrimeFaces' <code>HeadRenderer</code>. There's however a way to
+			get it to be included anyway, but this requires a custom renderer for the <code>&lt;head&gt;</code> wherein
+			the theme name is been hardcoded as <code>@ResourceDependency</code>. See also 
 			<a href="http://code.google.com/p/omnifaces/wiki/CombinedResourceHandlerPrimeFacesThemeCss">How to combine PrimeFaces theme.css using CombinedResourceHandler anyway?</a>
+			Such a
+			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/src/org/omnifaces/showcase/HeadRenderer.java"><code>HeadRenderer</code></a>
+			is also
+			<a href="http://code.google.com/p/omnifaces-showcase/source/browse/WebContent/WEB-INF/faces-config.xml">configured</a>
+			in this showcase.
 		</p>
 		<p>
 			The generated combined resource URL also includes the "<code>v</code>" request parameter which is the last
