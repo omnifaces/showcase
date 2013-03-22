@@ -53,7 +53,9 @@
 			<link rel="stylesheet" href="#{resource['layout:css/ie.css']}" />
 		</o:conditionalComment>
 		<p>
-			Only if you're using IE, regardless of the version, you should see a pinkish background on this page.
+			Only if you're using IE9 or older, you should see a pinkish background on this page. 
+			Support for conditional comments has been discontinued in IE10. 
+			It will only work if the IE10 browser is configured to run in a specific browser mode, e.g. IE9 mode.
 		</p>
 	</ui:define>
 </ui:composition>
