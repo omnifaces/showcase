@@ -7,13 +7,20 @@
 	<ui:define name="description">
 		<p>
 			The	<code>&lt;o:form&gt;</code>	extends the standard <code>&lt;h:form&gt;</code>
-			and provides support for including view parameters in the URL that's used for the post-back.
+			and provides support for including all URL (GET) parameters in the URL that's used for the post-back, or only
+			those that are also view parameters.
 		</p>
 		<p>
-			By setting the new <b><code>includeViewParams</code></b> attribute to true (default is false),
+			By setting the <b><code>includeViewParams</code></b> attribute to true (default is false),
 			the current value of every view parameter will be added to the action URL that will be rendered
 			on the form. This is similar to how the attribute of the same name can be used on the
 			<code>&lt;h:link&gt;</code> and	<code>&lt;h:button&gt;</code> components.
+		</p>
+		<p>
+			In case all URL (GET) parameters are needed, the <b><code>includeRequestParams</code></b> attribute
+			can be set to true (default is false). If both <code>includeRequestParams</code> and 
+			<code>includeViewParams</code> are set to true <code>includeRequestParams</code> will take precedence. 
+			
 		</p>
 	</ui:define>
 
@@ -26,22 +33,44 @@
 	<ui:define name="demo">
 		<p>
 			First do a GET request to the current page to start using a view parameter.<br />
-			<h:link value="Do GET request">
+			<h:link value="Do GET request with view param">
 				<f:param name="test" value="foo" />
 			</h:link>
 		</p>
 
 		<p>
 			<o:form includeViewParams="true">
-				Secondly, do one or more POSTs in an o:form to see that the GET parameter in URL is preserved.
+				Then, do one or more POSTs in an o:form to see that the GET parameter that's been used as a 
+				view parameter in the URL is preserved.
 				<br />
-				<h:commandLink value="POST-BACK o:form" action="#{viewParamBean.action}" />
+				<h:commandLink value="POST-BACK o:form with includeViewParams" action="#{viewParamBean.action}" />
+			</o:form>
+		</p>
+		
+		<p>
+			Now do a GET request to the current page to additionally start using GET parameters which are NOT 
+			also view parameters.<br />
+			<h:link value="Do GET request with a view param and free GET parameters">
+				<f:param name="test" value="000" />
+				<f:param name="foo" value="123" />
+				<f:param name="foo" value="456" />
+				<f:param name="bar" value="xxx" />
+			</h:link>
+		</p>
+		
+		<p>
+			<o:form includeRequestParams="true">
+				Then, do one or more POSTs in an o:form with includeRequestParams to see that all the GET parameters 
+				are being preserverd in the URL (try to post back the "includeViewParams form" to see that only the view 
+				param will be preserved)
+				<br />
+				<h:commandLink value="POST-BACK o:form with includeRequestParams" action="#{viewParamBean.action}" />
 			</o:form>
 		</p>
 
 		<p>
 			<h:form>
-                Finally, do a POST via an h:form to see that the GET parameter in URL disappears.
+                Finally, do a POST via an h:form to see that all the GET parameter in URL disappears.
                 <br />
 				<h:commandLink value="POST-BACK h:form" action="#{viewParamBean.action}" />
 			</h:form>
