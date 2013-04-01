@@ -7,32 +7,37 @@
 >
 	<ui:define name="description">
 		<p>
-			Collection of utility methods for the JSF API with respect to working with Faces events. So far now there
-			are only some helper methods which eases adding a callback method which should execute before or after
-			the given phase ID of the current <code>UIViewRoot</code>.
+			Collection of utility methods for the JSF API with respect to working with Faces events.
 		</p>
 		<p>
-			Here's a rather awkward example which should make the point clear enough:
+			Some examples (for the full list, check the API documentation):
 		</p>
 		<pre class="prettyprint"><code class="lang-java">
-private Object requestBasedProperty;
+// Add a callback to the current view which should run during every after phase of the render response.
+Events.addAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
+    @Override
+    public void invoke() {
+        // ...
+    }
+});
 
-@PostConstruct // Inside a @ViewScoped
-public void init() {
-    // Perform some cleanup after render response phase to keep the property request based.
-    Events.addAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
-        @Override
-        public void invoke() {
-            requestBasedProperty = null;
-        }
-    });
-}
+// Add a callback to the current request which should run during every after phase of the render response.
+Events.addCallbackAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
+    @Override
+    public void invoke() {
+        // ...
+    }
+});
+
+// Add a callback to the current view which should run during the pre render view event.
+Events.subscribeToViewEvent(PreRenderViewEvent.class, new Callback.Void() {
+    @Override
+    public void invoke() {
+        // ...
+    }
+});
 		</code></pre>
-		<p>
-			An useful use case can be found in the source code of 
-			<h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler" value="FullAjaxExceptionHandler" styleClass="code" />
-			which clears the exception from the request scope to prevent Tomcat/JBoss AS to continue handling the exception.
-		</p>
+		<p>Note that you can specify any phase ID or system event to your choice.</p> 
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

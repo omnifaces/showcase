@@ -15,9 +15,30 @@
 			attribute of the tag, or the nested <code>&lt;f:converter&gt;</code> tag, or just automatically if a converter is
 			already registered for the target class via e.g. <code>@FacesConverter(forClass)</code>.
 		</p>
+		<p>
+			Also, if no value is specified, but children are present, then the encoded output of children will be returned as
+			value. This is useful when you want to supply JSF components or HTML as parameter of an unescaped
+			<code>&lt;h:outputFormat&gt;</code>. For example,
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:outputFormat value="\#{bundle.paragraph}" escape="false"&gt;
+    &lt;o:param&gt;&lt;h:link outcome="contact" value="\#{bundle.contact}" /&gt;&lt;/o:param&gt;
+&lt;/h:outputFormat&gt;
+		</code></pre>
+		<p>
+			with this bundle
+		</p>
+		<pre><code>
+paragraph = Please {0} for more information.
+contact = contact us
+		</code></pre>
+		<p>
+			will result in the link being actually encoded as output format parameter value.
+		</p>
 	</ui:define>
 
 	<ui:define name="demo">
+		<h3>Using converter</h3>
 		<p>
 			We want to pass this example entity referenced by <code>\#{paramBean.exampleEntity}</code> as request parameter:
 			<strong>#{paramBean.exampleEntity}</strong>
@@ -35,6 +56,17 @@
 		<p>
 			We could of course also have used <code>\#{paramBean.exampleEntity.id}</code> as param value, but this is not
 			DRY if you already have a converter for the entity and this is thus potentially maintenance-unfriendly.
+		</p>
+		
+		<h3>Using JSF and HTML as param value</h3>
+		<p>
+			<f:loadBundle basename="org.omnifaces.showcase.i18n.text" var="text" />
+			<o:outputFormat value="#{text['showcase.components.param.paragraph.whatsnew.link']}" var="_link">
+				<f:param value="#{_omniFacesVersion}" />
+			</o:outputFormat>
+			<h:outputFormat value="#{text['showcase.components.param.paragraph.whatsnew']}" escape="false">
+				<o:param><h:link outcome="#{text['showcase.whatsnew.outcome']}" value="#{_link}" /></o:param>
+			</h:outputFormat>
 		</p>
 	</ui:define>
 </ui:composition>

@@ -42,6 +42,47 @@
     &lt;render-kit-factory&gt;org.omnifaces.renderkit.Html5RenderKitFactory&lt;/render-kit-factory&gt;
 &lt;/factory&gt;
 		</code></pre>
+		
+		<h3>Configuration</h3>
+		<p>
+			You can also configure additional passthrough attributes via the
+			<code>org.omnifaces.HTML5_RENDER_KIT_PASSTHROUGH_ATTRIBUTES</code> context parameter, wherein the
+			passthrough attributes are been specified in semicolon-separated
+			<code>com.example.SomeComponent=attr1,attr2,attr3</code> key=value pairs. The key represents the fully qualified
+			name of a class whose <code>Class#isInstance(Object)</code> must return <code>true</code> for the particular component
+			and the value represents the commaseparated string of names of passthrough attributes. Here's an example:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;context-param&gt;
+    &lt;param-name&gt;org.omnifaces.HTML5_RENDER_KIT_PASSTHROUGH_ATTRIBUTES&lt;/param-name&gt;
+    &lt;param-value&gt;
+        javax.faces.component.UIInput=x-webkit-speech,x-webkit-grammar;
+        javax.faces.component.UIComponent=contenteditable,draggable
+    &lt;/param-value&gt;
+&lt;/context-param&gt;
+		</code></pre>
+
+		<h3>JSF 2.2 notice</h3>
+		<p>
+			Noted should be that JSF 2.2 will support defining custom attributes directly in the view via the new
+			<code>http://java.sun.com/jsf/passthrough</code> namespace or the <code>&lt;f:passThroughAttribute&gt;</code> tag.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;html ... xmlns:p="http://java.sun.com/jsf/passthrough"&gt;
+...
+&lt;h:inputText ... p:autofocus="true" /&gt;
+		</code></pre>
+		<p>
+			<em>(you may want to use <code>a</code> instead of <code>p</code> as namespace prefix to avoid clash with PrimeFaces default namespace)</em>
+		</p>
+		<p>
+			Or:
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:inputText ...&gt;
+    &lt;f:passThroughAttribute name="autofocus" value="true" /&gt;
+&lt;/h:inputText&gt;
+		</code></pre>
 
 		<h3>Demo</h3>
 		<p>
