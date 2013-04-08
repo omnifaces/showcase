@@ -21,7 +21,7 @@ Events.addAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
     }
 });
 
-// Add a callback to the current request which should run during every after phase of the render response.
+// Add a callback to the current request which should run during after phase of the render response.
 Events.addCallbackAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
     @Override
     public void invoke() {

@@ -49,7 +49,9 @@
 		<p>
 			Please note that this only affects HTTP POST requests, not HTTP GET requests. For HTTP GET requests, you should
 			be specifying the charset at servletcontainer level (e.g. <code>&lt;Context URIEncoding="UTF-8"&gt;</code> in Tomcat,
-			or <code>&lt;parameter-encoding default-charset="UTF-8"&gt;</code> in Glassfish). Also note that this doesn't affect
+			or <code>&lt;parameter-encoding default-charset="UTF-8"&gt;</code> in Glassfish, or
+			<code>&lt;property name="org.apache.catalina.connector.USE_BODY_ENCODING_FOR_QUERY_STRING" value="true" /&gt;</code>
+			in JBoss in combination with this filter). Also note that this doesn't affect
 			HTTP responses in any way. For HTTP responses, you should be specifying the charset in
 			<code>&lt;f:view encoding&gt;</code>, which also already defaults to UTF-8 by the way.
 		</p>

@@ -125,12 +125,59 @@ input.error, select.error, textarea.error {
 	background-color: #fee;
 }
 
+.messages {
+	margin: 12px 6px;
+	padding: 0;
+}
+
+.messages li {
+	list-style-type: none;
+	padding: 6px;
+	color: white;
+	font-size: 1.4em;
+	box-shadow: 2px 2px 4px #ccc;
+}
+
+.messages li:first-child {
+	-moz-border-radius: 4px 4px 0 0;
+	-webkit-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+
+.messages li:last-child {
+	-moz-border-radius: 0 0 4px 4px;
+	-webkit-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+.messages li:only-child {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.messages .info {
+	background: yellowgreen;
+}
+
+.messages .warn {
+	background: orange;
+}
+
+.messages .error {
+	background: orangered;
+}
+
+.messages .fatal {
+	background: maroon;
+}
+
 .snapshot {
 	padding: 0 5px;
 	background: #ff9;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .clearleft:after {

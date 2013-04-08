@@ -61,10 +61,10 @@ contact = contact us
 		<h3>Using JSF and HTML as param value</h3>
 		<p>
 			<f:loadBundle basename="org.omnifaces.showcase.i18n.text" var="text" />
-			<o:outputFormat value="#{text['showcase.components.param.paragraph.whatsnew.link']}" var="_link">
+			<o:outputFormat value="#{text['showcase.components.param.demo.whatsnew.link']}" var="_link">
 				<f:param value="#{_omniFacesVersion}" />
 			</o:outputFormat>
-			<h:outputFormat value="#{text['showcase.components.param.paragraph.whatsnew']}" escape="false">
+			<h:outputFormat value="#{text['showcase.components.param.demo.whatsnew']}" escape="false">
 				<o:param><h:link outcome="#{text['showcase.whatsnew.outcome']}" value="#{_link}" /></o:param>
 			</h:outputFormat>
 		</p>

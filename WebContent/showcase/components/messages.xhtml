@@ -1,0 +1,97 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			The <code>&lt;o:messages&gt;</code> is a component that extends the standard <code>&lt;h:messages&gt;</code> with the following new features:
+		</p>
+		<ul>
+			<li>Possibility to specify multiple client IDs space separated in the <code>for</code> attribute.</li> 
+			<li>Control HTML escaping by the new <code>escape</code> attribute.</li>
+			<li>Control iteration markup fully by the new <code>var</code> attribute which sets the current
+			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/application/FacesMessage.html" class="code">FacesMessage</a>
+			in the request scope and disables the default table/list rendering.</li>
+		</ul>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Multiple <code>for</code> components</h3>
+		<p>
+			Register one messages component for multiple input components.
+		</p>
+		<h:form id="form1">
+			<o:messages for="input1 input2" />
+			<h:panelGrid>
+				<h:inputText id="input1" required="true" />
+				<h:inputText id="input2" required="true" />
+				<h:panelGroup>
+					<h:inputText id="input3" required="true" />
+					<h:message for="input3" />
+				</h:panelGroup>
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+			</h:panelGrid>
+		</h:form>
+		<p>
+			Register one messages component for a specific group containing multiple input components.
+		</p>
+		<h:form id="form2">
+			<o:messages for="inputs" />
+			<h:panelGrid>
+				<h:panelGroup id="inputs">
+					<h:inputText id="input1" required="true" />
+					<br/>
+					<h:inputText id="input2" required="true" />
+				</h:panelGroup>
+				<h:panelGroup>
+					<h:inputText id="input3" required="true" />
+					<h:message for="input3" />
+				</h:panelGroup>
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+			</h:panelGrid>
+		</h:form>
+		
+		<h3>Control HTML escaping</h3>
+		<p>
+			Default HTML escaping can be turned off by the new <code>escape</code> attribute.
+		</p>
+		<h:form id="form3">
+			<o:messages escape="false" />
+			<h:commandButton value="Show HTML message" action="#{messagesBean.showHtmlMessage}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+		</h:form>
+		
+		<h3>Control iteration markup</h3>
+		<p>
+			Control iteration markup fully by the new <code>var</code> attribute which sets the current 
+			<code>FacesMessage</code> in the request scope and disables the default table/list rendering.
+		</p>
+		<h:form id="form4">
+			<ui:fragment rendered="#{not empty facesContext.messageList}">
+				<ul class="messages">
+					<o:messages var="message">
+						<li class="#{fn:substringBefore(fn:toLowerCase(message.severity),' ')}">#{message.summary}</li>
+					</o:messages>
+				</ul>
+			</ui:fragment>
+			<h:commandButton value="Show five random messages" action="#{messagesBean.showRandomMessages(5)}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+		</h:form>
+		<p>
+			Admittedly, this was a bit poor example. The same layout could also be achieved with just 
+			<code>&lt;o:messages&gt;</code> without <code>var</code> attribute.
+			It's just to give the general idea.
+		</p>
+	</ui:define>
+</ui:composition>
