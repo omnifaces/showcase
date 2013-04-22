@@ -32,24 +32,27 @@
 
 	<ui:define name="demo">
 		<p>
-			First do a GET request to the current page to start using a view parameter.<br />
+			First do a GET request to the current page to start using a view parameter.
+		</p>
+		<p>
 			<h:link value="Do GET request with view param">
 				<f:param name="test" value="foo" />
 			</h:link>
 		</p>
 
 		<p>
-			<o:form includeViewParams="true">
-				Then, do one or more POSTs in an o:form to see that the GET parameter that's been used as a 
-				view parameter in the URL is preserved.
-				<br />
-				<h:commandLink value="POST-BACK o:form with includeViewParams" action="#{viewParamBean.action}" />
-			</o:form>
+			Then, do one or more POSTs in an o:form to see that the GET parameter that's been used as a 
+			view parameter in the URL is preserved.
 		</p>
+		<o:form includeViewParams="true">
+			<h:commandLink value="POST-BACK o:form with includeViewParams" action="#{viewParamBean.action}" />
+		</o:form>
 		
 		<p>
 			Now do a GET request to the current page to additionally start using GET parameters which are NOT 
-			also view parameters.<br />
+			also view parameters.
+		</p>
+		<p>
 			<h:link value="Do GET request with a view param and free GET parameters">
 				<f:param name="test" value="000" />
 				<f:param name="foo" value="123" />
@@ -59,25 +62,23 @@
 		</p>
 		
 		<p>
-			<o:form includeRequestParams="true">
-				Then, do one or more POSTs in an o:form with includeRequestParams to see that all the GET parameters 
-				are being preserverd in the URL (try to post back the "includeViewParams form" to see that only the view 
-				param will be preserved)
-				<br />
-				<h:commandLink value="POST-BACK o:form with includeRequestParams" action="#{viewParamBean.action}" />
-			</o:form>
+			Then, do one or more POSTs in an o:form with includeRequestParams to see that all the GET parameters 
+			are being preserverd in the URL (try to post back the "includeViewParams form" to see that only the view 
+			param will be preserved)
 		</p>
+		<o:form includeRequestParams="true">
+			<h:commandLink value="POST-BACK o:form with includeRequestParams" action="#{viewParamBean.action}" />
+		</o:form>
 
 		<p>
-			<h:form>
-                Finally, do a POST via an h:form to see that all the GET parameter in URL disappears.
-                <br />
-				<h:commandLink value="POST-BACK h:form" action="#{viewParamBean.action}" />
-			</h:form>
+			Finally, do a POST via an h:form to see that all the GET parameter in URL disappears.
 		</p>
+		<h:form>
+			<h:commandLink value="POST-BACK h:form" action="#{viewParamBean.action}" />
+		</h:form>
 
 		<p>
-			<b>The value: </b> #{viewParamBean.test}
+			<b>The value:</b> #{viewParamBean.test}
 		</p>
 	</ui:define>
 </ui:composition>

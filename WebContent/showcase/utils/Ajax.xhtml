@@ -96,7 +96,7 @@
 		
 		<h3>Add arguments to the JavaScript scope</h3>
 		<h:form>
-			<h:commandButton value="submit" action="#{ajaxBean.argument}" onclick="$('#showData').empty()">
+			<h:commandButton value="submit" onclick="$('#showData').empty()" action="#{ajaxBean.argument}">
 				<f:ajax />
 			</h:commandButton>
 		</h:form>
