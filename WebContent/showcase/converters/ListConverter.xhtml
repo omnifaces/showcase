@@ -1,0 +1,94 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			OmniFaces has the <h:link value="SelectItemsConverter" outcome="/converters/SelectItemsConverter"/>
+			that allows you to populate e.g. a drop-down with complex Java objects and have JSF convert those automatically back 
+			without the need to provide a custom converter which may need to do the job based on possibly expensive 
+			service/DAO operations. This works with the select items that are nested inside a component.
+		</p>
+		
+		<p>
+			A select few components in JSF don't use select items as the source for their selectable items, but work directly
+			via a list. To accomodate the same automatic conversion of complex Java objects for these components as well
+			OmniFaces provides the <code>omnifaces.ListConverter</code> and 
+			<h:link value="omnifaces.ListIndexConverter" outcome="/converters/ListIndexConverter"/> converters. This page
+			demoes the <code>omnifaces.ListConverter</code>. The pros and cons of the conversion using the list index
+			are described on the <h:link value="SelectItemsIndexConverter" outcome="/converters/SelectItemsIndexConverter"/> demo page.
+			(which are pretty much the reverse of the pros and cons for the <code>omnifaces.ListConverter</code>).
+		</p>
+		
+		<p>
+			The base converter uses by default the <code>toString()</code> method of the object to uniquely identify 
+			the object during the conversion. Since this is not the typical use case for <code>toString()</code>, it is
+			recommended to extend the <code>ListConverter</code> class and override <b>only</b> the 
+			<code>getAsString</code> method wherein the desired implementation is provided.
+		</p>
+		<p>
+			For example:
+		</p>
+		<pre class="prettyprint"><code class="code-java">
+@FacesConverter("exampleEntityListConverter")
+public class ExampleEntitySelectItemsConverter extends ListConverter {
+
+    @Override
+    public String getAsString(FacesContext context, UIComponent component, Object value) {
+        Long id = (value instanceof ExampleEntity) ? ((ExampleEntity) value).getId() : null;
+        return (id != null) ? String.valueOf(id) : null;
+    }
+
+}
+		</code></pre>
+		
+		<p>
+			Unlike select items, there is no dedicated location to fetch such list from, so the list that is used as source
+			for whatever mechanism the component uses has to be provided to the converter. For providing this parameter
+			to the converter the <h:link value="o:converter" outcome="/taghandlers/converter" /> can be used.
+		</p>
+		
+		<p>
+			The demo belows shows the PrimeFaces <h:outputLink value="http://primefaces.org/showcase/ui/picklist.jsf" ><code>p:pickList</code> </h:outputLink> component, which is a famous example of a component
+			that does not use select items.
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		
+		<h:form>
+			
+			<p>
+				<b>Selected items</b>:
+				<h:dataTable value="#{selectListBean.selected}" var="entity" rendered="#{!empty selectListBean.selected}">
+					<h:column>
+						#{entity.value}
+					</h:column>
+				</h:dataTable>
+				<h:outputText value="[no selection made]" rendered="#{empty selectListBean.selected}"/>
+			</p>
+		
+			<p>
+				<b>Choose a city, then press Select</b>:
+				<p:pickList value="#{selectListBean.all}"
+					var="entity" itemLabel="#{entity.value}" itemValue="#{entity}"
+				>
+					<o:converter converterId="omnifaces.ListConverter" list="#{selectListBean.source}" />
+				</p:pickList>
+			</p>
+			
+			<p>
+				<h:commandButton value="Select">
+					<f:ajax execute="@form" render="@form"/>
+				</h:commandButton>
+			</p>
+		</h:form>
+		
+		
+	</ui:define>
+</ui:composition>
