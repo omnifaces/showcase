@@ -16,7 +16,10 @@
 			<li><h:link outcome="/renderkits/Html5RenderKit">Allow endusers to specify custom passthrough attributes for <code>Html5RenderKit</code></h:link></li>
 			<li><h:link outcome="/components/form">Added new <code>includeRequestParams</code> attribute to <code>&lt;o:form&gt;</code></h:link></li>
 			<li><h:link outcome="/components/messages"><code>&lt;o:messages&gt;</code> which extends <code>&lt;h:messages&gt;</code> with support for multiple client IDs in <code>for</code> attribute, ability to disable HTML escaping and ability to perform markupless rendering like <code>&lt;ui:repeat&gt;</code></h:link></li>
-			<li><h:link outcome="/utils/Faces"><code>Faces#includeCompositeComponent()</code> to programmatically a composite component in given parent component</h:link></li>
+			<li><h:link outcome="/utils/Faces"><code>Faces#includeCompositeComponent()</code> to programmatically include a composite component in given parent component</h:link></li>
+			<li>Add list based alternatives for the converters that automatically convert based on select items:
+				<h:link value="omnifaces.ListIndexConverter" outcome="/converters/ListIndexConverter"/> and
+				<h:link value="omnifaces.ListConverter" outcome="/converters/ListConverter"/></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.5</h3>
@@ -33,7 +36,7 @@
 				<h:link outcome="/resourcehandlers/CombinedResourceHandler">all</h:link>&#xA0; 
 				<h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>ResourceHandler</code>s</h:link> 
 				(so that it also works in combination with other resource handlers which don't use <code>createResource(library, name)</code>)</li>
-			<li><h:link outcome="/taghandlers/enableRestorableView">Normalize view ID in <code>RestorableViewHandler</code> (so that it also works when other suffix mapping is used than *.xhtml, this worked in 1.3 but broke in 1.4)</h:link></li>
+			<li><h:link outcome="/taghandlers/enableRestorableView">Normalize view ID in <code>RestorableViewHandler</code> (so that it also works when another suffix mapping is used than *.xhtml, this worked in 1.3 but broke in 1.4)</h:link></li>
 			<li><h:link outcome="/converters/SelectItemsConverter">Add missing support for <code>noSelectionValue</code> attribute</h:link></li>
 		</ul>
 
