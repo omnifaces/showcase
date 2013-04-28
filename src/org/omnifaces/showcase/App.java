@@ -13,6 +13,7 @@
 package org.omnifaces.showcase;
 
 import static org.omnifaces.util.ResourcePaths.stripPrefixPath;
+import static org.omnifaces.util.Utils.isEmpty;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -152,8 +153,19 @@ public class App {
 	}
 
 	private static Source createSource(Properties properties, String sourceKey) {
-		String title = getMandatoryProperty(properties, sourceKey + ".title");
 		String path = getMandatoryProperty(properties, sourceKey + ".path");
+		
+		String title = properties.getProperty(sourceKey + ".title");
+		if (isEmpty(title)) {
+			title = path;
+			if (title.contains("/")) {
+				title = title.substring(title.lastIndexOf('/') + 1, title.length());
+			}
+			if (title.contains(".")) {
+				title = title.substring(0, title.indexOf('.'));
+			}
+		}
+		
 		String type = path.substring(path.lastIndexOf('.') + 1);
 		String code = loadSourceCode(path);
 		return new Source(title, type, code);
