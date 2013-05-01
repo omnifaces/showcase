@@ -1,5 +1,7 @@
 package org.omnifaces.showcase.components;
 
+import static org.omnifaces.util.Faces.getContext;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,9 +9,11 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
-@ViewScoped
+import org.omnifaces.component.output.cache.CacheFactory;
+
+@RequestScoped
 @ManagedBean
 public class CacheBean implements Serializable {
 
@@ -37,6 +41,10 @@ public class CacheBean implements Serializable {
 
 	public void setKey(long key) {
 		this.key = key;
+	}
+	
+	public void reset() {
+		CacheFactory.getCache(getContext(), "session").remove("firstCache");
 	}
 
 }

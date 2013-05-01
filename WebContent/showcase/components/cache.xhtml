@@ -35,23 +35,25 @@
 
 		<hr/>
 		
-		<h3>Example 1</h3>
+		<h3>Example 1 - Fixed cache</h3>
 		<p>
 			The following renders a couple of items in a default cache, which means the session scope is used without a timeout. 
 			On the first page refresh, all items should have the same time as indicated by "<code>Now</code>" above.
 			After a page refresh the time of the items should stay constant, indicating cached content is used. 
 		</p>
 		<p>
-			<o:cache>
-				<ui:repeat value="#{cacheBean.items}" var="item">
-		  			<i>#{item}</i> <br/>
-		  		</ui:repeat>
+			<o:cache key="firstCache">
+				<h:dataTable value="#{cacheBean.items}" var="item">
+					<h:column>
+						<i>#{item}</i> <br/>
+					</h:column>
+				</h:dataTable>
 			</o:cache>
   		</p>
 
   		<hr/>
   		
-  		<h3>Example 2</h3>
+  		<h3>Example 2 - Timed cache</h3>
   		<p>
 			The following renders a time-stamp in the session scoped cache, for which a time to live has been set to 15 seconds.
 			On the first page refresh, it should be equal again to the time as indicated by "<code>Now</code>" above. 
@@ -66,7 +68,7 @@
 
   		<hr/>
   		
-  		<h3>Example 3</h3>
+  		<h3>Example 3 - Treshold on number of cached items</h3>
   		<p>
   			The following renders a time-stamp in the session scoped cache again, this time using an explicit and dynamic key.
   			For this show case application, the number of items in the session cache has been set to <code>4</code>
@@ -107,5 +109,23 @@
 				<i>Session scope content for key #{cacheBean.key} generated at: #{now}</i>
 			</o:cache>
   		</p>
+  		
+  		<hr/>
+  		
+  		<h3>Example 4 - Explicitly resetting/expiring cache</h3>
+  		<p>
+  			Cashed data may need to be reset at the point that the underlying data is known to have changed. Any cache
+  			entry can be programmatically removed based on the scope and the key of this entry. By default the cache
+  			component generates an internal key, but this can be overridden by using an explicit key. The default scope is "session". 
+  		</p>
+  		<p>
+  			Pressing the following button will reset the cache that's used in example 1 at the start of this page.
+  		</p>
+  		
+  		<h:form>
+			<h:commandButton action="#{cacheBean.reset}" value="Reset Example 1 cache" />
+		</h:form>
+  		
+  		
 	</ui:define>
 </ui:composition>
