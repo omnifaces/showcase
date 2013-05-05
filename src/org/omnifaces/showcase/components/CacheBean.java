@@ -1,6 +1,7 @@
 package org.omnifaces.showcase.components;
 
 import static org.omnifaces.util.Faces.getContext;
+import static org.omnifaces.util.Messages.addGlobalInfo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class CacheBean implements Serializable {
 
 	private List<String> items;
 	private long key;
+	private String item;
 
 	@PostConstruct
 	public void init() {
@@ -30,9 +32,22 @@ public class CacheBean implements Serializable {
 		items.add("B - " + date);
 		items.add("C - " + date);
 	}
-
+	
+	public void reset() {
+		CacheFactory.getCache(getContext(), "session").remove("firstCache");
+	}
+	
+	public void saveItem(String item) {
+		this.item = item;
+		addGlobalInfo("Item {0} was posted back", item);
+	}
+	
 	public List<String> getItems() {
 		return items;
+	}
+	
+	public String getItem() {
+		return item;
 	}
 
 	public long getKey() {
@@ -41,10 +56,6 @@ public class CacheBean implements Serializable {
 
 	public void setKey(long key) {
 		this.key = key;
-	}
-	
-	public void reset() {
-		CacheFactory.getCache(getContext(), "session").remove("firstCache");
 	}
 
 }

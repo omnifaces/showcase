@@ -53,7 +53,7 @@
 
 	<context-param>
 		<param-name>org.omnifaces.CACHE_SETTING_SESSION_MAX_CAPACITY</param-name>
-		<param-value>4</param-value>
+		<param-value>6</param-value>
 	</context-param>
 	<context-param>
 		<!--

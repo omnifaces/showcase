@@ -77,25 +77,25 @@
 		<pre>
 &lt;context-param&gt;
     &lt;param-name&gt;org.omnifaces.CACHE_SETTING_SESSION_MAX_CAPACITY&lt;/param-name&gt;
-    &lt;param-value&gt;4&lt;/param-value&gt;
+    &lt;param-value&gt;6&lt;/param-value&gt;
 &lt;/context-param&gt;
   		</pre>
   		<p>
-  			Since 2 items have been used already by the previous two examples, only 2 more fit it.
+  			Since 4 items have been used already by the other examples, only 2 more fit it.
   		</p>
   		<p>
   			This can be demonstrated by generating cache items via the numbered buttons shown below. 
   			Clicking on any two of the same numbers below will switch between the cached content for those
   			and will keep showing the time-stamp associated with them on their first click. 
   			Upon clicking a third number, and then clicking the number of the original 2 that was clicked the
-  			longest time ago, a new time-stamp will be associated with that.
+  			longest time ago (except 0, the default), a new time-stamp will be associated with that.
   		</p>
   		<p>
-  			This means the treshold of 4 cached items had been exceeded and the last accessed item was evicted. 
+  			This means the threshold of 6 cached items had been exceeded and the last accessed item was evicted. 
   		</p>
   		<p>
   			E.g. click 0, click 1, click 0 (notice it has the same time-stamp), click 1 (same timestamp), 
-  			click 2, click 0 (gets new time-stamp)
+  			click 2, click 1 (gets new time-stamp)
   		</p>
 		<h:form>
 			Set Cache key to: 
@@ -125,7 +125,67 @@
   		<h:form>
 			<h:commandButton action="#{cacheBean.reset}" value="Reset Example 1 cache" />
 		</h:form>
+		
+		<hr/>
+		
+		<h3>Example 5 - Caching value expressions</h3>
+  		<p>
+  			Sometimes it might be convenient to cache an EL value expression instead or in addition of a fully rendered piece of markup.
+  			This is especially useful for a postback, since after a postback JSF (of course) won't evaluate the cached markup, but will
+  			evaluate value expressions again.
+  		</p>
   		
+  		<b>Without o:cacheValue</b>
+  		<p>
+  			Clicking on any of the 'Postback' buttons below will cause a new date to be generated at each click, instead
+  			of the actually selected date. This is because JSF doesn't send the actual row data along, but merely a row number.
+  			Because the backing bean is request scoped and the expression <code>\#{cacheBean.items}</code> is evaluated 
+  			fresh after each postback, we'll end up selecting a new date each time.
+  		</p>
+  		<h:form>
+  			<p>
+  				Item: #{empty cacheBean.item? '(none)' : cacheBean.item}
+  			</p>
+  			<o:cache>
+				<h:dataTable value="#{cacheBean.items}" var="item">
+					<h:column>
+						<i>#{item}</i>
+					</h:column>
+					<h:column>
+						<h:commandButton value="Postback" action="#{cacheBean.saveItem(item)}" >
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton>
+					</h:column>
+				</h:dataTable>
+			</o:cache>
+  		</h:form>
+  		<br/>
+  		
+		<b>With o:cacheValue</b>
+		<p>
+  			The following example makes use of <code>o:cacheValue</code> to cache the value expression as well. Clicking
+  			any of the 'Postback' buttons in the example below will cause the same date to be selected as the one in the row
+  			where the button is clicked.
+		</p>
+		<h:form>
+			<p>
+				Item: #{empty cacheBean.item? '(none)' : cacheBean.item}
+			</p>
+			<o:cache>
+				<o:cacheValue name="items" value="#{cacheBean.items}"/>
+  				
+				<h:dataTable value="#{items}" var="item">
+					<h:column>
+						<i>#{item}</i>
+					</h:column>
+					<h:column>
+						<h:commandButton value="Postback" action="#{cacheBean.saveItem(item)}" >
+							<f:ajax execute="@form" render="@form" />
+						</h:commandButton>
+					</h:column> 
+				</h:dataTable>
+			</o:cache>
+  		</h:form>
   		
 	</ui:define>
 </ui:composition>
