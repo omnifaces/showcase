@@ -23,6 +23,7 @@ public class CacheBean implements Serializable {
 	private List<String> items;
 	private long key;
 	private String item;
+	private boolean reset;
 
 	@PostConstruct
 	public void init() {
@@ -33,8 +34,21 @@ public class CacheBean implements Serializable {
 		items.add("C - " + date);
 	}
 	
-	public void reset() {
+	/**
+	 * Demos reset via programmatic method.
+	 */
+	public void resetProgrammatic() {
 		CacheFactory.getCache(getContext(), "session").remove("firstCache");
+	}
+	
+	/**
+	 * Alternative way to reset via binding property to "reset" attribute of
+	 * cache component.
+	 */
+	public void resetAttribute() {
+		// Note, no handler to revert back to false needed since bean
+		// is request scope.
+		this.reset = true;
 	}
 	
 	public void saveItem(String item) {
@@ -56,6 +70,10 @@ public class CacheBean implements Serializable {
 
 	public void setKey(long key) {
 		this.key = key;
+	}
+
+	public boolean isReset() {
+		return reset;
 	}
 
 }

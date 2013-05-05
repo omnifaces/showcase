@@ -42,7 +42,7 @@
 			After a page refresh the time of the items should stay constant, indicating cached content is used. 
 		</p>
 		<p>
-			<o:cache key="firstCache">
+			<o:cache key="firstCache" reset="#{cacheBean.reset}">
 				<h:dataTable value="#{cacheBean.items}" var="item">
 					<h:column>
 						<i>#{item}</i> <br/>
@@ -52,6 +52,7 @@
   		</p>
 
   		<hr/>
+  		<br/>
   		
   		<h3>Example 2 - Timed cache</h3>
   		<p>
@@ -67,6 +68,7 @@
   		</p>
 
   		<hr/>
+  		<br/>
   		
   		<h3>Example 3 - Treshold on number of cached items</h3>
   		<p>
@@ -111,22 +113,47 @@
   		</p>
   		
   		<hr/>
+  		<br/>
   		
   		<h3>Example 4 - Explicitly resetting/expiring cache</h3>
   		<p>
-  			Cashed data may need to be reset at the point that the underlying data is known to have changed. Any cache
+  			Cached data may need to be reset at the point that the underlying data is known to have changed. Any cache
   			entry can be programmatically removed based on the scope and the key of this entry. By default the cache
   			component generates an internal key, but this can be overridden by using an explicit key. The default scope is "session". 
   		</p>
   		<p>
-  			Pressing the following button will reset the cache that's used in example 1 at the start of this page.
+  			Cached data can also be reset via the <code>reset</code> attribute on the <code>cache</code> component. Using this method
+  			it's not necessary to know the scope and key of the cache. Instead, the attribute can be bound to a property of a backing bean
+  			which can return <code>true</code> (reset cache) or <code>false</code>. If the attribute is bound to a view scoped backing bean,
+  			care should be taken to reset the property back to false (e.g via a <code>PreRenderView</code> event on the next request, or
+  			<code>CallbackPhaseListener</code> on the current request).
   		</p>
   		
+  		<b>Programmatic reset</b>
+  		<p>
+  			Pressing the following button will reset the cache that's used in example 1 at the start of this page via the 
+  			programmatic method. With this method the attribute <span style="white-space: nowrap">
+  			<code>reset="\#{cacheBean.reset}"</code></span> is <b>NOT</b>
+  			used.
+  		</p>
   		<h:form>
-			<h:commandButton action="#{cacheBean.reset}" value="Reset Example 1 cache" />
+			<h:commandButton action="#{cacheBean.resetProgrammatic}" value="Reset Example 1 cache programmatically" />
+		</h:form>
+		<br/>
+  		
+		<b>Reset via component attribute</b>
+		<p>
+  			Pressing the following button will reset the cache that's used in example 1 at the start of this page by setting
+  			a bean property that's bound to the attribute <span style="white-space: nowrap">
+  			<code>reset="\#{cacheBean.reset}"</code></span> on the 
+  			component to <code>true</code>.
+  		</p>
+		<h:form>
+			<h:commandButton action="#{cacheBean.resetAttribute}" value="Reset Example 1 cache via attribute" />
 		</h:form>
 		
 		<hr/>
+		<br/>
 		
 		<h3>Example 5 - Caching value expressions</h3>
   		<p>
