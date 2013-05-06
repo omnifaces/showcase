@@ -40,7 +40,7 @@
 		</p>
 		<p>
 			<input type="button" value="Invalidate session"
-				onclick="$.get('#{request.contextPath}/invalidatesession', alert('Session invalidated!'))" />
+				onclick="$.get('#{request.contextPath}/invalidatesession?#{now.time}', alert('Session invalidated!'))" />
 		</p>
 		<p>
 			This exception handler is also  
@@ -66,6 +66,16 @@
 		
 		<p>
 			Please note that the error page <strong>must</strong> be a valid Facelets page! JSP is not supported.
+		</p>
+		
+		<h3>Normal requests</h3>
+		<p>
+			Note that the <code>FullAjaxExceptionHandler</code> does not deal with normal (non-ajax) requests at all.
+			To properly handle JSF and EL exceptions on normal requests as well, you need an additional
+			<h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link>.
+			This will extract the root cause from a wrapped <code>FacesException</code> and <code>ELException</code>
+			before delegating the <code>ServletException</code> further to the container (the container will namely use
+			the first root cause of <code>ServletException</code> to match an error page by exception in web.xml). 
 		</p>
 	</ui:define>
 

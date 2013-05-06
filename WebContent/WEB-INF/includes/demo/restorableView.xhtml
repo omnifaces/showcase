@@ -42,7 +42,7 @@
 	</p>
 	<p>
 		<input type="button" value="Invalidate session"
-			onclick="$.get('#{request.contextPath}/invalidatesession', alert('Session invalidated!'))" />
+			onclick="$.get('#{request.contextPath}/invalidatesession?#{now.time}', alert('Session invalidated!'))" />
 	</p>
 
 	<p>
