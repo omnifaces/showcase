@@ -8,32 +8,61 @@
 >
 	<ui:define name="description">
 		<p>
-			Collection of EL functions for data conversion: <code>of:setToList()</code>, <code>of:mapToList()</code>, 
-			<code>of:joinArray()</code>, <code>of:joinCollection()</code> and <code>of:joinMap()</code>.
+			Collection of EL functions for data conversion: <code>of:iterableToList()</code> (with alternative <code>of:iterableToModel</code>), 
+			<code>of:setToList()</code>, <code>of:mapToList()</code>, <code>of:joinArray()</code>, <code>of:joinCollection()</code> and 
+			<code>of:joinMap()</code>.
 		</p>
 		<p>
-			As to the <code>of:xxxToList()</code> functions, the <code>&lt;ui:repeat&gt;</code> (and <code>&lt;h:dataTable&gt;</code>) 
-			doesn't support <code>Set</code> and <code>Map</code> directly, so those functions may be handy for them.
-			If however EL 2.2 is been used, then <code>\#{bean.set.toArray()}</code> and <code>\#{bean.map.entrySet().toArray()}</code> could be used.
-			But if EL 2.2 is not supported, then the provided EL functions could be used.
+			Regarding the <code>of:xxxToList()</code> functions; <code>&lt;ui:repeat&gt;</code> (and <code>&lt;h:dataTable&gt;</code>) 
+			doesn't support <code>Iterable</code> (such as <code>Set</code>) and <code>Map</code> directly, so those functions may be 
+			handy for them.
+			If however EL 2.2 is used, then e.g. <code>\#{bean.set.toArray()}</code> (for <code>Collection</code> types) and 
+			<code>\#{bean.map.entrySet().toArray()}</code> could be used instead.
+			But if EL 2.2 is not supported or for a general <code>Iterable</code> the provided EL functions can be used.
 		</p>
 		<p>
 			The <code>of:joinXxx()</code> functions basically joins the elements of the array, collection or map to a 
 			string using the given separator.
 		</p>
 		<p>
-			Note that since JSF 2.2 it should be possible to use <code>\#{bean.set}</code> directly in <code>&lt;ui:repeat&gt;</code> (and <code>&lt;h:dataTable&gt;</code>).
-			The <code>of:setToList()</code> is then only useful for JSF 2.0 and 2.1.
+			Note that since JSF 2.2 it should be possible to use <code>\#{bean.set}</code> directly in <code>&lt;h:dataTable&gt;</code>, but not
+			in <code>&lt;ui:repeat&gt;</code>.
+			The <code>of:setToList()</code> thus remains useful for JSF 2.0 and 2.1 in all cases, but is not needed for 
+			<code>&lt;h:dataTable&gt;</code> in JSF 2.2.
 		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 	
 	<ui:define name="demo">
-		<h3>Using <code>of:xxxToList()</code> functions</h3>
+		<h3>Using <code>of:xxxToList/Model()</code> functions</h3>
 		<p>
 			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code> using <code>\#{of:setToList()}</code>:
 			<strong>
 				<ui:repeat value="#{of:setToList(convertersBean.set)}" var="item" varStatus="loop">
+					#{item}#{!loop.last ? ', ' : ''}
+				</ui:repeat>
+			</strong>
+		</p>
+		<p>
+			Convert <code>Iterable&lt;E&gt;</code> to <code>List&lt;E&gt;</code> using <code>\#{of:iterableToList()}</code>:
+			<strong>
+				<ui:repeat value="#{of:iterableToList(convertersBean.iterable)}" var="item" varStatus="loop">
+					#{item}#{!loop.last ? ', ' : ''}
+				</ui:repeat>
+			</strong>
+		</p>
+		<p>
+			(Alternative) Convert <code>Iterable&lt;E&gt;</code> to <code>DataModel&lt;E&gt;</code> using <code>\#{of:iterableToModel()}</code>:
+			<strong>
+				<ui:repeat value="#{of:iterableToModel(convertersBean.iterable)}" var="item" varStatus="loop">
+					#{item}#{!loop.last ? ', ' : ''}
+				</ui:repeat>
+			</strong>
+		</p>
+		<p>
+			(Alternative) Convert <code>Set&lt;E&gt;</code> to <code>DataModel&lt;E&gt;</code> using <code>\#{of:iterableToModel()}</code>:
+			<strong>
+				<ui:repeat value="#{of:iterableToModel(convertersBean.set)}" var="item" varStatus="loop">
 					#{item}#{!loop.last ? ', ' : ''}
 				</ui:repeat>
 			</strong>

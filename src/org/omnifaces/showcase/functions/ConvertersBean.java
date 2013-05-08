@@ -1,5 +1,6 @@
 package org.omnifaces.showcase.functions;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -43,5 +44,37 @@ public class ConvertersBean {
 	public Map<String, String> getMap() {
 		return map;
 	}
+	
+	public Iterable<Integer> getIterable() {
+		return new TestIterable();
+	}
 
+	private static class TestIterable implements Iterable<Integer> {
+
+		@Override
+		public Iterator<Integer> iterator() {
+			return new Iterator<Integer>() {
+
+				int index = 0;
+
+				@Override
+				public boolean hasNext() {
+					return index < 3;
+				}
+
+				@Override
+				public Integer next() {
+					return index++;
+				}
+
+				@Override
+				public void remove() {
+					throw new UnsupportedOperationException();
+				}
+
+			};
+		}
+
+	}
+	
 }
