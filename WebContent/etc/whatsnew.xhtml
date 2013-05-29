@@ -41,6 +41,7 @@
 				(so that it also works in combination with other resource handlers which don't use <code>createResource(library, name)</code>)</li>
 			<li><h:link outcome="/taghandlers/enableRestorableView">Normalize view ID in <code>RestorableViewHandler</code> (so that it also works when another suffix mapping is used than *.xhtml, this worked in 1.3 but broke in 1.4)</h:link></li>
 			<li><h:link outcome="/converters/SelectItemsConverter">Add missing support for <code>noSelectionValue</code> attribute</h:link></li>
+			<li><h:link outcome="/facesviews/ExtensionlessURLs">Action URL generation for FacesViews didn't take other view handlers into account, now it does.</h:link></li>
 		</ul>
 
 		<p:separator />
