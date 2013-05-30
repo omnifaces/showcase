@@ -26,6 +26,9 @@ String label = Components.getLabel(someUIInputComponent);
 
 // Inside decode() and/or encode() of some custom component, validate if it has no children.
 Components.validateHasNoChildren(this);
+
+// Programmatically include composite component.
+Components.includeCompositeComponent(someParentComponent, libraryName, resourceName, id);
 		</code></pre>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
