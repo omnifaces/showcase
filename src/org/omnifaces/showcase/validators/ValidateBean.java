@@ -11,8 +11,8 @@ import javax.validation.constraints.Size;
 @ViewScoped
 public class ValidateBean implements Serializable {
 
-	private static final long serialVersionUID = 6654746339417292962L;
-	
+	private static final long serialVersionUID = 1L;
+
 	@Pattern(regexp="^(?=\\s*\\S).*$", message = "Please enter value") // not empty
 	@Size(min = 6, groups = MyValidationGroup.class, message = "Please enter at least 6 characters")
 	private String value;
