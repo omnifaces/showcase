@@ -9,8 +9,8 @@
 	<ui:define name="description">
 		<p>
 			Collection of EL functions for data conversion: <code>of:iterableToList()</code> (with alternative <code>of:iterableToModel</code>), 
-			<code>of:setToList()</code>, <code>of:mapToList()</code>, <code>of:joinArray()</code>, <code>of:joinCollection()</code> and 
-			<code>of:joinMap()</code>.
+			<code>of:setToList()</code>, <code>of:mapToList()</code>, <code>of:joinArray()</code>, <code>of:joinCollection()</code>, 
+			<code>of:joinMap()</code> and <code>of:toJson()</code>.
 		</p>
 		<p>
 			Regarding the <code>of:xxxToList()</code> functions; <code>&lt;ui:repeat&gt;</code> (and <code>&lt;h:dataTable&gt;</code>) 
@@ -23,6 +23,10 @@
 		<p>
 			The <code>of:joinXxx()</code> functions basically joins the elements of the array, collection or map to a 
 			string using the given separator.
+		</p>
+		<p>
+			The <code>of:toJson()</code> function encodes any object to a string in JSON format according the rules of
+			<a href="#{_apiURL}/org/omnifaces/util/Json.html#encode(java.lang.Object)">Json#encode()</a>.
 		</p>
 		<p>
 			Note that since JSF 2.2 it should be possible to use <code>\#{bean.set}</code> directly in <code>&lt;h:dataTable&gt;</code>, but not
@@ -111,5 +115,16 @@
 			Join map to string using <code>\#{of:joinMap()}</code>: 
 			<strong>#{of:joinMap(convertersBean.map, '=', ', ')}</strong>
 		</p>
+		
+		<hr />
+		
+		<h3>Encode any object to JSON</h3>
+		<pre class="prettyprint"><code class="lang-javascript">
+var array = #{of:toJson(convertersBean.array)};
+var collection = #{of:toJson(convertersBean.set)};
+var map = #{of:toJson(convertersBean.map)};
+var exampleEntities = #{of:toJson(selectItemsBean.exampleEntities)};
+var serverDate = new Date(#{of:toJson(now)});
+		</code></pre>
 	</ui:define>
 </ui:composition>

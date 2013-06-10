@@ -24,6 +24,7 @@
 		<c:set var="string2" value="left" />
 		<c:set var="string3" value="right" />
 		<c:set var="string4" value="STRING with díãçrïtìcs" />
+
 		<p>
 			Abbreviate a long string: #{of:abbreviate(string1, 20)}
 		</p>
@@ -33,6 +34,13 @@
 		<p>
 			Concat 2 strings: #{of:concat(string2, string3)}
 		</p>
+		<p>
+			Regex-replace a string: #{of:replaceAll(string1, '\\b', '&#x201D;')}
+		</p>
+		<p>
+			Regex-match a string: #{of:matches(string2, '\\p{IsLatin}+')}
+		</p>
+
 		<p>
 			Following functions deal with the following string: "#{string4}"
 		</p>
@@ -50,6 +58,7 @@
 				<a href="javascript:alert('#{of:escapeJS(string4)}')">click to see alert</a>
 			</li>
 		</ul>
+
 		<p>
 			Format strings in EL:
 		</p>
