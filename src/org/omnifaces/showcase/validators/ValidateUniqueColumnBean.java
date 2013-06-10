@@ -1,5 +1,6 @@
 package org.omnifaces.showcase.validators;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,9 @@ import org.omnifaces.showcase.model.ExampleEntity;
 
 @ManagedBean
 @ViewScoped
-public class ValidateUniqueColumnBean {
+public class ValidateUniqueColumnBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private List<ExampleEntity> entities;
 

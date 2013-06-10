@@ -17,11 +17,11 @@ import org.primefaces.model.DualListModel;
 @ViewScoped
 public class SelectListBean implements Serializable {
 
-	private static final long serialVersionUID = -2808326493872513302L;
-	
+	private static final long serialVersionUID = 1L;
+
 	private List<ExampleEntity> source;
 	private DualListModel<ExampleEntity> all;
-	
+
 	@PostConstruct
 	public void init() {
 		source = asList(
@@ -29,9 +29,9 @@ public class SelectListBean implements Serializable {
 			new ExampleEntity(2l, "Frankfurt"),
 			new ExampleEntity(3l, "Berlin")
 		);
-		
+
 		all = new DualListModel<ExampleEntity>(
-			source, 
+			source,
 			new ArrayList<ExampleEntity>()
 		);
 	}
@@ -39,7 +39,7 @@ public class SelectListBean implements Serializable {
 	public List<ExampleEntity> getSource() {
 		return source;
 	}
-	
+
 	public DualListModel<ExampleEntity> getAll() {
 		return all;
 	}
@@ -47,9 +47,9 @@ public class SelectListBean implements Serializable {
 	public void setAll(DualListModel<ExampleEntity> all) {
 		this.all = all;
 	}
-	
+
 	public List<ExampleEntity> getSelected() {
 		return all.getTarget();
 	}
-	
+
 }

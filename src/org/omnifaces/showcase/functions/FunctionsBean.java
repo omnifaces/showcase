@@ -1,11 +1,15 @@
 package org.omnifaces.showcase.functions;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 @ViewScoped
-public class FunctionsBean {
+public class FunctionsBean implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	private int day = 1;
 	private int year = 2003;
