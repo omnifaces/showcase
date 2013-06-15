@@ -13,6 +13,10 @@
             <code>other/second.xhtml</code>
             and has been automatically scanned by FacesViews as well.
         </p>
+        
+         <p>
+        	Bean created at: #{postRedirectBean.date}
+        </p>
 
         <p>
         	<h:link value="Back via link" outcome="/viewsdemo" />
@@ -23,7 +27,7 @@
         </p>
         
         <h:form>
-            <h:commandButton value="Back via PRG" action="#{postRedirectBean.toViewsDemo}" />
+            <h:commandButton value="Back via PRG with conversation" action="#{postRedirectBean.toViewsDemo}" />
         </h:form>
 
         <hr />

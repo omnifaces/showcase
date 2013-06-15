@@ -16,6 +16,15 @@
             (<code>viewsdemo</code>). When <a href="#{request.contextPath}/viewsdemo.xhtml">requesting with an extension</a> 
             a redirect will take place to its extensionless variant.
         </p>
+        <p>
+        	To demo that extensionless URLs can be used in combination with other URL rewriters (like the CDI conversation
+        	scope), the PostRedirectGet variant starts a conversation. When going back and forth between the demo pages with
+        	PRG, the created time should stay the same after the first navigation.
+        </p>
+        
+        <p>
+        	Bean created at: #{postRedirectBean.date}
+        </p>
 
         <p>
         	<h:link value="Link to other FacesViews scanned page" outcome="/other/second" />
@@ -26,7 +35,7 @@
         </p>
         
         <h:form id="form">
-            <h:commandButton value="PostRedirectGet to other FacesViews page" action="#{postRedirectBean.toSecond}" />
+            <h:commandButton value="PostRedirectGet to other FacesViews page with conversation" action="#{postRedirectBean.toSecond}" />
         </h:form>
 
         <hr />
