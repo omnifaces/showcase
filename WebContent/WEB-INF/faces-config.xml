@@ -18,6 +18,7 @@
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
 		<!-- Patch/workaround for JBoss EAP 6.0.x/AS 7.1.x ignoring web.xml's tracking-mode setting. -->
 		<external-context-factory>org.omnifaces.showcase.patch.TrackingModeExternalContextFactory</external-context-factory>
+		<external-context-factory>org.omnifaces.facesviews.FacesViewsJSF2ExternalContextFactory</external-context-factory>
 	</factory>
 
 	<render-kit>

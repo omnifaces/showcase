@@ -30,9 +30,9 @@ public class ComponentParamBean {
 
 		// Fill list items.
 		listItems = new ArrayList<String>();
-		int size = start + 3;
+		int size = getStart() + 3;
 
-		for (int i = start; i < size; i++) {
+		for (int i = getStart(); i < size; i++) {
 			listItems.add("item " + (i + 1));
 		}
 	}
