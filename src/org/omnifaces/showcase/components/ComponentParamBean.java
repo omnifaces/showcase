@@ -30,6 +30,9 @@ public class ComponentParamBean {
 
 		// Fill list items.
 		listItems = new ArrayList<String>();
+		
+		// Liberty 8.5.5/MyFaces 2.0.5 calls setStart AFTER this @PostContruct method is called,
+		// causing a NPE.
 		int size = getStart() + 3;
 
 		for (int i = getStart(); i < size; i++) {
