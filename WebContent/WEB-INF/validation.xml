@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validation-config
+	xmlns="http://jboss.org/xml/ns/javax/validation/configuration"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.org/xml/ns/javax/validation/configuration validation-configuration-1.0.xsd">
+	
+	<!-- This file should be in META-INF on the classpath, but Geronimo 3.0.0.4 (WASCE) and WebLogic 12.1.1 want it here. -->
+
+	<message-interpolator>org.omnifaces.validator.JsfLabelMessageInterpolator</message-interpolator>
+
+</validation-config>
