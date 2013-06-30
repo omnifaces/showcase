@@ -33,7 +33,8 @@
 		<h3>Demo</h3>
 		<p>
 			The buttons in the below demo will each purposefully throw an exception. You'll see that an error page template
-			is presented regardless of if it's an ajax request or not. Also, if you wait #{session.maxInactiveInterval / 60} 
+			is presented regardless of if it's an ajax request or not. Also, if you wait 
+			#{of:formatNumber(session.maxInactiveInterval / 60, '#')}
 			minutes or manually delete the <code>JSESSIONID</code> cookie or press the below "Invalidate session" button 
 			and then click any of the buttons on the demo, then you'll get a view expired exception which will also end up 
 			in a specific error page.

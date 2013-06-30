@@ -20,7 +20,7 @@ public class MessagesBean {
 			+ " messages! See also <a href=\"http://en.wikipedia.org/wiki/Cross-site_scripting\">Wikipedia</a>.");
 	}
 
-	public void showRandomMessages(long amount) { // Due to JBoss 7.0 bug, we can't use int argument. This is fixed in 7.1.
+	public void showRandomMessages(int amount) {
 		Random random = new Random(System.nanoTime());
 
 		for (int i = 0; i < amount; i++) {
