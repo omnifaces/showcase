@@ -30,7 +30,7 @@
 
 	<ui:define name="demo">
 		<p>
-			<b>Now:</b> #{now}
+			<b>Now:</b> <span id="now">#{now}</span>
 		</p>
 
 		<hr/>
@@ -43,7 +43,7 @@
 		</p>
 		<p>
 			<o:cache key="firstCache" reset="#{cacheBean.reset}">
-				<h:dataTable value="#{cacheBean.items}" var="item">
+				<h:dataTable id="example1" value="#{cacheBean.items}" var="item">
 					<h:column>
 						<i>#{item}</i> <br/>
 					</h:column>
@@ -136,8 +136,8 @@
   			<code>reset="\#{cacheBean.reset}"</code></span> is <b>NOT</b>
   			used.
   		</p>
-  		<h:form>
-			<h:commandButton action="#{cacheBean.resetProgrammatic}" value="Reset Example 1 cache programmatically" />
+  		<h:form id="resetProgrammaticForm">
+			<h:commandButton id="button" action="#{cacheBean.resetProgrammatic}" value="Reset Example 1 cache programmatically" />
 		</h:form>
 		<br/>
   		
@@ -148,8 +148,8 @@
   			<code>reset="\#{cacheBean.reset}"</code></span> on the 
   			component to <code>true</code>.
   		</p>
-		<h:form>
-			<h:commandButton action="#{cacheBean.resetAttribute}" value="Reset Example 1 cache via attribute" />
+		<h:form id="resetAttributeForm">
+			<h:commandButton id="button" action="#{cacheBean.resetAttribute}" value="Reset Example 1 cache via attribute" />
 		</h:form>
 		
 		<hr/>
@@ -169,17 +169,17 @@
   			Because the backing bean is request scoped and the expression <code>\#{cacheBean.items}</code> is evaluated 
   			fresh after each postback, we'll end up selecting a new date each time.
   		</p>
-  		<h:form>
+  		<h:form id="example5aForm">
   			<p>
-  				Item: #{empty cacheBean.item? '(none)' : cacheBean.item}
+  				Item: <span id="example5aOutput">#{empty cacheBean.item? '(none)' : cacheBean.item}</span>
   			</p>
   			<o:cache>
-				<h:dataTable value="#{cacheBean.items}" var="item">
+				<h:dataTable id="table" value="#{cacheBean.items}" var="item">
 					<h:column>
 						<i>#{item}</i>
 					</h:column>
 					<h:column>
-						<h:commandButton value="Postback" action="#{cacheBean.saveItem(item)}" >
+						<h:commandButton id="button" value="Postback" action="#{cacheBean.saveItem(item)}" >
 							<f:ajax execute="@form" render="@form" />
 						</h:commandButton>
 					</h:column>
@@ -194,19 +194,19 @@
   			any of the 'Postback' buttons in the example below will cause the same date to be selected as the one in the row
   			where the button is clicked.
 		</p>
-		<h:form>
+		<h:form id="example5bForm">
 			<p>
-				Item: #{empty cacheBean.item? '(none)' : cacheBean.item}
+				Item: <span id="example5bOutput">#{empty cacheBean.item? '(none)' : cacheBean.item}</span>
 			</p>
 			<o:cache>
 				<o:cacheValue name="items" value="#{cacheBean.items}"/>
   				
-				<h:dataTable value="#{items}" var="item">
+				<h:dataTable id="table" value="#{items}" var="item">
 					<h:column>
 						<i>#{item}</i>
 					</h:column>
 					<h:column>
-						<h:commandButton value="Postback" action="#{cacheBean.saveItem(item)}" >
+						<h:commandButton id="button" value="Postback" action="#{cacheBean.saveItem(item)}" >
 							<f:ajax execute="@form" render="@form" />
 						</h:commandButton>
 					</h:column> 
