@@ -78,11 +78,12 @@ public class App {
 		Set<String> groupPaths = new TreeSet<String>(resourcePaths);
 
 		for (String groupPath : groupPaths) {
-			TreeModel<Page> group = menu.addChildNode(new Page(groupPath.split("/")[2], null, null, null));
+			String groupName = groupPath.split("/")[2];
+			TreeModel<Page> group = menu.addChildNode(new Page(groupName, null, null, null));
 			Set<String> pagePaths = new TreeSet<String>(Faces.getResourcePaths(groupPath));
 
 			for (String pagePath : pagePaths) {
-				group.addChildNode(createPage(properties, pagePath));
+				group.addChildNode(createPage(groupName, properties, pagePath));
 			}
 		}
 	}
@@ -98,7 +99,7 @@ public class App {
 		}
 	}
 
-	private static Page createPage(Properties properties, String viewId) {
+	private static Page createPage(String groupName, Properties properties, String viewId) {
 		String title = viewId.split("/")[3].split("\\.")[0];
 		List<Source> sources = new ArrayList<Source>();
 
@@ -122,7 +123,8 @@ public class App {
 			sources.add(new Source("Demo", "xhtml", source));
 		}
 
-		String sourcesKey = title + ".sources";
+		String pageKey = groupName + "." + title;
+		String sourcesKey = pageKey + ".sources";
 
 		for (String sourceKey : getCommaSeparatedProperty(properties, sourcesKey)) {
 			sources.add(createSource(properties, sourcesKey + "." + sourceKey));
@@ -130,7 +132,7 @@ public class App {
 
 		return new Page(
 			title, stripPrefixPath(SHOWCASE_PATH, viewId.split("\\.")[0]),
-			sources, createDocumentation(properties, title + ".documentation")
+			sources, createDocumentation(properties, pageKey + ".documentation")
 		);
 	}
 
@@ -154,7 +156,7 @@ public class App {
 
 	private static Source createSource(Properties properties, String sourceKey) {
 		String path = getMandatoryProperty(properties, sourceKey + ".path");
-		
+
 		String title = properties.getProperty(sourceKey + ".title");
 		if (isEmpty(title)) {
 			title = path;
@@ -165,7 +167,7 @@ public class App {
 				title = title.substring(0, title.indexOf('.'));
 			}
 		}
-		
+
 		String type = path.substring(path.lastIndexOf('.') + 1);
 		String code = loadSourceCode(path);
 		return new Source(title, type, code);

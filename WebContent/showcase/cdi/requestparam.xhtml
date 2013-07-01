@@ -1,0 +1,43 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			The CDI annotation <code>@Param</code> allows you to inject, convert and validate a HTTP request parameter
+			in a CDI managed bean. It's basically like <code>&lt;f:viewParam&gt;</code>, but then with the major difference
+			that the injected HTTP request parameter is available during <code>@PostConstruct</code>, allowing a much easier
+			way of processing without the need for a <code>&lt;f:event type="preRenderView"&gt;</code>. 
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<p>
+			Click those links.
+			The parameter "text" is injected as <code>String</code> and is validated as <code>required="true"</code>.
+			The parameter "number" is injected as <code>Integer</code> with automatic JSF conversion.
+			The parameter "date" is injected as <code>Date</code> with a conversion pattern of <code>yyyyMMdd</code>.
+		</p>
+		<ul>
+			<li>
+				<h:link value="Set all params">
+					<f:param name="text" value="bar" />
+					<f:param name="number" value="42" />
+					<f:param name="date" value="19780326" />
+				</h:link>
+			</li>
+			<li>
+				<h:link value="Omit required param and set wrong values on others">
+					<f:param name="number" value="NaN" />
+					<f:param name="date" value="26 Mar 1978" />
+				</h:link>
+			</li>
+		</ul>
+		<p>Result: #{requestParamBean.result}</p>
+		<h:messages styleClass="messages" errorClass="error" />
+	</ui:define>
+</ui:composition>

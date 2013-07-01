@@ -11,7 +11,11 @@
 
 	<context-param>
 		<param-name>javax.faces.FACELETS_BUFFER_SIZE</param-name>
-		<param-value>65535</param-value> <!-- 64KB -->
+		<param-value>65535</param-value> <!-- 64KB. -->
+	</context-param>
+	<context-param>
+	    <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
+	    <param-value>0</param-value> <!-- Should be -1 for production. -->
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
@@ -27,7 +31,7 @@
 
 	<context-param>
 		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
-		<param-value>3628800000</param-value> <!-- 6 weeks -->
+		<param-value>3628800000</param-value> <!-- 6 weeks. -->
 	</context-param>
 
 
@@ -35,7 +39,7 @@
 
 	<context-param>
 		<param-name>org.apache.myfaces.RESOURCE_MAX_TIME_EXPIRES</param-name>
-		<param-value>3628800000</param-value> <!-- 6 weeks -->
+		<param-value>3628800000</param-value> <!-- 6 weeks. -->
 	</context-param>
 	<context-param>
 		<!--

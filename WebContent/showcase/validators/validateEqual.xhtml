@@ -51,14 +51,14 @@
 				<h:inputSecret id="password" redisplay="true" required="true" requiredMessage="Please enter password" />
 				<h:panelGroup>
 					<h:message for="password" />
-					<h:message for="equal" />
 				</h:panelGroup>
 				
 				<h:outputLabel for="confirm" value="Confirm password" />
 				<h:inputSecret id="confirm" redisplay="true" required="true" requiredMessage="Please confirm password" />
 				<h:panelGroup>
 					<h:message for="confirm" />
-					<o:validateEqual id="equal" components="password confirm" message="Passwords are not equal" />
+					<o:validateEqual id="equal" components="password confirm"
+						message="Passwords are not equal" showMessageFor="password" />
 				</h:panelGroup>
 		
 				<h:panelGroup />

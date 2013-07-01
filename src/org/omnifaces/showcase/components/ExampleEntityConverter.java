@@ -24,7 +24,7 @@ public class ExampleEntityConverter implements Converter {
 			return null;
 		}
 
-		if (!submittedValue.matches("\\d+")) {
+		if (!submittedValue.matches("[0-9]+")) {
 			throw new ConverterException(Messages.createError("Invalid ID."));
 		}
 

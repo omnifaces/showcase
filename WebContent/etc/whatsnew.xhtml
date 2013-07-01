@@ -4,10 +4,32 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 1.5?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 1.6?</ui:define>
 
 	<ui:define name="content">
 	
+		<p><em>Expected release date: August, 2013</em></p>
+
+		<h3>Added in OmniFaces 1.6</h3>
+		<ul>
+			<li><h:link outcome="/cdi/requestparam">Injecting, converting and validating HTTP request parameters via CDI (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
+			<li>Transparent support for dependency injection (CDI and EJB) inside <h:link outcome="/cdi/converter"><code>@FacesConverter</code></h:link> and <h:link outcome="/cdi/validator"><code>@FacesValidator</code></h:link></li>
+		</ul>
+
+		<h3>Changed in OmniFaces 1.6</h3>
+		<ul>
+			<li><h:link outcome="/validators/validateEqual"><code>showMessageFor</code> attribute of multi field validators now supports a space separated collection of client IDs where the message should be shown</h:link></li>
+		</ul>
+
+		<h3>Fixed in OmniFaces 1.6</h3>
+		<ul>
+			<li><h:link outcome="/utils/Ajax"><code>Json#encode()</code> incorrectly escaped singlequotes (was causing validation error in <code>jQuery.parseJSON()</code>)</h:link></li>
+			<li><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> returned gzipped content as plain text in WebSphere 8.5 / Liberty</h:link></li>
+			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render</h:link></li>
+		</ul>
+
+		<p:separator />
+
 		<p><em>Release date: 10 June, 2013</em></p>
 
 		<h3>Added in OmniFaces 1.5</h3>

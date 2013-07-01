@@ -71,7 +71,6 @@
 				</h:inputText>
 				<h:panelGroup>
 					<h:message for="startDate" />
-					<h:message for="order" />
 				</h:panelGroup>
 				
 				<h:outputLabel for="endDate" value="End date" />
@@ -82,7 +81,7 @@
 				<h:panelGroup>
 					<h:message for="endDate" />
 					<o:validateOrder id="order" type="lte" components="startDate endDate" 
-						message="Start date may not be after end date" />
+						message="Start date may not be after end date" showMessageFor="startDate" />
 				</h:panelGroup>
 		
 				<h:panelGroup />
