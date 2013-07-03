@@ -1,5 +1,7 @@
 package org.omnifaces.showcase.cdi;
 
+import static org.omnifaces.util.Faces.isValidationFailed;
+
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -12,26 +14,26 @@ import javax.inject.Named;
 import org.omnifaces.cdi.requestparam.Attribute;
 import org.omnifaces.cdi.requestparam.Param;
 import org.omnifaces.cdi.requestparam.ParamValue;
-import org.omnifaces.util.Faces;
 
 @Named
 @RequestScoped
 public class RequestParamBean {
 
-	@Inject @Param(validatorClasses = { RequiredValidator.class })
+	@Inject @Param(validatorClasses = RequiredValidator.class, validatorMessage = "#{validatorMessages.requiredMsg}")
 	private ParamValue<String> text;
 
 	@Inject @Param
 	private ParamValue<Integer> number;
 
-	@Inject @Param(converterClass = DateTimeConverter.class, converterAttributes = { @Attribute(name="pattern", value="yyyyMMdd") })
+	@Inject @Param(converterClass = DateTimeConverter.class, converterAttributes = @Attribute(name="pattern", value="yyyyMMdd"), 
+				   converterMessage="{1}: \"{0}\" is not the date format we had in mind! Please use yyyyMMdd.")
 	private ParamValue<Date> date;
 
 	private String result;
 
 	@PostConstruct
 	public void init() {
-		if (Faces.isValidationFailed()) {
+		if (isValidationFailed()) {
 			result = "Validation has failed!";
 			return;
 		}
