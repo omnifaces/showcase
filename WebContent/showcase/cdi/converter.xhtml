@@ -15,7 +15,7 @@
 			<a href="http://stackoverflow.com/q/7531449/157882">Another way</a>
 			would be to make it a JSF or CDI managed bean, however this doesn't register the converter instance into the JSF application context,
 			and hence you won't be able to make use of
-			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/application/Application.html#createConverter(java.lang.String)"><code>Application#createValidator()</code></a> 
+			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/application/Application.html#createConverter(java.lang.String)"><code>Application#createConverter()</code></a> 
 			on it. 
 			Further it also breaks the power of <code>forClass</code> attribute,
 			i.e. you can't register a JSF converter for a specific type anymore and you'd need to explicitly declare it everytime. 
@@ -28,9 +28,9 @@
 		</p>
 		<p>
 			The support is expected to come back in JSF 2.3, but we just can't wait any longer.
-			<a href="http://myfaces.apache.org/extensions/cdi/" rel="nofollow">MyFaces CODI</a>
-			has support for it, but it requires an additional <code>@Advanced</code> annotation.
-			OmniFaces solves this by implicitly making all <code>@FacesConverter</code> instances eligible for dependency injection <strong>without any further modification</strong>, like as JSF 2.2 would initially do.
+			<a href="http://myfaces.apache.org/extensions/cdi/" rel="nofollow">MyFaces CODI</a> has support for it, 
+			but it requires an additional <code>@Advanced</code> annotation.
+			OmniFaces solves this by implicitly making all <code>@FacesConverter</code> instances eligible for dependency injection <strong>without any further modification</strong>, like as JSF 2.2 would initially do, hereby providing a transparent bridge of the code to the upcoming JSF 2.3.
 		</p>
 	</ui:define>
 
