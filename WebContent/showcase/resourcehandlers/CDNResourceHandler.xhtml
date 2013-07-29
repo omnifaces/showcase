@@ -9,8 +9,7 @@
 		<p>
 			This <code>ResourceHandler</code> implementation allows the developer to provide CDN URLs instead of the default local
 			URLs for JSF resources as provided by <code>&lt;h:outputScript&gt;</code>, <code>&lt;h:outputStylesheet&gt;</code>
-			and <code>&lt;h:graphicImage&gt;</code> when the current JSF project stage is <strong>not</strong> set to
-			<code>Development</code>.
+			and <code>&lt;h:graphicImage&gt;</code>.
 		</p>
 		
 		<h3>Installation</h3>
@@ -22,8 +21,9 @@
     &lt;resource-handler&gt;org.omnifaces.resourcehandler.CDNResourceHandler&lt;/resource-handler&gt;
 &lt;/application&gt;
 		</code></pre>
+		<p>By default, it runs only when the current JSF project stage is <strong>not</strong> set to <code>Development</code>.</p>
 
-		<h3>Configuration</h3>
+		<h3>Standard configuration</h3>
 		<p>
 			To configure the CDN URLs, a <code>org.omnifaces.CDN_RESOURCE_HANDLER_URLS</code>
 			context parameter has to be provided wherein the CDN resources are been specified as a commaseparated string of
@@ -67,6 +67,52 @@
 		</p>
 		<pre><code>
 javax.faces:jsf.js=http://cdn.example.com/jsf.js
+		</code></pre>
+
+        <h3>Wildcard configuration</h3>
+		<p>
+			You can also use the wildcard syntax to map every single resource of a specific library to a common CDN URL. To
+			achieve that, just use <code>*</code> as the sole resource name and make sure that the CDN URL ends with
+			<code>/*</code>. Here's an example:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;context-param&gt;
+    &lt;param-name&gt;org.omnifaces.CDN_RESOURCE_HANDLER_URLS&lt;/param-name&gt;
+    &lt;param-value&gt;jquery-cdn:*=http://code.jquery.com/*&lt;/param-value&gt;
+&lt;/context-param&gt;
+</code></pre>
+		<p>With the above configuration, the following resources:</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:outputScript library="jquery-cdn" name="jquery-1.9.1.js" /&gt;
+&lt;h:outputScript library="jquery-cdn" name="ui/1.10.3/jquery-ui.js" /&gt;
+		</code></pre>
+		<p>will be rendered as:</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"&gt;&lt;/script&gt;
+		</code></pre>
+
+		<h3>EL expressions</h3>
+		<p>The CDN resource handler supports evaluating EL expessions in the CDN URL. Here's an example:</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;context-param&gt;
+    &lt;param-name&gt;org.omnifaces.CDN_RESOURCE_HANDLER_URLS&lt;/param-name&gt;
+    &lt;param-value&gt;jquery-cdn:*=http://\#{settings.jqueryCDN}/*&lt;/param-value&gt;
+&lt;/context-param&gt;
+		</code></pre>
+		<p>The EL expression is resolved on a per-request basis.</p>
+
+		<h3>Always enable CDN resource handler</h3>
+		<p>
+			By default, the CDN resource handler runs only when the current JSF project stage is <strong>not</strong> set to
+			<code>Development</code>. When you need to run it during <code>Development</code> stage as well, then set the context
+			parameter {@value org.omnifaces.resourcehandler.CDNResourceHandler#PARAM_NAME_CDN_DEV_STAGE} to <code>true</code>.
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;context-param&gt;
+    &lt;param-name&gt;org.omnifaces.CDN_RESOURCE_HANDLER_ALWAYS_ENABLED&lt;/param-name&gt;
+    &lt;param-value&gt;true&lt;/param-value&gt;
+&lt;/context-param&gt;
 		</code></pre>
 
 		<h3>CombinedResourceHandler</h3>

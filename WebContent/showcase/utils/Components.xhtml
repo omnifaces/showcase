@@ -21,6 +21,9 @@ UIForm form = Components.getClosestParent(someUIInputComponent, UIForm.class);
 // Get currently submitted form.
 UIForm form = Components.getCurrentForm();
 
+// Get currently invoked command, useful for logging actions in a phase listener.
+UICommand command = Components.getCurrentCommand();
+
 // Get the label of the given UIInput component as JSF uses for validation messages.
 String label = Components.getLabel(someUIInputComponent);
 

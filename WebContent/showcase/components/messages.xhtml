@@ -13,6 +13,7 @@
 		</p>
 		<ul>
 			<li>Possibility to specify multiple client IDs space separated in the <code>for</code> attribute.</li> 
+			<li>Show a single custom message whenever the component has received any faces message.</li>
 			<li>Control HTML escaping by the new <code>escape</code> attribute.</li>
 			<li>Control iteration markup fully by the new <code>var</code> attribute which sets the current
 			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/application/FacesMessage.html" class="code">FacesMessage</a>
@@ -60,11 +61,32 @@
 			</h:panelGrid>
 		</h:form>
 		
+		<h3>Displaying single message</h3>
+		<p>
+			Show a single custom message whenever the component has received any faces message.
+			Leave the inputs empty to see it.
+		</p>
+		<o:messages id="form3messages" for="form3" message="There are validation errors. Please fix them." />
+		<h:form id="form3">
+			<h:panelGrid columns="2">
+				<h:inputText id="input1" required="true" />
+				<h:message for="input1" />
+				<h:inputText id="input2" required="true" />
+				<h:message for="input2" />
+				<h:inputText id="input3" required="true" />
+				<h:message for="input3" />
+				<h:commandButton value="Submit">
+					<f:ajax execute="@form" render="@form :form3messages" />
+				</h:commandButton>
+				<h:panelGroup />
+			</h:panelGrid>
+		</h:form>
+
 		<h3>Control HTML escaping</h3>
 		<p>
 			Default HTML escaping can be turned off by the new <code>escape</code> attribute.
 		</p>
-		<h:form id="form3">
+		<h:form id="form4">
 			<o:messages escape="false" />
 			<h:commandButton value="Show HTML message" action="#{messagesBean.showHtmlMessage}">
 				<f:ajax execute="@form" render="@form" />
@@ -76,7 +98,7 @@
 			Control iteration markup fully by the new <code>var</code> attribute which sets the current 
 			<code>FacesMessage</code> in the request scope and disables the default table/list rendering.
 		</p>
-		<h:form id="form4">
+		<h:form id="form5">
 			<ui:fragment rendered="#{not empty facesContext.messageList}">
 				<ul class="messages">
 					<o:messages var="message">

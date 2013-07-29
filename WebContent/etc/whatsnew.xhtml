@@ -14,11 +14,17 @@
 		<ul>
 			<li><h:link outcome="/cdi/param">Injecting, converting and validating HTTP request parameters via CDI (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
 			<li>Transparent support for dependency injection (CDI and EJB) inside <h:link outcome="/cdi/converter"><code>@FacesConverter</code></h:link> and <h:link outcome="/cdi/validator"><code>@FacesValidator</code></h:link></li>
+			<li><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code>, a base class which converts only when the submitted value is really changed as compared to the model value</h:link></li>
+			<li><h:link outcome="/utils/Components"><code>Components#getCurrentCommand()</code> which returns the currently invoked command component (useful for logging)</h:link></li>
+			<li><h:link outcome="/utils/JNDI">New <code>JNDI</code> utility class</h:link></li>
+			<li><h:link outcome="/utils/Faces"><code>Faces#getBookmarkableURL()</code> which delegates to <code>ViewHandler#getBookmarkableURL()</code></h:link></li>
+			<li><h:link outcome="/components/messages"><code>message</code> attribute for <code>&lt;o:messages&gt;</code> to display a global message in case any of the in <code>for</code> specified components has a faces message</h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.6</h3>
 		<ul>
 			<li><h:link outcome="/validators/validateEqual"><code>showMessageFor</code> attribute of multi field validators now supports a space separated collection of client IDs where the message should be shown</h:link></li>
+			<li><h:link outcome="/resourcehandlers/CDNResourceHandler">CDN resource handler now supports: 1) always being enabled, also during development stage, 2) wildcard configuration, and 3) EL resolving in CDN URL</h:link></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 1.6</h3>
