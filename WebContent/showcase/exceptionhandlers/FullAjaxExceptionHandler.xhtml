@@ -78,6 +78,16 @@
 			before delegating the <code>ServletException</code> further to the container (the container will namely use
 			the first root cause of <code>ServletException</code> to match an error page by exception in web.xml). 
 		</p>
+		
+		<h3>Customizing <code>FullAjaxExceptionHandler</code></h3>
+		<p>
+			The <code>FullAjaxExceptionHandler</code> offers three protected methods which can be overridden on by extending.
+		</p>
+		<ul>
+			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#findExceptionRootCause(javax.faces.context.FacesContext, java.lang.Throwable)">findExceptionRootCause(context, exception)</a></li>
+			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#findErrorPageLocation(javax.faces.context.FacesContext, java.lang.Throwable)">findErrorPageLocation(context, exception)</a></li>
+			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#logException(javax.faces.context.FacesContext, java.lang.Throwable, java.lang.String, java.lang.String, java.lang.Object...)">logException(context, exception, location, message, params)</a></li>
+		</ul>
 	</ui:define>
 
 	<ui:define name="demo">
