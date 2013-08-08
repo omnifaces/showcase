@@ -12,13 +12,15 @@
 
 		<h3>Added in OmniFaces 1.6</h3>
 		<ul>
-			<li><h:link outcome="/cdi/param">Injecting, converting and validating HTTP request parameters via CDI (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
-			<li>Transparent support for dependency injection (CDI and EJB) inside <h:link outcome="/cdi/converter"><code>@FacesConverter</code></h:link> and <h:link outcome="/cdi/validator"><code>@FacesValidator</code></h:link></li>
+			<li><h:link outcome="/cdi/Param">Injecting, converting and validating HTTP request parameters via CDI (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
+			<li>Transparent support for dependency injection (CDI and EJB) inside <h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> and <h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link></li>
 			<li><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code>, a base class which converts only when the submitted value is really changed as compared to the model value</h:link></li>
 			<li><h:link outcome="/utils/Components"><code>Components#getCurrentCommand()</code> which returns the currently invoked command component (useful for logging)</h:link></li>
 			<li><h:link outcome="/utils/JNDI">New <code>JNDI</code> utility class</h:link></li>
-			<li><h:link outcome="/utils/Faces"><code>Faces#getBookmarkableURL()</code> which delegates to <code>ViewHandler#getBookmarkableURL()</code></h:link></li>
+			<li><h:link outcome="/utils/Faces"><code>Faces#getBookmarkableURL()</code>, <code>Faces#getRequestHostname()</code> and <code>Faces#setResponstStatus()</code></h:link></li>
 			<li><h:link outcome="/components/messages"><code>message</code> attribute for <code>&lt;o:messages&gt;</code> to display a global message in case any of the in <code>for</code> specified components has a faces message</h:link></li>
+			<li><h:link outcome="/utils/FacesLocal">New <code>FacesLocal</code> utility class which extends <code>Faces</code> utility class with methods which take <code>FacesContext</code> as argument</h:link></li>
+			<li><h:link outcome="/cdi/ViewScoped">CDI compatible <code>@ViewScoped</code> annotation specifically for JSF 2.0/2.1</h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.6</h3>
