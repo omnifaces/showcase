@@ -13,7 +13,7 @@
 			<a href="http://balusc.blogspot.com/2011/09/communication-in-jsf-20.html#GettingAnEJBInFacesConverterAndFacesValidator">workaround</a>
 			for EJB, but this is nasty and doesn't work out for CDI.
 			<a href="http://stackoverflow.com/q/7572335/157882">Another way</a>
-			would be to make it a JSF or CDI managed bean, however this doesn't register the converter instance into the JSF application context,
+			would be to make it a JSF or CDI managed bean, however this doesn't register the validator instance into the JSF application context,
 			and hence you won't be able to make use of 
 			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/application/Application.html#createValidator(java.lang.String)"><code>Application#createValidator()</code></a> 
 			on it. 

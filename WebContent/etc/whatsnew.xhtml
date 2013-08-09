@@ -12,7 +12,7 @@
 
 		<h3>Added in OmniFaces 1.6</h3>
 		<ul>
-			<li><h:link outcome="/cdi/Param">Injecting, converting and validating HTTP request parameters via CDI (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
+			<li><h:link outcome="/cdi/Param">Injecting, converting and validating HTTP request parameters via CDI <code>@Param</code> (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
 			<li>Transparent support for dependency injection (CDI and EJB) inside <h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> and <h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link></li>
 			<li><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code>, a base class which converts only when the submitted value is really changed as compared to the model value</h:link></li>
 			<li><h:link outcome="/utils/Components"><code>Components#getCurrentCommand()</code> which returns the currently invoked command component (useful for logging)</h:link></li>
@@ -27,7 +27,7 @@
 		<ul>
 			<li><h:link outcome="/validators/validateEqual"><code>showMessageFor</code> attribute of multi field validators now supports a space separated collection of client IDs where the message should be shown</h:link></li>
 			<li><h:link outcome="/resourcehandlers/CDNResourceHandler">CDN resource handler now supports: 1) always being enabled, also during development stage, 2) wildcard configuration, and 3) EL resolving in CDN URL</h:link></li>
-			<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Added <code>logException</code> method so that it can be overridden for more fine grained control of logging</h:link></li>
+			<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Added <code>logException</code> method to <code>FullAjaxExceptionHandler</code> so that it can be overridden for more fine grained control of logging</h:link></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 1.6</h3>

@@ -66,8 +66,8 @@
 			Show a single custom message whenever the component has received any faces message.
 			Leave the inputs empty to see it.
 		</p>
-		<o:messages id="form3messages" for="form3" message="There are validation errors. Please fix them." />
 		<h:form id="form3">
+			<o:messages for="form3" message="There are validation errors. Please fix them." />
 			<h:panelGrid columns="2">
 				<h:inputText id="input1" required="true" />
 				<h:message for="input1" />
@@ -76,7 +76,7 @@
 				<h:inputText id="input3" required="true" />
 				<h:message for="input3" />
 				<h:commandButton value="Submit">
-					<f:ajax execute="@form" render="@form :form3messages" />
+					<f:ajax execute="@form" render="@form" />
 				</h:commandButton>
 				<h:panelGroup />
 			</h:panelGrid>
