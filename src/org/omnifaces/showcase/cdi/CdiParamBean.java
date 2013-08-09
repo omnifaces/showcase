@@ -12,16 +12,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
-import org.omnifaces.cdi.requestparam.Attribute;
-import org.omnifaces.cdi.requestparam.Param;
-import org.omnifaces.cdi.requestparam.ParamValue;
+import org.omnifaces.cdi.Param;
+import org.omnifaces.cdi.param.Attribute;
+import org.omnifaces.cdi.param.ParamValue;
 
 @Named
 @RequestScoped
-public class RequestParamBean {
+public class CdiParamBean {
 
 	// Like <f:viewParam name="text1" value="#{bean.text1}" required="true">
-	@Inject	@Param(required = true)
+	@Inject @Param(required = true)
 	private ParamValue<String> text1;
 
 	// Like <f:viewParam name="text2" value="#{bean.text2}" validatorMessage="..."><f:validateLength minimum="3">
