@@ -9,7 +9,7 @@
 	<ui:define name="description">
 		<p>
 			The CDI annotation <code>@Param</code> allows you to inject, convert and validate a HTTP request parameter
-			in a CDI managed bean. It's basically like <code>&lt;f:viewParam&gt;</code>, but then with the major difference
+			in a CDI managed bean. It's basically like <code>&lt;f:viewParam&gt;</code>, but with the major difference
 			that the injected HTTP request parameter is available during <code>@PostConstruct</code>, allowing a much easier
 			way of processing without the need for a <code>&lt;f:event type="preRenderView"&gt;</code>. 
 		</p>
@@ -21,11 +21,22 @@
 		</p>
 		<ul>
 			<li>The parameter "text1" is injected as <code>String</code> and is validated as JSF <code>required="true"</code></li>
-			<li>The parameter "text2" is injected as <code>String</code> and is validated as JSF <code>&lt;f:validateLength minimum="3"&gt;</code></li>
+			<li>The parameter "text2" is injected as <code>String</code> and is validated as 
+				JSF <code>&lt;f:validateLength minimum="3"&gt;
+			</code></li>
 			<li>The parameter "text3" is injected as <code>String</code> and is validated as JSR303 <code>@NotNull</code></li>
 			<li>The parameter "number" is injected as <code>Integer</code> with automatic JSF integer conversion</li>
-			<li>The parameter "date" is injected as <code>Date</code> and is converted as JSF <code>&lt;f:convertDateTime pattern="yyyyMMdd"&gt;</code></li>
+			<li>The parameter "date" is injected as <code>Date</code> and is converted as 
+				JSF <code>&lt;f:convertDateTime pattern="yyyyMMdd"&gt;</code>
+			</li>
+			<li>The parameter "nsEntity" is injected as <code>NonSerializableEntity</code> and is 
+				converted as JSF <code>&lt;f:converter converterId="nonSerializableEntityConverter"/&gt;</code>
+				<small>(the example also demonstrates support for non-serializable values, which is important for CDI's passivating scopes)</small>
+			</li>
 		</ul>
+		
+		
+		
 		<ul>
 			<li>
 				<h:link value="Set all params">
@@ -34,6 +45,7 @@
 					<f:param name="text3" value="baz" />
 					<f:param name="number" value="42" />
 					<f:param name="date" value="19780326" />
+					<f:param name="nsEntity" value="abc" />
 				</h:link>
 			</li>
 			<li>
