@@ -10,7 +10,7 @@
 		<p>
 			Collection of EL functions for data conversion: <code>of:iterableToList()</code> (with alternative <code>of:iterableToModel</code>), 
 			<code>of:setToList()</code>, <code>of:mapToList()</code>, <code>of:joinArray()</code>, <code>of:joinCollection()</code>, 
-			<code>of:joinMap()</code> and <code>of:toJson()</code>.
+			<code>of:joinMap()</code>, <code>of:splitArray()</code>, <code>of:splitList()</code>, and <code>of:toJson()</code>.
 		</p>
 		<p>
 			Regarding the <code>of:xxxToList()</code> functions; <code>&lt;ui:repeat&gt;</code> (and <code>&lt;h:dataTable&gt;</code>) 
@@ -21,8 +21,12 @@
 			But if EL 2.2 is not supported or for a general <code>Iterable</code> the provided EL functions can be used.
 		</p>
 		<p>
-			The <code>of:joinXxx()</code> functions basically joins the elements of the array, collection or map to a 
-			string using the given separator.
+			The <code>of:joinXxx()</code> functions basically joins the elements of the array, collection or map to a string using the given separator.
+			This may be helpful if you want to display the contents of a collection as a commaseparated string without the need for an <code>&lt;ui:repeat&gt;</code>.
+		</p>
+		<p>
+			The <code>of:splitXxx()</code> functions basically splits an array or list into an array of subarrays or list of sublists of the given fragment size.
+			This may be helpful if you want to create a two-dimensional matrix of a fixed width based on a single-dimensional array or list.
 		</p>
 		<p>
 			The <code>of:toJson()</code> function encodes any object to a string in JSON format according the rules of
@@ -118,7 +122,36 @@
 		
 		<hr />
 		
+		<h3>Using <code>of:splitXxx()</code> functions</h3>
+		<p>
+			Split an array of 9 elements into a 3-column div.
+		</p>
+		<div>
+			<ui:repeat value="#{of:splitArray(convertersBean.bigArray, 3)}" var="subArray">
+				<div>
+					<ui:repeat value="#{subArray}" var="item">
+						<span>#{item}</span>
+					</ui:repeat>
+				</div>
+			</ui:repeat>
+		</div>
+		<p>
+			Split a list of 9 elements into 3 lists.
+		</p>
+		<ui:repeat value="#{of:splitList(convertersBean.bigList, 3)}" var="subList">
+			<ul>
+				<ui:repeat value="#{subList}" var="item">
+					<li>#{item}</li>
+				</ui:repeat>
+			</ul>
+		</ui:repeat>
+
+		<hr />
+		
 		<h3>Encode any object to JSON</h3>
+		<p>
+			The following should represent valid JavaScript variables:
+		</p>
 		<pre class="prettyprint"><code class="lang-javascript">
 var array = #{of:toJson(convertersBean.array)};
 var collection = #{of:toJson(convertersBean.set)};

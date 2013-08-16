@@ -7,8 +7,8 @@
 	<ui:define name="description">
 		<p>
 			The	<code>&lt;o:form&gt;</code>	extends the standard <code>&lt;h:form&gt;</code>
-			and provides support for including all URL (GET) parameters in the URL that's used for the post-back, or only
-			those that are also view parameters.
+			and provides support for including all view parameters in the URL that's used for the post-back, or all
+			request parameters, or the entire original request URI.
 		</p>
 		<p>
 			By setting the <b><code>includeViewParams</code></b> attribute to true (default is false),
@@ -18,9 +18,12 @@
 		</p>
 		<p>
 			In case all URL (GET) parameters are needed, the <b><code>includeRequestParams</code></b> attribute
-			can be set to true (default is false). If both <code>includeRequestParams</code> and 
-			<code>includeViewParams</code> are set to true <code>includeRequestParams</code> will take precedence. 
-			
+			can be set to true (default is false). This setting will override <code>includeViewParams</code>.
+		</p>
+		<p>
+			In case the entire original request URI, including the URL (GET) parameters, is needed, the
+			<b><code>useRequestURI</code></b> attribute can be set to <code>true</code> (default is <code>false</code>).
+			This setting will override <code>includeViewParams</code> and  <code>includeRequestParams</code>. 
 		</p>
 	</ui:define>
 
@@ -71,7 +74,15 @@
 		</o:form>
 
 		<p>
-			Finally, do a POST via an h:form to see that all the GET parameter in URL disappears.
+			Then, do one or more POSTs in an o:form with useRequestURI to see that the entire request URI, including
+			GET parameters, is being preserverd in the URL
+		</p>
+		<o:form useRequestURI="true">
+			<h:commandLink value="POST-BACK o:form with useRequestURI" action="#{viewParamBean.action}" />
+		</o:form>
+
+		<p>
+			Finally, do a POST via a standard JSF h:form to see that all the GET parameter in URL disappears.
 		</p>
 		<h:form>
 			<h:commandLink value="POST-BACK h:form" action="#{viewParamBean.action}" />

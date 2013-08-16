@@ -21,6 +21,8 @@
 			<li><h:link outcome="/components/messages"><code>message</code> attribute for <code>&lt;o:messages&gt;</code> to display a global message in case any of the in <code>for</code> specified components has a faces message</h:link></li>
 			<li><h:link outcome="/utils/FacesLocal">New <code>FacesLocal</code> utility class which extends <code>Faces</code> utility class with methods which take <code>FacesContext</code> as argument</h:link></li>
 			<li><h:link outcome="/cdi/ViewScoped">CDI compatible <code>@ViewScoped</code> annotation specifically for JSF 2.0/2.1</h:link></li>
+			<li><h:link outcome="/components/form"><code>useRequestURI</code> attribute for <code>&lt;o:form&gt;</code> to submit to exactly the same URL as in browser's address bar, with query string</h:link></li>
+			<li><h:link outcome="/functions/Converters"><code>of:splitArray()</code> and <code>of:splitList()</code> to split an array or list in subarrays or sublists</h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.6</h3>
@@ -35,6 +37,7 @@
 			<li><h:link outcome="/utils/Ajax"><code>Json#encode()</code> incorrectly escaped singlequotes (was causing validation error in <code>jQuery.parseJSON()</code>)</h:link></li>
 			<li><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> returned gzipped content as plain text in WebSphere 8.5 / Liberty</h:link></li>
 			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render</h:link></li>
+			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> didn't work anymore during a non-<code>@all</code> postback since Mojarra 2.1.24</h:link></li>
 		</ul>
 
 		<p:separator />
