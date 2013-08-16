@@ -35,6 +35,24 @@
 &lt;/filter-mapping&gt;
 		</code></pre>
 
+		<p>
+			Mapping on <code>/*</code> may be too global as some types of requests (comet, long polling, etc) cannot be gzipped.
+			In that case, consider mapping it to the exact <code>&lt;servlet-name&gt;</code> of the <code>FacesServlet</code> as you've elsewhere in the <code>web.xml</code>.
+			Here's an example assuming that you gave it a <code>&lt;servlet-name&gt;facesServlet&lt;/servlet-name&gt;</code>:
+		</p>
+		<pre class="prettyprint"><code class="lang-xml">
+&lt;filter&gt;
+    &lt;filter-name&gt;gzipResponseFilter&lt;/filter-name&gt;
+    &lt;filter-class&gt;org.omnifaces.filter.GzipResponseFilter&lt;/filter-class&gt;
+&lt;/filter&gt;
+&lt;filter-mapping&gt;
+    &lt;filter-name&gt;gzipResponseFilter&lt;/filter-name&gt;
+    &lt;servlet-name&gt;facesServlet&lt;/servlet-name&gt;
+    &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;
+    &lt;dispatcher&gt;ERROR&lt;/dispatcher&gt;
+&lt;/filter-mapping&gt;
+		</code></pre>
+
 		<h3>Configuration (optional)</h3>
 		<p>
 			This filter supports two initialization parameters which needs to be placed in <code>&lt;filter&gt;</code> element
