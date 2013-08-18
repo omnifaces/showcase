@@ -19,6 +19,7 @@
 			<li><h:link outcome="/utils/JNDI">New <code>JNDI</code> utility class</h:link></li>
 			<li><h:link outcome="/utils/Faces"><code>Faces#getBookmarkableURL()</code>, <code>Faces#getRequestHostname()</code> and <code>Faces#setResponstStatus()</code></h:link></li>
 			<li><h:link outcome="/components/messages"><code>message</code> attribute for <code>&lt;o:messages&gt;</code> to display a global message in case any of the in <code>for</code> specified components has a faces message</h:link></li>
+			<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Added <code>logException</code> method to <code>FullAjaxExceptionHandler</code> so that it can be overridden for more fine grained control of logging</h:link></li>
 			<li><h:link outcome="/utils/FacesLocal">New <code>FacesLocal</code> utility class which extends <code>Faces</code> utility class with methods which take <code>FacesContext</code> as argument</h:link></li>
 			<li><h:link outcome="/cdi/ViewScoped">CDI compatible <code>@ViewScoped</code> annotation specifically for JSF 2.0/2.1</h:link></li>
 			<li><h:link outcome="/components/form"><code>useRequestURI</code> attribute for <code>&lt;o:form&gt;</code> to submit to exactly the same URL as in browser's address bar, with query string</h:link></li>
@@ -29,15 +30,13 @@
 		<ul>
 			<li><h:link outcome="/validators/validateEqual"><code>showMessageFor</code> attribute of multi field validators now supports a space separated collection of client IDs where the message should be shown</h:link></li>
 			<li><h:link outcome="/resourcehandlers/CDNResourceHandler">CDN resource handler now supports: 1) always being enabled, also during development stage, 2) wildcard configuration, and 3) EL resolving in CDN URL</h:link></li>
-			<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Added <code>logException</code> method to <code>FullAjaxExceptionHandler</code> so that it can be overridden for more fine grained control of logging</h:link></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 1.6</h3>
 		<ul>
 			<li><h:link outcome="/utils/Ajax"><code>Json#encode()</code> incorrectly escaped singlequotes (was causing validation error in <code>jQuery.parseJSON()</code>)</h:link></li>
 			<li><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> returned gzipped content as plain text in WebSphere 8.5 / Liberty</h:link></li>
-			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render</h:link></li>
-			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> didn't work anymore during a non-<code>@all</code> postback since Mojarra 2.1.24</h:link></li>
+			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render</h:link> and didn't work anymore during a postback since Mojarra 2.1.24</h:link></li>
 		</ul>
 
 		<p:separator />

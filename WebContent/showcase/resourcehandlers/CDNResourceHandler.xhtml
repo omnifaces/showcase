@@ -106,7 +106,7 @@ javax.faces:jsf.js=http://cdn.example.com/jsf.js
 		<p>
 			By default, the CDN resource handler runs only when the current JSF project stage is <strong>not</strong> set to
 			<code>Development</code>. When you need to run it during <code>Development</code> stage as well, then set the context
-			parameter {@value org.omnifaces.resourcehandler.CDNResourceHandler#PARAM_NAME_CDN_DEV_STAGE} to <code>true</code>.
+			parameter <code>org.omnifaces.CDN_RESOURCE_HANDLER_ALWAYS_ENABLED</code> to <code>true</code>.
 		</p>
 		<pre class="prettyprint"><code class="lang-xml">
 &lt;context-param&gt;
@@ -119,8 +119,7 @@ javax.faces:jsf.js=http://cdn.example.com/jsf.js
 		<p>
 			If you're also using the <h:link outcome="CombinedResourceHandler" styleClass="code">CombinedResourceHandler</h:link>, then you need to understand that CDN resources can
 			simply not be combined, as that would defeat the CDN purpose. The <code>CombinedResourceHandler</code> will therefore
-			automatically exclude all CDN resources from combining when the current JSF project stage is <strong>not</strong>
-			set to <code>Development</code>.
+			automatically exclude all CDN resources from combining.
 		</p>
  	</ui:define>		
 </ui:composition>
