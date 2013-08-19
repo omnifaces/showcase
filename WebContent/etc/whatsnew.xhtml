@@ -36,7 +36,8 @@
 		<ul>
 			<li><h:link outcome="/utils/Ajax"><code>Json#encode()</code> incorrectly escaped singlequotes (was causing validation error in <code>jQuery.parseJSON()</code>)</h:link></li>
 			<li><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> returned gzipped content as plain text in WebSphere 8.5 / Liberty</h:link></li>
-			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render</h:link> and didn't work anymore during a postback since Mojarra 2.1.24</h:link></li>
+			<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render and didn't work anymore during a postback since Mojarra 2.1.24</h:link></li>
+			<li><h:link outcome="/components/highlight"><code>&lt;o:highlight&gt;</code> threw duplicate component ID error in TomEE 1.6.0</h:link></li>
 		</ul>
 
 		<p:separator />

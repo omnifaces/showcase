@@ -8,7 +8,7 @@
 	<ui:define name="description">
 		<p>
 			This is an abstract filter for HTTP requests. It provides a convenient abstract <code>doFilter()</code>
-			method providing the HTTP servlet request, response and session so that there's no need to cast them everytime
+			method directly providing the HTTP servlet request, response and session so that there's no need to cast them everytime
 			in the <code>doFilter()</code> implementation. Also, default implementations of <code>init(FilterConfig)</code>
 			and <code>destroy()</code> are provided, so that there's no need to implement them everytime even when not really needed.
 		</p>

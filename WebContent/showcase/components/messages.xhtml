@@ -102,7 +102,7 @@
 			<ui:fragment rendered="#{not empty facesContext.messageList}">
 				<ul class="messages">
 					<o:messages var="message">
-						<li class="#{fn:substringBefore(fn:toLowerCase(message.severity),' ')}">#{message.summary}</li>
+						<li class="#{fn:toLowerCase(message.severity)}">#{message.summary}</li>
 					</o:messages>
 				</ul>
 			</ui:fragment>
