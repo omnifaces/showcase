@@ -32,6 +32,14 @@ Components.validateHasNoChildren(this);
 
 // Programmatically include composite component.
 Components.includeCompositeComponent(someParentComponent, libraryName, resourceName, id);
+
+// Programmatically create value and action expressions.
+UICommand command = new HtmlCommandButton();
+command.setId("foo");
+command.setValue(Components.createValueExpression("\#{bundle['button.foo']}", String.class));
+command.addClientBehavior("action", Components.createAjaxBehavior("\#{bean.ajaxListener}"));
+command.addActionListener(Components.createActionListenerMethodExpression("\#{bean.actionListener}"));
+command.setActionExpression(Components.createVoidMethodExpression("\#{bean.action}"));
 		</code></pre>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
