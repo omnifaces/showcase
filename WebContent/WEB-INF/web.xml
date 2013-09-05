@@ -123,13 +123,16 @@
 
 	<!-- Welcome files, error pages and mime types. -->
 	
+	<!-- Comment the session-config element out when using with Resin (tested with 4.0.36) -->
 	<session-config>
+		
 		<cookie-config>
 			<http-only>true</http-only>
 		</cookie-config>
+		
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
-
+	
 	<welcome-file-list>
 		<!--
 			Note that an extension is used here, since the index file resides within the
