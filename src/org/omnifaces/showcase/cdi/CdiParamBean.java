@@ -21,6 +21,7 @@ import org.omnifaces.cdi.Param;
 import org.omnifaces.cdi.param.Attribute;
 import org.omnifaces.cdi.param.ParamValue;
 import org.omnifaces.showcase.model.NonSerializableEntity;
+import org.omnifaces.util.Messages;
 
 @Named
 @RequestScoped
@@ -54,7 +55,7 @@ public class CdiParamBean {
 	// Like <f:viewParam name="date" value="#{bean.nsEntity}"><f:converter converterId="nonSerializableEntityConverter"/>
 	@Inject @Param(converter = "nonSerializableEntityConverter")
 	private ParamValue<NonSerializableEntity> nsEntity;
-	
+
 	private String result;
 
 	@PostConstruct
@@ -69,12 +70,12 @@ public class CdiParamBean {
 		String text3 = this.text3.getValue();
 		Integer number = this.number.getValue();
 		Date date = this.date.getValue();
-		
+
 		NonSerializableEntity nonSerializableValue = nsEntity.getValue();
-		
+
 		// Copy the ParamValue to simulate a passivation/activation cycle
 		ParamValue<NonSerializableEntity> nsEntityCopy = copy(nsEntity);
-		
+
 		// Getting the value from the copied ParamValue will cause the converter to run
 		// again on the stored raw value.
 		NonSerializableEntity nonSerializableValueCopy = nsEntityCopy.getValue();
@@ -82,14 +83,16 @@ public class CdiParamBean {
 		result = String.format(
 			"You entered text1 '%s', text2 '%s', text3 '%s', number '%d', date '%5$tY%5$tm%5$td'",
 			text1, text2, text3, number, date);
-		
+
 		result += String.format(", entity '%s' and entity copy '%s'", nonSerializableValue.getValue(), nonSerializableValueCopy.getValue());
+
+		Messages.addGlobalInfo("Yes, no validation errors!");
 	}
 
 	public String getResult() {
 		return result;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public static <T> T copy(T source) {
 		T target = null;
@@ -106,7 +109,7 @@ public class CdiParamBean {
 		} catch (ClassNotFoundException cnfe) {
 			cnfe.printStackTrace();
 		}
-		
+
 		return target;
 	}
 

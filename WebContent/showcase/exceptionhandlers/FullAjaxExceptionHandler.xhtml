@@ -88,6 +88,7 @@
 			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#findErrorPageLocation(javax.faces.context.FacesContext, java.lang.Throwable)">findErrorPageLocation(context, exception)</a></li>
 			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#logException(javax.faces.context.FacesContext, java.lang.Throwable, java.lang.String, java.lang.String, java.lang.Object...)">logException(context, exception, location, message, params)</a></li>
 		</ul>
+		<p>Don't forget to create a custom <code>ExceptionHandlerFactory</code> for it as well, so that it could be registered in <code>faces-config.xml</code>.</p>
 	</ui:define>
 
 	<ui:define name="demo">

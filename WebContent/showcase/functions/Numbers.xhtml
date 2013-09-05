@@ -9,7 +9,7 @@
 	<ui:define name="description">
 		<p>
 			Collection of EL functions for number formatting: <code>of:formatBytes()</code>, <code>of:formatCurrency()</code>,  
-			<code>of:formatNumber()</code>, and <code>of:formatNumberDefault()</code>.
+			<code>of:formatNumber()</code>, <code>of:formatNumberDefault()</code> and <code>of:formatPercent()</code>.
 		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
@@ -30,6 +30,10 @@
 		<p>
 			Format a number using locale-default pattern:
 			#{of:formatNumberDefault(123.4567)}
+		</p>
+		<p>
+			Format a number as percent:
+			#{of:formatPercent(0.123)}
 		</p>
 	</ui:define>
 </ui:composition>

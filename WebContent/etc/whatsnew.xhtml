@@ -25,12 +25,14 @@
 			<li><h:link outcome="/cdi/ViewScoped">CDI compatible <code>@ViewScoped</code> annotation specifically for JSF 2.0/2.1</h:link></li>
 			<li><h:link outcome="/components/form"><code>useRequestURI</code> attribute for <code>&lt;o:form&gt;</code> to submit to exactly the same URL as in browser's address bar, with query string</h:link></li>
 			<li><h:link outcome="/functions/Converters"><code>of:splitArray()</code> and <code>of:splitList()</code> to split an array or list in subarrays or sublists</h:link></li>
+			<li><h:link outcome="/functions/Numbers"><code>of:formatPercent()</code> to format a number as a percentage</h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.6</h3>
 		<ul>
 			<li><h:link outcome="/validators/validateEqual"><code>showMessageFor</code> attribute of multi field validators now supports a space separated collection of client IDs where the message should be shown</h:link></li>
 			<li><h:link outcome="/resourcehandlers/CDNResourceHandler">CDN resource handler now supports: 1) always being enabled, also during development stage, 2) wildcard configuration, and 3) EL resolving in CDN URL</h:link></li>
+			<li><h:link outcome="/utils/Faces"><code>Faces#redirect()</code> will not use <code>String#format()</code> anymore when no params are supplied, this enables developers to pass already-encoded URLs to <code>Faces#redirect()</code></h:link></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 1.6</h3>
