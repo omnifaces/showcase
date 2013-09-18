@@ -123,7 +123,10 @@
 
 	<!-- Welcome files, error pages and mime types. -->
 	
-	<!-- Comment the session-config element out when using with Resin (tested with 4.0.36) -->
+	<!-- Commented the session-config element out because Resin is not compatible with it (tested with 4.0.36) 
+		 This is now done programmatically in ResinJSFInitHack.java
+	-->
+	<!-- 
 	<session-config>
 		
 		<cookie-config>
@@ -132,6 +135,7 @@
 		
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
+	 -->
 	
 	<welcome-file-list>
 		<!--

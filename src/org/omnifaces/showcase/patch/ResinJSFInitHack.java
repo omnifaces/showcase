@@ -1,5 +1,8 @@
 package org.omnifaces.showcase.patch;
 
+import static javax.servlet.SessionTrackingMode.URL;
+
+import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,6 +10,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.SessionTrackingMode;
 
 public class ResinJSFInitHack implements ServletContainerInitializer {
 	
@@ -14,6 +18,7 @@ public class ResinJSFInitHack implements ServletContainerInitializer {
 
 	@Override
 	public void onStartup(Set<Class<?>> c, ServletContext servletContext) throws ServletException {
+		
 		String info = servletContext.getServerInfo();
 		if (info != null && info.startsWith("Resin")) {
 			try {
@@ -24,7 +29,21 @@ public class ResinJSFInitHack implements ServletContainerInitializer {
 					"Showcase app may not run.", e
 				);
 			}
+		} else {
+			
+			// Despite being Java EE 6 certified, Resin does not implement ServletContext#setSessionTrackingModes
+			
+			try {
+				Set<SessionTrackingMode> trackingModes = new HashSet<SessionTrackingMode>();
+				trackingModes.add(URL);
+				servletContext.setSessionTrackingModes(trackingModes);
+				
+				servletContext.getSessionCookieConfig().setHttpOnly(true);
+			} catch (Exception e) {
+				logger.log(Level.WARNING, "Could not set session config", e);
+			}
 		}
+		
 	}
 
 }
