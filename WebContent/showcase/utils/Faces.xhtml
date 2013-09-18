@@ -60,6 +60,10 @@ public void download() throws IOException {
     Faces.sendFile(new File("/path/to/file.ext"), true);
 }
 		</code></pre>
+		<p>
+			If you need to invoke "a lot" of <code>Faces</code> methods within the very same method block and worry about performance,
+			then you may want to consider using <h:link outcome="/utils/FacesLocal"><code>FacesLocal</code></h:link> instead.
+		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>
