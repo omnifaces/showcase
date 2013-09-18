@@ -31,30 +31,28 @@
 		</p>
 		
 		<p>
-			The demo belows shows the PrimeFaces <h:outputLink value="http://primefaces.org/showcase/ui/picklist.jsf" ><code>p:pickList</code> </h:outputLink> component, which is a famous example of a component
-			that does not use select items.
+			The demo belows shows the PrimeFaces 
+			<a href="http://primefaces.org/showcase/ui/picklist.jsf"><code>&lt;p:pickList&gt;</code></a>
+			component, which is a famous example of a component that does not use select items. Another example of such a PrimeFaces component is the
+			<a href="http://primefaces.org/showcase/ui/autoCompleteBasic.jsf"><code>&lt;p:autoComplete&gt;</code></a>.
 		</p>
 	</ui:define>
 
 	<ui:define name="demo">
-		
 		<h:form>
-			
 			<p>
 				<b>Selected items</b>:
-				<h:dataTable value="#{selectListBean.selected}" var="entity" rendered="#{!empty selectListBean.selected}">
-					<h:column>
-						#{entity.value}
-					</h:column>
-				</h:dataTable>
+				<ui:fragment rendered="#{not empty selectListBean.selected}">
+					<ui:repeat value="#{selectListBean.selected}" var="entity" varStatus="loop">
+						#{entity.value}#{loop.last ? '' : ', '}
+					</ui:repeat>
+				</ui:fragment>
 				<h:outputText value="[no selection made]" rendered="#{empty selectListBean.selected}"/>
 			</p>
 		
 			<p>
 				<b>Choose a city, then press Select</b>:
-				<p:pickList value="#{selectListBean.all}"
-					var="entity" itemLabel="#{entity.value}" itemValue="#{entity}"
-				>
+				<p:pickList value="#{selectListBean.all}" var="entity" itemValue="#{entity}" itemLabel="#{entity.value}">
 					<o:converter converterId="omnifaces.ListIndexConverter" list="#{selectListBean.source}" />
 				</p:pickList>
 			</p>
@@ -65,7 +63,5 @@
 				</h:commandButton>
 			</p>
 		</h:form>
-		
-		
 	</ui:define>
 </ui:composition>

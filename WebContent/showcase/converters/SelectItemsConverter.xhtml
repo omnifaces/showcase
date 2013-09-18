@@ -49,7 +49,7 @@ public class ExampleEntitySelectItemsConverter extends SelectItemsConverter {
 	<ui:define name="demo">
 		 <h:form>
 			<p>
-				<h:outputText id="selected_item" value="Last selected item: #{selectItemsBean.selectedEntity.value}" /> 
+				<b>Last selected item:</b> <h:outputText id="selected_item" value="#{selectItemsBean.selectedEntity.value}" />
 			</p>
 			
 			<h:panelGrid columns="2">

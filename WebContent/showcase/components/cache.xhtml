@@ -49,13 +49,12 @@
 					</h:column>
 				</h:dataTable>
 			</o:cache>
-  		</p>
+		</p>
 
-  		<hr/>
-  		<br/>
-  		
-  		<h3>Example 2 - Timed cache</h3>
-  		<p>
+		<hr/>
+		
+		<h3>Example 2 - Timed cache</h3>
+		<p>
 			The following renders a time-stamp in the session scoped cache, for which a time to live has been set to 15 seconds.
 			On the first page refresh, it should be equal again to the time as indicated by "<code>Now</code>" above. 
 			For page refreshes done within 15 seconds after this first request it should be constant. After this time, 
@@ -65,40 +64,39 @@
 			<o:cache time="15">
 				<i>Session scope content valid for 15 seconds generated at: #{now}</i>
 			</o:cache>
-  		</p>
+		</p>
 
-  		<hr/>
-  		<br/>
-  		
-  		<h3>Example 3 - Treshold on number of cached items</h3>
-  		<p>
-  			The following renders a time-stamp in the session scoped cache again, this time using an explicit and dynamic key.
-  			For this show case application, the number of items in the session cache has been set to <code>4</code>
-  			using the following setting in <code>web.xml</code>:
-  		</p>
+		<hr/>
+		
+		<h3>Example 3 - Treshold on number of cached items</h3>
+		<p>
+			The following renders a time-stamp in the session scoped cache again, this time using an explicit and dynamic key.
+			For this show case application, the number of items in the session cache has been set to <code>4</code>
+			using the following setting in <code>web.xml</code>:
+		</p>
 		<pre>
 &lt;context-param&gt;
-    &lt;param-name&gt;org.omnifaces.CACHE_SETTING_SESSION_MAX_CAPACITY&lt;/param-name&gt;
-    &lt;param-value&gt;6&lt;/param-value&gt;
+	&lt;param-name&gt;org.omnifaces.CACHE_SETTING_SESSION_MAX_CAPACITY&lt;/param-name&gt;
+	&lt;param-value&gt;6&lt;/param-value&gt;
 &lt;/context-param&gt;
-  		</pre>
-  		<p>
-  			Since 4 items have been used already by the other examples, only 2 more fit it.
-  		</p>
-  		<p>
-  			This can be demonstrated by generating cache items via the numbered buttons shown below. 
-  			Clicking on any two of the same numbers below will switch between the cached content for those
-  			and will keep showing the time-stamp associated with them on their first click. 
-  			Upon clicking a third number, and then clicking the number of the original 2 that was clicked the
-  			longest time ago (except 0, the default), a new time-stamp will be associated with that.
-  		</p>
-  		<p>
-  			This means the threshold of 6 cached items had been exceeded and the last accessed item was evicted. 
-  		</p>
-  		<p>
-  			E.g. click 0, click 1, click 0 (notice it has the same time-stamp), click 1 (same timestamp), 
-  			click 2, click 1 (gets new time-stamp)
-  		</p>
+		</pre>
+		<p>
+			Since 4 items have been used already by the other examples, only 2 more fit it.
+		</p>
+		<p>
+			This can be demonstrated by generating cache items via the numbered buttons shown below. 
+			Clicking on any two of the same numbers below will switch between the cached content for those
+			and will keep showing the time-stamp associated with them on their first click. 
+			Upon clicking a third number, and then clicking the number of the original 2 that was clicked the
+			longest time ago (except 0, the default), a new time-stamp will be associated with that.
+		</p>
+		<p>
+			This means the threshold of 6 cached items had been exceeded and the last accessed item was evicted. 
+		</p>
+		<p>
+			E.g. click 0, click 1, click 0 (notice it has the same time-stamp), click 1 (same timestamp), 
+			click 2, click 1 (gets new time-stamp)
+		</p>
 		<h:form>
 			Set Cache key to: 
 			<h:commandButton action="#{cacheBean.setKey(0)}" value="0" />, 
@@ -110,70 +108,67 @@
 			<o:cache key="test-#{cacheBean.key}">
 				<i>Session scope content for key #{cacheBean.key} generated at: #{now}</i>
 			</o:cache>
-  		</p>
-  		
-  		<hr/>
-  		<br/>
-  		
-  		<h3>Example 4 - Explicitly resetting/expiring cache</h3>
-  		<p>
-  			Cached data may need to be reset at the point that the underlying data is known to have changed. Any cache
-  			entry can be programmatically removed based on the scope and the key of this entry. By default the cache
-  			component generates an internal key, but this can be overridden by using an explicit key. The default scope is "session". 
-  		</p>
-  		<p>
-  			Cached data can also be reset via the <code>reset</code> attribute on the <code>cache</code> component. Using this method
-  			it's not necessary to know the scope and key of the cache. Instead, the attribute can be bound to a property of a backing bean
-  			which can return <code>true</code> (reset cache) or <code>false</code>. If the attribute is bound to a view scoped backing bean,
-  			care should be taken to reset the property back to false (e.g via a <code>PreRenderView</code> event on the next request, or
-  			<code>CallbackPhaseListener</code> on the current request).
-  		</p>
-  		
-  		<b>Programmatic reset</b>
-  		<p>
-  			Pressing the following button will reset the cache that's used in example 1 at the start of this page via the 
-  			programmatic method. With this method the attribute <span style="white-space: nowrap">
-  			<code>reset="\#{cacheBean.reset}"</code></span> is <b>NOT</b>
-  			used.
-  		</p>
-  		<h:form id="resetProgrammaticForm">
+		</p>
+		
+		<hr/>
+		
+		<h3>Example 4 - Explicitly resetting/expiring cache</h3>
+		<p>
+			Cached data may need to be reset at the point that the underlying data is known to have changed. Any cache
+			entry can be programmatically removed based on the scope and the key of this entry. By default the cache
+			component generates an internal key, but this can be overridden by using an explicit key. The default scope is "session". 
+		</p>
+		<p>
+			Cached data can also be reset via the <code>reset</code> attribute on the <code>cache</code> component. Using this method
+			it's not necessary to know the scope and key of the cache. Instead, the attribute can be bound to a property of a backing bean
+			which can return <code>true</code> (reset cache) or <code>false</code>. If the attribute is bound to a view scoped backing bean,
+			care should be taken to reset the property back to false (e.g via a <code>PreRenderView</code> event on the next request, or
+			<code>CallbackPhaseListener</code> on the current request).
+		</p>
+		
+		<h4>Programmatic reset</h4>
+		<p>
+			Pressing the following button will reset the cache that's used in example 1 at the start of this page via the 
+			programmatic method. With this method the attribute <span style="white-space: nowrap">
+			<code>reset="\#{cacheBean.reset}"</code></span> is <b>NOT</b>
+			used.
+		</p>
+		<h:form id="resetProgrammaticForm">
 			<h:commandButton id="button" action="#{cacheBean.resetProgrammatic}" value="Reset Example 1 cache programmatically" />
 		</h:form>
-		<br/>
-  		
-		<b>Reset via component attribute</b>
+		
+		<h4>Reset via component attribute</h4>
 		<p>
-  			Pressing the following button will reset the cache that's used in example 1 at the start of this page by setting
-  			a bean property that's bound to the attribute <span style="white-space: nowrap">
-  			<code>reset="\#{cacheBean.reset}"</code></span> on the 
-  			component to <code>true</code>.
-  		</p>
+			Pressing the following button will reset the cache that's used in example 1 at the start of this page by setting
+			a bean property that's bound to the attribute <span style="white-space: nowrap">
+			<code>reset="\#{cacheBean.reset}"</code></span> on the 
+			component to <code>true</code>.
+		</p>
 		<h:form id="resetAttributeForm">
 			<h:commandButton id="button" action="#{cacheBean.resetAttribute}" value="Reset Example 1 cache via attribute" />
 		</h:form>
 		
 		<hr/>
-		<br/>
 		
 		<h3>Example 5 - Caching value expressions</h3>
-  		<p>
-  			Sometimes it might be convenient to cache an EL value expression instead or in addition of a fully rendered piece of markup.
-  			This is especially useful for a postback, since after a postback JSF (of course) won't evaluate the cached markup, but will
-  			evaluate value expressions again.
-  		</p>
-  		
-  		<b>Without o:cacheValue</b>
-  		<p>
-  			Clicking on any of the 'Postback' buttons below will cause a new date to be generated at each click, instead
-  			of the actually selected date. This is because JSF doesn't send the actual row data along, but merely a row number.
-  			Because the backing bean is request scoped and the expression <code>\#{cacheBean.items}</code> is evaluated 
-  			fresh after each postback, we'll end up selecting a new date each time.
-  		</p>
-  		<h:form id="example5aForm">
-  			<p>
-  				Item: <span id="example5aOutput">#{empty cacheBean.item? '(none)' : cacheBean.item}</span>
-  			</p>
-  			<o:cache>
+		<p>
+			Sometimes it might be convenient to cache an EL value expression instead or in addition of a fully rendered piece of markup.
+			This is especially useful for a postback, since after a postback JSF (of course) won't evaluate the cached markup, but will
+			evaluate value expressions again.
+		</p>
+		
+		<h4>Without o:cacheValue</h4>
+		<p>
+			Clicking on any of the 'Postback' buttons below will cause a new date to be generated at each click, instead
+			of the actually selected date. This is because JSF doesn't send the actual row data along, but merely a row number.
+			Because the backing bean is request scoped and the expression <code>\#{cacheBean.items}</code> is evaluated 
+			fresh after each postback, we'll end up selecting a new date each time.
+		</p>
+		<h:form id="example5aForm">
+			<p>
+				Item: <span id="example5aOutput">#{empty cacheBean.item? '(none)' : cacheBean.item}</span>
+			</p>
+			<o:cache>
 				<h:dataTable id="table" value="#{cacheBean.items}" var="item">
 					<h:column>
 						<i>#{item}</i>
@@ -185,14 +180,13 @@
 					</h:column>
 				</h:dataTable>
 			</o:cache>
-  		</h:form>
-  		<br/>
-  		
-		<b>With o:cacheValue</b>
+		</h:form>
+		
+		<h4>With o:cacheValue</h4>
 		<p>
-  			The following example makes use of <code>o:cacheValue</code> to cache the value expression as well. Clicking
-  			any of the 'Postback' buttons in the example below will cause the same date to be selected as the one in the row
-  			where the button is clicked.
+			The following example makes use of <code>o:cacheValue</code> to cache the value expression as well. Clicking
+			any of the 'Postback' buttons in the example below will cause the same date to be selected as the one in the row
+			where the button is clicked.
 		</p>
 		<h:form id="example5bForm">
 			<p>
@@ -200,7 +194,7 @@
 			</p>
 			<o:cache>
 				<o:cacheValue name="items" value="#{cacheBean.items}"/>
-  				
+				
 				<h:dataTable id="table" value="#{items}" var="item">
 					<h:column>
 						<i>#{item}</i>
@@ -212,7 +206,6 @@
 					</h:column> 
 				</h:dataTable>
 			</o:cache>
-  		</h:form>
-  		
+		</h:form>
 	</ui:define>
 </ui:composition>
