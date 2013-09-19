@@ -93,17 +93,19 @@
 		<h:outputScript>
 			/**
 			 * Force input elements to invoke "Save" button on enter key instead of one of those "add"/"remove" buttons.
-			 * Additionally, focus the first empty input.
 			 */
-			function applyKeypressHandlerAndFocus() {
-				$(".treeinput").on("keypress", function(event) {
-					if (event.keyCode == 13) {
-						$(this).closest("form").find("[id$=save]").click();
-						return false;
-					}
-				}).filter("[value='']:first").focus();
-			}
+			$(document).on("keypress", ".treeinput", function(event) {
+				if (event.keyCode == 13) {
+					$(this).closest("form").find("[id$=save]").click();
+					return false;
+				}
+			});
 		</h:outputScript>
-		<o:onloadScript>applyKeypressHandlerAndFocus();</o:onloadScript>
+		<o:onloadScript>
+			/**
+			 * Focus the first empty input element on every ajax response.
+			 */
+			$(".treeinput:not([value]):first").focus();
+		</o:onloadScript>
 	</ui:define>
 </ui:composition>
