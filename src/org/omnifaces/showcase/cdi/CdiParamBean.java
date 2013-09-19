@@ -37,7 +37,7 @@ public class CdiParamBean {
 		validatorMessage = "{1}: Value is too too small! Please enter a minimum of 3 characters.")
 	private ParamValue<String> text2;
 
-	// Like <f:viewParam name="text1" value="#{bean.text1}"> using JSR303 bean validation via the @NotNull constraint
+	// Like <f:viewParam name="text3" value="#{bean.text3}"> using JSR303 bean validation via the @NotNull constraint
 	@Inject @Param @NotNull
 	private ParamValue<String> text3;
 
@@ -52,7 +52,7 @@ public class CdiParamBean {
 		converterMessage="{1}: \"{0}\" is not the date format we had in mind! Please use the format yyyyMMdd.")
 	private ParamValue<Date> date;
 
-	// Like <f:viewParam name="date" value="#{bean.nsEntity}"><f:converter converterId="nonSerializableEntityConverter"/>
+	// Like <f:viewParam name="nsEntity" value="#{bean.nsEntity}"><f:converter converterId="nonSerializableEntityConverter"/>
 	@Inject @Param(converter = "nonSerializableEntityConverter")
 	private ParamValue<NonSerializableEntity> nsEntity;
 
@@ -70,7 +70,6 @@ public class CdiParamBean {
 		String text3 = this.text3.getValue();
 		Integer number = this.number.getValue();
 		Date date = this.date.getValue();
-
 		NonSerializableEntity nonSerializableValue = nsEntity.getValue();
 
 		// Copy the ParamValue to simulate a passivation/activation cycle
@@ -81,10 +80,8 @@ public class CdiParamBean {
 		NonSerializableEntity nonSerializableValueCopy = nsEntityCopy.getValue();
 
 		result = String.format(
-			"You entered text1 '%s', text2 '%s', text3 '%s', number '%d', date '%5$tY%5$tm%5$td'",
-			text1, text2, text3, number, date);
-
-		result += String.format(", entity '%s' and entity copy '%s'", nonSerializableValue.getValue(), nonSerializableValueCopy.getValue());
+			"You entered text1 '%s', text2 '%s', text3 '%s', number '%d', date '%5$tY%5$tm%5$td', entity '%s' and entity copy '%s'",
+			text1, text2, text3, number, date, nonSerializableValue.getValue(), nonSerializableValueCopy.getValue());
 
 		Messages.addGlobalInfo("Yes, no validation errors!");
 	}
