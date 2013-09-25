@@ -26,7 +26,7 @@ public class OmniCDIViewScopedBean implements Serializable {}
 		</p>
 		<p>
 			In JSF 2.2, you're supposed to use JSF's own new CDI compatible <code>javax.faces.view.ViewScoped</code> instead;
-			not because this CDI view scope annotation is so bad, in contrary, but just because using the standard solutions should be preferred over alternative solutions if they solve the same problem.
+			not because this CDI view scope annotation is so bad, on the contrary, but just because using the standard solutions should be preferred over alternative solutions if they solve the same problem.
 		</p>
 		<p>
 			Under the covers, CDI managed beans with this scope are via <code>ViewScopeManager</code> stored in the session scope by an <code>UUID</code> based key which is referenced in JSF's own view map as available by <code>UIViewRoot#getViewMap()</code>.
