@@ -12,7 +12,7 @@
 	
 		<h3>Fixed in OmniFaces 1.6.1</h3>
 		<ul>
-			<li>Fixed deployment problem when OmniFaces is bundled in multiple WARs of the same EAR.</li>
+			<li>Fixed deployment problem when OmniFaces is bundled in multiple WARs of the same EAR, caused by the way how CDI behaves; it's using one and same context for all WARs and thus causing duplicates in resolved classes from JARs in WARs</li>
 		</ul>
 
 		<p:separator />
