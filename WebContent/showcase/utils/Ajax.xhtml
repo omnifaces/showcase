@@ -29,7 +29,9 @@
 			Note that <code>Ajax#updateRow()</code> and <code>Ajax#updateColumn()</code> can only update cell content
 			when it has been wrapped in some container component with a fixed ID.
 		</p>
-		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+		<ui:remove><!-- https://code.google.com/p/omnifaces-showcase/issues/detail?id=4  -->
+			<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+		</ui:remove>
 	</ui:define>
 	
 	<ui:define name="demo">
