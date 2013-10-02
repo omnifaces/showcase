@@ -12,7 +12,7 @@
 			utility class with methods which take <code>FacesContext</code> as argument instead of getting it from the current thread.
 			This is more efficient in situations where multiple utility methods needs to be called at the same time.
 			Invoking <code>FacesContext#getCurrentInstance()</code> is at its own an extremely cheap operation, 
-			however as it's to be obtained as a <code>ThreadLocal</code> variable, it's during the call still blocking all other running threads.
+			however as it's to be obtained as a <code>ThreadLocal</code> variable, it's during the call still blocking all other running threads for some nanoseconds or so.
 		</p>
 		<p>
 			Some examples (for the full list, check the API documentation):
