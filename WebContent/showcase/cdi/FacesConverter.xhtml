@@ -32,6 +32,14 @@
 			but it requires an additional <code>@Advanced</code> annotation.
 			OmniFaces solves this by implicitly making all <code>@FacesConverter</code> instances eligible for dependency injection <strong>without any further modification</strong>, like as JSF 2.2 would initially do, hereby providing a transparent bridge of the code to the upcoming JSF 2.3.
 		</p>
+		
+		<h3>CDI issues in EAR</h3>
+		<p>
+			Note that CDI has known issues when OmniFaces is bundled in multiple WARs in a single EAR.
+			It's important to understand that those issues are not related to OmniFaces, but to the broken CDI spec.
+			For an overview of those issues, please refer
+			<a href="https://code.google.com/p/omnifaces/wiki/KnownIssuesCDI">Known issues of OmniFaces CDI features in combination with specific application servers</a>. 
+		</p>
 	</ui:define>
 
 	<ui:define name="demo">

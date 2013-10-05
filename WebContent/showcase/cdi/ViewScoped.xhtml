@@ -64,6 +64,14 @@ public class OmniCDIViewScopedBean implements Serializable {}
 			If none of those context parameters are present, then a default size of 20 will be used.
 			When a view scoped bean is evicted from the LRU map, then its <code>@PreDestroy</code> will also guaranteed to be invoked.
 		</p>
+
+		<h3>CDI issues in EAR</h3>
+		<p>
+			Note that CDI has known issues when OmniFaces is bundled in multiple WARs in a single EAR.
+			It's important to understand that those issues are not related to OmniFaces, but to the broken CDI spec.
+			For an overview of those issues, please refer
+			<a href="https://code.google.com/p/omnifaces/wiki/KnownIssuesCDI">Known issues of OmniFaces CDI features in combination with specific application servers</a>. 
+		</p>
 	</ui:define>
 
 	<ui:define name="demo">
