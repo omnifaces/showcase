@@ -4,15 +4,24 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 1.6.2?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 1.6.3?</ui:define>
 
 	<ui:define name="content">
+	
+		<p><em>Release date: 18 October, 2013</em></p>
+	
+		<h3>Fixed in OmniFaces 1.6.3</h3>
+		<ul>
+			<li>Fixed throwing <code>NoClassDefFoundError</code> when no JNDI is present (like e.g. in Google App Engine by default)</li>
+		</ul>
+
+		<p:separator />
 	
 		<p><em>Release date: 13 October, 2013</em></p>
 	
 		<h3>Fixed in OmniFaces 1.6.2</h3>
 		<ul>
-			<li>Fixed throwing IllegalStateException when no CDI is present (like e.g. in Tomcat by default)</li>
+			<li>Fixed throwing <code>IllegalStateException</code> when no CDI is present (like e.g. in Tomcat by default)</li>
 		</ul>
 
 		<p:separator />
