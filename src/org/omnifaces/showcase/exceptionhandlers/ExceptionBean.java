@@ -17,4 +17,8 @@ public class ExceptionBean {
 		throw new SQLException("DB fail");
 	}
 
+	public void throwEpicFailException() throws EpicFailException {
+		throw new EpicFailException();
+	}
+
 }

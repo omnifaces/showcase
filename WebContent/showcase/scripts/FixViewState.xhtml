@@ -1,0 +1,107 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase">
+	<ui:define name="description">
+		<p>
+			This script fixes the JSF view state if necessary.
+			In Mojarra, it get lost on certain forms during certain ajax updates
+			(e.g. <a href="http://balusc.blogspot.com/2011/09/communication-in-jsf-20.html#AjaxRenderingOfContentWhichContainsAnotherForm">updating content which in turn contains another form</a>).
+			Normally, the <code>jsf.js</code> script adds the JSF view state back to the updated form,
+			but it does that only for the enclosing form, 
+			not for other forms when they are not explicitly specified in the <code>render/update</code> attribute. 
+			When this script is loaded <em>after</em> the standard <code>jsf.js</code> script containing standard JSF ajax API,
+			then it will be automatically applied on all JSF ajax requests.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:outputScript library="javax.faces" name="jsf.js" target="head" /&gt;
+&lt;h:outputScript library="omnifaces" name="fixviewstate.js" target="head" /&gt;
+		</code></pre>
+		<p>
+			This script also recognizes jQuery ajax API as used by some	component libraries such as PrimeFaces.
+			If jQuery is present, then it will also be automatically applied on all jQuery ajax requests.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:outputScript library="primefaces" name="jquery/jquery.js" target="head" /&gt;
+&lt;h:outputScript library="omnifaces" name="fixviewstate.js" target="head" /&gt;
+		</code></pre>
+		<p>
+			Explicit declaration of <code>jsf.js</code> or <code>jquery.js</code> via <code>&lt;h:outputScript&gt;</code> is not strictly necessary.
+			You only need to make sure that the <code>&lt;h:outputScript&gt;</code> on <code>fixviewstate.js</code>
+			is being placed inside the <code>&lt;h:body&gt;</code> so that you can ensure that it's loaded <em>after</em> the JSF and/or jQuery script.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;h:head&gt;
+    ...
+&lt;/h:head&gt;
+&lt;h:body&gt;
+    &lt;h:outputScript library="omnifaces" name="fixviewstate.js" target="head" /&gt;
+    ...
+&lt;/h:body&gt;
+		</code></pre>
+		<p>
+			In case your JSF component library doesn't utilize standard JSF nor jQuery ajax API, but a proprietary one,
+			and exposes the same "missing view state" problem, 
+			then you can still apply this script manually during the "complete" event of the ajax request
+			whereby the concrete <code>XMLHttpRequest</code> instance is available as some argument as follows:
+		</p>
+		<pre class="prettyprint"><code class="lang-javascript">
+function someOncompleteCallbackFunction(xhr) {
+    OmniFaces.FixViewState.apply(xhr.responseXML);
+});
+		</code></pre>
+		<p>
+			This was scheduled to be fixed in JSF 2.2 spec, however it was postponed to JSF 2.3. 
+			We can't wait any longer, so it's been added to OmniFaces. 
+			Note that this fix is not necessary for MyFaces as they have internally already fixed it for long in their <code>jsf.js</code>.
+		</p>
+		<p>
+			In the below demo, try to subsequently press the both buttons in turn as long until a faces message shows up.
+			When the <code>fixviewstate.js</code> is not loaded, you'll notice that after the first time, 
+			you need to press the other button twice in order to see it.
+			This problem is fixed by loading the <code>fixviewstate.js</code>.
+		</p>
+		<p>
+			The unminified version of the script is available for viewing 
+			<a href="#{resource['omnifaces:fixviewstate.unminified.js']}">here</a>.
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<!-- Note: this is demo code. In real code, add target="head" attribute and remove rendered attribute. -->
+		<h:outputScript library="omnifaces" name="fixviewstate.js" rendered="#{param.fixviewstate}" />
+
+		<p>
+			FixViewState is #{param.fixviewstate ? 'enabled' : 'disabled'} 
+			<h:button value="#{param.fixviewstate ? 'disable' : 'enable'} it">
+				<f:param name="fixviewstate" value="#{not param.fixviewstate}" />
+			</h:button>
+		</p>
+
+		<h3>Submit the both forms in turn until a message shows up</h3>
+		<p>
+			When FixViewState is disabled, you'll notice that after the first time, 
+			you've to press the other button twice in order to see the message.
+		</p>
+		<h:panelGroup id="panel1" layout="block">
+			<h:form id="form1">
+				<h:commandButton value="submit form1 and update panel2" action="#{fixViewStateBean.submit1}">
+					<f:ajax execute="@form" render=":panel2 :messages" />
+					<f:param name="fixviewstate" value="#{param.fixviewstate}" />
+				</h:commandButton>
+			</h:form>
+		</h:panelGroup>
+		<h:panelGroup id="panel2" layout="block">
+			<h:form id="form2">
+				<h:commandButton value="submit form2 and update panel1" action="#{fixViewStateBean.submit2}">
+					<f:ajax execute="@form" render=":panel1 :messages" />
+					<f:param name="fixviewstate" value="#{param.fixviewstate}" />
+				</h:commandButton>
+			</h:form>
+		</h:panelGroup>
+		<h:messages id="messages" />
+	</ui:define>
+</ui:composition>

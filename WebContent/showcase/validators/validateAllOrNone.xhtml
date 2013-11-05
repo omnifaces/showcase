@@ -15,7 +15,92 @@
 	<ui:define name="demo">
 		<h:form>
 			<h3>Please fill out all or none of those fields</h3>
+			<p>Of course, fill out only one or two fields in order to cause a validation fail.</p>
 			<o:validateAllOrNone id="allOrNone" components="foo bar baz" />
+
+			<h:panelGrid columns="3">
+				<o:outputLabel for="foo" value="Foo" />
+				<h:inputText id="foo" />
+				<h:message for="foo" />
+
+				<o:outputLabel for="bar" value="Bar" />
+				<h:inputText id="bar" />
+				<h:message for="bar" />
+
+				<o:outputLabel for="baz" value="Baz" />
+				<h:inputText id="baz" />
+				<h:message for="baz" />
+
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:message for="allOrNone" />
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+		<h:form>
+			<h3>Show message on all invalid fields</h3>
+			<o:validateAllOrNone id="allOrNone" components="foo bar baz" showMessageFor="@all" />
+
+			<h:panelGrid columns="3">
+				<o:outputLabel for="foo" value="Foo" />
+				<h:inputText id="foo" />
+				<h:message for="foo" />
+
+				<o:outputLabel for="bar" value="Bar" />
+				<h:inputText id="bar" />
+				<h:message for="bar" />
+
+				<o:outputLabel for="baz" value="Baz" />
+				<h:inputText id="baz" />
+				<h:message for="baz" />
+
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:message for="allOrNone" />
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+		<h:form>
+			<h3>Invalidate only the empty fields</h3>
+			<o:validateAllOrNone id="allOrNone" components="foo bar baz" invalidateAll="false" />
+
+			<h:panelGrid columns="3">
+				<o:outputLabel for="foo" value="Foo" />
+				<h:inputText id="foo" />
+				<h:message for="foo" />
+
+				<o:outputLabel for="bar" value="Bar" />
+				<h:inputText id="bar" />
+				<h:message for="bar" />
+
+				<o:outputLabel for="baz" value="Baz" />
+				<h:inputText id="baz" />
+				<h:message for="baz" />
+
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:panelGroup>
+					<h:message for="allOrNone" />
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</h:panelGroup>
+			</h:panelGrid>
+		</h:form>
+
+		<h:form>
+			<h3>Invalidate only the empty fields and show message message only on invalid fields</h3>
+			<o:validateAllOrNone id="allOrNone" components="foo bar baz" invalidateAll="false" showMessageFor="@invalid" />
 
 			<h:panelGrid columns="3">
 				<o:outputLabel for="foo" value="Foo" />

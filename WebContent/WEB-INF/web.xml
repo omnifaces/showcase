@@ -158,6 +158,10 @@
 		<location>/WEB-INF/errorpages/bug.xhtml</location>
 	</error-page>
 	<error-page>
+		<exception-type>org.omnifaces.showcase.exceptionhandlers.EpicFailException</exception-type>
+		<location>/WEB-INF/errorpages/epicfail.xhtml</location>
+	</error-page>
+	<error-page>
 		<error-code>500</error-code>
 		<location>/WEB-INF/errorpages/500.xhtml</location>
 	</error-page>

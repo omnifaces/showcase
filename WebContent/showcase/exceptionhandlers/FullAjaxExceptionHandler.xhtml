@@ -79,6 +79,13 @@
 			the first root cause of <code>ServletException</code> to match an error page by exception in web.xml). 
 		</p>
 		
+		<h3>Error in error page itself</h3>
+		<p>
+			When the rendering of the error page itself failed due to a bug in the error page itself, 
+			then the <code>FullAjaxExceptionHandler</code> will reset the response and display a hardcoded error message in "plain text".
+			You can see it by pressing the "cause epic fail on ajax request" button in the below demo.
+		</p>
+		
 		<h3>Customizing <code>FullAjaxExceptionHandler</code></h3>
 		<p>
 			The <code>FullAjaxExceptionHandler</code> offers three protected methods which can be overridden on by extending.
@@ -110,6 +117,11 @@
 		</h:form>
 		<h:form>
 			<h:commandButton value="throw SQL exception on normal request" action="#{exceptionBean.throwSQLException}" />
+		</h:form>
+		<h:form>
+			<h:commandButton value="cause epic fail on ajax request" action="#{exceptionBean.throwEpicFailException}">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
 		</h:form>
 	</ui:define>		
 </ui:composition>
