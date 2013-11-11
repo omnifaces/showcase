@@ -45,10 +45,13 @@ public class CdiParamBean {
 	@Inject @Param
 	private ParamValue<Integer> number;
 
-	// Like <f:viewParam name="date" value="#{bean.date}" converterMessage="..."><f:convertDateTime pattern="yyyyMMdd">
+	// Like <f:viewParam name="date" value="#{bean.date}" converterMessage="..."><f:convertDateTime pattern="yyyyMMdd" timeZone="GMT">
 	@Inject @Param(
 		converterClass = DateTimeConverter.class,
-		converterAttributes = @Attribute(name="pattern", value="yyyyMMdd"),
+		converterAttributes = {
+			@Attribute(name="pattern", value="yyyyMMdd"),
+			@Attribute(name="timeZone", value="GMT")
+		},
 		converterMessage="{1}: \"{0}\" is not the date format we had in mind! Please use the format yyyyMMdd.")
 	private ParamValue<Date> date;
 
