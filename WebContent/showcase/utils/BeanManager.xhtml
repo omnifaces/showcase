@@ -1,0 +1,26 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:p="http://primefaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			This configuration enum allows you to get a reference to CDI managed beans without having any direct CDI dependency.
+			It will during initialization grab the CDI bean manager instance from JNDI and if it's not <code>null</code>,
+			then it's using reflection to get and store the necessary methods in the enum instance 
+			which are then invoked on instance methods such as <code>getReference()</code>.
+		</p>
+		<p>
+			If you however already have a CDI bean manager instance at hands (and thus having a CDI dependency is no problem), 
+			then use <h:link outcome="/utils/Beans">Beans</h:link> instead.
+		</p>
+		<pre class="prettyprint"><code class="lang-java">
+// Get the CDI managed bean instance of the given bean class.
+SomeBean someBean = BeanManager.INSTANCE.getReference(SomeBean.class);
+		</code></pre>
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>
+</ui:composition>
