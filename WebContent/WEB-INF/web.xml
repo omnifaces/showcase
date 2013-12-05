@@ -101,15 +101,6 @@
 	</filter-mapping>
 
 	<filter>
-		<filter-name>facesExceptionFilter</filter-name>
-		<filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>facesExceptionFilter</filter-name>
-		<servlet-name>facesServlet</servlet-name>
-	</filter-mapping>
-
-	<filter>
 		<filter-name>gzipResponseFilter</filter-name>
 		<filter-class>org.omnifaces.filter.GzipResponseFilter</filter-class>
 	</filter>
@@ -118,6 +109,24 @@
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>noCacheFilter</filter-name>
+		<filter-class>org.omnifaces.filter.CacheControlFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>noCacheFilter</filter-name>
+		<servlet-name>facesServlet</servlet-name>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>facesExceptionFilter</filter-name>
+		<filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>facesExceptionFilter</filter-name>
+		<servlet-name>facesServlet</servlet-name>
 	</filter-mapping>
 
 

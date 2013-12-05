@@ -9,10 +9,6 @@
 		<p>
 			Collection of utility methods for the CDI API with respect to working with <code>BeanManager</code>.
 		</p>
-		<p>
-			If you need a dependency-free way of obtaining the CDI managed bean instance (e.g. when you want to write code which
-			should also run on Tomcat), use <h:link outcome="/utils/BeanManager">BeanManager</h:link> enum instead.
-		</p>
 		<pre class="prettyprint"><code class="lang-java">
 // Get the CDI managed bean instance of the given bean class.
 SomeBean someBean = Beans.getReference(beanManager, SomeBean.class);
@@ -28,6 +24,10 @@ Bean&lt;SomeBean&gt; bean = (Bean&lt;SomeBean&gt;) beanManager.resolve(beans);
 CreationalContext&lt;SomeBean&gt; context = beanManager.createCreationalContext(bean);
 SomeBean someBean = (SomeBean) beanManager.getReference(bean, SomeBean.class, context);
 		</code></pre>
+		<p>
+			If you need a dependency-free way of obtaining the CDI managed bean instance (e.g. when you want to write code which
+			should also run on Tomcat), use <h:link outcome="/utils/BeanManager">BeanManager</h:link> enum instead.
+		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

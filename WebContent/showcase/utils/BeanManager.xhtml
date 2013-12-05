@@ -13,14 +13,14 @@
 			then it's using reflection to get and store the necessary methods in the enum instance 
 			which are then invoked on instance methods such as <code>getReference()</code>.
 		</p>
-		<p>
-			If you however already have a CDI bean manager instance at hands (and thus having a CDI dependency is no problem), 
-			then use <h:link outcome="/utils/Beans">Beans</h:link> instead.
-		</p>
 		<pre class="prettyprint"><code class="lang-java">
 // Get the CDI managed bean instance of the given bean class.
 SomeBean someBean = BeanManager.INSTANCE.getReference(SomeBean.class);
 		</code></pre>
+		<p>
+			If you however already have a CDI bean manager instance at hands (and thus having a CDI dependency is no problem), 
+			then use <h:link outcome="/utils/Beans">Beans</h:link> instead.
+		</p>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>
 </ui:composition>

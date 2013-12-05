@@ -1,0 +1,44 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="description">
+		<p>
+			By default, JSF validators run on every request, regardless of whether the submitted value has changed or not. In
+			case of validation against the DB on complex objects which are already stored in the model in a broader scope, such
+			as the view scope, this may result in unnecessarily expensive service/DAO calls. In such case, you'd like to perform
+			the expensive service/DAO call only when the submitted value is really changed as compared to the model value.
+		</p>
+		<p>
+			This validator offers you a template to do it transparently. To use it, just change your validators from:
+		</p>
+		<pre class="prettyprint"><code class="code-java">
+public class YourValidator implements Validator {
+
+    public void validate(FacesContext context, UIComponent component, Object submittedValue) {
+        // ...
+    }
+
+}
+		</code></pre>
+		<p>
+			to
+		</p>
+		<pre class="prettyprint"><code class="code-java">
+public class YourValidator extends ValueChangeValidator {
+
+    public void validateChangedObject(FacesContext context, UIComponent component, Object submittedValue) {
+        // ...
+    }
+
+}
+		</code></pre>
+		<p>
+			So, essentially, just replace <code>implements Validator</code> by <code>extends ValueChangeValidator</code> and
+			rename the method from <code>validate</code> to <code>validateChangedObject</code>.
+		</p>
+	</ui:define>
+</ui:composition>

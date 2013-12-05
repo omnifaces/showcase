@@ -8,18 +8,31 @@
 	<ui:define name="description">
 		<p>
 			The <code>omnifaces.SelectItemsConverter</code> allows you to populate e.g. a drop-down with complex Java 
-			model objects as value of <code>&lt;f:selectItems&gt;</code> and have JSF convert those automatically back 
-			without the need to provide a custom converter which may need to do the job based on possibly expensive 
-			service/DAO operations.
+			model objects (entities) as value of <code>&lt;f:selectItems&gt;</code> and have JSF convert those 
+			automatically back without the need to provide a custom converter which may need to do the job based on 
+			possibly expensive service/DAO operations.
 		</p>
+
+		<h3>Make sure that your entity has a good <code>toString()</code> implementation</h3>
 		<p>
-			The base converter uses by default the <code>toString()</code> method of the object to uniquely identify 
-			the object during the conversion. Since this is not the typical use case for <code>toString()</code>, it is
-			recommended to extend the <code>SelectItemsConverter</code> class and override <b>only</b> the 
-			<code>getAsString</code> method wherein the desired implementation is provided.
+			The base converter uses by default the <code>toString()</code> method of the entity to uniquely identify 
+			the instance during the conversion. This is sufficient if your (abstract base) entity has a 
+			<code>toString()</code> implementation which looks something like this:
 		</p>
+		<pre class="prettyprint"><code class="code-java">
+@Override
+public String toString() {
+    return String.format("%s[id=%d]", getClass().getSimpleName(), getId());
+}
+		</code></pre>
+
+		<h3>If your entity can't have a good <code>toString()</code> implementation</h3>
 		<p>
-			For example:
+			However, if the entity doesn't have a <code>toString()</code> implementation (and thus relies on the default
+			<code>fqn@hashcode</code> implementation), or the existing implementation doesn't necessarily uniquely 
+			identify the instance, and you can't implement/change it, then it is recommended to extend the
+			<code>SelectItemsConverter</code> class and override <b>only</b> the <code>getAsString</code> method wherein
+			the desired implementation is provided. For example:
 		</p>
 		<pre class="prettyprint"><code class="code-java">
 @FacesConverter("exampleEntitySelectItemsConverter")
@@ -34,10 +47,16 @@ public class ExampleEntitySelectItemsConverter extends SelectItemsConverter {
 }
 		</code></pre>
 		<p>
-			Again, you do not need to override the <code>getAsObject()</code> method which would only need to perform
-			possibly expensive service/DAO operations. The <code>SelectItemsConverter</code> base converter will do it
-			automatically based on the available items.
+			Again, you do <strong>not</strong> need to override the <code>getAsObject()</code> method which would only
+			need to perform possibly expensive service/DAO operations. The <code>SelectItemsConverter</code> base
+			converter will already do it automatically based on the available items and the <code>getAsString()</code>
+			implementation.
 		</p>
+		<p>
+			An alternative is to switch to <h:link outcome="SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code></h:link>.
+		</p>
+		
+		<h3>Demo</h3>
 		<p>
 			The below demo uses the base converter only, as <code>ExampleEntity</code> already returns its unique 
 			identifier in the <code>toString()</code> method. If you intend to use the extended select items converter

@@ -15,6 +15,11 @@
 			<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Let <code>FullAjaxExceptionHandler</code> handle error in error page itself</h:link></li>
 			<li><h:link outcome="/scripts/FixViewState">New <code>omnifaces:fixviewstate.js</code> script which should automatically fix JSF issue 790</h:link></li>
 			<li><h:link outcome="/validators/validateAllOrNone">Added <code>invalidateAll</code> attribute to disable invalidating valid fields, and add support for <code>showMessageFor="@invalid"</code> to show message for invalidated fields only</h:link></li>
+			<li><h:link outcome="/validators/ValueChangeValidator">New <code>ValueChangeValidator</code> which runs only when the submitted and converted value is really changed as compared to the model value</h:link></li>
+			<li><h:link outcome="/utils/Faces">Added <code>Faces#getBookmarkableURL()</code> methods taking <code>ParamHolder</code> instances as value</h:link></li>
+			<li><h:link outcome="/utils/Beans">Added <code>Beans#getInstance()</code> and <code>Beans#getActiveInstances()</code> methods returning concrete (non-proxied) instances</h:link></li>
+			<li><h:link outcome="/filters/CacheControlFilter">New <code>CacheControlFilter</code> which can control cache-related headers of the response</h:link></li>
+			<li><h:link outcome="/validators/validateMultiple">New <code>&lt;o:validateMultiple&gt;</code> tag which allows validating multiple fields via a custom validator method or implementation</h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.7</h3>
@@ -27,7 +32,7 @@
 			<li><h:link outcome="/taghandlers/importConstants">Store constants of <code>&lt;o:importConstants&gt;</code> in an ordered map instead of an unordered map</h:link></li>
 			<li><h:link outcome="/utils/WebXml"><code>WebXml</code> initialization failed in Weblogic because it attempts to load it as CDI managed bean</h:link></li>
 			<li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Broken 404 "not found" error handling of <code>CombinedResourceHandler</code> (it threw <code>IllegalArgumentException</code> instead)</h:link></li>
-			<li><h:link outcome="/converters/GenericEnumConverter"><code>GenericEnumConverter</code> failed in composites which are reused more than once in same view</h:link></li>
+			<li><h:link outcome="/converters/GenericEnumConverter"><code>GenericEnumConverter</code> failed in composites which are reused more than once in same view and on enums with custom bodies</h:link></li>
 		</ul>
 
 		<p:separator />
