@@ -31,7 +31,7 @@ return "items?faces-redirect=true";
 		</p>
 		<pre class="prettyprint"><code class="lang-java">
 // In a validator.
-throw new ValidatorException(Messages.create("Invalid input.").detail("Value {0} is not expected.", value));
+throw new ValidatorException(Messages.create("Invalid input.").detail("Value {0} is not expected.", value).get());
 
 // In a validator, as extra message on another component.
 Messages.create("This is also invalid.").error().add("someFormId:someInputId");
