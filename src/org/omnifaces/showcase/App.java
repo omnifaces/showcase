@@ -230,7 +230,7 @@ public class App {
 		return String.format("%s%nOmniFaces %s%nPrimeFaces %s%n%s",
 			Faces.getImplInfo(),
 			Faces.class.getPackage().getSpecificationVersion(),
-			org.primefaces.util.Constants.VERSION,
+			"4.0", // Constants.VERSION is moved to RequestContext#getApplicatioContext(), however the access point is in turn request based instead of application based.
 			Faces.getServerInfo());
 	}
 

@@ -35,6 +35,9 @@
 	<c:set var="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_docVersionPath}" scope="application" />
 	<c:set var="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" scope="application" />
 
+	<!-- Since 4.0, Constants.VERSION doesn't exist anymore and RequestContext isn't available in EL, so it's hardcoded for now. -->
+	<c:set var="primeFacesVersion" value="4.0" scope="application" />
+
 	<h:head>
 		<title><ui:insert name="title">OmniFaces Showcase</ui:insert></title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />

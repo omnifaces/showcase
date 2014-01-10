@@ -119,6 +119,8 @@
 			
 			<p>
 				<p:commandButton value="Submit" update="@form" />
+				&#xA0;
+				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 			</p>
 		</h:form>
 	</ui:define>
