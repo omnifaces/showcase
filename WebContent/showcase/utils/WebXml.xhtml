@@ -27,6 +27,9 @@ Map&lt;String, Set&lt;String&gt;&gt; securityConstraints = WebXml.INSTANCE.getSe
 
 // Check if access to certain (context-relative) URL is allowed for the given role based on &lt;security-constraint&gt;.
 boolean accessAllowed = WebXml.INSTANCE.isAccessAllowed("/admin.xhtml", "admin");
+
+// Get web.xml configured session timeout (in seconds).
+int sessionTimeout = WebXml.INSTANCE.getSessionTimeout();
 		</code></pre>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>

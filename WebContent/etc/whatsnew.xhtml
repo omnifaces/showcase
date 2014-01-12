@@ -8,7 +8,7 @@
 
 	<ui:define name="content">
 	
-		<p><em>Expected release date: December, 2014</em></p>
+		<p><em>Release date: 12 January, 2014</em></p>
 	
 		<h3>Added in OmniFaces 1.7</h3>
 		<ul>
@@ -19,6 +19,8 @@
 			<li><h:link outcome="/utils/Beans">Added <code>Beans#getInstance()</code> and <code>Beans#getActiveInstances()</code> methods returning concrete (non-proxied) instances</h:link></li>
 			<li><h:link outcome="/filters/CacheControlFilter">New <code>CacheControlFilter</code> which can control cache-related headers of the response</h:link></li>
 			<li><h:link outcome="/validators/validateMultiple">New <code>&lt;o:validateMultiple&gt;</code> tag which allows validating multiple fields via a custom validator method or implementation</h:link></li>
+			<li><h:link outcome="/utils/WebXml">Added <code>WebXml#getSessionTimeout()</code> to get web.xml configured session timeout</h:link></li>
+			<li><h:link outcome="/components/tree">Added <code>SortedTreeModel</code> which holds the tree children in a <code>TreeSet</code></h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.7</h3>
@@ -32,6 +34,7 @@
 			<li><h:link outcome="/utils/WebXml"><code>WebXml</code> initialization failed in Weblogic because it attempts to load it as CDI managed bean</h:link></li>
 			<li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Broken 404 "not found" error handling of <code>CombinedResourceHandler</code> (it threw <code>IllegalArgumentException</code> instead)</h:link></li>
 			<li><h:link outcome="/converters/GenericEnumConverter"><code>GenericEnumConverter</code> failed in composites which are reused more than once in same view and on enums with custom bodies</h:link></li>
+			<li><h:link outcome="/validators/validateOrder"><code>o:validateOrder</code> threw NPE on non-required fields</h:link></li>
 		</ul>
 
 		<p:separator />
