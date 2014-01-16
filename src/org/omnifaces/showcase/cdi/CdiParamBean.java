@@ -49,8 +49,7 @@ public class CdiParamBean {
 	@Inject @Param(
 		converterClass = DateTimeConverter.class,
 		converterAttributes = {
-			@Attribute(name="pattern", value="yyyyMMdd"),
-			@Attribute(name="timeZone", value="GMT")
+			@Attribute(name="pattern", value="yyyyMMdd")
 		},
 		converterMessage="{1}: \"{0}\" is not the date format we had in mind! Please use the format yyyyMMdd.")
 	private ParamValue<Date> date;
