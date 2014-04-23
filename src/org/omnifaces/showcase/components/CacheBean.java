@@ -24,6 +24,7 @@ public class CacheBean implements Serializable {
 	private long key;
 	private String item;
 	private boolean reset;
+	private boolean disabled;
 
 	@PostConstruct
 	public void init() {
@@ -33,33 +34,36 @@ public class CacheBean implements Serializable {
 		items.add("B - " + date);
 		items.add("C - " + date);
 	}
-	
+
 	/**
 	 * Demos reset via programmatic method.
 	 */
 	public void resetProgrammatic() {
 		CacheFactory.getCache(getContext(), "session").remove("firstCache");
 	}
-	
+
 	/**
-	 * Alternative way to reset via binding property to "reset" attribute of
-	 * cache component.
+	 * Alternative way to reset via binding property to "reset" attribute of cache component.
 	 */
 	public void resetAttribute() {
 		// Note, no handler to revert back to false needed since bean
 		// is request scope.
 		this.reset = true;
 	}
-	
+
+	public void disable() {
+		disabled = true;
+	}
+
 	public void saveItem(String item) {
 		this.item = item;
 		addGlobalInfo("Item {0} was posted back", item);
 	}
-	
+
 	public List<String> getItems() {
 		return items;
 	}
-	
+
 	public String getItem() {
 		return item;
 	}
@@ -74,6 +78,10 @@ public class CacheBean implements Serializable {
 
 	public boolean isReset() {
 		return reset;
+	}
+
+	public boolean isDisabled() {
+		return disabled;
 	}
 
 }

@@ -42,7 +42,7 @@
 			After a page refresh the time of the items should stay constant, indicating cached content is used. 
 		</p>
 		<p>
-			<o:cache key="firstCache" reset="#{cacheBean.reset}">
+			<o:cache key="firstCache" reset="#{cacheBean.reset}" disabled="#{cacheBean.disabled}">
 				<h:dataTable id="example1" value="#{cacheBean.items}" var="item">
 					<h:column>
 						<i>#{item}</i> <br/>
@@ -207,5 +207,20 @@
 				</h:dataTable>
 			</o:cache>
 		</h:form>
+		
+		<hr/>
+		
+		<h3>Example 6 - Disabling the cache</h3>
+		<p>
+			The OmniFaces cache can be disabled per request. If the cache is disabled the cache's children will be
+			directly rendered <b>without influencing the cached data</b>. So if initially the value "1" was rendered
+			and cached, and after disabling the cache the value "2" is rendered, then enabling the cache again 
+			(assuming no reset or timeout has taken place) will render the original "1" again and there will be no
+			memory of there ever having been a "2".
+		</p>
+		<h:form id="disableAttributeForm">
+			<h:commandButton id="button" action="#{cacheBean.disable}" value="Disable Example 1 cache via attribute (for one request)" />
+		</h:form>
+		
 	</ui:define>
 </ui:composition>
