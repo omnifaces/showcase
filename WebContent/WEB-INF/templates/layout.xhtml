@@ -29,11 +29,11 @@
     <ui:insert name="demo-meta"/>
 
 	<c:set var="_omniFacesVersion" value="#{app.version.split('\\-')[0]}" scope="application" />
-	<c:set var="_docVersionPath" value="#{app.snapshot ? '' : of:concat(app.version.substring(0, 3), '/')}" scope="application" />
+	<c:set var="_docVersionPath" value="#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
 	<c:set var="_srcVersionParam" value="#{app.snapshot ? '' : of:concat('?name=', app.version)}" scope="application" />
-	<c:set var="_apiURL" value="http://wiki.omnifaces.googlecode.com/hg/javadoc/#{_docVersionPath}" scope="application" />
-	<c:set var="_vdlURL" value="http://wiki.omnifaces.googlecode.com/hg/vdldoc/#{_docVersionPath}" scope="application" />
-	<c:set var="_srcURL" value="http://code.google.com/p/omnifaces/source/browse/src/" scope="application" />
+	<c:set var="_apiURL" value="http://omnifaces.org/docs/javadoc/#{_docVersionPath}" scope="application" />
+	<c:set var="_vdlURL" value="http://omnifaces.org/docs/vdldoc/#{_docVersionPath}" scope="application" />
+	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/tree/master/src/" scope="application" />
 
 	<!-- Since 4.0, Constants.VERSION doesn't exist anymore and RequestContext isn't available in EL, so it's hardcoded for now. -->
 	<c:set var="primeFacesVersion" value="4.0" scope="application" />
@@ -81,7 +81,7 @@
 			<p:panel id="panel" header="omnifaces">
 				<ul>
 					<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">What is OmniFaces?</a></li>
-					<li><a href="http://code.google.com/p/omnifaces">Project homepage</a></li>
+					<li><a href="http://omnifaces.org">Project homepage</a></li>
 					<li><a href="#{_apiURL}index.html">API documentation</a></li>
 					<li><a href="#{_vdlURL}index.html">VDL documentation</a></li>
 					<li><a href="#{request.contextPath}/whatsnew" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces #{_omniFacesVersion}?</a></li>
