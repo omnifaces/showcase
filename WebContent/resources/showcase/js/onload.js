@@ -6,9 +6,9 @@ jsf.ajax.addOnEvent(function(data) {
 	$("html").toggleClass("progress", data.status == "begin");
 });
 
-// PrimeFaces ajax progress indicator.
-$(document).ajaxStart(function() {
+// jQuery and PrimeFaces ajax progress indicator.
+$(document).on("ajaxStart pfAjaxSend", function() {
 	$("html").addClass("progress");
-}).ajaxStop(function() {
+}).on("ajaxStop pfAjaxComplete", function() {
 	$("html").removeClass("progress");
 });

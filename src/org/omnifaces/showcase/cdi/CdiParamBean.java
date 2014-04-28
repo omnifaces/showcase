@@ -38,7 +38,7 @@ public class CdiParamBean {
 	private ParamValue<String> text2;
 
 	// Like <f:viewParam name="text3" value="#{bean.text3}"> using JSR303 bean validation via the @NotNull constraint
-	@Inject @Param @NotNull
+	@Inject @Param @NotNull(message="{0} is required")
 	private ParamValue<String> text3;
 
 	// Like <f:viewParam name="number" value="#{bean.number}"> using implicit JSF integer converter.
