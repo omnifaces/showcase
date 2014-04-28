@@ -4,10 +4,41 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 1.7?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 1.8?</ui:define>
 
 	<ui:define name="content">
 	
+		<p><em>Expected release date: May, 2014</em></p>
+
+		<h3>Added in OmniFaces 1.8</h3>
+		<ul>
+			<li><h:link outcome="/utils/WebXml"><code>WebXml#getFormErrorPage()</code> to get web.xml configured location of the FORM authentication error page</h:link></li>
+			<li><h:link outcome="/components/deferredScript"><code>&lt;o:deferredScript&gt;</code> which is capable of deferring JavaScript resources to <code>window.onload</code></h:link></li>
+			<li><h:link outcome="/utils/Faces"><code>Faces#addResponseCookie()</code> got 2 new overloaded methods whereby domain and path defaults to current request domain and current path</h:link></li>
+			<li><h:link outcome="/utils/Components"><code>Components#isRendered()</code> which also checks the <code>rendered</code> attribute of all parents of the given component</h:link></li>
+			<li><h:link outcome="/taghandlers/massAttribute"><code>&lt;o:massAttribute&gt;</code> which sets the given attribute on all nested components</h:link></li>
+			<li><h:link outcome="/exceptionhandlers/FacesMessageExceptionHandler"><code>FacesMessageExceptionHandler</code> which sets any caught exception as a global FATAL faces message</h:link></li>
+		</ul>
+
+		<h3>Changed in OmniFaces 1.8</h3>
+		<ul>
+			<li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> now also recognizes and combines <code>&lt;o:deferredScript&gt;</code></h:link></li>
+			<li><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> now also recognizes PrimeFaces dynamic resources using <code>StreamedContent</code></h:link></li>
+		</ul>
+
+		<h3>Fixed in OmniFaces 1.8</h3>
+		<ul>
+			<li><h:link outcome="/utils/BeanManager">Assume <code>RuntimeException</code> in <code>BeanManager#init()</code> as CDI not available (fixes deployment error on WAS 8.5 without CDI enabled)</h:link></li>
+			<li><h:link outcome="/converters/GenericEnumConverter">Use "<code>-</code>" instead of <code>null</code> as default value to workaround <code>noSelectionOption</code> fail with <code>GenericEnumConverter</code></h:link></li>
+			<li><h:link outcome="/components/outputFormat"><code>&lt;o:param&gt;</code> shouldn't silently convert the value to <code>String</code> (fixes e.g. <code>java.util.Date</code> formatting fail in <code>&lt;o:outputFormat&gt;</code>)</h:link></li>
+			<li><h:link outcome="/utils/Beans">Fixed <code>javax.enterprise.inject.AmbiguousResolutionException</code> in subclassed <code>@FacesConverter</code> and <code>@FacesValidator</code></h:link></li>
+			<li><h:link outcome="/components/messages"><code>&lt;o:messages&gt;</code> failed to find the <code>for</code> component when it's not in the same parent</h:link></li>
+			<li><h:link outcome="/components/conditionalComment"><code>&lt;o:conditionalComment&gt;</code> shouldn't XML-escape the <code>if</code> value, enabling usage of <code>&amp;</code> character</h:link></li>
+		</ul>
+
+		<p:separator />
+	
+		<h2>What's new in OmniFaces 1.7?</h2>
 		<p><em>Release date: 12 January, 2014</em></p>
 	
 		<h3>Added in OmniFaces 1.7</h3>

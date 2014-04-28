@@ -55,8 +55,8 @@
 	<ui:define name="content">
 		<h:outputStylesheet library="showcase" name="css/showcase.css" />
 		<h:outputStylesheet library="showcase" name="css/prettify.css" />
-		<h:outputScript library="showcase" name="js/prettify.js" target="head" />
-		<h:outputScript library="showcase" name="js/onload.js" target="body" />
+		<o:deferredScript library="showcase" name="js/prettify.js" />
+		<o:deferredScript library="showcase" name="js/onload.js" />
 
 		<p:panel id="description" header="Description">
 			<ui:insert name="description" />

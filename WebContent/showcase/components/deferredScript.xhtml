@@ -1,0 +1,60 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			The <strong>&lt;o:deferredScript&gt;</strong> is a component which defers the loading of the given script resource to the window
+			load event. In other words, the given script resource is only loaded when the window is really finished with loading.
+			So, the enduser can start working with the webpage without waiting for the additional scripts to be loaded. Usually,
+			it are those kind of scripts which are just for progressive enhancement and thus not essential for the functioning
+			of the webpage.
+		</p>
+		<p>
+			This will give bonus points with among others the Google PageSpeed tool, on the contrary to placing the script at
+			bottom of body, or using <code>defer="true"</code> or even <code>async="true"</code>.
+		</p>
+
+		<h3>Usage</h3>
+		<p>
+			Just use it the same way as a <code>&lt;h:outputScript&gt;</code>, with a <code>library</code> and <code>name</code>.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;o:deferredScript library="yourlibrary" name="scripts/filename.js" /&gt;
+		</code></pre>
+		<p>
+			You can use the optional <code>onbegin</code>, <code>onsuccess</code> and <code>onerror</code> attributes 
+			to declare JavaScript code which needs to be executed respectively right before the script is loaded, 
+			right after the script is successfully loaded, and/or when the script loading failed.
+		</p>
+
+		<h3>Demo</h3>
+		<c:set var="resourceBaseURL" value="#{request.contextPath}/javax.faces.resource/" />
+		<p>
+			This component is also  
+			<a href="https://github.com/omnifaces/showcase/blob/master/WebContent/WEB-INF/templates/showcase.xhtml">used</a>
+			on this showcase web application on the two JS files 
+			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a> and
+			<a href="#{resourceBaseURL}js/onload.js.xhtml?ln=showcase">onload.js</a>.
+			Rightclick the page and <i>View Source</i> and find the <code>OmniFaces.DeferredScript.add</code> call at the bottom of <code>&lt;body&gt;</code>.
+			Note that this showcase application is also using the 
+			<h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link>
+			which transparently recognizes and combines the deferred script resources into a single resource as well.
+		</p>
+		<p>
+			For the technically interested, the unminified version of the <code>OmniFaces.DeferredScript</code> script is available for viewing 
+			<a href="#{resource['omnifaces:deferredscript.unminified.js']}">here</a> (note you do not need to include it yourself!).
+		</p>
+		
+		<h3>Using <code>&lt;o:deferredScript&gt;</code> on PrimeFaces JavaScript resources</h3>
+		<p>
+			Refer to the following Stack Overflow Question&amp;Answer for a detailed guide: 
+			<a href="http://stackoverflow.com/q/23173639/157882">Defer loading and parsing of PrimeFaces JavaScript files</a>.
+		</p>
+	</ui:define>
+</ui:composition>
