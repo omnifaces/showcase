@@ -31,6 +31,8 @@ import javax.faces.FacesException;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.Page.Documentation;
 import org.omnifaces.showcase.Page.Source;
@@ -53,6 +55,7 @@ public class App {
 
 	// Properties -----------------------------------------------------------------------------------------------------
 
+	private String index;
 	private Page menu;
 	private Map<String, Page> pages;
 	private String version;
@@ -63,6 +66,7 @@ public class App {
 
 	@PostConstruct
 	public void init() {
+		index = initIndex();
 		menu = new Page();
 		fillMenu(menu);
 		pages = new HashMap<String, Page>();
@@ -70,6 +74,17 @@ public class App {
 		version = initVersion();
 		snapshot = version.contains("SNAPSHOT");
 		poweredBy = initPoweredBy();
+	}
+
+	private static String initIndex() {
+		try {
+			Elements mainContent = Jsoup.connect("http://omnifaces.org").get().select("#main_content");
+			mainContent.select("h2").tagName("h3");
+			return mainContent.outerHtml();
+		}
+		catch (Exception justIgnoreItTheGetterWillTryItAgain) {
+			return null;
+		}
 	}
 
 	private static void fillMenu(Page menu) {
@@ -235,6 +250,14 @@ public class App {
 	}
 
 	// Getters --------------------------------------------------------------------------------------------------------
+
+	public String getIndex() {
+		if (index == null) {
+			index = initIndex();
+		}
+
+		return index;
+	}
 
 	public TreeModel<Page> getMenu() {
 		return menu;

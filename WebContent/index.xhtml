@@ -9,7 +9,10 @@
 	<ui:define name="content">
 		<p>
 			Live examples of the <a href="http://omnifaces.org">OmniFaces</a> components and utilities can be tried out here.
-			Please check out the left side menu.
+			Check out the left side menu for all of 'em!
+			<br/>
+			Please note that OmniFaces is a JSF <strong>utility</strong> library, not a JSF UI/component library.
+			The UI which you see on this showcase is done by <a href="http://primefaces.org">PrimeFaces</a>.
 		</p>
 		<ui:fragment rendered="#{app.snapshot}">
 			<p class="snapshot">
@@ -19,119 +22,6 @@
 			</p>
 		</ui:fragment>
 
-		<h3>What is OmniFaces?</h3>
-		<p>
-			Tired of reinventing <code>JSFUtils</code> or <code>FacesUtils</code> utility classes for every JSF web application and/or homebrewing custom components, taghandlers, etc to workaround or enhance some general shortcomings in JSF? 
-			OmniFaces may be what you're looking for!
-		</p>
-		<p>
-			OmniFaces is an <strong>utility library</strong> for JSF 2 that focusses on utilities that ease everyday tasks with the standard JSF API. 
-			OmniFaces is a response to frequently recurring problems encountered during ages of professional JSF development of the 
-			<a href="http://jdevelopment.nl">JDevelopment</a>
-			team and from questions being asked on 
-			<a href="http://stackoverflow.com">Stack Overflow</a>.
-		</p>
-		<p>
-			An important design goal will be to have as few dependencies as possible and to be minimally invasive. 
-			So far, it only requires JSF 2.0, EL 2.1 and Servlet 2.5 APIs
-			(<a href="https://github.com/omnifaces/omnifaces/wiki/Java-EE-5-and-6-compatibility">Java EE 6 details</a>) 
-			which is already minimally available in a fairly modern container serving a JSF 2 web application. 
-			As such, OmniFaces should principally integrate perfectly well with most other JSF component libraries. 
-			Even more, this showcase application uses 
-			<a href="http://primefaces.org">PrimeFaces #{primeFacesVersion}</a>
-			which works perfectly fine together with OmniFaces.
-			Note that OmniFaces is <strong>not</strong> designed for portlets.
-		</p>
-		<p>
-			Contrary to some of the other excellent JSF 2 libraries out there (like 
-			<a href="http://primefaces.org">PrimeFaces</a>,
-			or 
-			<a href="http://jboss.org/richfaces">RichFaces</a>), 
-			OmniFaces does not contain much if any of the beautiful visually oriented components that those other libraries are already known and loved for.
-			As such, OmniFaces does not and probably will never contain things like rich table or datagrid components.
-			OmniFaces is more geared toward "utilities" that solve everyday practical problems and workarounds for small shortcomings in the JSF API. 
-			Such utilities and workarounds can be based on components, but OmniFaces does not necessarily strive to be a "component library" perse.
-		</p>
-		<p>
-			Besides utility classes for working with the JSF API from Java code, such as 
-			<h:link value="Faces" outcome="/utils/Faces" />
-			and
-			<h:link value="Messages" outcome="/utils/Messages" />,
-			and utility and enhanced components, such as
-			<h:link value="&lt;o:highlight&gt;" outcome="/components/highlight" />
-			and
-			<h:link value="&lt;o:viewParam&gt;" outcome="/components/viewParam" />, 
-			OmniFaces will include various general converters, validators and Facelets tag handlers. These will range from 
-			<h:link value="'all-or-none' validators" outcome="/validators/validateAllOrNone" /> 
-			to 
-			<h:link value="converters which automatically convert Java models" outcome="/converters/SelectItemsConverter" />
-			for usage in f:selectItem(s). 
-			There are also specialized handlers, such as a 
-			<h:link value="full ajax exception handler" outcome="/exceptionhandlers/FullAjaxExceptionHandler" />
-			which will automatically handle all ajax exceptions with the default <code>web.xml</code> error-page mechanisms and a
-			<h:link value="combined resource handler" outcome="/resourcehandlers/CombinedResourceHandler" />
-			which will automatically combine all separate CSS/JS resources into a single resource.
-		</p>
-		<p> 
-			OmniFaces is fully open source, and additionally this showcase application itself is also fully open source.
-			The showcase application project homepage with full source code for all demos is available at
-			<a href="https://github.com/omnifaces/showcase">github.com/omnifaces/showcase</a>.
-		</p>
-
-		<h3>Installation</h3>
-		<p>
-			It is a matter of dropping the
-			<a href="http://repo1.maven.org/maven2/org/omnifaces/omnifaces/1.7/">OmniFaces 1.7 JAR file</a> 
-			in <code>/WEB-INF/lib</code>.
-			If you like to play around with the newest of the newest, hereby accepting the risk that new classes/methods may be moved/renamed without notice, then grab the
-			<a href="https://oss.sonatype.org/content/repositories/snapshots/org/omnifaces/omnifaces/1.8-SNAPSHOT/">OmniFaces 1.8 SNAPSHOT JAR file</a>
-			instead.
-		</p>
-		<p>
-			Maven users can add OmniFaces 
-			<h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{app.snapshot}" />
-			by adding the following Maven coordinates to <code>pom.xml</code>:
-		</p>
-		<blockquote><pre>
-&lt;dependency&gt;
-    &lt;groupId&gt;org.omnifaces&lt;/groupId&gt;
-    &lt;artifactId&gt;omnifaces&lt;/artifactId&gt;
-    &lt;version&gt;#{app.version}&lt;/version&gt;
-&lt;/dependency&gt;
-		</pre></blockquote>
-		<p>
-			The OmniFaces UI components/taghandlers and EL functions are available under the following XML namespaces:
-		</p>
-		<blockquote><pre>
-xmlns:o="http://omnifaces.org/ui"
-xmlns:of="http://omnifaces.org/functions"
-		</pre></blockquote>
-		
-		<h3>Documentation</h3>
-		<ul>
-			<li><a href="#{_apiURL}index.html">OmniFaces <h:outputText value="#{app.version}" rendered="#{not app.snapshot}" /> API documentation</a></li>
-			<li><a href="#{_vdlURL}index.html">OmniFaces <h:outputText value="#{app.version}" rendered="#{not app.snapshot}" /> VDL documentation</a></li>
-		</ul>
-
-		<h3>Support</h3>
-		<p>
-			If you have specific programming problems or questions related to the OmniFaces library, feel free to post a question on 
-			<a href="http://stackoverflow.com">Stack Overflow</a>
-			using at least the 
-			<a href="http://stackoverflow.com/questions/tagged/jsf">[jsf]</a>
-			and 
-			<a href="http://stackoverflow.com/questions/tagged/omnifaces">[omnifaces]</a>
-			tags.
-		</p>
-		<p>
-			If you have found bugs or have new ideas, feel free to open a 
-			<a href="https://github.com/omnifaces/omnifaces/issues">new issue</a>.
-		</p>
-		<p>
-			For general feedback that's not either a question, bug report or feature request, please feel free to leave it at 
-			<a href="http://devrates.com/project/show/95941/Omnifaces">Devrates</a>
-			or
-			<a href="https://www.ohloh.net/p/omnifaces">Ohloh</a>.
-		</p>
+		<h:outputText value="#{app.index}" escape="false" />
 	</ui:define>
 </ui:composition>
