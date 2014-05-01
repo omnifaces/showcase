@@ -1,0 +1,118 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="description">
+		<p>
+			The <strong>&lt;o:massAttribute&gt;</strong> sets an attribute of the given name and value on all nested components,
+			if they don't already have an attribute set. On boolean attributes like <code>disabled</code>, <code>readonly</code>
+			and <code>rendered</code>, any literal (static) attribute value will be ignored and overridden. Only if they have
+			already a value expression <code>\#{...}</code> as attribute value, then it won't be overridden. This is a technical
+			limitation specifically for boolean attributes as they don't default to <code>null</code>.
+		</p>
+		<p>
+			For example, the following setup
+		</p>
+		<pre class="prettyprint"><code class="xhtml">
+&lt;o:massAttribute name="disabled" value="true"&gt;
+    &lt;h:inputText id="input1" /&gt;
+    &lt;h:inputText id="input2" disabled="true" /&gt;
+    &lt;h:inputText id="input3" disabled="false" /&gt;
+    &lt;h:inputText id="input4" disabled="\#{true}" /&gt;
+    &lt;h:inputText id="input5" disabled="\#{false}" /&gt;
+&lt;/o:massAttribute&gt;
+		</code></pre>
+		<p>
+			will only set the <code>disabled="true"</code> attribute in <code>input1</code>, <code>input2</code> and
+			<code>input3</code> as those are the only components <strong>without</strong> a value expression on the boolean attribute.
+		</p>
+		<p>
+			As another general example without booleans, the following setup
+		</p>
+		<pre class="prettyprint"><code class="xhtml">
+&lt;o:massAttribute name="styleClass" value="\#{component.valid ? '' : 'error'}"&gt;
+    &lt;h:inputText id="input1" /&gt;
+    &lt;h:inputText id="input2" styleClass="some" /&gt;
+    &lt;h:inputText id="input3" styleClass="\#{'some'}" /&gt;
+    &lt;h:inputText id="input4" styleClass="\#{null}" /&gt;
+&lt;/o:massAttribute&gt;
+		</code></pre>
+		<p>
+			will only set the <code>styleClass="\#{component.valid ? '' : 'error'}"</code> attribute in <code>input1</code> as
+			that's the only component on which the attribute is absent.
+			Do note that the specified EL expression will actually be evaluated on a per-component basis.
+		</p>
+		<p>
+			To target a specific component (super)class, use the <code>target</code> attribute. The below example skips labels
+			(as that would in the below example otherwise fail because they don't have a <code>valid</code> property):
+		</p>
+		<pre class="prettyprint"><code class="xhtml">
+&lt;o:massAttribute name="styleClass" value="\#{component.valid ? '' : 'error'}" target="javax.faces.component.UIInput"&gt;
+    &lt;h:outputLabel for="input1" /&gt;
+    &lt;h:inputText id="input1" /&gt;
+    &lt;h:outputLabel for="input2" /&gt;
+    &lt;h:inputText id="input2" /&gt;
+    &lt;h:outputLabel for="input3" /&gt;
+    &lt;h:inputText id="input3" /&gt;
+&lt;/o:massAttribute&gt;
+		</code></pre>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Set <code>disabled="true"</code> on all inputs and submit button after successful submit</h3>
+		<h:form>
+			<h:panelGrid columns="3">
+				<o:massAttribute name="disabled" 
+					value="#{facesContext.postback and facesContext.renderResponse and not facesContext.validationFailed}">
+					<o:outputLabel for="foo" value="Foo" />
+					<h:inputText id="foo" required="true" />
+					<h:message for="foo" />
+	
+					<o:outputLabel for="bar" value="Bar" />
+					<h:inputText id="bar" required="true" />
+					<h:message for="bar" />
+	
+					<o:outputLabel for="baz" value="Baz" />
+					<h:inputText id="baz" required="true" />
+					<h:message for="baz" />
+	
+					<h:panelGroup />
+					<h:commandButton value="submit">
+						<f:ajax execute="@form" render="@form" />
+					</h:commandButton>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</o:massAttribute>
+			</h:panelGrid>
+		</h:form>
+
+		<h3>Set <code>style="background: \#{facesContext.postback ? (component.valid ? 'palegreen' : 'pink') : ''}"</code> on all inputs</h3>
+		<h:form>
+			<h:panelGrid columns="3">
+				<o:massAttribute target="javax.faces.component.UIInput" name="style" 
+					value="background: #{facesContext.postback ? (component.valid ? 'palegreen' : 'pink') : ''}">
+					<o:outputLabel for="foo" value="Foo" />
+					<h:inputText id="foo" required="true" />
+					<h:message for="foo" />
+	
+					<o:outputLabel for="bar" value="Bar" />
+					<h:inputText id="bar" required="true" />
+					<h:message for="bar" />
+	
+					<o:outputLabel for="baz" value="Baz" />
+					<h:inputText id="baz" required="true" />
+					<h:message for="baz" />
+	
+					<h:panelGroup />
+					<h:commandButton value="submit">
+						<f:ajax execute="@form" render="@form" />
+					</h:commandButton>
+					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+				</o:massAttribute>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
