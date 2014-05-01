@@ -80,7 +80,7 @@
 		<p:panel id="documentation" header="Documentation" rendered="#{not empty page.current.documentation}">
 			<os:listdocs header="VDL" docs="vdldocs" url="#{_vdlURL}#{path}.html" label="#{path.replace('/', ':')}" />
 			<os:listdocs header="API" docs="apidocs" url="#{_apiURL}org/omnifaces/#{path}.html" label="org.omnifaces.#{path.replace('/', '.')}" />
-			<os:listdocs header="Source code" docs="codes" url="#{_srcURL}org/omnifaces/#{path}.java#{_srcVersionParam}" label="org.omnifaces.#{path.replace('/', '.')}" />
+			<os:listdocs header="Source code" docs="codes" url="#{_srcURL}org/omnifaces/#{path}.java" label="org.omnifaces.#{path.replace('/', '.')}" />
 		</p:panel>
 	</ui:define>
 </ui:composition>
