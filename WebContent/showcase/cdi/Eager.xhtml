@@ -1,0 +1,69 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="description">
+		<p>
+			JSF's own native managed beans are being deprecated in favor of CDI managed beans. One feature that those native JSF
+			managed beans had that's not directly available for CDI managed beans is the ability to eagerly instantiate
+			application scoped beans.
+		</p>
+			
+		<p>
+			OmniFaces fills this void and even goes one step further by introducing the <code>@Eager</code> annotation
+			that can be applied to <code>@RequestScoped</code>, <code>@ViewScoped</code>,
+			<code>@SessionScoped</code> and <code>@ApplicationScoped</code> beans. This causes these beans to be instantiated
+			automatically at the start of each such scope instead of on demand when a bean is first referenced.
+		</p>
+			
+		<p>
+			In case of <code>@RequestScoped</code> and <code>@ViewScoped</code> beans instantiation happens per request URI / view
+			and an extra attribute is required for specifying this.
+		</p>
+		
+		<h3>CDI issues in EAR</h3>
+		<p>
+			Note that CDI has known issues when OmniFaces is bundled in multiple WARs in a single EAR.
+			It's important to understand that those issues are not related to OmniFaces, but to the broken CDI spec.
+			For an overview of those issues, please refer
+			<a href="https://github.com/omnifaces/omnifaces/wiki/Known-Issues-(CDI)">Known issues of OmniFaces CDI features in combination with specific application servers</a>. 
+		</p>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Bean instantiated at beginning of request</h3>
+		<p>
+			A bean annotated with <code>@Model</code> <small>(a stereotype for @RequestScoped and @Named)</small> 
+			has been annotated with <code>@Eager</code> setting <code>requestURI</code> to the URI of this page relative to the 
+			application root.
+		</p>
+		<p>
+			For the demo the <code>@PostConstruct</code> method will grab the current nano seconds time. When the bean is referenced
+			on this page it will show the elapsed time in nanoseconds.
+		</p>
+		<p>
+			One usecase for this feature in a real application could be calling an <code>@Asynchronous</code> annotated method that
+			loads data from a database and returns a <code>Future</code>. That way loading of this data and the processing of the
+			request pipeline plus the building and rendering of a view up till the moment the <code>Future</code> is referenced 
+			can overlap.
+		</p>
+		
+		<p>
+			Elapsed time in nanoseconds since @Eager bean initiated at the start of this request: #{myRequestBean.elapsedTime} ns.
+		</p>
+		
+		<h3>Bean instantiated when application starts up</h3>
+		<p>
+			A bean has been annotated with <code>@Startup</code> <small>(a stereotype for @Eager and @ApplicationScoped)</small> and
+			sets its startupDate property in the <code>@PostConstruct</code> method, which will thus represent the time this
+			application started.			
+		</p>
+		<p>
+			Application started at: #{of:formatDateWithTimezone(myApplicationBean.startupDate, 'd MMM yyyy HH:mm', 'UTC')} UTC
+		</p>
+	</ui:define>
+</ui:composition>
