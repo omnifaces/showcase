@@ -12,6 +12,7 @@
  */
 package org.omnifaces.showcase;
 
+import static java.util.Arrays.asList;
 import static org.omnifaces.util.ResourcePaths.stripPrefixPath;
 import static org.omnifaces.util.Utils.isEmpty;
 
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -140,8 +142,11 @@ public class App {
 
 		String pageKey = groupName + "." + title;
 		String sourcesKey = pageKey + ".sources";
+		
+		Set<String> pathIdentifiers = getImplicitPathIdentifiers(properties, sourcesKey);
+		pathIdentifiers.addAll(asList(getCommaSeparatedProperty(properties, sourcesKey)));
 
-		for (String sourceKey : getCommaSeparatedProperty(properties, sourcesKey)) {
+		for (String sourceKey : pathIdentifiers) {
 			sources.add(createSource(properties, sourcesKey + "." + sourceKey));
 		}
 
@@ -205,6 +210,18 @@ public class App {
 		}
 
 		return property.split("\\s*,\\s*");
+	}
+	
+	private static Set<String> getImplicitPathIdentifiers(Properties properties, String key) {
+		Set<String> identifiers = new HashSet<String>();
+		for (Object property : properties.keySet()) {
+			String propertyKey = property.toString();
+			if (propertyKey.startsWith(key) && propertyKey.endsWith(".path")) {
+				identifiers.add(propertyKey.substring(key.length() + 1, propertyKey.length() - ".path".length()));
+			}
+		}
+		
+		return identifiers;
 	}
 
 	private static String getMandatoryProperty(Properties properties, String key) {
