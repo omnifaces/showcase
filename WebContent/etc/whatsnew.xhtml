@@ -10,14 +10,17 @@
 	
 		<p><em>Expected release date: May, 2014</em></p>
 
-		<h3>Added in OmniFaces 1.8</h3>
-		<ul>
+		<h3>Added in OmniFaces 1.8!</h3>
+		<ul> 
 			<li><h:link outcome="/utils/WebXml"><code>WebXml#getFormErrorPage()</code> to get web.xml configured location of the FORM authentication error page</h:link></li>
 			<li><h:link outcome="/components/deferredScript"><code>&lt;o:deferredScript&gt;</code> which is capable of deferring JavaScript resources to <code>window.onload</code></h:link></li>
 			<li><h:link outcome="/utils/Faces"><code>Faces#addResponseCookie()</code> got 2 new overloaded methods whereby domain and path defaults to current request domain and current path</h:link></li>
 			<li><h:link outcome="/utils/Components"><code>Components#isRendered()</code> which also checks the <code>rendered</code> attribute of all parents of the given component</h:link></li>
 			<li><h:link outcome="/taghandlers/massAttribute"><code>&lt;o:massAttribute&gt;</code> which sets the given attribute on all nested components</h:link></li>
 			<li><h:link outcome="/exceptionhandlers/FacesMessageExceptionHandler"><code>FacesMessageExceptionHandler</code> which sets any caught exception as a global FATAL faces message</h:link></li>
+			<li><h:link outcome="/components/cache"><code>&lt;o:cache&gt;</code> has new <code>disabled</code> attribute to temporarily disable the cache and pass-through children directly</h:link></li>
+			<li><code>@Eager</code> annotation to eagerly instantiate request-, view-, session- and application scoped beans. </li>
+			<li>Small amount of utility methods and classes, e.g. method to check CDI annotations recursively in stereotypes, shortcut method to obtain VDL, etc</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 1.8</h3>
