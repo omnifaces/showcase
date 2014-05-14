@@ -1,6 +1,6 @@
 package org.omnifaces.showcase.patch;
 
-import static javax.servlet.SessionTrackingMode.URL;
+import static javax.servlet.SessionTrackingMode.COOKIE;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -35,7 +35,7 @@ public class ResinJSFInitHack implements ServletContainerInitializer {
 			
 			try {
 				Set<SessionTrackingMode> trackingModes = new HashSet<SessionTrackingMode>();
-				trackingModes.add(URL);
+				trackingModes.add(COOKIE);
 				servletContext.setSessionTrackingModes(trackingModes);
 				
 				servletContext.getSessionCookieConfig().setHttpOnly(true);
