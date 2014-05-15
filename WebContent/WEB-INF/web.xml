@@ -178,6 +178,10 @@
 		<error-code>404</error-code>
 		<location>/WEB-INF/errorpages/404.xhtml</location>
 	</error-page>
+	<error-page>
+		<error-code>400</error-code>
+		<location>/WEB-INF/errorpages/400.xhtml</location>
+	</error-page>
 
 	<mime-mapping>
 		<!--
