@@ -28,4 +28,33 @@
 			<renderer-class>org.omnifaces.showcase.HeadRenderer</renderer-class>
 		</renderer>
 	</render-kit>
+	
+	<!-- 
+		Fix for GlassFish 4.0 not able to load java.util.Data as JSF native managed bean.
+ 		See https://java.net/jira/browse/GLASSFISH-20775 
+ 	-->
+	<managed-bean>
+		<description>
+			<![CDATA[
+				This makes an instance of <code>java.util.Date</code> as current datetime available by
+				<code>#{now}</code>.
+			]]>
+		</description>
+		<managed-bean-name>now</managed-bean-name>
+		<managed-bean-class>org.omnifaces.showcase.OmniDate</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	
+	<managed-bean>
+		<description>
+			<![CDATA[
+				This makes an instance of <code>java.util.Date</code> as startup datetime available by 
+				<code>#{startup}</code>.
+			]]>
+		</description>
+		<managed-bean-name>startup</managed-bean-name>
+		<managed-bean-class>org.omnifaces.showcase.OmniDate</managed-bean-class>
+		<managed-bean-scope>application</managed-bean-scope>
+	</managed-bean>
+	
 </faces-config>
