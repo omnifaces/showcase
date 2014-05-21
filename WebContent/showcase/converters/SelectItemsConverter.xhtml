@@ -13,6 +13,17 @@
 			possibly expensive service/DAO operations.
 		</p>
 
+		<h3>Usage</h3>
+		<p>
+			This converter is available by converter ID <code>omnifaces.SelectItemsConverter</code>.
+			Just specify it in the <code>converter</code> attribute of the input component holding <code>&lt;f:selectItems&gt;</code>.
+		</p>
+		<pre class="prettyprint"><code class="code-xhtml">
+&lt;h:selectOneMenu value="\#{bean.selectedItem}" converter="omnifaces.SelectItemsConverter"&gt;
+    &lt;f:selectItems value="\#{bean.availableItems}" /&gt;
+&lt;/h:selectOneMenu&gt;
+		</code></pre>
+
 		<h3>Make sure that your entity has a good <code>toString()</code> implementation</h3>
 		<p>
 			The base converter uses by default the <code>toString()</code> method of the entity to uniquely identify 
