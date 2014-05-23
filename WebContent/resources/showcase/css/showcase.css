@@ -35,6 +35,12 @@
 	font-size: .7em;
 }
 
+#source pre {
+	overflow: auto;
+	overflow-y: hidden;
+	word-wrap: normal;
+}
+
 .pages.ui-selectonemenu,
 .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace;

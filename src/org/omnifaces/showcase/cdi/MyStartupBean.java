@@ -9,17 +9,17 @@ import org.omnifaces.cdi.Startup;
 
 @Named
 @Startup
-public class MyApplicationBean {
+public class MyStartupBean {
 
 	private Date startupDate;
-	
+
 	@PostConstruct
 	public void init() {
 		startupDate = new Date();
 	}
-	
+
 	public Date getStartupDate() {
 		return startupDate;
 	}
-	
+
 }

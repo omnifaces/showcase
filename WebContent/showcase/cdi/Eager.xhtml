@@ -40,8 +40,6 @@
 			A bean annotated with <code>@Model</code> <small>(a stereotype for @RequestScoped and @Named)</small> 
 			has been annotated with <code>@Eager</code> setting <code>requestURI</code> to the URI of this page relative to the 
 			application root.
-		</p>
-		<p>
 			For the demo the <code>@PostConstruct</code> method will grab the current nano seconds time. When the bean is referenced
 			on this page it will show the elapsed time in nanoseconds.
 		</p>
@@ -52,9 +50,13 @@
 			can overlap.
 		</p>
 		
-		<p>
-			Elapsed time in nanoseconds since @Eager bean initiated at the start of this request: #{myRequestBean.elapsedTime} ns.
-		</p>
+		<blockquote>
+			Elapsed time in nanoseconds since <code>@Eager @RequestScoped</code> bean initiated at the start of this request: <strong>#{myEagerRequestBean.elapsedTime} ns</strong>.
+			<br/>
+			As comparison, elapsed time in nanoseconds since non-<code>@Eager @RequestScoped</code> bean initiated in this request: <strong>#{myRequestBean.elapsedTime} ns</strong>.
+			<br/>
+			So, you have <strong>#{myEagerRequestBean.elapsedTime - myRequestBean.elapsedTime} ns</strong> time space to perform some <code>@Asyhchronous</code> initialization.
+		</blockquote>
 		
 		<h3>Bean instantiated when application starts up</h3>
 		<p>
@@ -62,8 +64,8 @@
 			sets its startupDate property in the <code>@PostConstruct</code> method, which will thus represent the time this
 			application started.			
 		</p>
-		<p>
-			Application started at: #{of:formatDateWithTimezone(myApplicationBean.startupDate, 'd MMM yyyy HH:mm', 'UTC')} UTC
-		</p>
+		<blockquote>
+			Application started at: <strong>#{of:formatDateWithTimezone(myStartupBean.startupDate, 'd MMM yyyy HH:mm', 'UTC')} UTC</strong>
+		</blockquote>
 	</ui:define>
 </ui:composition>

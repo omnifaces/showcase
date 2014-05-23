@@ -5,8 +5,11 @@ import static java.lang.System.nanoTime;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 
+import org.omnifaces.cdi.Eager;
+
 @Model
-public class MyRequestBean {
+@Eager(requestURI = "/cdi/Eager")
+public class MyEagerRequestBean {
 
 	private long initTime;
 	private Long elapsedTime;
