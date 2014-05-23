@@ -7,11 +7,15 @@
 >
 	<ui:define name="description">
 		<p>
-			The <code>&lt;o:viewParam&gt;</code> is designed to be used in combination with view scoped beans only. 
-			It extends the standard <code>&lt;f:viewParam&gt;</code> and provides a stateless mode of operation. 
-			The standard <code>&lt;f:viewParam&gt;</code> implementation calls the model setter again after postback.
-			This is not always desired when being bound to a view scoped bean and can lead to performance problems when
-			combined with an expensive converter.
+			The <code>&lt;o:viewParam&gt;</code> is a component that extends the standard <code>&lt;f:viewParam&gt;</code> and provides a
+			stateless mode of operation and fixes the issue wherein null model values are converted to empty string parameters
+			in query string (e.g. when <code>includeViewParams=true</code>).
+		</p>
+		<p>
+			The standard <code>&lt;f:viewParam&gt;</code> implementation calls the model setter again after postback. This is not always desired
+			when being bound to a view scoped bean and can lead to performance problems when combined with an expensive converter.
+			To solve this, this component by default stores the submitted value as a component property instead of in the model
+			(and thus in the view state in case the binding is to a view scoped bean).
 		</p>
 		<p>
 			The <code>required="true"</code> validator is also skipped on postbacks,
@@ -19,6 +23,21 @@
 			It also provides a default for the <code>label</code> atrribute. When the <code>label</code> attribute is 
 			omitted, the <code>name</code> attribute will be used as label.
 		</p>
+		<p>
+			The standard <code>&lt;f:viewParam&gt;</code> implementation calls the converter regardless of whether the evaluated model value is
+			<code>null</code> or not. As converters by specification return an empty string in case of <code>null</code> value,
+			this is being added to the query string as an empty parameter. This is not desired.
+		</p>
+		
+		<h3>Usage</h3>
+		<p>
+			You can use it the same way as <code>&lt;f:viewParam&gt;</code>, you only need to change <code>f:</code> to <code>o:</code>.
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml">
+&lt;o:viewParam name="foo" value="\#{bean.foo}" /&gt;		
+		</code></pre>
+
+		<h3>Demo</h3>
 		<p>
 			As to the demo below, if this page is requested by a request without a <code>test</code> parameter, it should
 			display the message	with the <code>name</code> of the <code>&lt;o:viewParam&gt;</code> as label instead of 
@@ -36,37 +55,44 @@
 			the value again and thus the number should not change. The POST request should also
 			not cause the <code>required="true"</code> validator to be triggered.
 		</p>
+		<p>
+			When starting off with <h:link value="URL without view parameters" />, 
+			clicking the GET link with <code>includeViewParams=true</code> would add the 
+			<code>&lt;f:viewParam name="bar"&gt;</code> with an empty value to the request URL.
+			This doesn't happen for <code>&lt;o:viewParam name="foo"&gt;</code>.
+		</p>
 	</ui:define>
 
 	<ui:define name="demo-meta">
 		<f:metadata>
-			<o:viewParam id="test" name="test" value="#{viewParamBean.test}" required="true" converter="testConverter" />
+			<o:viewParam id="foo" name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
+			<f:viewParam id="bar" name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">
 		<p>
-			<b>The message: </b>
-			<h:message for="test" />
-		</p>
-
-		<p>
-			<b>The GET link: </b>
-			<h:link value="Do GET request">
-				<f:param name="test" value="foo"/>
+			<h:link value="The GET link">
+				<f:param name="foo" value="value"/>
 			</h:link>
 		</p>
-
 		<p>
 			<h:form>
-				<b>The POST link: </b>
-				<h:commandLink value="Do POST request" action="#{viewParamBean.action}" />
+				<h:commandLink value="The POST link" />
 			</h:form>
+		</p>
+		<p>
+			<h:link value="The GET link with includeViewParams=true" includeViewParams="true" />
 		</p>
 			
 		<p>
 			<b>The value: </b>
-			#{viewParamBean.test}
+			#{viewParamBean.foo}
 		</p>
+		<p>
+			<b>The message: </b>
+			<h:message for="foo" />
+		</p>
+		
 	</ui:define>
 </ui:composition>

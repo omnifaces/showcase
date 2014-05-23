@@ -11,18 +11,23 @@ public class ViewParamBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String test;
+	private String foo;
+	private Long bar;
 
-	public String getTest() {
-		return test;
+	public String getFoo() {
+		return foo;
 	}
 
-	public void setTest(String test) {
-		this.test = test;
+	public void setFoo(String foo) {
+		this.foo = foo;
 	}
 
-	public void action() {
-		//
+	public Long getBar() {
+		return bar;
+	}
+
+	public void setBar(Long bar) {
+		this.bar = bar;
 	}
 
 }
