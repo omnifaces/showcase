@@ -15,7 +15,7 @@ public class ExampleEntityConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
 		Long id = (modelValue != null) ? ((ExampleEntity) modelValue).getId() : null;
-		return (id != null) ? String.valueOf(id) : null;
+		return (id != null) ? String.valueOf(id) : "";
 	}
 
 	@Override

@@ -23,11 +23,7 @@ public class TestConverter implements Converter {
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		if (value == null) {
-			return null;
-		}
-
-		return value.toString();
+		return value != null ? value.toString() : "";
 	}
 
 	private static AtomicInteger getCounter() {
