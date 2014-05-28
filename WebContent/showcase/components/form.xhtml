@@ -29,7 +29,7 @@
 
 	<ui:define name="demo-meta">
 		<f:metadata>
-			<o:viewParam id="test" name="test" value="#{viewParamBean.test}" />
+			<o:viewParam id="foo" name="foo" value="#{viewParamBean.foo}" />
 		</f:metadata>
 	</ui:define>
 
@@ -39,7 +39,7 @@
 		</p>
 		<p>
 			<h:link value="Do GET request with view param">
-				<f:param name="test" value="foo" />
+				<f:param name="foo" value="value" />
 			</h:link>
 		</p>
 
@@ -48,7 +48,7 @@
 			view parameter in the URL is preserved.
 		</p>
 		<o:form includeViewParams="true">
-			<h:commandLink value="POST-BACK o:form with includeViewParams" action="#{viewParamBean.action}" />
+			<h:commandLink value="POST-BACK o:form with includeViewParams" />
 		</o:form>
 		
 		<p>
@@ -57,39 +57,39 @@
 		</p>
 		<p>
 			<h:link value="Do GET request with a view param and free GET parameters">
-				<f:param name="test" value="000" />
-				<f:param name="foo" value="123" />
-				<f:param name="foo" value="456" />
-				<f:param name="bar" value="xxx" />
+				<f:param name="foo" value="000" />
+				<f:param name="bar" value="123" />
+				<f:param name="bar" value="456" />
+				<f:param name="baz" value="xxx" />
 			</h:link>
 		</p>
 		
 		<p>
 			Then, do one or more POSTs in an o:form with includeRequestParams to see that all the GET parameters 
-			are being preserverd in the URL (try to post back the "includeViewParams form" to see that only the view 
-			param will be preserved)
+			are being preserverd in the URL (try to click "POST-BACK o:form with includeViewParams" to see that only the view 
+			param will be preserved).
 		</p>
 		<o:form includeRequestParams="true">
-			<h:commandLink value="POST-BACK o:form with includeRequestParams" action="#{viewParamBean.action}" />
+			<h:commandLink value="POST-BACK o:form with includeRequestParams" />
 		</o:form>
 
 		<p>
 			Then, do one or more POSTs in an o:form with useRequestURI to see that the entire request URI, including
-			GET parameters, is being preserverd in the URL
+			GET parameters, is being preserverd in the URL.
 		</p>
 		<o:form useRequestURI="true">
-			<h:commandLink value="POST-BACK o:form with useRequestURI" action="#{viewParamBean.action}" />
+			<h:commandLink value="POST-BACK o:form with useRequestURI" />
 		</o:form>
 
 		<p>
 			Finally, do a POST via a standard JSF h:form to see that all the GET parameter in URL disappears.
 		</p>
 		<h:form>
-			<h:commandLink value="POST-BACK h:form" action="#{viewParamBean.action}" />
+			<h:commandLink value="POST-BACK h:form" />
 		</h:form>
 
 		<p>
-			<b>The value:</b> #{viewParamBean.test}
+			<b>The value:</b> #{viewParamBean.foo}
 		</p>
 	</ui:define>
 </ui:composition>
