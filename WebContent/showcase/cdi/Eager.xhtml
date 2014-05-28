@@ -46,7 +46,7 @@
 		<p>
 			One usecase for this feature in a real application could be calling an <code>@Asynchronous</code> annotated method that
 			loads data from a database and returns a <code>Future</code>. That way loading of this data and the processing of the
-			request pipeline plus the building and rendering of a view up till the moment the <code>Future</code> is referenced 
+			request pipeline plus the building and rendering of a view up till the moment the <code>Future#get()</code> is referenced 
 			can overlap.
 		</p>
 		
