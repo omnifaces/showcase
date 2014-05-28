@@ -50,6 +50,9 @@ public class RoleConverter extends EnumConverter {
     &lt;f:selectItems value="\#{bean.availableEnums}" /&gt;
 &lt;/h:selectManyCheckbox&gt;
 		</code></pre>
+		<p>
+			Note: this is not necessary in newer MyFaces versions, it will extract the right type from the parameterized type.
+		</p>
 	</ui:define>
 
 	<ui:define name="demo">
