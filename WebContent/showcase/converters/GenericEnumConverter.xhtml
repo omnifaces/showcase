@@ -9,14 +9,14 @@
 		<p>
 			The <code>omnifaces.GenericEnumConverter</code> is intented for use in <code>UISelectMany</code> components
 			(such as <code>&lt;h:selectManyCheckbox&gt;</code>, <code>&lt;h:selectManyListbox&gt;</code> and <code>&lt;h:selectManyMenu&gt;</code>) 
-			whose value is been bound to a <code>List&lt;T&gt;</code> property. Even though JSF has already a builtin 
+			whose value is been bound to a <code>List&lt;E&gt;</code> property where <code>E</code> is an enum. Even though JSF has already a builtin 
 			<a href=""><code>EnumConverter</code></a>,
-			this doesn't work for a <code>List&lt;T&gt;</code> property as the generic type infomation <code>T</code> is
+			this doesn't work for a <code>List&lt;E&gt;</code> property as the generic type infomation <code>E</code> is
 			lost during runtime. The list would be filled with unconverted <code>String</code> values instead which may
 			in turn cause <code>ClassCastException</code> during postprocessing in the business logic.
 		</p>
 		<p>
-			This can be solved by using a <code>T[]</code> property instead of <code>List&lt;T&gt;</code>
+			This can be solved by using a <code>E[]</code> property instead of <code>List&lt;E&gt;</code>
 			(e.g. <code>Role[]</code> in case of a <code>Role</code> enum). If this is however is not an option due to 
 			some design restrictions (e.g. JPA <code>@ElementCollection</code>, etc), then you'd need to create an 
 			explicit converter for the enum type like follows:
@@ -36,7 +36,7 @@ public class RoleConverter extends EnumConverter {
 		</code></pre>
 		<p>
 			However, creating a new converter for every single enum type, only and only for use in <code>UISelectMany</code>
-			with a <code>List&lt;T&gt;</code> property, may be a bit clumsy. This generic enum converter is intented to remove the need
+			with a <code>List&lt;E&gt;</code> property, may be a bit clumsy. This generic enum converter is intented to remove the need
 			to create a new enum converter everytime.
 		</p>
 		
@@ -51,7 +51,7 @@ public class RoleConverter extends EnumConverter {
 &lt;/h:selectManyCheckbox&gt;
 		</code></pre>
 		<p>
-			Note: this is not necessary in newer MyFaces versions, it will extract the right type from the parameterized type.
+			Note: this is not necessary in newer MyFaces versions, it will by itself extract the right type from the parameterized type.
 		</p>
 	</ui:define>
 
