@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+	<prerequisites>
+		<maven>3.0.0</maven>
+	</prerequisites>
+
+	<groupId>org.omnifaces</groupId>
+	<artifactId>showcase</artifactId>
+	<version>1.8.1</version>
+	<packaging>war</packaging>
+	
+	<name>Omnifaces Showcase</name>
+	<description>Showcase for JSF 2.x utility library</description>
+	
+	<url>http://omnifaces.org</url>
+	<organization>
+		<name>OmniFaces</name>
+		<url>http://omnifaces.org</url>
+	</organization>
+	<inceptionYear>2012</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	<scm>
+		<url>https://github.com/omnifaces/showcase</url>
+		<connection>scm:git:git://github.com/omnifaces/showcase.git</connection>
+		<developerConnection>scm:git:git@github.com:omnifaces/showcase.git</developerConnection>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<javase.version>1.6</javase.version>
+		<javaee.version>6.0</javaee.version>
+	</properties>
+
+	<developers>
+		<developer>
+			<id>balusc</id>
+			<name>Bauke Scholtz</name>
+			<email>balusc@gmail.com</email>
+		</developer>
+
+		<developer>
+			<id>arjan.tijms</id>
+			<name>Arjan Tijms</name>
+			<email>arjan.tijms@gmail.com</email>
+		</developer>
+	</developers>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-web-api</artifactId>
+			<version>${javaee.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>4.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>1.8.2</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${javase.version}</source>
+					<target>${javase.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
