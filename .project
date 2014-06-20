@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>omnifaces-showcase</name>
+	<name>showcase</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -13,15 +13,6 @@
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
-			<arguments>
-				<dictionary>
-					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/copy-source.launch</value>
-				</dictionary>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
@@ -40,7 +31,7 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.zeroturnaround.eclipse.rebelXmlBuilder</name>
+			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
@@ -48,11 +39,11 @@
 	<natures>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
-		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 		<nature>org.jboss.tools.jst.web.kb.kbnature</nature>
 		<nature>org.jboss.tools.jsf.jsfnature</nature>
-		<nature>org.zeroturnaround.eclipse.jrebelNature</nature>
 	</natures>
 </projectDescription>

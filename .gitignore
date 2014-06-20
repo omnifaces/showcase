@@ -1,3 +1,7 @@
 build/
 dist/
 *.jsfdia
+/target/
+/.classpath
+/.project
+/.settings
