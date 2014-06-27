@@ -27,7 +27,7 @@ public class SelectItemsBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		exampleEntities = new ArrayList<ExampleEntity>();
+		exampleEntities = new ArrayList<>();
 		exampleEntities.add(new ExampleEntity(1L, "Amsterdam"));
 		exampleEntities.add(new ExampleEntity(2L, "Frankfurt"));
 		exampleEntities.add(new ExampleEntity(3L, "London"));

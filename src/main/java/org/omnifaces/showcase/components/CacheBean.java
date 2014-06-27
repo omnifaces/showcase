@@ -29,7 +29,7 @@ public class CacheBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		String date = new Date().toString();
-		items = new ArrayList<String>();
+		items = new ArrayList<>();
 		items.add("A - " + date);
 		items.add("B - " + date);
 		items.add("C - " + date);
@@ -48,7 +48,7 @@ public class CacheBean implements Serializable {
 	public void resetAttribute() {
 		// Note, no handler to revert back to false needed since bean
 		// is request scope.
-		this.reset = true;
+		reset = true;
 	}
 
 	public void disable() {

@@ -69,7 +69,7 @@ public class App {
 		index = initIndex();
 		menu = new Page();
 		fillMenu(menu);
-		pages = new HashMap<String, Page>();
+		pages = new HashMap<>();
 		fillPages(pages, menu);
 		version = initVersion();
 		snapshot = version.contains("SNAPSHOT");
@@ -90,12 +90,12 @@ public class App {
 	private static void fillMenu(Page menu) {
 		Properties properties = loadProperties();
 		Set<String> resourcePaths = Faces.getResourcePaths(SHOWCASE_PATH);
-		Set<String> groupPaths = new TreeSet<String>(resourcePaths);
+		Set<String> groupPaths = new TreeSet<>(resourcePaths);
 
 		for (String groupPath : groupPaths) {
 			String groupName = groupPath.split("/")[2];
 			TreeModel<Page> group = menu.addChildNode(new Page(groupName, null, null, null));
-			Set<String> pagePaths = new TreeSet<String>(Faces.getResourcePaths(groupPath));
+			Set<String> pagePaths = new TreeSet<>(Faces.getResourcePaths(groupPath));
 
 			for (String pagePath : pagePaths) {
 				group.addChildNode(createPage(groupName, properties, pagePath));
@@ -116,7 +116,7 @@ public class App {
 
 	private static Page createPage(String groupName, Properties properties, String viewId) {
 		String title = viewId.split("/")[3].split("\\.")[0];
-		List<Source> sources = new ArrayList<Source>();
+		List<Source> sources = new ArrayList<>();
 
 		String sourceCode = loadSourceCode(viewId);
 		String[] meta = sourceCode.split("<ui:define name=\"demo-meta\">");

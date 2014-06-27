@@ -21,7 +21,7 @@ public class TreeBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		tree = new ListTreeModel<ExampleEntity>();
+		tree = new ListTreeModel<>();
 		tree.addChild(new ExampleEntity(1L, "One"))
 				.addChild(new ExampleEntity(2L, "Two")).getParent()
 				.addChild(new ExampleEntity(3L, "Three")).getParent()

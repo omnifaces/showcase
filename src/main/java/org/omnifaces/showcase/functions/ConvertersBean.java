@@ -26,12 +26,12 @@ public class ConvertersBean {
 	public void init() {
 		array = new String[] { "item1", "item2", "item3" };
 
-		set = new LinkedHashSet<String>(3);
+		set = new LinkedHashSet<>(3);
 		set.add("item1");
 		set.add("item2");
 		set.add("item3");
 
-		map = new LinkedHashMap<String, String>(3);
+		map = new LinkedHashMap<>(3);
 		map.put("key1", "value1");
 		map.put("key2", "value2");
 		map.put("key3", "value3");

@@ -27,7 +27,7 @@ public class AjaxBean {
 	public void argument() {
 		Ajax.data("foo", "bar");
 		Ajax.data("first", "one", "second", "two");
-		Map<String, Object> data = new HashMap<String, Object>();
+		Map<String, Object> data = new HashMap<>();
 		data.put("bool", true);
 		data.put("number", 1.2F);
 		data.put("date", new Date());

@@ -20,7 +20,7 @@ public class ValidateUniqueColumnBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		entities = new ArrayList<ExampleEntity>();
+		entities = new ArrayList<>();
 		entities.add(new ExampleEntity(1L, "one"));
 		entities.add(new ExampleEntity(2L, "two"));
 		entities.add(new ExampleEntity(3L, "three"));

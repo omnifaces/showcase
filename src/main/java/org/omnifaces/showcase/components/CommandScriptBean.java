@@ -20,7 +20,7 @@ public class CommandScriptBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		hashFragments = new ArrayList<String>();
+		hashFragments = new ArrayList<>();
 	}
 
 	public void addHashFragment() {

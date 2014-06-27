@@ -30,7 +30,7 @@ public class SelectListBean implements Serializable {
 			new ExampleEntity(3l, "Berlin")
 		);
 
-		all = new DualListModel<ExampleEntity>(
+		all = new DualListModel<>(
 			source,
 			new ArrayList<ExampleEntity>()
 		);

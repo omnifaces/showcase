@@ -1,6 +1,6 @@
 package org.omnifaces.showcase.components;
 
-import static org.omnifaces.util.Utils.*;
+import static org.omnifaces.util.Utils.coalesce;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,8 +29,8 @@ public class ComponentParamBean {
 		tableItems = Arrays.asList("row1", "row2", "row3");
 
 		// Fill list items.
-		listItems = new ArrayList<String>();
-		
+		listItems = new ArrayList<>();
+
 		// Liberty 8.5.5/MyFaces 2.0.5 calls setStart AFTER this @PostContruct method is called,
 		// causing a NPE.
 		int size = getStart() + 3;
