@@ -42,5 +42,54 @@ command.addActionListener(Components.createActionListenerMethodExpression("\#{be
 command.setActionExpression(Components.createVoidMethodExpression("\#{bean.action}"));
 		</code></pre>
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
-	</ui:define>		
+	</ui:define>
+	
+	<ui:define name="demo">
+		<p>
+			The following shows a utility method for easily invoking an operation on each
+			component in a component tree using the builder pattern.
+		</p>
+	
+		<p>
+			Count of all components on this page: #{treeWalkingBean.pageComponentCount}
+		</p>
+		
+		<p>
+			The following is a rendering of a panel group with several nested components, which will
+			be used for the examples below.
+		</p>
+		
+		<hr/>
+		
+		<h:panelGroup id="mainGroup" binding="#{treeWalkingBean.component}">
+		
+			<h:outputText id="firstText" value="first text" />
+			
+				<h:panelGroup id="nestedGroup">
+				
+					<h:outputText id="nestedText" value="first nested text" />
+				
+				</h:panelGroup>
+			
+			<h:outputText id="secondText" value="second text" />
+		
+		</h:panelGroup>
+		
+		<hr/>
+		
+		<p>
+			All IDs of the components in the panel group rendered above: 
+			<br/>
+			#{treeWalkingBean.allIdsInGroup}
+		</p>
+		
+		<p>
+			All IDs of outputText components in the panel group rendered above:
+			<br/>
+			#{treeWalkingBean.textIdsInGroup}
+		</p>
+		
+	</ui:define>
+	
+		
 </ui:composition>
