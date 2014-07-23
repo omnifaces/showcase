@@ -12,6 +12,7 @@
  */
 package org.omnifaces.showcase;
 
+import static org.omnifaces.showcase.App.scrape;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
 
@@ -30,7 +31,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.ListTreeModel;
@@ -132,7 +132,8 @@ public class Page extends ListTreeModel<Page> {
 			String url = String.format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPaths[0]);
 
 			try {
-				Elements descriptionBlock = Jsoup.connect(url).get().select(".description .block");
+				// TODO: build javadoc.jar into webapp somehow and scrape from it instead.
+				Elements descriptionBlock = scrape(url, ".description .block");
 
 				for (Element link : descriptionBlock.select("a")) { // Turn relative links into absolute links.
 					link.attr("href", link.absUrl("href"));

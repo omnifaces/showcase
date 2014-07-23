@@ -12,6 +12,7 @@
  */
 package org.omnifaces.showcase;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -62,7 +63,7 @@ public class App {
 
 	private static String loadIndex() {
 		try {
-			Elements mainContent = Jsoup.connect("http://omnifaces.org").get().select("#main_content");
+			Elements mainContent = scrape("http://omnifaces.org", "#main_content");
 			mainContent.select("h2").tagName("h3"); // Replace <h2> by <h3>.
 			return mainContent.outerHtml();
 		}
@@ -117,6 +118,12 @@ public class App {
 			Faces.class.getPackage().getSpecificationVersion(),
 			"5.0", // PrimeFaces Constants.VERSION is since 4.0 moved to RequestContext#getApplicationContext(), however the access point has changed from application based to request based.
 			Faces.getServerInfo());
+	}
+
+	// Bot ------------------------------------------------------------------------------------------------------------
+
+	static Elements scrape(String url, String selector) throws IOException {
+		return Jsoup.connect(url).userAgent("OmniBot 0.1 (+http://showcase.omnifaces.org)").get().select(selector);
 	}
 
 	// Getters --------------------------------------------------------------------------------------------------------
