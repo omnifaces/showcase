@@ -5,27 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			<code>FacesLocal</code> extends 
-			<h:link outcome="/utils/Faces"><code>Faces</code></h:link>
-			utility class with methods which take <code>FacesContext</code> as argument instead of getting it from the current thread.
-			This is more efficient in situations where multiple utility methods needs to be called at the same time.
-			Invoking <code>FacesContext#getCurrentInstance()</code> is at its own an extremely cheap operation, 
-			however as it's to be obtained as a <code>ThreadLocal</code> variable, it's during the call still blocking all other running threads for some nanoseconds or so.
-		</p>
-		<p>
-			Some examples (for the full list, check the API documentation):
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-FacesContext context = Faces.getContext();
-User user = FacesLocal.getSessionAttribute(context, "user");
-Item item = FacesLocal.evaluateExpressionGet(context, "\#{item}");
-String cookieValue = FacesLocal.getRequestCookie(context, "cookieName");
-List&lt;Locale&gt; supportedLocales = FacesLocal.getSupportedLocales(context);
-FacesLocal.invalidateSession(context);
-FacesLocal.redirect(context, "login.xhtml");
-		</code></pre>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/FacesLocal,util/Servlets" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

@@ -6,11 +6,14 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			Collection of EL functions for number formatting: <code>of:formatBytes()</code>, <code>of:formatCurrency()</code>,  
-			<code>of:formatNumber()</code>, <code>of:formatNumberDefault()</code> and <code>of:formatPercent()</code>.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="el/functions/Numbers" />
+			<f:attribute name="vdl.paths" value="of/formatBytes.fn,of/formatCurrency.fn,of/formatNumber.fn,of/formatNumberDefault.fn,of/formatPercent.fn" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 	

@@ -5,25 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:componentIdParam&gt;</code> component allows to render just one or more components on a view via a GET
-			parameter.
-		</p>
-		<p>
-			Components can be identified via both their client id or simple component id. Via the former it's possible to
-			e.g. render only a specific row in a table. For specific cases, it's possible to render only the parent
-			component and omit any children.
-		</p>
-		<p>
-			Among the use cases for this is creating simple mashups from various JSF based views, and scripts needing to obtain
-			markup for specific components on an initial (non-faces) request.
-		</p>
-		<p>
-			Note that this is a rather specialized component and for many common use cases the user is advised to investigate if the existing
-			AJAX and partial page requests in JSF don't already cover the requirements. For the moment this component only supports the 
-			direct output of the original markup and does not wrap it into any "partial response" envelope.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/input/ComponentIdParam" />
+			<f:attribute name="vdl.paths" value="o/componentIdParam" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ComponentParamBean.java" />
+		</f:metadata>
 	</ui:define>
 
     <ui:define name="demo-meta">

@@ -20,12 +20,12 @@
 >
 	<cc:interface>
 		<cc:attribute name="header" required="true" />
-		<cc:attribute name="docs" required="true" />
+		<cc:attribute name="paths" required="true" />
 		<cc:attribute name="url" required="true" />
 		<cc:attribute name="label" required="true" />
 	</cc:interface>
 	<cc:implementation>
-		<c:set var="docs" value="#{page.current.documentation[cc.attrs.docs]}" />
+		<c:set var="docs" value="#{page.current.documentation[cc.attrs.paths]}" />
 		<ui:fragment rendered="#{not empty docs}">
 			<h3>#{cc.attrs.header}</h3>
 			<ul>

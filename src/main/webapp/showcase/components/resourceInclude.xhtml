@@ -5,16 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:resourceInclude&gt;</code> component can be used to catch the output from a JSP or Servlet
-			resource and render it as output to the JSF writer. In effect, this allows you to include both Servlets and
-			JSP pages in e.g. Facelets.
-		</p>
-		<p>
-			Note that this isn't recommended as a lasting solution, but it might ease a migration from legacy JSP with
-			smelly scriptlets and all on them to a more sane and modern Facelets application.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/output/ResourceInclude,servlet/BufferedHttpServletResponse,servlet/HttpServletResponseOutputWrapper" />
+			<f:attribute name="vdl.paths" value="o/resourceInclude" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/TestServlet.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

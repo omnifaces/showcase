@@ -5,12 +5,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:highlight&gt;</code> is a helper component which highlights all invalid <code>UIInput</code> 
-			components and the associated labels by adding an error style class to them. Additionally, it by default 
-			focuses the first invalid <code>UIInput</code> component.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/script/Highlight,component/script/OnloadScript" />
+			<f:attribute name="vdl.paths" value="o/highlight" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<p>
 			This showcase application has the following CSS configured for the purpose:
 		</p>
@@ -22,12 +24,6 @@ label.error {
 input.error, select.error, textarea.error {
     background-color: #fee;
 }
-		</code></pre>
-		<p>
-			The default style class name is <code>error</code> and this can be changed as follows:
-		</p>
-		<pre class="prettyprint"><code class="lang-xhtml">
-&lt;o:highlight styleClass="invalid" /&gt;
 		</code></pre>
 	</ui:define>
 

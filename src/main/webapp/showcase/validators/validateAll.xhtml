@@ -5,13 +5,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:validateAll&gt;</code> validates if ALL of the given <code>UIInput</code> components have been filled out.
-			One could of course also just put <code>required="true"</code> on all of those <code>UIInput</code> components,
-			but sometimes it's desireable to invalidate all of those fields and/or to have just only one message for it, 
-			which isn't possible with the standard JSF API.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/validator/ValidateAll,component/validator/ValidateMultipleFields,component/validator/ValidatorFamily,validator/MultiFieldValidator" />
+			<f:attribute name="vdl.paths" value="o/validateAll" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

@@ -6,25 +6,14 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			JSF's own native managed beans are being deprecated in favor of CDI managed beans. One feature that those native JSF
-			managed beans had that's not directly available for CDI managed beans is the ability to eagerly instantiate
-			application scoped beans.
-		</p>
-			
-		<p>
-			OmniFaces fills this void and even goes one step further by introducing the <code>@Eager</code> annotation
-			that can be applied to <code>@RequestScoped</code>, <code>@ViewScoped</code>,
-			<code>@SessionScoped</code> and <code>@ApplicationScoped</code> beans. This causes these beans to be instantiated
-			automatically at the start of each such scope instead of on demand when a bean is first referenced.
-		</p>
-			
-		<p>
-			In case of <code>@RequestScoped</code> and <code>@ViewScoped</code> beans instantiation happens per request URI / view
-			and an extra attribute is required for specifying this.
-		</p>
-		
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="cdi/Eager,cdi/Startup,cdi/eager/EagerExtension,cdi/eager/EagerBeansRepository,cdi/eager/EagerBeansPhaseListener,cdi/eager/EagerBeansRequestListener,cdi/eager/EagerBeansSessionListener" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/cdi/MyEagerRequestBean.java,classes/org/omnifaces/showcase/cdi/MyRequestBean.java,classes/org/omnifaces/showcase/cdi/MyStartupBean.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<h3>CDI issues in EAR</h3>
 		<p>
 			Note that CDI has known issues when OmniFaces is bundled in multiple WARs in a single EAR.

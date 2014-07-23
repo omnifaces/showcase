@@ -5,55 +5,27 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Collection of utility methods for the JSF API with respect to working with <code>UIComponent</code>.
-			There are several traversal/lookup methods, there are several <code>UIForm</code> and <code>UIInput</code>
-			related methods which makes it easier to deal with forms and inputs.
-		</p>
-		<p>
-			Some examples (for the full list, check the API documentation):
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// Get closest parent of given type.
-UIForm form = Components.getClosestParent(someUIInputComponent, UIForm.class);		
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/Components" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/utils/TreeWalkingBean.java" />
+		</f:metadata>
+	</ui:define>
 
-// Get currently submitted form.
-UIForm form = Components.getCurrentForm();
-
-// Get currently invoked command, useful for logging actions in a phase listener.
-UICommand command = Components.getCurrentCommand();
-
-// Get the label of the given UIInput component as JSF uses for validation messages.
-String label = Components.getLabel(someUIInputComponent);
-
-// Inside decode() and/or encode() of some custom component, validate if it has no children.
-Components.validateHasNoChildren(this);
-
-// Programmatically include composite component.
-Components.includeCompositeComponent(someParentComponent, libraryName, resourceName, id);
-
-// Programmatically create value and action expressions.
-UICommand command = new HtmlCommandButton();
-command.setId("foo");
-command.setValue(Components.createValueExpression("\#{bundle['button.foo']}", String.class));
-command.addClientBehavior("action", Components.createAjaxBehavior("\#{bean.ajaxListener}"));
-command.addActionListener(Components.createActionListenerMethodExpression("\#{bean.actionListener}"));
-command.setActionExpression(Components.createVoidMethodExpression("\#{bean.action}"));
-		</code></pre>
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>
-	
+
 	<ui:define name="demo">
 		<p>
 			The following shows a utility method for easily invoking an operation on each
 			component in a component tree using the builder pattern.
 		</p>
-	
 		<p>
-			Count of all components on this page: #{treeWalkingBean.pageComponentCount}
+			Count of all components on this page:
+			<br/>
+			#{treeWalkingBean.pageComponentCount}
 		</p>
-		
 		<p>
 			The following is a rendering of a panel group with several nested components, which will
 			be used for the examples below.
@@ -62,17 +34,11 @@ command.setActionExpression(Components.createVoidMethodExpression("\#{bean.actio
 		<hr/>
 		
 		<h:panelGroup id="mainGroup" binding="#{treeWalkingBean.component}">
-		
 			<h:outputText id="firstText" value="first text" />
-			
 				<h:panelGroup id="nestedGroup">
-				
 					<h:outputText id="nestedText" value="first nested text" />
-				
 				</h:panelGroup>
-			
 			<h:outputText id="secondText" value="second text" />
-		
 		</h:panelGroup>
 		
 		<hr/>
@@ -82,14 +48,10 @@ command.setActionExpression(Components.createVoidMethodExpression("\#{bean.actio
 			<br/>
 			#{treeWalkingBean.allIdsInGroup}
 		</p>
-		
 		<p>
 			All IDs of outputText components in the panel group rendered above:
 			<br/>
 			#{treeWalkingBean.textIdsInGroup}
 		</p>
-		
 	</ui:define>
-	
-		
 </ui:composition>

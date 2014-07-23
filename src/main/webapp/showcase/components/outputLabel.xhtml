@@ -5,22 +5,25 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:outputLabel&gt;</code> automatically sets the <code>label</code> attribute of the input component
-			identified by its "for" attribute with the value of the <code>&lt;o:outputLabel&gt;</code>. This way there's
-			no need to duplicate the very same label into the <code>label</code> attribute of the input component. 
-			After submitting the form without having entered a value, a validation message is posted that should contain
-			the label printed before the input instead of some generated ID.
-		</p>
-		<p>
-			Submit the following forms without entering anything to see it.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/output/OutputLabel" />
+			<f:attribute name="vdl.paths" value="o/outputLabel" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<h3>PrimeFaces</h3>
 		<p>
 			Note that PrimeFaces has implemented the same idea later in its new version 3.3 
 			<a href="http://www.primefaces.org/showcase/ui/outputLabel.jsf"><code>&lt;p:outputLabel&gt;</code></a>,
 			so if you happen to use PrimeFaces already, you may want to use it instead. 
 			It's however known to have a problem when used inside repeater components.
+		</p>
+		
+		<h3>Demo</h3>
+		<p>
+			Submit the following forms without entering anything to see it.
 		</p>
 	</ui:define>
 

@@ -5,27 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:cache&gt;</code> component allows to cache a fragment of rendered markup. The first
-			request for a page that has this component on it will cause this markup to be put into the cache. Then
-			for subsequent requests the cached content is used directly and none of the components, backing beans
-			and services that were used to generate this content in the first place will be consulted.
-		</p>
-		<p>
-			Caching can take place in application scope, or in session scope. For individual fragments a
-			time can be specified for which the cached content is valid. After this time is elapsed, the very
-			first request to the page containing the cache component in question will cause new content to be 
-			rendered and put into the cache. A default time can be set per scope in web.xml.
-		</p>
-		<p>
-			For each scope a maximum capacity can be set. If the capacity for that scope is exceeded, an element will be
-			removed following a least recently used policy (LRU).
-		</p>
-		<p>
-			Via a cache provider mechanism an alternative cache implementation can be configured in web.xml. The default
-			cache is based on <a href="http://code.google.com/p/concurrentlinkedhashmap">http://code.google.com/p/concurrentlinkedhashmap</a>.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/output/Cache,component/output/cache/el/CacheValue" />
+			<f:attribute name="vdl.paths" value="o/cache,o/cacheValue" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/CacheBean.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

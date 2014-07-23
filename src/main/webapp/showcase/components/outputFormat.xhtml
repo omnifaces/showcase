@@ -5,21 +5,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:outputFormat&gt;</code> is a component that extends the standard <code>&lt;h:outputFormat&gt;</code> 
-			and provides support for capturing the output and exposing it into the request scope by the variable name as
-			specified by the <code>var</code> attribute.
-		</p>
-		<p>
-			You can use it the same way as <code>&lt;h:outputFormat&gt;</code>, you only need to change <code>h:</code> into
-			<code>o:</code> to get the extra support for <code>var</code> attribute.
-		</p>
-		<p>
-			Make sure that the <code>var</code> attribute value doesn't conflict with any of existing variable names in the
-			current EL scope, such as managed bean names. It would be a good naming convention to start their names with
-			<code>_</code>.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/output/OutputFormat" />
+			<f:attribute name="vdl.paths" value="o/outputFormat" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

@@ -4,37 +4,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets" 
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The	<code>&lt;o:param&gt;</code> extends the standard <code>&lt;f:param&gt;</code> to implement <code>ValueHolder</code>
-			and thus support a <code>Converter</code> to convert the supplied value to string, if necessary.
-		</p>
-		<p>
-			You can use it the same way as <code>&lt;f:param&gt;</code>, you only need to change <code>f:</code> into
-			<code>o:</code> to get the extra support for a <code>Converter</code> by usual means via the <code>converter</code>
-			attribute of the tag, or the nested <code>&lt;f:converter&gt;</code> tag, or just automatically if a converter is
-			already registered for the target class via e.g. <code>@FacesConverter(forClass)</code>.
-		</p>
-		<p>
-			Also, if no value is specified, but children are present, then the encoded output of children will be returned as
-			value. This is useful when you want to supply JSF components or HTML as parameter of an unescaped
-			<code>&lt;h:outputFormat&gt;</code>. For example,
-		</p>
-		<pre class="prettyprint"><code class="lang-xhtml">
-&lt;h:outputFormat value="\#{bundle.paragraph}" escape="false"&gt;
-    &lt;o:param&gt;&lt;h:link outcome="contact" value="\#{bundle.contact}" /&gt;&lt;/o:param&gt;
-&lt;/h:outputFormat&gt;
-		</code></pre>
-		<p>
-			with this bundle
-		</p>
-		<pre><code>
-paragraph = Please {0} for more information.
-contact = contact us
-		</code></pre>
-		<p>
-			will result in the link being actually encoded as output format parameter value.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/output/Param" />
+			<f:attribute name="vdl.paths" value="o/param" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ParamBean.java,classes/org/omnifaces/showcase/model/ExampleEntity.java,classes/org/omnifaces/showcase/components/ExampleEntityConverter.java,classes/org/omnifaces/showcase/i18n/text.properties" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

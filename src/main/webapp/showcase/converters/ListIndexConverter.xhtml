@@ -7,34 +7,20 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			OmniFaces has the <h:link value="SelectItemsIndexConverter" outcome="/converters/SelectItemsIndexConverter"/>
-			that allows you to populate e.g. a drop-down with complex Java objects and have JSF convert those automatically back 
-			without the need to provide a custom converter which may need to do the job based on possibly expensive 
-			service/DAO operations. This works with the select items that are nested inside a component.
-		</p>
-		
-		<p>
-			A select few components in JSF don't use select items as the source for their selectable items, but work directly
-			via a list. To accomodate the same automatic conversion of complex Java objects for these components as well
-			OmniFaces provides the <code>omnifaces.ListIndexConverter</code> and 
-			<h:link value="omnifaces.ListConverter" outcome="/converters/ListConverter"/> converters. This page
-			demoes the <code>omnifaces.ListIndexConverter</code>. The pros and cons of the conversion using the list index
-			are described on the <h:link value="SelectItemsIndexConverter" outcome="/converters/SelectItemsIndexConverter"/> demo page.
-		</p>
-		
-		<p>
-			Unlike select items, there is no dedicated location to fetch such list from, so the list that is used as source
-			for whatever mechanism the component uses has to be provided to the converter. For providing this parameter
-			to the converter the <h:link value="o:converter" outcome="/taghandlers/converter" /> can be used.
-		</p>
-		
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="converter/ListIndexConverter" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/converters/SelectListBean.java,classes/org/omnifaces/showcase/model/ExampleEntity.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<h3>Demo</h3>
 		<p>
 			The demo belows shows the PrimeFaces 
-			<a href="http://primefaces.org/showcase/ui/picklist.jsf"><code>&lt;p:pickList&gt;</code></a>
+			<a href="http://primefaces.org/showcase/ui/data/pickList.xhtml"><code>&lt;p:pickList&gt;</code></a>
 			component, which is a famous example of a component that does not use select items. Another example of such a PrimeFaces component is the
-			<a href="http://primefaces.org/showcase/ui/autoCompleteBasic.jsf"><code>&lt;p:autoComplete&gt;</code></a>.
+			<a href="http://primefaces.org/showcase/ui/input/autoComplete.xhtml"><code>&lt;p:autoComplete&gt;</code></a>.
 		</p>
 	</ui:define>
 
@@ -42,21 +28,21 @@
 		<h:form>
 			<p>
 				<b>Selected items</b>:
-				<ui:fragment rendered="#{not empty selectListBean.selected}">
-					<ui:repeat value="#{selectListBean.selected}" var="entity" varStatus="loop">
+				<ui:fragment rendered="#{not empty selectListBean.model.target}">
+					<ui:repeat value="#{selectListBean.model.target}" var="entity" varStatus="loop">
 						#{entity.value}#{loop.last ? '' : ', '}
 					</ui:repeat>
 				</ui:fragment>
-				<h:outputText value="[no selection made]" rendered="#{empty selectListBean.selected}"/>
+				<h:outputText value="[no selection made]" rendered="#{empty selectListBean.model.target}"/>
 			</p>
-		
+
 			<p>
 				<b>Choose a city, then press Select</b>:
-				<p:pickList value="#{selectListBean.all}" var="entity" itemValue="#{entity}" itemLabel="#{entity.value}">
-					<o:converter converterId="omnifaces.ListIndexConverter" list="#{selectListBean.source}" />
+				<p:pickList value="#{selectListBean.model}" var="entity" itemValue="#{entity}" itemLabel="#{entity.value}">
+					<o:converter converterId="omnifaces.ListIndexConverter" list="#{selectListBean.model.source}" />
 				</p:pickList>
 			</p>
-			
+
 			<p>
 				<h:commandButton value="Select">
 					<f:ajax execute="@form" render="@form"/>

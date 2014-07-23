@@ -6,14 +6,14 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			The CDI annotation <code>@Param</code> allows you to inject, convert and validate a HTTP request parameter
-			in a CDI managed bean. It's basically like <code>&lt;f:viewParam&gt;</code>, but with the major difference
-			that the injected HTTP request parameter is available during <code>@PostConstruct</code>, allowing a much easier
-			way of processing without the need for a <code>&lt;f:event type="preRenderView"&gt;</code>. 
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="cdi/Param,cdi/param/ParamValue,cdi/param/Attribute,cdi/param/RequestParameterProducer" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/cdi/CdiParamBean.java" />
+		</f:metadata>
+	</ui:define>
 
+	<ui:define name="description-extra">
 		<h3>CDI issues in EAR</h3>
 		<p>
 			Note that CDI has known issues when OmniFaces is bundled in multiple WARs in a single EAR.

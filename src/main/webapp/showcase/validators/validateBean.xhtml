@@ -5,13 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:validateBean&gt;</code> allows the developer to control bean validation on a per-<code>UICommand</code>
-			or <code>UIInput</code> component basis. The standard <code>&lt;f:validateBean&gt;</code> only allows that on a per-form
-			or a per-request basis (by using multiple tags and conditional EL expressions in its attributes) which may end up in
-			boilerplate code.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="taghandler/ValidateBean,eventlistener/BeanValidationEventListener" />
+			<f:attribute name="vdl.paths" value="o/validateBean" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/validators/ValidateBean.java,classes/org/omnifaces/showcase/validators/MyValidationGroups.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

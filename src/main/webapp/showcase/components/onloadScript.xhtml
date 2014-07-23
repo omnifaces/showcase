@@ -5,7 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/script/OnloadScript" />
+			<f:attribute name="vdl.paths" value="o/onloadScript" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<h3>Demo</h3>
 		<p>
 			When the page loads, you should see the annoying JavaScript alert "Hi, I am the o:onloadScript function!".
 			You should see the same alert again when you submit the form, also on ajax submits. This would not happen
@@ -16,13 +24,6 @@
 			piece of JavaScript code is re-executed on every successful ajax response. This is particularly useful if you
 			want to re-execute a specific helper script to manipulate the HTML DOM tree, such as (re-)adding fancy tooltips,
 			performing highlights, etcetera, on every ajax request, also after changes in the HTML DOM tree on ajax responses.
-		</p>
-		<p>
-			The <code>&lt;o:onloadScript&gt;</code> is implicitly relocated to the end of the <code>&lt;body&gt;</code>,
-			exactly like as <code>&lt;h:outputScript target="body"&gt;</code> does. So it's always executed when the entire
-			<code>&lt;body&gt;</code> is finished populating and thus you don't need a <code>window.onload</code> or a
-			<code>$(document).ready()</code> in there. Again, the difference with <code>&lt;h:outputScript target="body"&gt;</code>
-			is that the <code>&lt;o:onloadScript&gt;</code> is also executed on every ajax request.  
 		</p>
 	</ui:define>
 

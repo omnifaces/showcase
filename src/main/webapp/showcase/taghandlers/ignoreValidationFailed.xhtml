@@ -6,31 +6,11 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:demo="http://omnifaces.org/showcase"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:ignoreValidationFailed&gt;</code> allows the developer to ignore validation failures when
-			executing an <code>UICommand</code> action. This taghandler must be placed inside an <code>UICommand</code> component and the
-			parent <code>UIForm</code> must be an <code>&lt;o:form&gt;</code>. When executing an ajax action, make sure that the
-			parent <code>UIForm</code> is also included in the <code>&lt;f:ajax execute&gt;</code>.
-		</p>
-		<p>
-			For example:
-		</p>
-		<pre class="prettyprint"><code class="xhtml">
-&lt;o:form&gt;
-  ...
-  &lt;h:commandButton value="save valid data" action="\#{bean.saveValidData}"&gt;
-    &lt;o:ignoreValidationFailed /&gt;
-    &lt;f:ajax execute="@form" /&gt;
-  &lt;/h:commandButton&gt;
-&lt;/o:form&gt;
-		</code></pre>
-		<p>
-			Note that the model values will (obviously) only be updated for components which have actually passed the validation.
-			Also the validation messages will still be displayed. If you prefer to not display them, then you'd need to exclude
-			them from rendering by <code>&lt;f:ajax render&gt;</code>, or to put a proper condition in the <code>rendered</code>
-			attribute.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="taghandler/IgnoreValidationFailed,component/input/Form" />
+			<f:attribute name="vdl.paths" value="o/ignoreValidationFailed,o/form" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

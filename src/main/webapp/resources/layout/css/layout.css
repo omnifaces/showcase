@@ -3,7 +3,8 @@ html {
 }
 
 body {
-	width: 1250px; /* Target minimum of 1280x1024 */
+	min-width: 975px;
+	max-width: 1250px;
 	margin: 0 auto;
 	padding: 3px 0;
 	background: #eee;
@@ -178,16 +179,6 @@ input.error, select.error, textarea.error {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-}
-
-.clearleft:after {
-	content: "";
-	display: table;
-	clear: left;
-}
-
-.clearleft {
-	*zoom: 1; /* IE6/7. */
 }
 
 .ui-panel-titlebar.ui-helper-clearfix:after {

@@ -10,6 +10,15 @@
  - an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  - specific language governing permissions and limitations under the License.
  -->
+ 
+<!-- 
+The following metadata attributes are supported via this template (they're parsed in Page#loadIfNecessary()):
+
+* api.paths: commaseparated string of "http://omnifaces.org/docs/javadoc/<version>/org/omnifaces/"-relative paths to API documentation.
+* vdl.paths: commaseparated string of "http://omnifaces.org/docs/vdldoc/<version>/"-relative paths to VDL documentation.
+* src.paths: commaseparated string of paths to source code snippets, if it does not start with "/", then it will be
+             assumed relative to webcontent "/WEB-INF/" folder, else it will be assumed relative to webcontent root.
+ -->
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -59,7 +68,10 @@
 		<o:deferredScript library="showcase" name="js/onload.js" />
 
 		<p:panel id="description" header="Description">
-			<ui:insert name="description" />
+			<ui:insert name="description">
+				<h:outputText value="#{page.current.description}" escape="false" /><!-- Copies content from 1st API documentation. -->
+			</ui:insert>
+			<ui:insert name="description-extra" />
 		</p:panel>
 
 		<ui:fragment rendered="#{not empty page.current.sources}">
@@ -78,9 +90,9 @@
 		</ui:fragment>
 
 		<p:panel id="documentation" header="Documentation" rendered="#{not empty page.current.documentation}">
-			<os:listdocs header="VDL" docs="vdldocs" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
-			<os:listdocs header="API" docs="apidocs" url="#{_apiURL}org/omnifaces/#{path}.html" label="org.omnifaces.#{fn:replace(path,'/', '.')}" /> 
-			<os:listdocs header="Source code" docs="codes" url="#{_srcURL}org/omnifaces/#{path}.java" label="org.omnifaces.#{fn:replace(path,'/', '.')}" />
+			<os:listdocs header="VDL" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
+			<os:listdocs header="API" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
+			<os:listdocs header="Source code" paths="api" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
 		</p:panel>
 	</ui:define>
 </ui:composition>

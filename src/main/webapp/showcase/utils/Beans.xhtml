@@ -5,29 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Collection of utility methods for the CDI API with respect to working with <code>BeanManager</code>.
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// Get the CDI managed bean instance of the given bean class.
-SomeBean someBean = Beans.getReference(beanManager, SomeBean.class);
-		</code></pre>
-		<p>
-			The "native" CDI way would otherwise look like this (...), 
-			provided that you can't use <code>@Inject</code> for some technical reasons.
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// Get the CDI managed bean instance of the given bean class.
-Set&lt;Bean&lt;?&gt;&gt; beans = beanManager.getBeans(SomeBean.class);
-Bean&lt;SomeBean&gt; bean = (Bean&lt;SomeBean&gt;) beanManager.resolve(beans);
-CreationalContext&lt;SomeBean&gt; context = beanManager.createCreationalContext(bean);
-SomeBean someBean = (SomeBean) beanManager.getReference(bean, SomeBean.class, context);
-		</code></pre>
-		<p>
-			If you need a dependency-free way of obtaining the CDI managed bean instance (e.g. when you want to write code which
-			should also run on Tomcat), use <h:link outcome="/utils/BeanManager">BeanManager</h:link> enum instead.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/Beans" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

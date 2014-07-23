@@ -4,27 +4,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets" 
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The	<code>&lt;o:form&gt;</code>	extends the standard <code>&lt;h:form&gt;</code>
-			and provides support for including all view parameters in the URL that's used for the post-back, or all
-			request parameters, or the entire original request URI.
-		</p>
-		<p>
-			By setting the <b><code>includeViewParams</code></b> attribute to true (default is false),
-			the current value of every view parameter will be added to the action URL that will be rendered
-			on the form. This is similar to how the attribute of the same name can be used on the
-			<code>&lt;h:link&gt;</code> and	<code>&lt;h:button&gt;</code> components.
-		</p>
-		<p>
-			In case all URL (GET) parameters are needed, the <b><code>includeRequestParams</code></b> attribute
-			can be set to true (default is false). This setting will override <code>includeViewParams</code>.
-		</p>
-		<p>
-			In case the entire original request URI, including the URL (GET) parameters, is needed, the
-			<b><code>useRequestURI</code></b> attribute can be set to <code>true</code> (default is <code>false</code>).
-			This setting will override <code>includeViewParams</code> and  <code>includeRequestParams</code>. 
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/input/Form" />
+			<f:attribute name="vdl.paths" value="o/form" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ViewParamBean.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo-meta">

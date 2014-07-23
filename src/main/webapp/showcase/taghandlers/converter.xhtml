@@ -6,29 +6,16 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:demo="http://omnifaces.org/showcase"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:converter&gt;</code> basically extends the <code>&lt;f:converter&gt;</code> tag family with the
-			possibility to evaluate EL in all attributes during view render time instead of during view build time. 
-			This allows the developer to evaluate the attributes dynamically on a per request basis or even on a per
-			iteration basis inside a repeater component.
-		</p>
-		<p>
-			When you specify for example the standard <code>&lt;f:convertDateTime&gt;</code> by
-			<code>converterId="javax.faces.DateTime"</code>, then you'll be able to use all its attributes such as
-			<code>pattern</code> and <code>locale</code> as per 
-			<a href="http://docs.oracle.com/javaee/6/javaserverfaces/2.1/docs/vdldocs/facelets/f/convertDateTime.html" rel="ext">its documentation</a>,
-			but then with the possibility to supply render time value expressions.
-		</p>
-		<pre class="prettyprint"><code class="xhtml">
-&lt;o:converter converterId="javax.faces.DateTime" pattern="\#{item.pattern}" locale="\#{item.locale}" /&gt;
-		</code></pre>
-		<p>
-			The converter ID of all standard JSF converters can be found in 
-			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/convert/package-summary.html" rel="ext">their javadocs</a>.
-			First go to the javadoc of the class of interest, then go to <code>CONVERTER_ID</code> in its field summary 
-			and finally click the Constant Field Values link to see the value.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="taghandler/Converter,taghandler/DeferredTagHandlerHelper" />
+			<f:attribute name="vdl.paths" value="o/converter" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/taghandlers/ConverterBean.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<h3>Demo</h3>
 		<p>
 			In the below demo, it was the intent to use <code>&lt;f:convertDateTime&gt;</code> as follows:
 		</p>

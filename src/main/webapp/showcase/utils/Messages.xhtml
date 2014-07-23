@@ -5,72 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Collection of utility methods for the JSF API with respect to working with <code>FacesMessage</code>.
-		</p>
-		<p>
-			Some examples (for the full list, check the API documentation):
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// In a validator.
-throw new ValidatorException(Messages.createError("Invalid input."));
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/Messages" />
+		</f:metadata>
+	</ui:define>
 
-// In a validator, as extra message on another component.
-Messages.addError("someFormId:someInputId", "This is also invalid.");
-	
-// In a managed bean action method.
-Messages.addGlobalError("Unknown login, please try again.");
-		
-// In a managed bean action method which uses Post-Redirect-Get.
-Messages.addFlashGlobalInfo("New item with id {0} is successfully added.", item.getId());
-return "items?faces-redirect=true";
-		</code></pre>
-		<p>
-			There is also a builder which also allows you to set the message detail. Some examples:
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// In a validator.
-throw new ValidatorException(Messages.create("Invalid input.").detail("Value {0} is not expected.", value).get());
-
-// In a validator, as extra message on another component.
-Messages.create("This is also invalid.").error().add("someFormId:someInputId");
-	
-// In a managed bean action method.
-Messages.create("Unknown login, please try again.").error().add();
-		
-// In a managed bean action method which uses Post-Redirect-Get.
-Messages.create("New item with id {0} is successfully added.", item.getId()).flash().add();
-return "items?faces-redirect=true";
-		</code></pre>
-		<p>
-			It also offers the possibility to set a custom message resolver so that you can control the way how messages
-			are been resolved. You can for example supply an implementation wherein the message is been treated as for
-			example a resource bundle key. Here's an example:
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-Messages.setResolver(new Messages.Resolver() {
-    private static final String BASE_NAME = "com.example.i18n.messages";
-    public String getMessage(String message, Object... params) {
-        ResourceBundle bundle = ResourceBundle.getBundle(BASE_NAME, Faces.getLocale());
-        if (bundle.containsKey(message)) {
-            message = bundle.getString(message);
-        }
-        return MessageFormat.format(message, params);
-    }
-});
-		</code></pre>
- 		<p>
-	 		There is already a default resolver which just delegates the message and the parameters straight to 
-	 		<a href="http://docs.oracle.com/javase/7/docs/api/java/text/MessageFormat.html#format(java.lang.String, java.lang.Object...)"><code>MessageFormat.format(String, Object...)</code></a>.
-	 		Note that the resolver can be set only once. It's recommend to do it early during webapp's startup, for example with a
-	 		<a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletContextListener.html"><code>ServletContextListener</code></a>,
-	 		or a Servlet 3.0
-	 		<a href="http://docs.oracle.com/javaee/6/api/javax/servlet/ServletContainerInitializer.html"><code>ServletContainerInitializer</code></a>,
-	 		or an eagerly initialized
-	 		<a href="http://docs.oracle.com/javaee/6/api/javax/enterprise/context/ApplicationScoped.html"><code>@ApplicationScoped</code></a>
-	 		<a href="http://docs.oracle.com/javaee/6/api/javax/faces/bean/ManagedBean.html"><code>@ManagedBean</code></a>.
- 		</p>
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

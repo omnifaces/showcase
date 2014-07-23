@@ -7,6 +7,14 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/messages/OmniMessages,renderer/MessagesRenderer" />
+			<f:attribute name="vdl.paths" value="o/messages" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/MessagesBean.java" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="description">
 		<p>
 			The <code>&lt;o:messages&gt;</code> is a component that extends the standard <code>&lt;h:messages&gt;</code> with the following new features:

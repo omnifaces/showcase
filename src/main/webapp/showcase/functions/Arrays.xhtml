@@ -7,11 +7,14 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			Collection of EL functions for array manipulation: <code>of:createArray()</code>, <code>of:createIntegerArray()</code>,  
-			and <code>of:contains()</code>.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="el/functions/Arrays" />
+			<f:attribute name="vdl.paths" value="of/createArray.fn,of/createIntegerArray.fn,of/contains.fn" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 	

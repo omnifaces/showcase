@@ -7,32 +7,16 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:validator&gt;</code> basically extends the <code>&lt;f:validator&gt;</code> tag family with the
-			possibility to evaluate EL in all attributes during view render time instead of during view build time. 
-			This allows the developer to evaluate the attributes dynamically on a per request basis or even on a per
-			iteration basis inside a repeater component, such as the <code>disabled</code> attribute.
-		</p>
-		<pre class="prettyprint"><code class="xhtml">
-&lt;o:validator validatorId="someValidatorId" disabled="\#{param.disableValidation}" /&gt;
-		</code></pre>
-		<p>
-			When you specify for example the standard <code>&lt;f:validateLength&gt;</code> by
-			<code>validatorId="javax.faces.Length"</code>, then you'll be able to use all its attributes such as
-			<code>minimum</code> and <code>maximum</code> as per 
-			<a href="http://docs.oracle.com/javaee/6/javaserverfaces/2.1/docs/vdldocs/facelets/f/validateLength.html" rel="ext">its documentation</a>,
-			but then with the possibility to supply render time value expressions.
-		</p>
-		<pre class="prettyprint"><code class="xhtml">
-&lt;o:validator validatorId="javax.faces.Length" minimum="\#{item.minimum}" maximum="\#{item.maximum}" /&gt;
-		</code></pre>
-		<p>
-			The validator ID of all standard JSF validators can be found in 
-			<a href="http://docs.oracle.com/javaee/6/api/javax/faces/validator/package-summary.html" rel="ext">their javadocs</a>.
-			First go to the javadoc of the class of interest, then go to <code>VALIDATOR_ID</code> in its field summary 
-			and finally click the Constant Field Values link to see the value.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="taghandler/Validator,taghandler/DeferredTagHandlerHelper" />
+			<f:attribute name="vdl.paths" value="o/validator" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/taghandlers/ValidatorBean.java,classes/org/omnifaces/showcase/taghandlers/EmailValidator.java,classes/org/omnifaces/showcase/taghandlers/PhoneValidator.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<h3>Demo</h3>
 		<p>
 			In the below demo, the validators are supposed to be disabled based on the currently selected contact method.
 			Change the contact method to phone and enter a valid phone number, e.g. <code>0123456789</code>, you'll see

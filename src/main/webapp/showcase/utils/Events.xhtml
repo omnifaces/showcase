@@ -5,39 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Collection of utility methods for the JSF API with respect to working with Faces events.
-		</p>
-		<p>
-			Some examples (for the full list, check the API documentation):
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// Add a callback to the current view which should run during every after phase of the render response.
-Events.addAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
-    @Override
-    public void invoke() {
-        // ...
-    }
-});
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/Events" />
+		</f:metadata>
+	</ui:define>
 
-// Add a callback to the current request which should run during after phase of the render response.
-Events.addCallbackAfterPhaseListener(PhaseId.RENDER_RESPONSE, new Callback.Void() {
-    @Override
-    public void invoke() {
-        // ...
-    }
-});
-
-// Add a callback to the current view which should run during the pre render view event.
-Events.subscribeToViewEvent(PreRenderViewEvent.class, new Callback.Void() {
-    @Override
-    public void invoke() {
-        // ...
-    }
-});
-		</code></pre>
-		<p>Note that you can specify any phase ID or system event to your choice.</p> 
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

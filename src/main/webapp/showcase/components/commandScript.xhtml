@@ -6,42 +6,12 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:commandScript&gt;</code> is an extension to <code>&lt;h:commandXxx&gt;</code> which generates a JavaScript
-			function in the global JavaScript scope which allows the enduser to execute a JSF ajax request by just a function
-			call <code>functionName()</code> in the JavaScript context.
-		</p>
-		<p>
-			The component is required to be enclosed in an <code>UIForm</code> component.
-			The <code>name</code> attribute is required and it represents the JavaScript function name. 
-			The <code>execute</code> and <code>render</code> attributes work exactly the same as in <code>&lt;f:ajax&gt;</code>.
-			The <code>onbegin</code> and <code>oncomplete</code> attributes must represent (valid!) JavaScript code which 
-			will be executed before sending the ajax request and after processing the ajax response respectively.
-			The <code>action</code>, <code>actionListener</code> and <code>immediate</code> attributes work exactly the same as in <code>&lt;h:commandXxx&gt;</code>.
-		</p>
-		<p>
-			The component also supports nesting of <code>&lt;f:param&gt;</code>, <code>&lt;f:actionListener&gt;</code> 
-			and <code>&lt;f:setPropertyActionListener&gt;</code>, exactly like as in <code>&lt;h:commandXxx&gt;</code>.
-			The JavaScript function also supports a JS object as argument which will then end up in the HTTP request parameter map:
-		</p>
-		<pre class="prettyprint"><code class="lang-javascript">
-functionName({ name1: "value1", name2: "value2" });
-		</code></pre>
-		<p>
-			With the above example, the parameters are in the action method available as follows:
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-String name1 = Faces.getRequestParameter("name1"); // value1
-String name2 = Faces.getRequestParameter("name2"); // value2
-		</code></pre>
-		<p>
-			This is much similar to PrimeFaces 
-			<a href="http://www.primefaces.org/showcase/ui/remoteCommand.jsf"><code>&lt;p:remoteCommand&gt;</code></a>, 
-			expect that the <code>&lt;o:commandScript&gt;</code> uses the standard JSF ajax API instead of the PrimeFaces/jQuery ajax API. 
-			So it wouldn't trigger jQuery-specific event listeners, but only JSF-specific event listeners
-			(e.g. <code>jsf.ajax.addOnEvent()</code> and so on).
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/script/CommandScript" />
+			<f:attribute name="vdl.paths" value="o/commandScript" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/CommandScriptBean.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

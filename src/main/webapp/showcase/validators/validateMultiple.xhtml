@@ -5,53 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:validateMultiple&gt;</code> allows the developer to validate multiple fields by either a custom validator
-			method:
-		</p>
-		<pre class="prettyprint"><code class="code-xhtml">
-&lt;o:validateMultiple id="myId" components="foo bar baz" validator="\#{bean.someMethod}" /&gt;
-&lt;h:message for="myId" /&gt;
-&lt;h:inputText id="foo" /&gt;
-&lt;h:inputText id="bar" /&gt;
-&lt;h:inputText id="baz" /&gt;
-		</code></pre>
-		<p>
-			whereby the method has the following signature (method name is free to your choice):
-		</p>
-		<pre class="prettyprint"><code class="code-java">
-public boolean someMethod(FacesContext context, List&lt;UIInput&gt; components, List&lt;Object&gt; values) {
-    // ...
-}
-		</code></pre>
-		<p>
-			Or, by a managed bean instance which implements the <code>MultiFieldValidator</code> interface:
-		</p>
-		<pre class="prettyprint"><code class="code-xhtml">
-&lt;o:validateMultiple id="myId" components="foo bar baz" validator="\#{validateValuesBean}" /&gt;
-&lt;h:message for="myId" /&gt;
-&lt;h:inputText id="foo" /&gt;
-&lt;h:inputText id="bar" /&gt;
-&lt;h:inputText id="baz" /&gt;
-		</code></pre>
-		<pre class="prettyprint"><code class="code-java">
-@ManagedBean
-@RequestScoped
-public class ValidateValuesBean implements MultiFieldValidator {
-
-    @Override
-    public boolean validateValues(FacesContext context, List&lt;UIInput&gt; components, List&lt;Object&gt; values) {
-        // ...
-    }
-
-}
-		</code></pre>
-		<p>
-			Note: this validator does NOT throw <code>ValidatorException</code>, but returns a boolean!
-			Message handling and invalidation job is up to the <code>ValidateMultipleFields</code> implementation who will call this method.
-			You can customize the message by the <code>message</code> attribute of the tag.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/validator/ValidateMultiple,component/validator/ValidateMultipleHandler,component/validator/ValidateMultipleFields,component/validator/ValidatorFamily,validator/MultiFieldValidator" />
+			<f:attribute name="vdl.paths" value="o/validateMultiple" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/validators/ValidateMultipleImpl.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

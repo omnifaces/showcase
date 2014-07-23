@@ -6,45 +6,12 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:demo="http://omnifaces.org/showcase"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:enableRestorableView&gt;</code> instructs the view handler to recreate the entire view whenever the
-			view has been expired, i.e. whenever <code>ViewHandler#restoreView(FacesContext, String)</code> returns <code>null</code>
-			and the current request is a postback. This effectively prevents <code>ViewExpiredException</code> on the view.
-			This tag needs to be placed in <code>&lt;f:metadata&gt;</code> of the view.
-		</p>
-		<p>
-			There are however technical design limitations: the recreated view is exactly the same as during the initial request,
-			so any modifications which are made thereafter, either by taghandlers or conditionally rendered components based on
-			some view or even session scoped variables, are completely lost. In order to recreate exactly the desired view, you
-			would need to make sure that those modifications are made based on request scoped variables (read: request
-			parameters) instead of view or session scoped variables. In other words, the state of the restorable view should not
-			depend on view or session scoped managed beans, but purely on request scoped managed beans.
-		</p>
-		<p>
-			To enable the restorable view, just add the <code>&lt;o:enableRestorableView&gt;</code> to the view metadata.
-		</p>
-		<pre class="prettyprint"><code class="lang-xhtml">
-&lt;f:metadata&gt;
-    &lt;o:enableRestorableView/&gt;
-&lt;/f:metadata&gt;
-		</code></pre>
-		
-		<h3>Mojarra's new stateless mode</h3>
-		<p>
-			Since Mojarra 2.1.19, about 2 months after OmniFaces introduced the <code>&lt;o:enableRestorableView&gt;</code>,
-			it's possible to enable a stateless mode on the view by simply setting its <code>transient</code> attribute to <code>true</code>:
-		</p>
-		<pre class="prettyprint"><code class="lang-xhtml">
-&lt;f:view transient="true"&gt;
-    ...
-&lt;/f:view&gt;
-		</code></pre>
-		<p>
-			This goes actually a step further than <code>&lt;o:enableRestorableView&gt;</code> as no state would be saved at all.
-			However, on those kind of pages where <code>&lt;o:enableRestorableView&gt;</code> would work just fine, this statelessness should not form any problem at all.
-			So, if you have at least Mojarra 2.1.19 at hands, use the <code>transient="true"</code> instead. 
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="taghandler/EnableRestorableView,viewhandler/RestorableViewHandler" />
+			<f:attribute name="vdl.paths" value="o/enableRestorableView" />
+			<f:attribute name="src.paths" value="/demo/restorableView-enabled.xhtml,/demo/restorableView-disabled.xhtml,includes/demo/restorableView.xhtml,classes/org/omnifaces/showcase/demo/Auth.java,lasses/org/omnifaces/showcase/servlets/InvalidateSessionServlet.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

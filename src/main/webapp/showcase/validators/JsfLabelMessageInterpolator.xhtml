@@ -5,25 +5,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Unlike native JSF validation error messages, in a bean validation message by default the label
-			of the component where a validation constraint violation originated from can not be displayed
-			in the middle of a message.		
-		</p>
-		<p>
-			Using the <code>javax.faces.validator.BeanValidator.MESSAGE</code> bundle key such label can
-			be put in front or behind the message, but that's it.
-		</p>
-		<p>
-			With the <em>JsfLabelMessageInterpolator</em> a label can appear in the middle of a message, by
-			using the special placeholder <code>{jsf.label}</code> in bean validation messages.
-		</p>
-		
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="validator/JsfLabelMessageInterpolator" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/validators/ValidateConstraintsBean.java,classes/org/omnifaces/showcase/model/ConstrainedEntity.java,classes/ValidationMessages.properties" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">
-	
 		<p>
 			Enter more than 2 resp. 3 characters in the input fields below and press submit to trigger 
 			a validation error. Note how the field's label appears in the message, which originates from

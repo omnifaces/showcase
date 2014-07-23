@@ -5,35 +5,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>org.omnifaces.eventlistener.InvokeActionEventListener</code> will add support for new 
-			<code>&lt;f:event&gt;</code> types <code>preInvokeAction</code> and <code>postInvokeAction</code>.
-			Those events are published during the beforephase and afterphase of <code>INVOKE_APPLICATION</code>
-			respectively. This actually offers a better hook on invoking actions after the 
-			<code>&lt;f:viewParam&gt;</code> values been set than the <code>preRenderView</code> event. In some 
-			circumstances the <code>preRenderView</code> event might be too late. For example, when you need to set a 
-			faces message in the flash scope and send a redirect. Also, it won't be invoked when the validations phase
-			has failed for one of the <code>&lt;f:viewParam&gt;</code> values, in contrary to the 
-			<code>preRenderView</code> event.
-		</p>
-		<p>
-			Note that the upcoming JSF 2.2 will come with a <code>&lt;f:viewAction&gt;</code> tag which should actually
-			solve the concrete functional requirement for which a <code>&lt;f:event type="preRenderView"&gt;</code>
-			workaround is often been used in JSF 2.0 and 2.1.
-		</p>
-		<p>
-			This event is not only supported on <code>UIViewRoot</code>, but it is also supported on <code>UIForm</code>,
-			<code>UIInput</code> and <code>UICommand</code> components. This thus also provides the possibility to invoke
-			multiple action listeners on a single <code>UIInput</code> and <code>UICommand</code> component on an easy 
-			manner.
-		</p>
-		<p>			
-			As this phase listener has totally no impact on a webapp's default behavior, this phase listener is already 
-			registered by OmniFaces own <code>faces-config.xml</code> and thus gets auto-initialized when the OmniFaces JAR 
-			is bundled in a webapp, so endusers do not need to register this phase listener explicitly themselves.
-		</p>
- 	</ui:define>		
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="eventlistener/InvokeActionEventListener,event/PreInvokeActionEvent,event/PostInvokeActionEvent" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/eventlisteners/InvokeActionBean.java" />
+		</f:metadata>
+	</ui:define>
 
 	<ui:define name="demo-meta">
 		<f:metadata>

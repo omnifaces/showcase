@@ -1,0 +1,65 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="taghandler/ViewParamValidationFailed" />
+			<f:attribute name="vdl.paths" value="o/viewParamValidationFailed" />
+			<f:attribute name="src.paths" value="templates/errorpage.xhtml,errorpages/400.xhtml" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo-meta">
+		<f:metadata>
+			<f:viewParam id="foo" name="foo" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendError="400" />
+			</f:viewParam>
+			<f:viewParam id="bar" name="bar" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendError="400" message="Invalid bar!"/>
+			</f:viewParam>
+			<f:viewParam id="baz" name="baz" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendRedirect="whatsnew" />
+			</f:viewParam>
+			<f:viewParam id="faz" name="faz" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendRedirect="whatsnew" message="Invalid faz!" />
+			</f:viewParam>
+			<f:viewParam id="boo" name="boo" converter="javax.faces.Long" />
+			<f:viewParam id="foz" binding="#{foz}" name="foz" converter="javax.faces.Long" />
+			<o:viewParamValidationFailed sendError="400" message="#{foz.valid ? null : 'Invalid foz!'}" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<p>
+			This page has 6 view parameters: <code>foo</code>,<code>bar</code>, <code>baz</code>, <code>faz</code>, 
+			<code>boo</code> and <code>foz</code>. All with a <code>javax.faces.Long</code> converter, just for simplicity.
+			You can of course use your own converters and validators, e.g. <code>required="true"</code>, 
+			<code>&lt;f:validateLongRange&gt;</code>, etcetera. In case conversion (or validation) fails, the associated
+			<code>&lt;o:viewParamValidationFailed&gt;</code> logic will be executed.
+		</p>
+		<p>
+			The first four view parameters have each their own <code>&lt;o:viewParamValidationFailed&gt;</code>, 
+			demonstrating the following cases:
+		</p>
+		<ul>
+			<li><a href="?foo=abc">Sending a HTTP 400 error with default validation message.</a></li>
+			<li><a href="?bar=abc">Sending a HTTP 400 error with a custom message.</a></li>
+			<li><a href="?baz=abc">Sending a redirect to <code>/whatsnew</code> with default validation message.</a></li>
+			<li><a href="?faz=abc">Sending a redirect to <code>/whatsnew</code> with a custom message.</a></li>
+		</ul>
+		<p>
+			The latter two view parameters which doesn't have their own <code>&lt;o:viewParamValidationFailed&gt;</code>
+			and are both making use of the global one sending a 400. The message is conditionally set based on whether it
+			was the <code>foz</code> parameter which failed.
+		</p>
+		<ul>
+			<li><a href="?boo=abc">Send a HTTP 400 error with default validation message.</a></li>
+			<li><a href="?foz=abc">Send a HTTP 400 error with a custom message.</a></li>
+		</ul>
+	</ui:define>
+</ui:composition>

@@ -6,12 +6,16 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:demo="http://omnifaces.org/showcase"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:methodParam&gt;</code> is a tag handler that can be used to pass a method expression into a 
-			Facelets tag. By default this is not possible, and the expression that's intended to be a method expression
-			will be created and made available as a value expression.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="taghandler/MethodParam" />
+			<f:attribute name="vdl.paths" value="o/methodParam" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/taghandlers/MethodParamBean.java,tags/actionmethod.xhtml,tags/actionlistenertrick.xhtml,tags/actionlistener.xhtml" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<h3>Demo</h3>
 		<p>
 			This page demonstrates the passing of an EL reference to a method to a Facelets tag in a variety of 
 			different ways. Note that the <code>&lt;demo:xxx&gt;</code> tags in the example are purely for demonstration,

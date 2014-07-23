@@ -5,74 +5,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>omnifaces.SelectItemsConverter</code> allows you to populate e.g. a drop-down with complex Java 
-			model objects (entities) as value of <code>&lt;f:selectItems&gt;</code> and have JSF convert those 
-			automatically back without the need to provide a custom converter which may need to do the job based on 
-			possibly expensive service/DAO operations.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="converter/SelectItemsConverter,util/selectitems/SelectItemsUtils,util/selectitems/SelectItemsCollector" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/converters/SelectItemsBean.java,classes/org/omnifaces/showcase/model/ExampleEntity.java" />
+		</f:metadata>
+	</ui:define>
 
-		<h3>Usage</h3>
-		<p>
-			This converter is available by converter ID <code>omnifaces.SelectItemsConverter</code>.
-			Just specify it in the <code>converter</code> attribute of the input component holding <code>&lt;f:selectItems&gt;</code>.
-		</p>
-		<pre class="prettyprint"><code class="code-xhtml">
-&lt;h:selectOneMenu value="\#{bean.selectedItem}" converter="omnifaces.SelectItemsConverter"&gt;
-    &lt;f:selectItems value="\#{bean.availableItems}" /&gt;
-&lt;/h:selectOneMenu&gt;
-		</code></pre>
-
-		<h3>Make sure that your entity has a good <code>toString()</code> implementation</h3>
-		<p>
-			The base converter uses by default the <code>toString()</code> method of the entity to uniquely identify 
-			the instance during the conversion. This is sufficient if your (abstract base) entity has a 
-			<code>toString()</code> implementation which looks something like this:
-		</p>
-		<pre class="prettyprint"><code class="code-java">
-@Override
-public String toString() {
-    return String.format("%s[id=%d]", getClass().getSimpleName(), getId());
-}
-		</code></pre>
-		<p>
-			By the way, <a href="http://stackoverflow.com/a/17343582/157882">you should also make sure that your entity 
-			has a good <code>equals()</code> and <code>hashCode()</code> implementation</a>, otherwise JSF won't be able
-			to set the right entity back in the model. Please note that this problem is in turn unrelated to the
-			<code>SelectItemsConverter</code>, you would have faced the same problem when using any other converter.
-		</p>
-
-		<h3>If your entity can't have a good <code>toString()</code> implementation</h3>
-		<p>
-			However, if the entity doesn't have a <code>toString()</code> implementation (and thus relies on the default
-			<code>fqn@hashcode</code> implementation), or the existing implementation doesn't necessarily uniquely 
-			identify the instance, and you can't implement/change it, then it is recommended to extend the
-			<code>SelectItemsConverter</code> class and override <b>only</b> the <code>getAsString</code> method wherein
-			the desired implementation is provided. For example:
-		</p>
-		<pre class="prettyprint"><code class="code-java">
-@FacesConverter("exampleEntitySelectItemsConverter")
-public class ExampleEntitySelectItemsConverter extends SelectItemsConverter {
-
-    @Override
-    public String getAsString(FacesContext context, UIComponent component, Object value) {
-        Long id = (value instanceof ExampleEntity) ? ((ExampleEntity) value).getId() : null;
-        return (id != null) ? String.valueOf(id) : null;
-    }
-
-}
-		</code></pre>
-		<p>
-			Again, you do <strong>not</strong> need to override the <code>getAsObject()</code> method which would only
-			need to perform possibly expensive service/DAO operations. The <code>SelectItemsConverter</code> base
-			converter will already do it automatically based on the available items and the <code>getAsString()</code>
-			implementation.
-		</p>
-		<p>
-			An alternative is to switch to <h:link outcome="SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code></h:link>.
-		</p>
-		
+	<ui:define name="description-extra">
 		<h3>Demo</h3>
 		<p>
 			The below demo uses the base converter only, as <code>ExampleEntity</code> already returns its unique 

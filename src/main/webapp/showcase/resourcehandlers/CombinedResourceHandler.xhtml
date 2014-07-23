@@ -6,52 +6,13 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			This <code>ResourceHandler</code> implementation will remove all separate script and stylesheet resources which have the
-			<code>target</code> attribute set to <code>"head"</code> from the <code>UIViewRoot</code> and create a combined one
-			for all scripts and another combined one for all stylesheets when the current JSF project stage is <strong>not</strong> set to
-			<code>Development</code>.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="resourcehandler/CombinedResourceHandler,resourcehandler/CombinedResourceInfo,resourcehandler/CombinedResource,resourcehandler/CombinedResourceInputStream" />
+		</f:metadata>
+	</ui:define>
 
-		<h3>Installation</h3>
-		<p>
-			This handler must be registered as follows in <code>faces-config.xml</code> in order to get it to run:
-		</p>
-		<pre class="prettyprint"><code class="lang-xml">
-&lt;application&gt;
-    &lt;resource-handler&gt;org.omnifaces.resourcehandler.CombinedResourceHandler&lt;/resource-handler&gt;
-&lt;/application&gt;
-		</code></pre>
-
-		<h3>Usage</h3>
-		<p>
-			Note should be that the <code>target</code> attribute of <code>&lt;h:outputStylesheet&gt;</code> already defaults to
-			<code>"head"</code> but the one of <code>&lt;h:outputScript&gt;</code> not. So if you have placed this inside the
-			<code>&lt;h:head&gt;</code>, then you would still need to explicitly set its <code>target</code> attribute to
-			<code>"head"</code>, otherwise it will be treated as an inline script and not be combined. This is a design
-			limitation.
-			This is not necessary for <code>&lt;o:deferredScript&gt;</code>.
-		</p>
-		<pre class="prettyprint"><code class="lang-xml">
-&lt;h:head&gt;
-    &lt;h:outputStylesheet name="style.css" /&gt;
-    &lt;h:outputScript name="script.js" target="head" /&gt;
-    &lt;o:deferredScript name="onload.js" /&gt;
-&lt;/h:head&gt;
-		</code></pre>
-		<p>
-			If you want them to appear <em>after</em> any auto-included resources of standard JSF implementation or JSF
-			component libraries, then move the declarations to the <code>&lt;h:body&gt;</code>.
-			This is not necessary for <code>&lt;o:deferredScript&gt;</code>.
-		</p>
-		<pre class="prettyprint"><code class="lang-xml">
-&lt;h:body&gt;
-    &lt;h:outputStylesheet name="style.css" /&gt;
-    &lt;h:outputScript name="script.js" target="head" /&gt;
-&lt;/h:body&gt;
-		</code></pre>
-
+	<ui:define name="description-extra">
 		<h3>Demo</h3>
 		<p>
 			This resource handler is also  
@@ -90,7 +51,7 @@
 			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a> and
 			<a href="#{resourceBaseURL}js/onload.js.xhtml?ln=showcase">onload.js</a>.
 		</p>
-		<p> 
+		<p>
 			Note that the PrimeFaces <code>theme.css</code> file can by default not be combined because it's not been 
 			added as a JSF resource, but hardcoded in PrimeFaces' <code>HeadRenderer</code>. There's however a way to
 			get it to be included anyway, but this requires a custom renderer for the <code>&lt;head&gt;</code> wherein
@@ -101,11 +62,6 @@
 			is also
 			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/webapp/WEB-INF/faces-config.xml">configured</a>
 			in this showcase.
-		</p>
-		<p>
-			The generated combined resource URL also includes the "<code>v</code>" request parameter which is the last
-			modified time of the newest individual resource in minutes, so that the browser will always be forced to
-			request the latest version whenever one of the individual resources has changed.
 		</p>
  	</ui:define>		
 </ui:composition>

@@ -5,38 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>&lt;o:viewParam&gt;</code> is a component that extends the standard <code>&lt;f:viewParam&gt;</code> and provides a
-			stateless mode of operation and fixes the issue wherein null model values are converted to empty string parameters
-			in query string (e.g. when <code>includeViewParams=true</code>).
-		</p>
-		<p>
-			The standard <code>&lt;f:viewParam&gt;</code> implementation calls the model setter again after postback. This is not always desired
-			when being bound to a view scoped bean and can lead to performance problems when combined with an expensive converter.
-			To solve this, this component by default stores the submitted value as a component property instead of in the model
-			(and thus in the view state in case the binding is to a view scoped bean).
-		</p>
-		<p>
-			The <code>required="true"</code> validator is also skipped on postbacks,
-			so you don't need to retain it on every single command link/button by <code>&lt;f:param&gt;</code>. 
-			It also provides a default for the <code>label</code> atrribute. When the <code>label</code> attribute is 
-			omitted, the <code>name</code> attribute will be used as label.
-		</p>
-		<p>
-			The standard <code>&lt;f:viewParam&gt;</code> implementation calls the converter regardless of whether the evaluated model value is
-			<code>null</code> or not. As converters by specification return an empty string in case of <code>null</code> value,
-			this is being added to the query string as an empty parameter. This is not desired.
-		</p>
-		
-		<h3>Usage</h3>
-		<p>
-			You can use it the same way as <code>&lt;f:viewParam&gt;</code>, you only need to change <code>f:</code> to <code>o:</code>.
-		</p>
-		<pre class="prettyprint"><code class="lang-xhtml">
-&lt;o:viewParam name="foo" value="\#{bean.foo}" /&gt;		
-		</code></pre>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/input/ViewParam" />
+			<f:attribute name="vdl.paths" value="o/viewParam" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ViewParamBean.java,classes/org/omnifaces/showcase/components/TestConverter.java" />
+		</f:metadata>
+	</ui:define>
 
+	<ui:define name="description-extra">
 		<h3>Demo</h3>
 		<p>
 			As to the demo below, if this page is requested by a request without a <code>test</code> parameter, it should

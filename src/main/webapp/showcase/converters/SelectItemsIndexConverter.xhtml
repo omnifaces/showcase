@@ -5,47 +5,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			The <code>omnifaces.SelectItemsIndexConverter</code> allows you to populate e.g. a drop-down with complex Java 
-			model objects as value of <code>&lt;f:selectItems&gt;</code> and have JSF convert those automatically back 
-			without the need to provide a custom converter which may need to do the job based on possibly expensive 
-			service/DAO operations.
-		</p>
-		<p>
-			This converter automatically converts between the index of the select
-			item value and the select item value itself based on its position in the associated select items for the component
-			for which conversion is taking place.
-		</p>
-		<p>
-			This converter has the following advantages over <h:link value="SelectItemsConverter" outcome="SelectItemsConverter" styleClass="code" />:
-		</p>
-		<ul>
-			<li>No need to rely on <code>toString()</code> method of the object.</li>
-			<li>No need to extend the <code>SelectItemsConverter</code> when <code>toString()</code> method of the object cannot be used.</li>
-			<li>No need to expose the object's unique key if that's a problem.</li>
-		</ul>
-		<p>
-			This converter has the following disadvantage over <code>SelectItemsConverter</code>:
-		</p>
-		<ul>
-			<li>The "Validation Error: value is not valid" will never occur anymore for the case that the available select items
-			has incompatibly changed during the postback due to a developer's mistake. The developer should make absolutely sure
-			that exactly the same list is preserved on postback (e.g. by making it a property of a view scoped or broader scoped
-			bean).</li>
-		</ul>
-
-		<h3>Usage</h3>
-		<p>
-			This converter is available by converter ID <code>omnifaces.SelectItemsIndexConverter</code>.
-			Just specify it in the <code>converter</code> attribute of the input component holding <code>&lt;f:selectItems&gt;</code>.
-		</p>
-		<pre class="prettyprint"><code class="code-xhtml">
-&lt;h:selectOneMenu value="\#{bean.selectedItem}" converter="omnifaces.SelectItemsIndexConverter"&gt;
-    &lt;f:selectItems value="\#{bean.availableItems}" /&gt;
-&lt;/h:selectOneMenu&gt;
-		</code></pre>
-
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="converter/SelectItemsIndexConverter,util/selectitems/SelectItemsUtils,util/selectitems/SelectItemsCollector" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/converters/SelectItemsBean.java,classes/org/omnifaces/showcase/model/ExampleEntity.java" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

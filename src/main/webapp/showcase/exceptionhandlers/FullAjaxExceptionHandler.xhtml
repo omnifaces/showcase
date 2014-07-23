@@ -5,31 +5,15 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			By default, when an exception occurs during a JSF ajax request, the enduser would not get any form of feedback
-			if the action was successfully performed or not. In Mojarra, only when the project stage is set to 
-			<code>Development</code>, the enduser would see a bare JavaScript alert with only the exception type and message.
-			It would make sense if exceptions during ajax requests are handled the same way as exceptions during synchronous 
-			requests, which is utilizing the standard Servlet API <code>&lt;error-page&gt;</code> mechanisms in <code>web.xml</code>.
-		</p>
-		<p>
-			This <code>FullAjaxExceptionHandler</code> enables you to show the full error page in its entirety to the 
-			enduser in case of exceptions during ajax requests. This exception handler will parse the <code>web.xml</code> 
-			and <code>web-fragment.xml</code> files to find the error page locations of the HTTP error code 500 and all 
-			declared specific exception types.
-		</p>
-		
-		<h3>Installation</h3>
-		<p>
-			This handler must be registered by a factory as follows in <code>faces-config.xml</code> in order to get it to run:
-		</p>
-		<pre class="prettyprint"><code class="lang-xml">
-&lt;factory&gt;
-    &lt;exception-handler-factory&gt;org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory&lt;/exception-handler-factory&gt;
-&lt;/factory&gt;
-		</code></pre>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="exceptionhandler/FullAjaxExceptionHandler,exceptionhandler/FullAjaxExceptionHandlerFactory" />
+			<f:attribute name="vdl.paths" value="of/printStackTrace.fn" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/exceptionhandlers/ExceptionBean.java,templates/errorpage.xhtml,errorpages/bug.xhtml,errorpages/database.xhtml,errorpages/expired.xhtml,errorpages/epicfail.xhtml" />
+		</f:metadata>
+	</ui:define>
 
+	<ui:define name="description-extra">
 		<h3>Demo</h3>
 		<p>
 			The buttons in the below demo will each purposefully throw an exception. You'll see that an error page template
@@ -64,41 +48,6 @@
     &lt;location&gt;/WEB-INF/errorpages/bug.xhtml&lt;/location&gt;
 &lt;/error-page&gt;
 		</code></pre>
-		
-		<p>
-			Please note that the error page <strong>must</strong> be a valid Facelets page! JSP is not supported.
-		</p>
-		
-		<h3>Normal requests</h3>
-		<p>
-			Note that the <code>FullAjaxExceptionHandler</code> does not deal with normal (non-ajax) requests at all.
-			To properly handle JSF and EL exceptions on normal requests as well, you need an additional
-			<h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link>.
-			This will extract the root cause from a wrapped <code>FacesException</code> and <code>ELException</code>
-			before delegating the <code>ServletException</code> further to the container (the container will namely use
-			the first root cause of <code>ServletException</code> to match an error page by exception in web.xml). 
-		</p>
-		
-		<h3>Error in error page itself</h3>
-		<p>
-			When the rendering of the error page itself failed due to a bug in the error page itself, 
-			then the <code>FullAjaxExceptionHandler</code> will reset the response and display a hardcoded error message in "plain text".
-			You can see it by pressing the "cause epic fail on ajax request" button in the below demo.
-		</p>
-		
-		<h3>Customizing <code>FullAjaxExceptionHandler</code></h3>
-		<p>
-			The <code>FullAjaxExceptionHandler</code> offers three protected methods which can be overridden on by extending.
-		</p>
-		<ul>
-			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#findExceptionRootCause(javax.faces.context.FacesContext, java.lang.Throwable)">findExceptionRootCause(context, exception)</a></li>
-			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#findErrorPageLocation(javax.faces.context.FacesContext, java.lang.Throwable)">findErrorPageLocation(context, exception)</a></li>
-			<li><a href="#{_apiURL}org/omnifaces/exceptionhandler/FullAjaxExceptionHandler.html#logException(javax.faces.context.FacesContext, java.lang.Throwable, java.lang.String, java.lang.String, java.lang.Object...)">logException(context, exception, location, message, params)</a></li>
-		</ul>
-		<p>
-			Don't forget to create a custom <code>ExceptionHandlerFactory</code> for it as well, so that it could be registered in <code>faces-config.xml</code>.
-			This does not necessarily need to extend from <code>FullAjaxExceptionHandlerFactory</code>.
-		</p>
 	</ui:define>
 
 	<ui:define name="demo">

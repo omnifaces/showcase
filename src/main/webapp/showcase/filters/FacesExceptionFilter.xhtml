@@ -5,30 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			This filter will solve 2 problems with faces exceptions coming from JSF/EL.
-		</p>
-		<ul>
-			<li>Mojarra's <code>FacesFileNotFoundException</code> which extends <code>FileNotFoundException</code> needs to be interpreted as 404.</li>
-			<li>Root cause of <code>FacesException</code> (Mojarra) and <code>ELException</code> (MyFaces) needs to be unwrapped to utilize standard Servlet API error page handling.</li>
-		</ul>
-		
-		<h3>Installation</h3>
-		<p>
-			To get it to run, map this filter on the <code>&lt;servlet-name&gt;</code> of the <code>FacesServlet</code>.
-		</p>	
-		<pre class="prettyprint"><code class="lang-xml">
-&lt;filter&gt;
-    &lt;filter-name&gt;facesExceptionFilter&lt;/filter-name&gt;
-    &lt;filter-class&gt;org.omnifaces.filter.FacesExceptionFilter&lt;/filter-class&gt;
-&lt;/filter&gt;
-&lt;filter-mapping&gt;
-    &lt;filter-name&gt;facesExceptionFilter&lt;/filter-name&gt;
-    &lt;servlet-name&gt;facesServlet&lt;/servlet-name&gt;
-&lt;/filter-mapping&gt;
-		</code></pre>
-
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="filter/FacesExceptionFilter" />
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="description-extra">
 		<h3>Demo</h3>
 		<p>
 			The <code>FacesExceptionFilter</code> is also 

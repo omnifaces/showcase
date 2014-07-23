@@ -5,65 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Collection of utility methods for the JSF API that are mainly shortcuts for obtaining stuff from the thread
-			local <code>FacesContext</code>. In effects, it 'flattens' the hierarchy of nested objects. Do note that 
-			using the hierarchy is actually a better software design practice, but can lead to verbose code.
-		</p>
-		<p>
-			Next to those oneliner delegate calls, there are also some helpful methods which eliminates multiline 
-			boilerplate code, such as
-			<a href="#{_apiURL}org/omnifaces/util/Faces.html#getLocale()"><code>getLocale()</code></a>
-			which returns sane fallback values, a more convenient
-			<a href="#{_apiURL}org/omnifaces/util/Faces.html#redirect(java.lang.String, java.lang.String...)"><code>redirect()</code></a>
-			which automatically prepends the context path when the path does not start with <code>/</code> and offers support
-			for URL encoding of request parameters supplied by varargs argument, and several useful
-			<a href="#{_apiURL}org/omnifaces/util/Faces.html#sendFile(java.io.File, boolean)"><code>sendFile()</code></a>
-			methods which allows you to provide a <code>File</code>, <code>byte[]</code> or <code>InputStream</code> as a download to the client.
-		</p>
-		<p>
-			Some examples (for the full list, check the API documentation):
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// Get a session attribute (no explicit cast necessary!).
-User user = Faces.getSessionAttribute("user");
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/Faces,util/FacesLocal,util/Servlets" />
+		</f:metadata>
+	</ui:define>
 
-// Evaluate EL programmatically (no explicit cast necessary!).
-Item item = Faces.evaluateExpressionGet("\#{item}");
-
-// Get a cookie value.
-String cookieValue = Faces.getRequestCookie("cookieName");
-
-// Get all supported locales with default locale as first item.
-List&lt;Locale&gt; supportedLocales = Faces.getSupportedLocales();
-
-// Check in e.g. preRenderView if session has been timed out.
-if (Faces.hasSessionTimedOut()) {
-    Messages.addGlobalWarn("Oops, you have been logged out because your session was been timed out!");
-}
-
-// Get value of &lt;f:metadata&gt;&lt;f:attribute name="foo"&gt; of different view without building it.
-String foo = Faces.getMetadataAttribute("/other.xhtml", "foo");
-
-// Send a redirect with parameters UTF-8 encoded in query string.
-Faces.redirect("product.xhtml?id=%d&amp;name=%s", product.getId(), product.getName());
-
-// Invalidate the session and send a redirect.
-public void logout() throws IOException {
-    Faces.invalidateSession();
-    Faces.redirect("login.xhtml"); // Can by the way also be done by return "login?faces-redirect=true" if in action method.
-}
-
-// Provide a file as attachment.
-public void download() throws IOException {
-    Faces.sendFile(new File("/path/to/file.ext"), true);
-}
-		</code></pre>
-		<p>
-			If you need to invoke "a lot" of <code>Faces</code> methods within the very same method block and worry about performance,
-			then you may want to consider using <h:link outcome="/utils/FacesLocal"><code>FacesLocal</code></h:link> instead.
-		</p>
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

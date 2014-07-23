@@ -5,28 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Collection of general utility methods with respect to working with exceptions. So far there's only an
-			unwrapper and a type checker.
-		</p>
-		<p>
-			Some examples:
-		</p>
-		<pre class="prettyprint"><code class="lang-java">
-// Check if the caught exception has a ConstraintViolationException in its hierarchy.
-catch (PersistenceException e) {
-    if (Exceptions.is(e, ConstraintViolationException.class)) {
-        // ...
-    }
-}
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/Exceptions" />
+		</f:metadata>
+	</ui:define>
 
-// Unwrap the caught FacesException until a non-FacesException is found.
-catch (FacesException e) {
-    Exception realRootCause = Exceptions.unwrap(e, FacesException.class);
-    // ...
-}
-		</code></pre>
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 </ui:composition>

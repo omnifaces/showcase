@@ -7,26 +7,11 @@
 	xmlns:of="http://omnifaces.org/functions"
 	xmlns:p="http://primefaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			<code>&lt;o:validateOrder&gt;</code> validates if the values of the given <code>UIInput</code> components as specified in
-			the <code>components</code> attribute are in the order as specified by the <code>type</code> attribute which accepts
-			the following values:
-		</p>
-		<ul>
-			<li><code>lt</code> (default): from least to greatest, without duplicates.</li>
-			<li><code>lte</code>: from least to greatest, allowing duplicates (equal values next to each other).</li>
-			<li><code>gt</code>: from greatest to least, without duplicates.</li>
-			<li><code>gte</code>: from greatest to least, allowing duplicates (equal values next to each other).</li>
-		</ul>
-		<p>
-			This validator has the additional requirement that the to-be-validated values must implement 
-			<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Comparable.html"><code>Comparable</code></a>.
-			Note that when this validator is placed <em>before</em> all of the components, then it will only compare the raw
-			unconverted submitted string values, not the converted object values. If you need to compare by the converted
-			object values, then you need to place this validator <em>after</em> all of the components, like as demonstrated
-			in the second example with dates below.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/validator/ValidateOrder,component/validator/ValidateMultipleFields,component/validator/ValidatorFamily,validator/MultiFieldValidator" />
+			<f:attribute name="vdl.paths" value="o/validateOrder" />
+		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">

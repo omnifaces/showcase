@@ -6,10 +6,13 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:p="http://primefaces.org/ui"
 >
-	<ui:define name="description">
-		<p>
-			Collection of utility methods for working with JNDI's <code>InitialContext</code>.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="util/JNDI" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>
 </ui:composition>
