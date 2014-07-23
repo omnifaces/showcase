@@ -3,8 +3,7 @@ html {
 }
 
 body {
-	min-width: 975px;
-	max-width: 1250px;
+	width: 1250px; /* Target minimum of 1280x1024 */
 	margin: 0 auto;
 	padding: 3px 0;
 	background: #eee;
