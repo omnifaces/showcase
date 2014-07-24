@@ -11,6 +11,22 @@
 			<f:attribute name="api.paths" value="taghandler/ViewParamValidationFailed" />
 			<f:attribute name="vdl.paths" value="o/viewParamValidationFailed" />
 			<f:attribute name="src.paths" value="templates/errorpage.xhtml,errorpages/400.xhtml" />
+
+			<f:viewParam id="foo" name="foo" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendError="400" />
+			</f:viewParam>
+			<f:viewParam id="bar" name="bar" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendError="400" message="Invalid bar!"/>
+			</f:viewParam>
+			<f:viewParam id="baz" name="baz" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendRedirect="whatsnew" />
+			</f:viewParam>
+			<f:viewParam id="faz" name="faz" converter="javax.faces.Long">
+				<o:viewParamValidationFailed sendRedirect="whatsnew" message="Invalid faz!" />
+			</f:viewParam>
+			<f:viewParam id="boo" name="boo" converter="javax.faces.Long" />
+			<f:viewParam id="foz" binding="#{foz}" name="foz" converter="javax.faces.Long" />
+			<o:viewParamValidationFailed sendError="400" message="#{foz.valid ? null : 'Invalid foz!'}" />
 		</f:metadata>
 	</ui:define>
 
@@ -49,8 +65,8 @@
 		<ul>
 			<li><a href="?foo=abc">Sending a HTTP 400 error with default validation message.</a></li>
 			<li><a href="?bar=abc">Sending a HTTP 400 error with a custom message.</a></li>
-			<li><a href="?baz=abc">Sending a redirect to <code>/whatsnew</code> with default validation message.</a></li>
-			<li><a href="?faz=abc">Sending a redirect to <code>/whatsnew</code> with a custom message.</a></li>
+			<li><a href="?baz=abc">Sending a redirect to <code>/whatsnew</code> with default validation message (via flash).</a></li>
+			<li><a href="?faz=abc">Sending a redirect to <code>/whatsnew</code> with a custom message (via flash).</a></li>
 		</ul>
 		<p>
 			The latter two view parameters which doesn't have their own <code>&lt;o:viewParamValidationFailed&gt;</code>

@@ -10,6 +10,9 @@
 			<f:attribute name="api.paths" value="component/input/ViewParam" />
 			<f:attribute name="vdl.paths" value="o/viewParam" />
 			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ViewParamBean.java,classes/org/omnifaces/showcase/components/TestConverter.java" />
+
+			<o:viewParam id="foo" name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
+			<f:viewParam id="bar" name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
 		</f:metadata>
 	</ui:define>
 

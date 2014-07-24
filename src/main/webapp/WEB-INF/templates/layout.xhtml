@@ -36,11 +36,7 @@ The following application wide constants are available via this template:
 	<c:set var="_vdlURL" value="http://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
 	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.version}/src/main/java/" scope="application" />
 
-    <!-- Client templates can insert f:metadata here, and this will NOT show up in the showcase page source code -->
     <ui:insert name="meta"/>
-
-    <!-- Client templates can insert f:metadata here, and this will show up in the showcase page source code -->
-    <ui:insert name="demo-meta"/>
 
 	<h:head>
 		<title><ui:insert name="title">OmniFaces Showcase</ui:insert></title>

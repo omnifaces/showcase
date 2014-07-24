@@ -9,6 +9,9 @@
 		<f:metadata>
 			<f:attribute name="api.paths" value="eventlistener/InvokeActionEventListener,event/PreInvokeActionEvent,event/PostInvokeActionEvent" />
 			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/eventlisteners/InvokeActionBean.java" />
+
+			<f:viewParam id="param" name="param" value="#{invokeActionBean.param}" />
+			<f:event type="postInvokeAction" listener="#{invokeActionBean.initParam}" />
 		</f:metadata>
 	</ui:define>
 

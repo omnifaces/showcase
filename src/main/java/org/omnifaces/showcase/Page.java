@@ -189,7 +189,7 @@ public class Page extends ListTreeModel<Page> {
 				title = title.substring(title.lastIndexOf('/') + 1, title.length());
 			}
 
-			if (title.contains(".java")) {
+			if (title.endsWith(".java")) {
 				title = title.substring(0, title.indexOf('.'));
 			}
 
