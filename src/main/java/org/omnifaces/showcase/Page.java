@@ -143,10 +143,10 @@ public class Page extends ListTreeModel<Page> {
 					String content = pre.addClass("prettyprint").html().trim();
 
 					if (content.startsWith("&lt;")) {
-						pre.html("<code class='xhtml'> " + content + "</code>");
+						pre.html("<code class='lang-xhtml'> " + content + "</code>");
 					}
 					else {
-						pre.html("<code class='java'> " + content + "</code>");
+						pre.html("<code class='lang-java'> " + content + "</code>");
 					}
 				}
 

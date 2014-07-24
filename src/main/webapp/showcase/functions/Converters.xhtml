@@ -129,12 +129,10 @@
 		<p>
 			The following should represent valid JavaScript variables:
 		</p>
-		<pre class="prettyprint"><code class="lang-javascript">
-var array = #{of:toJson(convertersBean.array)};
-var collection = #{of:toJson(convertersBean.set)};
-var map = #{of:toJson(convertersBean.map)};
-var exampleEntities = #{of:toJson(selectItemsBean.exampleEntities)};
-var serverDate = new Date(#{of:toJson(now)});
-		</code></pre>
+		<pre class="prettyprint"><code class="lang-javascript"> var array = #{of:toJson(convertersBean.array)};
+ var collection = #{of:toJson(convertersBean.set)};
+ var map = #{of:toJson(convertersBean.map)};
+ var exampleEntities = #{of:toJson(selectItemsBean.exampleEntities)};
+ var serverDate = new Date(#{of:toJson(now)});</code></pre>
 	</ui:define>
 </ui:composition>

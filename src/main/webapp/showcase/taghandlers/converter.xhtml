@@ -19,20 +19,18 @@
 		<p>
 			In the below demo, it was the intent to use <code>&lt;f:convertDateTime&gt;</code> as follows:
 		</p>
-		<pre class="prettyprint"><code class="xhtml">
-&lt;f:convertDateTime type="both" dateStyle="full" timeStyle="full" locale="\#{locale}" /&gt;
-		</code></pre>
+		<pre class="prettyprint"><code class="lang-xhtml"> &lt;f:convertDateTime type="both" dateStyle="full" timeStyle="full" locale="\#{locale}" /&gt;</code></pre>
 		<p>
 			But this wouldn't even run, it will throw the following exception because the <code>\#{locale}</code> isn't 
 			available during view build time (for a background explanation, check 
 			<a href="http://stackoverflow.com/q/3342984/157882">this Stack Overflow answer</a>).
 		</p>
 		<pre>
-javax.faces.view.facelets.TagAttributeException: /taghandlers/converter @62,92 
-locale="#{locale}" Attribute did not evaluate to a String or Locale: null
-    at com.sun.faces.facelets.tag.jsf.ComponentSupport.getLocale(ComponentSupport.java:297)
-    at com.sun.faces.facelets.tag.jsf.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:127)
-    at com.sun.faces.facelets.tag.jsf.ConverterTagHandlerDelegateImpl.applyAttachedObject(ConverterTagHandlerDelegateImpl.java:130)
+ javax.faces.view.facelets.TagAttributeException: /taghandlers/converter @62,92 
+ locale="#{locale}" Attribute did not evaluate to a String or Locale: null
+     at com.sun.faces.facelets.tag.jsf.ComponentSupport.getLocale(ComponentSupport.java:297)
+     at com.sun.faces.facelets.tag.jsf.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:127)
+     at com.sun.faces.facelets.tag.jsf.ConverterTagHandlerDelegateImpl.applyAttachedObject(ConverterTagHandlerDelegateImpl.java:130)
 		</pre>
 		<p>
 			It works as intuitively expected with the <code>&lt;o:converter&gt;</code> as it allows a render time evaluation of attributes.
