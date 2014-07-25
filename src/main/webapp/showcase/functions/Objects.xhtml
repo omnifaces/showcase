@@ -7,10 +7,14 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<ui:define name="description">
-		<p>
-			Collection of EL functions for objects (there's so far only one): <code>of:coalesce()</code>.
-		</p>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="el/functions/Objects" />
+			<f:attribute name="vdl.paths" value="of/coalesce.fn" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
 		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
 	</ui:define>		
 	
