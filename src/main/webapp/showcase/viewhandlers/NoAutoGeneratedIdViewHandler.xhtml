@@ -22,6 +22,7 @@
 			<li><h:link><f:param name="component" value="table" />Test <code>&lt;h:dataTable&gt;</code> without ID</h:link></li>
 			<li><h:link><f:param name="component" value="subview" />Test <code>&lt;f:subview&gt;</code> without ID</h:link></li>
 			<li><h:link><f:param name="component" value="tabview" />Test <code>&lt;p:tabView&gt;</code> without ID</h:link></li>
+			<li><h:link><f:param name="component" value="tab" />Test <code>&lt;p:tab&gt;</code> without ID</h:link></li>
 		</ul>
 
 		<c:choose>
@@ -48,7 +49,16 @@
 				</f:subview>
 			</c:when>
 			<c:when test="#{param.component eq 'tabview'}">
-				<p:tabView />
+				<h:form id="form3">
+					<p:tabView />
+				</h:form>
+			</c:when>
+			<c:when test="#{param.component eq 'tab'}">
+				<h:form id="form4">
+					<p:tabView id="tabview">
+						<p:tab />
+					</p:tabView>
+				</h:form>
 			</c:when>
 			<c:otherwise />
 		</c:choose>
