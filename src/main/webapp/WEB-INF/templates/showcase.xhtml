@@ -56,8 +56,8 @@ The following metadata attributes are supported via this template (they're parse
 		<h:outputText value="#{page.current.title}" styleClass="code" rendered="#{parent.childCount == 1}" />
 
 		<div id="quickNavigation">
-		 	<p:button icon="ui-icon-triangle-1-w" title="Previous" outcome="#{of:coalesce(page.current.previousSibling.viewId, '/index')}" />
-		 	<p:button icon="ui-icon-triangle-1-e" title="Next" outcome="#{of:coalesce(page.current.nextSibling.viewId, '/index')}" />
+		 	<p:button id="prev" icon="ui-icon-triangle-1-w" title="Previous" outcome="#{of:coalesce(page.current.previousSibling.viewId, '/index')}" />
+		 	<p:button id="next" icon="ui-icon-triangle-1-e" title="Next" outcome="#{of:coalesce(page.current.nextSibling.viewId, '/index')}" />
 		</div>
 	</ui:define>
 
@@ -81,8 +81,8 @@ The following metadata attributes are supported via this template (they're parse
 			</p:panel>
 
 			<p:panel id="source" header="Source code">
-				<p:tabView value="#{page.current.sources}" var="source">
-					<p:tab title="#{source.title}">
+				<p:tabView id="sources" value="#{page.current.sources}" var="source">
+					<p:tab id="tab" title="#{source.title}">
 						<pre class="prettyprint"><code class="lang-#{source.type}">#{source.code}</code></pre>
 					</p:tab>
 				</p:tabView>

@@ -32,6 +32,12 @@ h1 a img {
 	border: 0;
 }
 
+hr {
+	height: 1px;
+	border: none;
+	background-color: #a8a8a8;
+}
+
 a:hover, 
 a.active {
 	background: #ddd;
@@ -178,6 +184,10 @@ input.error, select.error, textarea.error {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
+}
+
+.important {
+	background: #ff9;
 }
 
 .ui-panel-titlebar.ui-helper-clearfix:after {
