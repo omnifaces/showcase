@@ -12,18 +12,15 @@
 		</f:metadata>
 	</ui:define>
 
-	<ui:define name="description-extra">
-		<h3>Demo</h3>
+	<ui:define name="demo">
 		<p>
 			The below demo uses the base converter only, as <code>ExampleEntity</code> already returns its unique 
 			identifier in the <code>toString()</code> method. If you intend to use the extended select items converter
 			for your entities based on the above example, then just specify the converter as 
 			<code>converter="exampleEntitySelectItemsConverter"</code> instead.
 		</p>
-	</ui:define>
 
-	<ui:define name="demo">
-		 <h:form>
+		<h:form>
 			<p>
 				<b>Last selected item:</b> <h:outputText id="selected_item" value="#{selectItemsBean.selectedEntity.value}" />
 			</p>

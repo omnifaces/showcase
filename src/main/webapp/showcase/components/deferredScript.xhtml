@@ -16,13 +16,12 @@
 
 	<ui:define name="description-extra">
 		<h3>Demo</h3>
-		<c:set var="resourceBaseURL" value="#{request.contextPath}/javax.faces.resource/" />
 		<p>
 			This component is also  
 			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/webapp/WEB-INF/templates/showcase.xhtml">used</a>
 			on this showcase web application on the two JS files 
-			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a> and
-			<a href="#{resourceBaseURL}js/onload.js.xhtml?ln=showcase">onload.js</a>.
+			<a href="#{resource['showcase:js/prettify.js']}">prettify.js</a> and
+			<a href="#{resource['showcase:js/onload.js']}">onload.js</a>.
 			Rightclick the page and <i>View Source</i> and find the <code>OmniFaces.DeferredScript.add</code> call at the bottom of <code>&lt;body&gt;</code>.
 			Note that this showcase application is also using the 
 			<h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link>

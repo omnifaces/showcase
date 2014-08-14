@@ -12,8 +12,7 @@
 		</f:metadata>
 	</ui:define>
 
-	<ui:define name="description-extra">
-		<h3>Demo</h3>
+	<ui:define name="demo">
 		<p>
 			When the page loads, you should see the annoying JavaScript alert "Hi, I am the o:onloadScript function!".
 			You should see the same alert again when you submit the form, also on ajax submits. This would not happen
@@ -25,9 +24,7 @@
 			want to re-execute a specific helper script to manipulate the HTML DOM tree, such as (re-)adding fancy tooltips,
 			performing highlights, etcetera, on every ajax request, also after changes in the HTML DOM tree on ajax responses.
 		</p>
-	</ui:define>
 
-	<ui:define name="demo">
 		<o:onloadScript>alert("Hi, I am the o:onloadScript function!");</o:onloadScript>
 
 		<h3>Normal request</h3>

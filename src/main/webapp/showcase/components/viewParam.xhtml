@@ -11,68 +11,47 @@
 			<f:attribute name="vdl.paths" value="o/viewParam" />
 			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ViewParamBean.java,classes/org/omnifaces/showcase/components/TestConverter.java" />
 
-			<o:viewParam id="foo" name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
-			<f:viewParam id="bar" name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
+			<o:viewParam name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
+			<f:viewParam name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
 		</f:metadata>
-	</ui:define>
-
-	<ui:define name="description-extra">
-		<h3>Demo</h3>
-		<p>
-			As to the demo below, if this page is requested by a request without a <code>test</code> parameter, it should
-			display the message	with the <code>name</code> of the <code>&lt;o:viewParam&gt;</code> as label instead of 
-			its client ID:
-			<br/>
-			"test: Validation Error: Value is required."
-		</p>
-		<p>
-			Clicking the GET link initiates a new GET request with a <code>test</code> parameter. Every time this
-			request is issued, a converter runs that attaches an ever increasing number to the displayed
-			value.
-		</p>
-		<p>
-			Clicking the POST link initiates a POST request. This should not convert
-			the value again and thus the number should not change. The POST request should also
-			not cause the <code>required="true"</code> validator to be triggered.
-		</p>
-		<p>
-			When starting off with <h:link value="URL without view parameters" />, 
-			clicking the GET link with <code>includeViewParams=true</code> would add the 
-			<code>&lt;f:viewParam name="bar"&gt;</code> with an empty value to the request URL.
-			This doesn't happen for <code>&lt;o:viewParam name="foo"&gt;</code>.
-		</p>
 	</ui:define>
 
 	<ui:define name="demo-meta">
 		<f:metadata>
-			<o:viewParam id="foo" name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
-			<f:viewParam id="bar" name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
+			<o:viewParam name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
+			<f:viewParam name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo">
+		<h:messages styleClass="messages" errorClass="error" />
 		<p>
-			<h:link value="The GET link">
-				<f:param name="foo" value="value"/>
-			</h:link>
+			If this page is requested by a request without <code>foo</code> parameter which is set by <code>&lt;o:viewParam&gt;</code>, 
+			it displays the message with the <code>name</code> of the <code>&lt;o:viewParam&gt;</code> as label instead of its client ID.
 		</p>
 		<p>
-			<h:form>
-				<h:commandLink value="The POST link" />
-			</h:form>
+			Clicking <h:link><f:param name="foo" value="test"/><f:param name="bar" value="test" />this GET link</h:link>
+			should cause a validation error on <code>bar</code> parameter which is set by <code>&lt;f:viewParam&gt;</code>,
+			it displays the message with the client ID of the <code>&lt;f:viewParam&gt;</code> as label. 
 		</p>
 		<p>
-			<h:link value="The GET link with includeViewParams=true" includeViewParams="true" />
+			Clicking <h:link><f:param name="foo" value="test"/>this GET link</h:link> initiates a new GET request with a <code>test</code> parameter.
+			Every time this link is clicked, a converter runs that attaches an ever increasing number to the displayed value:
+			<b>#{viewParamBean.foo}</b>
 		</p>
-			
+		<h:form>
+			<p>
+				Clicking <h:commandLink value="this POST link" /> initiates a POST request.
+				This should not convert the value again and thus the above number should not change.
+				This should also not trigger the <code>required="true"</code> validator of the <code>&lt;o:viewParam&gt;</code>
+				and thus no validation error should show up, on contrary to when you would use the <code>&lt;f:viewParam&gt;</code>.
+			</p>
+		</h:form>
 		<p>
-			<b>The value: </b>
-			#{viewParamBean.foo}
+			When starting off with <h:link>URL without view parameters</h:link>, 
+			clicking <h:link includeViewParams="true">the GET link with <code>includeViewParams=true</code></h:link>
+			would add the <code>&lt;f:viewParam name="bar"&gt;</code> with an empty value to the request URL.
+			This doesn't happen for <code>&lt;o:viewParam name="foo"&gt;</code>.
 		</p>
-		<p>
-			<b>The message: </b>
-			<h:message for="foo" />
-		</p>
-		
 	</ui:define>
 </ui:composition>

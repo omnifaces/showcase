@@ -16,18 +16,6 @@
 	<ui:define name="description-extra">
 		<h3>Demo</h3>
 		<p>
-			The buttons in the below demo will each purposefully throw an exception. You'll see that an error page template
-			is presented regardless of if it's an ajax request or not. Also, if you wait 
-			#{of:formatNumber(session.maxInactiveInterval / 60, '#')}
-			minutes or manually delete the <code>JSESSIONID</code> cookie or press the below "Invalidate session" button 
-			and then click any of the buttons on the demo, then you'll get a view expired exception which will also end up 
-			in a specific error page.
-		</p>
-		<p>
-			<input type="button" value="Invalidate session"
-				onclick="$.get('#{request.contextPath}/invalidatesession?#{now.time}', alert('Session invalidated!'))" />
-		</p>
-		<p>
 			This exception handler is also  
 			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/webapp/WEB-INF/faces-config.xml">configured</a>
 			on this showcase web application. The following error pages are been
@@ -49,6 +37,10 @@
 	</ui:define>
 
 	<ui:define name="demo">
+		<p>
+			The buttons in the below demo will each purposefully throw an exception. You'll see that an error page template
+			is presented regardless of if it's an ajax request or not.
+		</p>
 		<h:form>
 			<h:commandButton value="throw runtime exception on ajax request" action="#{exceptionBean.throwRuntimeException}">
 				<f:ajax execute="@form" render="@form" />
@@ -70,5 +62,16 @@
 				<f:ajax execute="@form" render="@form" />
 			</h:commandButton>
 		</h:form>
+		<p>
+			Also, if you wait 
+			#{of:formatNumber(session.maxInactiveInterval / 60, '#')}
+			minutes or manually delete the <code>JSESSIONID</code> cookie or press the below "Invalidate session" button 
+			and then click any of the buttons on the demo, then you'll get a view expired exception which will also end up 
+			in a specific error page.
+		</p>
+		<p>
+			<input type="button" value="Invalidate session"
+				onclick="$.get('#{request.contextPath}/invalidatesession?#{now.time}', alert('Session invalidated!'))" />
+		</p>
 	</ui:define>		
 </ui:composition>
