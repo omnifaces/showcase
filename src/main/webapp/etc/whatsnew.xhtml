@@ -13,7 +13,8 @@
 
 		<h3>Major in OmniFaces 2.0</h3>
 		<ul class="important">
-			<li>Dependencies are changed from Java 1.6, JSF 2.0, Servlet 2.5, EL 2.1 to <strong>Java 1.7, JSF 2.2, Servlet 3.0, EL 2.2 and CDI 1.0</strong></li>
+			<li>Dependencies are changed from Java 1.6, JSF 2.0, Servlet 2.5, EL 2.1 to <strong>Java 1.7, JSF 2.2, Servlet 3.0, EL 2.2 and CDI 1.0</strong>;
+				as of now, OmniFaces 2.0 is still backwards compatible with JSF 2.1, but not with JSF 2.0 anymore</li>
 			<li>OmniFaces initialization will explicitly <a href="http://omnifaces.org/cdi">fail</a> if CDI <code>BeanManager</code> is unavailable application startup</li>
 			<li><h:link outcome="/utils/Events"><code>Events</code> utility class has major method renames to clarify the meaning</h:link></li>
 		</ul>
@@ -47,11 +48,10 @@
 
 		<h3>Major in OmniFaces 1.10</h3>
 		<ul class="important">
-			<li>All CDI specific features are <strong>removed</strong>, this version is specifically for OmniFaces 1.0-1.5 users on outdated environments who can't upgrade to 1.6 or newer due to conflicts in CDI. OmniFaces users who already successfully use CDI should be able to effortlessly upgrade to OmniFaces 2.0.</li>
+			<li>All CDI specific features are <strong>removed</strong>, this version is specifically for OmniFaces 1.0-1.5 users on outdated environments who can't upgrade to 1.6 or newer due to conflicts in CDI;
+				OmniFaces users who were already successfully using CDI on a JSF 2.1 environment should be able to effortlessly upgrade to OmniFaces 2.0</li>
 		</ul>
 
-		<hr />
-	
 		<hr />
 	
 		<h2>What's new in OmniFaces 1.8.1?</h2>
