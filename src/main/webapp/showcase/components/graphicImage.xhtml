@@ -1,0 +1,28 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.paths" value="component/output/GraphicImage,resourcehandler/GraphicResource,resourcehandler/GraphicResourceHandler" />
+			<f:attribute name="vdl.paths" value="o/graphicImage" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/GraphicImageBean.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>The below one renders logo as data URI</h3>
+		<p>
+			<o:graphicImage value="#{graphicImageBean.logo}" dataURI="true" />
+		</p>
+
+		<h3>The below one renders logo as resource</h3>
+		<p>
+			<o:graphicImage value="#{graphicImageBean.logo}" lastModified="#{startup.time}" />
+		</p>
+	</ui:define>
+</ui:composition>
