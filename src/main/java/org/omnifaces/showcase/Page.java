@@ -12,6 +12,8 @@
  */
 package org.omnifaces.showcase;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static org.omnifaces.showcase.App.scrape;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
@@ -99,12 +101,12 @@ public class Page extends ListTreeModel<Page> {
 
 		try {
 			Map<String, Object> attributes = getMetadataAttributes();
-			String[] apiPaths = getCommaSeparatedAttribute(attributes, "api.paths"); // TODO: restrict to 1 and make use of @see in javadoc to get remainder.
-			String[] vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
-			String[] srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
+			List<String> apiPaths = new ArrayList<>(getCommaSeparatedAttribute(attributes, "api.path"));
+			List<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
+			List<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
 			description = loadDescription(apiPaths);
 			sources = loadSources(path, srcPaths);
-			documentation = (apiPaths.length + vdlPaths.length > 0) ? new Documentation(apiPaths, vdlPaths) : null;
+			documentation = (apiPaths.size() + vdlPaths.size() > 0) ? new Documentation(apiPaths, vdlPaths) : null;
 		}
 		catch (Exception e) {
 			loaded.set(false);
@@ -112,29 +114,27 @@ public class Page extends ListTreeModel<Page> {
 		}
 	}
 
-	private static String[] getCommaSeparatedAttribute(Map<String, Object> attributes, String key) {
+	private static List<String> getCommaSeparatedAttribute(Map<String, Object> attributes, String key) {
 		String attribute = (String) attributes.get(key);
 
 		if (attribute == null) {
-			return new String[0];
+			return emptyList();
 		}
 
-		return attribute.split("\\s*,\\s*");
+		return asList(attribute.split("\\s*,\\s*"));
 	}
 
-	private static String loadDescription(String[] apiPaths) {
-		if (apiPaths.length > 0) {
-			for (int i = 0; i < apiPaths.length; i++) {
-				apiPaths[i] = API_PATH + apiPaths[i];
-			}
-
-			String url = String.format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPaths[0]);
+	private static String loadDescription(List<String> apiPaths) {
+		if (apiPaths.size() == 1) {
+			apiPaths.set(0, API_PATH + apiPaths.get(0));
+			String url = String.format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPaths.get(0));
 
 			try {
 				// TODO: build javadoc.jar into webapp somehow and scrape from it instead.
-				Elements descriptionBlock = scrape(url, ".description .block");
+				Elements description = scrape(url, ".description>ul>li");
+				Elements descriptionBlock = description.select(".block");
 
-				for (Element link : descriptionBlock.select("a")) { // Turn relative links into absolute links.
+				for (Element link : description.select("a")) { // Turn relative links into absolute links.
 					link.attr("href", link.absUrl("href"));
 				}
 
@@ -149,6 +149,13 @@ public class Page extends ListTreeModel<Page> {
 					}
 				}
 
+				Elements seeAlso = description.select("dt:has(.seeLabel)+dd a");
+
+				for (Element link : seeAlso) {
+					String href = link.absUrl("href");
+					apiPaths.add(href.substring(href.indexOf(API_PATH), href.lastIndexOf('.')));
+				}
+
 				return descriptionBlock.outerHtml();
 			}
 			catch (IOException e) {
@@ -159,8 +166,8 @@ public class Page extends ListTreeModel<Page> {
 		return null;
 	}
 
-	private static List<Source> loadSources(String pagePath, String[] srcPaths) {
-		List<Source> sources = new ArrayList<>(1 + srcPaths.length);
+	private static List<Source> loadSources(String pagePath, List<String> srcPaths) {
+		List<Source> sources = new ArrayList<>(1 + srcPaths.size());
 		String sourceCode = loadSourceCode(pagePath);
 		String[] meta = sourceCode.split("<ui:define name=\"demo-meta\">");
 		String[] demo = sourceCode.split("<ui:define name=\"demo\">");
@@ -326,23 +333,23 @@ public class Page extends ListTreeModel<Page> {
 
 		// Properties -------------------------------------------------------------------------------------------------
 
-		private String[] api;
-		private String[] vdl;
+		private List<String> api;
+		private List<String> vdl;
 
 		// Contructors ------------------------------------------------------------------------------------------------
 
-		public Documentation(String[] api, String[] vdl) {
+		public Documentation(List<String> api, List<String> vdl) {
 			this.api = api;
 			this.vdl = vdl;
 		}
 
 		// Getters/setters --------------------------------------------------------------------------------------------
 
-		public String[] getApi() {
+		public List<String> getApi() {
 			return api;
 		}
 
-		public String[] getVdl() {
+		public List<String> getVdl() {
 			return vdl;
 		}
 

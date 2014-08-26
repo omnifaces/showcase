@@ -14,9 +14,10 @@
 <!-- 
 The following metadata attributes are supported via this template (they're parsed in Page#loadIfNecessary()):
 
-* api.paths: commaseparated string of "http://omnifaces.org/docs/javadoc/<version>/org/omnifaces/"-relative paths to API documentation.
-* vdl.paths: commaseparated string of "http://omnifaces.org/docs/vdldoc/<version>/"-relative paths to VDL documentation.
-* src.paths: commaseparated string of paths to source code snippets, if it does not start with "/", then it will be
+* api.path:  String of "http://omnifaces.org/docs/javadoc/<version>/org/omnifaces/"-relative path to API documentation.
+             Any @see will be auto-included.
+* vdl.paths: Commaseparated string of "http://omnifaces.org/docs/vdldoc/<version>/"-relative paths to VDL documentation.
+* src.paths: Commaseparated string of paths to source code snippets, if it does not start with "/", then it will be
              assumed relative to webcontent "/WEB-INF/" folder, else it will be assumed relative to webcontent root.
  -->
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
