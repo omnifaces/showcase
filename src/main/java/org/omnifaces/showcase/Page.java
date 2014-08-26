@@ -15,8 +15,8 @@ package org.omnifaces.showcase;
 import static org.omnifaces.showcase.App.scrape;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
+import static org.omnifaces.util.Utils.toByteArray;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -35,7 +35,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.util.Faces;
-import org.omnifaces.util.Utils;
 
 /**
  * This class represents a page. All pages are available as a tree model by {@link App#getMenu()} and are by their view
@@ -209,9 +208,7 @@ public class Page extends ListTreeModel<Page> {
 		}
 
 		try {
-			ByteArrayOutputStream output = new ByteArrayOutputStream();
-			Utils.stream(input, output);
-			return new String(output.toByteArray(), "UTF-8").replace("\t", "    "); // Tabs are in HTML <pre> presented as 8 spaces, which is too much.
+			return new String(toByteArray(input), "UTF-8").replace("\t", "    "); // Tabs are in HTML <pre> presented as 8 spaces, which is too much.
 		}
 		catch (IOException e) {
 			throw new FacesException(String.format(ERROR_LOADING_PAGE_SOURCE, path), e);
