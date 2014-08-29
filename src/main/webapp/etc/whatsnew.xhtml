@@ -33,6 +33,7 @@
 			<li><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code> enables support for <code>@NotNull</code> and <code>Pre/PostValidateEvent</code> even when parameter is not specified, on contrary to <code>&lt;f:viewParam&gt;</code></h:link></li>
 			<li><h:link outcome="/renderkits/Html5RenderKit"><code>Html5RenderKit</code> is now not forgiving anymore on broken renderers who doesn't pass the current component to <code>write</code> methods (fixes "plain HTML" messup)</h:link></li>
 			<li><h:link outcome="/validators/validateOrder">Skip null/empty values in <code>&lt;o:validateOrder&gt;</code> as that's actually the responsibility of <code>required="true"</code></h:link></li>
+			<li><h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link> and <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> can now be disabled via a <code>web.xml</code> context param supporting a request based EL expression</li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.0 (also applies to OmniFaces 1.10)</h3>
