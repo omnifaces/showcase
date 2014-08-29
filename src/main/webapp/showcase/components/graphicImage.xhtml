@@ -32,7 +32,9 @@
 
 		<h3>The below one renders byte[] property taking a Long argument as resource</h3>
 		<p>
-			<o:graphicImage value="#{graphicImageBean.getContent(42)}" lastModified="#{startup.time}" />
+			<ui:repeat value="#{graphicImageBean.ids}" var="id">
+				<o:graphicImage value="#{graphicImageBean.getContent(id)}" lastModified="#{startup.time}" />
+			</ui:repeat>
 		</p>
 	</ui:define>
 </ui:composition>
