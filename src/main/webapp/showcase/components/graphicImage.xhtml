@@ -30,7 +30,7 @@
 			<o:graphicImage value="#{graphicImageBean.logo}" lastModified="#{startup.time}" />
 		</p>
 
-		<h3>The below one renders byte[] property taking a Long argument as resource</h3>
+		<h3>The below one renders byte[] property taking a Long argument as resource in <code>&lt;ui:repeat&gt;</code> loop</h3>
 		<p>
 			<ui:repeat value="#{graphicImageBean.ids}" var="id">
 				<o:graphicImage value="#{graphicImageBean.getContent(id)}" lastModified="#{startup.time}" />
