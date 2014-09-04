@@ -24,5 +24,4 @@ public class NonSerializableEntityConverter implements Converter {
 		return new NonSerializableEntity(value);
 	}
 
-
 }

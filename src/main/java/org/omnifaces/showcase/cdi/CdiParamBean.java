@@ -11,6 +11,7 @@ import java.util.Date;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.FacesException;
 import javax.faces.convert.DateTimeConverter;
 import javax.faces.validator.LengthValidator;
 import javax.inject.Inject;
@@ -29,32 +30,31 @@ public class CdiParamBean {
 
 	// Like <f:viewParam name="text1" value="#{bean.text1}" required="true">
 	@Inject @Param(required = true)
-	private ParamValue<String> text1;
+	private String text1;
 
 	// Like <f:viewParam name="text2" value="#{bean.text2}" validatorMessage="..."><f:validateLength minimum="3">
-	@Inject @Param(validatorClasses = LengthValidator.class,
+	@Inject @Param(
+		validatorClasses = LengthValidator.class,
 		validatorAttributes = @Attribute(name="minimum", value="3"),
 		validatorMessage = "{1}: Value is too too small! Please enter a minimum of 3 characters.")
-	private ParamValue<String> text2;
+	private String text2;
 
 	// Like <f:viewParam name="text3" value="#{bean.text3}"> using JSR303 bean validation via the @NotNull constraint
 	@Inject @Param @NotNull(message="{0} is required")
-	private ParamValue<String> text3;
+	private String text3;
 
 	// Like <f:viewParam name="number" value="#{bean.number}"> using implicit JSF integer converter.
 	@Inject @Param
-	private ParamValue<Integer> number;
+	private Integer number;
 
-	// Like <f:viewParam name="date" value="#{bean.date}" converterMessage="..."><f:convertDateTime pattern="yyyyMMdd" timeZone="GMT">
+	// Like <f:viewParam name="date" value="#{bean.date}" converterMessage="..."><f:convertDateTime pattern="yyyyMMdd">
 	@Inject @Param(
 		converterClass = DateTimeConverter.class,
-		converterAttributes = {
-			@Attribute(name="pattern", value="yyyyMMdd")
-		},
+		converterAttributes = { @Attribute(name="pattern", value="yyyyMMdd") },
 		converterMessage="{1}: \"{0}\" is not the date format we had in mind! Please use the format yyyyMMdd.")
-	private ParamValue<Date> date;
+	private Date date;
 
-	// Like <f:viewParam name="nsEntity" value="#{bean.nsEntity}"><f:converter converterId="nonSerializableEntityConverter"/>
+	// Like <f:viewParam name="nsEntity" value="#{bean.nsEntity}" converter="nonSerializableEntityConverter">
 	@Inject @Param(converter = "nonSerializableEntityConverter")
 	private ParamValue<NonSerializableEntity> nsEntity;
 
@@ -67,23 +67,12 @@ public class CdiParamBean {
 			return;
 		}
 
-		String text1 = this.text1.getValue();
-		String text2 = this.text2.getValue();
-		String text3 = this.text3.getValue();
-		Integer number = this.number.getValue();
-		Date date = this.date.getValue();
-		NonSerializableEntity nonSerializableValue = nsEntity.getValue();
-
-		// Copy the ParamValue to simulate a passivation/activation cycle
+		// Simulate serialization.
 		ParamValue<NonSerializableEntity> nsEntityCopy = copy(nsEntity);
 
-		// Getting the value from the copied ParamValue will cause the converter to run
-		// again on the stored raw value.
-		NonSerializableEntity nonSerializableValueCopy = nsEntityCopy.getValue();
-
-		result = String.format(
-			"You entered text1 '%s', text2 '%s', text3 '%s', number '%d', date '%5$tY%5$tm%5$td', entity '%s' and entity copy '%s'",
-			text1, text2, text3, number, date, nonSerializableValue.getValue(), nonSerializableValueCopy.getValue());
+		result = String.format("You entered text1 '%s', text2 '%s', text3 '%s', number '%d', date '%5$tY%5$tm%5$td',"
+			+ " entity '%6$s' and entity copy '%7$s'", text1, text2, text3, number, date, nsEntity.getValue(),
+				nsEntityCopy.getValue());
 
 		Messages.addGlobalInfo("Yes, no validation errors!");
 	}
@@ -94,22 +83,24 @@ public class CdiParamBean {
 
 	@SuppressWarnings("unchecked")
 	public static <T> T copy(T source) {
-		T target = null;
-		try {
-			ByteArrayOutputStream bos = new ByteArrayOutputStream();
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(bos);
-			objectOutputStream.writeObject(source);
-			objectOutputStream.flush();
-			objectOutputStream.close();
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		T copy = null;
 
-			target = (T) new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray())).readObject();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException cnfe) {
-			cnfe.printStackTrace();
+		try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
+			oos.writeObject(source);
+		}
+		catch (IOException e) {
+			throw new FacesException(e);
 		}
 
-		return target;
+		try (ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(baos.toByteArray()))) {
+			copy = (T) ois.readObject();
+		}
+		catch (IOException | ClassNotFoundException e) {
+			throw new FacesException(e);
+		}
+
+		return copy;
 	}
 
 }
