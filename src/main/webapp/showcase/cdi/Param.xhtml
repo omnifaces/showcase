@@ -40,16 +40,16 @@
 		</ul>
 		<p>The following parameters will be injected and validated as:</p>
 		<ul>
-			<li>"text1" is injected as <code>String</code>(*) and is validated as JSF <code>required="true"</code></li>
+			<li>"text1" is injected as <code>String</code> and is validated as JSF <code>required="true"</code></li>
 			<li>"text2" is injected as <code>String</code> and is validated as 
 				JSF <code>&lt;f:validateLength minimum="3"&gt;
 			</code></li>
-			<li>"text3" is injected as <code>String</code> and is validated as JSR303 (Bean Validation) <code>@NotNull</code>(**)</li>
+			<li>"text3" is injected as <code>String</code> and is validated as JSR303 (Bean Validation) <code>@NotNull</code></li>
 			<li>"number" is injected as <code>Integer</code> with automatic JSF integer conversion</li>
 			<li>"date" is injected as <code>Date</code> and is converted as 
 				JSF <code>&lt;f:convertDateTime pattern="yyyyMMdd"&gt;</code>
 			</li>
-			<li>"nsEntity" is injected as <code>NonSerializableEntity</code> and is 
+			<li>"nsEntity" is injected as <code>ParamValue&lt;NonSerializableEntity&gt;</code> and is 
 				converted as JSF <code>&lt;f:converter converterId="nonSerializableEntityConverter"/&gt;</code>
 				<small>(the example also demonstrates support for non-serializable values, which is important for CDI's passivating scopes)</small>
 			</li>
@@ -57,21 +57,5 @@
 		
 		<p>Result: #{cdiParamBean.result}</p>
 		<h:messages styleClass="messages" infoClass="info" errorClass="error" />
-		
-		<p>
-			*) <code>String</code> is actually not injected itself, but is wrapped in a value holder class called <code>ParamValue</code>. This is
-			due to the fact that a CDI producer cannot produce an arbitrary object and a parameterized wrapper type is needed. For OmniFaces 1.7
-			we plan to look into a CDI extension to work around this and directly inject the converted type. <code>ParamValue</code> does have
-			merit on its own though, as it allows access to the raw (non-converted) value and allows non-serializable types to be injected into
-			a passivation capable bean. This last feature works by reconverting from the raw value after a bean is restored (changes made to the
-			converted instance before passivation took place will be lost though).
-		</p>
-		
-		<p>
-			**) <b>NOTE:</b> bean validation at the moment is done against the <code>ParamValue</code> instance that is injected. 
-			In many cases this will only be of limited use. We hope to directly inject the converted type in a future OmniFaces version and then bean validation 
-			will make more sense.
-		</p>
-		
 	</ui:define>
 </ui:composition>
