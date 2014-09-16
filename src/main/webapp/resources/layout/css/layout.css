@@ -2,125 +2,71 @@ html {
 	overflow-y: scroll; /* Sticky vertical scrollbar to prevent horizontal shifts on navigation. */
 }
 
+html.progress, html.progress * {
+	cursor: progress !important;
+}
+
 body {
-	width: 1250px; /* Target minimum of 1280x1024 */
-	margin: 0 auto;
-	padding: 3px 0;
-	background: #eee;
+	margin: 0;
+	color: #111;
+	background: #f2f2f2;
 }
 
 body .ui-widget {
-	font-family: "Trebuchet MS", "Liberation Sans", "DejaVu Sans", sans-serif;
-	font-size: 12px;
-	line-height: 1.3em;
-}
-
-h1 {
-	margin: 0;
-	padding: 2px 0;
-	height: 70px;
-}
-
-h1 a, 
-h1 a:hover {
-	text-decoration: none;
-	background: none;
-}
-
-h1 a img {
-	vertical-align: middle;
-	border: 0;
-}
-
-hr {
-	height: 1px;
-	border: none;
-	background-color: #a8a8a8;
-}
-
-a:hover, 
-a.active {
-	background: #ddd;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-}
-
-code,
-.code {
-	font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace;
-}
-
-#header {
-	position: relative;
-	padding: 0;
-	margin-bottom: 3px;
-	height: 83px;
-}
-
-#poweredBy {
-	position: absolute;
-	top: -6px;
-	right: 6px;
-	font-size: .8em;
-	text-align: right;
-	white-space: pre;
-	line-height: 1.3em;
-}
-
-#menu .ui-panel, 
-#content .ui-panel {
-	margin: 8px 0;
-}
-
-#menu .ui-panel-titlebar, 
-#content .ui-panel-titlebar {
-	padding: 3px 8px;
-}
-
-#menu .ui-panel-content, 
-#content .ui-panel-content {
-	padding: 0 8px;
-}
-
-#menu {
-	width: 250px;
-	margin-bottom: 3px;
-}
-
-#menu ul {
-	margin: 3px 0 1px 0;
-	padding: 0;
-	list-style-type: none;
-}
-
-#menu ul.group li {
-	float: left;
-	margin-right: 3px;
-}
-
-#menu a {
-	display: block;
+	font-family: "Myriad Pro", Calibri, Helvetica, Arial, sans-serif;
+	font-size: 16px;
 	line-height: 1.5em;
 }
 
-#menu a.code {
-	padding: 1px 0;
-	line-height: 1.3em;
+body .ui-widget-header {
+	color: #fff;
+	background: #333;
+	text-shadow: none;
 }
 
-#content {
-	float: right;
-	width: 985px;
-	margin-bottom: 1000px; /* Just some spacing to avoid vertical page shifts when switching between source code tabs. */
+body .ui-widget-content .ui-state-default,
+body .ui-widget-header .ui-state-default {
+	background: #ddd;
 }
 
-#content .ui-tabs {
-	margin: 8px 0;	
+body .ui-widget-header,
+body .ui-widget-content {
+	border: 0;
 }
 
-html.progress, html.progress * {
-	cursor: progress !important;
+body .ui-widget-content a,
+body .ui-widget-content a code {
+	color: #007edf;
+	text-decoration: none;
+}
+
+body .wrapped {
+	width: 1000px;
+	margin: 0 auto;
+	border: 0;
+	color: inherit;
+	background: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 10px 0;
+	font-weight: 700;
+	color: #222;
+	font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+	letter-spacing: -1px;
+}
+
+h2 {
+	padding-bottom: 10px;
+	border-bottom: 1px #ccc dashed;
+	font-size: 32px;
+}
+
+hr {
+	margin: 2em 0;
+	height: 1px;
+	border: none;
+	background-color: #ccc;
 }
 
 label.error {
@@ -129,6 +75,159 @@ label.error {
 
 input.error, select.error, textarea.error {
 	background-color: #fee;
+}
+
+pre, 
+code,
+.code {
+	font-family: Consolas, Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+	font-size: 14px;
+	line-height: 18px;
+	color: #333;
+}
+
+#header-wrapper {
+	background: #333;
+}
+
+#header {
+	padding: 50px 10px 30px;
+}
+
+#header h1 {
+	margin: 0;
+	font-size: 42px;
+	color: white;
+}
+
+#header h2 {
+	border: 0;
+	font-size: 22px;
+	font-weight: 300;
+	color: white;
+}
+
+#content-wrapper {
+	padding: 1.5em 0;	
+}
+
+#content {
+	float: right;
+	width: 675px;
+}
+
+#content a:hover, 
+#content a.active {
+	text-decoration: underline;
+}
+
+#content pre,
+#content code,
+#content .code {
+	width: 99%;
+	padding: 3px;
+	margin: 0 3px;
+	border-radius: 2px;
+	box-shadow: 0 0 10px rgba(0,0,0,.1);
+	background-color: #fff;
+}
+
+#content pre {
+	margin: 10px 0;
+	overflow: auto;
+	overflow-y: hidden;
+	word-wrap: normal;
+}
+
+#content pre code {
+	width: auto;
+	padding: 0;
+	margin: 0;
+	box-shadow: none;
+}
+
+#content .ui-tabs {
+	margin: 6px 0;	
+}
+
+#content .ui-tabs .ui-tabs-nav {
+	background: none;
+}
+
+#menu {
+	float: left;
+	width: 300px;
+	margin: 0;
+}
+
+#menu .ui-panel, 
+#content .ui-panel {
+	margin: 6px 0;
+	padding: 1px;
+}
+
+#menu .ui-panel-titlebar, 
+#content .ui-panel-titlebar {
+	padding: 2px 6px;
+}
+
+#menu .ui-panel-content, 
+#content .ui-panel-content {
+	padding: 0 6px;
+}
+
+#menu ul {
+	margin: 2px 0 1px 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#menu ul.group li {
+	float: left;
+	margin-right: 2px;
+}
+
+#menu a {
+	display: block;
+	line-height: 1.5em;
+	color: #222;
+}
+
+#menu a.code {
+	padding: 1px 0;
+	line-height: 1.3em;
+}
+
+#menu a:hover, 
+#menu a.active {
+	background: #ddd;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+#footer-wrapper {
+	background: #333;
+}
+
+#footer {
+	height: 500px; /* Just some spacing to avoid vertical page shifts when switching between source code tabs. */
+	text-align: center;
+}
+
+#footer .ui-widget-content {
+	color: white;
+}
+
+#footer h3 {
+	border: 0;
+	font-size: 22px;
+	font-weight: 300;
+	color: white;
+}
+
+#footer p {
+	white-space: pre;
 }
 
 .messages {
@@ -181,6 +280,7 @@ input.error, select.error, textarea.error {
 .snapshot {
 	padding: 0 5px;
 	background: #ff9;
+	color: #600;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -188,8 +288,4 @@ input.error, select.error, textarea.error {
 
 .important {
 	background: #ff9;
-}
-
-.ui-panel-titlebar.ui-helper-clearfix:after {
-	display: none; /* New since PF 3.4. Broke the floats. */ 
 }

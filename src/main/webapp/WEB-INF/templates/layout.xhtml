@@ -47,52 +47,61 @@ The following application wide constants are available via this template:
 	<h:body>
 		<h:outputStylesheet library="layout" name="css/layout.css" />
 
-		<p:panel id="header" styleClass="ui-widget-header">
-			<h1>
+		<div id="header-wrapper">
+			<div id="header" class="wrapped">
+<!-- 
 				<a href="#{request.contextPath}/">
 					<h:graphicImage library="layout" name="img/logo-70x70.png" alt="logo" width="70" height="70" />
-					OmniFaces Showcase <h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{app.snapshot}" />
 				</a>
-			</h1>
-			<div id="poweredBy">
-				<strong>Powered by</strong>
-				#{app.poweredBy}
-				Server (re)started at #{of:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm', 'UTC')} UTC
+ -->
+				<h1>OmniFaces Showcase <h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{app.snapshot}" /></h1>
+				<h2>To make JSF life easier</h2>
 			</div>
-		</p:panel>
+		</div>
 
-		<p:panel id="content">
-			<h2 id="contentTitle"><ui:insert name="contentTitle">#{page.current.title}</ui:insert></h2>
-			<ui:insert name="content" />
-		</p:panel>
+		<div id="content-wrapper">
+			<div class="wrapped ui-helper-clearfix">
+				<p:panel id="content" styleClass="wrapped">
+					<h2 id="contentTitle"><ui:insert name="contentTitle">#{page.current.title}</ui:insert></h2>
+					<ui:insert name="content" />
+				</p:panel>
+				<p:panel id="menu" styleClass="wrapped">
+					<p:panel id="panel" header="omnifaces">
+						<ul>
+							<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">What is OmniFaces?</a></li>
+							<li><a href="http://omnifaces.org">Project homepage</a></li>
+							<li><a href="#{_apiURL}">API documentation</a></li>
+							<li><a href="#{_vdlURL}">VDL documentation</a></li>
+							<li><a href="#{request.contextPath}/whatsnew" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces #{_omniFacesVersion}?</a></li>
+						</ul>
+					</p:panel>
+					<o:tree id="menu_tree" value="#{app.menu}" varNode="_page">
+						<o:treeNode level="0">
+							<o:treeNodeItem>
+								<p:panel id="panel" header="#{_page.title}">
+									<o:treeInsertChildren />
+								</p:panel>
+							</o:treeNodeItem>
+						</o:treeNode>
+						<o:treeNode>
+							<ul>
+								<o:treeNodeItem>
+									<li><h:link value="#{_page.title}" outcome="#{_page.viewId}" styleClass="code#{_page == page.current ? ' active' : ''}" /></li>
+								</o:treeNodeItem>
+							</ul>
+						</o:treeNode>
+					</o:tree>
+				</p:panel>
+			</div>
+		</div>
 
-		<p:panel id="menu">
-			<p:panel id="panel" header="omnifaces">
-				<ul>
-					<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">What is OmniFaces?</a></li>
-					<li><a href="http://omnifaces.org">Project homepage</a></li>
-					<li><a href="#{_apiURL}">API documentation</a></li>
-					<li><a href="#{_vdlURL}">VDL documentation</a></li>
-					<li><a href="#{request.contextPath}/whatsnew" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces #{_omniFacesVersion}?</a></li>
-				</ul>
+		<div id="footer-wrapper">
+			<p:panel id="footer" styleClass="wrapped">
+				<h3>Powered by</h3>
+				<p>#{app.poweredBy}</p>
+				<p>Server (re)started at #{of:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm', 'UTC')} UTC</p>
 			</p:panel>
-			<o:tree id="menu_tree" value="#{app.menu}" varNode="_page">
-				<o:treeNode level="0">
-					<o:treeNodeItem>
-						<p:panel id="panel" header="#{_page.title}">
-							<o:treeInsertChildren />
-						</p:panel>
-					</o:treeNodeItem>
-				</o:treeNode>
-				<o:treeNode>
-					<ul>
-						<o:treeNodeItem>
-							<li><h:link value="#{_page.title}" outcome="#{_page.viewId}" styleClass="code#{_page == page.current ? ' active' : ''}" /></li>
-						</o:treeNodeItem>
-					</ul>
-				</o:treeNode>
-			</o:tree>
-		</p:panel>
+		</div>
 
 		<h:outputScript target="body">
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

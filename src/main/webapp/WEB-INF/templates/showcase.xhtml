@@ -42,14 +42,14 @@ The following metadata attributes are supported via this template (they're parse
 		 -->
 		<c:set var="parent" value="#{page.current.parent}" />
 		<p:selectOneMenu id="groups" value="#{parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="groups" panelStyleClass="groups" height="#{26 * (fn:length(parent.parent.children) - 1)}" effect="fade" 
+			styleClass="groups" panelStyleClass="groups" height="#{31 * (fn:length(parent.parent.children) - 1)}" effect="fade" 
 			disabled="#{facesContext.postback and not facesContext.renderResponse}">
 			<f:selectItems value="#{parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
 				itemDisabled="#{_parent.children[0] == parent.children[0]}" />
 		</p:selectOneMenu>
 		-
 		<p:selectOneMenu id="pages" value="#{page.current.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="pages" panelStyleClass="pages" height="#{(19 * (fn:length(parent.children) - 1)) + 10}" effect="fade" 
+			styleClass="pages" panelStyleClass="pages" height="#{(21 * (fn:length(parent.children) - 1)) + 5}" effect="fade" 
 			disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{parent.childCount gt 1}">
 			<f:selectItems value="#{parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
 				itemDisabled="#{_page == page.current}" />
@@ -68,12 +68,10 @@ The following metadata attributes are supported via this template (they're parse
 		<o:deferredScript library="showcase" name="js/prettify.js" />
 		<o:deferredScript library="showcase" name="js/onload.js" />
 
-		<p:panel id="description" header="Description">
-			<ui:insert name="description">
-				<h:outputText value="#{page.current.description}" escape="false" /><!-- Copies content from 1st API documentation. -->
-			</ui:insert>
-			<ui:insert name="description-extra" />
-		</p:panel>
+		<ui:insert name="description">
+			<h:outputText value="#{page.current.description}" escape="false" /><!-- Copies content from 1st API documentation. -->
+		</ui:insert>
+		<ui:insert name="description-extra" />
 
 		<ui:fragment rendered="#{not empty page.current.sources}">
 			<p:panel id="demo" header="Demo">

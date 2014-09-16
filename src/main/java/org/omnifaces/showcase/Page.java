@@ -149,7 +149,7 @@ public class Page extends ListTreeModel<Page> {
 					}
 				}
 
-				Elements seeAlso = description.select("dt:has(.seeLabel)+dd a");
+				Elements seeAlso = description.select("dt:has(.seeLabel)+dd a:has(code)");
 
 				for (Element link : seeAlso) {
 					String href = link.absUrl("href");

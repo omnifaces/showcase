@@ -1,21 +1,27 @@
-#contentTitle .ui-selectonemenu {
-	height: 29px;
-	border: 1px solid #eee;
+#contentTitle {
+	font-size: 1.3em;
+}
+
+#contentTitle .ui-selectonemenu,
+#contentTitle .code {
+	height: 40px;
+	border: 1px #ccc dashed;
 	background: none;
 	vertical-align: middle;
+	font-size: 1em;
 }
 
-#contentTitle .ui-selectonemenu-label,
 #contentTitle .code {
-	padding-bottom: 2px;
-	letter-spacing: -1px;
+	margin: 0;
+	padding: 8px 4px;
+	border: 0;
 }
 
+#contentTitle .ui-selectonemenu,
 #contentTitle .ui-selectonemenu-label,
 #contentTitle .ui-selectonemenu.ui-state-hover, 
-#contentTitle .ui-selectonemenu.ui-state-focus, 
-.groups.ui-selectonemenu-panel,
-.pages.ui-selectonemenu-panel {
+#contentTitle .ui-selectonemenu.ui-state-focus,
+#contentTitle .code {
 	-moz-box-shadow:none;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -24,27 +30,22 @@
 #contentTitle .ui-selectonemenu-label,
 .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	font-weight: bold;
+	background: none;
 }
 
 #contentTitle .ui-selectonemenu-trigger {
 	display: none;
+	width: 0;
 }
 
 #quickNavigation {
 	float: right;
 	font-size: .7em;
 }
-
-#source pre {
-	overflow: auto;
-	overflow-y: hidden;
-	word-wrap: normal;
-}
-
+	
 .pages.ui-selectonemenu,
 .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace;
-	font-size: 1em;
 }
 
 .groups.ui-selectonemenu-panel .ui-selectonemenu-list {
@@ -52,27 +53,25 @@
 }
 
 .pages.ui-selectonemenu-panel .ui-selectonemenu-list {
-	padding: 5px 8px;
+	padding: 2px 6px;
 }
 
 .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	margin: 2px;
-	padding: 4px 8px;
+	padding: 2px 6px;
 }
 
 .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	margin: 1px;
-	padding: 1px 0;
+	padding: 4px 0;
 	text-decoration: underline;
+	font-size: .8em;
+	line-height: 1em;
 }
 
 .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
-	padding: 3px 7px;
-	border: 1px solid #a8a8a8;
-	background: #c4c4c4 url("#{resource['primefaces-aristo:images/ui-bg_highlight-soft_100_c4c4c4_1x100.png']}") 50% 50% repeat-x;
-	color: #333;
-	font-weight: bold;
-	text-shadow: 0px 1px 0px rgba(255,255,255,0.7);
+	background: #333;
+	color: white;
 	box-shadow: none;
 }
 

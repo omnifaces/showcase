@@ -63,9 +63,7 @@ public class App {
 
 	private static String loadIndex() {
 		try {
-			Elements mainContent = scrape("http://omnifaces.org", "#main_content");
-			mainContent.select("h2").tagName("h3"); // Replace <h2> by <h3>.
-			return mainContent.outerHtml();
+			return scrape("http://omnifaces.org", "#main_content").outerHtml();
 		}
 		catch (Exception justIgnoreItTheGetterWillTryItAgain) {
 			return null;
