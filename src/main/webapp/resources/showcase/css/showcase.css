@@ -72,13 +72,13 @@
 .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
 	background: #333;
 	color: white;
-	box-shadow: none;
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
 }
 
 .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
 	background: #ddd;
 	text-shadow: none;
-	box-shadow: none;
+	box-shadow: 0 0 10px rgba(0,0,0,.1);
 	color: inherit;
 }
 
