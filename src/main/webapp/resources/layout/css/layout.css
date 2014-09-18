@@ -146,12 +146,16 @@ code,
 	box-shadow: none;
 }
 
-#content .ui-tabs {
-	margin: 6px 0;	
+#content .ui-panel-content {
+	padding: 6px;
 }
 
 #content .ui-tabs .ui-tabs-nav {
 	background: none;
+}
+
+#content .ui-tabs .ui-tabs-panel {
+	padding: 0;
 }
 
 #menu {
@@ -173,8 +177,7 @@ code,
 	box-shadow: 0 0 2px rgba(0,0,0,.5);
 }
 
-#menu .ui-panel-content, 
-#content .ui-panel-content {
+#menu .ui-panel-content {
 	padding: 0 6px;
 }
 
