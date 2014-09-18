@@ -41,7 +41,7 @@ body .ui-widget-content a code {
 }
 
 body .wrapped {
-	width: 1000px;
+	width: 1050px;
 	margin: 0 auto;
 	border: 0;
 	color: inherit;
@@ -113,7 +113,7 @@ code,
 
 #content {
 	float: right;
-	width: 675px;
+	width: 750px;
 }
 
 #content a:hover, 
@@ -160,7 +160,7 @@ code,
 
 #menu {
 	float: left;
-	width: 300px;
+	width: 275px;
 	margin: 0;
 }
 
