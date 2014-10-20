@@ -11,6 +11,7 @@
     <o:resolveComponent name="tableComponent" for="#{for}" />
     
     <p:inputText id="search" onkeyup="$(document.getElementById('#{tableComponent.clientId}:globalFilter')).val(this.value);PF('#{tableComponent.widgetVar}').filter();" placeholder="Search" />
+    <h:outputText value="&amp;nbsp;" escape="false"/> 
     <h:panelGroup id="resultCountPlaceholder" binding="#{resultCountPlaceholder}" />
     
     <o:moveComponent for="#{for}" destination="AFTER">
