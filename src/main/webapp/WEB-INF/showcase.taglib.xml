@@ -21,4 +21,8 @@
   		<tag-name>actionlistenertrick</tag-name>
   		<source>tags/actionlistenertrick.xhtml</source>
 	</tag>
+	<tag>
+  		<tag-name>globalSearch</tag-name>
+  		<source>tags/globalSearch.xhtml</source>
+	</tag>
 </facelet-taglib>

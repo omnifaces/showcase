@@ -1,0 +1,37 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:o="http://omnifaces.org/ui"
+    xmlns:of="http://omnifaces.org/functions"
+>
+    <o:resolveComponent name="tableComponent" for="#{for}" />
+    
+    <p:inputText id="search" onkeyup="$(document.getElementById('#{tableComponent.clientId}:globalFilter')).val(this.value);PF('#{tableComponent.widgetVar}').filter();" placeholder="Search" />
+    <h:panelGroup id="resultCountPlaceholder" binding="#{resultCountPlaceholder}" />
+    
+    <o:moveComponent for="#{for}" destination="AFTER">
+        <h:panelGroup id="resultCount" binding="#{resultCount}" >
+            <h:outputText value="&lt;script type='text/javascript'&gt;" escape="false" />
+                <h:panelGroup rendered="#{not empty tableComponent.filteredValue}">
+                    <h:outputText value="document.getElementById('#{resultCountPlaceholder.clientId}').innerHTML = 'Showing #{tableComponent.filteredValue.size()} of #{of:evalAttribute(tableComponent, 'value').size()}';" escape="false" />
+                </h:panelGroup>
+                <h:panelGroup rendered="#{empty tableComponent.filteredValue or (tableComponent.filteredValue.size() eq of:evalAttribute(tableComponent, 'value').size())}">
+                    document.getElementById('#{resultCountPlaceholder.clientId}').innerHTML = '';
+                </h:panelGroup>
+            <h:outputText value="&lt;/script&gt;" escape="false" />
+        </h:panelGroup>
+    </o:moveComponent>
+    
+    <o:moveComponent for="#{for}" destination="BEHAVIOR">
+        <p:ajax event="filter" update=":#{resultCount.clientId}" />
+    </o:moveComponent>
+    
+    <o:moveComponent for="#{for}" destination="FACET" facet="header">
+        <h:inputHidden id="globalFilter" />
+    </o:moveComponent>
+        
+</ui:composition>

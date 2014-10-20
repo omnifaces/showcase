@@ -1,0 +1,99 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui" 
+	xmlns:o="http://omnifaces.org/ui"
+    xmlns:of="http://omnifaces.org/functions"
+    xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="component/util/MoveComponent" />
+			<f:attribute name="vdl.paths" value="o/moveComponent" />
+			<f:attribute name="src.paths" value="tags/globalSearch.xhtml,classes/org/omnifaces/showcase/components/util/MoveComponent.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Showing number of search results in PrimeFaces table</h3>
+        
+        <p>
+        The PrimeFaces data table component is notoriously difficult to modify when it comes to the build-in filter/search capabilities.
+        Required components with fixed IDs ("globalFilter") and the fact that filtering is applied in the render stage are among the
+        things that make this surprisingly difficult in practice. 
+        </p>
+        
+        <p>
+        With the help of the o:moveComponent the required modification actions can be packed up in a Facelets tag file for reuse.
+        The following shows an example: 
+        </p>
+        
+        <ui:param name="for" value="myTable" />
+        
+        <hr/>
+        
+        <small>
+        <demo:globalSearch for="myTable"/>
+
+        <h:form>
+            <p:dataTable id="myTable" value="#{myTableBacking.users}" var="user" filteredValue="#{myTableBacking.filteredUsers}" widgetVar="myTableVar">
+                <p:column filterBy="#{user.firstName}" filterMatchMode="contains">  
+                    #{user.firstName}
+                </p:column>
+    
+                <p:column filterBy="#{user.lastName}" filterMatchMode="contains">  
+                    #{user.firstName}
+                </p:column>
+    
+                <p:column filterBy=" #{user.age}" filterMatchMode="contains">  
+                    #{user.age}
+                </p:column>
+            </p:dataTable>
+        </h:form>
+        <hr/>
+        
+        <p>
+        So what's going on here? The <b>demo:globalSearch</b> tag <i>(see second tab in the source code section below)</i> contains 3 instances
+        of the o:moveComponent.
+        </p>
+        
+        
+        <h4>1. Moving a script to reside after the table</h4>
+        
+        <p>
+        The first moveComponent instance has a JavaScript surrounded by a named panel group as its children. These components are moved in the tree
+        to sit right after the table component. This script takes the number of elements that appear in the so-called filtered collection and updates
+        another panel group with that number.<br/> <br/> 
+        The script needs to be placed AFTER the table component, because the number we need is only available
+        when the table is actually rendered, so it's only available to components (and EL expressions within those) that are rendered after the table
+        is rendered. This somewhat defeats the purpose of the phases in JSF (an important reason for which is to prevent just this location dependency),
+        but with the o:moveComponent we can hide this somewhat nasty detail for the tag user.
+        </p>
+        
+        <h4>2. Moving an AJAX event listener into the table</h4>
+        
+        <p>
+        The second moveComponent instance has an AJAX event listener as its child. The event listener makes sure the JavaScript that we defined above is
+        updated after each filtering operation.<br/> <br/> 
+        
+        An AJAX event listener is not a component but a behavior. It therefore  needs some extra handling. <i>(among others to fool it that it's temporarily
+        a child of the moveComponent which does not have the events a behavior can be checking for)</i> It's moved to the special behavior section 
+        components have.
+        </p>
+        
+        <h4>3. Moving a component into the facet section of the table</h4> 
+        
+        <p>
+        The third moveComponent instance has a placeholder component with the fixed ID 'globalFilter' as its child. This component is used by PrimeFaces
+        to read the input used by the filtering operation from.<br/> <br/> 
+        
+        This placeholder component is needed for this example, since we wanted to have the real input component just above the table, not inside the table.
+        The standard PrimeFaces approach with the facet tightly couples the location of the input component, which we here thus decouple. The real input
+        component updates the placecholder using its <code>onkeyup</code> attribute.
+        </p>
+         </small>
+        
+
+    </ui:define>
+</ui:composition>
