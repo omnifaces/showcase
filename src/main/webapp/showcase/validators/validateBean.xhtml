@@ -19,7 +19,7 @@
 			<h:panelGrid columns="3">
 				<o:outputLabel for="value" value="Value" />
 				<h:inputText id="value" value="#{validateBean.value}" />
-				<h:message for="value" />
+				<h:message for="value"/>
 
 				<h:panelGroup />
 				<h:panelGroup>
@@ -43,10 +43,44 @@
 			</h:panelGrid>
 		</h:form>
         
-        <h:form>
+        <h3>Validating at the class level that number 1 is smaller than number 2</h3>
+        <h:form id="classLevelForm">
         
+            <h:messages styleClass="messages" infoClass="info" errorClass="error" />
+            #{validateClassLevelBean.invoked}
+        
+            <h:panelGrid columns="2">
+                <o:outputLabel for="number1" value="Number 1" />
+                <h:inputText id="number1" value="#{validateClassLevelBean.product.number1}" />
+             
+                <o:outputLabel for="number2" value="Number 2" />
+                <h:inputText id="number2" value="#{validateClassLevelBean.product.number2}" />
+	        </h:panelGrid>
             
+            <h:commandButton value="submit" action="#{validateClassLevelBean.action}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+            
+            <o:validateBean value="#{validateClassLevelBean.product}" validationGroups="org.omnifaces.showcase.validators.ProductGroup" />        
+        </h:form>
         
+        <h3>Validating at the class level that number 1 is smaller than number 2. Same annotations, but without o:validateBean</h3>
+        <h:form id="classLevelFormNoValidateBean">
+        
+            <h:messages styleClass="messages" infoClass="info" errorClass="error" />
+            #{validateClassLevelBean.invoked}
+        
+            <h:panelGrid columns="2">
+                <o:outputLabel for="number1" value="Number 1" />
+                <h:inputText id="number1" value="#{validateClassLevelBean.product.number1}" />
+             
+                <o:outputLabel for="number2" value="Number 2" />
+                <h:inputText id="number2" value="#{validateClassLevelBean.product.number2}" />
+            </h:panelGrid>
+            
+            <h:commandButton value="submit" action="#{validateClassLevelBean.action}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
         </h:form>
         
         
