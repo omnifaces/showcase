@@ -9,7 +9,7 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="taghandler/ValidateBean" />
 			<f:attribute name="vdl.paths" value="o/validateBean" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/validators/ValidateBean.java,classes/org/omnifaces/showcase/validators/MyValidationGroups.java" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/validators/ValidateBean.java,classes/org/omnifaces/showcase/validators/MyValidationGroups.java, classes/org/omnifaces/showcase/model/ProductCopier.java" />
 		</f:metadata>
 	</ui:define>
 
@@ -43,11 +43,26 @@
 			</h:panelGrid>
 		</h:form>
         
-        <h3>Validating at the class level that number 1 is smaller than number 2</h3>
+        <br/>
+        <h3>Validating at the class level that number 1 is smaller than number 2 - default (validate copy)</h3>
+        <p>
+        	<small>
+        		This uses the default validation method, which copies the object, sets the values retrieved from the input components
+        		on it, and performs class level validation on the copy. In order to make the copy, cloning, serialization, a copy constructor
+        		and a new instance will be attempted (in that order). Since our model object has a copy constructor, but is not cloneable or
+        		serializable, the copy constructor will be the one that is used.
+        	</small>
+        </p>
+        
         <h:form id="classLevelForm">
         
             <h:messages styleClass="messages" infoClass="info" errorClass="error" />
             #{validateClassLevelBean.invoked}
+             <p>
+            	Bean values in model <br/>
+            	number1: #{validateClassLevelBean.product.number1}<br/>
+            	number2: #{validateClassLevelBean.product.number2}<br/>
+            </p>
         
             <h:panelGrid columns="2">
                 <o:outputLabel for="number1" value="Number 1" />
@@ -64,11 +79,26 @@
             <o:validateBean value="#{validateClassLevelBean.product}" validationGroups="org.omnifaces.showcase.validators.ProductGroup" />        
         </h:form>
         
-        <h3>Validating at the class level that number 1 is smaller than number 2. Same annotations, but without o:validateBean</h3>
-        <h:form id="classLevelFormNoValidateBean">
+        <br/>
+        <h3>Validating at the class level that number 1 is smaller than number 2 - validate actual bean</h3>
+          <p>
+       	<small>
+       		This uses an alternative validation method, which doesn't copy the bean but lets JSF do its normal job all the way up till
+       		the phase UPDATE MODEL VALUES, and only thereafter will it validate the actual object. This has the advantage that no copying
+       		and value collecting are needed, but atypical for JSF is that the model is updated even though there are validation errors.
+       		The bean developer is also required to manually check in the bean whether there are validation errors.
+       	</small>
+        </p>
+        
+        <h:form id="classLevelFormActualBean">
         
             <h:messages styleClass="messages" infoClass="info" errorClass="error" />
             #{validateClassLevelBean.invoked}
+             <p>
+            	Bean values in model <br/>
+            	number1: #{validateClassLevelBean.product.number1}<br/>
+            	number2: #{validateClassLevelBean.product.number2}<br/>
+            </p>
         
             <h:panelGrid columns="2">
                 <o:outputLabel for="number1" value="Number 1" />
@@ -76,11 +106,49 @@
              
                 <o:outputLabel for="number2" value="Number 2" />
                 <h:inputText id="number2" value="#{validateClassLevelBean.product.number2}" />
-            </h:panelGrid>
+	        </h:panelGrid>
             
             <h:commandButton value="submit" action="#{validateClassLevelBean.action}">
                 <f:ajax execute="@form" render="@form"/>
             </h:commandButton>
+            
+            <o:validateBean value="#{validateClassLevelBean.product}" validationGroups="org.omnifaces.showcase.validators.ProductGroup" method="validateActual" />        
+        </h:form>
+        
+        <br/>
+        <h3>Validating at the class level that number 1 is smaller than number 2 - using custom copier</h3>
+        <p>
+        	<small>
+        		This uses the default validation method like the example above, but uses a custom copier. Such copier would be needed when the bean
+        		originates from another module, which the front end developer can't modify to be either cloneable, serializable or having a copy
+        		constructor. A custom copier also allows customization of the copy process, e.g. when a bean contains many fields but it's clear
+        		that only a few are needed for the validation.
+        	</small>
+        </p>
+        
+        <h:form id="classLevelFormCustomCopier">
+        
+            <h:messages styleClass="messages" infoClass="info" errorClass="error" />
+            #{validateClassLevelBean.invoked}
+             <p>
+            	Bean values in model <br/>
+            	number1: #{validateClassLevelBean.product.number1}<br/>
+            	number2: #{validateClassLevelBean.product.number2}<br/>
+            </p>
+        
+            <h:panelGrid columns="2">
+                <o:outputLabel for="number1" value="Number 1" />
+                <h:inputText id="number1" value="#{validateClassLevelBean.product.number1}" />
+             
+                <o:outputLabel for="number2" value="Number 2" />
+                <h:inputText id="number2" value="#{validateClassLevelBean.product.number2}" />
+	        </h:panelGrid>
+            
+            <h:commandButton value="submit" action="#{validateClassLevelBean.action}">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+            
+            <o:validateBean value="#{validateClassLevelBean.product}" validationGroups="org.omnifaces.showcase.validators.ProductGroup" copier="org.omnifaces.showcase.model.ProductCopier" />        
         </h:form>
         
         

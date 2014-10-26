@@ -21,6 +21,8 @@ public class ValidateClassLevelBean implements Serializable {
 	public void action() {
 		if (!isValidationFailed()) {
 			invoked = "Ok!";
+		} else {
+			invoked = "Validation failed, but acton method invoked.";
 		}
 	}
 
