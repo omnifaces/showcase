@@ -4,13 +4,13 @@ import static org.omnifaces.util.Faces.isValidationFailed;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.showcase.model.Product;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class ValidateClassLevelBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,7 +22,7 @@ public class ValidateClassLevelBean implements Serializable {
 		if (!isValidationFailed()) {
 			invoked = "Ok!";
 		} else {
-			invoked = "Validation failed, but acton method invoked.";
+			invoked = "Validation failed, but action method invoked.";
 		}
 	}
 
