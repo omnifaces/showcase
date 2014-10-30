@@ -16,34 +16,58 @@ public class ValidatorBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private String contactMethod1;
-	private String contactMethod2;
+	private List<Question> questions;
 	private List<ExampleEntity> entities;
 
 	@PostConstruct
 	public void init() {
-		contactMethod1 = contactMethod2 = "email";
+		questions = Arrays.asList(new Question(1, 9), new Question(5, 10), new Question(3, 7));
 		entities = Arrays.asList(new ExampleEntity(), new ExampleEntity(), new ExampleEntity());
 	}
 
-	public String getContactMethod1() {
-		return contactMethod1;
-	}
-
-	public void setContactMethod1(String contactMethod1) {
-		this.contactMethod1 = contactMethod1;
-	}
-
-	public String getContactMethod2() {
-		return contactMethod2;
-	}
-
-	public void setContactMethod2(String contactMethod2) {
-		this.contactMethod2 = contactMethod2;
+	public List<Question> getQuestions() {
+		return questions;
 	}
 
 	public List<ExampleEntity> getEntities() {
 		return entities;
+	}
+
+	public static class Question {
+
+		private Integer answer;
+		private Integer minimum;
+		private Integer maximum;
+
+		public Question(Integer minimum, Integer maximum) {
+			this.minimum = minimum;
+			this.maximum = maximum;
+		}
+
+		public Integer getAnswer() {
+			return answer;
+		}
+
+		public void setAnswer(Integer answer) {
+			this.answer = answer;
+		}
+
+		public Integer getMinimum() {
+			return minimum;
+		}
+
+		public void setMinimum(Integer minimum) {
+			this.minimum = minimum;
+		}
+
+		public Integer getMaximum() {
+			return maximum;
+		}
+
+		public void setMaximum(Integer maximum) {
+			this.maximum = maximum;
+		}
+
 	}
 
 }

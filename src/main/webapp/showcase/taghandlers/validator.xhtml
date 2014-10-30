@@ -18,14 +18,14 @@
 	<ui:define name="description-extra">
 		<h3>Demo</h3>
 		<p>
-			In the below demo, the validators are supposed to be disabled based on the currently selected contact method.
-			Change the contact method to phone and enter a valid phone number, e.g. <code>0123456789</code>, you'll see
-			that with the <code>&lt;f:validator&gt;</code>, the email validator is still been used because that was the
-			one which was set during view build time which would due to
-			<a href="http://java.net/jira/browse/JAVASERVERFACES-1492">JSF issue 1492</a>
-			use a completely different view scoped bean instance. The <code>&lt;o:validator&gt;</code> allows a render
-			time evaluation of attributes and hence works as intuitively expected as it wouldn't create a brand new
-			instance of the view scoped bean, but just reuse the one as is been used during the ajax request.
+			In the below first demo, it was the intent to use <code>&lt;f:validateLongRange&gt;</code> as follows:
+		</p>
+		<pre class="prettyprint"><code class="lang-xhtml"> &lt;f:validateLongRange minimum="\#{question.minimum}" maximum="\#{question.maximum}" /&gt;</code></pre>
+		<p>
+			But this fails hard as the minimum and maximum values are set during view build time instead of during processing the validation.
+			The \#{question} is not available during view build time and thus both minimum and maximum will default to 0
+			(for a background explanation, check <a href="http://stackoverflow.com/q/15682196/157882">this Stack Overflow answer</a>).
+			It works as intuitively expected with the <code>&lt;o:validator&gt;</code> as it allows a render time evaluation of attributes.
 		</p>
 		<p>
 			For another related use case, checkout the 
@@ -41,60 +41,48 @@
 	</ui:define>
 
 	<ui:define name="demo">
-		<h3>With <code>&lt;f:validator&gt;</code> - phone is still validated as email</h3>
+		<h3>With f:validateLongRange in each row - fails!</h3>
 		<h:form>
-			<h:panelGrid columns="3">
-				<o:outputLabel for="contact" value="Contact" />
-				<h:panelGroup>
-					<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod1}">
-						<f:selectItem itemLabel="Email" itemValue="email" />
-						<f:selectItem itemLabel="Phone" itemValue="phone" />
-						<f:ajax render="contact contactMessage" />
-					</h:selectOneMenu>
-					<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod1}">
-						<f:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod1 != 'email'}" />
-						<f:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod1 != 'phone'}" />
+			<h:dataTable value="#{validatorBean.questions}" var="question">
+				<h:column>
+					Enter value between #{question.minimum} and #{question.maximum}
+				</h:column>
+				<h:column>
+					<h:inputText id="input" value="#{question.answer}" required="true" requiredMessage="Fill out the value!">
+						<f:validateLongRange minimum="#{question.minimum}" maximum="#{question.maximum}" />
 					</h:inputText>
-				</h:panelGroup>
-				<h:message id="contactMessage" for="contact" />
-			
-				<h:panelGroup />
-				<h:commandButton value="Submit">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				<h:panelGroup>
-					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
-				</h:panelGroup>
-			</h:panelGrid>
+				</h:column>
+				<h:column>
+					<h:message for="input" />
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="Submit">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		</h:form>
 
 		<hr />
 
-		<h3>With <code>&lt;o:validator&gt;</code> - disabled attribute now works request based</h3>
+		<h3>With o:validator in each row - works!</h3>
 		<h:form>
-			<h:panelGrid columns="3">
-				<o:outputLabel for="contact" value="Contact" />
-				<h:panelGroup>
-					<h:selectOneMenu id="contactMethod" value="#{validatorBean.contactMethod2}">
-						<f:selectItem itemLabel="Email" itemValue="email" />
-						<f:selectItem itemLabel="Phone" itemValue="phone" />
-						<f:ajax render="contact contactMessage" />
-					</h:selectOneMenu>
-					<h:inputText id="contact" required="true" requiredMessage="Please enter #{validatorBean.contactMethod2}">
-						<o:validator validatorId="emailValidator" disabled="#{validatorBean.contactMethod2 != 'email'}" />
-						<o:validator validatorId="phoneValidator" disabled="#{validatorBean.contactMethod2 != 'phone'}" />
+			<h:dataTable value="#{validatorBean.questions}" var="question">
+				<h:column>
+					Enter value between #{question.minimum} and #{question.maximum}
+				</h:column>
+				<h:column>
+					<h:inputText id="input" value="#{question.answer}" required="true" requiredMessage="Fill out the value!">
+						<o:validator validatorId="javax.faces.LongRange" minimum="#{question.minimum}" maximum="#{question.maximum}" message="Invalid value!" />
 					</h:inputText>
-				</h:panelGroup>
-				<h:message id="contactMessage" for="contact" />
-			
-				<h:panelGroup />
-				<h:commandButton value="Submit">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				<h:panelGroup>
-					<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
-				</h:panelGroup>
-			</h:panelGrid>
+				</h:column>
+				<h:column>
+					<h:message for="input" />
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="Submit">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
 		</h:form>
 
 		<hr />
@@ -110,7 +98,7 @@
 				<h:column>
 					<h:inputText id="input" value="#{entity.value}" required="true" requiredMessage="#{label} is required">
 						<o:validator validatorId="javax.faces.Length" minimum="5" message="{0} must be at least 5 chars" />
-						<o:validator validatorId="javax.faces.RegularExpression" pattern="\d+" message="{0} must contain digits only" />
+						<o:validator validatorId="javax.faces.RegularExpression" pattern="\\d+" message="{0} must contain digits only" />
 					</h:inputText>
 				</h:column>
 			</h:dataTable>
