@@ -14,10 +14,11 @@
 
 		<h3>Major in OmniFaces 2.0</h3>
 		<ul class="important">
-			<li>Dependencies are changed from Java 1.6, JSF 2.0, Servlet 2.5, EL 2.1 to <strong>Java 1.7, JSF 2.2, Servlet 3.0, EL 2.2 and CDI 1.0</strong>;
+			<li>Dependencies are changed from Java 1.6, JSF 2.0, Servlet 2.5, EL 2.1 to <strong>Java 1.7, JSF 2.2, Servlet 3.0, EL 2.2 and CDI 1.1</strong>;
 				as of now, OmniFaces 2.0 is still backwards compatible with JSF 2.1, but not with JSF 2.0 anymore</li>
-			<li>OmniFaces initialization will explicitly <a href="http://omnifaces.org/cdi">fail</a> if CDI <code>BeanManager</code> is unavailable application startup</li>
+			<li>OmniFaces initialization will explicitly <a href="http://omnifaces.org/cdi">fail</a> if CDI 1.1 <code>BeanManager</code> is unavailable application startup</li>
 			<li><h:link outcome="/utils/Events"><code>Events</code> utility class has major method renames to clarify the meaning</h:link></li>
+			<li><h:link outcome="/utils/Beans"><code>Beans</code> utility class doesn't take <code>BeanManager</code> anymore as argument</h:link></li>
 		</ul>
 
 		<h3>Added in OmniFaces 2.0 (does NOT apply to OmniFaces 1.10)</h3>
