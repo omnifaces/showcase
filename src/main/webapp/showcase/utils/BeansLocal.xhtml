@@ -1,0 +1,17 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="util/BeansLocal" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+</ui:composition>
