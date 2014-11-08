@@ -57,7 +57,7 @@ public class App {
 		pages = new HashMap<>();
 		fillPages(pages, menu);
 		version = initVersion();
-		snapshot = version.contains("SNAPSHOT");
+		snapshot = version.contains("-SNAPSHOT") || version.contains("-RC");
 		poweredBy = initPoweredBy();
 	}
 

@@ -3,7 +3,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:demo="http://omnifaces.org/showcase"
+	xmlns:os="http://omnifaces.org/showcase"
 >
 	<ui:define name="contentTitle">What's new in OmniFaces 2.0?</ui:define>
 
@@ -16,7 +16,7 @@
 		<ul class="important">
 			<li>Dependencies are changed from Java 1.6, JSF 2.0, Servlet 2.5, EL 2.1 to <strong>Java 1.7, JSF 2.2, Servlet 3.0, EL 2.2 and CDI 1.1</strong>;
 				as of now, OmniFaces 2.0 is still backwards compatible with JSF 2.1, but not with JSF 2.0 anymore</li>
-			<li>OmniFaces initialization will explicitly <a href="http://omnifaces.org/cdi">fail</a> if CDI 1.1 <code>BeanManager</code> is unavailable application startup</li>
+			<li>OmniFaces initialization will explicitly <a href="http://omnifaces.org/cdi">fail</a> if CDI <code>BeanManager</code> is unavailable application startup</li>
 			<li><h:link outcome="/utils/Events"><code>Events</code> utility class has major method renames to clarify the meaning</h:link></li>
 			<li><h:link outcome="/utils/Beans"><code>Beans</code> utility class doesn't take <code>BeanManager</code> anymore as argument</h:link></li>
 		</ul>
@@ -29,8 +29,9 @@
 			<li><h:link outcome="/cdi/Param"><code>@Param</code> now supports directly injecting the (auto-converted) value</h:link></li>
             <li><h:link outcome="/components/moveComponent"><code>&lt;o:moveComponent&gt;</code> via which components, facets and behaviors can be moved at runtime to a target component in various ways</h:link></li>
 			<li><h:link outcome="/components/resolveComponent"><code>&lt;o:resolveComponent&gt;</code> via which a component can be looked up by its ID and a reference to it put in various scopes</h:link></li>
-            <li><demo:githubIssue issue="33"/> - <h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> now supports validating beans at the class level</li>
+            <li><os:githubIssue issue="33"/> - <h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> now supports validating beans at the class level</li>
             <li><h:link outcome="/utils/Servlets"><code>Servlets</code> utility class got a bunch of new methods related to cookies and JSF</h:link></li>
+			<li><h:link outcome="/utils/BeansLocal">New <code>BeansLocal</code> utility class next to <code>Beans</code> class with the same philosophy as <code>Faces</code>/<code>FacesLocal</code></h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.0 (also applies to OmniFaces 1.10)</h3>
