@@ -41,7 +41,7 @@
 		<p>
 			<h:form enctype="multipart/form-data">
 				<h:inputFile value="#{uploadImageBean.file}">
-					<f:ajax listener="#{uploadImageBean.upload}" render="@form" />
+					<f:ajax listener="#{uploadImageBean.upload()}" render="@form" />
 				</h:inputFile>
 				<o:graphicImage value="#{uploadImageBean.content}" dataURI="true" width="600" 
 					rendered="#{not empty uploadImageBean.content}" />
