@@ -36,4 +36,8 @@ public class SelectListBean implements Serializable {
 		return model;
 	}
 
+	public void setModel(DualListModel<ExampleEntity> model) {
+		this.model = model;
+	}
+
 }
