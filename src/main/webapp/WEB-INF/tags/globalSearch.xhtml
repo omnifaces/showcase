@@ -8,13 +8,13 @@
     xmlns:o="http://omnifaces.org/ui"
     xmlns:of="http://omnifaces.org/functions"
 >
-    <o:resolveComponent name="tableComponent" for="#{for}" />
+    <o:resolveComponent name="tableComponent" for="#{forx}" />
     
     <p:inputText id="search" onkeyup="$(document.getElementById('#{tableComponent.clientId}:globalFilter')).val(this.value);PF('#{tableComponent.widgetVar}').filter();" placeholder="Search" />
     <h:outputText value="&amp;nbsp;" escape="false"/> 
     <h:panelGroup id="resultCountPlaceholder" binding="#{resultCountPlaceholder}" />
     
-    <o:moveComponent for="#{for}" destination="AFTER">
+    <o:moveComponent for="#{forx}" destination="AFTER">
         <h:panelGroup id="resultCount" binding="#{resultCount}" >
             <h:outputText value="&lt;script type='text/javascript'&gt;" escape="false" />
                 <h:panelGroup rendered="#{not empty tableComponent.filteredValue}">
@@ -27,11 +27,11 @@
         </h:panelGroup>
     </o:moveComponent>
     
-    <o:moveComponent for="#{for}" destination="BEHAVIOR">
+    <o:moveComponent for="#{forx}" destination="BEHAVIOR">
         <p:ajax event="filter" update=":#{resultCount.clientId}" />
     </o:moveComponent>
     
-    <o:moveComponent for="#{for}" destination="FACET" facet="header">
+    <o:moveComponent for="#{forx}" destination="FACET" facet="header">
         <h:inputHidden id="globalFilter" />
     </o:moveComponent>
         
