@@ -11,7 +11,7 @@ import org.omnifaces.util.Faces;
 @SessionScoped
 public class LocaleManager {
 
-    private Locale locale =	Faces.getLocale();
+    private Locale locale = Faces.getLocale();
 
     public Locale getLocale() {
         return locale;
