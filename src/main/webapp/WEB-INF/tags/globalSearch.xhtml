@@ -16,12 +16,14 @@
     
     <o:moveComponent for="#{forx}" destination="AFTER">
         <h:panelGroup id="resultCount" binding="#{resultCount}" >
+            <!-- Mojarra has issues with dynamically changing UIInstructions, so hide in output text -->
             <h:outputText value="&lt;script type='text/javascript'&gt;" escape="false" />
                 <h:panelGroup rendered="#{not empty tableComponent.filteredValue}">
                     <h:outputText value="document.getElementById('#{resultCountPlaceholder.clientId}').innerHTML = 'Showing #{tableComponent.filteredValue.size()} of #{of:evalAttribute(tableComponent, 'value').size()}';" escape="false" />
                 </h:panelGroup>
                 <h:panelGroup rendered="#{empty tableComponent.filteredValue or (tableComponent.filteredValue.size() eq of:evalAttribute(tableComponent, 'value').size())}">
-                    document.getElementById('#{resultCountPlaceholder.clientId}').innerHTML = '';
+                    <!-- MyFaces is not able to re-render text and expressions directly put on a Facelet, so wrap in output text as well -->
+                    <h:outputText value="document.getElementById('#{resultCountPlaceholder.clientId}').innerHTML = '';" escape="false"/>
                 </h:panelGroup>
             <h:outputText value="&lt;/script&gt;" escape="false" />
         </h:panelGroup>

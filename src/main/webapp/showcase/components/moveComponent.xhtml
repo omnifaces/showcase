@@ -35,7 +35,7 @@
         <demo:globalSearch forx="myTable"/> <br/><br/>
         
 
-        <h:form>
+        <h:form id="myForm">
             <p:dataTable id="myTable" value="#{myTableBacking.users}" var="user" filteredValue="#{myTableBacking.filteredUsers}" widgetVar="myTableVar">
                 <p:column filterBy="#{user.firstName}" filterMatchMode="contains">  
                     #{user.firstName}
