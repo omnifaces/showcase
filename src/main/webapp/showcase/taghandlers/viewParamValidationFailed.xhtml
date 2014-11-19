@@ -32,20 +32,20 @@
 
 	<ui:define name="demo-meta">
 		<f:metadata>
-			<f:viewParam id="foo" name="foo" converter="javax.faces.Long">
+			<f:viewParam name="foo" converter="javax.faces.Long">
 				<o:viewParamValidationFailed sendError="400" />
 			</f:viewParam>
-			<f:viewParam id="bar" name="bar" converter="javax.faces.Long">
+			<f:viewParam name="bar" converter="javax.faces.Long">
 				<o:viewParamValidationFailed sendError="400" message="Invalid bar!"/>
 			</f:viewParam>
-			<f:viewParam id="baz" name="baz" converter="javax.faces.Long">
+			<f:viewParam name="baz" converter="javax.faces.Long">
 				<o:viewParamValidationFailed sendRedirect="whatsnew" />
 			</f:viewParam>
-			<f:viewParam id="faz" name="faz" converter="javax.faces.Long">
+			<f:viewParam name="faz" converter="javax.faces.Long">
 				<o:viewParamValidationFailed sendRedirect="whatsnew" message="Invalid faz!" />
 			</f:viewParam>
-			<f:viewParam id="boo" name="boo" converter="javax.faces.Long" />
-			<f:viewParam id="foz" binding="#{foz}" name="foz" converter="javax.faces.Long" />
+			<f:viewParam name="boo" converter="javax.faces.Long" />
+			<f:viewParam name="foz" converter="javax.faces.Long" />
 			<o:viewParamValidationFailed sendError="400" message="#{foz.valid ? null : 'Invalid foz!'}" />
 		</f:metadata>
 	</ui:define>
