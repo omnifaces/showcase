@@ -24,14 +24,9 @@ body .ui-widget-header {
 	text-shadow: none;
 }
 
-body .ui-widget-content .ui-state-default,
-body .ui-widget-header .ui-state-default {
+body .ui-widget-header .ui-state-default,
+body .ui-widget-content .ui-state-default {
 	background: #ddd;
-}
-
-body .ui-widget-header,
-body .ui-widget-content {
-	border: 0;
 }
 
 body .ui-widget-content a,
@@ -150,6 +145,10 @@ code,
 	padding: 6px;
 }
 
+#content .ui-tabs {
+	border: 0;
+}
+
 #content .ui-tabs .ui-tabs-nav {
 	background: none;
 }
@@ -168,12 +167,14 @@ code,
 #content .ui-panel {
 	margin: 6px 0;
 	padding: 1px;
+	border: 0;
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
 
 #menu .ui-panel-titlebar, 
 #content .ui-panel-titlebar {
 	padding: 2px 6px;
+	border: 0;
 	box-shadow: 0 0 2px rgba(0,0,0,.5);
 }
 
