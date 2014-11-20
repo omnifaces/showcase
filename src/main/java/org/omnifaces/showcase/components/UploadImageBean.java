@@ -15,7 +15,7 @@ public class UploadImageBean {
 	private Part file;
 	private byte[] content;
 
-	public void upload() throws IOException {
+	public void read() throws IOException {
 		content = Utils.toByteArray(file.getInputStream());
 	}
 
