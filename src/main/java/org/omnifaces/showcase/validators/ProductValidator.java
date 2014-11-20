@@ -9,12 +9,12 @@ public class ProductValidator implements ConstraintValidator<ValidProduct, Produ
 
 	@Override
 	public void initialize(ValidProduct constraintAnnotation) {
-		
+		//
 	}
-	
+
 	@Override
 	public boolean isValid(Product value, ConstraintValidatorContext context) {
 		return value.getNumber1() < value.getNumber2();
 	}
-	
+
 }
