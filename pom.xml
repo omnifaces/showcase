@@ -9,9 +9,9 @@
 
 	<groupId>org.omnifaces</groupId>
 	<artifactId>showcase</artifactId>
-	<version>2.0</version>
+	<version>2.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	
+
 	<name>Omnifaces Showcase</name>
 	<description>Showcase for JSF 2.x utility library</description>
 	
@@ -68,7 +68,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.0</version>
+			<version>5.1</version>
 		</dependency>
 		
 		<dependency>
@@ -80,7 +80,7 @@
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
-			<version>2.0</version>
+			<version>2.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
