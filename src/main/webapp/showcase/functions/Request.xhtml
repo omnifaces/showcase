@@ -14,10 +14,20 @@
 	</ui:define>
 
 	<ui:define name="description-extra">
-		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+		<p>
+			Collection of EL shortcut functions for obtaining information from the current HTTP request which isn't directly available via <code>\#{request}</code> and thus otherwise requires some string concatenating and/or substringing.
+		</p>
+		<p>
+			The difference between <code>\#{of:getRemoteAddr()}</code> and <code>\#{request.remoteAddr}</code> is that the OmniFaces function recognizes and filters <code>X-Forwarded-For</code> header coming from proxies.
+		</p>
 	</ui:define>		
 	
 	<ui:define name="demo">
-		TBD
+		<ul>
+			<li>Request base URL: #{of:getRequestBaseURL()}</li>
+			<li>Request domain URL: #{of:getRequestDomainURL()}</li>
+			<li>Request URL with query string: #{of:getRequestURLWithQueryString()}</li>
+			<li>Remote addr: #{of:getRemoteAddr()}</li>
+		</ul>
 	</ui:define>
 </ui:composition>
