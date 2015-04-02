@@ -43,4 +43,10 @@ public class GraphicImageBean {
 		return IMAGES.keySet().toArray(new Long[IMAGES.size()]);
 	}
 
+	public InputStream getSvgLogo() {
+		// Note: this is a dummy example. In reality, you should be able to take e.g. a Long argument as ID and then
+		// return the desired byte[] content from some service class by given ID.
+		return Faces.getResourceAsStream("/resources/layout/img/OmniFaces-logo.svg");
+	}
+
 }

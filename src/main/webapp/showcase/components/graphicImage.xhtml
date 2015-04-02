@@ -37,6 +37,11 @@
 			</ui:repeat>
 		</p>
 
+		<h3>The below one renders InputStream property with SVG content as resource</h3>
+		<p>
+			<o:graphicImage value="#{graphicImageBean.svgLogo}" type="svg" lastModified="#{startup.time}" height="90" />
+		</p>
+
 		<h3>The below one renders byte[] property of uploaded file as data URI</h3>
 		<h:form enctype="multipart/form-data">
 			<h:panelGrid columns="3">
