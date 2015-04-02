@@ -121,7 +121,7 @@ public class Page extends ListTreeModel<Page> {
 			return emptyList();
 		}
 
-		return asList(attribute.split("\\s*,\\s*"));
+		return asList(attribute.trim().split("\\s*,\\s*"));
 	}
 
 	private static String loadDescription(List<String> apiPaths) {

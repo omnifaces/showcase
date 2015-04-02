@@ -1,0 +1,30 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="cdi/Cookie" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/cdi/CdiCookieBean.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<ui:include src="/WEB-INF/includes/cdi/known-issues.xhtml" />
+	</ui:define>
+
+	<ui:define name="demo">
+		<h:form>
+			<h:commandButton value="Add/update a session cookie with a random value" action="#{cdiCookieBean.add}" />
+		</h:form>
+		
+		<h:panelGroup id="result" layout="block">
+			<p>Cookie injected in bean: #{cdiCookieBean.testCookie}</p>
+			<p>Actual cookie in view: #{cookie.testCookie.value}</p>
+		</h:panelGroup> 
+	</ui:define>
+</ui:composition>
