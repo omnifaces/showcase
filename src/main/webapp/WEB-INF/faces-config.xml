@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <faces-config
-	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
-	version="2.0"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2" metadata-complete="false"
 >
 	<application>
 		<resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
@@ -16,9 +16,6 @@
 		<render-kit-factory>org.omnifaces.renderkit.Html5RenderKitFactory</render-kit-factory>
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
 		<external-context-factory>org.omnifaces.facesviews.FacesViewsJSF2ExternalContextFactory</external-context-factory>
-
-		<!-- Patch/workaround for JBoss EAP 6.0.x/AS 7.1.x ignoring web.xml's tracking-mode setting. -->
-		<external-context-factory>org.omnifaces.showcase.patch.TrackingModeExternalContextFactory</external-context-factory>
 	</factory>
 
 	<render-kit>
@@ -28,33 +25,4 @@
 			<renderer-class>org.omnifaces.showcase.HeadRenderer</renderer-class>
 		</renderer>
 	</render-kit>
-	
-	<!-- 
-		Fix for GlassFish 4.0 not able to load java.util.Data as JSF native managed bean.
- 		See https://java.net/jira/browse/GLASSFISH-20775 
- 	-->
-	<managed-bean>
-		<description>
-			<![CDATA[
-				This makes an instance of <code>java.util.Date</code> as current datetime available by
-				<code>#{now}</code>.
-			]]>
-		</description>
-		<managed-bean-name>now</managed-bean-name>
-		<managed-bean-class>org.omnifaces.showcase.OmniDate</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
-	
-	<managed-bean>
-		<description>
-			<![CDATA[
-				This makes an instance of <code>java.util.Date</code> as startup datetime available by 
-				<code>#{startup}</code>.
-			]]>
-		</description>
-		<managed-bean-name>startup</managed-bean-name>
-		<managed-bean-class>org.omnifaces.showcase.OmniDate</managed-bean-class>
-		<managed-bean-scope>application</managed-bean-scope>
-	</managed-bean>
-	
 </faces-config>

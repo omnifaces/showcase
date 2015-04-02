@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+<web-app
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	metadata-complete="false"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1" metadata-complete="false"
 >
 	<display-name>OmniFaces Showcase</display-name>
 
@@ -40,16 +41,6 @@
 	<context-param>
 		<param-name>org.apache.myfaces.RESOURCE_MAX_TIME_EXPIRES</param-name>
 		<param-value>3628800000</param-value> <!-- 6 weeks. -->
-	</context-param>
-	<context-param>
-		<!--
-			MyFaces and Mojarra don't agree on the default setting for actually serializing state
-			in the session as opposed to just storing a reference. Mojarra's default is false, but
-			can be switched to true. MyFaces' default is true, and can be switched to false, which
-			we thus do below. See http://jdevelopment.nl/jsf-22/#1127
-		 -->
-		<param-name>org.apache.myfaces.SERIALIZE_STATE_IN_SESSION</param-name>
-		<param-value>false</param-value>
 	</context-param>
 
 
@@ -130,21 +121,14 @@
 	</filter-mapping>
 
 
-	<!-- Welcome files, error pages and mime types. -->
+	<!-- Session config, welcome files, error pages and mime types. -->
 	
-	<!-- Commented the session-config element out because Resin is not compatible with it (tested with 4.0.36) 
-		 This is now done programmatically in ResinJSFInitHack.java
-	-->
-	<!-- 
 	<session-config>
-		
 		<cookie-config>
 			<http-only>true</http-only>
 		</cookie-config>
-		
 		<tracking-mode>COOKIE</tracking-mode>
 	</session-config>
-	 -->
 	
 	<welcome-file-list>
 		<!--
@@ -185,10 +169,10 @@
 
 	<mime-mapping>
 		<!--
-			Silence WebLogic's annoying "JSF1091: No mime type could be found for file" warning.
+			Not all application servers are aware of new SVG mime type, so we define it here to be sure.
 		-->
-		<extension>xhtml</extension>
-		<mime-type>text/html</mime-type>
+		<extension>svg</extension>
+		<mime-type>image/svg+xml</mime-type>
 	</mime-mapping>
 
 </web-app>
