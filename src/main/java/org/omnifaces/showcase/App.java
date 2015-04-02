@@ -114,7 +114,7 @@ public class App {
 		return String.format("%s%nOmniFaces %s%nPrimeFaces %s%n%s",
 			Faces.getImplInfo(),
 			Faces.class.getPackage().getSpecificationVersion(),
-			"5.0", // PrimeFaces Constants.VERSION is since 4.0 moved to RequestContext#getApplicationContext(), however the access point has changed from application based to request based.
+			"5.1", // PrimeFaces Constants.VERSION is since 4.0 moved to RequestContext#getApplicationContext(), however the access point has changed from application based to request based.
 			Faces.getServerInfo());
 	}
 
