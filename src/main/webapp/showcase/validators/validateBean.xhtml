@@ -65,12 +65,12 @@
         
         <h:form id="classLevelForm">
         
-            <h:messages styleClass="messages" infoClass="info" errorClass="error" />
-            #{validateClassLevelBean.invoked}
-             <p>
-            	Bean values in model <br/>
-            	number1: #{validateClassLevelBean.product.number1}<br/>
-            	number2: #{validateClassLevelBean.product.number2}<br/>
+            <h:messages styleClass="messages" infoClass="info" warnClass="warn" errorClass="error" />
+
+            <p>
+            	Bean values in model:<br/>
+            	Number 1: #{validateClassLevelBean.product.number1}<br/>
+            	Number 2: #{validateClassLevelBean.product.number2}<br/>
             </p>
         
             <h:panelGrid columns="2">
@@ -101,14 +101,14 @@
         
         <h:form id="classLevelFormActualBean">
         
-            <h:messages styleClass="messages" infoClass="info" errorClass="error" />
-            #{validateClassLevelBean.invoked}
-             <p>
-            	Bean values in model <br/>
-            	number1: #{validateClassLevelBean.product.number1}<br/>
-            	number2: #{validateClassLevelBean.product.number2}<br/>
+            <h:messages styleClass="messages" infoClass="info" warnClass="warn" errorClass="error" />
+
+            <p>
+            	Bean values in model:<br/>
+            	Number 1: #{validateClassLevelBean.product.number1}<br/>
+            	Number 2: #{validateClassLevelBean.product.number2}<br/>
             </p>
-        
+
             <h:panelGrid columns="2">
                 <o:outputLabel for="number1" value="Number 1" />
                 <h:inputText id="number1" value="#{validateClassLevelBean.product.number1}" />
@@ -137,12 +137,12 @@
         
         <h:form id="classLevelFormCustomCopier">
         
-            <h:messages styleClass="messages" infoClass="info" errorClass="error" />
-            #{validateClassLevelBean.invoked}
-             <p>
-            	Bean values in model <br/>
-            	number1: #{validateClassLevelBean.product.number1}<br/>
-            	number2: #{validateClassLevelBean.product.number2}<br/>
+            <h:messages styleClass="messages" infoClass="info" warnClass="warn" errorClass="error" />
+
+            <p>
+            	Bean values in model:<br/>
+            	Number 1: #{validateClassLevelBean.product.number1}<br/>
+            	Number 2: #{validateClassLevelBean.product.number2}<br/>
             </p>
         
             <h:panelGrid columns="2">

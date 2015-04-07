@@ -1,41 +1,37 @@
 package org.omnifaces.showcase.validators;
 
 import static org.omnifaces.util.Faces.isValidationFailed;
+import static org.omnifaces.util.Messages.addGlobalInfo;
+import static org.omnifaces.util.Messages.addGlobalWarn;
 
-import java.io.Serializable;
-
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.showcase.model.Product;
 
 @Named
-@ViewScoped
-public class ValidateClassLevelBean implements Serializable {
+@RequestScoped
+public class ValidateClassLevelBean {
 
-	private static final long serialVersionUID = 1L;
+	private Product product;
 
-	private Product product = new Product();
-	private String invoked;
+	@PostConstruct
+	public void init() {
+		product = new Product();
+	}
 
 	public void action() {
-		if (!isValidationFailed()) {
-			invoked = "Ok!";
-		} else {
-			invoked = "Validation failed, but action method invoked.";
+		if (isValidationFailed()) {
+			addGlobalWarn("Validation failed, but action method invoked.");
+		}
+		else {
+			addGlobalInfo("OK! Validation has not failed.");
 		}
 	}
 
 	public Product getProduct() {
 		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-
-	public String getInvoked() {
-		return invoked;
 	}
 
 }
