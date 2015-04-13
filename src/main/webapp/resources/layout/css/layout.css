@@ -146,6 +146,11 @@ code,
 	box-shadow: none;
 }
 
+#content .github {
+	background-color: #333;
+	color: #fff;
+}
+
 #content .ui-panel-content {
 	padding: 6px;
 }

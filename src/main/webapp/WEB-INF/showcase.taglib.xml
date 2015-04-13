@@ -26,11 +26,15 @@
   		<source>tags/globalSearch.xhtml</source>
 	</tag>
 	<tag>
-  		<tag-name>githubIssue</tag-name>
-  		<source>tags/githubIssue.xhtml</source>
+  		<tag-name>githubLink</tag-name>
+  		<source>tags/githubLink.xhtml</source>
   		<attribute>
   			<name>issue</name>
   			<type>java.lang.Integer</type>
+  		</attribute>
+  		<attribute>
+  			<name>commit</name>
+  			<type>java.lang.String</type>
   		</attribute>
 	</tag>
 	
