@@ -1,5 +1,6 @@
 package org.omnifaces.showcase.functions;
 
+import java.io.Serializable;
 import java.util.Locale;
 
 import javax.faces.bean.ManagedBean;
@@ -9,9 +10,11 @@ import org.omnifaces.util.Faces;
 
 @ManagedBean
 @SessionScoped
-public class LocaleManager {
+public class LocaleManager implements Serializable {
 
-    private Locale locale = Faces.getLocale();
+	private static final long serialVersionUID = 1L;
+
+	private Locale locale = Faces.getLocale();
 
     public Locale getLocale() {
         return locale;

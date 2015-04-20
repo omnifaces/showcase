@@ -11,7 +11,7 @@
 			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/eventlisteners/InvokeActionBean.java" />
 
 			<f:viewParam id="param" name="param" value="#{invokeActionBean.param}" />
-			<f:event type="postInvokeAction" listener="#{invokeActionBean.initParam}" />
+			<f:event type="postInvokeAction" listener="#{invokeActionBean.initParam}" /><!-- The second declaration in demo snippet will cause ISE in MyFaces because of double redirect. -->
 		</f:metadata>
 	</ui:define>
 
