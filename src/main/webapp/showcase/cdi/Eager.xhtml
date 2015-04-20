@@ -30,7 +30,8 @@
 			One usecase for this feature in a real application could be calling an <code>@Asynchronous</code> annotated method that
 			loads data from a database and returns a <code>Future</code>. That way loading of this data and the processing of the
 			request pipeline plus the building and rendering of a view up till the moment the <code>Future#get()</code> is referenced 
-			can overlap.
+			can overlap. A more concrete example can be found in the chapter
+			<a href="http://balusc.blogspot.com/2014/06/omnifaces-18-released.html" target="_blank">Eagerly instantiate a CDI managed bean</a>.
 		</p>
 		
 		<blockquote>
