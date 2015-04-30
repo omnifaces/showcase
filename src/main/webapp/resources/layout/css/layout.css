@@ -64,6 +64,13 @@ hr {
 	background-color: #ccc;
 }
 
+blockquote {
+	color: #666;
+	margin: 0 0 20px;
+	padding: 0 0 0 20px;
+	border-left: 3px solid #bbb;
+}
+
 label.error {
 	color: #c66;
 }
