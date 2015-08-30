@@ -36,7 +36,7 @@
 			<p>
 				<b>Choose a city, then press Select</b>:
 				<p:pickList value="#{selectListBean.model}" var="entity" itemValue="#{entity}" itemLabel="#{entity.value}">
-					<o:converter converterId="omnifaces.ListConverter" list="#{selectListBean.model.source}" />
+					<o:converter converterId="omnifaces.ListConverter" list="#{selectListBean.fullList}" />
 				</p:pickList>
 			</p>
 
