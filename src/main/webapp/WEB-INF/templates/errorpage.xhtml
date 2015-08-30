@@ -16,8 +16,8 @@
 				<li>Request URI: <a href="#{requestScope['javax.servlet.error.request_uri']}">#{requestScope['javax.servlet.error.request_uri']}</a></li>
 				<li>Ajax request: #{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}</li>
 				<li>Status code: #{requestScope['javax.servlet.error.status_code']}</li>
-				<li>Exception type: #{requestScope['javax.servlet.error.exception_type']}</li>
-				<li>Exception message: #{requestScope['javax.servlet.error.message']}</li>
+				<li>Exception type: <code>#{requestScope['javax.servlet.error.exception_type']}</code></li>
+				<li>Exception message: <code>#{requestScope['javax.servlet.error.message']}</code></li>
 				<li>Stack trace: <pre><code>#{of:printStackTrace(requestScope['javax.servlet.error.exception'])}</code></pre></li>
 			</ul>
 		</ui:insert>
