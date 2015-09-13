@@ -20,7 +20,7 @@ public class CdiCookieBean {
 
 	public void add() throws IOException {
 		Faces.addResponseCookie("testCookie", UUID.randomUUID().toString(), -1);
-		Faces.redirect(Faces.getRequestURI());
+		Faces.refresh();
 	}
 
 	public String getTestCookie() {
