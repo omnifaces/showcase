@@ -49,5 +49,24 @@
 			to this showcase application.
 			So, if you actually didn't want to show one for polls in your application, you're by default already set.
 		</i></p>
+		
+		<hr />
+		
+		<h3>Lazy loading</h3>
+		<p>With <code>autorun="true"</code> you can defer loading and rendering to window onload event.</p>
+		<h:panelGroup id="lazyDataPanel">
+			<ui:fragment rendered="#{not empty commandScriptBean.exampleEntities}">
+				<h:dataTable value="#{commandScriptBean.exampleEntities}" var="exampleEntity">
+					<h:column>#{exampleEntity.id}</h:column>
+					<h:column>#{exampleEntity.value}</h:column>
+				</h:dataTable>
+			</ui:fragment>
+		</h:panelGroup>
+		<h:form>
+			<o:commandScript name="loadLazyData" action="#{commandScriptBean.loadLazyData}" render=":lazyDataPanel" autorun="true" />
+		</h:form>
+		<p><i>
+			Note: in case you missed it, just refresh the page to see it once again.
+		</i></p>
 	</ui:define>
 </ui:composition>

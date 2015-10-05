@@ -24,6 +24,7 @@
 			<li><os:githubLink issue="148" /><h:link outcome="/cdi/ContextParam"><code>@ContextParam</code> which injects a <code>&lt;context-param&gt;</code> value</h:link></li>
 			<li><os:githubLink issue="167" /><h:link outcome="/utils/Components">Added <code>Components#includeCompositeComponent()</code> overloaded method which takes an attribute map</h:link></li>
 			<li><os:githubLink issue="149" /><h:link outcome="/utils/Components">Added <code>Components#buildView()</code> and <code>Components#encodeHtml()</code> allowing local building and encoding of (simple) templates</h:link></li>
+			<li><os:githubLink issue="119" /><h:link outcome="/components/viewAction">New <code>&lt;o:viewAction&gt;</code> component which evaluates <code>if</code> attribute during invoke application phase</h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.2</h3>
@@ -35,13 +36,14 @@
 
 		<h3>Fixed in OmniFaces 2.2</h3>
 		<ul>
-			<li><os:githubLink commit="6cf7123" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> failed when resource name contains a query string</h:link></li>
+			<li><os:githubLink commit="6cf7123,96d5d17" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> failed when resource name contains a query string, and ordering w.r.t. suppressed resources failed during synchronous postback in MyFaces</h:link></li>
 			<li><os:githubLink issue="141" /><h:link outcome="/utils/JNDI"><code>JNDI#lookup()</code> in GlassFish 4.x incorrectly threw <code>NamingExcepion</code> instead of returning <code>null</code></h:link></li>
 			<li><os:githubLink commit="f914b83" /><h:link outcome="/utils/Components"><code>Components#getParams()</code> didn't consider <code>Converter</code> of <code>ParamHolder</code></h:link></li>
 			<li><os:githubLink issue="127" /><h:link outcome="/utils/Ajax"><code>Ajax#updateRow()</code> failed in paginated tables</h:link></li>
 			<li><os:githubLink issue="156" /><h:link outcome="/utils/WebXml"><code>WebXml#findErrorPageLocation()</code> (and <code>FullAjaxExceptionHandler</code>) didn't consider entire class hierarchy when matching exception types</h:link></li>
 			<li><os:githubLink issue="150" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> threw NPE on unrendered inputs</h:link></li>
 			<li><os:githubLink issue="168" /><h:link outcome="/eventlisteners/ResetInputAjaxActionListener"><code>ResetInputAjaxActionListener</code> is now also compatible with RichFaces 4.5+</h:link></li>
+			<li><os:githubLink issue="166" /><h:link outcome="/cdi/Eager"><code>@Eager</code> blocked deployment in Jetty</h:link></li>
 		</ul>
 
 		<hr />
