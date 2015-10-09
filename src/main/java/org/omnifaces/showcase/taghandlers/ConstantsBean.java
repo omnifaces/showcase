@@ -1,11 +1,11 @@
 package org.omnifaces.showcase.taghandlers;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import org.omnifaces.showcase.model.ExampleEnum;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class ConstantsBean {
 

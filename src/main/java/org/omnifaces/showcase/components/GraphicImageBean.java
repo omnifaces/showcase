@@ -6,13 +6,13 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Named;
 
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Utils;
 
-@ManagedBean
+@Named
 @ApplicationScoped
 public class GraphicImageBean {
 

@@ -2,14 +2,14 @@ package org.omnifaces.showcase.validators;
 
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import org.omnifaces.validator.MultiFieldValidator;
 
-@ManagedBean
+@Named
 @ApplicationScoped
 public class ValidateMultipleImpl implements MultiFieldValidator {
 

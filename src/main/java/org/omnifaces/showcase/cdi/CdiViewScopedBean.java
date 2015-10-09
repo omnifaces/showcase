@@ -4,9 +4,11 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.faces.application.FacesMessage;
 import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
+import org.omnifaces.cdi.viewscope.ViewScopeManager;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
@@ -18,6 +20,12 @@ public class CdiViewScopedBean implements Serializable {
 
 	@PostConstruct
 	public void postConstruct() {
+		FacesMessage unloadMessage = Faces.removeSessionAttribute("unloadMessage");
+
+		if (unloadMessage != null) {
+			Messages.add("cdiViewScopedForm", unloadMessage);
+		}
+
 		Messages.addInfo("cdiViewScopedForm", "PostConstruct invoked: {0}", this);
 	}
 
@@ -38,7 +46,12 @@ public class CdiViewScopedBean implements Serializable {
     @PreDestroy
     public void preDestroy() {
     	if (Faces.getContext() != null) { // It can be null during session invalidate!
-    		Messages.addInfo("cdiViewScopedForm", "PreDestroy invoked: {0}", this);
+    		if (ViewScopeManager.isUnloadRequest(Faces.getContext())) {
+        		Faces.setSessionAttribute("unloadMessage", Messages.createInfo("PreDestroy invoked during unload: {0}", this));
+    		}
+    		else {
+        		Messages.addInfo("cdiViewScopedForm", "PreDestroy invoked during postback: {0}", this);
+    		}
     	}
     }
 

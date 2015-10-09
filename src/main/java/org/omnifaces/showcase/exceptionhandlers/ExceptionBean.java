@@ -2,10 +2,10 @@ package org.omnifaces.showcase.exceptionhandlers;
 
 import java.sql.SQLException;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class ExceptionBean {
 

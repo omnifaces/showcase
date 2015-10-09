@@ -1,12 +1,12 @@
 package org.omnifaces.showcase.components;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import org.omnifaces.showcase.model.ExampleEntity;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class ParamBean {
 

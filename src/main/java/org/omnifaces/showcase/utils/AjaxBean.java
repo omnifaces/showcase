@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIData;
+import javax.inject.Named;
 
 import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.Ajax;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class AjaxBean {
 

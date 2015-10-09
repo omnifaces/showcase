@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import org.omnifaces.component.output.cache.CacheFactory;
 
+@Named
 @RequestScoped
-@ManagedBean
 public class CacheBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;

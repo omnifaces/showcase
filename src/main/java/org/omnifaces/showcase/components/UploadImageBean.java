@@ -2,13 +2,13 @@ package org.omnifaces.showcase.components;
 
 import java.io.IOException;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 import javax.servlet.http.Part;
 
 import org.omnifaces.util.Utils;
 
-@ManagedBean
+@Named
 @RequestScoped // Can be @ViewScoped, but caution should be taken with byte[] property. You don't want to save it in session.
 public class UploadImageBean {
 

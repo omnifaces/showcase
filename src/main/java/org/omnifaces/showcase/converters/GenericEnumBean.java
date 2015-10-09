@@ -3,12 +3,12 @@ package org.omnifaces.showcase.converters;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.omnifaces.showcase.model.ExampleEnum;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class GenericEnumBean implements Serializable {
 

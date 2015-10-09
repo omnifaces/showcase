@@ -3,15 +3,15 @@ package org.omnifaces.showcase.components;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.Ajax;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class TreeBean implements Serializable {
 

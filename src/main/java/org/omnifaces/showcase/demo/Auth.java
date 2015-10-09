@@ -2,13 +2,13 @@ package org.omnifaces.showcase.demo;
 
 import java.io.IOException;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class Auth {
 
@@ -19,7 +19,7 @@ public class Auth {
 		if ("password".equals(password)) {
 			Faces.invalidateSession(); // "good practice", minimizes risk in session fixation hack.
 			Faces.setSessionAttribute("user", username);
-			Faces.redirect(Faces.getRequestURI());
+			Faces.refresh();
 		}
 		else {
 			Messages.addGlobalError("Unknown login, please try again");
@@ -28,7 +28,7 @@ public class Auth {
 
 	public void logout() throws IOException {
 		Faces.invalidateSession();
-		Faces.redirect(Faces.getRequestURI());
+		Faces.refresh();
 	}
 
 	public String getUsername() {

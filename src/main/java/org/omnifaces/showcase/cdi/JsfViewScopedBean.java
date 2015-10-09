@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class JsfViewScopedBean implements Serializable {
 

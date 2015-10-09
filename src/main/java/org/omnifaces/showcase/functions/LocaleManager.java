@@ -3,12 +3,12 @@ package org.omnifaces.showcase.functions;
 import java.io.Serializable;
 import java.util.Locale;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 import org.omnifaces.util.Faces;
 
-@ManagedBean
+@Named
 @SessionScoped
 public class LocaleManager implements Serializable {
 

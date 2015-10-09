@@ -1,10 +1,10 @@
 package org.omnifaces.showcase.validators;
 
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 
 import org.omnifaces.showcase.model.ConstrainedEntity;
 
-@ManagedBean
+@Named
 public class ValidateConstraintsBean {
 
 	private ConstrainedEntity constrainedEntity = new ConstrainedEntity();
@@ -12,5 +12,5 @@ public class ValidateConstraintsBean {
 	public ConstrainedEntity getConstrainedEntity() {
 		return constrainedEntity;
 	}
-	
+
 }

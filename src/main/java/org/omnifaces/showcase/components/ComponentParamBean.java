@@ -7,18 +7,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-@ManagedBean
+import org.omnifaces.cdi.Param;
+
+@Named
 @RequestScoped
 public class ComponentParamBean {
 
 	private String input;
 	private List<String> tableItems;
 
-	@ManagedProperty("#{param.start}")
+	@Inject @Param
 	private Integer start;
 	private List<String> listItems;
 	private String selectedItem;

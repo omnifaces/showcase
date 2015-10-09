@@ -7,13 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.omnifaces.showcase.model.ExampleEntity;
 import org.primefaces.model.DualListModel;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class SelectListBean implements Serializable {
 
@@ -24,19 +24,19 @@ public class SelectListBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		
+
 		fullList = asList(
 			new ExampleEntity(1l, "Amsterdam"),
 			new ExampleEntity(2l, "Frankfurt"),
 			new ExampleEntity(3l, "Berlin")
 		);
-		
+
 		model = new DualListModel<>(
 			new ArrayList<>(fullList),
 			new ArrayList<ExampleEntity>()
 		);
 	}
-	
+
 	public List<ExampleEntity> getFullList() {
 		return fullList;
 	}

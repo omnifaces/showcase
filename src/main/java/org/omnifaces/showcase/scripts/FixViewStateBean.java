@@ -1,11 +1,11 @@
 package org.omnifaces.showcase.scripts;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
 import org.omnifaces.util.Messages;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class FixViewStateBean {
 

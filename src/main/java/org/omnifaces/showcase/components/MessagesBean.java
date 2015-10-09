@@ -2,14 +2,14 @@ package org.omnifaces.showcase.components;
 
 import java.util.Random;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.inject.Named;
 
 import org.omnifaces.util.Messages;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class MessagesBean {
 

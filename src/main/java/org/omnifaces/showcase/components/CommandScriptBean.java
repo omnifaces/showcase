@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.Faces;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class CommandScriptBean implements Serializable {
 

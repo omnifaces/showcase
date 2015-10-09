@@ -1,10 +1,10 @@
 package org.omnifaces.showcase.taghandlers;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.event.ActionEvent;
+import javax.inject.Named;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class MethodParamBean {
 

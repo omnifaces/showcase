@@ -5,14 +5,14 @@ import static org.omnifaces.util.Utils.isEmpty;
 import java.io.IOException;
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
 import javax.faces.event.ComponentSystemEvent;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 
-@ManagedBean
+@Named
 @ViewScoped
 public class InvokeActionBean implements Serializable {
 
@@ -25,7 +25,7 @@ public class InvokeActionBean implements Serializable {
 		if (!isEmpty(param)) {
 			System.out.println("InvokeActionBean.initParam() " + Faces.getCurrentPhaseId());
 			Messages.addFlashInfo("param", "Param \"{0}\" is successfully set and you have been redirected!", param);
-			Faces.redirect(Faces.getRequestURI());
+			Faces.refresh();
 		}
 	}
 
