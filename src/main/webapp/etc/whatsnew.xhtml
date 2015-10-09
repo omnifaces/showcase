@@ -19,12 +19,13 @@
 			<li><os:githubLink commit="572c118,efd9347" /><h:link outcome="/utils/Faces">Added <code>Faces#refresh()</code> and <code>Faces#refreshWithQueryString()</code> which do basically <code>redirect(getRequestURI())</code>; added <code>Faces#getRenderKit()</code></h:link></li>
 			<li><os:githubLink issue="157" /><h:link outcome="/utils/Messages">Added <code>Messages#isEmpty()</code>, <code>Messages#isEmpty(clientId)</code> and<code>Messages#isGlobalEmpty()</code></h:link></li>
 			<li><os:githubLink commit="465a78d" /><h:link outcome="/utils/FacesConfigXml">Added <code>FacesConfigXml#getSupportedLocales()</code> which returns an ordered list in contrary to <code>Faces#getSupportedLocales()</code></h:link></li>
-			<li><os:githubLink issue="116" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> now supports <code>&lt;f|o:param&gt;</code> children (only on default action URL)</h:link></li>
+			<li><os:githubLink issue="116" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> now supports <code>&lt;f|o:param&gt;</code> children</h:link></li>
 			<li><os:githubLink commit="1c912f7,62949a3" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> now listens on browser unload event and gets destroyed sooner</h:link></li>
 			<li><os:githubLink issue="148" /><h:link outcome="/cdi/ContextParam"><code>@ContextParam</code> which injects a <code>&lt;context-param&gt;</code> value</h:link></li>
 			<li><os:githubLink issue="167" /><h:link outcome="/utils/Components">Added <code>Components#includeCompositeComponent()</code> overloaded method which takes an attribute map</h:link></li>
 			<li><os:githubLink issue="149" /><h:link outcome="/utils/Components">Added <code>Components#buildView()</code> and <code>Components#encodeHtml()</code> allowing local building and encoding of (simple) templates</h:link></li>
 			<li><os:githubLink issue="119" /><h:link outcome="/components/viewAction">New <code>&lt;o:viewAction&gt;</code> component which evaluates <code>if</code> attribute during invoke application phase</h:link></li>
+			<li><os:githubLink commit="1417fc0" /><h:link outcome="/servlets/FileServlet">Added abstract template for "BalusC FileServlet" which supports a.o. cache and range (resume) requests</h:link></li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.2</h3>

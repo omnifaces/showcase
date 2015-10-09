@@ -86,3 +86,14 @@
 .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-disabled {
 	display: none;
 }
+
+.deprecatedLabel {
+padding: 5px;
+    display: block;
+    border-radius: 3px;
+    box-shadow: 0 0 10px #933;
+    background: #933;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
