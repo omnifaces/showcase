@@ -10,7 +10,7 @@
 	<ui:define name="content">
 		<h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
-		<p><em>Expected release date: ~October, 2015</em></p>
+		<p><em>Expected release date: ~November, 2015</em></p>
 
 		<h3>Added in OmniFaces 2.2</h3>
 		<ul>
@@ -20,7 +20,7 @@
 			<li><os:githubLink issue="157" /><h:link outcome="/utils/Messages">Added <code>Messages#isEmpty()</code>, <code>Messages#isEmpty(clientId)</code> and<code>Messages#isGlobalEmpty()</code></h:link></li>
 			<li><os:githubLink commit="465a78d" /><h:link outcome="/utils/FacesConfigXml">Added <code>FacesConfigXml#getSupportedLocales()</code> which returns an ordered list in contrary to <code>Faces#getSupportedLocales()</code></h:link></li>
 			<li><os:githubLink issue="116" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> now supports <code>&lt;f|o:param&gt;</code> children</h:link></li>
-			<li><os:githubLink commit="1c912f7,62949a3" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> now listens on browser unload event and gets destroyed sooner</h:link></li>
+			<li><os:githubLink commit="1c912f7,62949a3,ad44be1" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> now listens on browser unload event and gets destroyed sooner</h:link></li>
 			<li><os:githubLink issue="148" /><h:link outcome="/cdi/ContextParam"><code>@ContextParam</code> which injects a <code>&lt;context-param&gt;</code> value</h:link></li>
 			<li><os:githubLink issue="167" /><h:link outcome="/utils/Components">Added <code>Components#includeCompositeComponent()</code> overloaded method which takes an attribute map</h:link></li>
 			<li><os:githubLink issue="149" /><h:link outcome="/utils/Components">Added <code>Components#buildView()</code> and <code>Components#encodeHtml()</code> allowing local building and encoding of (simple) templates</h:link></li>
@@ -33,6 +33,7 @@
 			<li><os:githubLink commit="55510fa" /><h:link outcome="/renderkits/Html5RenderKit"><code>Html5RenderKit</code> is <strong>deprecated</strong> in favor of JSF 2.2 passthrough attributes; it will be removed in OmniFaces 3.0</h:link></li>
 			<li><os:githubLink commit="d364daf" /><h:link outcome="/eventlisteners/InvokeActionEventListener"><code>&lt;f:event type="(pre|post)InvokeAction"&gt;</code> is now supported on all components</h:link></li>
 			<li><os:githubLink issue="164" /><h:link outcome="/taghandlers/importFunctions"><code>&lt;o:importFunctions"&gt;</code> will now throw a clear <code>IllegalArgumentException</code> on non-existing function</h:link></li>
+			<li><os:githubLink issue="167" /><h:link outcome="/utils/Components">Migrated <code>Components#includeCompositeComponent()</code> to JSF 2.2 approach with <code>createComponent()</code></h:link></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.2</h3>
@@ -42,7 +43,7 @@
 			<li><os:githubLink commit="f914b83" /><h:link outcome="/utils/Components"><code>Components#getParams()</code> didn't consider <code>Converter</code> of <code>ParamHolder</code></h:link></li>
 			<li><os:githubLink issue="127" /><h:link outcome="/utils/Ajax"><code>Ajax#updateRow()</code> failed in paginated tables</h:link></li>
 			<li><os:githubLink issue="156" /><h:link outcome="/utils/WebXml"><code>WebXml#findErrorPageLocation()</code> (and <code>FullAjaxExceptionHandler</code>) didn't consider entire class hierarchy when matching exception types</h:link></li>
-			<li><os:githubLink issue="150" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> threw NPE on unrendered inputs</h:link></li>
+			<li><os:githubLink issue="150,144" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> threw NPE on unrendered inputs and IAE on boolean inputs</h:link></li>
 			<li><os:githubLink issue="168" /><h:link outcome="/eventlisteners/ResetInputAjaxActionListener"><code>ResetInputAjaxActionListener</code> is now also compatible with RichFaces 4.5+</h:link></li>
 			<li><os:githubLink issue="166" /><h:link outcome="/cdi/Eager"><code>@Eager</code> blocked deployment in Jetty</h:link></li>
 		</ul>
