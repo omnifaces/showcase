@@ -11,6 +11,10 @@
 	font-size: 1em;
 }
 
+#contentTitle .ui-selectonemenu {
+	padding-right: 0;
+}
+
 #contentTitle .code {
 	margin: 0;
 	padding: 8px 4px;
