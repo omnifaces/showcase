@@ -16,6 +16,8 @@
 		</f:metadata>
 	</ui:define>
 
+	<!-- NOTE: MyFaces 2.2.8 (TomEE 7.0.0) interprets below metadata too and therefore duplicates conversion/validation messages. -->
+
 	<ui:define name="demo-meta">
 		<f:metadata>
 			<o:viewParam name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />

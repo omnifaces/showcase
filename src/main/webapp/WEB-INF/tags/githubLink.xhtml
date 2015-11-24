@@ -4,9 +4,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 >
-	<ui:fragment rendered="#{not empty issue}">
-		<a href="https://github.com/omnifaces/omnifaces/issues/#{issue}" title="View GitHub issue ##{issue}" class="github code" target="_blank">##{issue}</a> -
-	</ui:fragment>
+	<ui:repeat value="#{issue.split('\\s*,\\s*')}" var="_issue" rendered="#{not empty issue}">
+		<a href="https://github.com/omnifaces/omnifaces/issues/#{_issue}" title="View GitHub issue ##{_issue}" class="github code" target="_blank">##{_issue}</a> -
+	</ui:repeat>
 	<ui:repeat value="#{commit.split('\\s*,\\s*')}" var="_commit" rendered="#{not empty commit}">
 		<a href="https://github.com/omnifaces/omnifaces/commit/#{_commit}" title="View GitHub commit #{_commit}" class="github code" target="_blank">#{_commit}</a> -
 	</ui:repeat>

@@ -15,6 +15,8 @@
 		</f:metadata>
 	</ui:define>
 
+	<!-- NOTE: MyFaces 2.2.8 (TomEE 7.0.0) interprets below metadata too and therefore fails with ISE in sendRedirect(). -->
+
 	<ui:define name="demo-meta">
 		<f:metadata>
 			<f:viewParam name="param" value="#{invokeActionBean.param}" />
