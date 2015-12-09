@@ -64,6 +64,10 @@ hr {
 	background-color: #ccc;
 }
 
+a img {
+	border: 0; /* IE */
+}
+
 blockquote {
 	color: #666;
 	margin: 0 0 20px;
