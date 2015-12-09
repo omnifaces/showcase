@@ -1,0 +1,61 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="cdi/push/Socket" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/PushBean.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Global counter</h3>
+		<p>
+			Below is a static counter which has the same value application wide.
+		</p>
+		<h1><span id="counter">#{pushBean.counter}</span></h1>
+		<p>
+			If you enable the push, then a websocket will be opened.
+			Note that it's by default always enabled when included in the page, but for demo purposes we're initially disabling it.
+		</p>
+		<h:form>
+			<p>
+				Push is #{pushBean.enabled ? 'enabled' : 'disabled'} 
+				<h:commandButton value="#{pushBean.enabled ? 'disable' : 'enable'} it" action="#{pushBean.toggle}">
+					<f:ajax render="@form :increment"/>
+				</h:commandButton>
+			</p>
+		</h:form>
+		<p>
+			If push is enabled and you press the "increment!" button, then the static counter will increment in bean and the push will send out the new value to all open (enabled) channels in clients.
+			To see it yourself, open the same page in multiple tabs/windows/browsers/machines and trigger the push in only one of it.
+			Note that the counter also won't increment from other side if push is still disabled.
+		</p>
+		<h:form id="increment">
+			<p>
+				<h:commandButton value="increment!" action="#{pushBean.increment}" disabled="#{not pushBean.enabled}">
+					<f:ajax />
+				</h:commandButton>
+			</p>
+		</h:form>
+	
+		<o:socket channel="counter" onmessage="updateCounter" onclose="onclosePush" enabled="#{pushBean.enabled}" />
+
+		<script>
+			function updateCounter(newvalue) {
+				$("#counter").text(newvalue);
+			}
+
+			function onclosePush(code) {
+				if (code == -1) {
+					alert("Oops! Your browser doesn't seem to support web sockets. The push functionality won't work.")
+				}
+			}
+		</script>
+	</ui:define>
+</ui:composition>

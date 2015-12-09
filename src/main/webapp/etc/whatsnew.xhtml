@@ -5,11 +5,32 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:os="http://omnifaces.org/showcase"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 2.2?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 2.3?</ui:define>
 
 	<ui:define name="content">
 		<h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
+		<p><em>Expected release date: Q2, 2016</em></p>
+
+		<h3>Added in OmniFaces 2.3</h3>
+		<ul>
+			<li><os:githubLink issue="17" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code> for web socket based push</h:link></li>
+		</ul>
+
+		<h3>Changed in OmniFaces 2.3</h3>
+		<ul>
+			<li>N/A</li>
+		</ul>
+
+		<h3>Fixed in OmniFaces 2.3</h3>
+		<ul>
+			<li><os:githubLink commit="84f67485" /><h:link outcome="/utils/WebXml"><code>WebXml#isAccessAllowed()</code> incorrectly matched extension based URLs in prefix path checking</h:link></li>
+			<li><os:githubLink commit="b3d2ea55" /><h:link outcome="/facesviews/ExtensionlessURLs">When mapping FacesViews on <code>/</code> and triggering a 404 error, then Mojarra throws "Response already committed" exception</h:link></li>
+		</ul>
+
+		<hr />
+	
+		<h2>What's new in OmniFaces 2.2?</h2>
 		<p><em>Release date: 24 November, 2015</em></p>
 
 		<h3>Added in OmniFaces 2.2</h3>
