@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.io.Serializable;
 
 import javax.faces.event.ComponentSystemEvent;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;
 

@@ -6,9 +6,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.model.SelectItem;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.selectitems.SelectItemsBuilder;
 

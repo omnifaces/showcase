@@ -2,8 +2,9 @@ package org.omnifaces.showcase.eventlisteners;
 
 import java.io.Serializable;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+
+import org.omnifaces.cdi.ViewScoped;
 
 @Named
 @ViewScoped

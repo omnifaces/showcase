@@ -3,9 +3,9 @@ package org.omnifaces.showcase.components;
 import java.io.Serializable;
 
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.model.tree.ListTreeModel;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.showcase.model.ExampleEntity;

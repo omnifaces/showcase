@@ -3,9 +3,9 @@ package org.omnifaces.showcase.converters;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.showcase.model.ExampleEnum;
 
 @Named

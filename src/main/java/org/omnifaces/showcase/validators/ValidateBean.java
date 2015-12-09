@@ -2,10 +2,11 @@ package org.omnifaces.showcase.validators;
 
 import java.io.Serializable;
 
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
+import org.omnifaces.cdi.ViewScoped;
 
 @Named
 @ViewScoped
