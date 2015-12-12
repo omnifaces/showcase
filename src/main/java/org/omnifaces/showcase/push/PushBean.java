@@ -33,7 +33,7 @@ public class PushBean implements Serializable {
 		return enabled;
 	}
 
-	public Long getCounter() {
+	public Long getCount() {
 		return counter.get();
 	}
 

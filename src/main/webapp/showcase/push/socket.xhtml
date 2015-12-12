@@ -27,7 +27,7 @@
 			Below is a static counter which has the same value application wide.
 		</p>
 
-		<h1><h:panelGroup id="counter">#{pushBean.counter}</h:panelGroup></h1>
+		<h1><h:panelGroup id="count">#{pushBean.count}</h:panelGroup></h1>
 
 		<h:form>
 			<p>
@@ -38,7 +38,7 @@
 				<h:panelGroup id="toggle">
 					Push is #{pushBean.enabled ? 'enabled' : 'disabled'} 
 					<h:commandButton value="#{pushBean.enabled ? 'disable' : 'enable'} it" action="#{pushBean.toggle}">
-						<f:ajax render="toggle increment :counter"/>
+						<f:ajax render="toggle increment :count"/>
 					</h:commandButton>
 				</h:panelGroup>
 			</p>
@@ -54,11 +54,11 @@
 			</p>
 		</h:form>
 	
-		<o:socket channel="counter" onmessage="updateCounter" onclose="onclosePush" enabled="#{pushBean.enabled}" />
+		<o:socket port="8000" channel="counter" onmessage="updateCounter" onclose="onclosePush" enabled="#{pushBean.enabled}" />
 
 		<script>
 			function updateCounter(newvalue) {
-				$("#counter").text(newvalue);
+				$("#count").text(newvalue);
 			}
 
 			function onclosePush(code) {
