@@ -5,6 +5,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:demo="http://omnifaces.org/showcase">
+
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="js.paths" value="fixviewstate.unminified.js" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="description">
 		<p>
 			This script fixes the JSF view state if necessary.
@@ -55,10 +62,6 @@
 			When the <code>fixviewstate.js</code> is not loaded, you'll notice that after the first time, 
 			you need to press the other button twice in order to see it.
 			This problem is fixed by loading the <code>fixviewstate.js</code>.
-		</p>
-		<p>
-			The unminified version of the script is available for viewing 
-			<a href="#{resource['omnifaces:fixviewstate.unminified.js']}">here</a>.
 		</p>
 	</ui:define>
 

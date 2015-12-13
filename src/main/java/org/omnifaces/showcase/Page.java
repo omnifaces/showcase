@@ -104,9 +104,10 @@ public class Page extends ListTreeModel<Page> {
 			List<String> apiPaths = new ArrayList<>(getCommaSeparatedAttribute(attributes, "api.path"));
 			List<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
 			List<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
+			List<String> jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
 			description = loadDescription(apiPaths);
 			sources = loadSources(path, srcPaths);
-			documentation = (apiPaths.size() + vdlPaths.size() > 0) ? new Documentation(apiPaths, vdlPaths) : null;
+			documentation = (apiPaths.size() + vdlPaths.size() + jsPaths.size() > 0) ? new Documentation(apiPaths, vdlPaths, jsPaths) : null;
 		}
 		catch (Exception e) {
 			loaded.set(false);
@@ -335,12 +336,14 @@ public class Page extends ListTreeModel<Page> {
 
 		private List<String> api;
 		private List<String> vdl;
+		private List<String> js;
 
 		// Contructors ------------------------------------------------------------------------------------------------
 
-		public Documentation(List<String> api, List<String> vdl) {
+		public Documentation(List<String> api, List<String> vdl, List<String> js) {
 			this.api = api;
 			this.vdl = vdl;
+			this.js = js;
 		}
 
 		// Getters/setters --------------------------------------------------------------------------------------------
@@ -351,6 +354,10 @@ public class Page extends ListTreeModel<Page> {
 
 		public List<String> getVdl() {
 			return vdl;
+		}
+
+		public List<String> getJs() {
+			return js;
 		}
 
 	}

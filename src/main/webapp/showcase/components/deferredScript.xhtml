@@ -11,6 +11,7 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="component/script/DeferredScript" />
 			<f:attribute name="vdl.paths" value="o/deferredScript" />
+			<f:attribute name="js.paths" value="deferredscript.unminified.js,util.unminified.js" />
 		</f:metadata>
 	</ui:define>
 
@@ -28,12 +29,6 @@
 			which transparently recognizes and combines the deferred script resources into a single resource as well.
 		</p>
 
-		<h3>Script source</h3>
-		<p>
-			For the technically interested, the unminified version of the <code>OmniFaces.DeferredScript</code> script is available for viewing 
-			<a href="#{resource['omnifaces:deferredscript.unminified.js']}">here</a> (note you do not need to include it yourself!).
-		</p>
-		
 		<h3>Using <code>&lt;o:deferredScript&gt;</code> on PrimeFaces JavaScript resources</h3>
 		<p>
 			Refer to the following Stack Overflow Question&amp;Answer for a detailed guide: 

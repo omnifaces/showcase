@@ -10,16 +10,11 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="cdi/ViewScoped" />
 			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/cdi/CdiViewScopedBean.java,classes/org/omnifaces/showcase/cdi/JsfViewScopedBean.java" />
+			<f:attribute name="js.paths" value="unload.unminified.js" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="description-extra">
-		<h3>Script source</h3>
-		<p>
-			For the technically interested, the unminified version of the <code>OmniFaces.Unload</code> script is available for viewing 
-			<a href="#{resource['omnifaces:unload.unminified.js']}">here</a> (note you do not need to include it yourself!).
-		</p>
-
 		<ui:include src="/WEB-INF/includes/cdi/known-issues.xhtml" />
 	</ui:define>
 

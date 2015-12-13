@@ -35,6 +35,7 @@ The following application wide constants are available via this template:
 	<c:set var="_apiURL" value="http://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
 	<c:set var="_vdlURL" value="http://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
 	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.version}/src/main/java/" scope="application" />
+	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.version}/src/main/resources/META-INF/resources/omnifaces/" scope="application" />
 
     <ui:insert name="meta"/>
 

@@ -92,6 +92,7 @@ The following metadata attributes are supported via this template (they're parse
 			<os:listdocs header="VDL" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
 			<os:listdocs header="API" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
 			<os:listdocs header="Source code" paths="api" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
+			<os:listdocs header="JavaScript" paths="js" url="#{_jsURL}#{path}" label="#{path}" />
 		</p:panel>
 	</ui:define>
 </ui:composition>
