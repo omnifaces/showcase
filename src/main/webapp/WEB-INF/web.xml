@@ -68,6 +68,10 @@
 		<param-name>org.omnifaces.FACES_VIEWS_PATH_ACTION</param-name>
 		<param-value>REDIRECT_TO_SCANNED_EXTENSIONLESS</param-value>
 	</context-param>
+	<context-param>
+		<param-name>org.omnifaces.SOCKET_ENDPOINT_ALWAYS_ENABLED</param-name>
+		<param-value>true</param-value>
+	</context-param>
 
 
 	<!-- Servlets and filters. -->
