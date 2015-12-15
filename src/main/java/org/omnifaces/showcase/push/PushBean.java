@@ -6,8 +6,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.PushContext;
 import org.omnifaces.cdi.ViewScoped;
-import org.omnifaces.cdi.push.PushContext;
 
 @Named
 @ViewScoped

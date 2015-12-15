@@ -25,7 +25,7 @@
 		<h:form>
 			<p>
 				If you enable the push, then a websocket will be opened.
-				Note that it's by default always enabled when included in the page, but for demo purposes we're initially disabling it.
+				Note that it's by default always enabled (auto-connected) when included in the page, but for demo purposes we're initially disabling it.
 			</p>
 			<p>
 				<h:panelGroup id="toggle">
@@ -47,7 +47,7 @@
 			</p>
 		</h:form>
 	
-		<o:socket port="8000" channel="counter" onmessage="updateCounter" onclose="onclosePush" enabled="#{pushBean.enabled}" />
+		<o:socket port="8000" channel="counter" onmessage="updateCounter" onclose="onclosePush" connected="#{pushBean.enabled}" />
 
 		<script>
 			function updateCounter(newvalue) {
