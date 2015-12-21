@@ -15,13 +15,13 @@ public class PushBean implements Serializable {
 
 	private static AtomicLong counter = new AtomicLong();
 
-	private boolean enabled;
+	private boolean connected;
 
 	@Inject
 	private PushContext push;
 
 	public void toggle() {
-		enabled = !enabled;
+		connected = !connected;
 	}
 
 	public void increment() {
@@ -29,8 +29,8 @@ public class PushBean implements Serializable {
 		push.send("counter", newvalue);
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public boolean isConnected() {
+		return connected;
 	}
 
 	public Long getCount() {
