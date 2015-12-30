@@ -88,7 +88,7 @@ The following metadata attributes are supported via this template (they're parse
 			</p:panel>
 		</ui:fragment>
 
-		<p:panel id="documentation" header="Documentation" rendered="#{not empty page.current.documentation}">
+		<p:panel id="documentation" header="Documentation &amp; Sources" rendered="#{not empty page.current.documentation}">
 			<os:listdocs header="VDL" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
 			<os:listdocs header="API" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
 			<os:listdocs header="Source code" paths="api" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
