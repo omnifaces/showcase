@@ -9,7 +9,7 @@
 	<ui:define name="meta">
 		<f:metadata>
 			<f:attribute name="api.path" value="cdi/push/Socket" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/PushBean.java" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/PushBean.java,classes/org/omnifaces/showcase/push/StatsBean.java,/demo/push-stats.xhtml,/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
 			<f:attribute name="js.paths" value="push.unminified.js,util.unminified.js" />
 		</f:metadata>
 	</ui:define>
@@ -60,5 +60,11 @@
 				}
 			}
 		</script>
+		
+		<h3>Realtime stats</h3>
+		<p>
+			You can find in this page another example of push:
+			<h:link value="realtime stats" outcome="/push-stats" />.
+		</p>
 	</ui:define>
 </ui:composition>

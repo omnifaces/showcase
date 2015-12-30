@@ -1,0 +1,12 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+	<li>
+		Timestamp: <span class="timestamp">#{pageView.timestamp}</span><br/>
+		Page URI: <a class="uri" href="#{pageView.uri}">#{pageView.uri}</a><br/>
+		User hash: <span class="userHash">#{pageView.userHash}</span><br/>
+		User agent: <span class="userAgent">#{pageView.userAgent}</span><br/>
+		Referrer: <span class="referrer">#{pageView.referrer}</span><br/>
+	</li>
+</ui:composition>

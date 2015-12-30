@@ -1,0 +1,72 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="contentTitle">Push - Stats</ui:define>
+
+	<ui:define name="content">
+		<p>
+			This demo page shows last #{statsBean.maxLastPageViews} page views.
+			Every new page view will be pushed to top of below list and oldest (bottom) entry will be removed.
+			Source code of this page can be found in <h:link value="o:socket showcase page" outcome="/push/socket" />.
+		</p>
+
+		<ul id="stats">
+			<ui:repeat value="#{lastPageViews}" var="pageView">
+				<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+			</ui:repeat>
+		</ul>
+
+		<o:socket port="8000" channel="stats" onmessage="updateStats" />
+
+		<script id="pageViewTemplate" type="text/html">
+			<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+		</script>
+
+		<!-- NOTE: having inline script and style in XHTML like below is bad practice. -->
+		<!-- They're included directly in XHTML just for sake of demo. -->
+		<!-- In real code, put them in a JS and CSS file. -->
+
+		<script>
+			function updateStats(pageView) {
+				var $stats = $("#stats");
+				var $pageViewTemplate = $($("#pageViewTemplate").html());
+
+				$pageViewTemplate.find(".timestamp").text(pageView.timestamp);
+				$pageViewTemplate.find(".uri").text(pageView.uri).attr("href", pageView.uri);
+				$pageViewTemplate.find(".userHash").text(pageView.userHash);
+				$pageViewTemplate.find(".userAgent").text(pageView.userAgent);
+				$pageViewTemplate.find(".referrer").text(pageView.referrer);
+				$pageViewTemplate.hide().prependTo($("#stats")).slideDown();
+
+				if ($stats.children().length &gt; #{statsBean.maxLastPageViews}) {
+					$stats.find(">:last").slideUp(function() { $(this).remove(); });
+				}
+			}
+		</script>
+
+		<style>
+			#stats {
+				list-style-type: none;
+				padding: .5em;
+				font-size: .8em;
+				background: #fff;
+			}
+
+			#stats li {
+				padding: .5em;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			#stats li:nth-child(odd) {
+				background: #eee;
+			}
+		</style>
+	</ui:define>
+</ui:composition>

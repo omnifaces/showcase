@@ -15,8 +15,12 @@ package org.omnifaces.showcase;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.omnifaces.showcase.App.scrape;
+import static org.omnifaces.util.Beans.fireEvent;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
+import static org.omnifaces.util.Faces.getRequest;
+import static org.omnifaces.util.Faces.getResourceAsStream;
+import static org.omnifaces.util.Faces.isPostback;
 import static org.omnifaces.util.Utils.toByteArray;
 
 import java.io.IOException;
@@ -36,7 +40,6 @@ import javax.faces.bean.RequestScoped;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.ListTreeModel;
-import org.omnifaces.util.Faces;
 
 /**
  * This class represents a page. All pages are available as a tree model by {@link App#getMenu()} and are by their view
@@ -91,6 +94,10 @@ public class Page extends ListTreeModel<Page> {
 	public void init() {
 		if (current != null) {
 			current.loadIfNecessary();
+
+			if (!isPostback()) {
+				fireEvent(new PageView(getRequest()));
+			}
 		}
 	}
 
@@ -209,7 +216,7 @@ public class Page extends ListTreeModel<Page> {
 	}
 
 	private static String loadSourceCode(String path) {
-		InputStream input = Faces.getResourceAsStream(path);
+		InputStream input = getResourceAsStream(path);
 
 		if (input == null) {
 			return "Source code is not available at " + path;
