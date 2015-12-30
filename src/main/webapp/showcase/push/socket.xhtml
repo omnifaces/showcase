@@ -9,7 +9,7 @@
 	<ui:define name="meta">
 		<f:metadata>
 			<f:attribute name="api.path" value="cdi/push/Socket" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/PushBean.java,classes/org/omnifaces/showcase/push/StatsBean.java,/demo/push-stats.xhtml,/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/PushBean.java,classes/org/omnifaces/showcase/push/StatsBean.java,classes/org/omnifaces/showcase/PageView.java,/demo/push-stats.xhtml,/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
 			<f:attribute name="js.paths" value="push.unminified.js,util.unminified.js" />
 		</f:metadata>
 	</ui:define>
@@ -46,7 +46,7 @@
 				</h:commandButton>
 			</p>
 		</h:form>
-	
+
 		<o:socket port="8000" channel="counter" onmessage="updateCounter" onclose="onclosePush" connected="#{pushBean.connected}" />
 
 		<script>
@@ -58,13 +58,20 @@
 				if (code == -1) {
 					alert("Oops! Your browser doesn't seem to support web sockets. The push functionality won't work.")
 				}
+				else if (code != 1000) {
+					alert("Oops! Push has stopped working with error code " + code + "! Reload the page.")
+				}
 			}
 		</script>
-		
+
 		<h3>Realtime stats</h3>
 		<p>
-			You can find in this page another example of push:
+			You can find here another example of push:
 			<h:link value="realtime stats" outcome="/push-stats" />.
+			This example makes use of CDI events with <code>BeanManager#fireEvent()</code> and <code>@Observes</code>.
+			The custom <code>PageView</code> event is fired in <code>@PostConstruct</code> of
+			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/java/org/omnifaces/showcase/Page.java"><code>Page</code></a>
+			class.
 		</p>
 	</ui:define>
 </ui:composition>

@@ -41,11 +41,9 @@
 				$pageViewTemplate.find(".userHash").text(pageView.userHash);
 				$pageViewTemplate.find(".userAgent").text(pageView.userAgent);
 				$pageViewTemplate.find(".referrer").text(pageView.referrer);
-				$pageViewTemplate.hide().prependTo($("#stats")).slideDown();
 
-				if ($stats.children().length &gt; #{statsBean.maxLastPageViews}) {
-					$stats.find(">:last").slideUp(function() { $(this).remove(); });
-				}
+				$pageViewTemplate.hide().prependTo($("#stats")).slideDown();
+				$stats.children().slice(#{statsBean.maxLastPageViews}).slideUp(function() { $(this).remove(); });
 			}
 		</script>
 
