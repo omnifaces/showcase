@@ -6,3 +6,4 @@ dist/
 /.project
 /.settings
 rebel.xml
+/.tern-project
