@@ -1,0 +1,16 @@
+<server description="The server for showcases">
+	<!-- Enable features -->
+	<featureManager>
+		<feature>servlet-3.1</feature>
+		<feature>jsf-2.2</feature>
+		<feature>cdi-1.2</feature>
+		<feature>jndi-1.0</feature>
+		<feature>websocket-1.1</feature>
+	</featureManager>
+
+	<httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}" 
+			id="defaultHttpEndpoint"/>
+
+	<application context-root="${application.name}" type="war" id="${application.name}" 
+			location="${application.location}" name="${application.name}"/>
+</server>
