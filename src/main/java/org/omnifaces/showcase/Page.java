@@ -19,8 +19,10 @@ import static org.omnifaces.util.Beans.fireEvent;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
 import static org.omnifaces.util.Faces.getRequest;
+import static org.omnifaces.util.Faces.getRequestHeader;
 import static org.omnifaces.util.Faces.getResourceAsStream;
 import static org.omnifaces.util.Faces.isPostback;
+import static org.omnifaces.util.Utils.isEmpty;
 import static org.omnifaces.util.Utils.toByteArray;
 
 import java.io.IOException;
@@ -95,7 +97,7 @@ public class Page extends ListTreeModel<Page> {
 		if (current != null) {
 			current.loadIfNecessary();
 
-			if (!isPostback()) {
+			if (!isPostback() && !isEmpty(getRequestHeader("referer"))) { // Skip postbacks and (generally) bots.
 				fireEvent(new PageView(getRequest()));
 			}
 		}
