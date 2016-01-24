@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.Push;
 import org.omnifaces.cdi.PushContext;
 import org.omnifaces.cdi.ViewScoped;
 
@@ -17,7 +18,7 @@ public class PushBean implements Serializable {
 
 	private boolean connected;
 
-	@Inject
+	@Inject @Push(channel="counter")
 	private PushContext push;
 
 	public void toggle() {
@@ -26,7 +27,7 @@ public class PushBean implements Serializable {
 
 	public void increment() {
 		long newvalue = counter.incrementAndGet();
-		push.send("counter", newvalue);
+		push.send(newvalue);
 	}
 
 	public boolean isConnected() {

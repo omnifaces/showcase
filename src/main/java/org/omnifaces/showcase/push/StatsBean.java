@@ -12,6 +12,7 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.Push;
 import org.omnifaces.cdi.PushContext;
 import org.omnifaces.cdi.Startup;
 import org.omnifaces.showcase.PageView;
@@ -24,8 +25,8 @@ public class StatsBean {
 	private static final long MAX_LAST_PAGE_VIEWS = 20;
 	private ConcurrentMap<UUID, PageView> lastPageViews;
 
-	@Inject
-	private PushContext pushContext;
+	@Inject @Push
+	private PushContext stats;
 
 	@PostConstruct
 	public void init() {
@@ -36,7 +37,7 @@ public class StatsBean {
 
 	public void onPageView(@Observes PageView pageView) {
 		lastPageViews.put(UUID.randomUUID(), pageView);
-		pushContext.send("stats", pageView);
+		stats.send(pageView);
 	}
 
 	public long getMaxLastPageViews() {
