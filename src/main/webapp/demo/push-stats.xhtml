@@ -14,7 +14,7 @@
 			Source code of this page can be found in <h:link value="o:socket showcase page" outcome="/push/socket" />.
 		</p>
 
-		<ul id="stats">
+		<ul id="stats" data-max="#{statsBean.maxLastPageViews}">
 			<ui:repeat value="#{lastPageViews}" var="pageView">
 				<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
 			</ui:repeat>
@@ -32,17 +32,16 @@
 
 		<script>
 			function updateStats(pageView) {
-				var $stats = $("#stats");
 				var $pageViewTemplate = $($("#pageViewTemplate").html());
-
 				$pageViewTemplate.find(".timestamp").text(pageView.timestamp);
 				$pageViewTemplate.find(".uri").text(pageView.uri).attr("href", pageView.uri);
 				$pageViewTemplate.find(".userHash").text(pageView.userHash);
 				$pageViewTemplate.find(".userAgent").text(pageView.userAgent);
 				$pageViewTemplate.find(".referrer").text(pageView.referrer);
 
-				$pageViewTemplate.hide().prependTo($("#stats")).slideDown();
-				$stats.children().slice(#{statsBean.maxLastPageViews}).slideUp(function() { $(this).remove(); });
+				var $stats = $("#stats");
+				$pageViewTemplate.hide().prependTo($stats).slideDown();
+				$stats.children().slice($stata.data("max")).slideUp(function() { $(this).remove(); });
 			}
 		</script>
 
