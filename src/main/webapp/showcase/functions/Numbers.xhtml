@@ -9,7 +9,7 @@
 	<ui:define name="meta">
 		<f:metadata>
 			<f:attribute name="api.path" value="el/functions/Numbers" />
-			<f:attribute name="vdl.paths" value="of/formatBytes.fn,of/formatCurrency.fn,of/formatNumber.fn,of/formatNumberDefault.fn,of/formatPercent.fn" />
+			<f:attribute name="vdl.paths" value="of/formatBytes.fn,of/formatCurrency.fn,of/formatNumber.fn,of/formatNumberDefault.fn,of/formatPercent.fn,of/formatThousands.fn" />
 		</f:metadata>
 	</ui:define>
 
@@ -37,6 +37,10 @@
 		<p>
 			Format a number as percent:
 			#{of:formatPercent(0.123)}
+		</p>
+		<p>
+			Format a number as thousands:
+			#{of:formatThousands(1004)}, #{of:formatThousands(1005)}, #{of:formatThousands(9994)}, #{of:formatThousands(9995000)}
 		</p>
 	</ui:define>
 </ui:composition>

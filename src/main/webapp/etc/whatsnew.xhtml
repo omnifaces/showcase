@@ -14,19 +14,28 @@
 
 		<h3>Added in OmniFaces 2.3</h3>
 		<ul>
-			<li><os:githubLink issue="17" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code> for web socket based push</h:link></li>
+			<li><os:githubLink issue="17" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code> for web socket based push which can be accessed via CDI <code>@Push</code></h:link></li>
+			<li><os:githubLink commit="72d3aae" /><h:link outcome="/utils/Servlets"><code>Servlets#getRemoteAddr()</code> to get request remote address, taking into account the <code>X-Forwarded-For</code> header</h:link></li>
+			<li><os:githubLink commit="eef138e" /><h:link outcome="/utils/Beans"><code>Beans#fireEvent()</code> to fire a CDI event object</h:link></li>
+			<li><os:githubLink commit="e3ee8fb" /><h:link outcome="/utils/Beans"><code>Beans#isActive(scope)</code> to check if a scope is active without need to catch <code>ContextNotActiveException</code></h:link></li>
+			<li><os:githubLink issue="194" /><h:link outcome="/utils/Faces"><code>Faces#sendFile()</code> has now one more method accepting an <code>OutputStream</code> callback</h:link></li>
+			<li><os:githubLink issue="125,202" /><h:link outcome="/taghandlers/skipValidators"><code>&lt;o:skipValidators&gt;</code> to skip all validation during a <code>UICommand</code> action or an ajax request</h:link></li>
+			<li><os:githubLink commit="a2c1473" /><h:link outcome="/functions/Numbers"><code>of:formatThousands()</code> to round a number to nearest thousand with immediate "k", "m", "g", etc suffix and a precision of 3 digits, whereafter trailing zeroes in fraction are stripped</h:link></li>
 		</ul>
+
 
 		<h3>Changed in OmniFaces 2.3</h3>
 		<ul>
-			<li>N/A</li>
+			<li><os:githubLink issue="178" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code> will not anymore include parent of an inner class in default value of <code>var</code> attribute, so e.g. <code>\#{Parent$Inner}</code> will now be <code>\#{Inner}</code></h:link></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.3</h3>
 		<ul>
 			<li><os:githubLink commit="84f6748" /><h:link outcome="/utils/WebXml"><code>WebXml#isAccessAllowed()</code> incorrectly matched extension based URLs in prefix path checking</h:link></li>
-			<li><os:githubLink commit="b3d2ea5" /><h:link outcome="/facesviews/ExtensionlessURLs">When mapping FacesViews on <code>/</code> and triggering a 404 error, then Mojarra throws "Response already committed" exception</h:link></li>
-			<li><os:githubLink issue="187" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> doesn't render HTML attributes such as <code>styleClass</code> when MyFaces is used</h:link></li>
+			<li><os:githubLink commit="b3d2ea5" /><h:link outcome="/facesviews/ExtensionlessURLs">When mapping FacesViews on <code>/</code> and triggering a 404 error, then Mojarra confusingly threw a "Response already committed" exception</h:link></li>
+			<li><os:githubLink issue="187" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> didn't render HTML attributes such as <code>styleClass</code> when MyFaces is used</h:link></li>
+			<li><os:githubLink issue="199" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> failed to initialize unload script when it's created for first time after an ajax navigation action</h:link></li>
+			<li><os:githubLink issue="200" /><h:link outcome="/utils/Components"><code>Components#findComponentInParents()</code> ran in an infinite loop when illegal client ID is supplied</h:link></li>
 		</ul>
 
 		<hr />

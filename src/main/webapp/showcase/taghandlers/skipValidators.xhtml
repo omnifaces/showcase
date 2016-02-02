@@ -1,0 +1,41 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:demo="http://omnifaces.org/showcase"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="taghandler/SkipValidators" />
+			<f:attribute name="vdl.paths" value="o/skipValidators" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Please add new items</h3>
+		<p>
+			When adding a new item while there are empty required fields,
+			you'll see that required validation is skipped,
+			and that submitted values will end up in model (they are not cleared out after re-render). 
+		</p>
+
+		<h:form>
+			<h:dataTable id="table" value="#{skipValidatorsBean.items}" var="item">
+				<h:column>
+					<h:inputText id="value" value="#{item.value}" required="true" requiredMessage="This is required!" />
+					<h:message for="value" />
+				</h:column>
+			</h:dataTable>
+			<h:commandButton value="add item" action="#{skipValidatorsBean.add}">
+				<f:ajax execute="@form" render="table" />
+				<o:skipValidators />
+			</h:commandButton>
+			<h:commandButton value="save">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+		</h:form>		
+	</ui:define>
+</ui:composition>
