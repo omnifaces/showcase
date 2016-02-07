@@ -89,10 +89,10 @@ The following metadata attributes are supported via this template (they're parse
 		</ui:fragment>
 
 		<p:panel id="documentation" header="Documentation &amp; Sources" rendered="#{not empty page.current.documentation}">
-			<os:listdocs header="VDL" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
-			<os:listdocs header="API" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
-			<os:listdocs header="Source code" paths="api" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
-			<os:listdocs header="JavaScript" paths="js" url="#{_jsURL}#{path}" label="#{path}" />
+			<os:listdocs header="VDL documentation" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
+			<os:listdocs header="API documentation" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
+			<os:listdocs header="Java source code" paths="api" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
+			<os:listdocs header="JavaScript source code" paths="js" url="#{_jsURL}#{path}" label="#{path}" />
 		</p:panel>
 	</ui:define>
 </ui:composition>

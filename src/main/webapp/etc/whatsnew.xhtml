@@ -21,12 +21,16 @@
 			<li><os:githubLink issue="194" /><h:link outcome="/utils/Faces"><code>Faces#sendFile()</code> has now one more method accepting an <code>OutputStream</code> callback</h:link></li>
 			<li><os:githubLink issue="125,202" /><h:link outcome="/taghandlers/skipValidators"><code>&lt;o:skipValidators&gt;</code> to skip all validation during a <code>UICommand</code> action or an ajax request</h:link></li>
 			<li><os:githubLink commit="a2c1473" /><h:link outcome="/functions/Numbers"><code>of:formatThousands()</code> to round a number to nearest thousand with immediate "k", "M", "G", etc suffix and a precision of 3 digits, whereafter trailing zeroes in fraction are stripped</h:link></li>
+			<li><os:githubLink issue="204" /><h:link outcome="/functions/Numbers"><code>of:formatThousandsUnit()</code> to round a number to nearest thousand of given unit with "k", "M", "G", etc prefix and a precision of 3 digits, whereafter trailing zeroes in fraction are stripped</h:link></li>
+			<li><os:githubLink issue="206" /><h:link outcome="/functions/Numbers"><code>of:formatNumberDefaultForLocale()</code> to format a number in locale-default pattern of given locale</h:link></li>
+			<li><os:githubLink issue="205" /><h:link outcome="/utils/Faces"><code>Faces#getViewName()</code> to get base name of current view (without extension)</h:link></li>
 		</ul>
 
 
 		<h3>Changed in OmniFaces 2.3</h3>
 		<ul>
 			<li><os:githubLink issue="178" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code> will not anymore include parent of an inner class in default value of <code>var</code> attribute, so e.g. <code>\#{Parent$Inner}</code> will now be <code>\#{Inner}</code></h:link></li>
+			<li><os:githubLink commit="214d189" /><code>BeanManager.INSTANCE.getReference()</code> is <strong>deprecated</strong> in favor of <h:link outcome="/utils/Beans"><code>Beans#getReference()</code></h:link></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.3</h3>
@@ -202,7 +206,7 @@
 
 		<h3>Fixed in OmniFaces 1.8</h3>
 		<ul>
-			<li><h:link outcome="/utils/BeanManager">Assume <code>RuntimeException</code> in <code>BeanManager#init()</code> as CDI not available (fixes deployment error on WAS 8.5 without CDI enabled)</h:link></li>
+			<li>Assume <code>RuntimeException</code> in <code>BeanManager#init()</code> as CDI not available (fixes deployment error on WAS 8.5 without CDI enabled)</li>
 			<li><h:link outcome="/converters/GenericEnumConverter">Use "<code>-</code>" instead of <code>null</code> as default value to workaround <code>noSelectionOption</code> fail with <code>GenericEnumConverter</code></h:link></li>
 			<li><h:link outcome="/components/outputFormat"><code>&lt;o:param&gt;</code> shouldn't silently convert the value to <code>String</code> (fixes e.g. <code>java.util.Date</code> formatting fail in <code>&lt;o:outputFormat&gt;</code>)</h:link></li>
 			<li><h:link outcome="/utils/Beans">Fixed <code>javax.enterprise.inject.AmbiguousResolutionException</code> in subclassed <code>@FacesConverter</code> and <code>@FacesValidator</code></h:link></li>
@@ -271,7 +275,7 @@
 
 		<h3>Added in OmniFaces 1.6.1</h3>
 		<ul>
-			<li><h:link outcome="/utils/BeanManager">New <code>BeanManager</code> enum which allows trying to get a CDI managed bean instance without any CDI dependency</h:link></li>
+			<li>New <code>BeanManager</code> enum which allows trying to get a CDI managed bean instance without any CDI dependency</li>
 			<li><h:link outcome="/utils/Beans">New <code>Beans</code> utility class to ease working with CDI <code>BeanManager</code> API</h:link></li>
 		</ul>
 

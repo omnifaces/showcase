@@ -9,7 +9,7 @@
 	<ui:define name="meta">
 		<f:metadata>
 			<f:attribute name="api.path" value="el/functions/Numbers" />
-			<f:attribute name="vdl.paths" value="of/formatBytes.fn,of/formatCurrency.fn,of/formatNumber.fn,of/formatNumberDefault.fn,of/formatPercent.fn,of/formatThousands.fn" />
+			<f:attribute name="vdl.paths" value="of/formatBytes.fn,of/formatCurrency.fn,of/formatNumber.fn,of/formatNumberDefault.fn,of/formatNumberDefaultForLocale.fn,of/formatPercent.fn,of/formatThousands.fn,of/formatThousandsUnit.fn" />
 		</f:metadata>
 	</ui:define>
 
@@ -35,12 +35,20 @@
 			#{of:formatNumberDefault(123.4567)}
 		</p>
 		<p>
+			Format a number using locale-default pattern of given locale:
+			#{of:formatNumberDefaultForLocale(123.4567, 'nl_NL')}
+		</p>
+		<p>
 			Format a number as percent:
 			#{of:formatPercent(0.123)}
 		</p>
 		<p>
 			Format a number as thousands:
 			#{of:formatThousands(1004)}, #{of:formatThousands(1005)}, #{of:formatThousands(9994)}, #{of:formatThousands(9995000)}
+		</p>
+		<p>
+			Format a number as thousands with unit:
+			#{of:formatThousandsUnit(1004, 'W')}, #{of:formatThousandsUnit(1005, 'W')}, #{of:formatThousandsUnit(9994, 'W')}, #{of:formatThousandsUnit(9995000, 'W')}
 		</p>
 	</ui:define>
 </ui:composition>
