@@ -39,7 +39,7 @@
 			<br/>
 			As comparison, elapsed time in nanoseconds since non-<code>@Eager @RequestScoped</code> bean initiated in this request: <strong>#{myRequestBean.elapsedTime} ns</strong>.
 			<br/>
-			So, you have <strong>#{myEagerRequestBean.elapsedTime - myRequestBean.elapsedTime} ns</strong> time space to perform some <code>@Asyhchronous</code> initialization.
+			So, you have <strong>#{myEagerRequestBean.elapsedTime - myRequestBean.elapsedTime} ns</strong> time space to perform some <code>@Asynchronous</code> initialization.
 		</blockquote>
 		
 		<h3>Bean instantiated when application starts up</h3>
@@ -49,7 +49,9 @@
 			application started.			
 		</p>
 		<blockquote>
-			Application started at: <strong>#{of:formatDateWithTimezone(myStartupBean.startupDate, 'd MMM yyyy HH:mm', 'UTC')} UTC</strong>
+			Application started at: <strong>#{of:formatDateWithTimezone(myStartupBean.startupDate, 'd MMM yyyy HH:mm.ss.SSS', 'UTC')} UTC</strong>
+			<br/>
+			As comparison, the JSF <code>\#{startup}</code> is at: <strong>#{of:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm.ss.SSS', 'UTC')} UTC</strong>
 		</blockquote>
 	</ui:define>
 </ui:composition>
