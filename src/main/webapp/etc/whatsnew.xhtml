@@ -26,7 +26,6 @@
 			<li><os:githubLink issue="205" /><h:link outcome="/utils/Faces"><code>Faces#getViewName()</code> to get base name of current view (without extension)</h:link></li>
 		</ul>
 
-
 		<h3>Changed in OmniFaces 2.3</h3>
 		<ul>
 			<li><os:githubLink issue="178" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code> will not anymore include parent of an inner class in default value of <code>var</code> attribute, so e.g. <code>\#{Parent$Inner}</code> will now be <code>\#{Inner}</code></h:link></li>
@@ -40,6 +39,7 @@
 			<li><os:githubLink issue="187" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> didn't render HTML attributes such as <code>styleClass</code> when MyFaces is used</h:link></li>
 			<li><os:githubLink issue="199" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> failed to initialize unload script when it's created for first time after an ajax navigation action</h:link></li>
 			<li><os:githubLink issue="200" /><h:link outcome="/utils/Components"><code>Components#findComponentInParents()</code> ran in an infinite loop when illegal client ID is supplied</h:link></li>
+			<li><os:githubLink issue="208" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> didn't physically remove server side JSF view state during unload</h:link></li>
 		</ul>
 
 		<hr />
