@@ -40,7 +40,7 @@
 				$pageViewTemplate.find(".referrer").text(pageView.referrer);
 
 				var $stats = $("#stats");
-				$pageViewTemplate.hide().prependTo($stats).slideDown();
+				$pageViewTemplate.hide().prependTo($stats.toggleClass("inversed")).slideDown();
 				$stats.children().slice($stats.data("max")).slideUp(function() { $(this).remove(); });
 			}
 		</script>
@@ -60,7 +60,8 @@
 				text-overflow: ellipsis;
 			}
 
-			#stats li:nth-child(odd) {
+			#stats:not(.inversed) li:nth-child(odd),
+			#stats.inversed li:nth-child(even) {
 				background: #eee;
 			}
 		</style>
