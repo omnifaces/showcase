@@ -34,9 +34,9 @@
 				<li>View scoped <strong><span id="view-message" /></strong></li>
 			</ul>
 
-			<o:socket channel="app" scope="application" onmessage="pushListener" />
-			<o:socket channel="sess" scope="session" user="#{pushTestUser}" onmessage="pushListener" onclose="sessionCloseListener" />
-			<o:socket channel="view" scope="view" onmessage="pushListener" />
+			<o:socket port="8000" channel="app" scope="application" onmessage="pushListener" />
+			<o:socket port="8000" channel="sess" scope="session" user="#{pushTestUser}" onmessage="pushListener" onclose="sessionCloseListener" />
+			<o:socket port="8000" channel="view" scope="view" onmessage="pushListener" />
 
 			<script>
 				function pushListener(message, channel) {
