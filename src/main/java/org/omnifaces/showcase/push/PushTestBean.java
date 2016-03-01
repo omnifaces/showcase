@@ -2,11 +2,15 @@ package org.omnifaces.showcase.push;
 
 import static org.omnifaces.util.Faces.refresh;
 import static org.omnifaces.util.Faces.setSessionAttribute;
+import static org.omnifaces.util.Messages.addGlobalError;
+import static org.omnifaces.util.Messages.addGlobalInfo;
 
 import java.io.IOException;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.Future;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -46,7 +50,14 @@ public class PushTestBean implements Serializable {
 	}
 
 	public void pushUser(String recipientUser) {
-		sess.send(ZonedDateTime.now().toString(), recipientUser);
+		Set<Future<Void>> sent = sess.send(ZonedDateTime.now().toString(), recipientUser);
+
+		if (sent.isEmpty()) {
+			addGlobalError("This user does not exist!");
+		}
+		else {
+			addGlobalInfo("Sent to {0} sockets", sent.size());
+		}
 	}
 
 }

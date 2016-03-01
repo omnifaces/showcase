@@ -62,19 +62,26 @@
 			</h:form>		
 	
 			<p>
-				The generated user ID of the current push session is <h:inputText value="#{pushTestUser}" readonly="true" onmouseup="$(this).select()" />.
+				The generated user ID of the current session is <h:inputText value="#{pushTestUser}" size="32" readonly="true" onmouseup="$(this).select()" />.
 				Open this page in an incognito tab or a different browser to simulate a different user.
 				Use the above user ID to target the current page over there in below form.
 				It will send the current timestamp to the session scoped socket of the given user.
 			</p>
 	
 			<h:form>
-				<h:inputText binding="#{recipientUser}" a:placeholder="Paste generated user ID of other user here" required="true" />
+				<h:inputText binding="#{recipientUser}" a:placeholder="Paste generated user ID of other user here" size="32" 
+					required="true" requiredMessage="Paste generated user ID of other user in that input field" />
 				<h:commandButton action="#{pushTestBean.pushUser(recipientUser.value)}" value="push the session scoped socket of given user">
 					<f:ajax execute="@form" render="@form" />
 				</h:commandButton>
 				<h:messages />
-			</h:form>		
+			</h:form>	
+
+			<p>
+				Additionally, when the session scoped push socket is closed with reason code 1000, 
+				an annoying 90's JavaScript alert will show up telling you this fact after which the page will be reloaded 
+				(OpenShift is just agressively closing WS sessions to save resources).
+			</p>	
 		</c:if>
 	</ui:define>
 </ui:composition>
