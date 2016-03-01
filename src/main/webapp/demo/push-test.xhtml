@@ -1,0 +1,80 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="contentTitle">Push - Test</ui:define>
+
+	<ui:define name="content">
+		<p>
+			Here you can test various push scopes and users.
+			If you open the same page in a new tab/window in current browser, then you can test application/session/view scoped push.
+			If you open the same page in an incognito window or a different browser, then you can test application scoped push and user-targeted push.
+			Source code of this page can be found in <h:link value="o:socket showcase page" outcome="/push/socket" />.
+		</p>
+
+		<c:if test="#{empty pushTestUser}">
+			<h:form>
+				<p>
+					Pressing <h:commandButton value="this button" action="#{pushTestBean.open}" /> will open three web sockets and generate an user ID.
+				</p>
+			</h:form>
+		</c:if>
+
+		<c:if test="#{not empty pushTestUser}">
+			<p>The following web sockets are opened and any push message will be printed directly thereafter:</p>
+
+			<ul>
+				<li>Application scoped <strong><span id="app-message" /></strong></li>
+				<li>Session scoped with user <strong><span id="sess-message" /></strong></li>
+				<li>View scoped <strong><span id="view-message" /></strong></li>
+			</ul>
+
+			<o:socket channel="app" scope="application" onmessage="pushListener" />
+			<o:socket channel="sess" scope="session" user="#{pushTestUser}" onmessage="pushListener" onclose="sessionCloseListener" />
+			<o:socket channel="view" scope="view" onmessage="pushListener" />
+
+			<script>
+				function pushListener(message, channel) {
+					$("#" + channel + "-message").text(message).stop(true, true).effect("highlight");
+				}
+
+				function sessionCloseListener(code) {
+					if (code == 1000) {
+						alert("Session has expired! Page will be reloaded.");
+						window.location.reload(true);
+					}
+				}
+			</script>
+
+			<p>You can use the below buttons to send the current timestamp to those sockets.</p>
+			
+			<h:form>
+				<ul>
+					<li><h:commandButton action="#{pushTestBean.pushApp}" value="push the application scoped socket"><f:ajax/></h:commandButton></li>
+					<li><h:commandButton action="#{pushTestBean.pushSess}" value="push the session scoped socket"><f:ajax/></h:commandButton></li>
+					<li><h:commandButton action="#{pushTestBean.pushView}" value="push the view scoped socket"><f:ajax/></h:commandButton></li>
+				</ul>
+			</h:form>		
+	
+			<p>
+				The generated user ID of the current push session is <h:inputText value="#{pushTestUser}" readonly="true" onmouseup="$(this).select()" />.
+				Open this page in an incognito tab or a different browser to simulate a different user.
+				Use the above user ID to target the current page over there in below form.
+				It will send the current timestamp to the session scoped socket of the given user.
+			</p>
+	
+			<h:form>
+				<h:inputText binding="#{recipientUser}" a:placeholder="Paste generated user ID of other user here" required="true" />
+				<h:commandButton action="#{pushTestBean.pushUser(recipientUser.value)}" value="push the session scoped socket of given user">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:messages />
+			</h:form>		
+		</c:if>
+	</ui:define>
+</ui:composition>

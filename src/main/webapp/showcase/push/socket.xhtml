@@ -10,7 +10,7 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="cdi/push/Socket" />
 			<f:attribute name="vdl.paths" value="o/socket" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/PushBean.java,classes/org/omnifaces/showcase/push/StatsBean.java,classes/org/omnifaces/showcase/PageView.java,/demo/push-stats.xhtml,/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/PushBean.java,classes/org/omnifaces/showcase/push/StatsBean.java,classes/org/omnifaces/showcase/PageView.java,/demo/push-stats.xhtml,/WEB-INF/includes/demo/push-stats-pageView.xhtml,classes/org/omnifaces/showcase/push/PushTestBean.java,/demo/push-test.xhtml" />
 			<f:attribute name="js.paths" value="push.unminified.js,util.unminified.js" />
 		</f:metadata>
 	</ui:define>
@@ -73,6 +73,15 @@
 			The custom <code>PageView</code> event is fired in <code>@PostConstruct</code> of
 			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/java/org/omnifaces/showcase/Page.java"><code>Page</code></a>
 			class.
+		</p>
+
+		<h3>Scopes and users</h3>
+		<p>
+			You can find here a generic test page of push:
+			<h:link value="scopes and users" outcome="/push-test" />.
+			This example opens three web sockets of which one is an user-targeted session scoped socket.
+			If you open the same page in a new tab/window in current browser, then you can test application/session/view scoped push.
+			If you open the same page in an incognito window or a different browser, then you can test application scoped push and user-targeted push.
 		</p>
 	</ui:define>
 </ui:composition>
