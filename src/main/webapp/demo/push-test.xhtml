@@ -12,8 +12,6 @@
 	<ui:define name="content">
 		<p>
 			Here you can test various push scopes and users.
-			If you open the same page in a new tab/window in current browser, then you can test application/session/view scoped push.
-			If you open the same page in an incognito window or a different browser, then you can test application scoped push and user-targeted push.
 			Source code of this page can be found in <h:link value="o:socket showcase page" outcome="/push/socket" />.
 		</p>
 
@@ -51,7 +49,11 @@
 				}
 			</script>
 
-			<p>You can use the below buttons to send the current timestamp to those sockets.</p>
+			<p>
+				You can use the below buttons to send the current timestamp to those sockets.
+ 				If you open the same page in a new tab/window in current browser, then you can test application/session/view scoped push.
+ 				If you open the same page in an incognito window or a different browser, then you can test application scoped push.
+			</p>
 			
 			<h:form>
 				<ul>
@@ -63,7 +65,7 @@
 	
 			<p>
 				The generated user ID of the current session is <h:inputText value="#{pushTestUser}" size="32" readonly="true" onmouseup="$(this).select()" />.
-				Open this page in an incognito tab or a different browser to simulate a different user.
+				Open this page in an incognito tab or a different browser to simulate a different user and test user-targeted push.
 				Use the above user ID to target the current page over there in below form.
 				It will send the current timestamp to the session scoped socket of the given user.
 			</p>

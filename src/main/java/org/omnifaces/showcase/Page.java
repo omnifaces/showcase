@@ -149,14 +149,9 @@ public class Page extends ListTreeModel<Page> {
 				}
 
 				for (Element pre : descriptionBlock.select("pre")) { // Enable prettify on code blocks.
-					String content = pre.addClass("prettyprint").html().trim();
-
-					if (content.startsWith("&lt;")) {
-						pre.html("<code class='lang-xhtml'> " + content + "</code>");
-					}
-					else {
-						pre.html("<code class='lang-java'> " + content + "</code>");
-					}
+					String content = pre.addClass("prettyprint").html().trim().replace("\n ", "\n");
+					String type = content.startsWith("&lt;") ? "xhtml" : "java";
+					pre.html("<code class='lang-" + type + "'>" + content + "</code>");
 				}
 
 				Elements seeAlso = description.select("dt:has(.seeLabel)+dd a:has(code)");

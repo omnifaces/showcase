@@ -141,15 +141,15 @@ code,
 #content code,
 #content .code {
 	width: 99%;
-	padding: 3px;
-	margin: 0 3px;
+	padding: 1px;
 	border-radius: 2px;
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 	background-color: #fff;
 }
 
 #content pre {
-	margin: 10px 0;
+	margin: 5px 0;
+	padding: 5px;
 	overflow: auto;
 	overflow-y: hidden;
 	word-wrap: normal;
