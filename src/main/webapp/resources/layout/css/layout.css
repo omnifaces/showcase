@@ -35,6 +35,10 @@ body .ui-widget-content a code {
 	text-decoration: none;
 }
 
+body .ui-widget-content h3 a {
+	color: inherit;
+}
+
 body .wrapped {
 	width: 1050px;
 	margin: 0 auto;
@@ -55,6 +59,7 @@ h2 {
 	padding-bottom: 10px;
 	border-bottom: 1px #ccc dashed;
 	font-size: 32px;
+	line-height: 32px;
 }
 
 hr {
