@@ -20,7 +20,7 @@ public class PageView implements Comparable<PageView> {
 		String sessionId = request.getSession().getId();
 		userHash = Integer.toHexString(sessionId.substring(0, sessionId.length() / 2).hashCode());
 		userAgent = request.getHeader("user-agent");
-		referrer = request.getHeader("referer");
+		referrer = request.getHeader("referer").split("[?#;]")[0];
 	}
 
 	public String getTimestamp() {
