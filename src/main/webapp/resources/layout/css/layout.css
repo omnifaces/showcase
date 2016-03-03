@@ -141,7 +141,7 @@ code,
 #content code,
 #content .code {
 	width: 99%;
-	padding: 1px;
+	padding: 2px;
 	border-radius: 2px;
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 	background-color: #fff;
