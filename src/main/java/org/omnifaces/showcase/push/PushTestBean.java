@@ -7,7 +7,7 @@ import static org.omnifaces.util.Messages.addGlobalInfo;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.Future;
@@ -38,19 +38,19 @@ public class PushTestBean implements Serializable {
 	}
 
 	public void pushApp() {
-		app.send(ZonedDateTime.now().toString());
+		app.send(LocalDateTime.now().toString());
 	}
 
 	public void pushSess() {
-		sess.send(ZonedDateTime.now().toString());
+		sess.send(LocalDateTime.now().toString());
 	}
 
 	public void pushView() {
-		view.send(ZonedDateTime.now().toString());
+		view.send(LocalDateTime.now().toString());
 	}
 
 	public void pushUser(String recipientUser) {
-		Set<Future<Void>> sent = sess.send(ZonedDateTime.now().toString(), recipientUser);
+		Set<Future<Void>> sent = sess.send(LocalDateTime.now().toString(), recipientUser);
 
 		if (sent.isEmpty()) {
 			addGlobalError("This user does not exist!");

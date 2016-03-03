@@ -27,9 +27,9 @@
 			<p>The following web sockets are opened and any push message will be printed directly thereafter:</p>
 
 			<ul>
-				<li>Application scoped <strong><span id="app-message" /></strong></li>
-				<li>Session scoped with user <strong><span id="sess-message" /></strong></li>
-				<li>View scoped <strong><span id="view-message" /></strong></li>
+				<li>Application scoped socket <strong><span id="app-message" /></strong></li>
+				<li>Session scoped socket with user <strong><span id="sess-message" /></strong></li>
+				<li>View scoped socket <strong><span id="view-message" /></strong></li>
 			</ul>
 
 			<o:socket port="8000" channel="app" scope="application" onmessage="pushListener" />
@@ -50,17 +50,19 @@
 			</script>
 
 			<p>
-				You can use the below buttons to send the current timestamp to those sockets.
+				You can use the below buttons to send the current server side timestamp to those sockets.
  				If you open the same page in a new tab/window in current browser, then you can test application/session/view scoped push.
  				If you open the same page in an incognito window or a different browser, then you can test application scoped push.
 			</p>
-			
+
 			<h:form>
-				<ul>
-					<li><h:commandButton action="#{pushTestBean.pushApp}" value="push the application scoped socket"><f:ajax/></h:commandButton></li>
-					<li><h:commandButton action="#{pushTestBean.pushSess}" value="push the session scoped socket"><f:ajax/></h:commandButton></li>
-					<li><h:commandButton action="#{pushTestBean.pushView}" value="push the view scoped socket"><f:ajax/></h:commandButton></li>
-				</ul>
+				<f:ajax>
+					<ul>
+						<li><h:commandButton action="#{pushTestBean.pushApp}" value="push application scoped socket" /></li>
+						<li><h:commandButton action="#{pushTestBean.pushSess}" value="push session scoped socket" /></li>
+						<li><h:commandButton action="#{pushTestBean.pushView}" value="push view scoped socket" /></li>
+					</ul>
+				</f:ajax>
 			</h:form>		
 	
 			<p>
@@ -72,8 +74,8 @@
 	
 			<h:form>
 				<h:inputText binding="#{recipientUser}" a:placeholder="Paste generated user ID of other user here" size="32" 
-					required="true" requiredMessage="Paste generated user ID of other user in that input field" />
-				<h:commandButton action="#{pushTestBean.pushUser(recipientUser.value)}" value="push the session scoped socket of given user">
+					required="true" requiredMessage="Seriously, paste generated user ID of other user in that input field" />
+				<h:commandButton action="#{pushTestBean.pushUser(recipientUser.value)}" value="push session scoped socket of given user">
 					<f:ajax execute="@form" render="@form" />
 				</h:commandButton>
 				<h:messages />
