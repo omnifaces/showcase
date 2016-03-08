@@ -20,7 +20,7 @@ import org.omnifaces.util.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 
 @Named
 @Startup
-public class StatsBean {
+public class PushStatsBean {
 
 	private static final long MAX_LAST_PAGE_VIEWS = 20;
 	private ConcurrentMap<UUID, PageView> lastPageViews;

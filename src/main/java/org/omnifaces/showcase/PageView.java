@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.omnifaces.util.Servlets;
-
 public class PageView implements Comparable<PageView> {
 
 	private final LocalDateTime timestamp;
@@ -16,7 +14,7 @@ public class PageView implements Comparable<PageView> {
 
 	public PageView(HttpServletRequest request) {
 		timestamp = LocalDateTime.now();
-		uri = Servlets.getRequestURIWithQueryString(request);
+		uri = request.getRequestURI().split("[?#;]")[0];
 		String sessionId = request.getSession().getId();
 		userHash = Integer.toHexString(sessionId.substring(0, sessionId.length() / 2).hashCode());
 		userAgent = request.getHeader("user-agent");
