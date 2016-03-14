@@ -15,7 +15,7 @@
 The following metadata attributes are supported via this template (they're parsed in Page#loadIfNecessary()):
 
 * api.path:  String of "http://omnifaces.org/docs/javadoc/<version>/org/omnifaces/"-relative path to API documentation.
-             Any @see will be auto-included.
+             Any @see will be auto-included in Java source code.
 * vdl.paths: Commaseparated string of "http://omnifaces.org/docs/vdldoc/<version>/"-relative paths to VDL documentation.
 * src.paths: Commaseparated string of paths to source code snippets, if it does not start with "/", then it will be
              assumed relative to webcontent "/WEB-INF/" folder, else it will be assumed relative to webcontent root.
@@ -91,7 +91,7 @@ The following metadata attributes are supported via this template (they're parse
 		<p:panel id="documentation" header="Documentation &amp; Sources" rendered="#{not empty page.current.documentation}">
 			<os:listdocs header="VDL documentation" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
 			<os:listdocs header="API documentation" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
-			<os:listdocs header="Java source code" paths="api" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
+			<os:listdocs header="Java source code" paths="src" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
 			<os:listdocs header="JavaScript source code" paths="js" url="#{_jsURL}#{path}" label="#{path}" />
 		</p:panel>
 	</ui:define>

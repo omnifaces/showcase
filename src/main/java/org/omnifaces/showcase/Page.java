@@ -339,13 +339,15 @@ public class Page extends ListTreeModel<Page> {
 		// Properties -------------------------------------------------------------------------------------------------
 
 		private List<String> api;
+		private List<String> src;
 		private List<String> vdl;
 		private List<String> js;
 
 		// Contructors ------------------------------------------------------------------------------------------------
 
 		public Documentation(List<String> api, List<String> vdl, List<String> js) {
-			this.api = api;
+			this.api = asList(api.get(0));
+			src = api;
 			this.vdl = vdl;
 			this.js = js;
 		}
@@ -354,6 +356,10 @@ public class Page extends ListTreeModel<Page> {
 
 		public List<String> getApi() {
 			return api;
+		}
+
+		public List<String> getSrc() {
+			return src;
 		}
 
 		public List<String> getVdl() {
