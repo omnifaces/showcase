@@ -45,6 +45,8 @@
 			<li><os:githubLink issue="200" /><h:link outcome="/utils/Components"><code>Components#findComponentInParents()</code> ran in an infinite loop when illegal client ID is supplied</h:link></li>
 			<li><os:githubLink issue="208" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> didn't physically remove server side JSF view state during unload</h:link></li>
 			<li><os:githubLink commit="c972602" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code> will now invalidate session before redirecting to <code>web.xml</code> form login page (fixes WildFly's agressive caching of login page response which exposes as <code>&lt;partial-response&gt;</code> XML visible in browser)</h:link></li>
+			<li><os:githubLink issue="226" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code> failed to resolve <code>\#{cc}</code> when nested in composite component</h:link></li>
+			<li><os:githubLink issue="225" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> failed on string concatenated properties like <code>\#{bean[foo += bar]}</code></h:link></li>
 		</ul>
 
 		<hr />
