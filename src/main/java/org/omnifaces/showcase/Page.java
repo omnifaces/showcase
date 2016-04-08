@@ -346,7 +346,7 @@ public class Page extends ListTreeModel<Page> {
 		// Contructors ------------------------------------------------------------------------------------------------
 
 		public Documentation(List<String> api, List<String> vdl, List<String> js) {
-			this.api = asList(api.get(0));
+			this.api = api.isEmpty() ? api : asList(api.get(0));
 			src = api;
 			this.vdl = vdl;
 			this.js = js;

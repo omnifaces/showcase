@@ -9,41 +9,15 @@
 
 	<ui:define name="content">
 		<p>
-			This demo page shows last #{pushStatsBean.maxLastPageViews} page views.
+			This demo page shows last #{pushStatsBean.maxLastPageViews} page views (on current server node; only requests with a valid referrer).
 			Every new page view will be pushed to top of below list and oldest (bottom) entry will be removed.
 			Source code of this page can be found in <h:link value="o:socket showcase page" outcome="/push/socket" />.
 		</p>
 
-		<ul id="stats" data-max="#{pushStatsBean.maxLastPageViews}">
-			<ui:repeat value="#{lastPageViews}" var="pageView">
-				<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
-			</ui:repeat>
-		</ul>
-
-		<o:socket port="8000" channel="stats" onmessage="updateStats" />
-
-		<script id="pageViewTemplate" type="text/html">
-			<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
-		</script>
 
 		<!-- NOTE: having inline script and style in XHTML like below is bad practice. -->
 		<!-- They're included directly in XHTML just for sake of demo. -->
 		<!-- In real code, put them in a JS and CSS file. -->
-
-		<script>
-			function updateStats(pageView) {
-				var $pageViewTemplate = $($("#pageViewTemplate").html());
-				$pageViewTemplate.find(".timestamp").text(pageView.timestamp);
-				$pageViewTemplate.find(".uri").text(pageView.uri).attr("href", pageView.uri);
-				$pageViewTemplate.find(".userHash").text(pageView.userHash);
-				$pageViewTemplate.find(".userAgent").text(pageView.userAgent);
-				$pageViewTemplate.find(".referrer").text(pageView.referrer);
-
-				var $stats = $("#stats");
-				$pageViewTemplate.hide().prependTo($stats.toggleClass("inversed")).slideDown();
-				$stats.children().slice($stats.data("max")).slideUp(function() { $(this).remove(); });
-			}
-		</script>
 
 		<style>
 			#stats {
@@ -65,5 +39,35 @@
 				background: #eee;
 			}
 		</style>
+
+		<script>
+			function updateStats(pageView) {
+				var $pageViewTemplate = $($("#pageViewTemplate").html());
+				$pageViewTemplate.find(".timestamp").text(pageView.timestamp);
+				$pageViewTemplate.find(".uri").text(pageView.uri).attr("href", pageView.uri);
+				$pageViewTemplate.find(".userHash").text(pageView.userHash);
+				$pageViewTemplate.find(".userAgent").text(pageView.userAgent);
+				$pageViewTemplate.find(".referrer").text(pageView.referrer);
+
+				var $stats = $("#stats");
+				$pageViewTemplate.hide().prependTo($stats.toggleClass("inversed")).slideDown();
+				$stats.children().slice($stats.data("max")).slideUp(function() { $(this).remove(); });
+			}
+		</script>
+
+		<!-- End of bad practice ;) -->
+
+
+		<ul id="stats" data-max="#{pushStatsBean.maxLastPageViews}">
+			<ui:repeat value="#{lastPageViews}" var="pageView">
+				<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+			</ui:repeat>
+		</ul>
+
+		<script id="pageViewTemplate" type="text/html">
+			<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+		</script>
+
+		<o:socket port="8000" channel="stats" onmessage="updateStats" />
 	</ui:define>
 </ui:composition>
