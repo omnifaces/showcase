@@ -28,6 +28,7 @@ import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.ResourcePaths;
+import org.primefaces.config.PrimeConfiguration;
 
 @ManagedBean(eager=true)
 @ApplicationScoped
@@ -44,6 +45,7 @@ public class App {
 	private Page menu;
 	private Map<String, Page> pages;
 	private String version;
+	private String primeFacesVersion;
 	private boolean snapshot;
 	private String poweredBy;
 
@@ -57,8 +59,9 @@ public class App {
 		pages = new HashMap<>();
 		fillPages(pages, menu);
 		version = initVersion();
+		primeFacesVersion = new PrimeConfiguration(Faces.getContext()).getBuildVersion();
 		snapshot = version.contains("-SNAPSHOT") || version.contains("-RC");
-		poweredBy = initPoweredBy();
+		poweredBy = initPoweredBy(primeFacesVersion);
 	}
 
 	private static String loadIndex() {
@@ -110,11 +113,11 @@ public class App {
 		return version.replaceAll("-\\d+$", "");
 	}
 
-	private static String initPoweredBy() {
+	private static String initPoweredBy(String primeFacesVersion) {
 		return String.format("%s%nOmniFaces %s%nPrimeFaces %s%n%s",
 			Faces.getImplInfo(),
 			Faces.class.getPackage().getSpecificationVersion(),
-			"5.3", // PrimeFaces Constants.VERSION is since 4.0 moved to RequestContext#getApplicationContext(), however the access point has changed from application based to request based.
+			primeFacesVersion,
 			Faces.getServerInfo());
 	}
 
@@ -148,6 +151,10 @@ public class App {
 
 	public boolean isSnapshot() {
 		return snapshot;
+	}
+
+	public String getPrimeFacesVersion() {
+		return primeFacesVersion;
 	}
 
 	public String getPoweredBy() {
