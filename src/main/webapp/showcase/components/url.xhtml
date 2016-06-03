@@ -1,0 +1,23 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="component/output/Url" />
+			<f:attribute name="vdl.paths" value="o/url" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<p>Full URL of current page is: <o:url /></p>
+		<p>Full URL of another page is: <o:url viewId="/whatsnew" /></p>
+		<p>Domain-relative URL of current page is: <o:url domain="/" /></p>
+		<p>Scheme-relative URL of current page is: <o:url domain="//" /></p>
+		<p>Scheme-relative URL of current page on a different domain is: <o:url domain="sub.example.com" /></p>
+		<p>Full URL of current page on a different domain is: <o:url domain="https://sub.example.com" /></p>
+ 	</ui:define>
+</ui:composition>
