@@ -51,39 +51,39 @@
 
 		<h3>Added in OmniFaces 2.3</h3>
 		<ul>
-			<li><os:githubLink issue="17" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code> for web socket based push which can be accessed via CDI <code>@Push</code></h:link></li>
-			<li><os:githubLink commit="72d3aae" /><h:link outcome="/utils/Servlets"><code>Servlets#getRemoteAddr()</code> to get request remote address, taking into account the <code>X-Forwarded-For</code> header</h:link></li>
-			<li><os:githubLink commit="eef138e" /><h:link outcome="/utils/Beans"><code>Beans#fireEvent()</code> to fire a CDI event object</h:link></li>
-			<li><os:githubLink commit="e3ee8fb" /><h:link outcome="/utils/Beans"><code>Beans#isActive(scope)</code> to check if a scope is active without need to catch <code>ContextNotActiveException</code></h:link></li>
-			<li><os:githubLink issue="194" /><h:link outcome="/utils/Faces"><code>Faces#sendFile()</code> has now one more method accepting an <code>OutputStream</code> callback</h:link></li>
-			<li><os:githubLink issue="125,202" /><h:link outcome="/taghandlers/skipValidators"><code>&lt;o:skipValidators&gt;</code> to skip all validation during a <code>UICommand</code> action or an ajax request</h:link></li>
-			<li><os:githubLink commit="a2c1473" /><h:link outcome="/functions/Numbers"><code>of:formatThousands()</code> to round a number to nearest thousand with immediate "k", "M", "G", etc suffix and a precision of 3 digits, whereafter trailing zeroes in fraction are stripped</h:link></li>
-			<li><os:githubLink issue="204" /><h:link outcome="/functions/Numbers"><code>of:formatThousandsUnit()</code> to round a number to nearest thousand of given unit with "k", "M", "G", etc prefix and a precision of 3 digits, whereafter trailing zeroes in fraction are stripped</h:link></li>
-			<li><os:githubLink issue="206" /><h:link outcome="/functions/Numbers"><code>of:formatNumberDefaultForLocale()</code> to format a number in locale-default pattern of given locale</h:link></li>
-			<li><os:githubLink issue="205" /><h:link outcome="/utils/Faces"><code>Faces#getViewName()</code> to get base name of current view (without extension)</h:link></li>
-			<li><os:githubLink issue="196" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code> now supports a new context param <code>org.omnifaces.EXCEPTION_TYPES_TO_UNWRAP</code> where you can specify additional exception types to unwrap the root cause from.</h:link></li>
-			<li><os:githubLink issue="216" /><h:link outcome="/servlets/FileServlet"><code>FileServlet</code> now supports customizing 404 error handling and attachment file name.</h:link></li>
-			<li><os:githubLink commit="8dbd495" /><h:link outcome="/utils/Ajax"><code>Ajax#load()</code> to load a script resource on complete of current ajax request.</h:link></li>
+			<li><os:githubLink issue="17" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> for web socket based push which can be accessed via CDI <code>@Push</code></li>
+			<li><os:githubLink commit="72d3aae" /><h:link outcome="/utils/Servlets"><code>Servlets#getRemoteAddr()</code></h:link> to get request remote address, taking into account the <code>X-Forwarded-For</code> header</li>
+			<li><os:githubLink commit="eef138e" /><h:link outcome="/utils/Beans"><code>Beans#fireEvent()</code></h:link> to fire a CDI event object</li>
+			<li><os:githubLink commit="e3ee8fb" /><h:link outcome="/utils/Beans"><code>Beans#isActive(scope)</code></h:link> to check if a scope is active without need to catch <code>ContextNotActiveException</code></li>
+			<li><os:githubLink issue="194" /><h:link outcome="/utils/Faces"><code>Faces#sendFile()</code></h:link> has now one more method accepting an <code>OutputStream</code> callback</li>
+			<li><os:githubLink issue="125,202" /><h:link outcome="/taghandlers/skipValidators"><code>&lt;o:skipValidators&gt;</code></h:link> to skip all validation during a <code>UICommand</code> action or an ajax request</li>
+			<li><os:githubLink commit="a2c1473" /><h:link outcome="/functions/Numbers"><code>of:formatThousands()</code></h:link> to round a number to nearest thousand with immediate "k", "M", "G", etc suffix and a precision of 3 digits, whereafter trailing zeroes in fraction are stripped</li>
+			<li><os:githubLink issue="204" /><h:link outcome="/functions/Numbers"><code>of:formatThousandsUnit()</code></h:link> to round a number to nearest thousand of given unit with "k", "M", "G", etc prefix and a precision of 3 digits, whereafter trailing zeroes in fraction are stripped</li>
+			<li><os:githubLink issue="206" /><h:link outcome="/functions/Numbers"><code>of:formatNumberDefaultForLocale()</code></h:link> to format a number in locale-default pattern of given locale</li>
+			<li><os:githubLink issue="205" /><h:link outcome="/utils/Faces"><code>Faces#getViewName()</code></h:link> to get base name of current view (without extension)</li>
+			<li><os:githubLink issue="196" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> now supports a new context param <code>org.omnifaces.EXCEPTION_TYPES_TO_UNWRAP</code> where you can specify additional exception types to unwrap the root cause from.</li>
+			<li><os:githubLink issue="216" /><h:link outcome="/servlets/FileServlet"><code>FileServlet</code></h:link> now supports customizing 404 error handling and attachment file name.</li>
+			<li><os:githubLink commit="8dbd495" /><h:link outcome="/utils/Ajax"><code>Ajax#load()</code></h:link> to load a script resource on complete of current ajax request.</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.3</h3>
 		<ul>
-			<li><os:githubLink issue="178" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code> will not anymore include parent of an inner class in default value of <code>var</code> attribute, so e.g. <code>\#{Parent$Inner}</code> will now be <code>\#{Inner}</code></h:link></li>
+			<li><os:githubLink issue="178" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code></h:link> will not anymore include parent of an inner class in default value of <code>var</code> attribute, so e.g. <code>\#{Parent$Inner}</code> will now be <code>\#{Inner}</code></li>
 			<li><os:githubLink commit="214d189" /><code>BeanManager.INSTANCE.getReference()</code> is <strong>deprecated</strong> in favor of <h:link outcome="/utils/Beans"><code>Beans#getReference()</code></h:link></li>
-			<li><os:githubLink issue="218" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code> now supports declaring a namespaced function</h:link></li>
+			<li><os:githubLink issue="218" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code></h:link> now supports declaring a namespaced function</li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.3</h3>
 		<ul>
-			<li><os:githubLink commit="84f6748" /><h:link outcome="/utils/WebXml"><code>WebXml#isAccessAllowed()</code> incorrectly matched extension based URLs in prefix path checking</h:link></li>
-			<li><os:githubLink commit="b3d2ea5" /><h:link outcome="/facesviews/ExtensionlessURLs">When mapping FacesViews on <code>/</code> and triggering a 404 error, then Mojarra confusingly threw a "Response already committed" exception</h:link></li>
-			<li><os:githubLink issue="187" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> didn't render HTML attributes such as <code>styleClass</code> when MyFaces is used</h:link></li>
-			<li><os:githubLink issue="199" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> failed to initialize unload script when it's created for first time after an ajax navigation action</h:link></li>
-			<li><os:githubLink issue="200" /><h:link outcome="/utils/Components"><code>Components#findComponentInParents()</code> ran in an infinite loop when illegal client ID is supplied</h:link></li>
-			<li><os:githubLink issue="208" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> didn't physically remove server side JSF view state during unload</h:link></li>
-			<li><os:githubLink commit="c972602" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code> will now invalidate session before redirecting to <code>web.xml</code> form login page (fixes WildFly's agressive caching of login page response which exposes as <code>&lt;partial-response&gt;</code> XML visible in browser)</h:link></li>
-			<li><os:githubLink issue="226" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code> failed to resolve <code>\#{cc}</code> when nested in composite component</h:link></li>
-			<li><os:githubLink issue="225" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> failed on string concatenated properties like <code>\#{bean[foo += bar]}</code></h:link></li>
+			<li><os:githubLink commit="84f6748" /><h:link outcome="/utils/WebXml"><code>WebXml#isAccessAllowed()</code></h:link> incorrectly matched extension based URLs in prefix path checking</li>
+			<li><os:githubLink commit="b3d2ea5" />When mapping <h:link outcome="/facesviews/ExtensionlessURLs">FacesViews</h:link> on <code>/</code> and triggering a 404 error, then Mojarra confusingly threw a "Response already committed" exception</li>
+			<li><os:githubLink issue="187" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> didn't render HTML attributes such as <code>styleClass</code> when MyFaces is used</li>
+			<li><os:githubLink issue="199" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> failed to initialize unload script when it's created for first time after an ajax navigation action</li>
+			<li><os:githubLink issue="200" /><h:link outcome="/utils/Components"><code>Components#findComponentInParents()</code></h:link> ran in an infinite loop when illegal client ID is supplied</li>
+			<li><os:githubLink issue="208" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> didn't physically remove server side JSF view state during unload</li>
+			<li><os:githubLink commit="c972602" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code></h:link> will now invalidate session before redirecting to <code>web.xml</code> form login page (fixes WildFly's agressive caching of login page response which exposes as <code>&lt;partial-response&gt;</code> XML visible in browser)</li>
+			<li><os:githubLink issue="226" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> failed to resolve <code>\#{cc}</code> when nested in composite component</li>
+			<li><os:githubLink issue="225" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> failed on string concatenated properties like <code>\#{bean[foo += bar]}</code></li>
 		</ul>
 
 		<hr />
@@ -93,42 +93,43 @@
 
 		<h3>Added in OmniFaces 2.2</h3>
 		<ul>
-			<li><os:githubLink issue="124" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code> got new <code>autorun</code> attribute, allowing for immediate execution during window load event</h:link></li>
-			<li><os:githubLink issue="118" /><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code> got new <code>default</code> attribute, allowing to set a default value when no view param is present</h:link></li>
-			<li><os:githubLink commit="572c118,efd9347" /><h:link outcome="/utils/Faces">Added <code>Faces#refresh()</code> and <code>Faces#refreshWithQueryString()</code> which do basically <code>redirect(getRequestURI())</code>; added <code>Faces#getRenderKit()</code></h:link></li>
-			<li><os:githubLink issue="157" /><h:link outcome="/utils/Messages">Added <code>Messages#isEmpty()</code>, <code>Messages#isEmpty(clientId)</code> and<code>Messages#isGlobalEmpty()</code></h:link></li>
-			<li><os:githubLink commit="465a78d" /><h:link outcome="/utils/FacesConfigXml">Added <code>FacesConfigXml#getSupportedLocales()</code> which returns an ordered list in contrary to <code>Faces#getSupportedLocales()</code></h:link></li>
-			<li><os:githubLink issue="116" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code> now supports <code>&lt;f|o:param&gt;</code> children</h:link></li>
-			<li><os:githubLink commit="1c912f7,62949a3,ad44be1,5216b57" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code> now listens on browser unload event and gets destroyed sooner</h:link></li>
-			<li><os:githubLink issue="148" /><h:link outcome="/cdi/ContextParam"><code>@ContextParam</code> which injects a <code>&lt;context-param&gt;</code> value</h:link></li>
-			<li><os:githubLink issue="1c912f7" /><h:link outcome="/utils/Components">Added <code>Components#addScriptXxx()</code> methods which can add an inline script or script resource to head or body</h:link></li>
-			<li><os:githubLink issue="167" /><h:link outcome="/utils/Components">Added <code>Components#includeCompositeComponent()</code> overloaded method which takes an attribute map</h:link></li>
-			<li><os:githubLink issue="149" /><h:link outcome="/utils/Components">Added <code>Components#buildView()</code> and <code>Components#encodeHtml()</code> allowing local building and encoding of (simple) templates</h:link></li>
-			<li><os:githubLink issue="119" /><h:link outcome="/components/viewAction">New <code>&lt;o:viewAction&gt;</code> component which evaluates <code>if</code> attribute during invoke application phase</h:link></li>
-			<li><os:githubLink commit="1417fc0" /><h:link outcome="/servlets/FileServlet">Added abstract template for "BalusC FileServlet" which supports a.o. cache and range (resume) requests</h:link></li>
+			<li><os:githubLink issue="124" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code></h:link> got new <code>autorun</code> attribute, allowing for immediate execution during window load event</li>
+			<li><os:githubLink issue="118" /><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code></h:link> got new <code>default</code> attribute, allowing to set a default value when no view param is present</li>
+			<li><os:githubLink commit="572c118" /><h:link outcome="/utils/Faces"><code>Faces#refresh()</code> and <code>Faces#refreshWithQueryString()</code></h:link> which do basically <code>redirect(getRequestURI())</code>; added <code>Faces#getRenderKit()</code></li>
+			<li><os:githubLink commit="efd9347" /><h:link outcome="/utils/Faces"><code>Faces#getRenderKit()</code></h:link> which can obtain the render kit from the factory when there's no view around</li>
+			<li><os:githubLink issue="157" /><h:link outcome="/utils/Messages"><code>Messages#isEmpty()</code>, <code>Messages#isEmpty(clientId)</code> and<code>Messages#isGlobalEmpty()</code></h:link></li>
+			<li><os:githubLink commit="465a78d" /><h:link outcome="/utils/FacesConfigXml">Added <code>FacesConfigXml#getSupportedLocales()</code></h:link> which returns an ordered list in contrary to <code>Faces#getSupportedLocales()</code></li>
+			<li><os:githubLink issue="116" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> now supports <code>&lt;f|o:param&gt;</code> children</li>
+			<li><os:githubLink commit="1c912f7,62949a3,ad44be1,5216b57" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> now listens on browser unload event and gets destroyed sooner</li>
+			<li><os:githubLink issue="148" /><h:link outcome="/cdi/ContextParam"><code>@ContextParam</code></h:link> which injects a <code>&lt;context-param&gt;</code> value</li>
+			<li><os:githubLink issue="1c912f7" /><h:link outcome="/utils/Components"><code>Components#addScriptXxx()</code></h:link> methods which can add an inline script or script resource to head or body</li>
+			<li><os:githubLink issue="167" /><h:link outcome="/utils/Components"><code>Components#includeCompositeComponent()</code></h:link> overloaded method which takes an attribute map</li>
+			<li><os:githubLink issue="149" /><h:link outcome="/utils/Components"><code>Components#buildView()</code> and <code>Components#encodeHtml()</code></h:link> allowing local building and encoding of (simple) templates</li>
+			<li><os:githubLink issue="119" /><h:link outcome="/components/viewAction"><code>&lt;o:viewAction&gt;</code></h:link> component which evaluates <code>if</code> attribute during invoke application phase</li>
+			<li><os:githubLink commit="1417fc0" />Added abstract template for "<h:link outcome="/servlets/FileServlet">BalusC FileServlet</h:link>" which supports a.o. cache and range (resume) requests</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.2</h3>
 		<ul>
-			<li><os:githubLink commit="55510fa" /><h:link outcome="/renderkits/Html5RenderKit"><code>Html5RenderKit</code> is <strong>deprecated</strong> in favor of JSF 2.2 passthrough attributes; it will be removed in OmniFaces 3.0</h:link></li>
-			<li><os:githubLink commit="d364daf" /><h:link outcome="/eventlisteners/InvokeActionEventListener"><code>&lt;f:event type="(pre|post)InvokeAction"&gt;</code> is now supported on all components</h:link></li>
-			<li><os:githubLink issue="164" /><h:link outcome="/taghandlers/importFunctions"><code>&lt;o:importFunctions"&gt;</code> will now throw a clear <code>IllegalArgumentException</code> on non-existing function</h:link></li>
-			<li><os:githubLink issue="167" /><h:link outcome="/utils/Components">Migrated <code>Components#includeCompositeComponent()</code> to JSF 2.2 approach with <code>createComponent()</code></h:link></li>
+			<li><os:githubLink commit="55510fa" /><h:link outcome="/renderkits/Html5RenderKit"><code>Html5RenderKit</code></h:link> is <strong>deprecated</strong> in favor of JSF 2.2 passthrough attributes; it will be removed in OmniFaces 3.0</li>
+			<li><os:githubLink commit="d364daf" /><h:link outcome="/eventlisteners/InvokeActionEventListener"><code>&lt;f:event type="(pre|post)InvokeAction"&gt;</code></h:link> is now supported on all components</li>
+			<li><os:githubLink issue="164" /><h:link outcome="/taghandlers/importFunctions"><code>&lt;o:importFunctions"&gt;</code></h:link> will now throw a clear <code>IllegalArgumentException</code> on non-existing function</li>
+			<li><os:githubLink issue="167" />Migrated <h:link outcome="/utils/Components"><code>Components#includeCompositeComponent()</code></h:link> to JSF 2.2 approach with <code>createComponent()</code></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.2</h3>
 		<ul>
-			<li><os:githubLink commit="6cf7123,96d5d17" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> failed when resource name contains a query string, and ordering w.r.t. suppressed resources failed during synchronous postback in MyFaces</h:link></li>
-			<li><os:githubLink issue="141" /><h:link outcome="/utils/JNDI"><code>JNDI#lookup()</code> in GlassFish 4.x incorrectly threw <code>NamingExcepion</code> instead of returning <code>null</code></h:link></li>
-			<li><os:githubLink commit="f914b83" /><h:link outcome="/utils/Components"><code>Components#getParams()</code> didn't consider <code>Converter</code> of <code>ParamHolder</code></h:link></li>
-			<li><os:githubLink issue="127,179" /><h:link outcome="/utils/Ajax"><code>Ajax#updateRow()</code> failed in paginated tables and p:columns</h:link></li>
-			<li><os:githubLink issue="156" /><h:link outcome="/utils/WebXml"><code>WebXml#findErrorPageLocation()</code> (and <code>FullAjaxExceptionHandler</code>) didn't consider entire class hierarchy when matching exception types</h:link></li>
-			<li><os:githubLink issue="150" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> threw NPE on unrendered inputs</h:link></li>
-			<li><os:githubLink issue="144" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> threw IAE on boolean inputs</h:link></li>
-			<li><os:githubLink issue="168" /><h:link outcome="/eventlisteners/ResetInputAjaxActionListener"><code>ResetInputAjaxActionListener</code> is now also compatible with RichFaces 4.5+</h:link></li>
-			<li><os:githubLink issue="166" /><h:link outcome="/cdi/Eager"><code>@Eager</code> blocked deployment in Jetty</h:link></li>
-			<li><os:githubLink issue="183" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code> failed to handle <code>web.xml</code> form login page redirect in MyFaces 2.2+</h:link></li>
-			<li><os:githubLink commit="d82d6a0" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code> generated illegal URL when OpenWebBeans managed bean is used</h:link></li>
+			<li><os:githubLink commit="6cf7123,96d5d17" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> failed when resource name contains a query string, and ordering w.r.t. suppressed resources failed during synchronous postback in MyFaces</li>
+			<li><os:githubLink issue="141" /><h:link outcome="/utils/JNDI"><code>JNDI#lookup()</code></h:link> in GlassFish 4.x incorrectly threw <code>NamingExcepion</code> instead of returning <code>null</code></li>
+			<li><os:githubLink commit="f914b83" /><h:link outcome="/utils/Components"><code>Components#getParams()</code></h:link> didn't consider <code>Converter</code> of <code>ParamHolder</code></li>
+			<li><os:githubLink issue="127,179" /><h:link outcome="/utils/Ajax"><code>Ajax#updateRow()</code></h:link> failed in paginated tables and p:columns</li>
+			<li><os:githubLink issue="156" /><h:link outcome="/utils/WebXml"><code>WebXml#findErrorPageLocation()</code></h:link> (and <code>FullAjaxExceptionHandler</code>) didn't consider entire class hierarchy when matching exception types</li>
+			<li><os:githubLink issue="150" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> threw NPE on unrendered inputs</li>
+			<li><os:githubLink issue="144" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> threw IAE on boolean inputs</li>
+			<li><os:githubLink issue="168" /><h:link outcome="/eventlisteners/ResetInputAjaxActionListener"><code>ResetInputAjaxActionListener</code></h:link> is now also compatible with RichFaces 4.5+</li>
+			<li><os:githubLink issue="166" /><h:link outcome="/cdi/Eager"><code>@Eager</code></h:link> blocked deployment in Jetty</li>
+			<li><os:githubLink issue="183" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code></h:link> failed to handle <code>web.xml</code> form login page redirect in MyFaces 2.2+</li>
+			<li><os:githubLink commit="d82d6a0" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> generated illegal URL when OpenWebBeans managed bean is used</li>
 		</ul>
 
 		<hr />
@@ -138,36 +139,36 @@
 
 		<h3>Added in OmniFaces 2.1</h3>
 		<ul>
-			<li><os:githubLink commit="0cd13ea" /><h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code> to explicitly declare a tagfile attribute which is only exposed in tagfile's own EL scope, to prevent pollution in EL scope of nested tagfiles</h:link></li>
-			<li><os:githubLink commit="51060ff" /><h:link outcome="/utils/FacesConfigXml"><code>FacesConfigXml</code> to get <code>faces-config.xml</code> entries which are not available via native JSF API (currently only a mapping of all <code>&lt;resource-bundle&gt;</code> entries can be obtained)</h:link></li>
-			<li><os:githubLink issue="100" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> now supports server-side caching of combined resources via <code>org.omnifaces.COMBINED_RESOURCE_HANDLER_CACHE_TTL</code> context param</h:link></li>
-			<li><os:githubLink commit="070e7b5" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code> now also supports SVG images with explicit <code>type="svg"</code> attribute and <code>fragment</code> attribute for SVG view modes</h:link></li>
-			<li><os:githubLink commit="09f187d" /><h:link outcome="/cdi/Eager"><code>@Eager</code> now also supports JSF 2.2 <code>javax.faces.view.ViewScoped</code></h:link></li>
-			<li><os:githubLink commit="2d640e0" /><h:link outcome="/cdi/Cookie"><code>@Cookie</code> to inject a HTTP request cookie in a CDI managed bean</h:link></li>
-			<li><os:githubLink issue="114" /><h:link outcome="/functions/Request">Several shortcut functions on current HTTP request: <code>of:getRequestBaseURL()</code>, <code>of:getRequestDomainURL()</code>, <code>of:getRequestURLWithQueryString()</code>, <code>of:getRemoteAddr()</code></h:link></li>
-            <li><os:githubLink issue="57" /><h:link outcome="/utils/Faces"><code>Faces</code> and <code>FacesLocal</code> got new <code>getResourceBundles()</code> and <code>getBundleString()</code> methods</h:link></li>
-            <li><os:githubLink commit="82ace56" /><h:link outcome="/utils/Servlets"><code>Servlets</code> got a new <code>isFacesDevelopment()</code> method</h:link></li>
+			<li><os:githubLink commit="0cd13ea" /><h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code></h:link> to explicitly declare a tagfile attribute which is only exposed in tagfile's own EL scope, to prevent pollution in EL scope of nested tagfiles</li>
+			<li><os:githubLink commit="51060ff" /><h:link outcome="/utils/FacesConfigXml"><code>FacesConfigXml</code></h:link> to get <code>faces-config.xml</code> entries which are not available via native JSF API (currently only a mapping of all <code>&lt;resource-bundle&gt;</code> entries can be obtained)</li>
+			<li><os:githubLink issue="100" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> now supports server-side caching of combined resources via <code>org.omnifaces.COMBINED_RESOURCE_HANDLER_CACHE_TTL</code> context param</li>
+			<li><os:githubLink commit="070e7b5" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> now also supports SVG images with explicit <code>type="svg"</code> attribute and <code>fragment</code> attribute for SVG view modes</li>
+			<li><os:githubLink commit="09f187d" /><h:link outcome="/cdi/Eager"><code>@Eager</code></h:link> now also supports JSF 2.2 <code>javax.faces.view.ViewScoped</code></li>
+			<li><os:githubLink commit="2d640e0" /><h:link outcome="/cdi/Cookie"><code>@Cookie</code></h:link> to inject a HTTP request cookie in a CDI managed bean</li>
+			<li><os:githubLink issue="114" />Several shortcut functions on current HTTP request: <h:link outcome="/functions/Request"><code>of:getRequestBaseURL()</code>, <code>of:getRequestDomainURL()</code>, <code>of:getRequestURLWithQueryString()</code>, <code>of:getRemoteAddr()</code></h:link></li>
+            <li><os:githubLink issue="57" /><h:link outcome="/utils/Faces"><code>Faces</code></h:link> and <h:link outcome="/utils/FacesLocal"><code>FacesLocal</code></h:link> got new <code>getResourceBundles()</code> and <code>getBundleString()</code> methods</li>
+            <li><os:githubLink commit="82ace56" /><h:link outcome="/utils/Servlets"><code>Servlets</code></h:link> got a new <code>isFacesDevelopment()</code> method</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.1</h3>
 		<ul>
-			<li><os:githubLink commit="169bb7f" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> default threshold is lowered from 500b to 150b to catch up modern hardware, and default mimetypes is extended with <code>image/svg+xml</code></h:link></li>
-			<li><os:githubLink issue="53" /><h:link outcome="/filters/CacheControlFilter"><code>CacheControlFilter</code> does not run anymore when project stage is set to development</h:link></li>
-			<li><os:githubLink issue="92" /><h:link outcome="/taghandlers/enableRestorableView"><code>RestorableViewHandler</code> does not anymore try to restore the view as long as <code>&lt;o:enableRestorableView&gt;</code> is never used</h:link></li>
+			<li><os:githubLink commit="169bb7f" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> default threshold is lowered from 500b to 150b to catch up modern hardware, and default mimetypes is extended with <code>image/svg+xml</code></li>
+			<li><os:githubLink issue="53" /><h:link outcome="/filters/CacheControlFilter"><code>CacheControlFilter</code></h:link> does not run anymore when project stage is set to development</li>
+			<li><os:githubLink issue="92" /><code>RestorableViewHandler</code> does not anymore try to restore the view as long as <h:link outcome="/taghandlers/enableRestorableView"><code>&lt;o:enableRestorableView&gt;</code></h:link> is never used</li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.1</h3>
 		<ul>
 			<li><os:githubLink issue="97" />All resource handlers (CDN, Combined and Unmapped) are made better compatible with other 3rd party component libraries (e.g. PrimeFaces ones which appends a version to query string)</li>
 			<li><os:githubLink commit="ed34f1d,bb92fba,83b9c6e,a0884ac" />Serialization-related issues in several taghandlers (and <code>Callback</code> interfaces) when new <a href="http://jdevelopment.nl/jsf-22/#1127"><code>javax.faces.SERIALIZE_SERVER_STATE</code></a> context param is set to <code>true</code></li>
-			<li><os:githubLink issue="83" /><h:link outcome="/viewhandlers/NoAutoGeneratedIdViewHandler"><code>NoAutoGeneratedIdViewHandler</code> failed when view state ID rendering was enabled</h:link></li>
-			<li><os:githubLink issue="98" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code> failed in composite components in Mojarra</h:link></li>
+			<li><os:githubLink issue="83" /><h:link outcome="/viewhandlers/NoAutoGeneratedIdViewHandler"><code>NoAutoGeneratedIdViewHandler</code></h:link> failed when view state ID rendering was enabled</li>
+			<li><os:githubLink issue="98" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code></h:link> failed in composite components in Mojarra</li>
 			<li><os:githubLink issue="45" /><h:link outcome="/components/deferredScript"><code>&lt;o:deferredScript&gt;</code></h:link> and <h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code></h:link> failed during postbacks on stateless views</li>
-			<li><os:githubLink commit="e406bd4" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code> for output format failed in MyFaces by rendering children anyway</h:link></li>
+			<li><os:githubLink commit="e406bd4" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> for output format failed in MyFaces by rendering children anyway</li>
 			<li><os:githubLink issue="133" />CDI validation failed in Tomcat + OpenWebBeans</li>
-			<li><os:githubLink issue="132" /><h:link outcome="/managedbeans/startup"><code>\#{startup}</code> wasn't eagerly initialized</h:link></li>
-			<li><os:githubLink commit="500019e" /><h:link outcome="/converters/SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code> didn't properly update when new items are added during invoke application</h:link></li>
-			<li><os:githubLink commit="38d0330" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> memory leak on composite components</h:link></li>
+			<li><os:githubLink issue="132" /><h:link outcome="/managedbeans/startup"><code>\#{startup}</code></h:link> wasn't eagerly initialized</li>
+			<li><os:githubLink commit="500019e" /><h:link outcome="/converters/SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code></h:link> didn't properly update when new items are added during invoke application</li>
+			<li><os:githubLink commit="38d0330" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code></h:link> memory leak on composite components</li>
 		</ul>
 
 		<hr />
@@ -186,32 +187,32 @@
 
 		<h3>Added in OmniFaces 2.0</h3>
 		<ul>
-			<li><os:githubLink commit="c83e4ab" /><h:link outcome="/viewhandlers/NoAutoGeneratedIdViewHandler"><code>NoAutoGeneratedIdViewHandler</code> which throws a runtime exception when an autogenerated JSF client ID is being rendered</h:link></li>
-			<li><os:githubLink commit="ca1e625" /><h:link outcome="/taghandlers/viewParamValidationFailed"><code>&lt;o:viewParamValidationFailed&gt;</code> which enables sending either a redirect or error status on validation failure of view parameters</h:link></li>
-			<li><os:githubLink commit="85bfbdf" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code> which is capable of referencing a <code>byte[]</code> or <code>InputStream</code> property with optional support for data URI format</h:link></li>
-			<li><os:githubLink commit="d598611" /><h:link outcome="/cdi/Param"><code>@Param</code> now supports directly injecting the (auto-converted) value</h:link></li>
-            <li><os:githubLink commit="da6940a" /><h:link outcome="/components/moveComponent"><code>&lt;o:moveComponent&gt;</code> via which components, facets and behaviors can be moved at runtime to a target component in various ways</h:link></li>
-			<li><os:githubLink commit="2286fd4" /><h:link outcome="/components/resolveComponent"><code>&lt;o:resolveComponent&gt;</code> via which a component can be looked up by its ID and a reference to it put in various scopes</h:link></li>
-			<li><os:githubLink commit="82547a7" /><h:link outcome="/utils/BeansLocal">New <code>BeansLocal</code> utility class next to <code>Beans</code> class with the same philosophy as <code>Faces</code>/<code>FacesLocal</code></h:link></li>
-            <li><os:githubLink commit="372dfde,04b0110,6d1b75a,2647e68" /><h:link outcome="/utils/Servlets"><code>Servlets</code> utility class got a bunch of new methods related to cookies and JSF</h:link></li>
-			<li><os:githubLink issue="39" /><h:link outcome="/validators/validateAll">Default validation message of <code>ValidateMultipleFields</code> components can now be supplied via <code>&lt;message-bundle&gt;</code></h:link></li>
+			<li><os:githubLink commit="c83e4ab" /><h:link outcome="/viewhandlers/NoAutoGeneratedIdViewHandler"><code>NoAutoGeneratedIdViewHandler</code></h:link> which throws a runtime exception when an autogenerated JSF client ID is being rendered</li>
+			<li><os:githubLink commit="ca1e625" /><h:link outcome="/taghandlers/viewParamValidationFailed"><code>&lt;o:viewParamValidationFailed&gt;</code></h:link> which enables sending either a redirect or error status on validation failure of view parameters</li>
+			<li><os:githubLink commit="85bfbdf" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> which is capable of referencing a <code>byte[]</code> or <code>InputStream</code> property with optional support for data URI format</li>
+			<li><os:githubLink commit="d598611" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now supports directly injecting the (auto-converted) value</li>
+            <li><os:githubLink commit="da6940a" /><h:link outcome="/components/moveComponent"><code>&lt;o:moveComponent&gt;</code></h:link> via which components, facets and behaviors can be moved at runtime to a target component in various ways</li>
+			<li><os:githubLink commit="2286fd4" /><h:link outcome="/components/resolveComponent"><code>&lt;o:resolveComponent&gt;</code></h:link> via which a component can be looked up by its ID and a reference to it put in various scopes</li>
+			<li><os:githubLink commit="82547a7" />New <h:link outcome="/utils/BeansLocal"><code>BeansLocal</code></h:link> utility class next to <code>Beans</code> class with the same philosophy as <code>Faces</code>/<code>FacesLocal</code></li>
+            <li><os:githubLink commit="372dfde,04b0110,6d1b75a,2647e68" /><h:link outcome="/utils/Servlets"><code>Servlets</code></h:link> utility class got a bunch of new methods related to cookies and JSF</li>
+			<li><os:githubLink issue="39" />Default validation message of <h:link outcome="/validators/validateAll"><code>ValidateMultipleFields</code></h:link> components can now be supplied via <code>&lt;message-bundle&gt;</code></li>
 			<li><os:githubLink commit="3cda0b2" /><h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link> and <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> can now be disabled via a <code>web.xml</code> context param supporting a request based EL expression</li>
-            <li><os:githubLink issue="33" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> now supports validating beans at the class level</h:link></li>
+            <li><os:githubLink issue="33" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> now supports validating beans at the class level</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.0</h3>
 		<ul>
-			<li><os:githubLink commit="f8f84aa" /><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code> enables support for <code>@NotNull</code> and <code>Pre/PostValidateEvent</code> even when parameter is not specified, on contrary to <code>&lt;f:viewParam&gt;</code></h:link></li>
-			<li><os:githubLink commit="9fa0c3b" /><h:link outcome="/renderkits/Html5RenderKit"><code>Html5RenderKit</code> is now not forgiving anymore on broken renderers that don't pass the current component to the <code>write</code> methods (fixes "plain HTML" messup)</h:link></li>
-			<li><os:githubLink issue="47" /><h:link outcome="/validators/validateOrder">Skip null/empty values in <code>&lt;o:validateOrder&gt;</code> as that's actually the responsibility of <code>required="true"</code></h:link></li>
+			<li><os:githubLink commit="f8f84aa" /><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code></h:link> enables support for <code>@NotNull</code> and <code>Pre/PostValidateEvent</code> even when parameter is not specified, on contrary to <code>&lt;f:viewParam&gt;</code></li>
+			<li><os:githubLink commit="9fa0c3b" /><h:link outcome="/renderkits/Html5RenderKit"><code>Html5RenderKit</code></h:link> is now not forgiving anymore on broken renderers that don't pass the current component to the <code>write</code> methods (fixes "plain HTML" messup)</li>
+			<li><os:githubLink issue="47" />Skip null/empty values in <h:link outcome="/validators/validateOrder"><code>&lt;o:validateOrder&gt;</code></h:link> as that's actually the responsibility of <code>required="true"</code></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.0</h3>
 		<ul>
-			<li><os:githubLink commit="bf833e3" /><h:link outcome="/cdi/FacesConverter">Set system default timezone in CDI <code>@FacesConverter</code> when <code>web.xml</code> context param says so</h:link></li>
-			<li><os:githubLink commit="9870108" /><h:link outcome="/utils/Components"><code>Components#hasInvokedSubmit()</code> failed in iterating components such as <code>UIData</code> and <code>UIRepeat</code></h:link></li>
-			<li><os:githubLink issue="51" /><h:link outcome="/taghandlers/massAttribute">Fixed <code>&lt;o:massAttribute&gt;</code> to only consider own children instead of those of parent</h:link></li>
-			<li><os:githubLink issue="65" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> is made better compatible with Servlet 3.1 containers</h:link></li>
+			<li><os:githubLink commit="bf833e3" />Set system default timezone in CDI <h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> when <code>web.xml</code> context param says so</li>
+			<li><os:githubLink commit="9870108" /><h:link outcome="/utils/Components"><code>Components#hasInvokedSubmit()</code></h:link> failed in iterating components such as <code>UIData</code> and <code>UIRepeat</code></li>
+			<li><os:githubLink issue="51" />Fixed <h:link outcome="/taghandlers/massAttribute"><code>&lt;o:massAttribute&gt;</code></h:link> to only consider own children instead of those of parent</li>
+			<li><os:githubLink issue="65" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> is made better compatible with Servlet 3.1 containers</li>
 		</ul>
 
 		<hr />
