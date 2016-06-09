@@ -24,11 +24,6 @@ body .ui-widget-header {
 	text-shadow: none;
 }
 
-body .ui-widget-header .ui-state-default,
-body .ui-widget-content .ui-state-default {
-	background: #ddd;
-}
-
 body .ui-widget-content a,
 body .ui-widget-content a code {
 	color: #007edf;
@@ -189,6 +184,11 @@ code,
 
 #content .ui-tabs .ui-tabs-panel {
 	padding: 0;
+}
+
+#content .ui-tabs .ui-tabs-nav .ui-state-default,
+#content .ui-button.ui-state-default {
+	background: #ddd;
 }
 
 #menu {

@@ -16,23 +16,12 @@
 
 	<ui:define name="demo">
 		<p>
-			The demo belows shows the PrimeFaces 
+			The demo below shows the PrimeFaces 
 			<a href="http://primefaces.org/showcase/ui/data/pickList.xhtml"><code>&lt;p:pickList&gt;</code></a>
-			component, which is a famous example of a component that does not use select items. Another example of such a PrimeFaces component is the
-			<a href="http://primefaces.org/showcase/ui/input/autoComplete.xhtml"><code>&lt;p:autoComplete&gt;</code></a>.
+			component, which is a famous example of a component that does not use select items.
 		</p>
 
 		<h:form>
-			<p>
-				<b>Selected items</b>:
-				<ui:fragment rendered="#{not empty selectListBean.model.target}">
-					<ui:repeat value="#{selectListBean.model.target}" var="entity" varStatus="loop">
-						#{entity.value}#{loop.last ? '' : ', '}
-					</ui:repeat>
-				</ui:fragment>
-				<h:outputText value="[no selection made]" rendered="#{empty selectListBean.model.target}"/>
-			</p>
-
 			<p>
 				<b>Choose a city, then press Select</b>:
 				<p:pickList value="#{selectListBean.model}" var="entity" itemValue="#{entity}" itemLabel="#{entity.value}">
@@ -44,6 +33,30 @@
 				<h:commandButton value="Select">
 					<f:ajax execute="@form" render="@form"/>
 				</h:commandButton>
+				<b>Selected items</b>:
+				<ui:repeat value="#{selectListBean.model.target}" var="entity" varStatus="loop">
+					#{entity.value}#{loop.last ? '' : ', '}
+				</ui:repeat>
+				<h:outputText value="[no selection made]" rendered="#{empty selectListBean.model.target}"/>
+			</p>
+		</h:form>
+
+		<p>
+			Another example of such a PrimeFaces component is the
+			<a href="http://primefaces.org/showcase/ui/input/autoComplete.xhtml"><code>&lt;p:autoComplete&gt;</code></a>.
+		</p>
+
+		<h:form>
+			<p:autoComplete value="#{autoCompleteBean.selectedEntity}" completeMethod="#{autoCompleteBean.autoComplete}" 
+				var="entity" itemValue="#{entity}" itemLabel="#{entity.value}">
+				<o:converter converterId="omnifaces.ListIndexConverter" list="#{autoCompleteBean.availableEntities}" />
+			</p:autoComplete>
+			<p>
+				<h:commandButton value="Select">
+					<f:ajax execute="@form" render="@form"/>
+				</h:commandButton>
+				<b>Selected item</b>: #{autoCompleteBean.selectedEntity.value}
+				<h:outputText value="[no selection made]" rendered="#{empty autoCompleteBean.selectedEntity}"/>
 			</p>
 		</h:form>
 	</ui:define>

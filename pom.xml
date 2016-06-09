@@ -14,7 +14,7 @@
 
 	<name>Omnifaces Showcase</name>
 	<description>Showcase for JSF 2.x utility library</description>
-	
+
 	<url>http://omnifaces.org</url>
 	<organization>
 		<name>OmniFaces</name>
@@ -29,7 +29,7 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	
+
 	<scm>
 		<url>https://github.com/omnifaces/showcase</url>
 		<connection>scm:git:git://github.com/omnifaces/showcase.git</connection>
@@ -57,15 +57,6 @@
 		</developer>
 	</developers>
 
-	<repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>PrimeFaces Maven Repository</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
@@ -73,19 +64,19 @@
 			<version>${javaee.version}</version>
 			<scope>provided</scope>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>6.0.RC4</version>
+			<version>6.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
 			<version>1.9.2</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
@@ -94,7 +85,6 @@
 	</dependencies>
 
 	<build>
-
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -102,11 +92,12 @@
 					<include>**/*.java</include>
 				</includes>
 			</resource>
+
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
-	
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -117,6 +108,7 @@
 					<target>${javase.version}</target>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>net.wasdev.wlp.maven.plugins</groupId>
 				<artifactId>liberty-maven-plugin</artifactId>
@@ -134,5 +126,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
