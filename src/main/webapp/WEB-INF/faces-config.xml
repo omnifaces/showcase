@@ -16,12 +16,4 @@
 		<render-kit-factory>org.omnifaces.renderkit.Html5RenderKitFactory</render-kit-factory>
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
 	</factory>
-
-	<render-kit>
-		<renderer>
-			<component-family>javax.faces.Output</component-family>
-			<renderer-type>javax.faces.Head</renderer-type>
-			<renderer-class>org.omnifaces.showcase.HeadRenderer</renderer-class>
-		</renderer>
-	</render-kit>
 </faces-config>

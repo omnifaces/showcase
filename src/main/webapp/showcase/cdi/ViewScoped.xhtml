@@ -29,15 +29,11 @@
 			</ul>
 			<p>
 				<h:commandButton value="submit form without ajax" action="#{cdiViewScopedBean.submit}" />
-				<h:commandButton value="submit form with ajax" action="#{cdiViewScopedBean.submit}">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				<h:commandButton value="rebuild view" action="#{cdiViewScopedBean.rebuildView}">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				<h:commandButton value="navigate on POST" action="#{cdiViewScopedBean.navigate}">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
+				<f:ajax execute="@form" render="@form :jsfViewScopedForm">
+					<h:commandButton value="submit form with ajax" action="#{cdiViewScopedBean.submit}" />
+					<h:commandButton value="rebuild view" action="#{cdiViewScopedBean.rebuildView}" />
+					<h:commandButton value="navigate on POST" action="#{cdiViewScopedBean.navigate}" />
+				</f:ajax>
 				<h:button value="refresh page" />
 			</p>
 			<p>Messages from CDI view scoped bean:</p>
@@ -56,15 +52,11 @@
 			</ul>
 			<p>
 				<h:commandButton value="submit form without ajax" action="#{jsfViewScopedBean.submit}" />
-				<h:commandButton value="submit form with ajax" action="#{jsfViewScopedBean.submit}">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				<h:commandButton value="rebuild view" action="#{jsfViewScopedBean.rebuildView}">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				<h:commandButton value="navigate on POST" action="#{jsfViewScopedBean.navigate}">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
+				<f:ajax execute="@form" render="@form :cdiViewScopedForm">
+					<h:commandButton value="submit form with ajax" action="#{jsfViewScopedBean.submit}" />
+					<h:commandButton value="rebuild view" action="#{jsfViewScopedBean.rebuildView}" />
+					<h:commandButton value="navigate on POST" action="#{jsfViewScopedBean.navigate}" />
+				</f:ajax>
 				<h:button value="refresh page" />
 			</p>
 			<p>Messages from JSF view scoped bean:</p>
