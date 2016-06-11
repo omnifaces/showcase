@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -39,9 +40,9 @@ public class CdiParamBean {
 		validatorMessage = "{1}: Value is too too small! Please enter a minimum of 3 characters.")
 	private String text2;
 
-	// Like <f:viewParam name="text3" value="#{bean.text3}"> using JSR303 bean validation via the @NotNull constraint
+	// Multi-valued parameters are not possible with <f:viewParam>; using JSR303 bean validation via the @NotNull constraint.
 	@Inject @Param @NotNull(message="{0} is required")
-	private String text3;
+	private List<String> text3;
 
 	// Like <f:viewParam name="number" value="#{bean.number}"> using implicit JSF integer converter.
 	@Inject @Param

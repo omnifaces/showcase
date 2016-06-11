@@ -42,7 +42,8 @@
 			<li><os:githubLink commit="0f554c0" /><h:link outcome="/utils/FacesConfigXml"><code>FacesConfigXml#getSupportedLocales()</code></h:link> failed to parse <code>language_COUNTRY</code> locales</li>
 			<li><os:githubLink issue="248,111" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> failed to handle exceptions during render response phase in two Mojarra-related corner cases</li>
 			<li><os:githubLink issue="252" /><h:link outcome="/functions/Numbers"><code>of:formatThousandsUnit()</code></h:link> incorrectly trimmed trailing zeroes from non-fractional integer numbers</li>
-			<li><os:githubLink issue="245,259" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> destroyed too soon when <code>&lt;p:commandLink ajax="false"&gt;</code> was used, and unload submitted to the wrong URL when a forward navigation was used</li>
+			<li><os:githubLink issue="245,259,199" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> destroyed too soon when <code>&lt;p:commandLink ajax="false"&gt;</code> was used, and unload submitted to the wrong URL when a forward navigation was used</li>
+			<li><os:githubLink issue="264" /><h:link outcome="/converters/ListIndexConverter"><code>ListIndexConverter</code></h:link> threw <code>NumberFormatException</code> instead of conversion error when empty input was submitted</li>
 		</ul>
 
 		<hr />

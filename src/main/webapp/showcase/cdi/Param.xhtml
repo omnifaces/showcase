@@ -24,7 +24,8 @@
 				<h:link value="Set all params">
 					<f:param name="text1" value="foo" />
 					<f:param name="text2" value="bar" />
-					<f:param name="text3" value="baz" />
+					<f:param name="text3" value="baz1" />
+					<f:param name="text3" value="baz2" />
 					<f:param name="number" value="42" />
 					<f:param name="date" value="19780326" />
 					<f:param name="nsEntity" value="abc" />
@@ -44,7 +45,7 @@
 			<li>"text2" is injected as <code>String</code> and is validated as 
 				JSF <code>&lt;f:validateLength minimum="3"&gt;
 			</code></li>
-			<li>"text3" is injected as <code>String</code> and is validated as JSR303 (Bean Validation) <code>@NotNull</code></li>
+			<li>"text3" is injected as <code>List&lt;String&gt;</code> and is validated as JSR303 (Bean Validation) <code>@NotNull</code></li>
 			<li>"number" is injected as <code>Integer</code> with automatic JSF integer conversion</li>
 			<li>"date" is injected as <code>Date</code> and is converted as 
 				JSF <code>&lt;f:convertDateTime pattern="yyyyMMdd"&gt;</code>
@@ -54,7 +55,7 @@
 				<small>(the example also demonstrates support for non-serializable values, which is important for CDI's passivating scopes)</small>
 			</li>
 		</ul>
-		
+
 		<p>Result: #{cdiParamBean.result}</p>
 		<h:messages styleClass="messages" infoClass="info" errorClass="error" />
 	</ui:define>
