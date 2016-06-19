@@ -25,7 +25,7 @@
 		<cc:attribute name="label" required="true" />
 	</cc:interface>
 	<cc:implementation>
-		<c:set var="docs" value="#{page.current.documentation[cc.attrs.paths]}" />
+		<c:set var="docs" value="#{page.documentation[cc.attrs.paths]}" />
 		<ui:fragment rendered="#{not empty docs}">
 			<h3>#{cc.attrs.header}</h3>
 			<ul>

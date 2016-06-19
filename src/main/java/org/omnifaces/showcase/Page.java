@@ -15,14 +15,9 @@ package org.omnifaces.showcase;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.omnifaces.showcase.App.scrape;
-import static org.omnifaces.util.Beans.fireEvent;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
-import static org.omnifaces.util.Faces.getRequest;
-import static org.omnifaces.util.Faces.getRequestHeader;
 import static org.omnifaces.util.Faces.getResourceAsStream;
-import static org.omnifaces.util.Faces.isPostback;
-import static org.omnifaces.util.Utils.isEmpty;
 import static org.omnifaces.util.Utils.toByteArray;
 
 import java.io.IOException;
@@ -33,26 +28,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.annotation.PostConstruct;
 import javax.faces.FacesException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.ListTreeModel;
 
 /**
- * This class represents a page. All pages are available as a tree model by {@link App#getMenu()} and are by their view
- * ID collected in a mapping as available by {@link App#getPages()}. The current page is injected from the mapping
- * based on the current view ID.
+ * This class represents a page. All pages are available as a tree model by {@link App#getMenu()}. The current page is
+ * produced as model (request scoped named bean) by {@link App#getPage()} based on the current view ID.
  *
  * @author Bauke Scholtz
  */
-@ManagedBean
-@RequestScoped
-public class Page extends ListTreeModel<Page> {
+public final class Page extends ListTreeModel<Page> {
 
 	// Constants ------------------------------------------------------------------------------------------------------
 
@@ -69,22 +57,15 @@ public class Page extends ListTreeModel<Page> {
 	private String description;
 	private List<Source> sources;
 	private Documentation documentation;
-
-	@ManagedProperty("#{app.pages[view.viewId]}")
-	private Page current;
 	private AtomicBoolean loaded = new AtomicBoolean();
 
 	// Constructors ---------------------------------------------------------------------------------------------------
 
-	public Page() {
-		// Keep default c'tor alive for JSF @ManagedBean.
-	}
-
-	public Page(String title) {
+	Page(String title) {
 		this.title = title;
 	}
 
-	public Page(String path, String viewId, String title) {
+	Page(String path, String viewId, String title) {
 		this.path = path;
 		this.viewId = viewId;
 		this.title = title;
@@ -92,46 +73,30 @@ public class Page extends ListTreeModel<Page> {
 
 	// Initialization -------------------------------------------------------------------------------------------------
 
-	@PostConstruct
-	public void init() {
-		if (current != null) {
-			current.loadIfNecessary();
-
-			if (!isPostback() && !isEmpty(getRequestHeader("referer"))) { // Skip postbacks and (generally) bots.
-				fireEvent(new PageView(getRequest()));
+	Page loadIfNecessary() {
+		if (!(loaded.getAndSet(true) || path == null)) {
+			try {
+				Map<String, Object> attributes = getMetadataAttributes();
+				List<String> apiPaths = new ArrayList<>(getCommaSeparatedAttribute(attributes, "api.path"));
+				List<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
+				List<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
+				List<String> jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
+				description = loadDescription(apiPaths);
+				sources = loadSources(path, srcPaths);
+				documentation = (apiPaths.size() + vdlPaths.size() + jsPaths.size() > 0) ? new Documentation(apiPaths, vdlPaths, jsPaths) : null;
+			}
+			catch (Exception e) {
+				loaded.set(false);
+				throw e;
 			}
 		}
-	}
 
-	private void loadIfNecessary() {
-		if (loaded.getAndSet(true)) {
-			return;
-		}
-
-		try {
-			Map<String, Object> attributes = getMetadataAttributes();
-			List<String> apiPaths = new ArrayList<>(getCommaSeparatedAttribute(attributes, "api.path"));
-			List<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
-			List<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
-			List<String> jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
-			description = loadDescription(apiPaths);
-			sources = loadSources(path, srcPaths);
-			documentation = (apiPaths.size() + vdlPaths.size() + jsPaths.size() > 0) ? new Documentation(apiPaths, vdlPaths, jsPaths) : null;
-		}
-		catch (Exception e) {
-			loaded.set(false);
-			throw e;
-		}
+		return this;
 	}
 
 	private static List<String> getCommaSeparatedAttribute(Map<String, Object> attributes, String key) {
 		String attribute = (String) attributes.get(key);
-
-		if (attribute == null) {
-			return emptyList();
-		}
-
-		return asList(attribute.trim().split("\\s*,\\s*"));
+		return (attribute == null) ? emptyList() : asList(attribute.trim().split("\\s*,\\s*"));
 	}
 
 	private static String loadDescription(List<String> apiPaths) {
@@ -233,10 +198,6 @@ public class Page extends ListTreeModel<Page> {
 		return title;
 	}
 
-	public String getPath() {
-		return path;
-	}
-
 	public String getViewId() {
 		return viewId;
 	}
@@ -251,14 +212,6 @@ public class Page extends ListTreeModel<Page> {
 
 	public Documentation getDocumentation() {
 		return documentation;
-	}
-
-	public Page getCurrent() {
-		return current;
-	}
-
-	public void setCurrent(Page current) {
-		this.current = current;
 	}
 
 	// Object overrides -----------------------------------------------------------------------------------------------

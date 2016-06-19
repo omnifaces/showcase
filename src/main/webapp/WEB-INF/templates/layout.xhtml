@@ -31,11 +31,11 @@ The following application wide constants are available via this template:
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<c:set var="_omniFacesVersion" value="#{app.version.split('\\-')[0]}" scope="application" />
-	<c:set var="_apiURL" value="http://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
-	<c:set var="_vdlURL" value="http://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : app.version.substring(0, 3)}/" scope="application" />
-	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.version}/src/main/java/" scope="application" />
-	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.version}/src/main/resources/META-INF/resources/omnifaces/" scope="application" />
+	<c:set var="_omniFacesVersion" value="#{app.omniFacesVersion.split('\\-')[0]}" scope="application" />
+	<c:set var="_apiURL" value="http://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : app.omniFacesVersion.substring(0, 3)}/" scope="application" />
+	<c:set var="_vdlURL" value="http://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : app.omniFacesVersion.substring(0, 3)}/" scope="application" />
+	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.omniFacesVersion}/src/main/java/" scope="application" />
+	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'master' : app.omniFacesVersion}/src/main/resources/META-INF/resources/omnifaces/" scope="application" />
 
     <ui:insert name="meta"/>
 
@@ -61,7 +61,7 @@ The following application wide constants are available via this template:
 		<div id="content-wrapper">
 			<div class="wrapped ui-helper-clearfix">
 				<p:panel id="content" styleClass="wrapped">
-					<h2 id="contentTitle"><ui:insert name="contentTitle">#{page.current.title}</ui:insert></h2>
+					<h2 id="contentTitle"><ui:insert name="contentTitle">#{page.title}</ui:insert></h2>
 					<ui:insert name="content" />
 				</p:panel>
 				<p:panel id="menu" styleClass="wrapped">
@@ -85,7 +85,7 @@ The following application wide constants are available via this template:
 						<o:treeNode>
 							<ul>
 								<o:treeNodeItem>
-									<li><h:link value="#{_page.title}" outcome="#{_page.viewId}" styleClass="code#{_page == page.current ? ' active' : ''}" /></li>
+									<li><h:link value="#{_page.title}" outcome="#{_page.viewId}" styleClass="code#{_page == page ? ' active' : ''}" /></li>
 								</o:treeNodeItem>
 							</ul>
 						</o:treeNode>
@@ -97,7 +97,12 @@ The following application wide constants are available via this template:
 		<div id="footer-wrapper">
 			<p:panel id="footer" styleClass="wrapped">
 				<h3>Powered by</h3>
-				<p>#{app.poweredBy}</p>
+				<p>
+					#{app.facesVersion}<br/>
+					OmniFaces #{app.omniFacesVersion}<br/>
+					PrimeFaces #{app.primeFacesVersion}<br/>
+					#{app.serverVersion}<br/>
+				</p>
 				<p>Server (re)started at #{of:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm', 'UTC')} UTC</p>
 			</p:panel>
 		</div>

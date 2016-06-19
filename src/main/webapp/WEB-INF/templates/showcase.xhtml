@@ -32,7 +32,7 @@ The following metadata attributes are supported via this template (they're parse
 	xmlns:of="http://omnifaces.org/functions"
 	xmlns:os="http://omnifaces.org/showcase"
 >
-	<ui:define name="title">#{page.current.title} - OmniFaces Showcase</ui:define>
+	<ui:define name="title">#{page.title} - OmniFaces Showcase</ui:define>
 
 	<ui:define name="contentTitle">
 		<!-- 
@@ -40,25 +40,24 @@ The following metadata attributes are supported via this template (they're parse
 			otherwise complain that the model value cannot be set even though there's no form. 
 			See also http://stackoverflow.com/q/14068891/157882
 		 -->
-		<c:set var="parent" value="#{page.current.parent}" />
-		<p:selectOneMenu id="groups" value="#{parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="groups" panelStyleClass="groups" height="#{30 * (fn:length(parent.parent.children) - 1) + 5}" effect="fade" 
+		<p:selectOneMenu id="groups" value="#{page.parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
+			styleClass="groups" panelStyleClass="groups" height="#{30 * (fn:length(page.parent.parent.children) - 1) + 5}" effect="fade" 
 			disabled="#{facesContext.postback and not facesContext.renderResponse}">
-			<f:selectItems value="#{parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
-				itemDisabled="#{_parent.children[0] == parent.children[0]}" />
+			<f:selectItems value="#{page.parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
+				itemDisabled="#{_parent.children[0] eq page.parent.children[0]}" />
 		</p:selectOneMenu>
 		-
-		<p:selectOneMenu id="pages" value="#{page.current.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="pages" panelStyleClass="pages" height="#{(21 * (fn:length(parent.children) - 1)) + 5}" effect="fade" 
-			disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{parent.childCount gt 1}">
-			<f:selectItems value="#{parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
-				itemDisabled="#{_page == page.current}" />
+		<p:selectOneMenu id="pages" value="#{page.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
+			styleClass="pages" panelStyleClass="pages" height="#{(21 * (fn:length(page.parent.children) - 1)) + 5}" effect="fade" 
+			disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{page.parent.childCount gt 1}">
+			<f:selectItems value="#{page.parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
+				itemDisabled="#{_page eq page}" />
 		</p:selectOneMenu>
-		<h:outputText value="#{page.current.title}" styleClass="code" rendered="#{parent.childCount == 1}" />
+		<h:outputText value="#{page.title}" styleClass="code" rendered="#{page.parent.childCount eq 1}" />
 
 		<div id="quickNavigation">
-		 	<p:button id="prev" icon="ui-icon-triangle-1-w" title="Previous" outcome="#{of:coalesce(page.current.previousSibling.viewId, '/index')}" />
-		 	<p:button id="next" icon="ui-icon-triangle-1-e" title="Next" outcome="#{of:coalesce(page.current.nextSibling.viewId, '/index')}" />
+		 	<p:button id="prev" icon="ui-icon-triangle-1-w" title="Previous" outcome="#{of:coalesce(page.previousSibling.viewId, '/index')}" />
+		 	<p:button id="next" icon="ui-icon-triangle-1-e" title="Next" outcome="#{of:coalesce(page.nextSibling.viewId, '/index')}" />
 		</div>
 	</ui:define>
 
@@ -69,18 +68,18 @@ The following metadata attributes are supported via this template (they're parse
 		<o:deferredScript library="showcase" name="js/onload.js" />
 
 		<ui:insert name="description">
-			<h:outputText value="#{page.current.description}" escape="false" /><!-- Copies content from 1st API documentation. -->
+			<h:outputText value="#{page.description}" escape="false" /><!-- Copies content from 1st API documentation. -->
 		</ui:insert>
 		<ui:insert name="description-extra" />
 
-		<ui:fragment rendered="#{not empty page.current.sources}">
+		<ui:fragment rendered="#{not empty page.sources}">
 			<p:panel id="demo" header="Demo">
 				<ui:insert name="demo" />
 				<o:highlight />
 			</p:panel>
 
 			<p:panel id="source" header="Demo source code">
-				<p:tabView id="sources" value="#{page.current.sources}" var="source">
+				<p:tabView id="sources" value="#{page.sources}" var="source">
 					<p:tab id="tab" title="#{source.title}">
 						<pre class="prettyprint"><code class="lang-#{source.type}">#{source.code}</code></pre>
 					</p:tab>
@@ -88,7 +87,7 @@ The following metadata attributes are supported via this template (they're parse
 			</p:panel>
 		</ui:fragment>
 
-		<p:panel id="documentation" header="Documentation &amp; Sources" rendered="#{not empty page.current.documentation}">
+		<p:panel id="documentation" header="Documentation &amp; Sources" rendered="#{not empty page.documentation}">
 			<os:listdocs header="VDL documentation" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
 			<os:listdocs header="API documentation" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
 			<os:listdocs header="Java source code" paths="src" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />

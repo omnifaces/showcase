@@ -12,6 +12,18 @@
  */
 package org.omnifaces.showcase;
 
+import static org.omnifaces.util.Beans.fireEvent;
+import static org.omnifaces.util.Faces.getContext;
+import static org.omnifaces.util.Faces.getImplInfo;
+import static org.omnifaces.util.Faces.getRequest;
+import static org.omnifaces.util.Faces.getRequestHeader;
+import static org.omnifaces.util.Faces.getResourcePaths;
+import static org.omnifaces.util.Faces.getServerInfo;
+import static org.omnifaces.util.Faces.getViewId;
+import static org.omnifaces.util.Faces.isPostback;
+import static org.omnifaces.util.ResourcePaths.stripPrefixPath;
+import static org.omnifaces.util.Utils.isEmpty;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,49 +31,49 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import javax.annotation.PostConstruct;
-import javax.faces.FacesException;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Model;
+import javax.enterprise.inject.Produces;
+import javax.inject.Named;
 
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.TreeModel;
 import org.omnifaces.util.Faces;
-import org.omnifaces.util.ResourcePaths;
 import org.primefaces.config.PrimeConfiguration;
 
-@ManagedBean(eager=true)
+@Named
 @ApplicationScoped
 public class App {
 
 	// Constants ------------------------------------------------------------------------------------------------------
 
 	private static final String SHOWCASE_PATH = "/showcase/";
-	private static final String ERROR_MISSING_VERSION = "OmniFaces package is missing specification version.";
 
 	// Properties -----------------------------------------------------------------------------------------------------
 
 	private String index;
 	private Page menu;
 	private Map<String, Page> pages;
-	private String version;
-	private String primeFacesVersion;
+	private String omniFacesVersion;
 	private boolean snapshot;
-	private String poweredBy;
+	private String facesVersion;
+	private String primeFacesVersion;
+	private String serverVersion;
 
 	// Initialization -------------------------------------------------------------------------------------------------
 
 	@PostConstruct
 	public void init() {
 		index = loadIndex();
-		menu = new Page();
-		fillMenu(menu);
+		menu = new Page(null);
 		pages = new HashMap<>();
-		fillPages(pages, menu);
-		version = initVersion();
-		primeFacesVersion = new PrimeConfiguration(Faces.getContext()).getBuildVersion();
-		snapshot = version.contains("-SNAPSHOT") || version.contains("-RC");
-		poweredBy = initPoweredBy(primeFacesVersion);
+		fillMenuAndPages(menu, pages);
+		omniFacesVersion = Faces.class.getPackage().getSpecificationVersion().replaceAll("-\\d+$", "");
+		snapshot = omniFacesVersion.contains("-");
+		facesVersion = getImplInfo();
+		primeFacesVersion = new PrimeConfiguration(getContext()).getBuildVersion();
+		serverVersion = getServerInfo();
 	}
 
 	private static String loadIndex() {
@@ -73,58 +85,42 @@ public class App {
 		}
 	}
 
-	private static void fillMenu(Page menu) {
-		Set<String> resourcePaths = Faces.getResourcePaths(SHOWCASE_PATH);
+	private static void fillMenuAndPages(Page menu, Map<String, Page> pages) {
+		Set<String> resourcePaths = getResourcePaths(SHOWCASE_PATH);
 		Set<String> groupPaths = new TreeSet<>(resourcePaths);
 
 		for (String groupPath : groupPaths) {
 			String groupName = groupPath.split("/")[2];
 			TreeModel<Page> group = menu.addChildNode(new Page(groupName));
-			Set<String> pagePaths = new TreeSet<>(Faces.getResourcePaths(groupPath));
+			Set<String> pagePaths = new TreeSet<>(getResourcePaths(groupPath));
 
 			for (String pagePath : pagePaths) {
-				String viewId = ResourcePaths.stripPrefixPath(SHOWCASE_PATH, pagePath.split("\\.")[0]);
-				String title = viewId.split("/")[2];
-				group.addChildNode(new Page(pagePath, viewId, title));
+				String viewId = stripPrefixPath(SHOWCASE_PATH, pagePath);
+				String extensionlessViewId = viewId.split("\\.")[0];
+				String title = extensionlessViewId.split("/")[2];
+				Page page = new Page(pagePath, extensionlessViewId, title);
+				group.addChildNode(page);
+				pages.put(viewId, page);
 			}
 		}
-	}
-
-	private static void fillPages(Map<String, Page> pages, Page page) {
-		for (TreeModel<Page> child : page) {
-			Page childPage = (Page) child;
-			String viewId = childPage.getViewId();
-
-			if (viewId != null) {
-				pages.put(viewId + ".xhtml", childPage);
-			}
-
-			fillPages(pages, childPage);
-		}
-	}
-
-	private static String initVersion() {
-		String version = Faces.class.getPackage().getSpecificationVersion();
-
-		if (version == null) {
-			throw new FacesException(ERROR_MISSING_VERSION);
-		}
-
-		return version.replaceAll("-\\d+$", "");
-	}
-
-	private static String initPoweredBy(String primeFacesVersion) {
-		return String.format("%s%nOmniFaces %s%nPrimeFaces %s%n%s",
-			Faces.getImplInfo(),
-			Faces.class.getPackage().getSpecificationVersion(),
-			primeFacesVersion,
-			Faces.getServerInfo());
 	}
 
 	// Bot ------------------------------------------------------------------------------------------------------------
 
 	static Elements scrape(String url, String selector) throws IOException {
 		return Jsoup.connect(url).userAgent("OmniBot 0.1 (+http://showcase.omnifaces.org)").get().select(selector);
+	}
+
+	// Producers ------------------------------------------------------------------------------------------------------
+
+	@Produces
+	@Model
+	public Page getPage() {
+		if (!(isPostback() || isEmpty(getRequestHeader("referer")))) { // Skip postbacks and (generally) bots.
+			fireEvent(new PageView(getRequest()));
+		}
+
+		return pages.getOrDefault(getViewId(), menu).loadIfNecessary();
 	}
 
 	// Getters --------------------------------------------------------------------------------------------------------
@@ -141,24 +137,24 @@ public class App {
 		return menu;
 	}
 
-	public Map<String, Page> getPages() {
-		return pages;
-	}
-
-	public String getVersion() {
-		return version;
+	public String getOmniFacesVersion() {
+		return omniFacesVersion;
 	}
 
 	public boolean isSnapshot() {
 		return snapshot;
 	}
 
+	public String getFacesVersion() {
+		return facesVersion;
+	}
+
 	public String getPrimeFacesVersion() {
 		return primeFacesVersion;
 	}
 
-	public String getPoweredBy() {
-		return poweredBy;
+	public String getServerVersion() {
+		return serverVersion;
 	}
 
 }
