@@ -4,25 +4,25 @@ import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class PageView implements Comparable<PageView> {
+public class PageView {
 
-	private final LocalDateTime timestamp;
+	private final String timestamp;
 	private final String uri;
 	private final String userHash;
 	private final String userAgent;
 	private final String referrer;
 
 	public PageView(HttpServletRequest request) {
-		timestamp = LocalDateTime.now();
-		uri = request.getRequestURI().split("[?#;]")[0];
+		timestamp = LocalDateTime.now().toString();
+		uri = request.getRequestURI().split(";")[0];
 		String sessionId = request.getSession().getId();
 		userHash = Integer.toHexString(sessionId.substring(0, sessionId.length() / 2).hashCode());
 		userAgent = request.getHeader("user-agent");
-		referrer = request.getHeader("referer").split("[?#;]")[0];
+		referrer = request.getHeader("referer").split(";")[0];
 	}
 
 	public String getTimestamp() {
-		return timestamp.toString();
+		return timestamp;
 	}
 
 	public String getUri() {
@@ -39,11 +39,6 @@ public class PageView implements Comparable<PageView> {
 
 	public String getReferrer() {
 		return referrer;
-	}
-
-	@Override
-	public int compareTo(PageView other) {
-		return other.timestamp.compareTo(timestamp);
 	}
 
 }
