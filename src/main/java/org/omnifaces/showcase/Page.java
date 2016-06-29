@@ -40,7 +40,7 @@ import org.omnifaces.model.tree.ListTreeModel;
  *
  * @author Bauke Scholtz
  */
-public final class Page extends ListTreeModel<Page> {
+public class Page extends ListTreeModel<Page> {
 
 	// Constants ------------------------------------------------------------------------------------------------------
 
@@ -60,6 +60,10 @@ public final class Page extends ListTreeModel<Page> {
 	private AtomicBoolean loaded = new AtomicBoolean();
 
 	// Constructors ---------------------------------------------------------------------------------------------------
+
+	public Page() {
+		// Keep default c'tor alive for CDI.
+	}
 
 	Page(String title) {
 		this.title = title;

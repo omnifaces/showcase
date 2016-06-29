@@ -113,8 +113,7 @@ public class App {
 
 	// Producers ------------------------------------------------------------------------------------------------------
 
-	@Produces
-	@Model
+	@Produces @Model
 	public Page getPage() {
 		if (!(isPostback() || isEmpty(getRequestHeader("referer")))) { // Skip postbacks and (generally) bots.
 			fireEvent(new PageView(getRequest()));

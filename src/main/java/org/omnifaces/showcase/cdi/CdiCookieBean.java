@@ -14,8 +14,7 @@ import org.omnifaces.util.Faces;
 @RequestScoped
 public class CdiCookieBean {
 
-	@Inject
-	@Cookie
+	@Inject @Cookie
 	private String testCookie;
 
 	public void add() throws IOException {

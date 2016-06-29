@@ -10,16 +10,13 @@ import org.omnifaces.cdi.ContextParam;
 @RequestScoped
 public class CdiContextParamBean {
 
-	@Inject
-	@ContextParam(name="javax.faces.FACELETS_BUFFER_SIZE")
+	@Inject @ContextParam(name="javax.faces.FACELETS_BUFFER_SIZE")
 	private String faceletsBufferSize;
 
-	@Inject
-	@ContextParam(name="javax.faces.FACELETS_LIBRARIES")
+	@Inject @ContextParam(name="javax.faces.FACELETS_LIBRARIES")
 	private String faceletsLibraries;
 
-	@Inject
-	@ContextParam(name="javax.faces.FACELETS_SKIP_COMMENTS")
+	@Inject @ContextParam(name="javax.faces.FACELETS_SKIP_COMMENTS")
 	private String faceletsSkipComments;
 
 	public String getFaceletsBufferSize() {

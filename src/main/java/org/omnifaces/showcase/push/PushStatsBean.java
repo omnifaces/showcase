@@ -44,8 +44,7 @@ public class PushStatsBean {
 		return MAX_LAST_PAGE_VIEWS;
 	}
 
-	@Produces
-	@Model
+	@Produces @Model
 	public List<PageView> getLastPageViews() {
 		return new ArrayList<>(lastPageViews);
 	}
