@@ -104,7 +104,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>characterEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>facesServlet</servlet-name>
 	</filter-mapping>
 
 	<filter>
@@ -113,7 +113,7 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>gzipResponseFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<servlet-name>facesServlet</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
