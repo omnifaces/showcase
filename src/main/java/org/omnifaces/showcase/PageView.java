@@ -1,5 +1,7 @@
 package org.omnifaces.showcase;
 
+import static org.omnifaces.util.Servlets.getRequestURI;
+
 import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ public class PageView {
 
 	public PageView(HttpServletRequest request) {
 		timestamp = LocalDateTime.now().toString();
-		uri = request.getRequestURI().split(";")[0];
+		uri = getRequestURI(request).split(";")[0];
 		String sessionId = request.getSession().getId();
 		userHash = Integer.toHexString(sessionId.substring(0, sessionId.length() / 2).hashCode());
 		userAgent = request.getHeader("user-agent");
