@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class PageView {
+public final class PageView {
 
 	private final String timestamp;
 	private final String uri;
