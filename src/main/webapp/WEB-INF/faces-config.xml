@@ -13,7 +13,6 @@
 	</application>
 
 	<factory>
-		<render-kit-factory>org.omnifaces.renderkit.Html5RenderKitFactory</render-kit-factory>
 		<exception-handler-factory>org.omnifaces.exceptionhandler.FullAjaxExceptionHandlerFactory</exception-handler-factory>
 	</factory>
 </faces-config>
