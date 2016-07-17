@@ -14,13 +14,25 @@
 
 	<name>Omnifaces Showcase</name>
 	<description>Showcase for JSF 2.x utility library</description>
-
 	<url>http://omnifaces.org</url>
 	<organization>
 		<name>OmniFaces</name>
 		<url>http://omnifaces.org</url>
 	</organization>
 	<inceptionYear>2012</inceptionYear>
+
+	<developers>
+		<developer>
+			<id>balusc</id>
+			<name>Bauke Scholtz</name>
+			<email>balusc@gmail.com</email>
+		</developer>
+		<developer>
+			<id>arjan.tijms</id>
+			<name>Arjan Tijms</name>
+			<email>arjan.tijms@gmail.com</email>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>
@@ -39,44 +51,27 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<javase.version>1.8</javase.version>
-		<javaee.version>7.0</javaee.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
-
-	<developers>
-		<developer>
-			<id>balusc</id>
-			<name>Bauke Scholtz</name>
-			<email>balusc@gmail.com</email>
-		</developer>
-
-		<developer>
-			<id>arjan.tijms</id>
-			<name>Arjan Tijms</name>
-			<email>arjan.tijms@gmail.com</email>
-		</developer>
-	</developers>
 
 	<dependencies>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-web-api</artifactId>
-			<version>${javaee.version}</version>
+			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
 			<version>2.5-SNAPSHOT</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>6.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
@@ -87,28 +82,17 @@
 	<build>
 		<resources>
 			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
 				<directory>src/main/java</directory>
 				<includes>
 					<include>**/*.java</include>
 				</includes>
 			</resource>
-
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
 		</resources>
 
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>${javase.version}</source>
-					<target>${javase.version}</target>
-				</configuration>
-			</plugin>
-
 			<plugin>
 				<groupId>net.wasdev.wlp.maven.plugins</groupId>
 				<artifactId>liberty-maven-plugin</artifactId>
