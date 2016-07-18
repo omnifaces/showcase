@@ -15,11 +15,11 @@ public class UploadFileTypeValidator implements Validator {
 	@Override
 	public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
 		String contentType = ((Part) value).getContentType();
-		String matchType = (String) component.getAttributes().get("matchType");
+		String accept = (String) component.getAttributes().get("accept");
 
-		if (!contentType.matches(matchType)) {
+		if (!contentType.matches(accept.replace("*", ".*"))) {
 			throw new ValidatorException(
-				Messages.createError("Wrong file type! Should match {0}.", matchType));
+				Messages.createError("Wrong file type! Should match {0}.", accept));
 		}
 	}
 

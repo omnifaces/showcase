@@ -15,17 +15,18 @@
 		<h3>Added in OmniFaces 2.5</h3>
 		<ul>
 			<li><os:githubLink issue="278" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> now supports a new context param <code>org.omnifaces.EXCEPTION_TYPES_TO_IGNORE_IN_LOGGING</code> where you can specify exception types to ignore in logging</li>
-			<li><os:githubLink issue="279" />Added <code>ExpressionInspector#getMethodReference()</code></li>
+			<li><os:githubLink issue="279" />Added <code>ExpressionInspector#getMethodReference()</code> to resolve base and method of a method expression</li>
 			<li><os:githubLink issue="188" />Bunch of new <code>createConverter()</code> and <code>createValidator()</code> convenience methods on <h:link outcome="/utils/Faces"><code>Faces</code></h:link></li>
 			<li><os:githubLink issue="181" />Throw <code>IllegalStateException</code> during development stage when there's a nested form</li>
+			<li><os:githubLink issue="235" />New <h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> which extends <code>&lt;h:inputFile&gt;</code> with support for <code>multiple</code>, <code>directory</code> and <code>accept</code> attributes</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.5</h3>
 		<ul>
-			<li><os:githubLink issue="272" />Cookies created by <h:link outcome="/utils/Faces"><code>Faces</code></h:link> and <h:link outcome="/utils/Servlets"><code>Servlets</code></h:link> utility classes are now always HttpOnly</li>
+			<li><os:githubLink issue="272" />Cookies created in server side by <h:link outcome="/utils/Faces"><code>Faces</code></h:link> and <h:link outcome="/utils/Servlets"><code>Servlets</code></h:link> utility classes are now by default always <code>HttpOnly</code></li>
 			<li><os:githubLink issue="281,256" /><code>beans.xml</code> is now fully CDI 1.1 compatible and <code>BeanManager</code> enum has been deprecated and <h:link outcome="/utils/Beans"><code>Beans</code></h:link> utility class now always uses <code>CDI.current().getBeanManager()</code> and further some old CDI 1.0 related workarounds have been removed</li>
 			<li><os:githubLink issue="284" /><h:link outcome="/utils/Beans"><code>Beans</code></h:link> utility class now supports specifying qualifiers via varargs argument in a.o. <code>resolve()</code>, <code>getReference()</code>, <code>getInstance()</code>, etc</li>
-			<li><os:githubLink issue="285" /><code>RestorableViewHandler</code> has been renamed to <code>OmniViewHandler</code> as it got more responsibilities</li>
+			<li><os:githubLink issue="285" /><code>RestorableViewHandler</code> has been renamed to <h:link outcome="/viewhandlers/OmniViewHandler"><code>OmniViewHandler</code></h:link> as it got more responsibilities</li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.5</h3>

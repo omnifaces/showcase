@@ -46,13 +46,12 @@
 		<h:form enctype="multipart/form-data">
 			<h:panelGrid columns="3">
 				<o:outputLabel for="file" value="Image" />
-				<h:inputFile id="file" value="#{uploadImageBean.file}" >
+				<o:inputFile id="file" value="#{uploadImageBean.file}" accept="image/*">
 					<f:attribute name="maxSize" value="1048576" />
-					<f:attribute name="matchType" value="^image/.*$" />
 					<f:validator validatorId="uploadFileSizeValidator" />
 					<f:validator validatorId="uploadFileTypeValidator" />
 					<f:ajax listener="#{uploadImageBean.read()}" render="@form" />
-				</h:inputFile>
+				</o:inputFile>
 				<h:message for="file" />
 			</h:panelGrid>
 			<o:graphicImage value="#{uploadImageBean.content}" dataURI="true" width="600" 
