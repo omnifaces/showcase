@@ -58,6 +58,16 @@
 			<h:commandButton value="throw SQL exception on normal request" action="#{exceptionBean.throwSQLException}" />
 		</h:form>
 		<h:form>
+			<h:commandButton value="throw runtime exception during render of ajax request">
+				<f:ajax execute="@form" render="@form" />
+			</h:commandButton>
+			<h:outputText value="#{exceptionBean.throwRuntimeException()}" rendered="#{component.namingContainer.submitted}" />
+		</h:form>
+		<h:form>
+			<h:commandButton value="throw runtime exception during render of normal request" />
+			<h:outputText value="#{exceptionBean.throwRuntimeException()}" rendered="#{component.namingContainer.submitted}" />
+		</h:form>
+		<h:form>
 			<h:commandButton value="cause epic fail on ajax request" action="#{exceptionBean.throwEpicFailException}">
 				<f:ajax execute="@form" render="@form" />
 			</h:commandButton>
