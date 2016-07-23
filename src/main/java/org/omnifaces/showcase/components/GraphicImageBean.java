@@ -6,14 +6,14 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
+import org.omnifaces.cdi.GraphicImageScoped;
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Utils;
 
 @Named
-@ApplicationScoped
+@GraphicImageScoped
 public class GraphicImageBean {
 
 	private static final Map<Long, String> IMAGES = Collections.unmodifiableMap(new TreeMap<Long, String>() { private static final long serialVersionUID = 1L; {

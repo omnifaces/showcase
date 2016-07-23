@@ -19,6 +19,7 @@
 			<li><os:githubLink issue="188" />Bunch of new <code>createConverter()</code> and <code>createValidator()</code> convenience methods on <h:link outcome="/utils/Faces"><code>Faces</code></h:link></li>
 			<li><os:githubLink issue="181" />Throw <code>IllegalStateException</code> during development stage when there's a nested form</li>
 			<li><os:githubLink issue="235" />New <h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> which extends <code>&lt;h:inputFile&gt;</code> with support for <code>multiple</code>, <code>directory</code> and <code>accept</code> attributes</li>
+			<li><os:githubLink issue="287,289" /><h:link outcome="/cdi/GraphicImageScoped"><code>@GraphicImageScoped</code></h:link> annotation to declare a bean as a public image service, along with <code>#{of:graphicImageURL()}</code> EL functions which should generate the desired URL</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.5</h3>
@@ -34,6 +35,7 @@
 			<li><os:githubLink issue="283" />Weld 2.3.5 and newer issued warning WELD-000167 on <h:link outcome="/cdi/Param"><code>DynamicParamValueProducer</code></h:link></li>
 			<li><os:githubLink issue="234" />Bypass Tomcat misbehavior during push bomb on <h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link></li>
 			<li><os:githubLink issue="224" />Silence Mojarra warning "Unable to save dynamic action" in <h:link outcome="/components/moveComponent"><code>&lt;o:moveComponent&gt;</code></h:link></li>
+			<li><os:githubLink commit="bedcddc" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload didn't work when full state saving was enabled</li>
 		</ul>
 
 		<hr />

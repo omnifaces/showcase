@@ -1,0 +1,23 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="cdi/GraphicImageScoped" />
+			<f:attribute name="vdl.paths" value="o/graphicImage,of/graphicImageURL.fn,of/graphicImageURLWithType.fn,of/graphicImageURLWithTypeAndLastModified.fn" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<ui:include src="/WEB-INF/includes/cdi/known-issues.xhtml" />
+	</ui:define>
+
+	<ui:define name="demo">
+		<p>See <h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage</code></h:link> showcase page for the demo.</p>
+	</ui:define>
+</ui:composition>
