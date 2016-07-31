@@ -10,7 +10,7 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="component/output/GraphicImage" />
 			<f:attribute name="vdl.paths" value="o/graphicImage" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/GraphicImageBean.java,classes/org/omnifaces/showcase/components/UploadImageBean.java" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/GraphicImageBean.java" />
 		</f:metadata>
 	</ui:define>
 
@@ -41,21 +41,5 @@
 		<p>
 			<o:graphicImage value="#{graphicImageBean.svgLogo}" type="svg" lastModified="#{startup.time}" height="90" />
 		</p>
-
-		<h3>The below one renders byte[] property of uploaded file as data URI</h3>
-		<h:form enctype="multipart/form-data">
-			<h:panelGrid columns="3">
-				<o:outputLabel for="file" value="Image" />
-				<o:inputFile id="file" value="#{uploadImageBean.file}" accept="image/*">
-					<f:attribute name="maxSize" value="1048576" />
-					<f:validator validatorId="uploadFileSizeValidator" />
-					<f:validator validatorId="uploadFileTypeValidator" />
-					<f:ajax listener="#{uploadImageBean.read()}" render="@form" />
-				</o:inputFile>
-				<h:message for="file" />
-			</h:panelGrid>
-			<o:graphicImage value="#{uploadImageBean.content}" dataURI="true" width="600" 
-				rendered="#{not empty uploadImageBean.content}" />
-		</h:form>
 	</ui:define>
 </ui:composition>

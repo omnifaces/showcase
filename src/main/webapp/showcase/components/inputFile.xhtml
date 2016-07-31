@@ -15,17 +15,16 @@
 	</ui:define>
 
 	<ui:define name="demo">
-		<h3>Upload an image and display a preview</h3>
+		<h3>Upload an image of max 1MiB and display a preview</h3>
 		<h:form enctype="multipart/form-data">
 			<h:panelGrid columns="3">
 				<o:outputLabel for="file" value="Image" />
-				<o:inputFile id="file" value="#{uploadImageBean.file}" accept="image/*">
-					<f:attribute name="maxSize" value="1048576" />
-					<f:validator validatorId="uploadFileSizeValidator" />
-					<f:validator validatorId="uploadFileTypeValidator" />
+				<o:inputFile id="file" value="#{uploadImageBean.file}" 
+					accept="image/*" acceptMessage="Wrong file type! Should match {2}"
+					maxsize="#{1024 * 1024}" maxsizeMessage="File too large! Should be no more than {2}">
 					<f:ajax listener="#{uploadImageBean.read()}" render="@form" />
 				</o:inputFile>
-				<h:message for="file" />
+				<h:message id="file_m" for="file" />
 			</h:panelGrid>
 			<o:graphicImage value="#{uploadImageBean.content}" dataURI="true" width="600" 
 				rendered="#{not empty uploadImageBean.content}" />

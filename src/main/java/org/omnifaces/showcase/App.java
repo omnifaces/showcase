@@ -38,8 +38,8 @@ import javax.inject.Named;
 
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
+import org.omnifaces.config.OmniFaces;
 import org.omnifaces.model.tree.TreeModel;
-import org.omnifaces.util.Faces;
 import org.primefaces.config.PrimeConfiguration;
 
 @Named
@@ -69,8 +69,8 @@ public class App {
 		menu = new Page(null);
 		pages = new HashMap<>();
 		fillMenuAndPages(menu, pages);
-		omniFacesVersion = Faces.class.getPackage().getSpecificationVersion().replaceAll("-\\d+$", "");
-		snapshot = omniFacesVersion.contains("-");
+		omniFacesVersion = OmniFaces.getVersion();
+		snapshot = OmniFaces.isSnapshot();
 		facesVersion = getImplInfo();
 		primeFacesVersion = new PrimeConfiguration(getContext()).getBuildVersion();
 		serverVersion = getServerInfo();
