@@ -10,7 +10,7 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="component/output/GraphicImage" />
 			<f:attribute name="vdl.paths" value="o/graphicImage" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/GraphicImageBean.java" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/Images.java" />
 		</f:metadata>
 	</ui:define>
 
@@ -22,24 +22,24 @@
 
 		<h3>The below one renders InputStream property as resource</h3>
 		<p>
-			<o:graphicImage value="#{graphicImageBean.logo}" lastModified="#{startup.time}" />
+			<o:graphicImage value="#{images.logo}" lastModified="#{startup.time}" />
 		</p>
 
 		<h3>The below one renders InputStream property as data URI</h3>
 		<p>
-			<o:graphicImage value="#{graphicImageBean.logo}" dataURI="true" />
+			<o:graphicImage value="#{images.logo}" dataURI="true" />
 		</p>
 
 		<h3>The below one renders byte[] property taking a Long argument as resource in <code>&lt;ui:repeat&gt;</code> loop</h3>
 		<p>
-			<ui:repeat value="#{graphicImageBean.ids}" var="id">
-				<o:graphicImage value="#{graphicImageBean.getContent(id)}" lastModified="#{startup.time}" />
+			<ui:repeat value="#{images.ids}" var="id">
+				<o:graphicImage value="#{images.getContent(id)}" lastModified="#{startup.time}" />
 			</ui:repeat>
 		</p>
 
 		<h3>The below one renders InputStream property with SVG content as resource</h3>
 		<p>
-			<o:graphicImage value="#{graphicImageBean.svgLogo}" type="svg" lastModified="#{startup.time}" height="90" />
+			<o:graphicImage value="#{images.svgLogo}" type="svg" lastModified="#{startup.time}" height="90" />
 		</p>
 	</ui:define>
 </ui:composition>
