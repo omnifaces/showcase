@@ -18,8 +18,10 @@
 			<li><os:githubLink issue="279" />Added <code>ExpressionInspector#getMethodReference()</code> to resolve base and method of a method expression</li>
 			<li><os:githubLink issue="188" />Bunch of new <code>createConverter()</code> and <code>createValidator()</code> convenience methods on <h:link outcome="/utils/Faces"><code>Faces</code></h:link></li>
 			<li><os:githubLink issue="181" />Throw <code>IllegalStateException</code> during development stage when there's a nested form</li>
-			<li><os:githubLink issue="235" />New <h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> which extends <code>&lt;h:inputFile&gt;</code> with support for <code>multiple</code>, <code>directory</code>, <code>accept</code> and <code>maxsize</code>attributes, along with built-in server side validation on <code>accept</code> and <code>maxsize</code> attributes.</li>
+			<li><os:githubLink issue="235" />New <h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> which extends <code>&lt;h:inputFile&gt;</code> with support for <code>multiple</code>, <code>directory</code>, <code>accept</code> and <code>maxsize</code>attributes, along with built-in validation on <code>accept</code> and <code>maxsize</code> attributes.</li>
 			<li><os:githubLink issue="287,289" /><h:link outcome="/cdi/GraphicImageBean"><code>@GraphicImageBean</code></h:link> annotation to declare a bean as a public image service, along with <code>of:graphicImageURL()</code> EL functions which should generate the desired URL</li>
+			<li><os:githubLink issue="298" /><code>showMessageFor</code> attribute of <h:link outcome="/validators/validateAll">multi field validators</h:link> now supports a new keyword <code>@global</code> which specifies that the message should be added as a global message</li>
+			<li><os:githubLink issue="20" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> now supports the <code>MultiViews</code> feature as known in Apache HTTPD + PHP world</li>
 		</ul>
 
 		<h3>Changed in OmniFaces 2.5</h3>
@@ -29,6 +31,7 @@
 			<li><os:githubLink issue="284" /><h:link outcome="/utils/Beans"><code>Beans</code></h:link> utility class now supports specifying qualifiers via varargs argument in a.o. <code>resolve()</code>, <code>getReference()</code>, <code>getInstance()</code>, etc</li>
 			<li><os:githubLink issue="285" /><code>RestorableViewHandler</code> has been renamed to <h:link outcome="/viewhandlers/OmniViewHandler"><code>OmniViewHandler</code></h:link> as it got more responsibilities</li>
 			<li><os:githubLink issue="293" /><h:link outcome="/components/highlight"><code>&lt;o:highlight&gt;</code></h:link> will now remove the highlight when the enduser starts using the input field</li>
+			<li><os:githubLink issue="20" /><code>RequestParamProducer</code> has been renamed to <h:link outcome="/cdi/Param"><code>ParamProducer</code></h:link> as it also supports path parameters</li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.5</h3>
@@ -38,6 +41,8 @@
 			<li><os:githubLink issue="224" />Silence Mojarra warning "Unable to save dynamic action" in <h:link outcome="/components/moveComponent"><code>&lt;o:moveComponent&gt;</code></h:link></li>
 			<li><os:githubLink commit="bedcddc" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload didn't work when full state saving was enabled</li>
 			<li><os:githubLink issue="294" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> didn't render its <code>id</code> attribute</li>
+			<li><os:githubLink issue="297" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code></h:link> failed serving RichFaces-specific resources</li>
+			<li><os:githubLink issue="295" />Constructor injection of <h:link outcome="/cdi/Param"><code>@Param</code></h:link> failed on dynamic (non-String) types</li>
 		</ul>
 
 		<hr />
