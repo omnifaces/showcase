@@ -15,6 +15,27 @@
 			Source code of this page can be found in <h:link value="o:socket showcase page" outcome="/push/socket" />.
 		</p>
 
+
+		<!-- NOTE: having inline script in XHTML like below is bad practice. -->
+		<!-- It's included directly in XHTML just for sake of demo. -->
+		<!-- In real world code, put it in a JS file :) -->
+
+		<script>
+			function pushListener(message, channel) {
+				$("#" + channel + "-message").text(message).stop(true, true).effect("highlight");
+			}
+
+			function sessionCloseListener(code) {
+				if (code == 1000) {
+					alert("Session has expired! Page will be reloaded.");
+					window.location.reload(true);
+				}
+			}
+		</script>
+
+		<!-- End of bad practice ;) -->
+
+
 		<c:if test="#{empty pushTestUser}">
 			<h:form>
 				<p>
@@ -35,19 +56,6 @@
 			<o:socket port="8000" channel="app" scope="application" onmessage="pushListener" />
 			<o:socket port="8000" channel="sess" scope="session" user="#{pushTestUser}" onmessage="pushListener" onclose="sessionCloseListener" />
 			<o:socket port="8000" channel="view" scope="view" onmessage="pushListener" />
-
-			<script>
-				function pushListener(message, channel) {
-					$("#" + channel + "-message").text(message).stop(true, true).effect("highlight");
-				}
-
-				function sessionCloseListener(code) {
-					if (code == 1000) {
-						alert("Session has expired! Page will be reloaded.");
-						window.location.reload(true);
-					}
-				}
-			</script>
 
 			<p>
 				You can use the below buttons to send the current server side timestamp to those sockets.

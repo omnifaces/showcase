@@ -48,7 +48,10 @@
 			</p>
 		</h:form>
 
-		<o:socket port="8000" channel="counter" onmessage="updateCounter" onclose="onclosePush" connected="#{pushBean.connected}" />
+
+		<!-- NOTE: having inline script in XHTML like below is bad practice. -->
+		<!-- It's included directly in XHTML just for sake of demo. -->
+		<!-- In real world code, put it in a JS file :) -->
 
 		<script>
 			function updateCounter(newvalue) {
@@ -64,6 +67,11 @@
 				}
 			}
 		</script>
+
+		<!-- End of bad practice ;) -->
+
+
+		<o:socket port="8000" channel="counter" onmessage="updateCounter" onclose="onclosePush" connected="#{pushBean.connected}" />
 
 		<h3>Realtime stats</h3>
 		<p>
