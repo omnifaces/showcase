@@ -16,9 +16,7 @@
 		<ul>
 			<li><os:githubLink issue="317" /><code>showMessageFor</code> attribute for <h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link></li>
 			<li><os:githubLink issue="311" /><h:link outcome="/el/FacesELResolver"><code>FacesELResolver</code></h:link> which injects a new implicit EL object <code>\#{faces}</code> providing direct access to methods of <h:link outcome="/utils/Faces"><code>Faces</code></h:link> utility class which start with "get" or "is", and take no parameters, and return either <code>String</code> or <code>boolean</code>, and are not related to response nor to session or flash</li>
-			<li><os:githubLink issue="318" /><h:link outcome="/cdi/Eager"><code>@Eager</code></h:link> blocked deployment in Jetty</li>
 			<li><os:githubLink commit="375dfd2" /><h:link outcome="/converters/TrimConverter"><code>TrimConverter</code></h:link>, <h:link outcome="/converters/ToLowerCaseConverter"><code>ToLowerCaseConverter</code></h:link> and <h:link outcome="/converters/ToUpperCaseConverter"><code>ToUpperCaseConverter</code></h:link> for basic conversions on submitted <code>String</code> values</li>
-			<li><os:githubLink issue="319" /><code>&lt;f:ajax&gt;</code> support to <h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link></li>
 			<li><os:githubLink issue="326" /><code>OmniFaces.Unload.reenable()</code> function to allow developer explicitly re-enabling unload script of <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link></li>
 			<li><os:githubLink issue="327" /><h:link outcome="/converters/ToCollectionConverter"><code>ToCollectionConverter</code></h:link> to convert a delimited <code>String</code> submitted value to a fullworthy <code>Collection</code></li>
 			<li><os:githubLink issue="330" /><code>saveInViewState</code> attribute for <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> which should trigger explicitly saving the entire view scoped bean in JSF view state when client side state saving is enabled, hereby making it effectively not requiring the HTTP session anymore</li>
@@ -26,7 +24,7 @@
 
 		<h3>Changed in OmniFaces 2.6</h3>
 		<ul>
-			<li><os:githubLink issue="319" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> is now an <code>UIComponent</code> instead of <code>TagHandler</code> in order to support nesting <code>&lt;f:ajax&gt;</code></li>
+			<li><os:githubLink issue="319" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> is now an <code>UIComponent</code> instead of <code>TagHandler</code> in order to support <code>&lt;f:ajax&gt;</code></li>
 			<li><os:githubLink issue="325" /><h:link outcome="/components/messages"><code>&lt;o:messages&gt;</code></h:link> is now also supported in iterating components</li>
 			<li><os:githubLink commit="480727e" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload now uses new <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon"><code>Navigator.sendBeacon</code> API</a> when available for faster unload (Beacon is basically fire-and-forget and ignores the response)</li>
 			<li><os:githubLink commit="c62dd9f" />Inversed behavior of <h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code></h:link> so that it doesn't anymore block inherited attributes/parameters from parent tags, but instead blocks the inheritance towards child tags; this allows more a natural way of extending existing tag files having <code>&lt;o:tagAttribute&gt;</code></li>
@@ -35,6 +33,7 @@
 		<h3>Fixed in OmniFaces 2.6</h3>
 		<ul>
 			<li><os:githubLink issue="315" />Fixed MyFaces incompatibility when <h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> is used with both <code>required="true"</code> and <code>accept</code> attributes (MyFaces unexpectedly gives an empty <code>Part</code> instance instead of <code>null</code> when no file is selected)</li>
+			<li><os:githubLink issue="318" /><h:link outcome="/cdi/Eager"><code>@Eager</code></h:link> blocked deployment in Jetty</li>
 			<li><os:githubLink issue="322" /><h:link outcome="/validators/validateAll"><code>ValidateMultipleFields</code></h:link> didn't explicitly call <code>FacesContext#renderResponse()</code>, causing update model values phase to be still invoked when there's no other validation fail on the same form</li>
 			<li><os:githubLink commit="99e11c7,02f43ac,82ba972" />Several path matching fixes and improvements to <h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link></li>
 			<li><os:githubLink commit="480727e" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload didn't recognize user defined <code>onbeforeunload</code> function</li>
