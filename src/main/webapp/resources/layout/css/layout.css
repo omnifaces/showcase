@@ -114,14 +114,14 @@ code,
 	margin: 0;
 	height: 42px;
 	font-size: 42px;
-	lineh-height: 1.5em;
+	line-height: 1.5em;
 	color: white;
 	text-shadow: #111 0px 0px 10px;
 }
 
 #header h2 {
 	border: 0;
-	font-size: 23px;
+	font-size: 22px;
 	font-weight: 300;
 	color: white;
 	text-shadow: #111 0px 0px 10px;
