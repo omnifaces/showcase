@@ -8,19 +8,21 @@ html.progress, html.progress * {
 
 body {
 	margin: 0;
-	color: #111;
-	background: #f2f2f2;
+	color: #373737;
+	background: #f2f2f2;	
+	font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
 }
 
-body .ui-widget {
-	font-family: "Myriad Pro", Calibri, Helvetica, Arial, sans-serif;
-	font-size: 17px;
-	line-height: 1.5em;
+body .ui-widget,
+body .ui-widget .ui-widget {
+	font: inherit;
+	font-size: inherit;
 }
 
 body .ui-widget-header {
 	color: #fff;
-	background: #333;
+	background: #373737;
 	text-shadow: none;
 }
 
@@ -35,7 +37,8 @@ body .ui-widget-content h3 a {
 }
 
 body .wrapped {
-	width: 1050px;
+	max-width: 1200px;
+    min-width: 767px;
 	margin: 0 auto;
 	border: 0;
 	color: inherit;
@@ -43,18 +46,17 @@ body .wrapped {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	margin: 10px 0;
-	font-weight: 700;
-	color: #222;
-	font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
-	letter-spacing: -1px;
+  margin: .5em 0;
+  font-weight: 700;
+  color:#212121;
+  font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+  letter-spacing: -.05em;
 }
 
 h2 {
-	padding-bottom: 10px;
+	padding: .5em 0;
+	font-size: 1.8em;
 	border-bottom: 1px #ccc dashed;
-	font-size: 32px;
-	line-height: 32px;
 }
 
 hr {
@@ -68,11 +70,16 @@ a img {
 	border: 0; /* IE */
 }
 
+ul {
+	margin-bottom: 1em;
+	padding-left: 1.5em;
+}
+
 blockquote {
 	color: #666;
-	margin: 0 0 20px;
-	padding: 0 0 0 20px;
-	border-left: 3px solid #bbb;
+	margin-bottom: 1em;
+	padding: 0 0 0 1em;
+	border-left: .2em solid #bbb;
 }
 
 label.error {
@@ -87,9 +94,7 @@ pre,
 code,
 .code {
 	font-family: Consolas, Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-	font-size: 14px;
-	line-height: 18px;
-	color: #333;
+	letter-spacing: -.05em; 
 }
 
 #header-wrapper {
@@ -105,35 +110,40 @@ code,
 	padding: 50px 10px 30px;
 }
 
-#header a.logo {
+#logo {
 	float: left;
+	margin-top: -1em;
 	margin-right: 1em;
 }
 
 #header h1 {
 	margin: 0;
-	height: 42px;
-	font-size: 42px;
-	line-height: 1.5em;
 	color: white;
-	text-shadow: #111 0px 0px 10px;
+	font-size: 2.4em;
+	text-shadow: #111 0 0 .4em;
+	line-height: 1em;
 }
 
 #header h2 {
+	margin: 0;
+	padding: 0;
 	border: 0;
-	font-size: 22px;
+	font-size: 1.275em;
 	font-weight: 300;
 	color: white;
-	text-shadow: #111 0px 0px 10px;
+	text-shadow: #111 0 0 .3em;
 }
 
 #content-wrapper {
-	padding: 1.5em 0;	
+	padding: 1.5em 0;
 }
 
 #content {
+	box-sizing: border-box;
 	float: right;
-	width: 750px;
+	width: 75%;
+	max-width: none;
+	min-width: 0;
 }
 
 #content a:hover, 
@@ -145,15 +155,15 @@ code,
 #content code,
 #content .code {
 	width: 99%;
-	padding: 2px;
-	border-radius: 2px;
-	box-shadow: 0 0 10px rgba(0,0,0,.1);
+	padding: .2em;
+	border-radius: .2em;
+	box-shadow: 0 0 .5em rgba(0,0,0,.1);
 	background-color: #fff;
 }
 
 #content pre {
 	margin: 1em 0;
-	padding: 5px;
+	padding: .5em;
 	overflow: auto;
 	overflow-y: hidden;
 	word-wrap: normal;
@@ -167,12 +177,12 @@ code,
 }
 
 #content .github {
-	background-color: #333;
+	background-color: #373737;
 	color: #fff;
 }
 
 #content .ui-panel-content {
-	padding: 6px;
+	padding: .5em;
 }
 
 #content .ui-panel-content .block table tr:nth-child(odd) {
@@ -200,10 +210,19 @@ code,
 	background: #ddd;
 }
 
+#contentTitle {
+	margin-top: 0;
+	padding-top: 0;
+}
+
 #menu {
+	box-sizing: border-box;
 	float: left;
-	width: 275px;
+	width: 25%;
 	margin: 0;
+	padding: 0 .2em;
+	border: 0;
+	background: none;
 }
 
 #menu .ui-panel, 
@@ -238,24 +257,29 @@ code,
 
 #menu a {
 	display: block;
-	line-height: 1.5em;
-	color: #222;
+	color: #212121;
+	border-radius: 3px;
 }
 
 #menu a.code {
 	padding: 1px 0;
-	line-height: 1.3em;
+}
+
+#menu a:link {
+	background: inherit;
+	box-shadow: inherit;
+	transition: all .3s;
 }
 
 #menu a:hover, 
 #menu a.active {
 	background: #ddd;
-	border-radius: 3px;
 	box-shadow: 0 0 10px #ddd;
+	transition: all .3s;
 }
 
 #footer-wrapper {
-	background: #333;
+	background: #212121;
 }
 
 #footer {
@@ -318,7 +342,7 @@ code,
 .snapshot {
 	padding: 0 5px;
 	background: #ff9;
-	color: #333;
+	color: #373737;
 	border-radius: 3px;
 	box-shadow: 0 0 10px #ff9;
 	text-shadow: none;
@@ -326,4 +350,122 @@ code,
 
 .important {
 	background: #ff9;
+}
+
+
+/*******************************************************************************
+Large Device Styles
+*******************************************************************************/
+
+@media screen {
+	body {
+		font-size: 110%;
+		line-height: 160%;
+		transition: all .3s;
+	}
+	pre, code, .code {
+		font-size: 90%;
+		line-height: 140%;
+		transition: all .3s;
+	}
+	#logo img {
+		width: 90px;
+		height: 90px;
+		transition: all .3s;
+	}
+	#hamburger, #hamburger+label {
+		display: none;
+	}
+}
+
+
+/*******************************************************************************
+Medium Device Styles
+*******************************************************************************/
+
+@media screen and (max-width: 1023px) {
+	body {
+		font-size: 100%;
+		transition: all .3s;
+	}
+	#header {
+		padding-top: 40px;
+		padding-bottom: 20px;
+		transition: all .3s;
+	}
+	#logo img {
+		width: 80px;
+		height: 80px;
+		transition: all .3s;
+	}
+	#menu a {
+		font-size: 80%;
+		transition: all .3s;
+	}
+	#menu a.code {
+		font-size: 70%;
+		transition: all .3s;
+	}
+}
+
+
+/*******************************************************************************
+Small Device Styles
+*******************************************************************************/
+
+@media screen and (max-width: 767px) {
+	body {
+		font-size: 90%;
+	}
+	#header {
+		position: fixed;
+		z-index: 9997;
+		width: 100%;
+		padding-top: 30px;
+		padding-bottom: 10px;
+		transition: all .3s;
+	}
+	#logo img {
+		width: 70px;
+		height: 70px;
+		cursor: pointer;
+		transition: all .3s;
+	}
+	body .wrapped {
+		min-width: 520px;
+	}
+	#hamburger {
+		display: block;
+	}
+	#hamburger ~ #menu {
+		font-size: 100%;
+		position: fixed;
+		z-index: 9996;
+		width: auto;
+		top: 100px;
+		bottom: 100%;
+		right: 0;
+		left: 0;
+		transition: bottom .4s;
+		background: white;
+		overflow: hidden;
+	}
+	#hamburger:checked ~ #menu {
+		bottom: 0;
+		overflow-y: scroll;
+	}
+	#menu a {
+		font-size: 120%;
+	}
+	#menu a.code {
+		font-size: 100%;
+	}
+	#menu>.ui-panel-content {
+		padding-top: .5em;
+	}
+	#content {
+		float: none;
+		width: auto;
+		padding-top: 100px;
+	}
 }

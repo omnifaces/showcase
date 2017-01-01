@@ -42,6 +42,7 @@ The following application wide constants are available via this template:
 	<h:head id="head">
 		<title><ui:insert name="title">OmniFaces Showcase</ui:insert></title>
 		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="viewport" content="width=device-width,maximum-scale=2" />
 		<link rel="shortcut icon" href="#{request.contextPath}/favicon.ico?1" />
 	</h:head>
 
@@ -50,9 +51,9 @@ The following application wide constants are available via this template:
 
 		<div id="header-wrapper">
 			<div id="header" class="wrapped">
-				<a href="#{request.contextPath}/" class="logo">
+				<label id="logo" for="hamburger">
 					<h:graphicImage library="layout" name="img/OmniFaces-logo-90x90-white.png" alt="logo" width="90" height="90" />
-				</a>
+				</label>
 				<h1>OmniFaces Showcase <h:outputText value="SNAPSHOT" styleClass="snapshot" rendered="#{app.snapshot}" /></h1>
 				<h2>To make JSF life easier</h2>
 			</div>
@@ -60,11 +61,8 @@ The following application wide constants are available via this template:
 
 		<div id="content-wrapper">
 			<div class="wrapped ui-helper-clearfix">
-				<p:panel id="content" styleClass="wrapped">
-					<h2 id="contentTitle"><ui:insert name="contentTitle">#{page.title}</ui:insert></h2>
-					<ui:insert name="content" />
-				</p:panel>
-				<p:panel id="menu" styleClass="wrapped">
+				<input type="checkbox" id="hamburger" class="stateless" autocomplete="off" />
+				<p:panel id="menu">
 					<p:panel id="panel" header="omnifaces">
 						<ul>
 							<li><a href="#{request.contextPath}/" class="#{view.viewId == '/index.xhtml' ? 'active' : ''}">What is OmniFaces?</a></li>
@@ -90,6 +88,10 @@ The following application wide constants are available via this template:
 							</ul>
 						</o:treeNode>
 					</o:tree>
+				</p:panel>
+				<p:panel id="content" styleClass="wrapped">
+					<h2 id="contentTitle"><ui:insert name="contentTitle">#{page.title}</ui:insert></h2>
+					<ui:insert name="content" />
 				</p:panel>
 			</div>
 		</div>
