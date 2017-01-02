@@ -41,14 +41,14 @@ The following metadata attributes are supported via this template (they're parse
 			See also http://stackoverflow.com/q/14068891/157882
 		 -->
 		<p:selectOneMenu id="groups" value="#{page.parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="groups" panelStyleClass="groups" height="#{30 * (fn:length(page.parent.parent.children) - 1) + 5}" effect="fade" 
+			styleClass="groups" panelStyleClass="groups" effect="fade" 
 			disabled="#{facesContext.postback and not facesContext.renderResponse}">
 			<f:selectItems value="#{page.parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
 				itemDisabled="#{_parent.children[0] eq page.parent.children[0]}" />
 		</p:selectOneMenu>
 		-
 		<p:selectOneMenu id="pages" value="#{page.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="pages" panelStyleClass="pages" height="#{(21 * (fn:length(page.parent.children) - 1)) + 5}" effect="fade" 
+			styleClass="pages" panelStyleClass="pages" effect="fade" 
 			disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{page.parent.childCount gt 1}">
 			<f:selectItems value="#{page.parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
 				itemDisabled="#{_page eq page}" />
