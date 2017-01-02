@@ -11,6 +11,7 @@ body {
 	color: #373737;
 	background: #f2f2f2;	
 	font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+	letter-spacing: -.025em;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -40,11 +41,11 @@ body .wrapped {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: .5em 0;
-  font-weight: 700;
-  color:#212121;
-  font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
-  letter-spacing: -.05em;
+	margin: .5em 0;
+	font-weight: 700;
+	color: #212121;
+	font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+	letter-spacing: -.05em;
 }
 
 h2 {
@@ -393,7 +394,7 @@ Medium Device Styles
 
 @media screen and (max-width: 1023px) {
 	body {
-		font-size: 100%;
+		font-size: 110%;
 		transition: all .3s;
 	}
 	#header {
@@ -408,6 +409,7 @@ Medium Device Styles
 	}
 	#menu a {
 		font-size: 80%;
+		line-height: 140%;
 		transition: all .3s;
 	}
 	#menu a.code {
@@ -423,7 +425,7 @@ Small Device Styles
 
 @media screen and (max-width: 767px) {
 	body {
-		font-size: 90%;
+		font-size: 100%;
 	}
 	#header {
 		position: fixed;
