@@ -55,6 +55,7 @@ public class Page extends ListTreeModel<Page> {
 	private String path;
 	private String viewId;
 	private String description;
+	private String since;
 	private List<Source> sources;
 	private Documentation documentation;
 	private AtomicBoolean loaded = new AtomicBoolean();
@@ -85,7 +86,17 @@ public class Page extends ListTreeModel<Page> {
 				List<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
 				List<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
 				List<String> jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
-				description = loadDescription(apiPaths);
+				Elements javadoc = loadJavadoc(apiPaths);
+
+				if (javadoc != null) {
+					description = findDescription(javadoc);
+					fillApiPathsWithSeeAlso(javadoc, apiPaths);
+					since = findSinceVersion(javadoc);
+				}
+				else {
+					since = attributes.containsKey("since") ? attributes.get("since").toString() : "1.0";
+				}
+
 				sources = loadSources(path, srcPaths);
 				documentation = (apiPaths.size() + vdlPaths.size() + jsPaths.size() > 0) ? new Documentation(apiPaths, vdlPaths, jsPaths) : null;
 			}
@@ -103,34 +114,14 @@ public class Page extends ListTreeModel<Page> {
 		return (attribute == null) ? emptyList() : asList(attribute.trim().split("\\s*,\\s*"));
 	}
 
-	private static String loadDescription(List<String> apiPaths) {
+	private static Elements loadJavadoc(List<String> apiPaths) {
 		if (apiPaths.size() == 1) {
 			apiPaths.set(0, API_PATH + apiPaths.get(0));
 			String url = String.format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPaths.get(0));
 
 			try {
 				// TODO: build javadoc.jar into webapp somehow and scrape from it instead.
-				Elements description = scrape(url, ".description>ul>li");
-				Elements descriptionBlock = description.select(".block");
-
-				for (Element link : description.select("a")) { // Turn relative links into absolute links.
-					link.attr("href", link.absUrl("href"));
-				}
-
-				for (Element pre : descriptionBlock.select("pre")) { // Enable prettify on code blocks.
-					String content = pre.addClass("prettyprint").html().trim().replace("\n ", "\n");
-					String type = content.startsWith("&lt;") ? "xhtml" : "java";
-					pre.html("<code class='lang-" + type + "'>" + content + "</code>");
-				}
-
-				Elements seeAlso = description.select("dt:has(.seeLabel)+dd a:has(code)");
-
-				for (Element link : seeAlso) {
-					String href = link.absUrl("href");
-					apiPaths.add(href.substring(href.indexOf(API_PATH), href.lastIndexOf('.')));
-				}
-
-				return descriptionBlock.outerHtml();
+				return scrape(url, ".description>ul>li");
 			}
 			catch (IOException e) {
 				throw new FacesException(String.format(ERROR_LOADING_PAGE_DESCRIPTION, url), e);
@@ -138,6 +129,36 @@ public class Page extends ListTreeModel<Page> {
 		}
 
 		return null;
+	}
+
+	private static String findDescription(Elements javadoc) {
+		Elements descriptionBlock = javadoc.select(".block");
+
+		for (Element link : javadoc.select("a")) { // Turn relative links into absolute links.
+			link.attr("href", link.absUrl("href"));
+		}
+
+		for (Element pre : descriptionBlock.select("pre")) { // Enable prettify on code blocks.
+			String content = pre.addClass("prettyprint").html().trim().replace("\n ", "\n");
+			String type = content.startsWith("&lt;") ? "xhtml" : "java";
+			pre.html("<code class='lang-" + type + "'>" + content + "</code>");
+		}
+
+		return descriptionBlock.outerHtml();
+	}
+
+	private static void fillApiPathsWithSeeAlso(Elements javadoc, List<String> apiPaths) {
+		Elements seeAlso = javadoc.select("dt:has(.seeLabel)+dd a:has(code)");
+
+		for (Element link : seeAlso) {
+			String href = link.absUrl("href");
+			apiPaths.add(href.substring(href.indexOf(API_PATH), href.lastIndexOf('.')));
+		}
+	}
+
+	private static String findSinceVersion(Elements javadoc) {
+		Element since = javadoc.select("dt:contains(Since)+dd").first();
+		return (since != null) ? since.text() : "1.0";
 	}
 
 	private static List<Source> loadSources(String pagePath, List<String> srcPaths) {
@@ -208,6 +229,10 @@ public class Page extends ListTreeModel<Page> {
 
 	public String getDescription() {
 		return description;
+	}
+
+	public String getSince() {
+		return since;
 	}
 
 	public List<Source> getSources() {

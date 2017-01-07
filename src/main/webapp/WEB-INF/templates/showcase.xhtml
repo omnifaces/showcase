@@ -35,11 +35,6 @@ The following metadata attributes are supported via this template (they're parse
 	<ui:define name="title">#{page.title} - OmniFaces Showcase</ui:define>
 
 	<ui:define name="contentTitle">
-		<div id="quickNavigation">
-		 	<p:button id="prev" icon="ui-icon-triangle-1-w" title="Previous" outcome="#{of:coalesce(page.previousSibling.viewId, '/index')}" />
-		 	<p:button id="next" icon="ui-icon-triangle-1-e" title="Next" outcome="#{of:coalesce(page.nextSibling.viewId, '/index')}" />
-		</div>
-
 		<!-- 
 			The below p:selectOneMenu components are disabled in other phases than render response, because they 
 			otherwise complain that the model value cannot be set even though there's no form. 
@@ -61,6 +56,14 @@ The following metadata attributes are supported via this template (they're parse
 	</ui:define>
 
 	<ui:define name="content">
+		<p>
+			<div id="quickNavigation">
+			 	<p:button id="prev" icon="ui-icon-triangle-1-w" accesskey="[" title="Previous ( Alt+[ )" outcome="#{of:coalesce(page.previousSibling.viewId, '/index')}" />
+			 	<p:button id="next" icon="ui-icon-triangle-1-e" accesskey="]" title="Next ( Alt+] )" outcome="#{of:coalesce(page.nextSibling.viewId, '/index')}" />
+			</div>
+			<small>Available since OmniFaces #{page.since}</small>
+		</p>
+
 		<h:outputStylesheet library="showcase" name="css/showcase.css" />
 		<h:outputStylesheet library="showcase" name="css/prettify.css" />
 		<o:deferredScript library="showcase" name="js/prettify.js" />
