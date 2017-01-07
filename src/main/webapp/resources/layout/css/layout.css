@@ -33,7 +33,7 @@ body .ui-widget-content h3 a {
 
 body .wrapped {
 	max-width: 1200px;
-    min-width: 767px;
+    min-width: 480px;
 	margin: 0 auto;
 	border: 0;
 	color: inherit;
@@ -442,6 +442,7 @@ Small Device Styles
 
 	body {
 		font-size: 100%;
+		transition: all .3s;
 	}
 
 	body .hideOnMobile {
@@ -471,15 +472,12 @@ Small Device Styles
 		top: .2em;
 		right: .2em;
 	}
+
 	#logo img {
 		width: 80px;
 		height: 80px;
 		cursor: pointer;
 		transition: all .3s;
-	}
-
-	body .wrapped {
-		min-width: 480px;
 	}
 
 	#hamburger {
