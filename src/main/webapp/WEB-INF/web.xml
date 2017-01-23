@@ -81,7 +81,7 @@
 		<param-value>REDIRECT_TO_SCANNED_EXTENSIONLESS</param-value> <!-- Specific to this showcase. -->
 	</context-param>
 	<context-param>
-		<param-name>org.omnifaces.ENABLE_SOCKET_ENDPOINT</param-name>
+		<param-name>org.omnifaces.SOCKET_ENDPOINT_ENABLED</param-name>
 		<param-value>true</param-value>
 	</context-param>
 
