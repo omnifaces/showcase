@@ -32,6 +32,7 @@
 			<li><os:githubLink commit="c62dd9f" />Inversed behavior of <h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code></h:link> so that it doesn't anymore block inherited attributes/parameters from parent tags, but instead blocks the inheritance towards child tags; this allows more a natural way of extending existing tag files having <code>&lt;o:tagAttribute&gt;</code></li>
 			<li><os:githubLink issue="122,339" /><h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link> doesn't anymore require the target resource to be present in web project too</li>
 			<li><os:githubLink issue="25" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> will now skip converters having a constructor taking <code>Class</code> argument</li>
+			<li><os:githubLink issue="349" /><h:link outcome="/viewhandlers/OmniViewHandler"><code>NestedFormsChecker</code></h:link> is now more lenient as to forms nested in a <code>&lt;p:dialog&gt;</code></li>
 		</ul>
 
 		<h3>Fixed in OmniFaces 2.6</h3>
@@ -44,6 +45,7 @@
 			<li><os:githubLink commit="23d7baf" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> incompatibility with Deltaspike due to a change in OmniFaces 2.5 (Deltaspike didn't expect the <code>Lifecycle#render()</code> to be ever invoked without <code>Lifecycle#execute()</code> and broke with NPE)</li>
 			<li><os:githubLink issue="333" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> ignored <code>org.omnifaces.EXCEPTION_TYPES_TO_UNWRAP</code> due to a refactoring mistake in OmniFaces 2.5</li>
 			<li><os:githubLink issue="337" /><h:link outcome="/utils/Beans"><code>Beans#getReference()</code></h:link> broke in producer methods when where the now deprecated <code>BeanManager.INSTANCE.getReference()</code> worked fine</li>
+			<li><os:githubLink issue="342,347" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> failed in specific composite component cases</li>
 		</ul>
 
 		<hr />
