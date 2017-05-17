@@ -11,14 +11,21 @@
 		<h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
 		<p><em>Release date: 7 April, 2017</em></p>
-	
+
 		<h3>Fixed in OmniFaces 2.6.2</h3>
 		<ul>
 			<li><os:githubLink issue="363" />Removed accidentally introduced Java 1.8 specific methods (2.6 was therefore not Java 1.7 compatible, but 2.6.2 is)</li>
-			<li><os:githubLink issue="361" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed in MyFaces when bean is created before the view is created</li>
-			<li><os:githubLink issue="355" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload threw NPE in MyFaces when unload is triggered on a cached page</li>
 			<li><os:githubLink issue="362" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed in MyFaces when <code>&lt;f:viewAction&gt;</code> is present in view</li>
 			<li><os:githubLink issue="368" />Standard JSF converters failed to initialize when it's subclassed into a custom <h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link></li>
+		</ul>
+
+		<h2>What's new in OmniFaces 2.6.1?</h2>
+		<p><em>Release date: 21 February, 2014</em></p>
+
+		<h3>Fixed in OmniFaces 2.6.1</h3>
+		<ul>
+			<li><os:githubLink issue="355" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload threw NPE in MyFaces when unload is triggered on a cached page</li>
+			<li><os:githubLink issue="361" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed in MyFaces when bean is created before the view is created</li>
 		</ul>
 
 		<h2>What's new in OmniFaces 2.6?</h2>
