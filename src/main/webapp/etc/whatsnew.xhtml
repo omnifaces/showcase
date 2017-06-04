@@ -5,11 +5,25 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:os="http://omnifaces.org/showcase"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 2.6.2?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 2.6.3?</ui:define>
 
 	<ui:define name="content">
 		<h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
+		<p><em>Release date: 4 June, 2017</em></p>
+
+		<h3>Fixed in OmniFaces 2.6.3</h3>
+		<ul>
+			<li><os:githubLink issue="375" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload may fail when client side state saving is used on relatively large views</li>
+			<li><os:githubLink issue="370" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload may fail when PrettyFaces rewrites its URL</li>
+			<li><os:githubLink issue="372" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> threw <code>Invalid property path</code> when constructor injection is used</li>
+			<li><os:githubLink issue="377" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> initialization failed during parallel deployment in WildFly</li>
+			<li><os:githubLink issue="370" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload didn't delete physical beans from Mojarra's session storage</li>
+			<li><os:githubLink issue="357" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped(saveInViewState=true)</code></h:link> is recreated on postback when <code>&lt;f:viewAction&gt;</code> is present</li>
+			<li><os:githubLink issue="385" />PrimeFaces Dialog Framework's <code>closeDialog()</code> failed when <h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> is enabled</li>
+		</ul>
+
+		<h2>What's new in OmniFaces 2.6.2?</h2>
 		<p><em>Release date: 7 April, 2017</em></p>
 
 		<h3>Fixed in OmniFaces 2.6.2</h3>
