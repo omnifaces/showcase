@@ -5,11 +5,21 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:os="http://omnifaces.org/showcase"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 2.6.3?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 2.6.4?</ui:define>
 
 	<ui:define name="content">
 		<h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
+		<p><em>Release date: 31 July, 2017</em></p>
+
+		<h3>Fixed in OmniFaces 2.6.4</h3>
+		<ul>
+			<li><os:githubLink issue="386" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> ran in infinite loop when session expires during a long running request in WildFly</li>
+			<li><os:githubLink issue="392" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload on an expired restricted page should not be re-executed by authentication frameworks when user logs in again</li>
+			<li><os:githubLink commit="5d47da1" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload didn't work correctly in Safari</li>
+		</ul>
+
+		<h2>What's new in OmniFaces 2.6.3?</h2>
 		<p><em>Release date: 4 June, 2017</em></p>
 
 		<h3>Fixed in OmniFaces 2.6.3</h3>
