@@ -68,6 +68,6 @@
 			<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
 		</script>
 
-		<o:socket port="8000" channel="stats" onmessage="updateStats" />
+		<o:socket channel="stats" onmessage="updateStats" />
 	</ui:define>
 </ui:composition>

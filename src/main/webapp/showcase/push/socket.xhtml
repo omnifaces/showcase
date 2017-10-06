@@ -71,7 +71,7 @@
 		<!-- End of bad practice ;) -->
 
 
-		<o:socket port="8000" channel="counter" onmessage="updateCounter" onclose="onclosePush" connected="#{pushBean.connected}" />
+		<o:socket channel="counter" onmessage="updateCounter" onclose="onclosePush" connected="#{pushBean.connected}" />
 
 		<h3>Realtime stats</h3>
 		<p>
