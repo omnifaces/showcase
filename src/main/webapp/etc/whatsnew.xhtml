@@ -5,11 +5,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:os="http://omnifaces.org/showcase"
 >
-	<ui:define name="contentTitle">What's new in OmniFaces 2.6.4?</ui:define>
+	<ui:define name="contentTitle">What's new in OmniFaces 2.6.5?</ui:define>
 
 	<ui:define name="content">
 		<h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
+		<p><em>Release date: 14 October, 2017</em></p>
+
+		<h3>Fixed in OmniFaces 2.6.5</h3>
+		<ul>
+			<li><os:githubLink issue="401" /><h:link outcome="/components/tree"><code>AbstractTreeModel#equals</code></h:link> ran in infinite loop</li>
+			<li><os:githubLink issue="399" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> subclasses were not correctly resolved (regression since 2.6)</li>
+			<li><os:githubLink issue="396" /><h:link outcome="/components/inputFile"><code>&lt;h:inputFile&gt;</code></h:link> maxsize validation failed in IE11</li>
+			<li><os:githubLink issue="395" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> can now be extended for non-Ajax requests, i.e. <a href="https://stackoverflow.com/a/34150411/157882" target="_blank">showing a faces message instead now also works for non-ajax requests</a></li>
+			<li><os:githubLink issue="402" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> now supports exclude URL patterns like <code>&lt;param-value&gt;/*.xhtml/*, !/api, !/push&lt;/param-value&gt;</code></li>
+			<li><os:githubLink issue="408" /><h:link outcome="/taghandlers/skipValidators"><code>&lt;o:skipValidators&gt;</code></h:link> didn't correctly restore <code>required="true"</code> literal across postbacks</li>
+		</ul>
+
+		<h2>What's new in OmniFaces 2.6.4?</h2>
 		<p><em>Release date: 31 July, 2017</em></p>
 
 		<h3>Fixed in OmniFaces 2.6.4</h3>
