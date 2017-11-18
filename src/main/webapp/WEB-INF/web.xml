@@ -19,10 +19,6 @@
 		<param-value>/WEB-INF/showcase.taglib.xml</param-value> <!-- Specific to this showcase. -->
 	</context-param>
 	<context-param>
-	    <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
-	    <param-value>-1</param-value> <!-- Should be -1 for production (so, cached infinitely). -->
-	</context-param>
-	<context-param>
 		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
