@@ -6,16 +6,30 @@ import org.omnifaces.showcase.validators.ValidProduct;
 
 @ValidProduct(groups = ProductGroup.class)
 public class Product {
-	
+
+	private String name;
 	private int number1;
 	private int number2;
-	
+
 	public Product() {
+		//
 	}
-	
+
+	public Product(String name) {
+		this.name = name;
+	}
+
 	public Product(Product other) {
 		number1 = other.number1;
 		number2 = other.number2;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getNumber1() {

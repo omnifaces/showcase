@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="converter/ImplicitNumberConverter" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<p>Try entering a price of <code>12.34</code> with or without <code>$</code> symbol.</p>
+
+		<h:form>
+			<h2>Using &lt;f:convertNumber&gt;</h2>
+			<h:panelGrid columns="3">
+				<o:outputLabel for="price" value="Price&#xA0;$" />
+				<h:inputText id="price" required="true">
+					<f:convertNumber type="currency" currencySymbol="$" />
+				</h:inputText>
+				<h:message for="price" />
+
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+			</h:panelGrid>
+		</h:form>
+
+		<h:form>
+			<h2>Using ImplicitNumberConverter</h2>
+			<h:panelGrid columns="3">
+				<o:outputLabel for="price" value="Price&#xA0;$" />
+				<h:inputText id="price" required="true">
+					<o:converter converterId="omnifaces.ImplicitNumberConverter" type="currency" currencySymbol="$" />
+				</h:inputText>
+				<h:message for="price" />
+
+				<h:panelGroup />
+				<h:commandButton value="submit">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+				<h:outputText value="OK!" rendered="#{facesContext.postback and not facesContext.validationFailed}" />
+			</h:panelGrid>
+		</h:form>
+ 	</ui:define>
+</ui:composition>

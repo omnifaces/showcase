@@ -12,7 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import org.omnifaces.component.output.cache.CacheFactory;
+import org.omnifaces.util.cache.CacheFactory;
 
 @Named
 @RequestScoped

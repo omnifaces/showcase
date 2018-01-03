@@ -1,0 +1,39 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="component/model/SelectItemGroups" />
+			<f:attribute name="vdl.paths" value="o/selectItemGroups" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/SelectItemGroupsBean.java,classes/org/omnifaces/showcase/model/Category.java,classes/org/omnifaces/showcase/model/Product.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h:form>
+			<h2>Manually creating new SelectItemGroup()</h2>
+			<h:selectOneMenu value="#{selectItemGroupsBean.selectedProduct}" converter="omnifaces.SelectItemsConverter">
+				<f:selectItem itemValue="#{null}" itemLabel="Select ..." />
+				<f:selectItems value="#{selectItemGroupsBean.categorySelectItems}" />
+				<f:ajax render="selectedProduct" />
+			</h:selectOneMenu>
+			<p>Selected product: <strong><h:outputText id="selectedProduct" value="#{selectItemGroupsBean.selectedProduct.name}" /></strong></p>
+		</h:form>
+		
+		<h:form>
+			<h2>Using &lt;o:selectItemGroups&gt;</h2>
+			<h:selectOneMenu value="#{selectItemGroupsBean.selectedProduct}" converter="omnifaces.SelectItemsConverter">
+				<f:selectItem itemValue="#{null}" itemLabel="Select ..." />
+				<o:selectItemGroups value="#{selectItemGroupsBean.categories}" var="category" itemLabel="#{category.name}">
+					<f:selectItems value="#{category.products}" var="product" itemLabel="#{product.name}" />
+				</o:selectItemGroups>
+				<f:ajax render="selectedProduct" />
+			</h:selectOneMenu>
+			<p>Selected product: <strong><h:outputText id="selectedProduct" value="#{selectItemGroupsBean.selectedProduct.name}" /></strong></p>
+		</h:form>		
+ 	</ui:define>
+</ui:composition>
