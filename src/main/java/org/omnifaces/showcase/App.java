@@ -96,7 +96,7 @@ public class App {
 
 			for (String pagePath : pagePaths) {
 				String viewId = stripPrefixPath(SHOWCASE_PATH, pagePath);
-				String extensionlessViewId = viewId.split("\\.")[0];
+				String extensionlessViewId = viewId.split("\\.xhtml$")[0];
 				String title = extensionlessViewId.split("/")[2];
 				Page page = new Page(pagePath, extensionlessViewId, title);
 				group.addChildNode(page);

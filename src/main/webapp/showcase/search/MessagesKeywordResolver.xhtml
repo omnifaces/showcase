@@ -1,0 +1,35 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="component/search/MessagesKeywordResolver" />
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="demo">
+		<h:form id="form">
+			<h3>All these inputs are required</h3>
+
+			<h:panelGrid columns="2">
+			    <h:inputText id="input1" required="true" />
+			    <h:message id="m_input1" for="input1" />
+
+			    <h:inputText id="input2" required="true" />
+			    <h:message id="m_input2" for="input2" />
+	
+			    <h:inputText id="input3" required="true" />
+			    <h:message id="m_input3" for="input3" />
+
+			    <h:commandButton value="submit">
+			        <f:ajax execute="@form" render="@messages" />
+			    </h:commandButton>
+			</h:panelGrid>
+		    <h:messages id="m_form" globalOnly="true" redisplay="false" />
+		</h:form>
+	</ui:define>
+</ui:composition>

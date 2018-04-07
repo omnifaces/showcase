@@ -12,6 +12,36 @@
 
 		<p:tabView>
 			<p:tab title="3.x">
+				<h2>What's new in OmniFaces 3.1?</h2>
+				<p><em>Release date: 7 April, 2018</em></p>
+
+				<h3>Added in OmniFaces 3.1</h3>
+				<ul>
+					<li><os:githubLink issue="431" /><h:link outcome="/utils/Components"><code>Components#findComponentsInCurrentForm()</code></h:link> to find components of given type in currently submitted form</li>
+					<li><os:githubLink commit="8080151" /><h:link outcome="/utils/Faces"><code>Faces/FacesLocal#getInitParameterOrDefault()</code></h:link> which returns given default value when the init parameter is absent</li>
+					<li><os:githubLink issue="430" /><h:link outcome="/resourcehandlers/SourceMapResourceHandler"><code>SourceMapResourceHandler</code></h:link> in order to automatically set the correct <code>SourceMap</code> response header on CSS/JS resources</li>
+					<li><os:githubLink commit="c04e0eb" /><h:link outcome="/utils/Faces"><code>Faces/FacesLocal#getContextAttribute()</code></h:link> got an overload which takes a new argument representing the supplier which will be computed in case the attribute is absent</li>
+					<li><os:githubLink commit="2123aa7" /><h:link outcome="/utils/Beans"><code>Beans/BeansLocal#resolveExact()</code></h:link> which will ignore any subclasses when resolving the given class</li>
+					<li><os:githubLink commit="d1f1428" /><h:link outcome="/cdi/ViewScoped"><code>ViewScopeManager#isUnloadRequest()</code></h:link> for easier checking in a servlet filter whether current request is an unload request</li>
+					<li><os:githubLink commit="dd08730" /><h:link outcome="/search/MessagesKeywordResolver"><code>MessagesKeywordResolver</code></h:link> so that you can use <code>@messages</code> in ajax render/update to reference only <code>UIMessage(s)</code> components</li>
+				</ul>
+
+				<h3>Changed in OmniFaces 3.1</h3>
+				<ul>
+					<li><os:githubLink commit="441" /><h:link outcome="/utils/FacesConfigXml"><code>FacesConfigXml</code></h:link> and <h:link outcome="/utils/WebXml"><code>WebXml</code></h:link> are now interfaces with an enum implementation which should allow easier mocking during unit testing, hereby the <code>INSTANCE</code> constant has been <strong>deprecated</strong> and is replaced by <code>instance()</code> method</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.1</h3>
+				<ul>
+					<li><os:githubLink commit="437" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link>/<h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link> didn't support custom attributes via <h:link outcome="/taghandlers/converter"><code>&lt;o:converter&gt;</code></h:link> anymore since JSF 2.3</li>
+					<li><os:githubLink commit="438" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> with <code>converter</code> threw <code>ClassCaseException</code> due to an bug in javac7</li>
+					<li><os:githubLink commit="439" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> will not anymore infintely keep retrying to push the message on Tomcat when the server fails do deliver the message due to its internal design flaw</li>
+					<li><os:githubLink commit="443" /><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code></h:link> class was incorrectly parameterized and caused compile error when extended by an already parameterized converter</li>
+					<li>Remaining fixes are same as 2.6.9.</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 3.0?</h2>
 				<p><em>Release date: 3 January, 2018</em></p>
 
@@ -54,10 +84,27 @@
 
 				<h3>Fixed in OmniFaces 3.0</h3>
 				<ul>
-					<li>Nothing new as compared to latest 2.x.</li>
+					<li>Nothing new as compared to 2.6.8.</li>
 				</ul>
 			</p:tab>
 			<p:tab title="2.x">
+				<h2>What's new in OmniFaces 2.6.9?</h2>
+				<p><em>Release date: 7 April, 2018</em></p>
+		
+				<h3>Fixed in OmniFaces 2.6.9</h3>
+				<ul>
+					<li><os:githubLink issue="434" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> disappears from page when a non-ajax non-redirect postback is performed</li>
+					<li><os:githubLink issue="435" /><h:link outcome="/functions/Numbers"><code>of:formatThousands()</code></h:link> didn't support negative numbers</li>
+					<li><os:githubLink issue="440" /><h:link outcome="/utils/Beans"><code>Beans#getManager()</code></h:link> will fall back to JNDI when CDI isn't initialized yet (fixes intermittent initialization errors in WebLogic server)</li>
+					<li><os:githubLink issue="436" /><h:link outcome="/converters/SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code></h:link> will now skip empty values (fixes incompatibility with ancient MyFaces 2.0.x versions)</li>
+					<li><os:githubLink issue="444" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed in MyFaces 2.3.0</li>
+					<li><os:githubLink issue="446" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> <code>showMessageFor="component1 component2"</code> didn't work as intented</li>
+					<li><os:githubLink issue="447" /><h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> will now decapitalize file extension before testing mime type (fixes incompatiblity with WebSphere server)</li>
+					<li><os:githubLink issue="449" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> didn't support folder names with a period</li>
+				</ul>
+				
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.6.8?</h2>
 				<p><em>Release date: 3 January, 2018</em></p>
 		
