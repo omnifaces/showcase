@@ -34,7 +34,7 @@
 				<h3>Fixed in OmniFaces 3.1</h3>
 				<ul>
 					<li><os:githubLink commit="437" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link>/<h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link> didn't support custom attributes via <h:link outcome="/taghandlers/converter"><code>&lt;o:converter&gt;</code></h:link> anymore since JSF 2.3</li>
-					<li><os:githubLink commit="438" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> with <code>converter</code> threw <code>ClassCaseException</code> due to an bug in javac7</li>
+					<li><os:githubLink commit="438" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> with <code>converter</code> threw <code>ClassCastException</code> due to an bug in javac7</li>
 					<li><os:githubLink commit="439" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> will not anymore infintely keep retrying to push the message on Tomcat when the server fails do deliver the message due to its internal design flaw</li>
 					<li><os:githubLink commit="443" /><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code></h:link> class was incorrectly parameterized and caused compile error when extended by an already parameterized converter</li>
 					<li>Remaining fixes are same as 2.6.9.</li>
