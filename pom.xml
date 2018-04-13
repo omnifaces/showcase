@@ -62,7 +62,7 @@
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
-			<version>2.3.3</version> <!-- Use the exact version as provided by target server! -->
+			<version>2.3.4</version> <!-- Use the exact version as provided by target server! -->
 			<scope>provided</scope>
 		</dependency>
 
