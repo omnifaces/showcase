@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="component/input/HashParam" />
+			<f:attribute name="vdl.paths" value="o/hashParam" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/HashParamBean.java" />
+			<f:attribute name="js.paths" value="hashparam.unminified.js" />
+
+			<o:hashParam id="foo" name="foo" value="#{hashParamBean.foo}" render="messages" />
+			<o:hashParam id="bar" name="bar" value="#{hashParamBean.bar}" render="messages" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo-meta">
+		<f:metadata>
+			<o:hashParam id="foo" name="foo" value="#{hashParamBean.foo}" render="messages" />
+			<o:hashParam id="bar" name="bar" value="#{hashParamBean.bar}" render="messages" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h:messages id="messages" styleClass="messages" infoClass="info" errorClass="error" />
+
+		<p>
+			See how these plain HTML links which change the hash string will let <code>&lt;o:hashParam&gt;</code> reflect changes in the hash string into the JSF model.
+			Note that the above messages are rendered by <code>&lt;o:hashParam render="messages"&gt;</code>.
+		</p>
+		<ul>
+			<li><a href="#foo=bar">#foo=bar</a></li>
+			<li><a href="#foo=baz">#foo=baz</a></li>
+			<li><a href="#foo=bak&amp;bar=42">#foo=bak&amp;bar=42</a></li>
+			<li><a href="#foo=baz&amp;bar=invalid">#foo=baz&amp;bar=invalid</a> - this should show a conversion error message</li>
+		</ul>
+		
+		<p>
+			And see how these JSF command links which change the JSF model will let <code>&lt;o:hashParam&gt;</code> reflect changes in the JSF model into the hash string.
+			Note that the above messages are rendered by the command links themselves and not by the <code>&lt;o:hashParam&gt;</code>.
+		</p>
+		<o:form>
+			<ul>
+				<li><h:commandLink value="setFoo('bar'); setBar(null);" action="#{hashParamBean.action('bar', null)}"><f:ajax render=":messages" /></h:commandLink></li>
+				<li><h:commandLink value="setFoo('baz'); setBar(null);" action="#{hashParamBean.action('baz', null)}"><f:ajax render=":messages" /></h:commandLink></li>
+				<li><h:commandLink value="setFoo('bak'); setBar(42);" action="#{hashParamBean.action('bak', 42)}"><f:ajax render=":messages" /></h:commandLink></li>
+			</ul>
+		</o:form>
+	</ui:define>
+</ui:composition>

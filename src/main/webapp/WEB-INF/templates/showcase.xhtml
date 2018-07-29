@@ -72,6 +72,7 @@ The following metadata attributes are supported via this template (they're parse
 		<ui:insert name="description">
 			<h:outputText value="#{page.description}" escape="false" /><!-- Copies content from 1st API documentation. -->
 		</ui:insert>
+
 		<ui:insert name="description-extra" />
 
 		<ui:fragment rendered="#{not empty page.sources}">

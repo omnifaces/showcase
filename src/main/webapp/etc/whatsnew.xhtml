@@ -10,8 +10,34 @@
 	<ui:define name="content">
 		<h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
-		<p:tabView>
-			<p:tab title="3.x">
+		<p:tabView id="versions">
+			<p:tab id="v3" title="3.x">
+				<h2>What's new in OmniFaces 3.2?</h2>
+				<p><em>Release date: 29 July, 2018</em></p>
+
+				<h3>Added in OmniFaces 3.2</h3>
+				<ul>
+					<li><os:githubLink commit="b2796b8" /><h:link outcome="/components/hashParam"><code>&lt;o:hashParam&gt;</code></h:link> has been added which is similar to <code>&lt;o:viewParam&gt;</code> but then for hash parameters like <code>/page.xhtml#foo=bar&amp;baz=kaz</code> instead of query parameters</li>
+					<li><os:githubLink commit="b2796b8" /><h:link outcome="/utils/Faces"><code>Faces#getHashParameters()</code>, <code>Faces#getHashParameterMap()</code> and <code>Faces#getHashQueryString()</code></h:link> which extracts information from hash parameters managed by <code>&lt;o:hashParam&gt;</code></li>
+					<li><os:githubLink issue="461" />New <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CDNResource</code></h:link> marker class which allows <code>CombinedResourceHandler</code> generating a fallback local URL</li>
+					<li><os:githubLink issue="469" /><h:link outcome="/components/viewAction"><code>&lt;o:viewAction&gt;</code></h:link> now supports adding a faces message to the redirected page via new <code>message</code> attribute</li>
+					<li><os:githubLink issue="477" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> and <h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link> will from now on also log an UUID and IP address for easier log analysis</li>
+					<li><os:githubLink commit="ef920bb2" /><h:link outcome="/utils/Faces"><code>Faces#getUserAgent()</code></h:link> has been added</li>
+				</ul>
+
+				<h3>Changed in OmniFaces 3.2</h3>
+				<ul>
+					<li><os:githubLink commit="472" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> now supports dynamic changes in <code>user</code> attribute without the need to refresh the page</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.2</h3>
+				<ul>
+					<li><os:githubLink commit="445" /><h:link outcome="/utils/Components"><code>Components#getParams()</code></h:link> wasn't correctly parameterized</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7');return false;">Remaining fixes are same as 2.7</a></li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 3.1?</h2>
 				<p><em>Release date: 12 April, 2018</em></p>
 
@@ -28,16 +54,16 @@
 
 				<h3>Changed in OmniFaces 3.1</h3>
 				<ul>
-					<li><os:githubLink commit="441" /><h:link outcome="/utils/FacesConfigXml"><code>FacesConfigXml</code></h:link> and <h:link outcome="/utils/WebXml"><code>WebXml</code></h:link> are now interfaces with an enum implementation which should allow easier mocking during unit testing, hereby the <code>INSTANCE</code> constant has been <strong>deprecated</strong> and is replaced by <code>instance()</code> method</li>
+					<li><os:githubLink issue="441" /><h:link outcome="/utils/FacesConfigXml"><code>FacesConfigXml</code></h:link> and <h:link outcome="/utils/WebXml"><code>WebXml</code></h:link> are now interfaces with an enum implementation which should allow easier mocking during unit testing, hereby the <code>INSTANCE</code> constant has been <strong>deprecated</strong> and is replaced by <code>instance()</code> method</li>
 				</ul>
 
 				<h3>Fixed in OmniFaces 3.1</h3>
 				<ul>
-					<li><os:githubLink commit="437" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link>/<h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link> didn't support custom attributes via <h:link outcome="/taghandlers/converter"><code>&lt;o:converter&gt;</code></h:link> anymore since JSF 2.3</li>
-					<li><os:githubLink commit="438" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> with <code>converter</code> threw <code>ClassCastException</code> due to an bug in javac7</li>
-					<li><os:githubLink commit="439" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> will not anymore infintely keep retrying to push the message on Tomcat when the server fails do deliver the message due to its internal design flaw</li>
-					<li><os:githubLink commit="443" /><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code></h:link> class was incorrectly parameterized and caused compile error when extended by an already parameterized converter</li>
-					<li>Remaining fixes are same as 2.6.9.</li>
+					<li><os:githubLink issue="437" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link>/<h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link> didn't support custom attributes via <h:link outcome="/taghandlers/converter"><code>&lt;o:converter&gt;</code></h:link> anymore since JSF 2.3</li>
+					<li><os:githubLink issue="438" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> with <code>converter</code> threw <code>ClassCastException</code> due to an bug in javac7</li>
+					<li><os:githubLink issue="439" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> will not anymore infintely keep retrying to push the message on Tomcat when the server fails do deliver the message due to its internal design flaw</li>
+					<li><os:githubLink issue="443" /><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code></h:link> class was incorrectly parameterized and caused compile error when extended by an already parameterized converter</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_6_9');return false;">Remaining fixes are same as 2.6.9</a></li>
 				</ul>
 
 				<hr />
@@ -79,19 +105,42 @@
 					<li><os:githubLink issue="277" /><code>&lt;o:importConstants&gt;</code> has been <strong>deprecated</strong> as it's now moved into JSF 2.3 as <code><a href="https://javaserverfaces.github.io/docs/2.3/vdldoc/f/importConstants.html">&lt;f:importConstants&gt;</a></code> with the only difference that <code>&lt;f:importConstants&gt;</code> requires being placed in <code>&lt;f:metadata&gt;</code></li>
 					<li><os:githubLink issue="268" /><code>&lt;o:commandScript&gt;</code> has been <strong>deprecated</strong> as it's now moved into JSF 2.3 as <code><a href="https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/commandScript.html">&lt;h:commandScript&gt;</a></code> with exactly the same functionality</li>
 					<li><os:githubLink issue="267" /><code>omnifaces:fixviewstate.js</code> has been <strong>deprecated</strong> as it's now finally solved in JSF 2.3 (by yours truly)</li>
-		            <li><os:githubLink issue="388" /><code>includeViewParams="true"</code> and <code>includeRequestParams="true"</code> attributes of <h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> have been <strong>deprecated</strong> as those have never proven to be more useful than <code>useRequestURI="true"</code></li>
+		            <li><os:githubLink issue="388" /><code>includeViewParams="true"</code> attribute of <h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> have been <strong>deprecated</strong> as those have never proven to be more useful than <code>useRequestURI="true"</code> or <code>includeRequestParams="true"</code></li>
 				</ul>
 
 				<h3>Fixed in OmniFaces 3.0</h3>
 				<ul>
-					<li>Nothing new as compared to 2.6.8.</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_6_8');return false;">Nothing new as compared to 2.6.8</a></li>
 				</ul>
 			</p:tab>
-			<p:tab title="2.x">
+
+			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7?</h2>
+				<p><em>Release date: 29 July, 2018</em></p>
+		
+				<h3>Added in OmniFaces 2.7</h3>
+				<ul>
+					<li><os:githubLink issue="461" />New <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CDNResource</code></h:link> marker class which allows <code>CombinedResourceHandler</code> generating a fallback local URL</li>
+				</ul>
+		
+				<h3 id="fixed_2_7">Fixed in OmniFaces 2.7</h3>
+				<ul>
+					<li><os:githubLink issue="456" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> leaked memory</li>
+					<li><os:githubLink issue="457" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> script ordering was off after non-Ajax postback in MyFaces</li>
+					<li><os:githubLink issue="460" /><h:link outcome="/utils/Components"><code>Components#getCurrentActionSource()</code></h:link> didn't work within forms with <code>prependId="false"</code></li>
+					<li><os:githubLink issue="464" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>org.omnifaces.COMBINED_RESOURCE_HANDLER_DISABLED</code></h:link> didn't correctly support EL expressions</li>
+					<li><os:githubLink issue="463" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> shouldn't implicitly register the unload script on stateless views</li>
+					<li><os:githubLink issue="467" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> caused deployment fail when optional Bean Validation is absent</li>
+					<li><os:githubLink issue="466" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> wasn't JSF locale aware</li>
+					<li><os:githubLink issue="474" /><h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code></h:link> didn't automatically take care of autogenerated ID on an empty <code>&lt;o:tagAttribute name="id"&gt;</code></li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.6.9?</h2>
 				<p><em>Release date: 12 April, 2018</em></p>
 		
-				<h3>Fixed in OmniFaces 2.6.9</h3>
+				<h3 id="fixed_2_6_9">Fixed in OmniFaces 2.6.9</h3>
 				<ul>
 					<li><os:githubLink issue="434" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> disappears from page when a non-ajax non-redirect postback is performed</li>
 					<li><os:githubLink issue="435" /><h:link outcome="/functions/Numbers"><code>of:formatThousands()</code></h:link> didn't support negative numbers</li>
@@ -108,7 +157,7 @@
 				<h2>What's new in OmniFaces 2.6.8?</h2>
 				<p><em>Release date: 3 January, 2018</em></p>
 		
-				<h3>Fixed in OmniFaces 2.6.8</h3>
+				<h3 id="fixed_2_6_8">Fixed in OmniFaces 2.6.8</h3>
 				<ul>
 					<li><os:githubLink issue="426" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code></h:link> will now delegate <code>startDocument()</code> to wrapped partial response writer and reset internal <code>updating</code> state; this will only have a positive effect when you have your own wrapped partial response writer on top of OmniFaces</li>
 				</ul>
@@ -502,7 +551,8 @@
 					<li><os:githubLink issue="65" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> is made better compatible with Servlet 3.1 containers</li>
 				</ul>
 			</p:tab>
-			<p:tab title="1.x">
+
+			<p:tab id="v1" title="1.x">
 				<h2>What's new in OmniFaces 1.8.3?</h2>
 				<p><em>Release date: 3 June, 2015</em></p>
 				<h3>Fixed in OmniFaces 1.8.3</h3>
