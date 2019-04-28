@@ -40,7 +40,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.omnifaces.config.OmniFaces;
 import org.omnifaces.model.tree.TreeModel;
-import org.primefaces.config.PrimeConfiguration;
+import org.primefaces.config.PrimeEnvironment;
 
 @Named
 @ApplicationScoped
@@ -72,7 +72,7 @@ public class App {
 		omniFacesVersion = OmniFaces.getVersion();
 		snapshot = OmniFaces.isSnapshot();
 		facesVersion = getImplInfo();
-		primeFacesVersion = new PrimeConfiguration(getContext()).getBuildVersion();
+		primeFacesVersion = new PrimeEnvironment(getContext()).getBuildVersion();
 		serverVersion = getServerInfo();
 	}
 
