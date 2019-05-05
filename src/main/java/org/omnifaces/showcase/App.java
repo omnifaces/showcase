@@ -25,6 +25,7 @@ import static org.omnifaces.util.ResourcePaths.stripPrefixPath;
 import static org.omnifaces.util.Utils.isEmpty;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -53,6 +54,7 @@ public class App {
 	// Properties -----------------------------------------------------------------------------------------------------
 
 	private String index;
+	private LocalDate indexLastLoaded;
 	private Page menu;
 	private Map<String, Page> pages;
 	private String omniFacesVersion;
@@ -76,9 +78,11 @@ public class App {
 		serverVersion = getServerInfo();
 	}
 
-	private static String loadIndex() {
+	private String loadIndex() {
 		try {
-			return scrape("http://omnifaces.org", "#main_content").outerHtml();
+			String index = scrape("http://omnifaces.org", "#main_content").outerHtml();
+			indexLastLoaded = LocalDate.now();
+			return index;
 		}
 		catch (Exception justIgnoreItTheGetterWillTryItAgain) {
 			return null;
@@ -125,7 +129,7 @@ public class App {
 	// Getters --------------------------------------------------------------------------------------------------------
 
 	public String getIndex() {
-		if (index == null) {
+		if (index == null || indexLastLoaded.getDayOfYear() != LocalDate.now().getDayOfYear()) {
 			index = loadIndex();
 		}
 

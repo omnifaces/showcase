@@ -12,6 +12,7 @@
  */
 package org.omnifaces.showcase;
 
+import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static org.omnifaces.showcase.App.scrape;
@@ -24,8 +25,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.faces.FacesException;
@@ -82,10 +85,10 @@ public class Page extends ListTreeModel<Page> {
 		if (!(loaded.getAndSet(true) || path == null)) {
 			try {
 				Map<String, Object> attributes = getMetadataAttributes();
-				List<String> apiPaths = new ArrayList<>(getCommaSeparatedAttribute(attributes, "api.path"));
-				List<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
-				List<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
-				List<String> jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
+				Set<String> apiPaths = getCommaSeparatedAttribute(attributes, "api.path");
+				Set<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
+				Set<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
+				Set<String> jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
 				Elements javadoc = loadJavadoc(apiPaths);
 
 				if (javadoc != null) {
@@ -109,22 +112,24 @@ public class Page extends ListTreeModel<Page> {
 		return this;
 	}
 
-	private static List<String> getCommaSeparatedAttribute(Map<String, Object> attributes, String key) {
+	private static Set<String> getCommaSeparatedAttribute(Map<String, Object> attributes, String key) {
 		String attribute = (String) attributes.get(key);
-		return (attribute == null) ? emptyList() : asList(attribute.trim().split("\\s*,\\s*"));
+		return new LinkedHashSet<>((attribute == null) ? emptyList() : asList(attribute.trim().split("\\s*,\\s*")));
 	}
 
-	private static Elements loadJavadoc(List<String> apiPaths) {
+	private static Elements loadJavadoc(Set<String> apiPaths) {
 		if (apiPaths.size() == 1) {
-			apiPaths.set(0, API_PATH + apiPaths.get(0));
-			String url = String.format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPaths.get(0));
+			String apiPath = API_PATH + apiPaths.iterator().next();
+			apiPaths.clear();
+			apiPaths.add(apiPath);
+			String url = format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPath);
 
 			try {
 				// TODO: build javadoc.jar into webapp somehow and scrape from it instead.
 				return scrape(url, ".description>ul>li");
 			}
 			catch (IOException e) {
-				throw new FacesException(String.format(ERROR_LOADING_PAGE_DESCRIPTION, url), e);
+				throw new FacesException(format(ERROR_LOADING_PAGE_DESCRIPTION, url), e);
 			}
 		}
 
@@ -147,7 +152,7 @@ public class Page extends ListTreeModel<Page> {
 		return descriptionBlock.outerHtml();
 	}
 
-	private static void fillApiPathsWithSeeAlso(Elements javadoc, List<String> apiPaths) {
+	private static void fillApiPathsWithSeeAlso(Elements javadoc, Set<String> apiPaths) {
 		Elements seeAlso = javadoc.select("dt:has(.seeLabel)+dd a:has(code)");
 
 		for (Element link : seeAlso) {
@@ -161,7 +166,7 @@ public class Page extends ListTreeModel<Page> {
 		return (since != null) ? since.text() : "1.0";
 	}
 
-	private static List<Source> loadSources(String pagePath, List<String> srcPaths) {
+	private static List<Source> loadSources(String pagePath, Set<String> srcPaths) {
 		List<Source> sources = new ArrayList<>(1 + srcPaths.size());
 		String sourceCode = loadSourceCode(pagePath);
 		String[] meta = sourceCode.split("<ui:define name=\"demo-meta\">");
@@ -213,7 +218,7 @@ public class Page extends ListTreeModel<Page> {
 			return new String(toByteArray(input), "UTF-8").replace("\t", "    "); // Tabs are in HTML <pre> presented as 8 spaces, which is too much.
 		}
 		catch (IOException e) {
-			throw new FacesException(String.format(ERROR_LOADING_PAGE_SOURCE, path), e);
+			throw new FacesException(format(ERROR_LOADING_PAGE_SOURCE, path), e);
 		}
 	}
 
@@ -261,7 +266,7 @@ public class Page extends ListTreeModel<Page> {
 
 	@Override
 	public String toString() {
-		return String.format("Page[title=%s,viewId=%s]", title, viewId);
+		return format("Page[title=%s,viewId=%s]", title, viewId);
 	}
 
 	// Nested classes -------------------------------------------------------------------------------------------------
@@ -320,15 +325,15 @@ public class Page extends ListTreeModel<Page> {
 
 		// Properties -------------------------------------------------------------------------------------------------
 
-		private List<String> api;
-		private List<String> src;
-		private List<String> vdl;
-		private List<String> js;
+		private Set<String> api;
+		private Set<String> src;
+		private Set<String> vdl;
+		private Set<String> js;
 
 		// Contructors ------------------------------------------------------------------------------------------------
 
-		public Documentation(List<String> api, List<String> vdl, List<String> js) {
-			this.api = api.isEmpty() ? api : asList(api.get(0));
+		public Documentation(Set<String> api, Set<String> vdl, Set<String> js) {
+			this.api = api.isEmpty() ? api : new LinkedHashSet<>(asList(api.iterator().next()));
 			src = api;
 			this.vdl = vdl;
 			this.js = js;
@@ -336,19 +341,19 @@ public class Page extends ListTreeModel<Page> {
 
 		// Getters/setters --------------------------------------------------------------------------------------------
 
-		public List<String> getApi() {
+		public Set<String> getApi() {
 			return api;
 		}
 
-		public List<String> getSrc() {
+		public Set<String> getSrc() {
 			return src;
 		}
 
-		public List<String> getVdl() {
+		public Set<String> getVdl() {
 			return vdl;
 		}
 
-		public List<String> getJs() {
+		public Set<String> getJs() {
 			return js;
 		}
 
