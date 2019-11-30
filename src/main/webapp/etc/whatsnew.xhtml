@@ -12,6 +12,17 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2>What's new in OmniFaces 3.4.1?</h2>
+				<p><em>Release date: 30 November, 2019</em></p>
+
+				<h3>Fixed in OmniFaces 3.4.1</h3>
+				<ul>
+					<li><os:githubLink commit="522" /><h:link outcome="/utils/WebXml"><code>WebXml#instance()</code></h:link> didn't work during startup (e.g. <code>ServletContextListener</code>, <code>@Observes @Initialized(ApplicationScoped.class)</code>, etc)</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_3');return false;">Remaining fixes are same as in 2.7.3</a></li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 3.4?</h2>
 				<p><em>Release date: 27 October, 2019</em></p>
 
@@ -153,6 +164,19 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.3?</h2>
+				<p><em>Release date: 30 November, 2019</em></p>
+		
+				<h3 id="fixed_2_7_3">Fixed in OmniFaces 2.7.3</h3>
+				<ul>
+					<li><os:githubLink issue="528" />Improved support for MyFaces <code>org.apache.myfaces.annotation.USE_CDI_FOR_ANNOTATION_SCANNING</code> to reduce startup time</li>
+					<li><os:githubLink issue="530" /><h:link outcome="/components/messages"><code>&lt;o:messages&gt;</code></h:link> didn't render <code>styleClass</code> when the list is empty (hereby making it unnecessarily more difficult for e.g. PrimeFaces Selectors)</li>
+					<li><os:githubLink issue="531" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload now also supports <code>pagehide</code> event of Safari on iOS</li>
+					<li><os:githubLink issue="527" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> triggered a confusing <code>WARNING: Unable to save dynamic action</code> in Mojarra in Development stage</li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.7.2?</h2>
 				<p><em>Release date: 27 October, 2019</em></p>
 		
