@@ -12,6 +12,24 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2>What's new in OmniFaces 3.5?</h2>
+				<p><em>Release date: 12 April, 2020</em></p>
+
+				<h3>Added in OmniFaces 3.5</h3>
+				<ul>
+					<li><os:githubLink commit="541" /><h:link outcome="/functions/Strings"><code>\#{of:encodeURI()}</code></h:link> little brother of <code>\#{of:encodeURL()}</code></li>
+					<li><os:githubLink commit="537" /><code>crossorigin</code> attribute of <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link>  is now configureable</li>
+					<li><os:githubLink commit="544" /><h:link outcome="/utils/Messages"><code>Messages#clearXxx()</code></h:link> to programmatically clear out faces messages</li>
+					<li><os:githubLink commit="545" /><h:link outcome="/utils/Messages"><code>Messages#throwXxx()</code></h:link> convenience methods to replace <code>throw new ConverterException(Messages.createError("..."))</code></li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.5</h3>
+				<ul>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_4');return false;">Fixes are same as in 2.7.4</a></li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 3.4.1?</h2>
 				<p><em>Release date: 30 November, 2019</em></p>
 
@@ -164,6 +182,16 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.4?</h2>
+				<p><em>Release date: 12 April, 2020</em></p>
+		
+				<h3 id="fixed_2_7_4">Fixed in OmniFaces 2.7.4</h3>
+				<ul>
+					<li><os:githubLink issue="533" />OmniFaces version logger didn't log Z of X.Y.Z version.</li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.7.3?</h2>
 				<p><em>Release date: 30 November, 2019</em></p>
 		
