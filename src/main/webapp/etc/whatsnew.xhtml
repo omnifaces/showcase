@@ -12,15 +12,45 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2>What's new in OmniFaces 3.6?</h2>
+				<p><em>Release date: 3 May, 2020</em></p>
+
+				<h3>Added in OmniFaces 3.6</h3>
+				<ul>
+					<li><os:githubLink commit="f638cec" /><h:link outcome="/utils/Faces"><code>Faces#createResource()</code></h:link> to create new <code>Resource</code> instances</li>
+					<li><os:githubLink issue="532" /><h:link outcome="/resourcehandlers/WebAppManifestResourceHandler"><code>WebAppManifestResourceHandler</code></h:link> to autogenerate <code>manifest.json</code></li>
+					<li><os:githubLink commit="1455246" /><h:link outcome="/utils/Servlets"><code>Servlets#isProxied()</code></h:link> which checks if <code>Forwarded</code> header or <code>X-Forwarded-For</code> is present</li>
+					<li><os:githubLink issue="471" /><h:link outcome="/components/pathParam"><code>&lt;o:pathParam&gt;</code></h:link> to support path params in links pointing to a <code>MultiViews</code> resource</li>
+					<li><os:githubLink commit="145eee6" /><h:link outcome="/components/scriptParam"><code>&lt;o:scriptParam&gt;</code></h:link> to inject evaluated JavaScript code in backing bean</li>
+					<li><os:githubLink commit="a4cd6db" /><h:link outcome="/utils/Ajax"><code>Ajax#isExecuted()</code></h:link> to check if given client ID is covered by <code>&lt;f:ajax execute&gt;</code></li>
+					<li><os:githubLink commit="ca6659e" /><h:link outcome="/utils/Components"><code>Components#addScript/addScriptResource()</code></h:link> to add an inline script or script resource without the need to worry if the current request is an ajax request or if the render response phase is already running</li>
+				</ul>
+
+				<h3>Changed in OmniFaces 3.6</h3>
+				<ul>
+					<li><os:githubLink commit="1455246" /><h:link outcome="/utils/Faces"><code>Faces/FacesLocal/Servlets#getRemoteAddr()</code></h:link> now also checks <code>Forwarded</code> header instead of only <code>X-Forwarded-For</code></li>
+					<li><os:githubLink issue="548" /><h:link outcome="/functions/Dates"><code>of:formatDateXxx()</code></h:link> methods now also support <code>java.time.Temporal</code> instances</li>
+					<li><os:githubLink issue="497" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now supports defaulting to argument name in constructor injection</li>
+					<li><os:githubLink issue="550" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now doesn't anymore require <code>@Inject</code></li>
+					<li><os:githubLink commit="ca6659e" /><h:link outcome="/utils/Components"><code>Components#addScriptToBody /addScriptResourceToHead /addScriptResourceToBody()</code></h:link> are now <code>@Deprecated</code> in favor of <code>Components#addScript/addScriptResource()</code></li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.6</h3>
+				<ul>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_5');return false;">Fixes are same as in 2.7.5</a></li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 3.5?</h2>
 				<p><em>Release date: 12 April, 2020</em></p>
 
 				<h3>Added in OmniFaces 3.5</h3>
 				<ul>
-					<li><os:githubLink commit="541" /><h:link outcome="/functions/Strings"><code>\#{of:encodeURI()}</code></h:link> little brother of <code>\#{of:encodeURL()}</code></li>
-					<li><os:githubLink commit="537" /><code>crossorigin</code> attribute of <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link>  is now configureable</li>
-					<li><os:githubLink commit="544" /><h:link outcome="/utils/Messages"><code>Messages#clearXxx()</code></h:link> to programmatically clear out faces messages</li>
-					<li><os:githubLink commit="545" /><h:link outcome="/utils/Messages"><code>Messages#throwXxx()</code></h:link> convenience methods to replace <code>throw new ConverterException(Messages.createError("..."))</code></li>
+					<li><os:githubLink issue="541" /><h:link outcome="/functions/Strings"><code>\#{of:encodeURI()}</code></h:link> little brother of <code>\#{of:encodeURL()}</code></li>
+					<li><os:githubLink issue="537" /><code>crossorigin</code> attribute of <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link>  is now configureable</li>
+					<li><os:githubLink issue="544" /><h:link outcome="/utils/Messages"><code>Messages#clearXxx()</code></h:link> to programmatically clear out faces messages</li>
+					<li><os:githubLink issue="545" /><h:link outcome="/utils/Messages"><code>Messages#throwXxx()</code></h:link> convenience methods to replace <code>throw new ConverterException(Messages.createError("..."))</code></li>
 				</ul>
 
 				<h3>Fixed in OmniFaces 3.5</h3>
@@ -35,7 +65,7 @@
 
 				<h3>Fixed in OmniFaces 3.4.1</h3>
 				<ul>
-					<li><os:githubLink commit="522" /><h:link outcome="/utils/WebXml"><code>WebXml#instance()</code></h:link> didn't work during startup (e.g. <code>ServletContextListener</code>, <code>@Observes @Initialized(ApplicationScoped.class)</code>, etc)</li>
+					<li><os:githubLink issue="522" /><h:link outcome="/utils/WebXml"><code>WebXml#instance()</code></h:link> didn't work during startup (e.g. <code>ServletContextListener</code>, <code>@Observes @Initialized(ApplicationScoped.class)</code>, etc)</li>
 					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_3');return false;">Remaining fixes are same as in 2.7.3</a></li>
 				</ul>
 
@@ -46,7 +76,7 @@
 
 				<h3>Added in OmniFaces 3.4</h3>
 				<ul>
-					<li><os:githubLink commit="512" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> got a new attribute <code>onerror</code></li>
+					<li><os:githubLink issue="512" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> got a new attribute <code>onerror</code></li>
 				</ul>
 
 				<h3>Fixed in OmniFaces 3.4</h3>
@@ -182,6 +212,16 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.5?</h2>
+				<p><em>Release date: 3 May, 2020</em></p>
+		
+				<h3 id="fixed_2_7_5">Fixed in OmniFaces 2.7.5</h3>
+				<ul>
+					<li><os:githubLink issue="551" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> failed when using exclude patterns in Tomcat-based servers</li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.7.4?</h2>
 				<p><em>Release date: 12 April, 2020</em></p>
 		
