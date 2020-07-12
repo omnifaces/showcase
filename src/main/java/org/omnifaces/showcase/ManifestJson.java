@@ -23,7 +23,15 @@ public class ManifestJson extends WebAppManifest {
 
 	@Override
 	public Collection<ImageResource> getIcons() {
-		return asList(ImageResource.of("layout/img/OmniFaces-logo.svg"));
+		return asList(
+			ImageResource.of("layout:img/OmniFaces-icon-192x192.png", Size.SIZE_192),
+			ImageResource.of("layout:img/OmniFaces-icon-512x512.png", Size.SIZE_512)
+		);
+	}
+
+	@Override
+	public Display getDisplay() {
+		return Display.STANDALONE;
 	}
 
 	@Override
@@ -34,6 +42,11 @@ public class ManifestJson extends WebAppManifest {
 	@Override
 	public String getBackgroundColor() {
 		return "#f2f2f2";
+	}
+
+	@Override
+	protected String getOfflineViewId() {
+		return "/offline.xhtml";
 	}
 
 }

@@ -12,6 +12,28 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2>What's new in OmniFaces 3.7?</h2>
+				<p><em>Release date: 12 July, 2020</em></p>
+
+				<h3>Added in OmniFaces 3.7</h3>
+				<ul>
+					<li><os:githubLink issue="532" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>PWAResourceHandler</code></h:link> to autogenerate offline-aware <code>sw.js</code> file</li>
+					<li><os:githubLink issue="561" /><h:link outcome="/functions/Strings"><code>of:stripTags()</code></h:link> to remove any XML tags from a string</li>
+				</ul>
+
+				<h3>Changed in OmniFaces 3.7</h3>
+				<ul>
+					<li><os:githubLink issue="532" /><code>WebAppManifestResourceHandler</code> has been renamed to <h:link outcome="/resourcehandlers/PWAResourceHandler"><code>PWAResourceHandler</code></h:link></li>
+					<li><os:githubLink issue="556" /><h:link outcome="/utils/WebXml"><code>WebXml#instance()</code></h:link> will now also recognize non-standard location <code>META-INF/web.xml</code>, as used by among others Quarkus.</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.7</h3>
+				<ul>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_6');return false;">Fixes are same as in 2.7.6</a></li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 3.6.1?</h2>
 				<p><em>Release date: 22 May, 2020</em></p>
 
@@ -28,7 +50,7 @@
 				<h3>Added in OmniFaces 3.6</h3>
 				<ul>
 					<li><os:githubLink commit="f638cec" /><h:link outcome="/utils/Faces"><code>Faces#createResource()</code></h:link> to create new <code>Resource</code> instances</li>
-					<li><os:githubLink issue="532" /><h:link outcome="/resourcehandlers/WebAppManifestResourceHandler"><code>WebAppManifestResourceHandler</code></h:link> to autogenerate <code>manifest.json</code></li>
+					<li><os:githubLink issue="532" /><h:link outcome="/resourcehandlers/WebAppManifestResourceHandler"><code>WebAppManifestResourceHandler</code></h:link> to autogenerate <code>manifest.json</code> file</li>
 					<li><os:githubLink commit="1455246" /><h:link outcome="/utils/Servlets"><code>Servlets#isProxied()</code></h:link> which checks if <code>Forwarded</code> header or <code>X-Forwarded-For</code> is present</li>
 					<li><os:githubLink issue="471" /><h:link outcome="/components/pathParam"><code>&lt;o:pathParam&gt;</code></h:link> to support path params in links pointing to a <code>MultiViews</code> resource</li>
 					<li><os:githubLink commit="145eee6" /><h:link outcome="/components/scriptParam"><code>&lt;o:scriptParam&gt;</code></h:link> to inject evaluated JavaScript code in backing bean</li>
@@ -222,6 +244,16 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.6?</h2>
+				<p><em>Release date: 12 July, 2020</em></p>
+		
+				<h3 id="fixed_2_7_6">Fixed in OmniFaces 2.7.6</h3>
+				<ul>
+					<li><os:githubLink issue="560" /><h:link outcome="/components/deferredScript"><code>&lt;o:deferredScript&gt;</code></h:link> will now only start when <code>jQuery.ready</code> is finished, if any</li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.7.5?</h2>
 				<p><em>Release date: 3 May, 2020</em></p>
 		

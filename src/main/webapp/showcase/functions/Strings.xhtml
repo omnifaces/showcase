@@ -23,6 +23,7 @@
 		<c:set var="string2" value="left" />
 		<c:set var="string3" value="right" />
 		<c:set var="string4" value="STRING with díãçrïtìcs" />
+		<c:set var="string5" value="&lt;p&gt;string &lt;strong class='class'&gt;with &lt;em attr&gt;some&lt;/em&gt;&lt;/strong&gt; &lt;abbr&gt;HTML&lt;/abbr&gt;&lt;/p&gt;" />
 
 		<p>
 			Abbreviate a long string: #{of:abbreviate(string1, 20)}
@@ -68,5 +69,9 @@
 			<li>#{of:format4('one {0} three {1} five {2} seven {3}', 'two', 'four', 'six', 'eight')}</li>
 			<li>#{of:format5('one {0} three {1} five {2} seven {3} nine {4}', 'two', 'four', 'six', 'eight', 'ten')}</li>
 		</ul>
+
+		<p>
+			Strip tags from a string: #{of:stripTags(string5)}
+		</p>
 	</ui:define>
 </ui:composition>
