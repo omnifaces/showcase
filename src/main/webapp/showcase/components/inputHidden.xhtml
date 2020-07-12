@@ -1,0 +1,47 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="component/input/InputHidden" />
+			<f:attribute name="vdl.paths" value="o/inputHidden" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/InputHiddenBean.java" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<p>First click "Toggle", it should show a "Submit" button whose <code>rendered</code> attribute is dependent on the hidden input component, and then try clicking it. It should show a message saying "Submitted!".</p>
+
+		<h3>With standard h:inputHidden - does not work</h3>
+		<h:form id="form">
+			<h:commandButton value="Toggle" action="#{inputHiddenBean.toggle1}">
+				<f:ajax render="panel" />
+			</h:commandButton>
+			<h:panelGroup id="panel">
+				<h:inputHidden value="#{inputHiddenBean.toggled1}" />
+				<h:commandButton value="Submit" action="#{inputHiddenBean.submit}" rendered="#{inputHiddenBean.toggled1}">
+					<f:ajax execute="panel" render="messages" />
+				</h:commandButton>
+			</h:panelGroup>
+			<h:messages id="messages" styleClass="messages" infoClass="info" warnClass="warn" errorClass="error" />
+		</h:form>
+
+		<h3>With OmniFaces o:inputHidden - works!</h3>
+		<h:form>
+			<h:commandButton value="Toggle" action="#{inputHiddenBean.toggle2}">
+				<f:ajax render="panel" />
+			</h:commandButton>
+			<h:panelGroup id="panel">
+				<o:inputHidden value="#{inputHiddenBean.toggled2}" />
+				<h:commandButton value="Submit" action="#{inputHiddenBean.submit}" rendered="#{inputHiddenBean.toggled2}">
+					<f:ajax execute="panel" render="messages" />
+				</h:commandButton>
+			</h:panelGroup>
+			<h:messages id="messages" styleClass="messages" infoClass="info" warnClass="warn" errorClass="error" />
+		</h:form>
+	</ui:define>
+</ui:composition>
