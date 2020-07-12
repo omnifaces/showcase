@@ -133,16 +133,7 @@
 	</filter-mapping>
 
 
-	<!-- Security constraint, session config, welcome files, error pages and mime types. -->
-	
-	<security-constraint>
-		<web-resource-collection>
-			<url-pattern>/*</url-pattern>
-		</web-resource-collection>
-		<user-data-constraint>
-			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
-		</user-data-constraint>
-	</security-constraint>
+	<!-- Session config, welcome files, error pages and mime types. -->
 	
 	<session-config>
 		<cookie-config>
