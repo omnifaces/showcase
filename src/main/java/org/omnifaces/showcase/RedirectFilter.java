@@ -25,7 +25,7 @@ public class RedirectFilter extends HttpFilter {
 	public void doFilter(HttpServletRequest request, HttpServletResponse response, HttpSession session, FilterChain chain) throws ServletException, IOException {
 		if (!request.isSecure())
 		{
-			redirectPermanent(response, getRequestURLWithQueryString(request).replaceFirst("http:", "https:"));
+			redirectPermanent(response, getRequestURLWithQueryString(request).replaceFirst("http:", "https:").replaceFirst(":8080", ":8443"));
 		}
 		else
 		{
