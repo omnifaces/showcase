@@ -4,7 +4,7 @@
  - Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  - the License. You may obtain a copy of the License at
  -
- -     http://www.apache.org/licenses/LICENSE-2.0
+ -     https://www.apache.org/licenses/LICENSE-2.0
  -
  - Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  - an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -14,9 +14,9 @@
 <!-- 
 The following metadata attributes are supported via this template (they're parsed in Page#loadIfNecessary()):
 
-* api.path:  String of "http://omnifaces.org/docs/javadoc/<version>/org/omnifaces/"-relative path to API documentation.
+* api.path:  String of "https://omnifaces.org/docs/javadoc/<version>/org/omnifaces/"-relative path to API documentation.
              Any @see will be auto-included in Java source code.
-* vdl.paths: Commaseparated string of "http://omnifaces.org/docs/vdldoc/<version>/"-relative paths to VDL documentation.
+* vdl.paths: Commaseparated string of "https://omnifaces.org/docs/vdldoc/<version>/"-relative paths to VDL documentation.
 * src.paths: Commaseparated string of paths to source code snippets, if it does not start with "/", then it will be
              assumed relative to webcontent "/WEB-INF/" folder, else it will be assumed relative to webcontent root.
  -->
@@ -38,7 +38,7 @@ The following metadata attributes are supported via this template (they're parse
 		<!-- 
 			The below p:selectOneMenu components are disabled in other phases than render response, because they 
 			otherwise complain that the model value cannot be set even though there's no form. 
-			See also http://stackoverflow.com/q/14068891/157882
+			See also https://stackoverflow.com/q/14068891/157882
 		 -->
 		<p:selectOneMenu id="groups" value="#{page.parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
 			styleClass="groups" panelStyleClass="groups" effect="fade" 

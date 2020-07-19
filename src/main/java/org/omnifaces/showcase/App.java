@@ -1,10 +1,10 @@
 /*
- * Copyright 2012 OmniFaces.
+ * Copyright 2020 OmniFaces.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *     https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
@@ -80,7 +80,7 @@ public class App {
 
 	private String loadIndex() {
 		try {
-			String index = scrape("http://omnifaces.org", "#main_content").outerHtml();
+			String index = scrape("https://omnifaces.org", "#main_content").outerHtml();
 			indexLastLoaded = LocalDate.now();
 			return index;
 		}
@@ -112,7 +112,7 @@ public class App {
 	// Bot ------------------------------------------------------------------------------------------------------------
 
 	static Elements scrape(String url, String selector) throws IOException {
-		return Jsoup.connect(url).userAgent("OmniBot 0.1 (+http://showcase.omnifaces.org)").get().select(selector);
+		return Jsoup.connect(url).userAgent("OmniBot 0.2 (+https://showcase.omnifaces.org)").get().select(selector);
 	}
 
 	// Producers ------------------------------------------------------------------------------------------------------

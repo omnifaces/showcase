@@ -17,7 +17,7 @@ public class MessagesBean {
 		Messages.addGlobalWarn("Beware of potential"
 			+ " <span style=\"background: yellow; border: 10px solid black; font-size: 1.5em;\">XSS attack holes</span>"
 			+ " when <span style=\"color: red; font-weight: bold;\">user-controlled</span> input is redisplayed through"
-			+ " messages! See also <a href=\"http://en.wikipedia.org/wiki/Cross-site_scripting\">Wikipedia</a>.");
+			+ " messages! See also <a href=\"https://en.wikipedia.org/wiki/Cross-site_scripting\">Wikipedia</a>.");
 	}
 
 	public void showRandomMessages(int amount) {

@@ -24,7 +24,7 @@
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
-		<param-value>true</param-value> <!-- http://balusc.omnifaces.org/2015/10/the-empty-string-madness.html -->
+		<param-value>true</param-value> <!-- https://balusc.omnifaces.org/2015/10/the-empty-string-madness.html -->
 	</context-param>
 	<context-param>
     	<param-name>javax.faces.SERIALIZE_SERVER_STATE</param-name>

@@ -16,10 +16,10 @@
 
 	<name>Omnifaces Showcase</name>
 	<description>Showcase for JSF 2.x utility library</description>
-	<url>http://omnifaces.org</url>
+	<url>https://showcase.omnifaces.org</url>
 	<organization>
 		<name>OmniFaces</name>
-		<url>http://omnifaces.org</url>
+		<url>https://omnifaces.org</url>
 	</organization>
 	<inceptionYear>2012</inceptionYear>
 
@@ -39,7 +39,7 @@
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
