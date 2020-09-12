@@ -12,6 +12,32 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2>What's new in OmniFaces 3.8?</h2>
+				<p><em>Release date: 12 September, 2020</em></p>
+
+				<h3>Added in OmniFaces 3.8</h3>
+				<ul>
+					<li><os:githubLink issue="569" /><h:link outcome="/functions/Strings"><code>of:encodeBase64()</code></h:link> to Base64-encode strings in EL, e.g. for data URIs</li>
+					<li><os:githubLink issue="247" /><h:link outcome="/utils/Beans"><code>Beans#isProxy/unwrapIfNecessary()</code></h:link> utility methods to check if a given object is a CDI proxy, and to unwrap it if necessary</li>
+					<li><os:githubLink issue="574" /><h:link outcome="/utils/Components"><code>Components#getExpectedType/getExpectedValueType()</code></h:link> utility methods to return the expected type of the <code>value</code> attribute of the given <code>UIComponent</code>, or a given <code>ValueExpression</code></li>
+					<li><os:githubLink commit="ef3b15d" /><h:link outcome="/utils/Messages"><code>Messages#asConverterException/asValidatorException()</code></h:link> utility methods to obtain the so far created faces message as a <code>ConverterException</code> or <code>ValidatorException</code>, so these can be thrown directly</li>
+				</ul>
+
+				<h3>Changed in OmniFaces 3.8</h3>
+				<ul>
+					<li><os:githubLink issue="247" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> will now (finally) automatically validate nested entities as well, simply put <code>@Valid</code> on them</li>
+					<li><os:githubLink issue="574" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> will now simulate a <code>ValueExpression</code> on the component passed into converter/validator so that any generic target type can be extracted from there</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.8</h3>
+				<ul>
+					<li><os:githubLink issue="568" /><h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link> logged the wrong error page location when the exception was wrapped in a <code>ServletException</code></li>
+					<li><os:githubLink issue="572" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link>/<h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link> didn't properly support <code>@ResourceDependency</code> annotations declared on them</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_7');return false;">Remaining fixes are same as in 2.7.7</a></li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 3.7.1?</h2>
 				<p><em>Release date: 12 July, 2020</em></p>
 
@@ -255,6 +281,22 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.7?</h2>
+				<p><em>Release date: 12 September, 2020</em></p>
+		
+				<h3>Changed in OmniFaces 2.7.7</h3>
+				<ul>
+					<li><os:githubLink issue="570" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> <code>onerror</code> attribute was backported from 3.x to 2.x</li>
+				</ul>
+
+				<h3 id="fixed_2_7_7">Fixed in OmniFaces 2.7.7</h3>
+				<ul>
+					<li><os:githubLink issue="564" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> wasn't respecting <code>javax.faces.validator.BeanValidator.MESSAGE</code></li>
+					<li><os:githubLink issue="566" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> moment of JSON encoding has been optimized so it's not repeated when same message is sent to multiple users</li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.7.6?</h2>
 				<p><em>Release date: 12 July, 2020</em></p>
 		
