@@ -12,7 +12,7 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
-				<h2>What's new in OmniFaces 3.8?</h2>
+				<h2 id="3_8">What's new in OmniFaces 3.8?</h2>
 				<p><em>Release date: 12 September, 2020</em></p>
 
 				<h3>Added in OmniFaces 3.8</h3>
@@ -38,7 +38,7 @@
 
 				<hr />
 
-				<h2>What's new in OmniFaces 3.7.1?</h2>
+				<h2 id="3_7_1">What's new in OmniFaces 3.7.1?</h2>
 				<p><em>Release date: 12 July, 2020</em></p>
 
 				<h3>Fixed in OmniFaces 3.7.1</h3>
@@ -1196,6 +1196,34 @@
 					<li>Collection of Java methods for dealing with <h:link outcome="/utils/Components">components</h:link>, <h:link outcome="/utils/Events">events</h:link>, <h:link outcome="/utils/Exceptions">exceptions</h:link>, <h:link outcome="/utils/Messages">messages</h:link> and <h:link outcome="/utils/Faces">JSF in general</h:link></li>
 					<li><h:link outcome="/validators/RequiredCheckboxValidator">Checkbox with required attribute that works intuitively</h:link></li>
 					<li>Multi-field validators, for "<h:link outcome="/validators/validateAllOrNone">all or none</h:link>", "<h:link outcome="/validators/validateEqual">all equal</h:link>", "<h:link outcome="/validators/validateOneOrMore">one or more</h:link>", "<h:link outcome="/validators/validateOrder">all in order</h:link>" and "<h:link outcome="/validators/validateUnique">all unique</h:link>" validations</li>
+				</ul>
+			</p:tab>
+
+			<p:tab id="v4" title="4.x">
+				<h2>What's new in OmniFaces 4.0-M2?</h2>
+				<p><em>Release date: 12 September, 2020</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_8');return false;">It's the Jakartified version of 3.8</a></p>
+				
+				<hr />
+				
+				<h2>What's new in OmniFaces 4.0-M1?</h2>
+				<p><em>Release date: 12 July, 2020</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_7_1');return false;">It's the Jakartified version of 3.7.1</a></p>
+				
+				<hr />
+				
+				<h3>Major in OmniFaces 4.0</h3>
+				<ul class="important">
+					<li>Dependencies are changed from Java 1.8, JSF 2.3, EL 3.0, Servlet 3.1, CDI 2.0, WS 1.1 and BV 2.0 to <strong>Java 1.8, JSF 3.0, EL 4.0, Servlet 5.0, CDI 3.0, WS 2.0 and BV 3.0</strong>;
+						as of now, OmniFaces 4.0 is <strong>NOT</strong> backwards compatible with previous versions because of the compiler-incompatible rename of the <code>javax.*</code> package to <code>jakarta.*</code> package.</li>
+					<li>All in 3.x <code>@Deprecated</code> things have been removed, 
+						such as <code>&lt;o:form includeViewParams="true"&gt;</code> (has become the default behavior),
+						<code>WebXml.INSTANCE</code> and <code>FacesConfigXML.INSTANCE</code> (replaced by <code>WebXml.instance()</code> and <code>FacesConfigXml.instance()</code>)
+						and <code>omnifaces:fixviewstate.js</code> (replaced by JSF 2.2 native fix)</li>
+					<li><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <h:link outcome="/managedbeans/startup"><code>\#{startup}</code></h:link> 
+						will now return an instance of <code>java.time.Temporal</code> instead of <code>java.util.Date</code>;
+						it still supports the <code>time</code> property as in <code>\#{now.time}</code> and <code>\#{startup.time}</code>;
+						additionally, it's got two new convenience properties: <code>instant</code> and <code>zonedDateTime</code> as in <code>\#{now.instant}</code>, <code>\#{now.zonedDateTime}</code>, <code>\#{startup.instant}</code> and <code>\#{startup.zonedDateTime}</code></li>
 				</ul>
 			</p:tab>
 		</p:tabView>
