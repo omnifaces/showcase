@@ -12,6 +12,17 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_8_1">What's new in OmniFaces 3.8.1?</h2>
+				<p><em>Release date: 25 October, 2020</em></p>
+
+				<h3>Fixed in OmniFaces 3.8.1</h3>
+				<ul>
+					<li><os:githubLink issue="577" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> failed validating nested properties when model has a <code>java.util.Calendar</code> property</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_8');return false;">Remaining fixes are same as in 2.7.8</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_8">What's new in OmniFaces 3.8?</h2>
 				<p><em>Release date: 12 September, 2020</em></p>
 
@@ -281,6 +292,17 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.8?</h2>
+				<p><em>Release date: 25 October, 2020</em></p>
+		
+				<h3 id="fixed_2_7_6">Fixed in OmniFaces 2.7.8</h3>
+				<ul>
+					<li><os:githubLink issue="575" /><h:link outcome="/taghandlers/converter"><code>&lt;o:converter&gt;</code></h:link> and <h:link outcome="/taghandlers/validator"><code>&lt;o:validator&gt;</code></h:link> threw <code>NotSerializableException</code> in MyFaces or when <code>javax.faces.PARTIAL_STATE_SAVING</code> is <code>false</code></li>
+					<li><os:githubLink issue="576" /><h:link outcome="/converters/ToCollectionConverter"><code>omnifaces.ToCollectionConverter</code></h:link> didn't correctly delegate to <code>getAsObject()</code> when <code>itemConverter</code> is specified</li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.7.7?</h2>
 				<p><em>Release date: 12 September, 2020</em></p>
 		
