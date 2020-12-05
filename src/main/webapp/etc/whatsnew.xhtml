@@ -110,6 +110,7 @@
 				<ul>
 					<li><os:githubLink commit="1455246" /><h:link outcome="/utils/Faces"><code>Faces/FacesLocal/Servlets#getRemoteAddr()</code></h:link> now also checks <code>Forwarded</code> header instead of only <code>X-Forwarded-For</code></li>
 					<li><os:githubLink issue="548" /><h:link outcome="/functions/Dates"><code>of:formatDateXxx()</code></h:link> methods now also support <code>java.time.Temporal</code> instances</li>
+					<li><os:githubLink issue="546" /><h:link outcome="/managedbeans/now"><code>#{now}</code></h:link> and <h:link outcome="/managedbeans/startup"><code>#{startup}</code></h:link> are now produced by CDI instead of JSF</li>
 					<li><os:githubLink issue="497" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now supports defaulting to argument name in constructor injection</li>
 					<li><os:githubLink issue="550" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now doesn't anymore require <code>@Inject</code></li>
 					<li><os:githubLink commit="ca6659e" /><h:link outcome="/utils/Components"><code>Components#addScriptToBody /addScriptResourceToHead /addScriptResourceToBody()</code></h:link> are now <code>@Deprecated</code> in favor of <code>Components#addScript/addScriptResource()</code></li>
