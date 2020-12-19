@@ -12,6 +12,27 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_9">What's new in OmniFaces 3.9?</h2>
+				<p><em>Release date: 19 December, 2020</em></p>
+
+				<h3>Added in OmniFaces 3.9</h3>
+				<ul>
+					<li><os:githubLink issue="580" /><h:link outcome="/utils/Faces"><code>Faces#sendFile()</code></h:link> got new overload methods accepting <code>java.nio.file.Path</code> instead of <code>java.io.File</code>, and now also allows overriding the file name instead of relying on the one of <code>Path</code> or <code>File</code></li>
+					<li><os:githubLink issue="581" /><h:link outcome="/utils/JNDIObjectLocator"><code>JNDIObjectLocator</code></h:link> which minimizes the overhead of JNDI lookups by caching the objects it looks up</li>
+					<li><os:githubLink issue="586" /><h:link outcome="/resourcehandlers/VersionedResourceHandler"><code>VersionedResourceHandler</code></h:link> which automatically adds a <code>v</code> cache bust query string parameter if absent</li>
+					<li><os:githubLink commit="e954e5b" /><h:link outcome="/exceptionhandlers/ViewExpiredExceptionHandler"><code>ViewExpiredExceptionHandler</code></h:link> which completely suppresses <code>ViewExpiredException</code> and sets a flag in flash scope</li>
+					<li><os:githubLink commit="a0ae2e6" /><h:link outcome="/utils/WebXml"><code>WebXml#isDistributable()</code></h:link> which returns true if <code>&lt;distributable&gt;</code> flag is set in <code>web.xml</code></li>
+					<li><os:githubLink issue="593" /><h:link outcome="/exceptionhandlers/ExceptionSuppressor"><code>ExceptionSuppressor</code></h:link> to completely suppress (and thus not log) specific exceptions by simply refreshing the current page, such as inevitable I/O errors caused by <code>java.nio.channels.ClosedByInterruptException</code></li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.9</h3>
+				<ul>
+					<li><os:githubLink issue="598" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> was over-recursive, it will now only recurse into nested entities which are explicitly annotated with <code>@Valid</code></li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_9');return false;">Remaining fixes are same as in 2.7.9</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_8_1">What's new in OmniFaces 3.8.1?</h2>
 				<p><em>Release date: 25 October, 2020</em></p>
 
@@ -293,10 +314,21 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.9?</h2>
+				<p><em>Release date: 19 December, 2020</em></p>
+		
+				<h3 id="fixed_2_7_9">Fixed in OmniFaces 2.7.9</h3>
+				<ul>
+					<li><os:githubLink issue="582" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> will now also fire <code>PreValidateEvent</code>/<code>PostValidateEvent</code> on itself rather than only on <code>&lt;o:treeNode&gt;</code></li>
+					<li><os:githubLink issue="583" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> threw <code>Uncaught TypeError: Cannot read property 'name' of null at Object.request</code> after being Ajax-updated itself</li>
+				</ul>
+
+				<hr />
+		
 				<h2>What's new in OmniFaces 2.7.8?</h2>
 				<p><em>Release date: 25 October, 2020</em></p>
 		
-				<h3 id="fixed_2_7_6">Fixed in OmniFaces 2.7.8</h3>
+				<h3 id="fixed_2_7_8">Fixed in OmniFaces 2.7.8</h3>
 				<ul>
 					<li><os:githubLink issue="575" /><h:link outcome="/taghandlers/converter"><code>&lt;o:converter&gt;</code></h:link> and <h:link outcome="/taghandlers/validator"><code>&lt;o:validator&gt;</code></h:link> threw <code>NotSerializableException</code> in MyFaces or when <code>javax.faces.PARTIAL_STATE_SAVING</code> is <code>false</code></li>
 					<li><os:githubLink issue="576" /><h:link outcome="/converters/ToCollectionConverter"><code>omnifaces.ToCollectionConverter</code></h:link> didn't correctly delegate to <code>getAsObject()</code> when <code>itemConverter</code> is specified</li>
@@ -1223,6 +1255,12 @@
 			</p:tab>
 
 			<p:tab id="v4" title="4.x">
+				<h2>What's new in OmniFaces 4.0-M4?</h2>
+				<p><em>Release date: 19 December, 2020</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_9');return false;">It's the Jakartified version of 3.9</a></p>
+				
+				<hr />
+				
 				<h2>What's new in OmniFaces 4.0-M3?</h2>
 				<p><em>Release date: 25 October, 2020</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_8_1');return false;">It's the Jakartified version of 3.8.1</a></p>
