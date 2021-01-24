@@ -41,5 +41,10 @@
 		<p>
 			<o:graphicImage value="#{images.svgLogo}" type="svg" lastModified="#{startup.time}" height="90" />
 		</p>
+
+		<h3>The below one renders the same image as a lazy image</h3>
+		<p>
+			<o:graphicImage value="#{images.svgLogo}" type="svg" lastModified="0#{startup.time}" height="90" lazy="true" />
+		</p>
 	</ui:define>
 </ui:composition>
