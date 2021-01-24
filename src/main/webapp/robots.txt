@@ -1,0 +1,3 @@
+<f:view xmlns:f="http://xmlns.jcp.org/jsf/core" contentType="text/plain">
+sitemap:#{faces.requestBaseURL}sitemap.xml
+</f:view>

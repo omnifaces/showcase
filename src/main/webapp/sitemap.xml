@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" 
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+    <f:view contentType="text/xml">
+    	<o:sitemapUrl viewId="/whatsnew" />
+		<ui:repeat value="#{app.pages}" var="_page">
+			<o:sitemapUrl viewId="#{_page.viewId}" />
+		</ui:repeat>
+    </f:view>
+</urlset>

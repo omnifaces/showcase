@@ -80,7 +80,10 @@
 		<param-name>org.omnifaces.SOCKET_ENDPOINT_ENABLED</param-name>
 		<param-value>true</param-value>
 	</context-param>
-
+	<context-param>
+	    <param-name>org.omnifaces.VIEW_RESOURCE_HANDLER_URIS</param-name>
+	    <param-value>/robots.txt, /sitemap.xml</param-value>
+	</context-param>
 
 	<!-- Servlets and filters. -->
 

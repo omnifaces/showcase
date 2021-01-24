@@ -26,7 +26,8 @@ import static org.omnifaces.util.Utils.isEmpty;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashMap;
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -69,7 +70,7 @@ public class App {
 	public void init() {
 		index = loadIndex();
 		menu = new Page(null);
-		pages = new HashMap<>();
+		pages = new LinkedHashMap<>();
 		fillMenuAndPages(menu, pages);
 		omniFacesVersion = OmniFaces.getVersion();
 		snapshot = OmniFaces.isSnapshot();
@@ -138,6 +139,10 @@ public class App {
 
 	public TreeModel<Page> getMenu() {
 		return menu;
+	}
+
+	public Collection<Page> getPages() {
+		return pages.values();
 	}
 
 	public String getOmniFacesVersion() {

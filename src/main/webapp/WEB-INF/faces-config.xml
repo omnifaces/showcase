@@ -7,6 +7,7 @@
 >
 	<application>
 		<resource-handler>org.omnifaces.resourcehandler.CombinedResourceHandler</resource-handler>
+		<resource-handler>org.omnifaces.resourcehandler.ViewResourceHandler</resource-handler>
 		<locale-config>
 			<default-locale>en</default-locale>
 		</locale-config>

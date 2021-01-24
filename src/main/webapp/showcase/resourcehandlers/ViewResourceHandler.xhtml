@@ -8,6 +8,18 @@
 	<ui:define name="meta">
 		<f:metadata>
 			<f:attribute name="api.path" value="resourcehandler/ViewResourceHandler" />
+			<f:attribute name="src.paths" value="/robots.txt,/sitemap.xml" />
 		</f:metadata>
 	</ui:define>
+
+	<ui:define name="demo">
+		<p>
+			This resource handler is also  
+			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/webapp/WEB-INF/faces-config.xml">configured</a>
+			with 
+			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/webapp/WEB-INF/web.xml">robots.txt and sitemap.xml</a>
+			on this showcase web application.
+			You can find the demo source code below and here the generated <a href="/robots.txt">robots.txt</a> and <a href="/sitemap.xml">sitemap.xml</a>.
+		</p>
+ 	</ui:define>		
 </ui:composition>
