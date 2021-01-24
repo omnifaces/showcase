@@ -8,7 +8,7 @@
 
 	<groupId>org.omnifaces</groupId>
 	<artifactId>showcase</artifactId>
-	<version>3.9</version>
+	<version>3.10.1</version>
 	<packaging>war</packaging>
 
 	<name>Omnifaces Showcase</name>
@@ -54,13 +54,25 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
-	<dependencies>
+	<repositories>
+		<repository>
+			<id>jboss-repository</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
 
+	<dependencies>
 		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.faces</artifactId>
-			<version>2.3.9</version> <!-- Use the exact version as provided by target server! -->
-			<scope>provided</scope>
+		    <groupId>org.jboss.spec.javax.faces</groupId>
+		    <artifactId>jboss-jsf-api_2.3_spec</artifactId>
+		    <version>3.0.0.SP04</version>
+            <scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.faces</groupId>
+		    <artifactId>jsf-impl</artifactId>
+		    <version>2.3.14.SP01</version>
+            <scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -72,7 +84,7 @@
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
-			<version>3.9</version>
+			<version>3.10.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>

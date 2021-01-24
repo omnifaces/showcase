@@ -12,6 +12,45 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_10_1">What's new in OmniFaces 3.10.1?</h2>
+				<p><em>Release date: 24 January, 2021</em></p>
+
+				<h3>Fixed in OmniFaces 3.10.1</h3>
+				<ul>
+					<li><os:githubLink commit="e2246c0" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> <code>dataURI="true"</code> didn't work due to a typo introduced in 3.10</li>
+				</ul>
+
+				<hr />
+
+				<h2 id="3_10">What's new in OmniFaces 3.10?</h2>
+				<p><em>Release date: 24 January, 2021</em></p>
+
+				<h3>Added in OmniFaces 3.10</h3>
+				<ul>
+					<li><os:githubLink issue="584" /><h:link outcome="/resourcehandlers/ViewResourceHandler"><code>ViewResourceHandler</code></h:link> which enables using JSF components and EL expressions in non-Facelets files such as <code>/sitemap.xml</code> and <code>/robots.txt</code></li>
+					<li><os:githubLink issue="584" /><h:link outcome="/components/sitemapUrl"><code>&lt;o:sitemapUrl&gt;</code></h:link> to generate a <code>&lt;url&gt;</code> element in <code>&lt;urlset&gt;</code> of <code>/sitemap.xml</code></li>
+					<li><os:githubLink issue="584" /><h:link outcome="/utils/Servlets"><code>Servlets#getContext()</code></h:link> to obtain the current <code>ServletContext</code> via <code>FacesContext</code> with fallback to <code>BeanManager</code></li>
+					<li><os:githubLink issue="584" /><h:link outcome="/utils/FacesConfigXml"><code>FacesConfigXml#getResourceHandlers()</code></h:link> to obtain a list of all registered <code>&lt;application&gt;&lt;resource-handler&gt;</code> entries</li>
+					<li><os:githubLink issue="602" /><h:link outcome="/utils/Exceptions"><code>Exceptions#extract()</code></h:link> to extract the specified nested cause from the given exception</li>
+					<li><os:githubLink issue="222" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> now supports lazy images via new <code>lazy="true"</code> attribute</li>
+					<li><os:githubLink issue="605" /><h:link outcome="/functions/Converters"><code>of:convert()</code></h:link> EL function to convert given object using <code>Converter#getAsString()</code> of an existing JSF converter</li>
+					<li><os:githubLink issue="606" /><h:link outcome="/utils/Faces"><code>Faces#getRequestParameter()</code></h:link> got two new overloads taking a <code>Function&lt;String, T&gt;</code> as converter</li>
+					<li><os:githubLink issue="607" /><h:link outcome="/utils/Faces"><code>Faces#getReferrer()</code></h:link> and <h:link outcome="/utils/Servlets"><code>Servlets#getReferrer()</code></h:link> to obtain the <code>Referer</code> header from the request</li>
+				</ul>
+
+				<h3>Changed in OmniFaces 3.10</h3>
+				<ul>
+					<li><os:githubLink issue="261" /><h:link outcome="/taghandlers/massAttribute"><code>&lt;o:massAttribute&gt;</code></h:link> <code>target</code> will now accept a commaseparated string of FQNs</li>
+					<li><os:githubLink commit="65d6c3a,33a294a" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> <code>ResourceResolver</code> has been migrated to <code>ResourceHandler</code> as the <code>ResourceResolver</code> approach was long deprecated since JSF 2.2</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.10</h3>
+				<ul>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_10');return false;">Fixes are same as in 2.7.10</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_9">What's new in OmniFaces 3.9?</h2>
 				<p><em>Release date: 19 December, 2020</em></p>
 
@@ -119,7 +158,7 @@
 				<h3>Added in OmniFaces 3.6</h3>
 				<ul>
 					<li><os:githubLink commit="f638cec" /><h:link outcome="/utils/Faces"><code>Faces#createResource()</code></h:link> to create new <code>Resource</code> instances</li>
-					<li><os:githubLink issue="532" /><h:link outcome="/resourcehandlers/WebAppManifestResourceHandler"><code>WebAppManifestResourceHandler</code></h:link> to autogenerate <code>manifest.json</code> file</li>
+					<li><os:githubLink issue="532" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>WebAppManifestResourceHandler</code></h:link> to autogenerate <code>manifest.json</code> file</li>
 					<li><os:githubLink commit="1455246" /><h:link outcome="/utils/Servlets"><code>Servlets#isProxied()</code></h:link> which checks if <code>Forwarded</code> header or <code>X-Forwarded-For</code> is present</li>
 					<li><os:githubLink issue="471" /><h:link outcome="/components/pathParam"><code>&lt;o:pathParam&gt;</code></h:link> to support path params in links pointing to a <code>MultiViews</code> resource</li>
 					<li><os:githubLink commit="145eee6" /><h:link outcome="/components/scriptParam"><code>&lt;o:scriptParam&gt;</code></h:link> to inject evaluated JavaScript code in backing bean</li>
@@ -200,8 +239,8 @@
 
 				<h3>Changed in OmniFaces 3.3</h3>
 				<ul>
-					<li><os:githubLink commit="472" /><h:link outcome="/cdi/ContextParam"><code>@ContextParam</code></h:link> and <h:link outcome="/cdi/Cookie"><code>@Cookie</code></h:link> can now also be used outside <code>FacesContext</code> (e.g. in a plain servlet/filter)</li>
-					<li><os:githubLink commit="494" /><h:link outcome="/push/socket" fragment="cluster"><code>&lt;o:socket&gt;</code></h:link> documentation has been improved with cluster design hints</li>
+					<li><os:githubLink issue="472" /><h:link outcome="/cdi/ContextParam"><code>@ContextParam</code></h:link> and <h:link outcome="/cdi/Cookie"><code>@Cookie</code></h:link> can now also be used outside <code>FacesContext</code> (e.g. in a plain servlet/filter)</li>
+					<li><os:githubLink issue="494" /><h:link outcome="/push/socket" fragment="cluster"><code>&lt;o:socket&gt;</code></h:link> documentation has been improved with cluster design hints</li>
 				</ul>
 
 				<h3>Fixed in OmniFaces 3.3</h3>
@@ -221,17 +260,17 @@
 					<li><os:githubLink issue="461" />New <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CDNResource</code></h:link> marker class which allows <code>CombinedResourceHandler</code> generating a fallback local URL</li>
 					<li><os:githubLink issue="469" /><h:link outcome="/components/viewAction"><code>&lt;o:viewAction&gt;</code></h:link> now supports adding a faces message to the redirected page via new <code>message</code> attribute</li>
 					<li><os:githubLink issue="477" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> and <h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link> will from now on also log an UUID and IP address for easier log analysis</li>
-					<li><os:githubLink commit="ef920bb2" /><h:link outcome="/utils/Faces"><code>Faces#getUserAgent()</code></h:link> has been added</li>
+					<li><os:githubLink commit="ef920bb" /><h:link outcome="/utils/Faces"><code>Faces#getUserAgent()</code></h:link> has been added</li>
 				</ul>
 
 				<h3>Changed in OmniFaces 3.2</h3>
 				<ul>
-					<li><os:githubLink commit="472" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> now supports dynamic changes in <code>user</code> attribute without the need to refresh the page</li>
+					<li><os:githubLink issue="472" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> now supports dynamic changes in <code>user</code> attribute without the need to refresh the page</li>
 				</ul>
 
 				<h3>Fixed in OmniFaces 3.2</h3>
 				<ul>
-					<li><os:githubLink commit="445" /><h:link outcome="/utils/Components"><code>Components#getParams()</code></h:link> wasn't correctly parameterized</li>
+					<li><os:githubLink issue="445" /><h:link outcome="/utils/Components"><code>Components#getParams()</code></h:link> wasn't correctly parameterized</li>
 					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7');return false;">Remaining fixes are same as in 2.7</a></li>
 				</ul>
 
@@ -314,9 +353,19 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.10?</h2>
+				<p><em>Release date: 24 January, 2021</em></p>
+
+				<h3 id="fixed_2_7_10">Fixed in OmniFaces 2.7.10</h3>
+				<ul>
+					<li><os:githubLink issue="600" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> will now automatically deduplicate incorrectly duplicated <code>@ResourceDependency</code> stylesheets</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.9?</h2>
 				<p><em>Release date: 19 December, 2020</em></p>
-		
+
 				<h3 id="fixed_2_7_9">Fixed in OmniFaces 2.7.9</h3>
 				<ul>
 					<li><os:githubLink issue="582" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> will now also fire <code>PreValidateEvent</code>/<code>PostValidateEvent</code> on itself rather than only on <code>&lt;o:treeNode&gt;</code></li>
@@ -324,10 +373,10 @@
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.8?</h2>
 				<p><em>Release date: 25 October, 2020</em></p>
-		
+
 				<h3 id="fixed_2_7_8">Fixed in OmniFaces 2.7.8</h3>
 				<ul>
 					<li><os:githubLink issue="575" /><h:link outcome="/taghandlers/converter"><code>&lt;o:converter&gt;</code></h:link> and <h:link outcome="/taghandlers/validator"><code>&lt;o:validator&gt;</code></h:link> threw <code>NotSerializableException</code> in MyFaces or when <code>javax.faces.PARTIAL_STATE_SAVING</code> is <code>false</code></li>
@@ -335,10 +384,10 @@
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.7?</h2>
 				<p><em>Release date: 12 September, 2020</em></p>
-		
+
 				<h3>Changed in OmniFaces 2.7.7</h3>
 				<ul>
 					<li><os:githubLink issue="570" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> <code>onerror</code> attribute was backported from 3.x to 2.x</li>
@@ -351,40 +400,40 @@
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.6?</h2>
 				<p><em>Release date: 12 July, 2020</em></p>
-		
+
 				<h3 id="fixed_2_7_6">Fixed in OmniFaces 2.7.6</h3>
 				<ul>
 					<li><os:githubLink issue="560" /><h:link outcome="/components/deferredScript"><code>&lt;o:deferredScript&gt;</code></h:link> will now only start when <code>jQuery.ready</code> is finished, if any</li>
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.5?</h2>
 				<p><em>Release date: 3 May, 2020</em></p>
-		
+
 				<h3 id="fixed_2_7_5">Fixed in OmniFaces 2.7.5</h3>
 				<ul>
 					<li><os:githubLink issue="551" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> failed when using exclude patterns in Tomcat-based servers</li>
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.4?</h2>
 				<p><em>Release date: 12 April, 2020</em></p>
-		
+
 				<h3 id="fixed_2_7_4">Fixed in OmniFaces 2.7.4</h3>
 				<ul>
 					<li><os:githubLink issue="533" />OmniFaces version logger didn't log Z of X.Y.Z version.</li>
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.3?</h2>
 				<p><em>Release date: 30 November, 2019</em></p>
-		
+
 				<h3 id="fixed_2_7_3">Fixed in OmniFaces 2.7.3</h3>
 				<ul>
 					<li><os:githubLink issue="528" />Improved support for MyFaces <code>org.apache.myfaces.annotation.USE_CDI_FOR_ANNOTATION_SCANNING</code> to reduce startup time</li>
@@ -394,10 +443,10 @@
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.2?</h2>
 				<p><em>Release date: 27 October, 2019</em></p>
-		
+
 				<h3 id="fixed_2_7_2">Fixed in OmniFaces 2.7.2</h3>
 				<ul>
 					<li><os:githubLink issue="517" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> beans now also support non-PassivationCapable beans such as used in Quarkus</li>
@@ -408,10 +457,10 @@
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7.1?</h2>
 				<p><em>Release date: 5 May, 2019</em></p>
-		
+
 				<h3 id="fixed_2_7_1">Fixed in OmniFaces 2.7.1</h3>
 				<ul>
 					<li><os:githubLink issue="478" /><h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code></h:link> autogenerated ID was set in wrong variable mapper, causing duplicate IDs when multiple tags are used</li>
@@ -424,7 +473,7 @@
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.7?</h2>
 				<p><em>Release date: 29 July, 2018</em></p>
 
@@ -432,7 +481,7 @@
 				<ul>
 					<li><os:githubLink issue="461" />New <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CDNResource</code></h:link> marker class which allows <code>CombinedResourceHandler</code> generating a fallback local URL</li>
 				</ul>
-		
+
 				<h3 id="fixed_2_7">Fixed in OmniFaces 2.7</h3>
 				<ul>
 					<li><os:githubLink issue="456" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> leaked memory</li>
@@ -446,10 +495,10 @@
 				</ul>
 
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.9?</h2>
 				<p><em>Release date: 12 April, 2018</em></p>
-		
+
 				<h3 id="fixed_2_6_9">Fixed in OmniFaces 2.6.9</h3>
 				<ul>
 					<li><os:githubLink issue="434" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> disappears from page when a non-ajax non-redirect postback is performed</li>
@@ -461,44 +510,44 @@
 					<li><os:githubLink issue="447" /><h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> will now decapitalize file extension before testing mime type (fixes incompatiblity with WebSphere server)</li>
 					<li><os:githubLink issue="449" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> didn't support folder names with a period</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.8?</h2>
 				<p><em>Release date: 3 January, 2018</em></p>
-		
+
 				<h3 id="fixed_2_6_8">Fixed in OmniFaces 2.6.8</h3>
 				<ul>
 					<li><os:githubLink issue="426" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code></h:link> will now delegate <code>startDocument()</code> to wrapped partial response writer and reset internal <code>updating</code> state; this will only have a positive effect when you have your own wrapped partial response writer on top of OmniFaces</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.7?</h2>
 				<p><em>Release date: 14 December, 2017</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.6.7</h3>
 				<ul>
 					<li><os:githubLink issue="417" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> broke since 2.6.6 in MyFaces when <code>shouldHandleExceptionRootCause()</code> is implemented in an extended exception handler; the original behavior has been fixed</li>
 					<li><os:githubLink issue="423" /><h:link outcome="/utils/Servlets"><code>Servlets#getSubmittedFileName()</code></h:link> has been improved to support semicolons and quotes in file names (Unix) and UTF-8 filenames</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.6?</h2>
 				<p><em>Release date: 10 November, 2017</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.6.6</h3>
 				<ul>
 					<li><os:githubLink issue="414" /><h:link outcome="/components/tree"><code>AbstractTreeModel#remove</code></h:link> broke since 2.6.5; the AbstractTreeModel#equals has been re-fixed</li>
 					<li><os:githubLink issue="413" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> broke since 2.6.5; the default behavior on non-Ajax requests has been re-fixed</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.5?</h2>
 				<p><em>Release date: 14 October, 2017</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.6.5</h3>
 				<ul>
 					<li><os:githubLink issue="401" /><h:link outcome="/components/tree"><code>AbstractTreeModel#equals</code></h:link> ran in infinite loop</li>
@@ -508,24 +557,24 @@
 					<li><os:githubLink issue="402" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> now supports exclude URL patterns like <code>&lt;param-value&gt;/*.xhtml/*, !/api, !/push&lt;/param-value&gt;</code></li>
 					<li><os:githubLink issue="408" /><h:link outcome="/taghandlers/skipValidators"><code>&lt;o:skipValidators&gt;</code></h:link> didn't correctly restore <code>required="true"</code> literal across postbacks</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.4?</h2>
 				<p><em>Release date: 31 July, 2017</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.6.4</h3>
 				<ul>
 					<li><os:githubLink issue="386" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> ran in infinite loop when session expires during a long running request in WildFly</li>
 					<li><os:githubLink issue="392" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload on an expired restricted page should not be re-executed by authentication frameworks when user logs in again</li>
 					<li><os:githubLink commit="5d47da1" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload didn't work correctly in Safari</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.3?</h2>
 				<p><em>Release date: 4 June, 2017</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.6.3</h3>
 				<ul>
 					<li><os:githubLink issue="375" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload may fail when client side state saving is used on relatively large views</li>
@@ -536,35 +585,35 @@
 					<li><os:githubLink issue="357" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped(saveInViewState=true)</code></h:link> is recreated on postback when <code>&lt;f:viewAction&gt;</code> is present</li>
 					<li><os:githubLink issue="385" />PrimeFaces Dialog Framework's <code>closeDialog()</code> failed when <h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> is enabled</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.2?</h2>
 				<p><em>Release date: 7 April, 2017</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.6.2</h3>
 				<ul>
 					<li><os:githubLink issue="363" />Removed accidentally introduced Java 1.8 specific methods (2.6 was therefore not Java 1.7 compatible, but 2.6.2 is)</li>
 					<li><os:githubLink issue="362" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed in MyFaces when <code>&lt;f:viewAction&gt;</code> is present in view</li>
 					<li><os:githubLink issue="368" />Standard JSF converters failed to initialize when it's subclassed into a custom <h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link></li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6.1?</h2>
 				<p><em>Release date: 21 February, 2017</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.6.1</h3>
 				<ul>
 					<li><os:githubLink issue="355" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload threw NPE in MyFaces when unload is triggered on a cached page</li>
 					<li><os:githubLink issue="361" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed in MyFaces when bean is created before the view is created</li>
 				</ul>
-				
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.6?</h2>
 				<p><em>Release date: 2 February, 2017</em></p>
-			
+
 				<h3>Added in OmniFaces 2.6</h3>
 				<ul>
 					<li><os:githubLink issue="317,342" /><code>showMessageFor</code> attribute for <h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> which also supports <code>ConstraintViolation#getPropertyPath()</code></li>
@@ -576,7 +625,7 @@
 					<li><os:githubLink issue="330" /><code>saveInViewState</code> attribute for <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> which should trigger explicitly saving the entire view scoped bean in JSF view state when client side state saving is enabled, hereby making it effectively not requiring the HTTP session anymore</li>
 					<li><os:githubLink commit="9b0c984,c267b1c,942bf43" /><h:link outcome="/utils/Faces"><code>Faces#getProjectStage()</code>, <code>Faces#isSystemTest()</code>, <code>Faces#isProduction()</code>, <code>Faces#getRequestParameter(name, type)</code> and <code>Faces#getRequestParameterValues(name, type)</code></h:link></li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 2.6</h3>
 				<ul>
 					<li><os:githubLink issue="319" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> is now an <code>UIComponent</code> instead of <code>TagHandler</code> in order to support <code>&lt;f:ajax&gt;</code></li>
@@ -587,7 +636,7 @@
 					<li><os:githubLink issue="25" /><h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> will now skip converters having a constructor taking <code>Class</code> argument</li>
 					<li><os:githubLink issue="349" /><h:link outcome="/viewhandlers/OmniViewHandler"><code>NestedFormsChecker</code></h:link> is now more lenient as to forms nested in a <code>&lt;p:dialog&gt;</code></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 2.6</h3>
 				<ul>
 					<li><os:githubLink issue="315" />MyFaces incompatibility when <h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> is used with both <code>required="true"</code> and <code>accept</code> attributes (MyFaces unexpectedly gives an empty <code>Part</code> instance instead of <code>null</code> when no file is selected)</li>
@@ -600,22 +649,22 @@
 					<li><os:githubLink issue="337" /><h:link outcome="/utils/Beans"><code>Beans#getReference()</code></h:link> broke in producer methods when where the now deprecated <code>BeanManager.INSTANCE.getReference()</code> worked fine</li>
 					<li><os:githubLink issue="342,347" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> failed in specific composite component cases</li>
 				</ul>
-		
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.5.1?</h2>
 				<p><em>Release date: 21 September, 2016</em></p>
-		
+
 				<h3>Fixed in OmniFaces 2.5.1</h3>
 				<ul>
 					<li><os:githubLink issue="313" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> incorrectly skipped validating whole bean by <code>value</code> after a refactoring mistake</li>
 				</ul>
-		
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.5?</h2>
 				<p><em>Release date: 15 September, 2016</em></p>
-		
+
 				<h3>Added in OmniFaces 2.5</h3>
 				<ul>
 					<li><os:githubLink issue="278" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> now supports a new context param <code>org.omnifaces.EXCEPTION_TYPES_TO_IGNORE_IN_LOGGING</code> where you can specify exception types to ignore in logging</li>
@@ -628,7 +677,7 @@
 					<li><os:githubLink issue="20" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> now supports the <code>MultiViews</code> feature as known in Apache HTTPD + PHP world</li>
 					<li><os:githubLink issue="305" /><h:link outcome="/utils/Components"><code>Components#resetForm/resetInputs()</code></h:link> to reset state of input fields in given form or parent component</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 2.5</h3>
 				<ul>
 					<li><os:githubLink issue="272" />Cookies created in server side by <h:link outcome="/utils/Faces"><code>Faces</code></h:link> and <h:link outcome="/utils/Servlets"><code>Servlets</code></h:link> utility classes are now by default always <code>HttpOnly</code></li>
@@ -638,7 +687,7 @@
 					<li><os:githubLink issue="293" /><h:link outcome="/components/highlight"><code>&lt;o:highlight&gt;</code></h:link> will now remove the highlight when the enduser starts using the input field</li>
 					<li><os:githubLink issue="20" /><code>RequestParamProducer</code> has been renamed to <h:link outcome="/cdi/Param"><code>ParamProducer</code></h:link> as it also supports path parameters</li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 2.5</h3>
 				<ul>
 					<li><os:githubLink issue="283" />Weld 2.3.5 and newer issued warning WELD-000167 on <h:link outcome="/cdi/Param"><code>DynamicParamValueProducer</code></h:link></li>
@@ -649,12 +698,12 @@
 					<li><os:githubLink issue="297" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code></h:link> failed serving RichFaces-specific resources</li>
 					<li><os:githubLink issue="295" />Constructor injection of <h:link outcome="/cdi/Param"><code>@Param</code></h:link> failed on dynamic (non-String) types</li>
 				</ul>
-		
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.4?</h2>
 				<p><em>Release date: 1 July, 2016</em></p>
-		
+
 				<h3>Added in OmniFaces 2.4</h3>
 				<ul>
 					<li><os:githubLink commit="0b190e4" /><h:link outcome="/utils/Components"><code>Components#getCurrentActionSource/ActionExpressionsAndListeners()</code></h:link> which should ease a.o. <a href="https://stackoverflow.com/q/31853188/157882">logging JSF ajax actions</a></li>
@@ -662,7 +711,7 @@
 					<li><os:githubLink issue="258" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> got new <code>logException</code> override which allows determining the log reason</li>
 					<li><os:githubLink issue="257" /><h:link outcome="/functions/Arrays"><code>of:reverseArray()</code></h:link> to reverse an array</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 2.4</h3>
 				<ul>
 					<li><os:githubLink commit="ebd78a7,f773bb6" />Scripts generated by <h:link outcome="/components/deferredScript"><code>&lt;o:deferredScript&gt;</code></h:link> and <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> have now by default a <a href="https://www.w3.org/TR/html5/scripting-1.html#attr-script-crossorigin"><code>crossorigin="anonymous"</code></a> attribute which basically enables logging via <a href="https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror"><code>window.onerror</code></a> in case script is served via CDN</li>
@@ -672,7 +721,7 @@
 					<li><os:githubLink commit="e0d8e0d,56b03cd,0e629e" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> and <h:link outcome="/utils/Faces"><code>Faces#getRequestXxx()</code></h:link> is now also compatible with existing URL rewrite filters running in front of it (which under the covers performs a <code>forward()</code>)</li>
 					<li><os:githubLink issue="243" />OmniFaces does not anymore require <code>/META-INF/context.xml</code> when running on Tomcat+Weld</li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 2.4</h3>
 				<ul>
 					<li><os:githubLink issue="228" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> failed state saving when being dynamically created</li>
@@ -689,12 +738,12 @@
 					<li><os:githubLink issue="264" /><h:link outcome="/converters/ListIndexConverter"><code>ListIndexConverter</code></h:link> threw <code>NumberFormatException</code> instead of conversion error when empty input was submitted</li>
 					<li><os:githubLink issue="273" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> failed in PrimeFaces 6.0 when a component requiring a new resource is dynamically created during an ajax request (instead of just conditionally rendered)</li>
 				</ul>
-		
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 2.3?</h2>
 				<p><em>Release date: 1 April, 2016</em></p>
-		
+
 				<h3>Added in OmniFaces 2.3</h3>
 				<ul>
 					<li><os:githubLink issue="17" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> for web socket based push which can be accessed via CDI <code>@Push</code></li>
@@ -711,14 +760,14 @@
 					<li><os:githubLink issue="216" /><h:link outcome="/servlets/FileServlet"><code>FileServlet</code></h:link> now supports customizing 404 error handling and attachment file name.</li>
 					<li><os:githubLink commit="8dbd495" /><h:link outcome="/utils/Ajax"><code>Ajax#load()</code></h:link> to load a script resource on complete of current ajax request.</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 2.3</h3>
 				<ul>
 					<li><os:githubLink issue="178" /><code>&lt;o:importConstants&gt;</code> will not anymore include parent of an inner class in default value of <code>var</code> attribute, so e.g. <code>\#{Parent$Inner}</code> will now be <code>\#{Inner}</code></li>
 					<li><os:githubLink commit="214d189" /><code>BeanManager.INSTANCE.getReference()</code> is <strong>deprecated</strong> in favor of <h:link outcome="/utils/Beans"><code>Beans#getReference()</code></h:link></li>
 					<li><os:githubLink issue="218" /><code>&lt;o:commandScript&gt;</code> now supports declaring a namespaced function</li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 2.3</h3>
 				<ul>
 					<li><os:githubLink commit="84f6748" /><h:link outcome="/utils/WebXml"><code>WebXml#isAccessAllowed()</code></h:link> incorrectly matched extension based URLs in prefix path checking</li>
@@ -731,12 +780,12 @@
 					<li><os:githubLink issue="226" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> failed to resolve <code>\#{cc}</code> when nested in composite component</li>
 					<li><os:githubLink issue="225" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> failed on string concatenated properties like <code>\#{bean[foo += bar]}</code></li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 2.2?</h2>
 				<p><em>Release date: 24 November, 2015</em></p>
-		
+
 				<h3>Added in OmniFaces 2.2</h3>
 				<ul>
 					<li><os:githubLink issue="124" /><code>&lt;o:commandScript&gt;</code> got new <code>autorun</code> attribute, allowing for immediate execution during window load event</li>
@@ -754,7 +803,7 @@
 					<li><os:githubLink issue="119" /><h:link outcome="/components/viewAction"><code>&lt;o:viewAction&gt;</code></h:link> component which evaluates <code>if</code> attribute during invoke application phase</li>
 					<li><os:githubLink commit="1417fc0" />Added abstract template for "<h:link outcome="/servlets/FileServlet">BalusC FileServlet</h:link>" which supports a.o. cache and range (resume) requests</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 2.2</h3>
 				<ul>
 					<li><os:githubLink commit="55510fa" /><code>Html5RenderKit</code> is <strong>deprecated</strong> in favor of JSF 2.2 passthrough attributes; it will be removed in OmniFaces 3.0</li>
@@ -762,7 +811,7 @@
 					<li><os:githubLink issue="164" /><h:link outcome="/taghandlers/importFunctions"><code>&lt;o:importFunctions"&gt;</code></h:link> will now throw a clear <code>IllegalArgumentException</code> on non-existing function</li>
 					<li><os:githubLink issue="167" />Migrated <h:link outcome="/utils/Components"><code>Components#includeCompositeComponent()</code></h:link> to JSF 2.2 approach with <code>createComponent()</code></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 2.2</h3>
 				<ul>
 					<li><os:githubLink commit="6cf7123,96d5d17" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> failed when resource name contains a query string, and ordering w.r.t. suppressed resources failed during synchronous postback in MyFaces</li>
@@ -777,12 +826,12 @@
 					<li><os:githubLink issue="183" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code></h:link> failed to handle <code>web.xml</code> form login page redirect in MyFaces 2.2+</li>
 					<li><os:githubLink commit="d82d6a0" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> generated illegal URL when OpenWebBeans managed bean is used</li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 2.1?</h2>
 				<p><em>Release date: 3 June, 2015</em></p>
-		
+
 				<h3>Added in OmniFaces 2.1</h3>
 				<ul>
 					<li><os:githubLink commit="0cd13ea" /><h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code></h:link> to explicitly declare a tagfile attribute which is only exposed in tagfile's own EL scope, to prevent pollution in EL scope of nested tagfiles</li>
@@ -795,14 +844,14 @@
 		            <li><os:githubLink issue="57" /><h:link outcome="/utils/Faces"><code>Faces</code></h:link> and <h:link outcome="/utils/FacesLocal"><code>FacesLocal</code></h:link> got new <code>getResourceBundles()</code> and <code>getBundleString()</code> methods</li>
 		            <li><os:githubLink commit="82ace56" /><h:link outcome="/utils/Servlets"><code>Servlets</code></h:link> got a new <code>isFacesDevelopment()</code> method</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 2.1</h3>
 				<ul>
 					<li><os:githubLink commit="169bb7f" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> default threshold is lowered from 500b to 150b to catch up modern hardware, and default mimetypes is extended with <code>image/svg+xml</code></li>
 					<li><os:githubLink issue="53" /><h:link outcome="/filters/CacheControlFilter"><code>CacheControlFilter</code></h:link> does not run anymore when project stage is set to development</li>
 					<li><os:githubLink issue="92" /><code>RestorableViewHandler</code> does not anymore try to restore the view as long as <h:link outcome="/taghandlers/enableRestorableView"><code>&lt;o:enableRestorableView&gt;</code></h:link> is never used</li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 2.1</h3>
 				<ul>
 					<li><os:githubLink issue="97" />All resource handlers (CDN, Combined and Unmapped) are made better compatible with other 3rd party component libraries (e.g. PrimeFaces ones which appends a version to query string)</li>
@@ -816,12 +865,12 @@
 					<li><os:githubLink commit="500019e" /><h:link outcome="/converters/SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code></h:link> didn't properly update when new items are added during invoke application</li>
 					<li><os:githubLink commit="38d0330" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code></h:link> memory leak on composite components</li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 2.0?</h2>
 				<p><em>Release date: 24 November, 2014</em></p>
-		
+
 				<h3>Major in OmniFaces 2.0</h3>
 				<ul class="important">
 					<li>Dependencies are changed from Java 1.6, JSF 2.0, Servlet 2.5, EL 2.1 to <strong>Java 1.7, JSF 2.2, Servlet 3.0, EL 2.2 and CDI 1.1</strong>;
@@ -830,7 +879,7 @@
 					<li><h:link outcome="/utils/Events"><code>Events</code> utility class has major method renames to clarify the meaning</h:link></li>
 					<li><h:link outcome="/utils/Beans"><code>Beans</code> utility class doesn't take <code>BeanManager</code> anymore as argument</h:link></li>
 				</ul>
-		
+
 				<h3>Added in OmniFaces 2.0</h3>
 				<ul>
 					<li><os:githubLink commit="c83e4ab" /><h:link outcome="/viewhandlers/NoAutoGeneratedIdViewHandler"><code>NoAutoGeneratedIdViewHandler</code></h:link> which throws a runtime exception when an autogenerated JSF client ID is being rendered</li>
@@ -845,14 +894,14 @@
 					<li><os:githubLink commit="3cda0b2" /><h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link> and <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> can now be disabled via a <code>web.xml</code> context param supporting a request based EL expression</li>
 		            <li><os:githubLink issue="33" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> now supports validating beans at the class level</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 2.0</h3>
 				<ul>
 					<li><os:githubLink commit="f8f84aa" /><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code></h:link> enables support for <code>@NotNull</code> and <code>Pre/PostValidateEvent</code> even when parameter is not specified, on contrary to <code>&lt;f:viewParam&gt;</code></li>
 					<li><os:githubLink commit="9fa0c3b" /><code>Html5RenderKit</code> is now not forgiving anymore on broken renderers that don't pass the current component to the <code>write</code> methods (fixes "plain HTML" messup)</li>
 					<li><os:githubLink issue="47" />Skip null/empty values in <h:link outcome="/validators/validateOrder"><code>&lt;o:validateOrder&gt;</code></h:link> as that's actually the responsibility of <code>required="true"</code></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 2.0</h3>
 				<ul>
 					<li><os:githubLink commit="bf833e3" />Set system default timezone in CDI <h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> when <code>web.xml</code> context param says so</li>
@@ -869,21 +918,21 @@
 				<ul>
 					<li><os:githubLink commit="38d0330" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> memory leak on composite components</h:link></li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 1.8.1?</h2>
 				<p><em>Release date: 3 June, 2014</em></p>
 				<h3>Fixed in OmniFaces 1.8.1</h3>
 				<ul>
 					<li>During fixing <a href="https://github.com/omnifaces/omnifaces/issues/35">issue 35</a> some <code>CombinedResourceHandler</code> code necessary for dealing with <code>&lt;o:deferredScript&gt;</code> was accidentally removed, causing those to not be suppressed from head (and thus effectively included twice).</li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 1.8?</h2>
 				<p><em>Release date: 2 June, 2014</em></p>
-		
+
 				<h3>Added in OmniFaces 1.8</h3>
 				<ul>
 					<li><h:link outcome="/utils/WebXml"><code>WebXml#getFormErrorPage()</code> to get web.xml configured location of the FORM authentication error page</h:link></li>
@@ -897,13 +946,13 @@
 					<li><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code> skips converter for <code>null</code> model values so that query string doesn't get polluted with an empty string</h:link></li>
 					<li>Small amount of utility methods and classes, e.g. method to check CDI annotations recursively in stereotypes, shortcut method to obtain VDL, etc</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 1.8</h3>
 				<ul>
 					<li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> now also recognizes and combines <code>&lt;o:deferredScript&gt;</code></h:link></li>
 					<li><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> now also recognizes PrimeFaces dynamic resources using <code>StreamedContent</code></h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.8</h3>
 				<ul>
 					<li>Assume <code>RuntimeException</code> in <code>BeanManager#init()</code> as CDI not available (fixes deployment error on WAS 8.5 without CDI enabled)</li>
@@ -915,12 +964,12 @@
 					<li><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> broke state saving when partial state saving is turned off</h:link></li>
 					<li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> didn't properly deal with MyFaces-managed resources</h:link></li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 1.7?</h2>
 				<p><em>Release date: 12 January, 2014</em></p>
-			
+
 				<h3>Added in OmniFaces 1.7</h3>
 				<ul>
 					<li>New <code>omnifaces:fixviewstate.js</code> script which should automatically fix JSF issue 790</li>
@@ -933,12 +982,12 @@
 					<li><h:link outcome="/utils/WebXml">Added <code>WebXml#getSessionTimeout()</code> to get web.xml configured session timeout</h:link></li>
 					<li><h:link outcome="/components/tree">Added <code>SortedTreeModel</code> which holds the tree children in a <code>TreeSet</code></h:link></li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 1.7</h3>
 				<ul>
 					<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code> is now able to handle error in error page itself</h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.7</h3>
 				<ul>
 					<li>Store constants of <code>&lt;o:importConstants&gt;</code> in an ordered map instead of an unordered map</li>
@@ -947,9 +996,9 @@
 					<li><code>GenericEnumConverter</code> failed in composites which are reused more than once in same view and on enums with custom bodies</li>
 					<li><h:link outcome="/validators/validateOrder"><code>o:validateOrder</code> threw NPE on non-required fields</h:link></li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 1.6.3?</h2>
 				<p><em>Release date: 18 October, 2013</em></p>
 		
@@ -957,19 +1006,19 @@
 				<ul>
 					<li>Fixed throwing <code>NoClassDefFoundError</code> when no JNDI is present (like e.g. in Google App Engine by default)</li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 1.6.2?</h2>
 				<p><em>Release date: 13 October, 2013</em></p>
-			
+
 				<h3>Fixed in OmniFaces 1.6.2</h3>
 				<ul>
 					<li>Fixed throwing <code>IllegalStateException</code> when no CDI is present (like e.g. in Tomcat by default)</li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 1.6.1?</h2>
 				<p><em>Release date: 5 October, 2013</em></p>
 		
@@ -978,17 +1027,17 @@
 					<li>New <code>BeanManager</code> enum which allows trying to get a CDI managed bean instance without any CDI dependency</li>
 					<li><h:link outcome="/utils/Beans">New <code>Beans</code> utility class to ease working with CDI <code>BeanManager</code> API</h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.6.1</h3>
 				<ul>
 					<li><a href="https://github.com/omnifaces/omnifaces/wiki/Known-Issues-(CDI)">Fixed deployment problem when OmniFaces is bundled in multiple WARs of the same EAR, caused by the way how CDI behaves</a></li>
 				</ul>
-		
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 1.6?</h2>
 				<p><em>Release date: 19 September, 2013</em></p>
-		
+
 				<h3>Added in OmniFaces 1.6</h3>
 				<ul>
 					<li><h:link outcome="/cdi/Param">Injecting, converting and validating HTTP request parameters via CDI <code>@Param</code> (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
@@ -1006,14 +1055,14 @@
 					<li><h:link outcome="/functions/Converters"><code>of:splitArray()</code> and <code>of:splitList()</code> to split an array or list in subarrays or sublists</h:link></li>
 					<li><h:link outcome="/functions/Numbers"><code>of:formatPercent()</code> to format a number as a percentage</h:link></li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 1.6</h3>
 				<ul>
 					<li><h:link outcome="/validators/validateEqual"><code>showMessageFor</code> attribute of multi field validators now supports a space separated collection of client IDs where the message should be shown</h:link></li>
 					<li><h:link outcome="/resourcehandlers/CDNResourceHandler">CDN resource handler now supports: 1) always being enabled, also during development stage, 2) wildcard configuration, and 3) EL resolving in CDN URL</h:link></li>
 					<li><h:link outcome="/utils/Faces"><code>Faces#redirect()</code> will not use <code>String#format()</code> anymore when no params are supplied, this enables developers to pass already-encoded URLs to <code>Faces#redirect()</code></h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.6</h3>
 				<ul>
 					<li><h:link outcome="/utils/Ajax"><code>Json#encode()</code> incorrectly escaped singlequotes (was causing validation error in <code>jQuery.parseJSON()</code>)</h:link></li>
@@ -1021,12 +1070,12 @@
 					<li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render and didn't work anymore during a postback since Mojarra 2.1.24</h:link></li>
 					<li><h:link outcome="/components/highlight"><code>&lt;o:highlight&gt;</code> threw duplicate component ID error in TomEE 1.6.0</h:link></li>
 				</ul>
-		
+
 				<hr />
-		
+
 				<h2>What's new in OmniFaces 1.5?</h2>
 				<p><em>Release date: 10 June, 2013</em></p>
-		
+
 				<h3>Added in OmniFaces 1.5</h3>
 				<ul>
 					<li><h:link outcome="/components/param">Decode <code>UIComponent</code> children in <code>&lt;o:param&gt;</code> when no <code>value</code> attribute is specified (so that you can specify JSF/HTML code as <code>outputFormat</code> parameter)</h:link></li>
@@ -1044,7 +1093,7 @@
 					<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">New protected methods <code>FullAjaxExceptionHandler#findExceptionRootCause()</code> and <code>#findErrorPageLocation()</code> so that it can easier be subclassed</h:link></li>
 					<li>EL functions <h:link outcome="/functions/Converters"><code>of:toJson()</code></h:link>, <h:link outcome="/functions/Strings"><code>of:replaceAll()</code> and <code>of:matches()</code></h:link></li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 1.5</h3>
 				<ul>
 					<li>Obtain current component via <code>UIComponent#getCurrentComponent()</code> when it's <code>null</code> in <code>Html5RenderKit</code> (so that it also works with PrimeFaces input components)</li>
@@ -1052,7 +1101,7 @@
 					<li><h:link outcome="/utils/Ajax">Support <code>@all</code>, <code>@form</code> and <code>@this</code> in <Code>Ajax#update()</Code></h:link></li>
 					<li><h:link outcome="/utils/Components">Moved <code>Faces#includeFacelet()</code> to <code>Components#includeFacelet()</code></h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.5</h3>
 				<ul>
 					<li>Add missing <code>createResource()</code> overrides 
@@ -1064,22 +1113,22 @@
 					<li><h:link outcome="/converters/SelectItemsConverter">Add missing support for <code>noSelectionValue</code> attribute in <code>SelectItemsConverter</code></h:link></li>
 					<li><h:link outcome="/facesviews/ExtensionlessURLs">Action URL generation for FacesViews didn't take other view handlers into account, now it does (so that it also works with PrimeFaces 4.0 Dialog framework).</h:link></li>
 				</ul>
-		
+
 				<hr />
-				
+
 				<h2>What's new in OmniFaces 1.4.1?</h2>
 				<p><em>Release date: 12 March, 2013</em></p>
-			
+
 				<h3>Fixed in OmniFaces 1.4.1</h3>
 				<ul>
 					<li><h:link outcome="/filters/GzipResponseFilter">Reverted change in <code>GzipResponseFilter</code> which was made during FacesViews testing, which causes Glassfish to return blank pages</h:link></li>
 				</ul>
-		
+
 				<hr />
-				
+
 				<h2>What's new in OmniFaces 1.4?</h2>
 				<p><em>Release date: 11 March, 2013</em></p>
-			
+
 				<h3>Added in OmniFaces 1.4</h3>
 				<ul>
 					<li><h:link outcome="/utils/Faces"><code>Faces#getMetadataAttribute()</code> and <code>getMetadataAttributes()</code> utility methods</h:link></li>
@@ -1094,7 +1143,7 @@
 					<li><h:link outcome="/utils/WebXml">Programmatically getting list of welcome pages and checking if access is allowed to a URL according to security constraints</h:link></li>
 					<li><a href="#{_srcURL}org/omnifaces/VersionLoggerEventListener.java">OmniFaces version will now be logged to webapp log in this format: <code>INFO: Using OmniFaces version 1.4</code></a></li>
 				</ul>
-		
+
 		 		<h3>Changed in OmniFaces 1.4</h3>
 				<ul>
 					<li><h:link outcome="/utils/Ajax">Support for Javabeans in <code>Json#encode()</code> as used by <code>Ajax#data()</code></h:link></li>
@@ -1109,18 +1158,18 @@
 					<li><h:link outcome="/filters/FacesExceptionFilter"><code>ELException</code> will now also be unwrapped by <code>FacesExceptionFilter</code> in order to improve exception handling in MyFaces</h:link></li>
 					<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>ELException</code> will now also be unwrapped by <code>FullAjaxExceptionFilter</code> in order to improve ajax exception handling in MyFaces</h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.4</h3>
 				<ul>
 					<li><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> incorrectly skipped gzip when the written data was not within servletcontainer's and Facelets buffer size</h:link></li>
 					<li><h:link outcome="/facesviews/ExtensionlessURLs">Fix initializaiton ordering problem of FacesViews in among others Glassfish server and removed accidentally introduced Servlet 3.0 dependency</h:link></li>
 				</ul>
-			
+
 				<hr />
-				
+
 				<h2>What's new in OmniFaces 1.3?</h2>
 				<p><em>Release date: 20 December, 2012</em></p>
-		
+
 				<h3>Added in OmniFaces 1.3</h3>
 				<ul>
 					<li><h:link outcome="/utils/Ajax">Update specific <code>UIData</code> rows and columns programmatically</h:link></li>
@@ -1147,12 +1196,12 @@
 					<li><h:link outcome="/contexts/OmniPartialViewContext">Broken delegation of <code>OmniPartialResponseWriter</code> in MyFaces (caused by MyFaces specific design error)</h:link></li>
 					<li><h:link outcome="/components/tree">Broken initial state of <code>EditableValueHolderStateHelper</code> which is used in <code>o:tree</code> (which would only cause input components to appear in an invalidated state on initial request &#8212; and thus also incorrect highlighting in e.g. PrimeFaces) and added check on visit hint to skip iteration</h:link></li>
 				</ul>
-				
+
 				<hr />
-				
+
 				<h2>What's new in OmniFaces 1.2?</h2>
 				<p><em>Release date: 20 October, 2012</em></p>
-		
+
 				<h3>Added in OmniFaces 1.2</h3>
 				<ul>
 					<li><h:link outcome="/filters/CharacterEncodingFilter">Character encoding filter</h:link></li>
@@ -1167,7 +1216,7 @@
 					<li><code>GenericEnumConverter</code> for use in <code>UISelectMany</code> components with <code>List&lt;Enum&gt;</code></li>
 					<li>Some new utility methods in <h:link outcome="/utils/Faces"><code>Faces</code></h:link> and <h:link outcome="/utils/Components"><code>Components</code></h:link></li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 1.2</h3>
 				<ul>
 					<li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Support to render JS/CSS inline by <code>CombinedResourceHandler</code></h:link></li>
@@ -1178,7 +1227,7 @@
 					<li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Improved <code>FullAjaxExceptionHandler</code> to better handle exceptions during ajax render response phase</h:link></li>
 					<li><h:link outcome="/components/highlight">Improved <code>&lt;o:highlight&gt;</code> to apply style class on associated labels as well</h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.2</h3>
 				<ul>
 					<li><h:link outcome="/components/cache">Serialization and state saving issues in <code>&lt;o:cache&gt;</code></h:link></li>
@@ -1186,12 +1235,12 @@
 					<li><h:link outcome="/filters/GzipResponseFilter">Removed accidentally introduced Servlet 3.0 dependency in <code>GzipResponseFilter</code> and improved recognition of non-gzippable responses (content range, etc)</h:link></li>
 					<li><h:link outcome="/eventlisteners/ResetInputAjaxActionListener">Broken behavior of <code>ResetInputAjaxActionListener</code> when both PrimeFaces and RichFaces is used in same webapp</h:link></li>
 				</ul>
-			
+
 				<hr />
-			
+
 				<h2>What's new in OmniFaces 1.1?</h2>
 				<p><em>Release date: 10 July, 2012</em></p>
-				
+
 				<h3>Added in OmniFaces 1.1</h3>
 				<ul>
 					<li><h:link outcome="/components/componentIdParam">Rendering specific components by a GET request parameter</h:link></li>
@@ -1208,7 +1257,7 @@
 					<li><h:link outcome="/validators/validateAll">New validator which validates if ALL of the given inputs have been filled out</h:link></li>
 					<li>Maven integration</li>
 				</ul>
-		
+
 				<h3>Changed in OmniFaces 1.1</h3>
 				<ul>
 					<li><h:link outcome="/components/tree">Support for action components inside o:tree and new <code>TreeModel#remove()</code> method</h:link></li>
@@ -1216,18 +1265,18 @@
 					<li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Support to exclude or suppress specific resources in <code>CombinedResourceHandler</code></h:link></li>
 					<li><h:link outcome="/validators/validateOrder">Support for specific ordering type inside <code>&lt;o:validateOrder&gt;</code></h:link></li>
 				</ul>
-		
+
 				<h3>Fixed in OmniFaces 1.1</h3>
 				<ul>
 					<li><h:link outcome="/eventlisteners/ResetInputAjaxActionListener">Broken behaviour inside <code>UIData</code> components in <code>ResetInputAjaxActionListener</code></h:link></li>
 					<li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Incorrect behaviour on synchronous postbacks and NPE on inline scripts in <code>CombinedResourceHandler</code></h:link></li>
 				</ul>
-		
+
 				<hr />
-			
+
 				<h2>What's available in OmniFaces 1.0?</h2>	
 				<p><em>Release date: 01 June, 2012</em></p>
-				
+
 				<h3>Features already available in initial OmniFaces 1.0 release</h3>
 				<ul>
 					<li><h:link outcome="/components/conditionalComment">Conditional comment rendering for IE</h:link></li>
@@ -1255,30 +1304,42 @@
 			</p:tab>
 
 			<p:tab id="v4" title="4.x">
+				<h2>What's new in OmniFaces 4.0-M6?</h2>
+				<p><em>Release date: 24 January, 2021</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_10_1');return false;">It's the Jakartified version of 3.10.1</a></p>
+
+				<hr />
+
+				<h2>What's new in OmniFaces 4.0-M5?</h2>
+				<p><em>Release date: 24 January, 2021</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_10');return false;">It's the Jakartified version of 3.10</a></p>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 4.0-M4?</h2>
 				<p><em>Release date: 19 December, 2020</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_9');return false;">It's the Jakartified version of 3.9</a></p>
-				
+
 				<hr />
-				
+
 				<h2>What's new in OmniFaces 4.0-M3?</h2>
 				<p><em>Release date: 25 October, 2020</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_8_1');return false;">It's the Jakartified version of 3.8.1</a></p>
-				
+
 				<hr />
-				
+
 				<h2>What's new in OmniFaces 4.0-M2?</h2>
 				<p><em>Release date: 12 September, 2020</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_8');return false;">It's the Jakartified version of 3.8</a></p>
-				
+
 				<hr />
-				
+
 				<h2>What's new in OmniFaces 4.0-M1?</h2>
 				<p><em>Release date: 12 July, 2020</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_7_1');return false;">It's the Jakartified version of 3.7.1</a></p>
-				
+
 				<hr />
-				
+
 				<h3>Major in OmniFaces 4.0</h3>
 				<ul class="important">
 					<li>Dependencies are changed from Java 1.8, JSF 2.3, EL 3.0, Servlet 3.1, CDI 2.0, WS 1.1 and BV 2.0 to <strong>Java 11, JSF 3.0, EL 4.0, Servlet 5.0, CDI 3.0, WS 2.0 and BV 3.0</strong>;

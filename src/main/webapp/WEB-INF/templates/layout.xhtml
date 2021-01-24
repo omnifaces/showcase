@@ -14,7 +14,8 @@
 <!-- 
 The following application wide constants are available via this template:
 
-* #{_omniFacesVersion}: The currently running OmniFaces version, without "SNAPSHOT" suffix if any.
+* #{_omniFacesVersionXYZ}: The currently running OmniFaces X.Y.Z version, without "SNAPSHOT" suffix if any.
+* #{_omniFacesVersionXY}: The currently running OmniFaces X.Y version, without "SNAPSHOT" suffix if any.
 * #{_apiURL}: The version-specific URL to API documentation at "https://omnifaces.org/docs/javadoc/<version>/".
 * #{_vdlURL}: The version-specific URL to VDL documentation at "https://omnifaces.org/docs/vdldoc/<version>/".
 * #{_srcURL}: The version-specific URL to source code at "https://github.com/omnifaces/omnifaces/blob/<version>/src/".
@@ -31,9 +32,10 @@ The following application wide constants are available via this template:
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
-	<c:set var="_omniFacesVersion" value="#{app.omniFacesVersion.split('\\-')[0]}" scope="application" />
-	<c:set var="_apiURL" value="https://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : app.omniFacesVersion.substring(0, 3)}/" scope="application" />
-	<c:set var="_vdlURL" value="https://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : app.omniFacesVersion.substring(0, 3)}/" scope="application" />
+	<c:set var="_omniFacesVersionXYZ" value="#{app.omniFacesVersion.split('\\-')[0]}" scope="application" />
+	<c:set var="_omniFacesVersionXY" value="#{_omniFacesVersionXYZ.split('\\.')[0]}.#{_omniFacesVersionXYZ.split('\\.')[1]}" scope="application" />
+	<c:set var="_apiURL" value="https://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : _omniFacesVersionXY}/" scope="application" />
+	<c:set var="_vdlURL" value="https://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : _omniFacesVersionXY}/" scope="application" />
 	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'develop' : app.omniFacesVersion}/src/main/java/" scope="application" />
 	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? 'develop' : app.omniFacesVersion}/src/main/resources/META-INF/resources/omnifaces/" scope="application" />
 
@@ -73,7 +75,7 @@ The following application wide constants are available via this template:
 							<li><a href="https://omnifaces.org">Project homepage</a></li>
 							<li><a href="#{_apiURL}">API documentation</a></li>
 							<li><a href="#{_vdlURL}">VDL documentation</a></li>
-							<li><a href="#{request.contextPath}/whatsnew" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces #{_omniFacesVersion}?</a></li>
+							<li><a href="#{request.contextPath}/whatsnew" class="#{view.viewId == '/whatsnew.xhtml' ? 'active' : ''}">What's new in OmniFaces #{_omniFacesVersionXYZ}?</a></li>
 						</ul>
 					</p:panel>
 					<o:tree id="menu_tree" value="#{app.menu}" varNode="_page">
