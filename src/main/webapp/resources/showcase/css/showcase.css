@@ -17,6 +17,7 @@
 }
 
 #contentTitle .code {
+	font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace; 
 	margin: 0;
 	padding: 8px 4px;
 	border: 0;

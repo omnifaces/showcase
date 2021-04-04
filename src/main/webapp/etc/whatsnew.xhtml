@@ -12,6 +12,29 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_11">What's new in OmniFaces 3.11?</h2>
+				<p><em>Release date: 4 April, 2021</em></p>
+
+				<h3>Added in OmniFaces 3.11</h3>
+				<ul>
+					<li><os:githubLink issue="622" /><h:link outcome="/utils/Components"><code>Components#findClosestParent()</code></h:link> which returns an <code>Optional</code></li>
+				</ul>
+
+				<h3>Changed in OmniFaces 3.11</h3>
+				<ul>
+					<li><os:githubLink issue="613" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> will now explicitly exclude <code>media="print"</code> stylesheets</li>
+					<li><os:githubLink issue="620" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> will now by default also recognize <code>application/x-javascript</code> resources</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 3.11</h3>
+				<ul>
+					<li><os:githubLink issue="624" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> failed to perform bean validation on a targeted/proxied instance</li>
+					<li><os:githubLink issue="625" /><h:link outcome="/utils/Components"><code>Components#getMessageComponent()</code></h:link> didn't utilize JSF 2.3 search expression framework</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_11');return false;">Remaining fixes are same as in 2.7.11</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_10_1">What's new in OmniFaces 3.10.1?</h2>
 				<p><em>Release date: 24 January, 2021</em></p>
 
@@ -353,6 +376,16 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.11?</h2>
+				<p><em>Release date: 4 April, 2021</em></p>
+
+				<h3 id="fixed_2_7_11">Fixed in OmniFaces 2.7.11</h3>
+				<ul>
+					<li><os:githubLink issue="623" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> will now automatically detect multiple mappings of <code>FacesServlet</code> so that these are also properly 301-redirected</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.10?</h2>
 				<p><em>Release date: 24 January, 2021</em></p>
 
@@ -1304,6 +1337,12 @@
 			</p:tab>
 
 			<p:tab id="v4" title="4.x">
+				<h2>What's new in OmniFaces 4.0-M8?</h2>
+				<p><em>Release date: 4 April, 2021</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_11');return false;">It's the Jakartified version of 3.11</a></p>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 4.0-M7?</h2>
 				<p><em>Release date: 28 January, 2021</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_10_1');return false;">It's the Jakartified version of 3.10.1</a></p>
