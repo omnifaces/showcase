@@ -12,6 +12,16 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_11_1">What's new in OmniFaces 3.11.1?</h2>
+				<p><em>Release date: 5 June, 2021</em></p>
+
+				<h3>Fixed in OmniFaces 3.11.1</h3>
+				<ul>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_12');return false;">All fixes are same as in 2.7.12</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_11">What's new in OmniFaces 3.11?</h2>
 				<p><em>Release date: 4 April, 2021</em></p>
 
@@ -376,6 +386,20 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.12?</h2>
+				<p><em>Release date: 5 June, 2021</em></p>
+
+				<h3 id="fixed_2_7_12">Fixed in OmniFaces 2.7.12</h3>
+				<ul>
+					<li><os:githubLink commit="3f87300" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> "excluded pages" failed in OpenLiberty</li>
+					<li><os:githubLink commit="fbdfe7d" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> welcome file path info was missing in OpenLiberty</li>
+					<li><os:githubLink issue="627,630" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> missed stylesheets in JSF 2.3 when exception was triggered by PrimeFaces Ajax instead of standard Faces Ajax</li>
+					<li><os:githubLink issue="628" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> failed to use attached <code>converter</code> in Ajax postback with partial state saving disabled</li>
+					<li><os:githubLink issue="629" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> failed to fallback when <code>javax.faces.validator.BeanValidator.MESSAGE</code> is absent in bundle</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.11?</h2>
 				<p><em>Release date: 4 April, 2021</em></p>
 
@@ -1337,6 +1361,12 @@
 			</p:tab>
 
 			<p:tab id="v4" title="4.x">
+				<h2>What's new in OmniFaces 4.0-M9?</h2>
+				<p><em>Release date: 5 June, 2021</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_11_1');return false;">It's the Jakartified version of 3.11.1</a></p>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 4.0-M8?</h2>
 				<p><em>Release date: 4 April, 2021</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_11');return false;">It's the Jakartified version of 3.11</a></p>
