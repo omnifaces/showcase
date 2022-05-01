@@ -12,7 +12,21 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
-				<h2 id="3_12">What's new in OmniFaces 3.13?</h2>
+				<h2 id="3_13_1">What's new in OmniFaces 3.13.1?</h2>
+				<p><em>Release date: 1 May, 2022</em></p>
+
+				<h3>Fixed in OmniFaces 3.13.1</h3>
+				<ul>
+					<li><os:githubLink issue="671" /><h:link outcome="/components/scriptParam"><code>&lt;o:scriptParam&gt;</code></h:link> in combination with <code>&lt;f:viewAction&gt;</code> referencing a <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> bean threw "Component ID omnifaces_omnifaces_js has already been found in the view"</li>
+					<li><os:githubLink issue="676" /><h:link outcome="/resourcehandlers/VersionedResourceHandler"><code>VersionedResourceHandler</code></h:link> remapped resource was not <code>Externalizable</code></li>
+					<li><os:githubLink issue="680" />The <code>CloneCopier</code> of <h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> should have invoked <code>Method#canAccess()</code> instead of <code>Method#isAccessible()</code></li>
+					<li><os:githubLink issue="677" /><h:link outcome="/el/ExpressionInspector"><code>ExpressionInspector#getMethodReference()</code></h:link> failed with <code>ClassCastException</code> when inspecting a <code>MethodExpressionValueExpressionAdapter</code></li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_17');return false;">Remaining fixes are same as in 2.7.17</a></li>
+				</ul>
+
+				<hr />
+
+				<h2 id="3_13">What's new in OmniFaces 3.13?</h2>
 				<p><em>Release date: 22 January, 2022</em></p>
 
 				<h3>Added in OmniFaces 3.13</h3>
@@ -420,7 +434,6 @@
 				<h3>Changed in OmniFaces 3.0</h3>
 				<ul>
 		            <li><os:githubLink commit="e2d03d9,feae34a,4d3d123,236e93b,c275dea,8284ffb" />Under the covers, many things are replaced by new JSF 2.3 API things and also Java8 lambdas and streams have been introduced where possible</li>
-					<li><os:githubLink issue="277" /><code>&lt;o:importConstants&gt;</code> has been <strong>deprecated</strong> as it's now moved into JSF 2.3 as <code><a href="https://javaserverfaces.github.io/docs/2.3/vdldoc/f/importConstants.html">&lt;f:importConstants&gt;</a></code> with the only difference that <code>&lt;f:importConstants&gt;</code> requires being placed in <code>&lt;f:metadata&gt;</code></li>
 					<li><os:githubLink issue="268" /><code>&lt;o:commandScript&gt;</code> has been <strong>deprecated</strong> as it's now moved into JSF 2.3 as <code><a href="https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/commandScript.html">&lt;h:commandScript&gt;</a></code> with exactly the same functionality</li>
 					<li><os:githubLink issue="267" /><code>omnifaces:fixviewstate.js</code> has been <strong>deprecated</strong> as it's now finally solved in JSF 2.3 (by yours truly)</li>
 		            <li><os:githubLink issue="388" /><code>includeViewParams="true"</code> attribute of <h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> have been <strong>deprecated</strong> as those have never proven to be more useful than <code>useRequestURI="true"</code> or <code>includeRequestParams="true"</code></li>
@@ -433,6 +446,20 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.17?</h2>
+				<p><em>Release date: 1 May, 2022</em></p>
+				<p>Note: 2.7.16 was accidentally released with a bug in backported <code>&lt;o:importConstants&gt;</code>, do NOT use it!</p>
+
+				<h3 id="fixed_2_7_17">Fixed in OmniFaces 2.7.17</h3>
+				<ul>
+					<li><os:githubLink issue="688" /><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code></h:link> <code>default</code> value should not end up in bookmarkable URL</li>
+					<li><os:githubLink issue="672" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code></h:link> should not expose shadowed constants from superclasses or interfaces</li>
+					<li><os:githubLink issue="685" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code></h:link> threw NPE when a folder was requested (by e.g. a searchbot)</li>
+					<li><os:githubLink issue="651" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code></h:link> should strip off wrong <code>FacesServlet</code> prefix mapping when <h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> is used</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.15?</h2>
 				<p><em>Release date: 22 January, 2022</em></p>
 
@@ -1448,6 +1475,17 @@
 			</p:tab>
 
 			<p:tab id="v4" title="4.x">
+				<h2>What's new in OmniFaces 4.0-M14?</h2>
+				<p><em>Release date: 1 May, 2022</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13_1');return false;">It's the Jakartified version of 3.13.1</a></p>
+
+				<h3>Changed in OmniFaces 4.0-M12</h3>
+				<ul>
+					<li><os:githubLink issue="675" />All <code>&lt;h:outputScript library="omnifaces"&gt;</code> resources such as <code>omnifaces.js</code> were <a href="https://github.com/omnifaces/omnifaces/pull/675/commits/613ba49e802a6b34169f75a91cfeb7c8ae0c3553" target="_blank">migrated</a> from JavaScript to TypeScript</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 4.0-M13?</h2>
 				<p><em>Release date: 22 January, 2022</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13');return false;">It's the Jakartified version of 3.13</a></p>
