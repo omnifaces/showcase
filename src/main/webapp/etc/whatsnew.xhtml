@@ -12,6 +12,19 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_13_4">What's new in OmniFaces 3.13.4?</h2>
+				<p><em>Release date: 14 August, 2022</em></p>
+
+				<h3>Fixed in OmniFaces 3.13.4</h3>
+				<ul>
+					<li><os:githubLink issue="699" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> partial submit behavior has been fixed and improved</li>
+					<li><os:githubLink issue="701" /><h:link outcome="/utils/JNDIObjectLocator"><code>JNDIObjectLocator</code></h:link> deadlock on failure path</li>
+					<li><os:githubLink issue="702" /><h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link> didn't respect <code>org.omnifaces.EXCEPTION_TYPES_TO_UNWRAP</code> when the exception was <em>not</em> wrapped in a <code>ServletException</code></li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_2_7_19');return false;">Remaining fixes are same as in 2.7.19</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_13_3">What's new in OmniFaces 3.13.3?</h2>
 				<p><em>Release date: 14 May, 2022</em></p>
 
@@ -466,6 +479,18 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.19?</h2>
+				<p><em>Release date: 14 August, 2022</em></p>
+
+				<h3 id="fixed_2_7_19">Fixed in OmniFaces 2.7.19</h3>
+				<ul>
+					<li><os:githubLink issue="694,697" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> welcome file was not properly picked up when placed in a subfolder</li>
+					<li><os:githubLink issue="692" /><h:link outcome="/utils/Ajax"><code>Ajax#updateRow/updateColumn()</code></h:link> caused malformedXML error when column has <code>rendered=false</code></li>
+					<li><os:githubLink issue="693" /><h:link outcome="/utils/Beans"><code>Beans#getManager()</code></h:link> will fall back to <code>java:comp/env</code> when <code>java:comp</code> isn't available (e.g. Tomcat)</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.18?</h2>
 				<p><em>Release date: 14 May, 2022</em></p>
 
@@ -1506,6 +1531,18 @@
 			</p:tab>
 
 			<p:tab id="v4" title="4.x">
+				<h2>What's new in OmniFaces 4.0-M17?</h2>
+				<p><em>Release date: 14 August, 2022</em></p>
+				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13_4');return false;">It's the Jakartified version of 3.13.4</a></p>
+
+				<h3>Fixed in OmniFaces 4.0-M17</h3>
+				<ul>
+					<li><os:githubLink issue="695" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> threw <code>java.io.FileNotFoundException</code> when Servlet 4 Mapping API was used by Faces implementation, such as Mojarra 4.0.0</li>
+					<li><os:githubLink issue="696" /><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <code>\#{now.zonedDateTime}</code> were incorrectly at UTC instead of System Default TimeZone (as it was in previous OmniFaces versions using <code>java.util.Date</code> instead of <code>java.time.Temporal</code>); the <code>\#{now.instant}</code> and <code>\#{now.time}</code> remain at UTC</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 4.0-M16?</h2>
 				<p><em>Release date: 14 May, 2022</em></p>
 				<p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13_3');return false;">It's the Jakartified version of 3.13.3</a></p>
