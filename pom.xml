@@ -8,7 +8,7 @@
 
 	<groupId>org.omnifaces</groupId>
 	<artifactId>showcase</artifactId>
-	<version>3.13.4</version>
+	<version>4.0</version>
 	<packaging>war</packaging>
 
 	<name>Omnifaces Showcase</name>
@@ -50,8 +50,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 
 	<repositories>
@@ -63,33 +63,21 @@
 
 	<dependencies>
 		<dependency>
-		    <groupId>org.jboss.spec.javax.faces</groupId>
-		    <artifactId>jboss-jsf-api_2.3_spec</artifactId>
-		    <version>3.0.0.SP04</version>
-            <scope>provided</scope>
-		</dependency>
-		<dependency>
-		    <groupId>com.sun.faces</groupId>
-		    <artifactId>jsf-impl</artifactId>
-		    <version>2.3.14.SP01</version>
-            <scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-web-api</artifactId>
-			<version>8.0</version>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-web-api</artifactId>
+			<version>10.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
-			<version>3.13.4</version>
+			<version>4.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>8.0</version>
+			<version>11.0.0</version>
+			<classifier>jakarta</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>
@@ -113,19 +101,9 @@
 
 		<plugins>
 			<plugin>
-				<groupId>net.wasdev.wlp.maven.plugins</groupId>
-				<artifactId>liberty-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<configFile>src/main/servers/wlp/server.xml</configFile>
-					<bootstrapProperties>
-						<application.location>../../../../../${project.build.finalName}</application.location>
-						<application.name>${project.artifactId}</application.name>
-						<default.http.port>9080</default.http.port>
-						<default.https.port>9444</default.https.port>
-					</bootstrapProperties>
-					<serverName>showcaseServer</serverName>
-				</configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.2</version>
 			</plugin>
 		</plugins>
 	</build>
