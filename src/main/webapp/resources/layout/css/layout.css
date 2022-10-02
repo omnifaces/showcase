@@ -15,10 +15,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
-body .ui-widget-header {
-	color: #fff;
-	background: #373737;
-	text-shadow: none;
+body .ui-widget,
+body .ui-widget .ui-widget {
+	font-size: inherit;
 }
 
 body .ui-widget-content a,
@@ -147,6 +146,7 @@ code,
 	width: 72%;
 	max-width: none;
 	min-width: 0;
+	padding: .4em .2em;
 }
 
 #content a:hover, 
@@ -186,6 +186,8 @@ code,
 
 #content .ui-panel-content {
 	padding: .5em;
+	border: 0;
+	background: 0;
 }
 
 #content .ui-panel-content .block table tr:nth-child(odd) {
@@ -197,12 +199,9 @@ code,
 }
 
 #content .ui-tabs {
-	border: 0;
-}
-
-#content .ui-tabs .ui-tabs-nav {
-	border-bottom: 1px solid #a8a8a8;
-	background: none;
+    padding: .2em;
+    border-radius: 3px;
+    background: #fff;
 }
 
 #content .ui-tabs .ui-tabs-panel {
@@ -211,7 +210,22 @@ code,
 
 #content .ui-tabs .ui-tabs-nav .ui-state-default,
 #content .ui-button.ui-state-default {
+	margin: 0 .2em 1px 0;
+	border: 0;
 	background: #ddd;
+	color: #212121;
+	box-shadow: 0 0 0.5em #ddd;
+}
+
+#content .ui-tabs .ui-tabs-nav .ui-state-default {
+	border-radius: 3px 3px 0 0;
+}
+
+#content .ui-tabs .ui-tabs-nav .ui-state-focus a,
+#content .ui-tabs .ui-tabs-nav .ui-state-hover a,
+#content .ui-button.ui-state-focus,
+#content .ui-button.ui-state-hover {
+	color: #007edf;
 }
 
 #contentTitle {
@@ -234,17 +248,28 @@ code,
 	margin: 6px 0;
 	padding: 1px;
 	border: 0;
+	border-radius: 3px;
 	box-shadow: 0 0 .5em rgba(0,0,0,.1);
+	background: #fff;
 }
 
 #menu .ui-panel-titlebar, 
 #content .ui-panel-titlebar {
 	padding: .1em .2em;
 	border: 0;
+	border-radius: 3px;
 	box-shadow: 0 0 .2em rgba(0,0,0,.5);
+	color: #fff;
+	background: #373737;
 }
 
 #menu .ui-panel-content {
+	padding: 0;
+	border: 0;
+	background: 0;
+}
+
+#menu .ui-panel-content .ui-panel-content {
 	padding: 0 .2em;
 }
 
@@ -293,6 +318,8 @@ code,
 
 #footer .ui-widget-content {
 	color: white;
+	background: 0;
+	border: 0;
 }
 
 #footer h3 {
@@ -354,12 +381,6 @@ code,
 
 .important {
 	background: #ff9;
-}
-
-.ui-widget,
-.ui-widget .ui-widget {
-	font: inherit;
-	font-size: inherit;
 }
 
 

@@ -2,7 +2,7 @@
 prettyPrint();
 
 // JSF ajax progress indicator.
-jsf.ajax.addOnEvent(function(data) {
+faces.ajax.addOnEvent(function(data) {
 	$("html").toggleClass("progress", data.status == "begin");
 });
 

@@ -34,8 +34,11 @@
 }
 
 #contentTitle .ui-selectonemenu-label,
-.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+body .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+	font-size: inherit;
 	font-weight: bold;
+	padding: 4px;
+	color: #212121;
 	background: none;
 }
 
@@ -49,52 +52,52 @@
 	font-size: .8em;
 }
 
-.ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
+body .ui-selectonemenu-panel .ui-selectonemenu-items-wrapper {
 	height: auto !important;
 }
 
-.pages.ui-selectonemenu,
-.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+body .pages.ui-selectonemenu,
+body .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	font-family: Consolas, Monaco, "Lucida Console", "Courier New", Courier, monospace;
 	letter-spacing: -.05em;
 }
 
-.groups.ui-selectonemenu-panel .ui-selectonemenu-list {
+body .groups.ui-selectonemenu-panel .ui-selectonemenu-list {
 	padding: 1px;
 }
 
-.pages.ui-selectonemenu-panel .ui-selectonemenu-list {
+body .pages.ui-selectonemenu-panel .ui-selectonemenu-list {
 	padding: 2px 6px;
 }
 
-.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+body .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	margin: 2px;
 	padding: 2px 6px;
 	font-size: .9em;
 }
 
-.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+body .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item {
 	margin: .1em;
 	padding: .3em 0;
 	font-size: .9em;
 	line-height: 1.1em;
 }
 
-.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
+body .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
 	background: #333;
 	color: white;
 	box-shadow: 0 0 5px rgba(0,0,0,.5);
 }
 
-.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
+body .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-hover {
 	background: #ddd;
 	text-shadow: none;
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 	color: inherit;
 }
 
-.groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-disabled,
-.pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-disabled {
+body .groups.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-disabled,
+body .pages.ui-selectonemenu-panel .ui-selectonemenu-list-item.ui-state-disabled {
 	display: none;
 }
 
