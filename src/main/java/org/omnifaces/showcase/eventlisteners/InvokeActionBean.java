@@ -5,8 +5,8 @@ import static org.omnifaces.util.Utils.isEmpty;
 import java.io.IOException;
 import java.io.Serializable;
 
-import javax.faces.event.ComponentSystemEvent;
-import javax.inject.Named;
+import jakarta.faces.event.ComponentSystemEvent;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.util.Faces;

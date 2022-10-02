@@ -72,7 +72,7 @@
 				</h:column>
 				<h:column>
 					<h:inputText id="input" value="#{question.answer}" required="true" requiredMessage="Fill out the value!">
-						<o:validator validatorId="javax.faces.LongRange" minimum="#{question.minimum}" maximum="#{question.maximum}" message="Invalid value!" />
+						<o:validator validatorId="jakarta.faces.LongRange" minimum="#{question.minimum}" maximum="#{question.maximum}" message="Invalid value!" />
 					</h:inputText>
 				</h:column>
 				<h:column>
@@ -97,8 +97,8 @@
 				</h:column>
 				<h:column>
 					<h:inputText id="input" value="#{entity.value}" required="true" requiredMessage="#{label} is required">
-						<o:validator validatorId="javax.faces.Length" minimum="5" message="{0} must be at least 5 chars" />
-						<o:validator validatorId="javax.faces.RegularExpression" pattern="\\d+" message="{0} must contain digits only" /><!-- Fails in Apache EL (Tomcat/TomEE/etc), use \d+ instead. -->
+						<o:validator validatorId="jakarta.faces.Length" minimum="5" message="{0} must be at least 5 chars" />
+						<o:validator validatorId="jakarta.faces.RegularExpression" pattern="\\d+" message="{0} must contain digits only" /><!-- Fails in Apache EL (Tomcat/TomEE/etc), use \d+ instead. -->
 					</h:inputText>
 				</h:column>
 			</h:dataTable>

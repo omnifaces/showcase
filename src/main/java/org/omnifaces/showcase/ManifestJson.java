@@ -16,7 +16,7 @@ import static java.util.Arrays.asList;
 
 import java.util.Collection;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import org.omnifaces.resourcehandler.WebAppManifest;
 

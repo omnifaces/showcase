@@ -43,7 +43,7 @@
 		<h3>Set <code>style="background: \#{facesContext.postback ? (component.valid ? 'palegreen' : 'pink') : ''}"</code> on all inputs</h3>
 		<h:form>
 			<h:panelGrid columns="3">
-				<o:massAttribute target="javax.faces.component.UIInput" name="style" 
+				<o:massAttribute target="jakarta.faces.component.UIInput" name="style" 
 					value="background: #{facesContext.postback ? (component.valid ? 'palegreen' : 'pink') : ''}">
 					<o:outputLabel for="foo" value="Foo" />
 					<h:inputText id="foo" required="true" />

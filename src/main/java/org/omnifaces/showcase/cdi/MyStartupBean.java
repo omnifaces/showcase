@@ -2,8 +2,8 @@ package org.omnifaces.showcase.cdi;
 
 import java.util.Date;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
+import jakarta.annotation.PostConstruct;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.Startup;
 

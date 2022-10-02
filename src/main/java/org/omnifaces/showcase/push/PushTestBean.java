@@ -12,8 +12,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.Future;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.Push;
 import org.omnifaces.cdi.PushContext;

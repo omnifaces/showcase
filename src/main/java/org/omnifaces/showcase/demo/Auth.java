@@ -2,8 +2,8 @@ package org.omnifaces.showcase.demo;
 
 import java.io.IOException;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;

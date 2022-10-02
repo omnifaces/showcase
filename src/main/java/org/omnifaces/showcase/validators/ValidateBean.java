@@ -2,9 +2,9 @@ package org.omnifaces.showcase.validators;
 
 import java.io.Serializable;
 
-import javax.inject.Named;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import jakarta.inject.Named;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 import org.omnifaces.cdi.ViewScoped;
 

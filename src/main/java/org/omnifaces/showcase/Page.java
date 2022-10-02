@@ -31,7 +31,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import javax.faces.FacesException;
+import jakarta.faces.FacesException;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

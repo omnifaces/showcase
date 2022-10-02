@@ -16,7 +16,7 @@ import static org.omnifaces.util.Servlets.getRequestURI;
 
 import java.time.LocalDateTime;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public final class PageView {
 

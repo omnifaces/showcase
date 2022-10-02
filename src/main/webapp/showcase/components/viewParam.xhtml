@@ -12,7 +12,7 @@
 			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/ViewParamBean.java,classes/org/omnifaces/showcase/components/TestConverter.java" />
 
 			<o:viewParam name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
-			<f:viewParam name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
+			<f:viewParam name="bar" value="#{viewParamBean.bar}" converter="jakarta.faces.Long" />
 		</f:metadata>
 	</ui:define>
 
@@ -21,7 +21,7 @@
 	<ui:define name="demo-meta">
 		<f:metadata>
 			<o:viewParam name="foo" value="#{viewParamBean.foo}" required="true" converter="testConverter" />
-			<f:viewParam name="bar" value="#{viewParamBean.bar}" converter="javax.faces.Long" />
+			<f:viewParam name="bar" value="#{viewParamBean.bar}" converter="jakarta.faces.Long" />
 		</f:metadata>
 	</ui:define>
 

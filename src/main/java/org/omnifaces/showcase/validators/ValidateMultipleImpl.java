@@ -2,10 +2,10 @@ package org.omnifaces.showcase.validators;
 
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.faces.component.UIInput;
-import javax.faces.context.FacesContext;
-import javax.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.faces.component.UIInput;
+import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
 
 import org.omnifaces.validator.MultiFieldValidator;
 

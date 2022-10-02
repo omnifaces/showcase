@@ -11,9 +11,9 @@
 			Please verify if the request parameters are in the right format.
 			Alternatively, start at the left menu to find all available resources.
 		</p>
-		<ui:fragment rendered="#{not empty requestScope['javax.servlet.error.message']}">
+		<ui:fragment rendered="#{not empty requestScope['jakarta.servlet.error.message']}">
 			<p>
-				The specific error message is: <code><h:outputText value="#{requestScope['javax.servlet.error.message']}" escape="false" /></code>
+				The specific error message is: <code><h:outputText value="#{requestScope['jakarta.servlet.error.message']}" escape="false" /></code>
 			</p>
 		</ui:fragment>
 	</ui:define>

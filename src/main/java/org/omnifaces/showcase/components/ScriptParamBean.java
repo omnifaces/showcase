@@ -14,8 +14,8 @@ package org.omnifaces.showcase.components;
 
 import java.io.Serializable;
 
-import javax.inject.Named;
-import javax.json.JsonObject;
+import jakarta.inject.Named;
+import jakarta.json.JsonObject;
 
 import org.omnifaces.cdi.PostScriptParam;
 import org.omnifaces.cdi.ViewScoped;

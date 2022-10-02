@@ -2,8 +2,8 @@ package org.omnifaces.showcase.cdi;
 
 import static java.lang.System.nanoTime;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.inject.Model;
 
 import org.omnifaces.cdi.Eager;
 

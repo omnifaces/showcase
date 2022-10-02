@@ -5,9 +5,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.enterprise.context.RequestScoped;
-import javax.faces.component.UIData;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.component.UIData;
+import jakarta.inject.Named;
 
 import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.Ajax;

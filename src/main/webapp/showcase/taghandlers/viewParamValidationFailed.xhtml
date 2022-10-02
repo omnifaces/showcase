@@ -12,40 +12,40 @@
 			<f:attribute name="vdl.paths" value="o/viewParamValidationFailed" />
 			<f:attribute name="src.paths" value="templates/errorpage.xhtml,errorpages/400.xhtml" />
 
-			<f:viewParam id="foo" name="foo" converter="javax.faces.Long">
+			<f:viewParam id="foo" name="foo" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendError="400" />
 			</f:viewParam>
-			<f:viewParam id="bar" name="bar" converter="javax.faces.Long">
+			<f:viewParam id="bar" name="bar" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendError="400" message="Invalid bar!"/>
 			</f:viewParam>
-			<f:viewParam id="baz" name="baz" converter="javax.faces.Long">
+			<f:viewParam id="baz" name="baz" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendRedirect="whatsnew" />
 			</f:viewParam>
-			<f:viewParam id="faz" name="faz" converter="javax.faces.Long">
+			<f:viewParam id="faz" name="faz" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendRedirect="whatsnew" message="Invalid faz!" />
 			</f:viewParam>
-			<f:viewParam id="boo" name="boo" converter="javax.faces.Long" />
-			<f:viewParam id="foz" binding="#{foz}" name="foz" converter="javax.faces.Long" />
+			<f:viewParam id="boo" name="boo" converter="jakarta.faces.Long" />
+			<f:viewParam id="foz" binding="#{foz}" name="foz" converter="jakarta.faces.Long" />
 			<o:viewParamValidationFailed sendError="400" message="#{foz.valid ? null : 'Invalid foz!'}" />
 		</f:metadata>
 	</ui:define>
 
 	<ui:define name="demo-meta">
 		<f:metadata>
-			<f:viewParam name="foo" converter="javax.faces.Long">
+			<f:viewParam name="foo" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendError="400" />
 			</f:viewParam>
-			<f:viewParam name="bar" converter="javax.faces.Long">
+			<f:viewParam name="bar" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendError="400" message="Invalid bar!"/>
 			</f:viewParam>
-			<f:viewParam name="baz" converter="javax.faces.Long">
+			<f:viewParam name="baz" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendRedirect="whatsnew" />
 			</f:viewParam>
-			<f:viewParam name="faz" converter="javax.faces.Long">
+			<f:viewParam name="faz" converter="jakarta.faces.Long">
 				<o:viewParamValidationFailed sendRedirect="whatsnew" message="Invalid faz!" />
 			</f:viewParam>
-			<f:viewParam name="boo" converter="javax.faces.Long" />
-			<f:viewParam name="foz" converter="javax.faces.Long" />
+			<f:viewParam name="boo" converter="jakarta.faces.Long" />
+			<f:viewParam name="foz" converter="jakarta.faces.Long" />
 			<o:viewParamValidationFailed sendError="400" message="#{foz.valid ? null : 'Invalid foz!'}" />
 		</f:metadata>
 	</ui:define>
@@ -53,7 +53,7 @@
 	<ui:define name="demo">
 		<p>
 			This page has 6 view parameters: <code>foo</code>,<code>bar</code>, <code>baz</code>, <code>faz</code>, 
-			<code>boo</code> and <code>foz</code>. All with a <code>javax.faces.Long</code> converter, just for simplicity.
+			<code>boo</code> and <code>foz</code>. All with a <code>jakarta.faces.Long</code> converter, just for simplicity.
 			You can of course use your own converters and validators, e.g. <code>required="true"</code>, 
 			<code>&lt;f:validateLongRange&gt;</code>, etcetera. In case conversion (or validation) fails, the associated
 			<code>&lt;o:viewParamValidationFailed&gt;</code> logic will be executed.

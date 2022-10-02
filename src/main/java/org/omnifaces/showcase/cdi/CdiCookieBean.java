@@ -3,9 +3,9 @@ package org.omnifaces.showcase.cdi;
 import java.io.IOException;
 import java.util.UUID;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.Cookie;
 import org.omnifaces.util.Faces;

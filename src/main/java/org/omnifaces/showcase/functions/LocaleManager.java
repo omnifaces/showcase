@@ -3,8 +3,8 @@ package org.omnifaces.showcase.functions;
 import java.io.Serializable;
 import java.util.Locale;
 
-import javax.enterprise.context.SessionScoped;
-import javax.inject.Named;
+import jakarta.enterprise.context.SessionScoped;
+import jakarta.inject.Named;
 
 import org.omnifaces.util.Faces;
 

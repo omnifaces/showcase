@@ -2,7 +2,7 @@ package org.omnifaces.showcase.components;
 
 import java.io.Serializable;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 

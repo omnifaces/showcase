@@ -2,10 +2,10 @@ package org.omnifaces.showcase.components;
 
 import java.util.Random;
 
-import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.application.FacesMessage.Severity;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.application.FacesMessage.Severity;
+import jakarta.inject.Named;
 
 import org.omnifaces.util.Messages;
 

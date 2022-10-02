@@ -1,6 +1,6 @@
 package org.omnifaces.showcase.validators;
 
-import javax.inject.Named;
+import jakarta.inject.Named;
 
 import org.omnifaces.showcase.model.ConstrainedEntity;
 

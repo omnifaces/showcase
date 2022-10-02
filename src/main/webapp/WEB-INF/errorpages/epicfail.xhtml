@@ -4,6 +4,6 @@
 >
 	<!-- This EL syntax error (a missing '}' ) should trigger a failure of error page rendering. -->
 	<ui:define name="errorContent">
-		<p><a href="#{requestScope['javax.servlet.error.request_uri']">Back to initial page.</a></p>
+		<p><a href="#{requestScope['jakarta.servlet.error.request_uri']">Back to initial page.</a></p>
 	</ui:define>
 </ui:composition>

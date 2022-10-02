@@ -2,10 +2,10 @@ package org.omnifaces.showcase.cdi;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import javax.faces.view.ViewScoped;
-import javax.inject.Named;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
 import org.omnifaces.util.Faces;
 import org.omnifaces.util.Messages;

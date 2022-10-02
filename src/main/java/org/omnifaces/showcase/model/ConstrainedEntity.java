@@ -1,6 +1,6 @@
 package org.omnifaces.showcase.model;
 
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Size;
 
 public class ConstrainedEntity {
 	

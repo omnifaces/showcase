@@ -26,7 +26,7 @@
 			<a href="https://stackoverflow.com/q/3342984/157882">this Stack Overflow answer</a>).
 		</p>
 		<pre>
- javax.faces.view.facelets.TagAttributeException: /taghandlers/converter @62,92 
+ jakarta.faces.view.facelets.TagAttributeException: /taghandlers/converter @62,92 
  locale="#{locale}" Attribute did not evaluate to a String or Locale: null
      at com.sun.faces.facelets.tag.jsf.ComponentSupport.getLocale(ComponentSupport.java:297)
      at com.sun.faces.facelets.tag.jsf.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:127)
@@ -50,7 +50,7 @@
 			<h:column>
 				<f:facet name="header">Full date time pattern</f:facet>
 				<h:outputText value="#{now}">
-					<o:converter converterId="javax.faces.DateTime" type="both" dateStyle="full" timeStyle="full" locale="#{locale}" />
+					<o:converter converterId="jakarta.faces.DateTime" type="both" dateStyle="full" timeStyle="full" locale="#{locale}" />
 				</h:outputText>
 			</h:column>
 		</h:dataTable>

@@ -5,8 +5,8 @@ import static org.omnifaces.util.Messages.addGlobalInfo;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.enterprise.event.Observes;
-import javax.inject.Named;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.event.HashChangeEvent;

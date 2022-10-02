@@ -2,8 +2,8 @@ package org.omnifaces.showcase.components;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Named;
+import jakarta.annotation.PostConstruct;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 import org.omnifaces.model.tree.ListTreeModel;

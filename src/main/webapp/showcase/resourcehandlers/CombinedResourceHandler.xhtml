@@ -21,7 +21,7 @@
 			Rightclick the page and <i>View Source</i> and explore the included CSS, JS and <h:link outcome="/components/deferredScript">deferred JS</h:link> resources.
 			It is recognizeable by library name <code>omnifaces.combined</code>. It are the following ones:
 		</p>
-		<c:set var="resourceBaseURL" value="#{request.contextPath}/javax.faces.resource/" />
+		<c:set var="resourceBaseURL" value="#{request.contextPath}/jakarta.faces.resource/" />
 		<ul>
 			<ui:repeat value="#{view.getComponentResources(facesContext, 'head')}" var="res">
 				<c:set var="resourcePath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
@@ -46,7 +46,7 @@
 			<a href="#{resourceBaseURL}jquery/jquery-plugins.js.xhtml?ln=primefaces">jquery-plugins.js</a>,
 			<a href="#{resourceBaseURL}primefaces.js.xhtml?ln=primefaces">primefaces.js</a>,
 			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
-			<a href="#{resourceBaseURL}jsf.js.xhtml?ln=javax.faces">jsf.js</a>.
+			<a href="#{resourceBaseURL}faces.js.xhtml?ln=jakarta.faces">faces.js</a>.
 			The deferred JS one has combined the two JS files 
 			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a> and
 			<a href="#{resourceBaseURL}js/onload.js.xhtml?ln=showcase">onload.js</a>.

@@ -1,8 +1,8 @@
 package org.omnifaces.showcase.cdi;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import org.omnifaces.cdi.ContextParam;
 
@@ -10,13 +10,13 @@ import org.omnifaces.cdi.ContextParam;
 @RequestScoped
 public class CdiContextParamBean {
 
-	@Inject @ContextParam(name="javax.faces.FACELETS_BUFFER_SIZE")
+	@Inject @ContextParam(name="jakarta.faces.FACELETS_BUFFER_SIZE")
 	private String faceletsBufferSize;
 
-	@Inject @ContextParam(name="javax.faces.FACELETS_LIBRARIES")
+	@Inject @ContextParam(name="jakarta.faces.FACELETS_LIBRARIES")
 	private String faceletsLibraries;
 
-	@Inject @ContextParam(name="javax.faces.FACELETS_SKIP_COMMENTS")
+	@Inject @ContextParam(name="jakarta.faces.FACELETS_SKIP_COMMENTS")
 	private String faceletsSkipComments;
 
 	public String getFaceletsBufferSize() {

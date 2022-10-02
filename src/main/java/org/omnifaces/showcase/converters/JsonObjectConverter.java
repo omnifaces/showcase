@@ -14,13 +14,13 @@ package org.omnifaces.showcase.converters;
 
 import java.io.StringReader;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
-import javax.faces.convert.FacesConverter;
-import javax.json.Json;
-import javax.json.JsonObject;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.convert.ConverterException;
+import jakarta.faces.convert.FacesConverter;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
 
 @FacesConverter(forClass = JsonObject.class)
 public class JsonObjectConverter implements Converter<JsonObject> {

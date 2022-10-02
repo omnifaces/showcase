@@ -2,9 +2,9 @@ package org.omnifaces.showcase.components;
 
 import java.io.IOException;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
-import javax.servlet.http.Part;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
+import jakarta.servlet.http.Part;
 
 import org.omnifaces.util.Utils;
 

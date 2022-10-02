@@ -68,7 +68,7 @@
 
 		<h3>Editable tree</h3>
 		<h:form id="form">
-			<c:set var="saveButtonPressed" value="#{param['javax.faces.source'] == 'form:save'}" />
+			<c:set var="saveButtonPressed" value="#{param['jakarta.faces.source'] == 'form:save'}" />
 			<h:commandButton id="addNode" value="Add new node" action="#{treeBean.addChild(treeBean.tree)}">
 				<f:ajax execute="@form" render="@form" />
 			</h:commandButton>

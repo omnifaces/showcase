@@ -2,8 +2,8 @@ package org.omnifaces.showcase.exceptionhandlers;
 
 import java.sql.SQLException;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 
 @Named
 @RequestScoped
