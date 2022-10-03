@@ -26,7 +26,7 @@
 						and <code>omnifaces:fixviewstate.js</code> (replaced by JSF 2.2 native fix)
 					</li>
 					<li><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <h:link outcome="/managedbeans/startup"><code>\#{startup}</code></h:link> 
-						will now return an instance of <code>java.time.Temporal</code> instead of <code>java.util.Date</code>;
+						will now return an instance of <code>java.time.temporal.Temporal</code> instead of <code>java.util.Date</code>;
 						it still supports the <code>time</code> property as in <code>\#{now.time}</code> and <code>\#{startup.time}</code>;
 						additionally, it's got two new convenience properties: <code>instant</code> and <code>zonedDateTime</code> as in <code>\#{now.instant}</code>, <code>\#{now.zonedDateTime}</code>, <code>\#{startup.instant}</code> and <code>\#{startup.zonedDateTime}</code>
 					</li>
@@ -358,7 +358,7 @@
 				<h3>Changed in OmniFaces 3.6</h3>
 				<ul>
 					<li><os:githubLink commit="1455246" /><h:link outcome="/utils/Faces"><code>Faces/FacesLocal/Servlets#getRemoteAddr()</code></h:link> now also checks <code>Forwarded</code> header instead of only <code>X-Forwarded-For</code></li>
-					<li><os:githubLink issue="548" /><h:link outcome="/functions/Dates"><code>of:formatDateXxx()</code></h:link> methods now also support <code>java.time.Temporal</code> instances</li>
+					<li><os:githubLink issue="548" /><h:link outcome="/functions/Dates"><code>of:formatDateXxx()</code></h:link> methods now also support <code>java.time.temporal.Temporal</code> instances</li>
 					<li><os:githubLink issue="546" /><h:link outcome="/managedbeans/now"><code>#{now}</code></h:link> and <h:link outcome="/managedbeans/startup"><code>#{startup}</code></h:link> are now produced by CDI instead of JSF</li>
 					<li><os:githubLink issue="497" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now supports defaulting to argument name in constructor injection</li>
 					<li><os:githubLink issue="550" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now doesn't anymore require <code>@Inject</code></li>
@@ -1612,7 +1612,7 @@
 				<h3>Fixed in OmniFaces 4.0-M17</h3>
 				<ul>
 					<li><os:githubLink issue="695" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> threw <code>java.io.FileNotFoundException</code> when Servlet 4 Mapping API was used by Faces implementation, such as Mojarra 4.0.0</li>
-					<li><os:githubLink issue="696" /><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <code>\#{now.zonedDateTime}</code> were incorrectly at UTC instead of System Default TimeZone (as it was in previous OmniFaces versions using <code>java.util.Date</code> instead of <code>java.time.Temporal</code>); the <code>\#{now.instant}</code> and <code>\#{now.time}</code> remain at UTC</li>
+					<li><os:githubLink issue="696" /><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <code>\#{now.zonedDateTime}</code> were incorrectly at UTC instead of System Default TimeZone (as it was in previous OmniFaces versions using <code>java.util.Date</code> instead of <code>java.time.temporal.Temporal</code>); the <code>\#{now.instant}</code> and <code>\#{now.time}</code> remain at UTC</li>
 				</ul>
 
 				<hr />

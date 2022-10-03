@@ -6,20 +6,48 @@
 	xmlns:o="http://omnifaces.org/ui"
 	xmlns:of="http://omnifaces.org/functions"
 >
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="cdi/config/DateProducer" />
+		</f:metadata>
+	</ui:define>
+
 	<ui:define name="description">
 		<p>
 			The builtin managed bean <code>\#{startup}</code> returns you the 
-			<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Date.html"><code>java.util.Date</code></a>
-			instance representing the server's startup time.
+			<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html"><code>java.time.temporal.Temporal</code></a>
+			instance representing the server's startup time in server's default time zone.
+		</p>
+		<p>
+			The implementation is provided by <code>org.omnifaces.cdi.config.DateProducer.TemporalDate</code>
+			which is essentially written as a CDI proxy for <code>java.time.ZonedDateTime</code> because it's a <code>final</code> class.
 		</p>
 	</ui:define>		
 
 	<ui:define name="demo">
 		<p>
-			Raw <code>Date#toString()</code> value of <code>\#{startup}</code>: #{startup}
+			Raw <code>Temporal#toString()</code> value of <code>\#{startup}</code>: <strong>#{startup}</strong> - this should represent same format as <code>java.time.ZonedDateTime</code>
 		</p>
 		<p>
-			Formatted date using <code>of:formatDate()</code> function: #{of:formatDate(startup, 'yyyy-MM-dd HH:mm:ss')}
+			Formatted using <code>of:formatDate()</code> function: #{of:formatDate(startup, 'yyyy-MM-dd HH:mm:ss')}
+		</p>
+		<hr/>
+		<p>
+			As <code>java.time.Instant</code>: <strong>#{startup.instant}</strong> - this should represent UTC
+		</p>
+		<p>
+			Formatted using <code>of:formatDate()</code> function: #{of:formatDate(startup.instant, 'yyyy-MM-dd HH:mm:ss')}
+		</p>
+		<hr/>
+		<p>
+			As <code>java.time.ZonedDateTime</code>: <strong>#{startup.zonedDateTime}</strong>
+		</p>
+		<p>
+			Formatted using <code>of:formatDate()</code> function: #{of:formatDate(startup.zonedDateTime, 'yyyy-MM-dd HH:mm:ss')}
+		</p>
+		<hr/>
+		<p>
+			As <code>epoch time</code>: <strong>#{startup.time}</strong>
 		</p>
 	</ui:define>
 </ui:composition>
