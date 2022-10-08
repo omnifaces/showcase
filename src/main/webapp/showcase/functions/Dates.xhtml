@@ -30,7 +30,7 @@
 				#{of:formatDateWithTimezone(now, 'yyyy-MM-dd HH:mm:ss', 'GMT')}
 			</p>
 			<p>
-				<c:set var="threeMonthsLater" value="#{of:addMonths(now, 3)}" scope="request" />
+				<c:set var="threeMonthsLater" value="#{of:addMonths(now.zonedDateTime, 3)}" scope="request" />
 				Add 3 months to today and format it with system default timezone: 
 				#{of:formatDate(threeMonthsLater, 'yyyy-MM-dd HH:mm:ss z')}
 			</p>
