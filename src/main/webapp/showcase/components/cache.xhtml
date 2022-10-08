@@ -138,14 +138,14 @@
 		<h3>Example 5 - Caching value expressions</h3>
 		<p>
 			Sometimes it might be convenient to cache an EL value expression instead or in addition of a fully rendered piece of markup.
-			This is especially useful for a postback, since after a postback JSF (of course) won't evaluate the cached markup, but will
+			This is especially useful for a postback, since after a postback Faces (of course) won't evaluate the cached markup, but will
 			evaluate value expressions again.
 		</p>
 		
 		<h4>Without o:cacheValue</h4>
 		<p>
 			Clicking on any of the 'Postback' buttons below will cause a new date to be generated at each click, instead
-			of the actually selected date. This is because JSF doesn't send the actual row data along, but merely a row number.
+			of the actually selected date. This is because Faces doesn't send the actual row data along, but merely a row number.
 			Because the backing bean is request scoped and the expression <code>\#{cacheBean.items}</code> is evaluated 
 			fresh after each postback, we'll end up selecting a new date each time.
 		</p>

@@ -12,7 +12,7 @@
 	<packaging>war</packaging>
 
 	<name>Omnifaces Showcase</name>
-	<description>Showcase for JSF 2.x utility library</description>
+	<description>Showcase for Faces 4.x utility library</description>
 	<url>https://showcase.omnifaces.org</url>
 	<organization>
 		<name>OmniFaces</name>

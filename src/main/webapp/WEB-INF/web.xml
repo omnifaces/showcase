@@ -8,7 +8,7 @@
 	<display-name>OmniFaces Showcase</display-name>
 
 
-	<!-- Standard JSF settings. -->
+	<!-- Standard Faces settings. -->
 
 	<context-param>
 		<param-name>jakarta.faces.FACELETS_BUFFER_SIZE</param-name>
@@ -61,8 +61,8 @@
 	<context-param>
 		<!--
 			All files in the 3 paths defined below will be scanned and made available
-			as extensionless JSF views. Since no explicit extension is given for scanning,
-			these paths should contain ONLY JSF (Facelets) files.
+			as extensionless Faces views. Since no explicit extension is given for scanning,
+			these paths should contain ONLY Faces (Facelets) files.
 		 -->
 		<param-name>org.omnifaces.FACES_VIEWS_SCAN_PATHS</param-name>
 		<param-value>/showcase,/etc,/demo</param-value> <!-- Specific to this showcase. -->

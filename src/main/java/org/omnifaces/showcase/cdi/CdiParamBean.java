@@ -44,7 +44,7 @@ public class CdiParamBean {
 	@Inject @Param @NotNull(message="{0} is required")
 	private List<String> text3;
 
-	// Like <f:viewParam name="number" value="#{bean.number}"> using implicit JSF integer converter.
+	// Like <f:viewParam name="number" value="#{bean.number}"> using implicit Faces integer converter.
 	@Inject @Param
 	private Integer number;
 

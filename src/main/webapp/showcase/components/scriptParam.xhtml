@@ -29,7 +29,7 @@
 		<p>
 			The below information from JavaScript context is obtained in managed bean via <code>&lt;o:scriptParam&gt;</code>.
 		</p>
-		<ul jsf:id="scriptParams">
+		<ul faces:id="scriptParams">
 			<ui:fragment rendered="#{scriptParamBean.postScriptParamInvoked}">
 				<li><code>new Date().getTimeZoneOffset()</code> = #{scriptParamBean.clientTimeZoneOffset}</li>
 				<li><code>window.navigator</code> = #{scriptParamBean.navigator}</li>

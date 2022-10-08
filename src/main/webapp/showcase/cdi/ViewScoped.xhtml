@@ -9,7 +9,7 @@
 	<ui:define name="meta">
 		<f:metadata>
 			<f:attribute name="api.path" value="cdi/ViewScoped" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/cdi/CdiViewScopedBean.java,classes/org/omnifaces/showcase/cdi/JsfViewScopedBean.java" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/cdi/CdiViewScopedBean.java,classes/org/omnifaces/showcase/cdi/FacesViewScopedBean.java" />
 			<f:attribute name="js.paths" value="omnifaces.js/Unload.ts" />
 		</f:metadata>
 	</ui:define>
@@ -29,7 +29,7 @@
 			</ul>
 			<p>
 				<h:commandButton value="submit form without ajax" action="#{cdiViewScopedBean.submit}" />
-				<f:ajax execute="@form" render="@form :jsfViewScopedForm">
+				<f:ajax execute="@form" render="@form :facesViewScopedForm">
 					<h:commandButton value="submit form with ajax" action="#{cdiViewScopedBean.submit}" />
 					<h:commandButton value="rebuild view" action="#{cdiViewScopedBean.rebuildView}" />
 					<h:commandButton value="navigate on POST" action="#{cdiViewScopedBean.navigate}" />
@@ -42,25 +42,25 @@
 
 		<hr />
 
-		<h3>JSF view scoped bean</h3>
-		<h:form id="jsfViewScopedForm">
+		<h3>Faces view scoped bean</h3>
+		<h:form id="facesViewScopedForm">
 			<p>Status:</p>
 			<ul>
 				<li>It's now: #{now}</li>
 				<li>Session ID: #{session.id}</li>
-				<li>JSF view scoped bean: #{jsfViewScopedBean}</li>
+				<li>Faces view scoped bean: #{facesViewScopedBean}</li>
 			</ul>
 			<p>
-				<h:commandButton value="submit form without ajax" action="#{jsfViewScopedBean.submit}" />
+				<h:commandButton value="submit form without ajax" action="#{facesViewScopedBean.submit}" />
 				<f:ajax execute="@form" render="@form :cdiViewScopedForm">
-					<h:commandButton value="submit form with ajax" action="#{jsfViewScopedBean.submit}" />
-					<h:commandButton value="rebuild view" action="#{jsfViewScopedBean.rebuildView}" />
-					<h:commandButton value="navigate on POST" action="#{jsfViewScopedBean.navigate}" />
+					<h:commandButton value="submit form with ajax" action="#{facesViewScopedBean.submit}" />
+					<h:commandButton value="rebuild view" action="#{facesViewScopedBean.rebuildView}" />
+					<h:commandButton value="navigate on POST" action="#{facesViewScopedBean.navigate}" />
 				</f:ajax>
 				<h:button value="refresh page" />
 			</p>
-			<p>Messages from JSF view scoped bean:</p>
-			<h:messages for="jsfViewScopedForm" />
+			<p>Messages from Faces view scoped bean:</p>
+			<h:messages for="facesViewScopedForm" />
 		</h:form>
 	</ui:define>
 </ui:composition>

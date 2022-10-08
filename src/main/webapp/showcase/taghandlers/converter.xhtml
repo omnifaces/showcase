@@ -28,9 +28,9 @@
 		<pre>
  jakarta.faces.view.facelets.TagAttributeException: /taghandlers/converter @62,92 
  locale="#{locale}" Attribute did not evaluate to a String or Locale: null
-     at com.sun.faces.facelets.tag.jsf.ComponentSupport.getLocale(ComponentSupport.java:297)
-     at com.sun.faces.facelets.tag.jsf.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:127)
-     at com.sun.faces.facelets.tag.jsf.ConverterTagHandlerDelegateImpl.applyAttachedObject(ConverterTagHandlerDelegateImpl.java:130)
+     at com.sun.faces.facelets.tag.faces.ComponentSupport.getLocale(ComponentSupport.java:297)
+     at com.sun.faces.facelets.tag.faces.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:127)
+     at com.sun.faces.facelets.tag.faces.ConverterTagHandlerDelegateImpl.applyAttachedObject(ConverterTagHandlerDelegateImpl.java:130)
 		</pre>
 		<p>
 			It works as intuitively expected with the <code>&lt;o:converter&gt;</code> as it allows a render time evaluation of attributes.

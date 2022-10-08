@@ -41,17 +41,17 @@
 		</ul>
 		<p>The following parameters will be injected and validated as:</p>
 		<ul>
-			<li>"text1" is injected as <code>String</code> and is validated as JSF <code>required="true"</code></li>
+			<li>"text1" is injected as <code>String</code> and is validated as Faces <code>required="true"</code></li>
 			<li>"text2" is injected as <code>String</code> and is validated as 
-				JSF <code>&lt;f:validateLength minimum="3"&gt;
+				Faces <code>&lt;f:validateLength minimum="3"&gt;
 			</code></li>
 			<li>"text3" is injected as <code>List&lt;String&gt;</code> and is validated as JSR303 (Bean Validation) <code>@NotNull</code></li>
-			<li>"number" is injected as <code>Integer</code> with automatic JSF integer conversion</li>
+			<li>"number" is injected as <code>Integer</code> with automatic Faces integer conversion</li>
 			<li>"date" is injected as <code>Date</code> and is converted as 
-				JSF <code>&lt;f:convertDateTime pattern="yyyyMMdd"&gt;</code>
+				Faces <code>&lt;f:convertDateTime pattern="yyyyMMdd"&gt;</code>
 			</li>
 			<li>"nsEntity" is injected as <code>ParamValue&lt;NonSerializableEntity&gt;</code> and is 
-				converted as JSF <code>&lt;f:converter converterId="nonSerializableEntityConverter"/&gt;</code>
+				converted as Faces <code>&lt;f:converter converterId="nonSerializableEntityConverter"/&gt;</code>
 				<small>(the example also demonstrates support for non-serializable values, which is important for CDI's passivating scopes)</small>
 			</li>
 		</ul>

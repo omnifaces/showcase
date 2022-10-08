@@ -1,7 +1,7 @@
 // Syntax highlighting.
 prettyPrint();
 
-// JSF ajax progress indicator.
+// Faces ajax progress indicator.
 faces.ajax.addOnEvent(function(data) {
 	$("html").toggleClass("progress", data.status == "begin");
 });
