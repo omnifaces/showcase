@@ -19,18 +19,17 @@
 		<p>
 			In the below demo, it was the intent to use <code>&lt;f:convertDateTime&gt;</code> as follows:
 		</p>
-		<pre class="prettyprint"><code class="lang-xhtml"> &lt;f:convertDateTime type="both" dateStyle="full" timeStyle="full" locale="\#{locale}" /&gt;</code></pre>
+		<pre class="prettyprint"><code class="lang-xhtml"> &lt;f:convertDateTime type="localDateTime" dateStyle="full" timeStyle="full" locale="\#{locale}" /&gt;</code></pre>
 		<p>
 			But this wouldn't even run, it will throw the following exception because the <code>\#{locale}</code> isn't 
 			available during view build time (for a background explanation, check 
 			<a href="https://stackoverflow.com/q/3342984/157882">this Stack Overflow answer</a>).
 		</p>
 		<pre>
- jakarta.faces.view.facelets.TagAttributeException: /taghandlers/converter @62,92 
- locale="#{locale}" Attribute did not evaluate to a String or Locale: null
-     at com.sun.faces.facelets.tag.faces.ComponentSupport.getLocale(ComponentSupport.java:297)
-     at com.sun.faces.facelets.tag.faces.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:127)
-     at com.sun.faces.facelets.tag.faces.ConverterTagHandlerDelegateImpl.applyAttachedObject(ConverterTagHandlerDelegateImpl.java:130)
+jakarta.faces.view.facelets.TagAttributeException: /showcase/taghandlers/converter.xhtml @53,101 locale="#{locale}" Attribute did not evaluate to a String or Locale: null
+    at com.sun.jsf-impl@4.0.0.SP01//com.sun.faces.facelets.tag.faces.ComponentSupport.getLocale(ComponentSupport.java:423)
+    at com.sun.jsf-impl@4.0.0.SP01//com.sun.faces.facelets.tag.faces.core.ConvertDateTimeHandler.setAttributes(ConvertDateTimeHandler.java:89)
+    at com.sun.jsf-impl@4.0.0.SP01//com.sun.faces.facelets.tag.faces.ConverterTagHandlerDelegateImpl.applyAttachedObject(ConverterTagHandlerDelegateImpl.java:117)
 		</pre>
 		<p>
 			It works as intuitively expected with the <code>&lt;o:converter&gt;</code> as it allows a render time evaluation of attributes.
@@ -49,8 +48,8 @@
 			</h:column>
 			<h:column>
 				<f:facet name="header">Full date time pattern</f:facet>
-				<h:outputText value="#{now}">
-					<o:converter converterId="jakarta.faces.DateTime" type="both" dateStyle="full" timeStyle="full" locale="#{locale}" />
+				<h:outputText value="#{now.zonedDateTime}">
+					<o:converter converterId="jakarta.faces.DateTime" type="localDateTime" dateStyle="full" timeStyle="full" locale="#{locale}" />
 				</h:outputText>
 			</h:column>
 		</h:dataTable>
