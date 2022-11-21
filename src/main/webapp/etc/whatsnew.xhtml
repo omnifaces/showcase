@@ -12,6 +12,17 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v4" title="4.x">
+				<h2 id="4_0_1">What's new in OmniFaces 4.0.1?</h2>
+				<p><em>Release date: 21 November, 2022</em></p>
+
+				<h3>Fixed in OmniFaces 4.0.1</h3>
+				<ul>
+					<li><os:githubLink issue="715" /><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <h:link outcome="/managedbeans/startup"><code>\#{startup}</code></h:link> weren't compatible with <h:link outcome="/functions/Dates"><code>of:xxx()</code></h:link> date functions</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_1');return false;">Remaining fixes are same as in 3.14.1</a></li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 4.0?</h2>
 				<p><em>Release date: 2 October, 2022</em></p>
 
@@ -51,6 +62,18 @@
 			</p:tab>
 
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_14_1">What's new in OmniFaces 3.14.1?</h2>
+				<p><em>Release date: 21 November, 2022</em></p>
+
+				<h3 id="fixed_3_14_1">Fixed in OmniFaces 3.14.1</h3>
+				<ul>
+					<li><os:githubLink issue="714" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> <code>org.omnifaces.FACES_VIEWS_LOWERCASED_REQUEST_URI</code> didn't work as intended when the target resource was already all-lowercased</li>
+					<li><os:githubLink issue="719" /><h:link outcome="/utils/Beans"><code>Beans#destroy(T instance)</code></h:link> ran in an infinite loop after an accidental commit of an incorrectly done automatic code optimization during a save action in the Eclipse IDE</li>
+					<li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_2_7_21');return false;">Remaining fixes are same as in 2.7.21</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_14">What's new in OmniFaces 3.14?</h2>
 				<p><em>Release date: 2 October, 2022</em></p>
 
@@ -73,6 +96,8 @@
 				<ul>
 					<li><os:githubLink issue="711" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews#registerViewHander()</code></h:link> method name typo has been fixed to <code>FacesViews#registerViewHandler()</code></li>
 				</ul>
+
+				<hr />
 
 				<h2 id="3_13_4">What's new in OmniFaces 3.13.4?</h2>
 				<p><em>Release date: 14 August, 2022</em></p>
@@ -541,6 +566,16 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.21?</h2>
+				<p><em>Release date: 21 November, 2022</em></p>
+
+				<h3 id="fixed_2_7_21">Fixed in OmniFaces 2.7.21</h3>
+				<ul>
+					<li><os:githubLink issue="718" /><h:link outcome="/utils/Servlets"><code>Servlets#toParameterMap()</code></h:link> (also used internally by among others <h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link>) threw IllegalArgumentException on <code>/someurl?foo=%</code> (so, query string having a param with invalid URL-encoded segment)</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.20?</h2>
 				<p><em>Release date: 2 October, 2022</em></p>
 
