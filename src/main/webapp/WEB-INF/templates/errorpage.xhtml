@@ -14,13 +14,13 @@
 				<li>User agent: #{header['user-agent']}</li>
 				<li>User IP: #{empty header['x-forwarded-for'] ? request.remoteAddr : fn:split(header['x-forwarded-for'], ',')[0]}</li>
 				<li>Request URI: <a href="#{requestScope['jakarta.servlet.error.request_uri']}">#{requestScope['jakarta.servlet.error.request_uri']}</a></li>
-				<li>Ajax request: #{facesContext.partialViewContext.ajaxRequest ? 'Yes' : 'No'}</li>
+				<li>Ajax request: #{faces.ajaxRequest ? 'Yes' : 'No'}</li>
 				<li>Status code: #{requestScope['jakarta.servlet.error.status_code']}</li>
 				<li>Exception type: <code>#{requestScope['jakarta.servlet.error.exception_type']}</code></li>
 				<li>Exception message: <code>#{requestScope['jakarta.servlet.error.message']}</code></li>
 				<li>Stack trace: <pre><code>#{of:printStackTrace(requestScope['jakarta.servlet.error.exception'])}</code></pre></li>
 			</ul>
 		</ui:insert>
-		<h:outputScript rendered="#{facesContext.partialViewContext.ajaxRequest}">scrollTo(0, 0);</h:outputScript>
+		<h:outputScript rendered="#{faces.ajaxRequest}">scrollTo(0, 0);</h:outputScript>
 	</ui:define>
 </ui:composition>
