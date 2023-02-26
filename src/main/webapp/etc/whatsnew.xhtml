@@ -12,6 +12,24 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v4" title="4.x">
+				<h2 id="4_0_1">What's new in OmniFaces 4.1?</h2>
+				<p><em>Release date: 26 February, 2023</em></p>
+
+				<h3>Added in OmniFaces 4.1</h3>
+				<ul>
+					<li><os:githubLink issue="730" /><h:link outcome="/components/inputHidden"><code>&lt;o:inputHidden&gt;</code></h:link> has now a new <code>readonly</code> attribute, this will basically set the model value as submitted value during the decode and then run all the validators, but it won't update the model, this is very useful when you'd like to block the form submit by a validation error based on a server-controlled model value</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 4.1</h3>
+				<ul>
+					<li><os:githubLink issue="707" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>sw.js</code></h:link> requests unnecessarily triggered creation, building and rendering of a second <code>UIViewRoot</code> of the associated view, including any view scoped beans</li>
+					<li><os:githubLink issue="728" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> failed to resolve resources when <code>jakarta.faces.AUTOMATIC_EXTENSIONLESS_MAPPING</code> was enabled</li>
+					<li><os:githubLink issue="729" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload unnecessarily threw an exception in MyFaces 4.x due to impl changes in their side</li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_2');return false;">Remaining fixes are same as in 3.14.2</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="4_0_1">What's new in OmniFaces 4.0.1?</h2>
 				<p><em>Release date: 21 November, 2022</em></p>
 
@@ -62,6 +80,21 @@
 			</p:tab>
 
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_14_2">What's new in OmniFaces 3.14.2?</h2>
+				<p><em>Release date: 26 February, 2023</em></p>
+
+				<h3 id="fixed_3_14_2">Fixed in OmniFaces 3.14.2</h3>
+				<ul>
+					<li><os:githubLink issue="723" /><h:link outcome="/functions/Dates"><code>of:formatDate()</code></h:link> didn't correctly support <code>YearMonth</code> during the end of the month</li>
+					<li><os:githubLink issue="725" /><h:link outcome="/utils/Beans"><code>Beans#unwrapIfNecessary()</code></h:link> didn't support Quarkus-generated proxies</li>
+					<li><os:githubLink issue="733" /><code>org.omnifaces.util.Lazy</code> didn't implement <code>Serializable</code></li>
+					<li><os:githubLink issue="734" /><h:link outcome="/utils/Beans"><code>Beans#getInstance()</code></h:link> incorrectly threw NPE when requested bean doesn't exist at all</li>
+					<li><os:githubLink issue="737" /><h:link outcome="/validators/ValidateBean"><code>&lt;o:validateBean&gt;</code></h:link> couldn't show message for an entity based input when a converter is involved which in turn converts between the input and the properties</li>
+					<li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_2_7_22');return false;">Remaining fixes are same as in 2.7.22</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_14_1">What's new in OmniFaces 3.14.1?</h2>
 				<p><em>Release date: 21 November, 2022</em></p>
 
@@ -566,6 +599,20 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.22?</h2>
+				<p><em>Release date: 26 February, 2023</em></p>
+
+				<h3 id="fixed_2_7_22">Fixed in OmniFaces 2.7.22</h3>
+				<ul>
+					<li><os:githubLink issue="720" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> now also fully supports WEBP type</li>
+					<li><os:githubLink issue="721" /><h:link outcome="/functions/Numbers"><code>of:formatBytes()</code></h:link> incorrectly ignored the locale during formatting - it was only used during parsing</li>
+					<li><os:githubLink issue="735" /><h:link outcome="/validators/validateMultiple">Multi-field validators</h:link> failed to skip input when the <code>rendered="false"</code> attribute was placed on a parent component instead of on the input component itself</li>
+					<li><os:githubLink issue="738" />Deployment of a WAR with OmniFaces failed when in web.xml a <code>&lt;servlet-mapping&gt;</code> without a <code>&lt;servlet-class&gt;</code> is encountered <em>before</em> the <code>FacesServlet</code></li>
+					<li><os:githubLink issue="739" /><h:link outcome="/converters/ToCollectionConverter"><code>omnifaces.ToCollectionConverter</code></h:link> incorrectly trimmed the delimiter in <code>getAsObject()</code>, causing that a newline couldn't be used as delimiter</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.21?</h2>
 				<p><em>Release date: 21 November, 2022</em></p>
 
