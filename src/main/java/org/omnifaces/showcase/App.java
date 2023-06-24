@@ -16,12 +16,12 @@ import static org.omnifaces.util.Beans.fireEvent;
 import static org.omnifaces.util.Faces.getContext;
 import static org.omnifaces.util.Faces.getImplInfo;
 import static org.omnifaces.util.Faces.getRequest;
-import static org.omnifaces.util.Faces.getRequestHeader;
 import static org.omnifaces.util.Faces.getResourcePaths;
 import static org.omnifaces.util.Faces.getServerInfo;
 import static org.omnifaces.util.Faces.getViewId;
 import static org.omnifaces.util.Faces.isPostback;
 import static org.omnifaces.util.ResourcePaths.stripPrefixPath;
+import static org.omnifaces.util.Servlets.getReferrer;
 import static org.omnifaces.util.Utils.isEmpty;
 
 import java.io.IOException;
@@ -37,11 +37,13 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.omnifaces.config.OmniFaces;
 import org.omnifaces.model.tree.TreeModel;
+import org.omnifaces.util.Faces;
 import org.primefaces.config.PrimeEnvironment;
 
 @Named
@@ -120,11 +122,31 @@ public class App {
 
 	@Produces @Model
 	public Page getPage() {
-		if (!(isPostback() || isEmpty(getRequestHeader("referer")))) { // Skip postbacks and (generally) bots.
-			fireEvent(new PageView(getRequest()));
+		HttpServletRequest request = getRequest();
+
+		if (allowTrackingForStatistics(request)) {
+			fireEvent(new PageView(request));
 		}
 
 		return pages.getOrDefault(getViewId(), menu).loadIfNecessary();
+	}
+
+	private static boolean allowTrackingForStatistics(HttpServletRequest request) {
+		if (isPostback()) {
+			return false;
+		}
+
+		String referrer = getReferrer(request);
+
+		if (isEmpty(referrer)) {
+			return false;
+		}
+
+		if (Faces.getApplication().getResourceHandler().isResourceURL(referrer)) {
+			return false;
+		}
+
+		return true;
 	}
 
 	// Getters --------------------------------------------------------------------------------------------------------
