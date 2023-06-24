@@ -48,7 +48,7 @@ public class Page extends ListTreeModel<Page> {
 	// Constants ------------------------------------------------------------------------------------------------------
 
 	private static final long serialVersionUID = 1L;
-	private static final String API_PATH = "org/omnifaces/";
+	private static final String API_PATH = "org.omnifaces/org/omnifaces/";
 	private static final String ERROR_LOADING_PAGE_DESCRIPTION = "Unable to load description of %s";
 	private static final String ERROR_LOADING_PAGE_SOURCE = "Unable to load source code of %s";
 
