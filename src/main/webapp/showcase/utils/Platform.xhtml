@@ -1,0 +1,17 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:o="http://omnifaces.org/ui"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="api.path" value="util/Platform" />
+		</f:metadata>
+	</ui:define>
+
+	<ui:define name="description-extra">
+		<ui:include src="/WEB-INF/includes/utils/feature-request.xhtml" />
+	</ui:define>		
+</ui:composition>
