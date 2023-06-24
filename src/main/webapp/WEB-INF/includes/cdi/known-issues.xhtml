@@ -4,9 +4,10 @@
 >
 	<h3>CDI issues in EAR</h3>
 	<p>
-		Note that CDI has known issues when OmniFaces is bundled in multiple WARs in a single EAR and the CDI feature is based on an <code>Extension</code>.
-		It's important to understand that those issues are not related to OmniFaces, but to the broken CDI spec.
-		For an overview of those issues, please refer
-		<a href="https://github.com/omnifaces/omnifaces/wiki/Known-Issues-(CDI)">Known issues of OmniFaces CDI features in combination with specific application servers</a>. 
+		Note that CDI has known issues when the same web fragment library is bundled in multiple WARs in a single EAR and the CDI feature is based on an <code>Extension</code>.
+		It's important to understand that those issues are not related to OmniFaces, but to the CDI spec.
+		For an overview of those issues, please refer <a href="https://github.com/omnifaces/omnifaces/wiki/Known-Issues-(CDI)">Known issues of OmniFaces CDI features in combination with specific application servers</a>.
+		Needless to say is that EAR is a dead end since introduction of the cloud and has no value in the microservices world.
+		In other words, if you want to use CDI (or microservices), then you shouldn't be using an EAR in first place.
 	</p>
 </ui:composition>
