@@ -15,6 +15,7 @@ package org.omnifaces.showcase;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
+import static java.util.stream.Collectors.toSet;
 import static org.omnifaces.showcase.App.scrape;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
@@ -48,7 +49,8 @@ public class Page extends ListTreeModel<Page> {
 	// Constants ------------------------------------------------------------------------------------------------------
 
 	private static final long serialVersionUID = 1L;
-	private static final String API_PATH = "org.omnifaces/org/omnifaces/";
+	private static final String MODULE_NAME = "org.omnifaces";
+	private static final String API_PATH = MODULE_NAME + "/org/omnifaces/";
 	private static final String ERROR_LOADING_PAGE_DESCRIPTION = "Unable to load description of %s";
 	private static final String ERROR_LOADING_PAGE_SOURCE = "Unable to load source code of %s";
 
@@ -334,7 +336,7 @@ public class Page extends ListTreeModel<Page> {
 
 		public Documentation(Set<String> api, Set<String> vdl, Set<String> js) {
 			this.api = api.isEmpty() ? api : new LinkedHashSet<>(asList(api.iterator().next()));
-			src = api;
+			src = api.stream().map(path -> path.replaceFirst(MODULE_NAME + "/", "")).collect(toSet());
 			this.vdl = vdl;
 			this.js = js;
 		}
