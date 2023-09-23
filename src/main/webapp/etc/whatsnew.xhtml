@@ -12,6 +12,24 @@
 
 		<p:tabView id="versions">
 			<p:tab id="v4" title="4.x">
+				<h2 id="4_2">What's new in OmniFaces 4.3?</h2>
+				<p><em>Release date: 23 September, 2023</em></p>
+
+				<h3>Added in OmniFaces 4.3</h3>
+				<ul>
+					<li><os:githubLink issue="769" /><h:link outcome="/taghandlers/importConstants"><code>&lt;o:importConstants&gt;</code></h:link> and <h:link outcome="/taghandlers/importFunctions"><code>&lt;o:importFunctions&gt;</code></h:link> got a new <code>loader</code> attribute where you can specify an object whose class loader will be used to load the class specified in the <code>type</code> attribute</li>
+					<li><os:githubLink issue="769" />New <h:link outcome="/taghandlers/loadBundle"><code>&lt;o:loadBundle&gt;</code></h:link> tag which basically extends the <code>&lt;f:loadBundle&gt;</code> with a new <code>loader</code> attribute where you can specify an object whose class loader will be used to load the bundle, and whose <code>Locale</code> will be obtained with better default values than the default Faces implementation</li>
+					<li><os:githubLink issue="772" />Added <h:link outcome="/utils/Faces"><code>Faces(Local)#isAuthenticated()</code></h:link> which checks if the current request has a remote user</li>
+				</ul>
+
+				<h3>Fixed in OmniFaces 4.3</h3>
+				<ul>
+					<li><os:githubLink issue="774" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> failed to reconnect when connection is lost since 4.0 and threw <code>Unknown channel: undefined</code> because the JS -> TS migration was not done right in <code>Push.ts</code></li>
+					<li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_4');return false;">Remaining fixes are same as in 3.14.4</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="4_2">What's new in OmniFaces 4.2?</h2>
 				<p><em>Release date: 24 June, 2023</em></p>
 
@@ -105,6 +123,18 @@
 			</p:tab>
 
 			<p:tab id="v3" title="3.x">
+				<h2 id="3_14_4">What's new in OmniFaces 3.14.4?</h2>
+				<p><em>Release date: 23 September, 2023</em></p>
+
+				<h3 id="fixed_3_14_4">Fixed in OmniFaces 3.14.4</h3>
+				<ul>
+					<li><os:githubLink issue="754" /><h:link outcome="/taghandlers/tagAttribute"><code>&lt;o:tagAttribute&gt;</code></h:link> caused duplicate ID errors when <code>id</code> attribute is not specified while being used within a <code>UIForm</code> -- basically same problem as fixed in 3.13.3 but further improved the fix after encountering a corner case</li>
+					<li><os:githubLink issue="765" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>PWAResourceHandler</code></h:link> threw NPE when used in combination with <code>UnmappedResourceHandler</code></li>
+					<li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_2_7_24');return false;">Remaining fixes are same as in 2.7.24</a></li>
+				</ul>
+
+				<hr />
+
 				<h2 id="3_14_3">What's new in OmniFaces 3.14.3?</h2>
 				<p><em>Release date: 24 June, 2023</em></p>
 
@@ -643,6 +673,16 @@
 			</p:tab>
 
 			<p:tab id="v2" title="2.x">
+				<h2>What's new in OmniFaces 2.7.24?</h2>
+				<p><em>Release date: 23 September, 2023</em></p>
+
+				<h3 id="fixed_2_7_24">Fixed in OmniFaces 2.7.24</h3>
+				<ul>
+					<li><os:githubLink issue="768" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> threw since JDK11 <code>java.lang.NullPointerException: Deflater has been closed</code> when connection is reset by peer</li>
+				</ul>
+
+				<hr />
+
 				<h2>What's new in OmniFaces 2.7.23?</h2>
 				<p><em>Release date: 24 June, 2023</em></p>
 
