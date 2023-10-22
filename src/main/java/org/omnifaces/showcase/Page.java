@@ -12,6 +12,7 @@
  */
 package org.omnifaces.showcase;
 
+import static java.lang.Boolean.parseBoolean;
 import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
@@ -61,6 +62,7 @@ public class Page extends ListTreeModel<Page> {
 	private String viewId;
 	private String description;
 	private String since;
+	private boolean deprecated;
 	private List<Source> sources;
 	private Documentation documentation;
 	private AtomicBoolean loaded = new AtomicBoolean();
@@ -79,6 +81,7 @@ public class Page extends ListTreeModel<Page> {
 		this.path = path;
 		this.viewId = viewId;
 		this.title = title;
+		this.deprecated = parseBoolean((String) getMetadataAttributes(viewId).get("deprecated"));
 	}
 
 	// Initialization -------------------------------------------------------------------------------------------------
@@ -240,6 +243,10 @@ public class Page extends ListTreeModel<Page> {
 
 	public String getSince() {
 		return since;
+	}
+
+	public boolean isDeprecated() {
+		return deprecated;
 	}
 
 	public List<Source> getSources() {

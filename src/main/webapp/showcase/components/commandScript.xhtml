@@ -1,0 +1,21 @@
+<ui:composition template="/WEB-INF/templates/showcase.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+>
+	<ui:define name="meta">
+		<f:metadata>
+			<f:attribute name="deprecated" value="true" />
+		</f:metadata>
+	</ui:define>
+	
+	<ui:define name="beforeDescription">
+		<p class="highlight">
+			This component is <strong>deprecated</strong> since OmniFaces 3.0 because it has been integrated in native JSF since JSF version 2.3 as <code><a href="https://jakarta.ee/specifications/faces/3.0/vdldoc/html_basic/commandscript">&lt;h:commandScript&gt;</a></code> with exactly the same functionality.
+			This component has been <strong>removed</strong> from OmniFaces since OmniFaces 4.0.
+		</p>
+	</ui:define>
+</ui:composition>

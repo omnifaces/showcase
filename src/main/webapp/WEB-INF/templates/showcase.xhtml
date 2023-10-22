@@ -22,6 +22,7 @@ The following metadata attributes are supported via this template (they're parse
  -->
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:faces="jakarta.faces"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
@@ -40,24 +41,26 @@ The following metadata attributes are supported via this template (they're parse
 			otherwise complain that the model value cannot be set even though there's no form. 
 			See also https://stackoverflow.com/q/14068891/157882
 		 -->
-		<p:selectOneMenu id="groups" value="#{page.parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
-			styleClass="groups" panelStyleClass="groups" effect="fade"
-			disabled="#{facesContext.postback and not facesContext.renderResponse}">
-			<f:selectItems value="#{page.parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
-				itemDisabled="#{_parent.children[0] eq page.parent.children[0]}" />
-		</p:selectOneMenu><span class="separator">&#xa0;-&#xa0;</span>
+		<ui:fragment rendered="#{not page.deprecated}">
+			<p:selectOneMenu id="groups" value="#{page.parent.children[0].viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
+				styleClass="groups" panelStyleClass="groups" effect="fade"
+				disabled="#{facesContext.postback and not facesContext.renderResponse}">
+				<f:selectItems value="#{page.parent.parent.children}" var="_parent" itemValue="#{_parent.children[0].viewId}" itemLabel="#{_parent.title}" 
+					itemDisabled="#{_parent.children[0] eq page.parent.children[0]}" />
+			</p:selectOneMenu><span class="separator">&#xa0;-&#xa0;</span>
+		</ui:fragment>
 		<p:selectOneMenu id="pages" value="#{page.viewId}" onchange="window.location='#{request.contextPath}' + this.value" 
 			styleClass="pages" panelStyleClass="pages" effect="fade"
 			disabled="#{facesContext.postback and not facesContext.renderResponse}" rendered="#{page.parent.childCount gt 1}">
 			<f:selectItems value="#{page.parent.children}" var="_page" itemValue="#{_page.viewId}" itemLabel="#{_page.title}" 
 				itemDisabled="#{_page eq page}" />
 		</p:selectOneMenu>
-		<h:outputText value="#{page.title}" styleClass="code" rendered="#{page.parent.childCount eq 1}" />
+		<h:outputText value="#{page.title}" styleClass="code" rendered="#{page.parent.childCount eq 1 or page.deprecated}" />
 	</ui:define>
 
 	<ui:define name="content">
 		<p>
-			<div id="quickNavigation">
+			<div id="quickNavigation" faces:rendered="#{not page.deprecated}">
 			 	<p:button id="prev" icon="pi pi-chevron-left" accesskey="[" title="Previous ( Alt+[ )" outcome="#{of:coalesce(page.previousSibling.viewId, '/index')}" />
 			 	<p:button id="next" icon="pi pi-chevron-right" accesskey="]" title="Next ( Alt+] )" outcome="#{of:coalesce(page.nextSibling.viewId, '/index')}" />
 			</div>
@@ -68,6 +71,8 @@ The following metadata attributes are supported via this template (they're parse
 		<h:outputStylesheet library="showcase" name="css/prettify.css" />
 		<o:deferredScript library="showcase" name="js/prettify.js" />
 		<o:deferredScript library="showcase" name="js/onload.js" />
+		
+		<ui:insert name="beforeDescription" />
 
 		<ui:insert name="description">
 			<h:outputText value="#{page.description}" escape="false" /><!-- Copies content from 1st API documentation. -->
@@ -94,7 +99,7 @@ The following metadata attributes are supported via this template (they're parse
 			<os:listdocs header="VDL documentation" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
 			<os:listdocs header="API documentation" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
 			<os:listdocs header="Java source code" paths="src" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
-			<os:listdocs header="JavaScript source code" paths="js" url="#{_jsURL}#{path}" label="#{path}" />
+			<os:listdocs header="JavaScript source code" paths="js" url="#{path.startsWith('/') ? _codeURL : _jsURL}#{path}" label="#{app.getFileName(path)}" />
 		</p:panel>
 	</ui:define>
 </ui:composition>

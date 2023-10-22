@@ -28,6 +28,7 @@ import static org.omnifaces.util.Utils.isEmpty;
 import static org.omnifaces.util.Utils.unserializeURLSafe;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -103,7 +104,7 @@ public class App {
 
 		for (String groupPath : groupPaths) {
 			String groupName = groupPath.split("/")[2];
-			TreeModel<Page> group = menu.addChildNode(new Page(groupName));
+			TreeModel<Page> group = new Page(groupName);
 			Set<String> pagePaths = new TreeSet<>(getResourcePaths(groupPath));
 
 			for (String pagePath : pagePaths) {
@@ -111,8 +112,15 @@ public class App {
 				String extensionlessViewId = viewId.split("\\.xhtml$")[0];
 				String title = extensionlessViewId.split("/")[2];
 				Page page = new Page(pagePath, extensionlessViewId, title);
-				group.addChildNode(page);
 				pages.put(viewId, page);
+
+				if (!page.isDeprecated()) {
+					group.addChildNode(page);
+				}
+			}
+
+			if (group.getChildCount() > 0) {
+				menu.addChildNode(group);
 			}
 		}
 	}
@@ -158,6 +166,10 @@ public class App {
 
 	public List<ResourceIdentifier> decodeCombinedResource(String combinedResourceName) {
 		return stream(unserializeURLSafe(combinedResourceName.split("\\.")[0]).split("\\|")).map(ResourceIdentifier::new).collect(toList());
+	}
+
+	public String getFileName(String path) {
+		return Paths.get(path).getFileName().toString();
 	}
 
 	// Getters --------------------------------------------------------------------------------------------------------

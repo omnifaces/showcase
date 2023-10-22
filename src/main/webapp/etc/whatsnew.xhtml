@@ -95,7 +95,7 @@
 					<li>All things which were during 3.x <code>@Deprecated</code> have been physically removed, 
 						such as <code>&lt;o:form includeViewParams="true"&gt;</code> (has become the default behavior),
 						<code>WebXml.INSTANCE</code> and <code>FacesConfigXML.INSTANCE</code> (replaced by <code>WebXml.instance()</code> and <code>FacesConfigXml.instance()</code>)
-						and <code>omnifaces:fixviewstate.js</code> (replaced by JSF 2.2 native fix)
+						and <h:link outcome="/scripts/FixViewState"><code>omnifaces:fixviewstate.js</code></h:link> (replaced by JSF 2.3 native fix)
 					</li>
 					<li><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <h:link outcome="/managedbeans/startup"><code>\#{startup}</code></h:link> 
 						will now return an instance of <code>java.time.temporal.Temporal</code> instead of <code>java.util.Date</code>;
@@ -661,8 +661,8 @@
 				<h3>Changed in OmniFaces 3.0</h3>
 				<ul>
 		            <li><os:githubLink commit="e2d03d9,feae34a,4d3d123,236e93b,c275dea,8284ffb" />Under the covers, many things are replaced by new JSF 2.3 API things and also Java8 lambdas and streams have been introduced where possible</li>
-					<li><os:githubLink issue="268" /><code>&lt;o:commandScript&gt;</code> has been <strong>deprecated</strong> as it's now moved into JSF 2.3 as <code><a href="https://javaserverfaces.github.io/docs/2.3/vdldocs/facelets/h/commandScript.html">&lt;h:commandScript&gt;</a></code> with exactly the same functionality</li>
-					<li><os:githubLink issue="267" /><code>omnifaces:fixviewstate.js</code> has been <strong>deprecated</strong> as it's now finally solved in JSF 2.3 (by yours truly)</li>
+					<li><os:githubLink issue="268" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code></h:link> has been <strong>deprecated</strong> as it's now moved into JSF 2.3 as <code><a href="https://jakarta.ee/specifications/faces/3.0/vdldoc/html_basic/commandscript">&lt;h:commandScript&gt;</a></code> with exactly the same functionality</li>
+					<li><os:githubLink issue="267" /><h:link outcome="/scripts/FixViewState"><code>omnifaces:fixviewstate.js</code></h:link> has been <strong>deprecated</strong> as it's now finally solved in JSF 2.3 (by yours truly)</li>
 		            <li><os:githubLink issue="388" /><code>includeViewParams="true"</code> attribute of <h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> have been <strong>deprecated</strong> as those have never proven to be more useful than <code>useRequestURI="true"</code> or <code>includeRequestParams="true"</code></li>
 				</ul>
 
@@ -1247,7 +1247,7 @@
 				<ul>
 					<li><os:githubLink issue="178" /><code>&lt;o:importConstants&gt;</code> will not anymore include parent of an inner class in default value of <code>var</code> attribute, so e.g. <code>\#{Parent$Inner}</code> will now be <code>\#{Inner}</code></li>
 					<li><os:githubLink commit="214d189" /><code>BeanManager.INSTANCE.getReference()</code> is <strong>deprecated</strong> in favor of <h:link outcome="/utils/Beans"><code>Beans#getReference()</code></h:link></li>
-					<li><os:githubLink issue="218" /><code>&lt;o:commandScript&gt;</code> now supports declaring a namespaced function</li>
+					<li><os:githubLink issue="218" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code> now supports declaring a namespaced function</h:link></li>
 				</ul>
 
 				<h3>Fixed in OmniFaces 2.3</h3>
@@ -1270,7 +1270,7 @@
 
 				<h3>Added in OmniFaces 2.2</h3>
 				<ul>
-					<li><os:githubLink issue="124" /><code>&lt;o:commandScript&gt;</code> got new <code>autorun</code> attribute, allowing for immediate execution during window load event</li>
+					<li><os:githubLink issue="124" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code></h:link> got new <code>autorun</code> attribute, allowing for immediate execution during window load event</li>
 					<li><os:githubLink issue="118" /><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code></h:link> got new <code>default</code> attribute, allowing to set a default value when no view param is present</li>
 					<li><os:githubLink commit="572c118" /><h:link outcome="/utils/Faces"><code>Faces#refresh()</code> and <code>Faces#refreshWithQueryString()</code></h:link> which do basically <code>redirect(getRequestURI())</code>; added <code>Faces#getRenderKit()</code></li>
 					<li><os:githubLink commit="efd9347" /><h:link outcome="/utils/Faces"><code>Faces#getRenderKit()</code></h:link> which can obtain the render kit from the factory when there's no view around</li>
@@ -1454,7 +1454,7 @@
 
 				<h3>Added in OmniFaces 1.7</h3>
 				<ul>
-					<li>New <code>omnifaces:fixviewstate.js</code> script which should automatically fix JSF issue 790</li>
+					<li><h:link outcome="/scripts/FixViewState">New <code>omnifaces:fixviewstate.js</code> script which should automatically fix JSF issue 790</h:link></li>
 					<li><h:link outcome="/validators/validateAllOrNone">Added <code>invalidateAll</code> attribute to disable invalidating valid fields, and add support for <code>showMessageFor="@invalid"</code> to show message for invalidated fields only</h:link></li>
 					<li><h:link outcome="/validators/ValueChangeValidator">New <code>ValueChangeValidator</code> which runs only when the submitted and converted value is really changed as compared to the model value</h:link></li>
 					<li><h:link outcome="/utils/Faces">Added <code>Faces#getBookmarkableURL()</code> methods taking <code>ParamHolder</code> instances as value</h:link></li>
@@ -1663,7 +1663,7 @@
 					<li><h:link outcome="/converters/SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code> which converts select items by their index</h:link></li>
 					<li><h:link outcome="/functions/Converters"><code>of:joinArray()</code>, <code>of:joinCollection()</code> and <code>of:joinMap()</code> functions</h:link></li>
 					<li><h:link outcome="/taghandlers/validator">New <code>message</code> attribute on <code>&lt;o:validator&gt;</code> which allows specifying validator message on a per-validator basis</h:link></li>
-					<li><code>&lt;o:commandScript&gt;</code> which generates a JavaScript function handler to <code>jsf.ajax.request</code>, so that JSF ajax requests can be invoked by JavaScript</li>
+					<li><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code></h:link> which generates a JavaScript function handler to <code>jsf.ajax.request</code>, so that JSF ajax requests can be invoked by JavaScript</li>
 					<li><h:link outcome="/functions/Dates"><code>of:addXxx()</code> and <code>of:xxxBetween()</code> functions to manipulate/calculate dates</h:link></li>
 					<li><h:link outcome="/functions/Dates"><code>of:getDaysOfWeek()</code> and <code>of:getShortDaysOfWeek()</code> functions to retrieve a mapping of days of week</h:link></li>
 				</ul>
