@@ -12,6 +12,8 @@
  */
 package org.omnifaces.showcase;
 
+import static java.util.Arrays.stream;
+import static java.util.stream.Collectors.toList;
 import static org.omnifaces.util.Beans.fireEvent;
 import static org.omnifaces.util.Faces.getContext;
 import static org.omnifaces.util.Faces.getImplInfo;
@@ -23,11 +25,13 @@ import static org.omnifaces.util.Faces.isPostback;
 import static org.omnifaces.util.ResourcePaths.stripPrefixPath;
 import static org.omnifaces.util.Servlets.getReferrer;
 import static org.omnifaces.util.Utils.isEmpty;
+import static org.omnifaces.util.Utils.unserializeURLSafe;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -43,6 +47,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.select.Elements;
 import org.omnifaces.config.OmniFaces;
 import org.omnifaces.model.tree.TreeModel;
+import org.omnifaces.resourcehandler.ResourceIdentifier;
 import org.omnifaces.util.Faces;
 import org.primefaces.config.PrimeEnvironment;
 
@@ -147,6 +152,12 @@ public class App {
 		}
 
 		return true;
+	}
+
+	// Helpers --------------------------------------------------------------------------------------------------------
+
+	public List<ResourceIdentifier> decodeCombinedResource(String combinedResourceName) {
+		return stream(unserializeURLSafe(combinedResourceName.split("\\.")[0]).split("\\|")).map(ResourceIdentifier::new).collect(toList());
 	}
 
 	// Getters --------------------------------------------------------------------------------------------------------

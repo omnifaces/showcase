@@ -23,45 +23,29 @@
 		</p>
 		<c:set var="resourceBaseURL" value="#{request.contextPath}/jakarta.faces.resource/" />
 		<ul>
-			<ui:repeat value="#{view.getComponentResources(facesContext, 'head')}" var="res">
-				<c:set var="resourcePath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
-				<li><a href="#{resourceBaseURL}#{resourcePath}">#{resourcePath}</a></li>
-			</ui:repeat>
-			<ui:repeat value="#{view.getComponentResources(facesContext, 'body')}" var="res">
-				<ui:fragment rendered="#{not empty res.attributes.name}">
+			<ui:repeat value="#{view.getComponentResources(facesContext)}" var="res">
+				<ui:fragment rendered="#{res.attributes.library eq 'omnifaces.combined'}">
 					<c:set var="resourcePath" value="#{res.attributes.name}.xhtml?ln=#{res.attributes.library}" />
-					<li><a href="#{resourceBaseURL}#{resourcePath}">#{resourcePath}</a></li>
+					<li>
+						<a href="#{resourceBaseURL}#{resourcePath}">#{resourcePath}</a>
+						<br/>which in turn contains the following resources
+						<ul>
+							<ui:repeat value="#{app.decodeCombinedResource(res.attributes.name)}" var="res">
+								<li>
+									<a href="#{resourceBaseURL}#{res.name}.xhtml?ln=#{res.library}">#{res}</a>
+								</li>
+							</ui:repeat>
+						</ul>
+					</li>
 				</ui:fragment>
 			</ui:repeat>
 		</ul>
-		<p>
-			The CSS one has combined the five CSS files
-			<a href="#{resourceBaseURL}theme.css.xhtml?ln=primefaces-aristo">theme.css</a>,
-			<a href="#{resourceBaseURL}primefaces.css.xhtml?ln=primefaces">primefaces.css</a>,
-			<a href="#{resourceBaseURL}css/layout.css.xhtml?ln=layout">layout.css</a>,
-			<a href="#{resourceBaseURL}css/showcase.css.xhtml?ln=showcase">showcase.css</a> and 
-			<a href="#{resourceBaseURL}css/prettify.css.xhtml?ln=showcase">prettify.css</a>. 
-			The JS one has combined the five JS files 
-			<a href="#{resourceBaseURL}jquery/jquery.js.xhtml?ln=primefaces">jquery.js</a>,
-			<a href="#{resourceBaseURL}jquery/jquery-plugins.js.xhtml?ln=primefaces">jquery-plugins.js</a>,
-			<a href="#{resourceBaseURL}primefaces.js.xhtml?ln=primefaces">primefaces.js</a>,
-			<a href="#{resourceBaseURL}omnifaces.js.xhtml?ln=omnifaces">omnifaces.js</a> and
-			<a href="#{resourceBaseURL}faces.js.xhtml?ln=jakarta.faces">faces.js</a>.
-			The deferred JS one has combined the two JS files 
-			<a href="#{resourceBaseURL}js/prettify.js.xhtml?ln=showcase">prettify.js</a> and
-			<a href="#{resourceBaseURL}js/onload.js.xhtml?ln=showcase">onload.js</a>.
-		</p>
 		<p>
 			Note that the PrimeFaces <code>theme.css</code> file can by default not be combined because it's not been 
 			added as a Faces resource, but hardcoded in PrimeFaces' <code>HeadRenderer</code>. There's however a way to
 			get it to be included anyway, but this requires a custom renderer for the <code>&lt;head&gt;</code> wherein
 			the theme name is been hardcoded as <code>@ResourceDependency</code>. See also 
 			<a href="https://github.com/omnifaces/omnifaces/wiki/Combine-hardcoded-PrimeFaces-resources-using-CombinedResourceHandler">Combine hardcoded PrimeFaces resources using CombinedResourceHandler</a>.
-			Such a
-			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/java/org/omnifaces/showcase/HeadRenderer.java"><code>HeadRenderer</code></a>
-			is also
-			<a href="https://github.com/omnifaces/showcase/blob/master/src/main/webapp/WEB-INF/faces-config.xml">configured</a>
-			in this showcase.
 		</p>
  	</ui:define>		
 </ui:composition>
