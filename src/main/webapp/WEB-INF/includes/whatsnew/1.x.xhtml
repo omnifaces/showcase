@@ -1,0 +1,397 @@
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="jakarta.faces.html"
+    xmlns:ui="jakarta.faces.facelets"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:os="http://omnifaces.org/showcase"
+>
+    <h2>What's new in OmniFaces 1.8.3?</h2>
+    <p><em>Release date: 3 June, 2015</em></p>
+    <h3>Fixed in OmniFaces 1.8.3</h3>
+    <ul>
+        <li><os:githubLink commit="38d0330" /><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> memory leak on composite components</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.8.1?</h2>
+    <p><em>Release date: 3 June, 2014</em></p>
+    <h3>Fixed in OmniFaces 1.8.1</h3>
+    <ul>
+        <li>During fixing <a href="https://github.com/omnifaces/omnifaces/issues/35">issue 35</a> some <code>CombinedResourceHandler</code> code necessary for dealing with <code>&lt;o:deferredScript&gt;</code> was accidentally removed, causing those to not be suppressed from head (and thus effectively included twice).</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.8?</h2>
+    <p><em>Release date: 2 June, 2014</em></p>
+
+    <h3>Added in OmniFaces 1.8</h3>
+    <ul>
+        <li><h:link outcome="/utils/WebXml"><code>WebXml#getFormErrorPage()</code> to get web.xml configured location of the FORM authentication error page</h:link></li>
+        <li><h:link outcome="/components/deferredScript"><code>&lt;o:deferredScript&gt;</code> which is capable of deferring JavaScript resources to <code>window.onload</code></h:link></li>
+        <li><h:link outcome="/utils/Faces"><code>Faces#addResponseCookie()</code> got 2 new overloaded methods whereby domain and path defaults to current request domain and current path</h:link></li>
+        <li><h:link outcome="/utils/Components"><code>Components#isRendered()</code> which also checks the <code>rendered</code> attribute of all parents of the given component</h:link></li>
+        <li><h:link outcome="/taghandlers/massAttribute"><code>&lt;o:massAttribute&gt;</code> which sets the given attribute on all nested components</h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FacesMessageExceptionHandler"><code>FacesMessageExceptionHandler</code> which sets any caught exception as a global FATAL faces message</h:link></li>
+        <li><h:link outcome="/components/cache"><code>&lt;o:cache&gt;</code> has new <code>disabled</code> attribute to temporarily disable the cache and pass-through children directly</h:link></li>
+        <li><h:link outcome="/cdi/Eager"><code>@Eager</code> annotation to eagerly instantiate request-, view-, session- and application scoped beans</h:link></li>
+        <li><h:link outcome="/components/viewParam"><code>&lt;o:viewParam&gt;</code> skips converter for <code>null</code> model values so that query string doesn't get polluted with an empty string</h:link></li>
+        <li>Small amount of utility methods and classes, e.g. method to check CDI annotations recursively in stereotypes, shortcut method to obtain VDL, etc</li>
+    </ul>
+
+    <h3>Changed in OmniFaces 1.8</h3>
+    <ul>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> now also recognizes and combines <code>&lt;o:deferredScript&gt;</code></h:link></li>
+        <li><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> now also recognizes PrimeFaces dynamic resources using <code>StreamedContent</code></h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.8</h3>
+    <ul>
+        <li>Assume <code>RuntimeException</code> in <code>BeanManager#init()</code> as CDI not available (fixes deployment error on WAS 8.5 without CDI enabled)</li>
+        <li><h:link outcome="/converters/GenericEnumConverter">Use "<code>-</code>" instead of <code>null</code> as default value to workaround <code>noSelectionOption</code> fail with <code>GenericEnumConverter</code></h:link></li>
+        <li><h:link outcome="/components/outputFormat"><code>&lt;o:param&gt;</code> shouldn't silently convert the value to <code>String</code> (fixes e.g. <code>java.util.Date</code> formatting fail in <code>&lt;o:outputFormat&gt;</code>)</h:link></li>
+        <li><h:link outcome="/utils/Beans">Fixed <code>javax.enterprise.inject.AmbiguousResolutionException</code> in subclassed <code>@FacesConverter</code> and <code>@FacesValidator</code></h:link></li>
+        <li><h:link outcome="/components/messages"><code>&lt;o:messages&gt;</code> failed to find the <code>for</code> component when it's not in the same parent</h:link></li>
+        <li><h:link outcome="/components/conditionalComment"><code>&lt;o:conditionalComment&gt;</code> shouldn't XML-escape the <code>if</code> value, enabling usage of <code>&amp;</code> character</h:link></li>
+        <li><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> broke state saving when partial state saving is turned off</h:link></li>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code> didn't properly deal with MyFaces-managed resources</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.7?</h2>
+    <p><em>Release date: 12 January, 2014</em></p>
+
+    <h3>Added in OmniFaces 1.7</h3>
+    <ul>
+        <li><h:link outcome="/scripts/FixViewState">New <code>omnifaces:fixviewstate.js</code> script which should automatically fix JSF issue 790</h:link></li>
+        <li><h:link outcome="/validators/validateAllOrNone">Added <code>invalidateAll</code> attribute to disable invalidating valid fields, and add support for <code>showMessageFor="@invalid"</code> to show message for invalidated fields only</h:link></li>
+        <li><h:link outcome="/validators/ValueChangeValidator">New <code>ValueChangeValidator</code> which runs only when the submitted and converted value is really changed as compared to the model value</h:link></li>
+        <li><h:link outcome="/utils/Faces">Added <code>Faces#getBookmarkableURL()</code> methods taking <code>ParamHolder</code> instances as value</h:link></li>
+        <li><h:link outcome="/utils/Beans">Added <code>Beans#getInstance()</code> and <code>Beans#getActiveInstances()</code> methods returning concrete (non-proxied) instances</h:link></li>
+        <li><h:link outcome="/filters/CacheControlFilter">New <code>CacheControlFilter</code> which can control cache-related headers of the response</h:link></li>
+        <li><h:link outcome="/validators/validateMultiple">New <code>&lt;o:validateMultiple&gt;</code> tag which allows validating multiple fields via a custom validator method or implementation</h:link></li>
+        <li><h:link outcome="/utils/WebXml">Added <code>WebXml#getSessionTimeout()</code> to get web.xml configured session timeout</h:link></li>
+        <li><h:link outcome="/components/tree">Added <code>SortedTreeModel</code> which holds the tree children in a <code>TreeSet</code></h:link></li>
+    </ul>
+
+    <h3>Changed in OmniFaces 1.7</h3>
+    <ul>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code> is now able to handle error in error page itself</h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.7</h3>
+    <ul>
+        <li><h:link outcome="/taghandlers/importConstants">Store constants of <code>&lt;o:importConstants&gt;</code> in an ordered map instead of an unordered map</h:link></li>
+        <li><h:link outcome="/utils/WebXml"><code>WebXml</code> initialization failed in Weblogic because it attempts to load it as CDI managed bean</h:link></li>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Broken 404 "not found" error handling of <code>CombinedResourceHandler</code> (it threw <code>IllegalArgumentException</code> instead)</h:link></li>
+        <li><h:link outcome="/converters/GenericEnumConverter"><code>GenericEnumConverter</code> failed in composites which are reused more than once in same view and on enums with custom bodies</h:link></li>
+        <li><h:link outcome="/validators/validateOrder"><code>o:validateOrder</code> threw NPE on non-required fields</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.6.3?</h2>
+    <p><em>Release date: 18 October, 2013</em></p>
+
+    <h3>Fixed in OmniFaces 1.6.3</h3>
+    <ul>
+        <li>Fixed throwing <code>NoClassDefFoundError</code> when no JNDI is present (like e.g. in Google App Engine by default)</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.6.2?</h2>
+    <p><em>Release date: 13 October, 2013</em></p>
+
+    <h3>Fixed in OmniFaces 1.6.2</h3>
+    <ul>
+        <li>Fixed throwing <code>IllegalStateException</code> when no CDI is present (like e.g. in Tomcat by default)</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.6.1?</h2>
+    <p><em>Release date: 5 October, 2013</em></p>
+
+    <h3>Added in OmniFaces 1.6.1</h3>
+    <ul>
+        <li>New <code>BeanManager</code> enum which allows trying to get a CDI managed bean instance without any CDI dependency</li>
+        <li><h:link outcome="/utils/Beans">New <code>Beans</code> utility class to ease working with CDI <code>BeanManager</code> API</h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.6.1</h3>
+    <ul>
+        <li><a href="https://github.com/omnifaces/omnifaces/wiki/Known-Issues-(CDI)">Fixed deployment problem when OmniFaces is bundled in multiple WARs of the same EAR, caused by the way how CDI behaves</a></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.6?</h2>
+    <p><em>Release date: 19 September, 2013</em></p>
+
+    <h3>Added in OmniFaces 1.6</h3>
+    <ul>
+        <li><h:link outcome="/cdi/Param">Injecting, converting and validating HTTP request parameters via CDI <code>@Param</code> (say, the CDI alternative to <code>&lt;f:viewParam&gt;</code>)</h:link></li>
+        <li>Transparent support for dependency injection (CDI and EJB) inside <h:link outcome="/cdi/FacesConverter"><code>@FacesConverter</code></h:link> and <h:link outcome="/cdi/FacesValidator"><code>@FacesValidator</code></h:link></li>
+        <li><h:link outcome="/converters/ValueChangeConverter"><code>ValueChangeConverter</code>, a base class which converts only when the submitted value is really changed as compared to the model value</h:link></li>
+        <li><h:link outcome="/utils/Components"><code>Components#getCurrentCommand()</code> which returns the currently invoked command component (useful for logging)</h:link></li>
+        <li><h:link outcome="/utils/Components"><code>Components#createValueExpression()</code>, <code>#createMethodExpression()</code>, <code>#createVoidMethodExpression()</code>, <code>#createActionListenerMethodExpression()</code> and <code>#createAjaxBehavior()</code></h:link></li>
+        <li><h:link outcome="/utils/JNDI">New <code>JNDI</code> utility class</h:link></li>
+        <li><h:link outcome="/utils/Faces"><code>Faces#getBookmarkableURL()</code>, <code>#getRequestHostname()</code> and <code>#setResponseStatus()</code></h:link></li>
+        <li><h:link outcome="/components/messages"><code>message</code> attribute for <code>&lt;o:messages&gt;</code> to display a global message in case any of the in <code>for</code> specified components has a faces message</h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Added <code>logException</code> method to <code>FullAjaxExceptionHandler</code> so that it can be overridden for more fine grained control of logging</h:link></li>
+        <li><h:link outcome="/utils/FacesLocal">New <code>FacesLocal</code> utility class which extends <code>Faces</code> utility class with methods which take <code>FacesContext</code> as argument</h:link></li>
+        <li><h:link outcome="/cdi/ViewScoped">CDI compatible <code>@ViewScoped</code> annotation specifically for JSF 2.0/2.1</h:link></li>
+        <li><h:link outcome="/components/form"><code>useRequestURI</code> attribute for <code>&lt;o:form&gt;</code> to submit to exactly the same URL as in browser's address bar, with query string</h:link></li>
+        <li><h:link outcome="/functions/Converters"><code>of:splitArray()</code> and <code>of:splitList()</code> to split an array or list in subarrays or sublists</h:link></li>
+        <li><h:link outcome="/functions/Numbers"><code>of:formatPercent()</code> to format a number as a percentage</h:link></li>
+    </ul>
+
+    <h3>Changed in OmniFaces 1.6</h3>
+    <ul>
+        <li><h:link outcome="/validators/validateEqual"><code>showMessageFor</code> attribute of multi-field validators now supports a space separated collection of client IDs where the message should be shown</h:link></li>
+        <li><h:link outcome="/resourcehandlers/CDNResourceHandler">CDN resource handler now supports: 1) always being enabled, also during development stage, 2) wildcard configuration, and 3) EL resolving in CDN URL</h:link></li>
+        <li><h:link outcome="/utils/Faces"><code>Faces#redirect()</code> will not use <code>String#format()</code> anymore when no params are supplied, this enables developers to pass already-encoded URLs to <code>Faces#redirect()</code></h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.6</h3>
+    <ul>
+        <li><h:link outcome="/utils/Ajax"><code>Json#encode()</code> incorrectly escaped singlequotes (was causing validation error in <code>jQuery.parseJSON()</code>)</h:link></li>
+        <li><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> returned gzipped content as plain text in WebSphere 8.5 / Liberty</h:link></li>
+        <li><h:link outcome="/components/onloadScript"><code>&lt;o:onloadScript&gt;</code> rendered its body as plain text during an <code>@all</code> render and didn't work anymore during a postback since Mojarra 2.1.24</h:link></li>
+        <li><h:link outcome="/components/highlight"><code>&lt;o:highlight&gt;</code> threw duplicate component ID error in TomEE 1.6.0</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.5?</h2>
+    <p><em>Release date: 10 June, 2013</em></p>
+
+    <h3>Added in OmniFaces 1.5</h3>
+    <ul>
+        <li><h:link outcome="/components/param">Decode <code>UIComponent</code> children in <code>&lt;o:param&gt;</code> when no <code>value</code> attribute is specified (so that you can specify JSF/HTML code as <code>outputFormat</code> parameter)</h:link></li>
+        <li><h:link outcome="/renderkits/Html5RenderKit">Allow endusers to specify custom passthrough attributes for <code>Html5RenderKit</code></h:link></li>
+        <li><h:link outcome="/components/form">Added new <code>includeRequestParams</code> attribute to <code>&lt;o:form&gt;</code></h:link></li>
+        <li><h:link outcome="/components/messages"><code>&lt;o:messages&gt;</code> which extends <code>&lt;h:messages&gt;</code> with support for multiple client IDs in <code>for</code> attribute, ability to disable HTML escaping and ability to perform markupless rendering like <code>&lt;ui:repeat&gt;</code></h:link></li>
+        <li><h:link outcome="/utils/Components"><code>Components#includeCompositeComponent()</code> to programmatically include a composite component in given parent component</h:link></li>
+        <li>Add list based alternatives for the converters that automatically convert based on select items:
+            <h:link value="omnifaces.ListIndexConverter" outcome="/converters/ListIndexConverter"/> and
+            <h:link value="omnifaces.ListConverter" outcome="/converters/ListConverter"/></li>
+        <li><h:link outcome="/validators/JsfLabelMessageInterpolator">Message interpolator for Bean Validation that allows a component's label to be inserted in the middle of a message</h:link></li>
+        <li><h:link outcome="/utils/Faces">New <code>Faces#getRequestURLWithQueryString()</code> which returns full request URL with query string</h:link></li>
+        <li><h:link outcome="/components/cache">Added <code>reset</code> attribute to <code>&lt;o:cache&gt;</code> as an alternative for the programmatic resetting of a cache entry</h:link></li>
+        <li><h:link outcome="/functions/Converters">Added converters for an <code>Iterable</code> to <code>List</code> and <code>DataModel</code>, so these can be used in <code>&lt;ui:repeat&gt;</code> and <code>&lt;h:dataTable&gt;</code></h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">New protected methods <code>FullAjaxExceptionHandler#findExceptionRootCause()</code> and <code>#findErrorPageLocation()</code> so that it can easier be subclassed</h:link></li>
+        <li>EL functions <h:link outcome="/functions/Converters"><code>of:toJson()</code></h:link>, <h:link outcome="/functions/Strings"><code>of:replaceAll()</code> and <code>of:matches()</code></h:link></li>
+    </ul>
+
+    <h3>Changed in OmniFaces 1.5</h3>
+    <ul>
+        <li><h:link outcome="/renderkits/Html5RenderKit">Obtain current component via <code>UIComponent#getCurrentComponent()</code> when it's <code>null</code> in <code>Html5RenderKit</code> (so that it also works with PrimeFaces input components)</h:link></li>
+        <li><h:link outcome="/utils/Events">Improved <code>CallbackPhaseListener</code> to support multiple callbacks instead of only one; the old <code>Events#setCallbackXxx()</code> methods are now deprecated</h:link></li>
+        <li><h:link outcome="/utils/Ajax">Support <code>@all</code>, <code>@form</code> and <code>@this</code> in <Code>Ajax#update()</Code></h:link></li>
+        <li><h:link outcome="/utils/Components">Moved <code>Faces#includeFacelet()</code> to <code>Components#includeFacelet()</code></h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.5</h3>
+    <ul>
+        <li>Add missing <code>createResource()</code> overrides 
+            <h:link outcome="/resourcehandlers/CDNResourceHandler">to</h:link>&#xA0;
+            <h:link outcome="/resourcehandlers/CombinedResourceHandler">all</h:link>&#xA0; 
+            <h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>ResourceHandler</code>s</h:link> 
+            (so that it also works in combination with other resource handlers which don't use <code>createResource(library, name)</code>)</li>
+        <li><h:link outcome="/taghandlers/enableRestorableView">Normalize view ID in <code>RestorableViewHandler</code> (so that it also works when another suffix mapping is used than *.xhtml, this worked in 1.3 but broke in 1.4)</h:link></li>
+        <li><h:link outcome="/converters/SelectItemsConverter">Add missing support for <code>noSelectionValue</code> attribute in <code>SelectItemsConverter</code></h:link></li>
+        <li><h:link outcome="/facesviews/ExtensionlessURLs">Action URL generation for FacesViews didn't take other view handlers into account, now it does (so that it also works with PrimeFaces 4.0 Dialog framework).</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.4.1?</h2>
+    <p><em>Release date: 12 March, 2013</em></p>
+
+    <h3>Fixed in OmniFaces 1.4.1</h3>
+    <ul>
+        <li><h:link outcome="/filters/GzipResponseFilter">Reverted change in <code>GzipResponseFilter</code> which was made during FacesViews testing, which causes Glassfish to return blank pages</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.4?</h2>
+    <p><em>Release date: 11 March, 2013</em></p>
+
+    <h3>Added in OmniFaces 1.4</h3>
+    <ul>
+        <li><h:link outcome="/utils/Faces"><code>Faces#getMetadataAttribute()</code> and <code>getMetadataAttributes()</code> utility methods</h:link></li>
+        <li><h:link outcome="/taghandlers/validator"><code>for</code> attribute in <code>&lt;o:validator&gt;</code> so that it can target inputs in composites</h:link></li>
+        <li><h:link outcome="/components/tree"><code>TreeModel#getNextSibling()</code> and <code>getPreviousSibling()</code> methods</h:link></li>
+        <li><h:link outcome="/functions/Objects"><code>of:coalesce()</code> function</h:link></li>
+        <li><h:link outcome="/taghandlers/importFunctions"><code>&lt;o:importFunctions&gt;</code> taghandler to import public static non-void methods of a given type as EL functions</h:link></li>
+        <li><h:link outcome="/functions/Dates"><code>of:getMonth()</code>, <code>of:getShortMonth()</code>, <code>of:getDayOfWeek()</code> and <code>of:getShortDayOfWeek()</code> functions</h:link></li>
+        <li><h:link outcome="/components/param"><code>&lt;o:param&gt;</code> which extends <code>&lt;f:param&gt;</code> with support for a <code>Converter</code></h:link></li>
+        <li><h:link outcome="/resourcehandlers/UnmappedResourceHandler"><code>UnmappedResourceHandler</code> which removes the JSF prefix/suffix mapping from resource paths</h:link></li>
+        <li><h:link outcome="/facesviews/ExtensionlessURLs">Major overhaul of FacesViews; support for custom locations (including root) and extension, plus configurable actions when resource with extension or resource on configured path is requested</h:link></li>
+        <li><h:link outcome="/utils/WebXml">Programmatically getting list of welcome pages and checking if access is allowed to a URL according to security constraints</h:link></li>
+        <li><a href="#{_srcURL}org/omnifaces/VersionLoggerEventListener.java">OmniFaces version will now be logged to webapp log in this format: <code>INFO: Using OmniFaces version 1.4</code></a></li>
+    </ul>
+
+     <h3>Changed in OmniFaces 1.4</h3>
+    <ul>
+        <li><h:link outcome="/utils/Ajax">Support for Javabeans in <code>Json#encode()</code> as used by <code>Ajax#data()</code></h:link></li>
+        <li><h:link outcome="/taghandlers/methodParam">Recognize and workaround for JUEL 2.2.5 and before bug in <code>&lt;o:methodParam&gt;</code> (not needed for JUEL 2.2.6 and later)</h:link></li>
+        <li><h:link outcome="/renderkits/Html5RenderKit">Support <code>spellcheck</code> attribute on <code>HtmlInputText</code> and <code>HtmlInputTextarea</code> by <code>Html5RenderKit</code></h:link></li>
+        <li><h:link outcome="/renderkits/Html5RenderKit">Support <code>autofocus</code>, <code>pattern</code> and <code>placeholder</code> attributes on <code>HtmlInputSecret</code> by <code>Html5RenderKit</code></h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Delegate rendering to JSF when currently not in render response phase in <code>FullAjaxExceptionHandler</code></h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Skip <code>AbortProcessingException</code> in <code>FullAjaxExceptionHandler</code></h:link></li>
+        <li><h:link outcome="/functions/Dates">Support <code>java.util.TimeZone</code> argument in <code>of:formatDateWithTimezone()</code></h:link></li>
+        <li><h:link outcome="/taghandlers/importConstants">Support <code>com.example.SomeClass.SomeEnum</code> notation on top of <code>com.example.SomeClass$SomeEnum</code> for inner enums in <code>&lt;o:importConstants&gt;</code></h:link></li>
+        <li><h:link outcome="/eventlisteners/ResetInputAjaxActionListener">Skip unrendered components during component tree visit of <code>ResetInputAjaxActionListener</code></h:link></li>
+        <li><h:link outcome="/filters/FacesExceptionFilter"><code>ELException</code> will now also be unwrapped by <code>FacesExceptionFilter</code> in order to improve exception handling in MyFaces</h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>ELException</code> will now also be unwrapped by <code>FullAjaxExceptionFilter</code> in order to improve ajax exception handling in MyFaces</h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.4</h3>
+    <ul>
+        <li><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code> incorrectly skipped gzip when the written data was not within servletcontainer's and Facelets buffer size</h:link></li>
+        <li><h:link outcome="/facesviews/ExtensionlessURLs">Fix initializaiton ordering problem of FacesViews in among others Glassfish server and removed accidentally introduced Servlet 3.0 dependency</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.3?</h2>
+    <p><em>Release date: 20 December, 2012</em></p>
+
+    <h3>Added in OmniFaces 1.3</h3>
+    <ul>
+        <li><h:link outcome="/utils/Ajax">Update specific <code>UIData</code> rows and columns programmatically</h:link></li>
+        <li><h:link outcome="/taghandlers/enableRestorableView"><code>&lt;o:enableRestorableView&gt;</code> to prevent <code>ViewExpiredException</code> on a particular view</h:link></li>
+        <li><h:link outcome="/validators/validateOne">New <code>validationFailed</code> attribute on <code>&lt;o:validateXxx&gt;</code> multi-field validators</h:link></li>
+        <li><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code> which allows controlling bean validation on a per-<code>UIInput</code> and <code>UICommand</code> basis</h:link></li>
+        <li><h:link outcome="/validators/validateUniqueColumn"><code>&lt;o:validateUniqueColumn&gt;</code> to validate input elements in single <code>UIColumn</code> on uniqueness</h:link></li>
+        <li><h:link outcome="/functions/Numbers"><code>of:formatNumberDefault()</code> shortcut EL function to substitute <code>&lt;f:convertNumber&gt;</code> without pattern</h:link></li>
+        <li><h:link outcome="/converters/SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code> which converts select items by their index</h:link></li>
+        <li><h:link outcome="/functions/Converters"><code>of:joinArray()</code>, <code>of:joinCollection()</code> and <code>of:joinMap()</code> functions</h:link></li>
+        <li><h:link outcome="/taghandlers/validator">New <code>message</code> attribute on <code>&lt;o:validator&gt;</code> which allows specifying validator message on a per-validator basis</h:link></li>
+        <li><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code></h:link> which generates a JavaScript function handler to <code>jsf.ajax.request</code>, so that JSF ajax requests can be invoked by JavaScript</li>
+        <li><h:link outcome="/functions/Dates"><code>of:addXxx()</code> and <code>of:xxxBetween()</code> functions to manipulate/calculate dates</h:link></li>
+        <li><h:link outcome="/functions/Dates"><code>of:getDaysOfWeek()</code> and <code>of:getShortDaysOfWeek()</code> functions to retrieve a mapping of days of week</h:link></li>
+    </ul>
+    <h3>Changed in OmniFaces 1.3</h3>
+    <ul>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Support for RichFaces specific resources in <code>CombinedResourceHandler</code></h:link></li>
+        <li><h:link outcome="/renderkits/Html5RenderKit">Support for <code>autofocus</code> in <code>HtmlCommandButton</code> by <code>Html5RenderKit</code></h:link></li>
+    </ul>
+    <h3>Fixed in OmniFaces 1.3</h3>
+    <ul>
+        <li><h:link outcome="/contexts/OmniPartialViewContext">Broken delegation of <code>OmniPartialViewContext</code> in RichFaces (caused by RichFaces specific design error)</h:link></li>
+        <li><h:link outcome="/contexts/OmniPartialViewContext">Broken delegation of <code>OmniPartialResponseWriter</code> in MyFaces (caused by MyFaces specific design error)</h:link></li>
+        <li><h:link outcome="/components/tree">Broken initial state of <code>EditableValueHolderStateHelper</code> which is used in <code>o:tree</code> (which would only cause input components to appear in an invalidated state on initial request &#8212; and thus also incorrect highlighting in e.g. PrimeFaces) and added check on visit hint to skip iteration</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.2?</h2>
+    <p><em>Release date: 20 October, 2012</em></p>
+
+    <h3>Added in OmniFaces 1.2</h3>
+    <ul>
+        <li><h:link outcome="/filters/CharacterEncodingFilter">Character encoding filter</h:link></li>
+        <li><h:link outcome="/resourcehandlers/CDNResourceHandler">Resource handler which replaces resource URLs by CDN URLs</h:link></li>
+        <li><h:link outcome="/taghandlers/ignoreValidationFailed">Ignore validation failures on submit</h:link></li>
+        <li><h:link outcome="/components/outputFormat">Store outputFormat result in a variable</h:link></li>
+        <li><h:link outcome="/functions/Strings">Several <code>of:format()</code> shortcut EL functions to format strings in EL</h:link></li>
+        <li><h:link outcome="/utils/Ajax"><code>Ajax</code> utility class to ease programmatically updating components, executing callback scripts and injecting variables in JS scope</h:link></li>
+        <li><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code> for the <code>Ajax</code> utility class, better exception handling during rendering of ajax response by <code>FullAjaxExceptionHandler</code> and the fix of no-feedback problem when the view is expired during ajax request on a restricted page</h:link></li>
+        <li>New multi-field validators which validates if <h:link outcome="/validators/validateOne">ONLY ONE</h:link> or <h:link outcome="/validators/validateOneOrNone">ONE or NONE</h:link> of the given inputs has been filled out</li>
+        <li><h:link outcome="/functions/Numbers"><code>of:formatCurrency()</code> and <code>of:formatNumber()</code> EL functions</h:link></li>
+        <li><h:link outcome="/converters/GenericEnumConverter"><code>GenericEnumConverter</code> for use in <code>UISelectMany</code> components with <code>List&lt;Enum&gt;</code></h:link></li>
+        <li>Some new utility methods in <h:link outcome="/utils/Faces"><code>Faces</code></h:link> and <h:link outcome="/utils/Components"><code>Components</code></h:link></li>
+    </ul>
+
+    <h3>Changed in OmniFaces 1.2</h3>
+    <ul>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Support to render JS/CSS inline by <code>CombinedResourceHandler</code></h:link></li>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Changed generation of combined resource IDs by <code>CombinedResourceHandler</code> so that it's now reversible</h:link></li>
+        <li><h:link outcome="/components/tree">Improved <code>rendered</code> attribute of <code>&lt;o:treeNodeItem&gt;</code> so that it can now also see <code>&lt;o:tree&gt;</code> <code>var</code> and <code>varNode</code></h:link></li>
+        <li><h:link outcome="/validators/validateAll">Improved components attribute of multi-field validators so that it's resolved relative to parent <code>UINamingContainer</code> instead of to parent <code>UIForm</code></h:link></li>
+        <li><h:link outcome="/validators/validateAll">Improved multi-field validators to recognize <code>UISelectBoolean</code> components as well</h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Improved <code>FullAjaxExceptionHandler</code> to better handle exceptions during ajax render response phase</h:link></li>
+        <li><h:link outcome="/components/highlight">Improved <code>&lt;o:highlight&gt;</code> to apply style class on associated labels as well</h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.2</h3>
+    <ul>
+        <li><h:link outcome="/components/cache">Serialization and state saving issues in <code>&lt;o:cache&gt;</code></h:link></li>
+        <li><h:link outcome="/converters/SelectItemsConverter">Broken behaviour in MyFaces when using null values in <code>SelectItemsConverter</code></h:link></li>
+        <li><h:link outcome="/filters/GzipResponseFilter">Removed accidentally introduced Servlet 3.0 dependency in <code>GzipResponseFilter</code> and improved recognition of non-gzippable responses (content range, etc)</h:link></li>
+        <li><h:link outcome="/eventlisteners/ResetInputAjaxActionListener">Broken behavior of <code>ResetInputAjaxActionListener</code> when both PrimeFaces and RichFaces is used in same webapp</h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.1?</h2>
+    <p><em>Release date: 10 July, 2012</em></p>
+
+    <h3>Added in OmniFaces 1.1</h3>
+    <ul>
+        <li><h:link outcome="/components/componentIdParam">Rendering specific components by a GET request parameter</h:link></li>
+        <li><h:link outcome="/components/form">Form with support to include view parameters in action URL</h:link></li>
+        <li><h:link outcome="/components/cache">Caching for page fragments with support for scopes, time to live and LRU eviction</h:link></li>
+        <li><h:link outcome="/eventlisteners/InvokeActionEventListener"><code>&lt;f:event&gt;</code> hook for pre and post invoke action phase</h:link></li>
+        <li><h:link outcome="/filters/GzipResponseFilter">GZIP compression filter for HTTP responses</h:link></li>
+        <li><h:link outcome="/functions/Strings"><code>of:capitalize()</code> function to capitalize a string</h:link></li>
+        <li><h:link outcome="/renderkits/Html5RenderKit"><code>HTML5RenderKit</code> which adds support for several HTML5 specific attributes to <code>UIForm</code> and <code>UIInput</code> components</h:link></li>
+        <li><h:link outcome="/taghandlers/importConstants">Importing constant values into EL scope with <code>&lt;o:importConstants&gt;</code></h:link></li>
+        <li><h:link outcome="/utils/Messages">New Messages builder</h:link></li>
+        <li><h:link outcome="/utils/Faces">A whole bunch of new utility methods in <code>Faces</code></h:link></li>
+        <li><h:link outcome="/utils/Messages">A new builder in Messages which also allows you to set the message detail</h:link></li>
+        <li><h:link outcome="/validators/validateAll">New validator which validates if ALL of the given inputs have been filled out</h:link></li>
+        <li>Maven integration</li>
+    </ul>
+
+    <h3>Changed in OmniFaces 1.1</h3>
+    <ul>
+        <li><h:link outcome="/components/tree">Support for action components inside o:tree and new <code>TreeModel#remove()</code> method</h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Support for <code>web-fragment.xml</code> in <code>FullAjaxExceptionHandler</code></h:link></li>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Support to exclude or suppress specific resources in <code>CombinedResourceHandler</code></h:link></li>
+        <li><h:link outcome="/validators/validateOrder">Support for specific ordering type inside <code>&lt;o:validateOrder&gt;</code></h:link></li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 1.1</h3>
+    <ul>
+        <li><h:link outcome="/eventlisteners/ResetInputAjaxActionListener">Broken behaviour inside <code>UIData</code> components in <code>ResetInputAjaxActionListener</code></h:link></li>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Incorrect behaviour on synchronous postbacks and NPE on inline scripts in <code>CombinedResourceHandler</code></h:link></li>
+    </ul>
+
+    <hr />
+
+    <h2>What's available in OmniFaces 1.0?</h2>    
+    <p><em>Release date: 01 June, 2012</em></p>
+
+    <h3>Features already available in initial OmniFaces 1.0 release</h3>
+    <ul>
+        <li><h:link outcome="/components/conditionalComment">Conditional comment rendering for IE</h:link></li>
+        <li><h:link outcome="/components/highlight">Highlighting fields that failed validation</h:link></li>
+        <li><h:link outcome="/components/onloadScript">Executing scripts on load of every (ajax) response</h:link></li>
+        <li><h:link outcome="/components/outputLabel">OutputLabel automatically setting label of associated input component</h:link></li>
+        <li><h:link outcome="/components/resourceInclude">Include Servlets and JSP pages in Facelets</h:link></li>
+        <li><h:link outcome="/components/tree">Tree with full custom markup per level (useable for various recursive use cases)</h:link></li>
+        <li><h:link outcome="/components/viewParam">Stateless view parameter</h:link></li>
+        <li><h:link outcome="/converters/SelectItemsConverter">Automatic conversion of model objects in drop-downs and other select components</h:link></li>
+        <li><h:link outcome="/eventlisteners/ResetInputAjaxActionListener">Reset for input fields making them always updateable via ajax</h:link></li>
+        <li><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler">Ajax aware exception handler</h:link></li>
+        <li><h:link outcome="/facesviews/ExtensionlessURLs">Extensionless URLs without need to register individual pages</h:link></li>
+        <li><h:link outcome="/filters/FacesExceptionFilter">Proper 404 for <code>FacesFileNotFoundException</code></h:link></li>
+        <li><h:link outcome="/filters/HttpFilter"><code>HttpFilter</code> convenience class as analogy to <code>HttpServlet</code></h:link></li>
+        <li>Collections of EL functions for dealing with <h:link outcome="/functions/Arrays">arrays</h:link>, <h:link outcome="/functions/Converters">conversion</h:link>, <h:link outcome="/functions/Dates">dates</h:link> and <h:link outcome="/functions/Strings">strings</h:link></li>
+        <li>Convenience managed beans for the <h:link outcome="/managedbeans/now">current time</h:link> and <h:link outcome="/managedbeans/startup">server startup time</h:link></li>
+        <li><h:link outcome="/resourcehandlers/CombinedResourceHandler">Combining separate scripts and stylesheets to reduce HTTP requests</h:link></li>
+        <li>Render-time evaluation for <h:link outcome="/taghandlers/converter"><code>&lt;f:converter&gt;</code></h:link> and <h:link outcome="/taghandlers/validator"><code>&lt;f:validator&gt;</code></h:link> attributes</li>
+        <li><h:link outcome="/taghandlers/methodParam">Passing a method expression into Facelets tag</h:link></li>
+        <li>Collection of Java methods for dealing with <h:link outcome="/utils/Components">components</h:link>, <h:link outcome="/utils/Events">events</h:link>, <h:link outcome="/utils/Exceptions">exceptions</h:link>, <h:link outcome="/utils/Messages">messages</h:link> and <h:link outcome="/utils/Faces">JSF in general</h:link></li>
+        <li><h:link outcome="/validators/RequiredCheckboxValidator">Checkbox with required attribute that works intuitively</h:link></li>
+        <li>Multi-field validators, for "<h:link outcome="/validators/validateAllOrNone">all or none</h:link>", "<h:link outcome="/validators/validateEqual">all equal</h:link>", "<h:link outcome="/validators/validateOneOrMore">one or more</h:link>", "<h:link outcome="/validators/validateOrder">all in order</h:link>" and "<h:link outcome="/validators/validateUnique">all unique</h:link>" validations</li>
+    </ul>
+</ui:composition>
