@@ -10,7 +10,7 @@
 
     <h3>Fixed in OmniFaces 4.4.1</h3>
     <ul>
-        <li><os:githubLink issue="803" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> threw NPE when server is restarted with session persistence</li>
+        <li><os:githubLink issue="803" />The in 4.4 introduced <code>LruCache</code>, used by <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> and <h:link outcome="/components/cache"><code>&lt;o:cache&gt;</code></h:link>, threw NPE when server is restarted with session persistence</li>
     </ul>
 
     <hr />
