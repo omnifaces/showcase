@@ -34,13 +34,13 @@
 
 		<h3>With <code>List&lt;ExampleEnum&gt;</code> - wrong type has been set!</h3>
 		<h:form>
-			<h:selectManyCheckbox value="#{genericEnumBean.enumList}">
+			<h:selectManyCheckbox binding="#{selectManyCheckbox1}">
 				<f:selectItems value="#{ExampleEnum}" />
 				<f:ajax render="showSelected" />
 			</h:selectManyCheckbox>
 			<p>Selected:
 				<h:panelGroup id="showSelected">
-					<ui:repeat value="#{genericEnumBean.enumList}" var="item" varStatus="loop">
+					<ui:repeat value="#{selectManyCheckbox1.value}" var="item" varStatus="loop">
 						#{item} (#{item['class'].simpleName})#{loop.last ? '' : ','}
 					</ui:repeat>
 				</h:panelGroup>
@@ -51,13 +51,13 @@
 
 		<h3>With <code>List&lt;ExampleEnum&gt;</code> and <code>omnifaces.GenericEnumConverter</code> - works fine</h3>
 		<h:form>
-			<h:selectManyCheckbox value="#{genericEnumBean.enumListConverted}" converter="omnifaces.GenericEnumConverter">
+			<h:selectManyCheckbox binding="#{selectManyCheckbox2}" converter="omnifaces.GenericEnumConverter">
 				<f:selectItems value="#{ExampleEnum}" />
 				<f:ajax render="showSelected" />
 			</h:selectManyCheckbox>
 			<p>Selected:
 				<h:panelGroup id="showSelected">
-					<ui:repeat value="#{genericEnumBean.enumListConverted}" var="item" varStatus="loop">
+					<ui:repeat value="#{selectManyCheckbox2.value}" var="item" varStatus="loop">
 						#{item} (#{item['class'].simpleName})#{loop.last ? '' : ','}
 					</ui:repeat>
 				</h:panelGroup>
