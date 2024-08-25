@@ -10,8 +10,8 @@
 #tested-version2 :10.0.0.Final
 #tested-distros2 :Debian 8
 
-WILDFLY_NAME=wildfly32
-WILDFLY_VERSION=32.0.0.Final
+WILDFLY_NAME=wildfly33
+WILDFLY_VERSION=33.0.1.Final
 WILDFLY_FILENAME=wildfly-$WILDFLY_VERSION
 WILDFLY_ARCHIVE_NAME=$WILDFLY_FILENAME.tar.gz
 WILDFLY_DOWNLOAD_ADDRESS=https://github.com/wildfly/wildfly/releases/download/$WILDFLY_VERSION/$WILDFLY_ARCHIVE_NAME
