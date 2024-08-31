@@ -5,6 +5,19 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:os="http://omnifaces.org/showcase"
 >
+    <h2>What's new in OmniFaces 2.7.26?</h2>
+    <p><em>Release date: 31 August, 2024</em></p>
+
+    <h3 id="fixed_2_7_26">Fixed in OmniFaces 2.7.26</h3>
+    <ul>
+        <li><os:githubLink issue="812" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> should not only check <code>rendered</code> attribute on component resource itself but also on all its parents</li>
+        <li><os:githubLink issue="809" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed when parent form was beforehand updated by client ID instead of by <code>@form</code></li>
+        <li><os:githubLink issue="816" /><h:link outcome="/converters/GenericEnumConverter"><code>GenericEnumConverter</code></h:link> should also try to auto-detect enum type based on getter's return type</li>
+        <li><os:githubLink issue="828" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unintentionally creates a new bean instance when a <code>@PreDestroy</code> method references another <code>@ViewScoped</code> bean</li>
+    </ul>
+
+    <hr />
+
     <h2>What's new in OmniFaces 2.7.25?</h2>
     <p><em>Release date: 14 April, 2024</em></p>
 

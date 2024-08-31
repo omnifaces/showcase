@@ -5,6 +5,35 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:os="http://omnifaces.org/showcase"
 >
+    <h2 id="4_4_1">What's new in OmniFaces 4.5?</h2>
+    <p><em>Release date: 31 August, 2024</em></p>
+
+    <h3>Added in OmniFaces 4.5</h3>
+    <ul>
+        <li><os:githubLink issue="798" />Added <h:link outcome="/utils/Components"><code>Components#setAttribute()</code></h:link> and <h:link outcome="/utils/Components"><code>Components#disableInput()</code></h:link> utility methods</li>
+        <li><os:githubLink issue="799" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>PWAResourceHandler</code></h:link>: added new <code>WebAppManifest#getScreenshots()</code> and <code>WebAppManifest#getShortcuts()</code> properties as per changes in w3 spec</li>
+        <li><os:githubLink issue="633" />Added tags for all OmniFaces converters and validators; so e.g. <h:link outcome="/converters/SelectItemsConverter"><code>omnifaces.SelectItemsConverter</code></h:link> is now also available as <code>&lt;o:selectItemsConverter&gt;</code></li>
+        <li><os:githubLink issue="797" /><h:link outcome="/components/criticalStylesheet"><code>&lt;o:criticalStylesheet&gt;</code></h:link> which extends the standard <code>&lt;h:outputStylesheet&gt;</code> with default rendering of <code>&lt;link rel="preload" as="style"&gt;</code> attributes which automatically to <code>rel="stylesheet"</code> during window load event and is automatically moved to very top of the head and is also treated separately from default CSS resources when using <code>CombinedResourceHandler</code></li>
+        <li><os:githubLink issue="822" /><h:link outcome="/components/link"><code>&lt;o:link&gt;</code></h:link> which extends the standard <code>&lt;h:link&gt;</code> and allows including the request query string parameters of the current URL into the link's target URL</li>
+        <li><os:githubLink issue="824" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> can now be instructed to set any faces message as a global message via the new attribute <code>@Param(globalMessage=true)</code></li>
+    </ul>
+
+    <h3>Changed in OmniFaces 4.5</h3>
+    <ul>
+        <li><os:githubLink issue="814" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>PWAResourceHandler</code></h:link>: <code>WebAppManifest#getOrientation()</code> now returns <code>null</code> as default value instead of <code>ANY</code></li>
+        <li><os:githubLink issue="790" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> will now auto-register the <h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link> so there's no need anymore to explicitly register it in <code>web.xml</code></li>
+        <li><os:githubLink issue="821" /><code>GzipResponseFilter</code> has been renamed to <h:link outcome="/filters/CompressedResponseFilter"><code>CompressedResponseFilter</code></h:link> and got additional support for Brotli and Deflate compression algorithms next to Gzip</li>
+        <li><os:githubLink issue="663" /><h:link outcome="/utils/Faces"><code>Faces#hasSessionTimedOut()</code></h:link> has been deprecated because the in 3.13 added <code>Faces#isRequestedSessionExpired()</code> does basically exactly the same</li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 4.5</h3>
+    <ul>
+        <li><os:githubLink issue="823" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> corner case threadsafety bug has been fixed (won't happen in normal production environment with standard web browsers, but only in unit test environment when bean is programmatically accessed by parallel threads)</li>
+        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_6');return false;">Remaining fixes are same as in 3.14.6</a></li>
+    </ul>
+
+    <hr />
+
     <h2 id="4_4_1">What's new in OmniFaces 4.4.1?</h2>
     <p><em>Release date: 5 May, 2024</em></p>
 

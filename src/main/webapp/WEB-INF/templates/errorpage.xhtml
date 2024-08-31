@@ -10,7 +10,8 @@
 	<ui:define name="content">
 		<ui:insert name="errorContent">
 			<ul>
-				<li>Date/time: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
+                <li>UUID: <strong>#{requestScope['org.omnifaces.exception_uuid']}</strong></li>
+                <li>Date/time: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
 				<li>User agent: #{header['user-agent']}</li>
 				<li>User IP: #{empty header['x-forwarded-for'] ? request.remoteAddr : fn:split(header['x-forwarded-for'], ',')[0]}</li>
 				<li>Request URI: <a href="#{requestScope['jakarta.servlet.error.request_uri']}">#{requestScope['jakarta.servlet.error.request_uri']}</a></li>

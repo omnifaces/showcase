@@ -107,11 +107,11 @@
 	</filter-mapping>
 
 	<filter>
-		<filter-name>gzipResponseFilter</filter-name>
-		<filter-class>org.omnifaces.filter.GzipResponseFilter</filter-class>
+		<filter-name>compressedResponseFilter</filter-name>
+		<filter-class>org.omnifaces.filter.CompressedResponseFilter</filter-class>
 	</filter>
 	<filter-mapping>
-		<filter-name>gzipResponseFilter</filter-name>
+		<filter-name>compressedResponseFilter</filter-name>
 		<servlet-name>facesServlet</servlet-name>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
@@ -123,15 +123,6 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>noCacheFilter</filter-name>
-		<servlet-name>facesServlet</servlet-name>
-	</filter-mapping>
-
-	<filter>
-		<filter-name>facesExceptionFilter</filter-name>
-		<filter-class>org.omnifaces.filter.FacesExceptionFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>facesExceptionFilter</filter-name>
 		<servlet-name>facesServlet</servlet-name>
 	</filter-mapping>
 
