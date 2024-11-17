@@ -169,8 +169,7 @@ fi
 
 echo "Configuring application server..."
 sed -i -e 's,<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000",<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" deployment-timeout="'$WILDFLY_STARTUP_TIMEOUT'",g' $WILDFLY_DIR/standalone/configuration/$WILDFLY_MODE.xml
-sed -i -e 's,${jboss.http.port:8080},${jboss.http.port:80},g' $WILDFLY_DIR/standalone/configuration/$WILDFLY_MODE.xml
-sed -i -e 's,${jboss.https.port:8443},${jboss.https.port:443},g' $WILDFLY_DIR/standalone/configuration/$WILDFLY_MODE.xml
+sed -i -e 's,${jboss.socket.binding.port-offset:0},${jboss.socket.binding.port-offset:10000},g' $WILDFLY_DIR/standalone/configuration/$WILDFLY_MODE.xml
 
 [ -x /bin/systemctl ] && systemctl start $WILDFLY_SERVICE || service $WILDFLY_SERVICE start
 
