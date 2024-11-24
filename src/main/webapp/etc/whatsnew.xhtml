@@ -27,132 +27,26 @@
                 <ui:include src="/WEB-INF/includes/whatsnew/1.x.xhtml" />
             </p:tab>
 
-<ui:remove> <!-- Just keeping here for now for the record. -->
-            <p:tab id="v4-BETA" title="4.x-BETA">
-                <h2>What's new in OmniFaces 4.0-M17?</h2>
-                <p><em>Release date: 14 August, 2022</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13_4');return false;">It's the Jakartified version of 3.13.4</a></p>
+            <p:tab id="v5-BETA" title="5.x-BETA">
+                <h2>What's new in OmniFaces 5.0-M1?</h2>
+                <p><em>Release date: 24 November, 2024</em></p>
 
-                <h3>Fixed in OmniFaces 4.0-M17</h3>
-                <ul>
-                    <li><os:githubLink issue="695" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>MultiViews</code></h:link> threw <code>java.io.FileNotFoundException</code> when Servlet 4 Mapping API was used by Faces implementation, such as Mojarra 4.0.0</li>
-                    <li><os:githubLink issue="696" /><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <code>\#{now.zonedDateTime}</code> were incorrectly at UTC instead of System Default TimeZone (as it was in previous OmniFaces versions using <code>java.util.Date</code> instead of <code>java.time.temporal.Temporal</code>); the <code>\#{now.instant}</code> and <code>\#{now.time}</code> remain at UTC</li>
+                <h3>Major in OmniFaces 5.0</h3>
+                <ul class="important">
+                    <li>Alignment with Jakarta EE 11, so minimum dependencies have changed from Java 11, Faces 3.0, EL 4.0, Servlet 5.0, CDI 3.0, WS 2.0 and BV 3.0 to <strong>Java 17, Faces 4.1, EL 6.0, Servlet 6.1, CDI 4.1, WS 2.2 and BV 3.1</strong>;
+                        as of now, OmniFaces 5.0 is <em>technically</em> still backwards compatible with Faces 4.0, EL 4.0, Servlet 5.0, CDI 3.0, WS 2.0 and BV 3.0 as none of the newer features are actually being used, but that may thus change in the future.
+                    </li>
+                    <li>All things which were during 4.x <code>@Deprecated</code> have been physically <strong>removed</strong>.</li>
+                    <li>The two XML namespaces <code>xmlns:o="http://omnifaces.org/ui"</code> and <code>xmlns:of="http://omnifaces.org/functions"</code> have been merged into a single new XML namespace represented by URN instead of URI: <code><strong>xmlns:o="omnifaces"</strong></code></li>
+                    <li><code>JsfLabelMessageInterpolator</code> has been renamed to <code><strong>FacesLabelMessageInterpolator</strong></code></li>
+                    <li><code><strong>CombinedResourceHandler</strong></code> won't anymore generate crossorigin/integrity attribute, this has been split into CORSAwareResourceHandler so it can also deal with non-combined resources</li>
                 </ul>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M16?</h2>
-                <p><em>Release date: 14 May, 2022</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13_3');return false;">It's the Jakartified version of 3.13.3</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M15?</h2>
-                <p><em>Release date: 2 May, 2022</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13_2');return false;">It's the Jakartified version of 3.13.2</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M14?</h2>
-                <p><em>Release date: 1 May, 2022</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13_1');return false;">It's the Jakartified version of 3.13.1</a></p>
-
-                <h3>Changed in OmniFaces 4.0-M12</h3>
+            
+                <h3>Added in OmniFaces 5.0-M1</h3>
                 <ul>
-                    <li><os:githubLink issue="675" />All <code>&lt;h:outputScript library="omnifaces"&gt;</code> resources such as <code>omnifaces.js</code> were <a href="https://github.com/omnifaces/omnifaces/pull/675/commits/613ba49e802a6b34169f75a91cfeb7c8ae0c3553" target="_blank">migrated</a> from JavaScript to TypeScript</li>
+                    <li><os:githubLink issue="876" />CORSAwareResouceRenderer (showcase page TBD)</li>
                 </ul>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M13?</h2>
-                <p><em>Release date: 22 January, 2022</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_13');return false;">It's the Jakartified version of 3.13</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M12?</h2>
-                <p><em>Release date: 15 November, 2021</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_12');return false;">It's the Jakartified version of 3.12, and the first one run-time compatible with Faces 4.0</a></p>
-
-                <h3>Added in OmniFaces 4.0-M12</h3>
-                <ul>
-                    <li><os:githubLink issue="648" /><h:link outcome="/utils/Components"><code>Components#addFacesScriptResource()</code></h:link> which allows the component developer to automatically include either the Faces 4.0-specific <code>faces.js</code> or the JSF 2.3-specific <code>jsf.js</code> depending on whether the former is available as a resource in the current deployment</li>
-                    <li><os:githubLink issue="655" /><h:link outcome="/utils/Faces"><code>Faces#addResponseCookie()</code></h:link> got a new overload which allows adding custom attributes to the cookie such as <code>SameSite:None</code> (NOTE: works currently only when using minimally Mojarra 4.0.0-M2 on top of minimally Servlet 6.0.0-M1)</li>
-                </ul>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M11?</h2>
-                <p><em>Release date: 20 October, 2021</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_11_2');return false;">It's the Jakartified version of 3.11.2, and the first one compile-time compatible with Faces 4.0</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M10?</h2>
-                <p><em>Release date: 15 October, 2021</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_11_2');return false;">It's the Jakartified version of 3.11.2</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M9?</h2>
-                <p><em>Release date: 5 June, 2021</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_11_1');return false;">It's the Jakartified version of 3.11.1</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M8?</h2>
-                <p><em>Release date: 4 April, 2021</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_11');return false;">It's the Jakartified version of 3.11</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M7?</h2>
-                <p><em>Release date: 28 January, 2021</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_10_1');return false;">It's the Jakartified version of 3.10.1</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M6?</h2>
-                <p><em>Release date: 24 January, 2021</em></p>
-                <p>DO NOT USE IT! It's broken. Maven deploy somehow created a halfbaked JAR, missing a lot of files.</p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M5?</h2>
-                <p><em>Release date: 24 January, 2021</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_10');return false;">It's the Jakartified version of 3.10</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M4?</h2>
-                <p><em>Release date: 19 December, 2020</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_9');return false;">It's the Jakartified version of 3.9</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M3?</h2>
-                <p><em>Release date: 25 October, 2020</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_8_1');return false;">It's the Jakartified version of 3.8.1</a></p>
-
-                <h3>Changed in OmniFaces 4.0-M3</h3>
-                <ul>
-                    <li><os:githubLink commit="9186a5c" /><code>Callback#Void/Returning/WithArgument/ReturningWithArgument</code> are <strong>deprecated</strong> and have been replaced by <code>Runnable/Supplier/Consumer/Function</code></li>
-                </ul>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M2?</h2>
-                <p><em>Release date: 12 September, 2020</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_8');return false;">It's the Jakartified version of 3.8</a></p>
-
-                <hr />
-
-                <h2>What's new in OmniFaces 4.0-M1?</h2>
-                <p><em>Release date: 12 July, 2020</em></p>
-                <p><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('3_7_1');return false;">It's the Jakartified version of 3.7.1</a></p>
             </p:tab>
-</ui:remove>
-
         </p:tabView>
     </ui:define>
 </ui:composition>
