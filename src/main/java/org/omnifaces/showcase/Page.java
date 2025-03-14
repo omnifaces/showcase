@@ -21,10 +21,8 @@ import static org.omnifaces.showcase.App.scrape;
 import static org.omnifaces.util.Faces.evaluateExpressionGet;
 import static org.omnifaces.util.Faces.getMetadataAttributes;
 import static org.omnifaces.util.Faces.getResourceAsStream;
-import static org.omnifaces.util.Utils.toByteArray;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -35,7 +33,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import jakarta.faces.FacesException;
 
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.omnifaces.model.tree.ListTreeModel;
 
@@ -87,14 +84,14 @@ public class Page extends ListTreeModel<Page> {
 	// Initialization -------------------------------------------------------------------------------------------------
 
 	Page loadIfNecessary() {
-		if (!(loaded.getAndSet(true) || path == null)) {
+		if (!loaded.getAndSet(true) && path != null) {
 			try {
-				Map<String, Object> attributes = getMetadataAttributes();
-				Set<String> apiPaths = getCommaSeparatedAttribute(attributes, "api.path");
-				Set<String> vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
-				Set<String> srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
-				Set<String> jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
-				Elements javadoc = loadJavadoc(apiPaths);
+				var attributes = getMetadataAttributes();
+				var apiPaths = getCommaSeparatedAttribute(attributes, "api.path");
+				var vdlPaths = getCommaSeparatedAttribute(attributes, "vdl.paths");
+				var srcPaths = getCommaSeparatedAttribute(attributes, "src.paths");
+				var jsPaths = getCommaSeparatedAttribute(attributes, "js.paths");
+				var javadoc = loadJavadoc(apiPaths);
 
 				if (javadoc != null) {
 					description = findDescription(javadoc);
@@ -106,7 +103,7 @@ public class Page extends ListTreeModel<Page> {
 				}
 
 				sources = loadSources(path, srcPaths);
-				documentation = (apiPaths.size() + vdlPaths.size() + jsPaths.size() > 0) ? new Documentation(apiPaths, vdlPaths, jsPaths) : null;
+				documentation = apiPaths.size() + vdlPaths.size() + jsPaths.size() > 0 ? new Documentation(apiPaths, vdlPaths, jsPaths) : null;
 			}
 			catch (Exception e) {
 				loaded.set(false);
@@ -118,16 +115,16 @@ public class Page extends ListTreeModel<Page> {
 	}
 
 	private static Set<String> getCommaSeparatedAttribute(Map<String, Object> attributes, String key) {
-		String attribute = (String) attributes.get(key);
-		return new LinkedHashSet<>((attribute == null) ? emptyList() : asList(attribute.trim().split("\\s*,\\s*")));
+		var attribute = (String) attributes.get(key);
+		return new LinkedHashSet<>(attribute == null ? emptyList() : asList(attribute.trim().split("\\s*,\\s*")));
 	}
 
 	private static Elements loadJavadoc(Set<String> apiPaths) {
 		if (apiPaths.size() == 1) {
-			String apiPath = API_PATH + apiPaths.iterator().next();
+			var apiPath = API_PATH + apiPaths.iterator().next();
 			apiPaths.clear();
 			apiPaths.add(apiPath);
-			String url = format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPath);
+			var url = format("%s%s.html", evaluateExpressionGet("#{_apiURL}"), apiPath);
 
 			try {
 				// TODO: build javadoc.jar into webapp somehow and scrape from it instead.
@@ -142,15 +139,15 @@ public class Page extends ListTreeModel<Page> {
 	}
 
 	private static String findDescription(Elements javadoc) {
-		Elements descriptionBlock = javadoc.select(".block");
+		var descriptionBlock = javadoc.select(".block");
 
-		for (Element link : javadoc.select("a")) { // Turn relative links into absolute links.
+		for (var link : javadoc.select("a")) { // Turn relative links into absolute links.
 			link.attr("href", link.absUrl("href"));
 		}
 
-		for (Element pre : descriptionBlock.select("pre")) { // Enable prettify on code blocks.
-			String content = pre.addClass("prettyprint").html().trim().replace("\n ", "\n");
-			String type = content.startsWith("&lt;") ? "xhtml" : "java";
+		for (var pre : descriptionBlock.select("pre")) { // Enable prettify on code blocks.
+			var content = pre.addClass("prettyprint").html().trim().replace("\n ", "\n");
+			var type = content.startsWith("&lt;") ? "xhtml" : "java";
 			pre.html("<code class='lang-" + type + "'>" + content + "</code>");
 		}
 
@@ -158,25 +155,25 @@ public class Page extends ListTreeModel<Page> {
 	}
 
 	private static void fillApiPathsWithSeeAlso(Elements javadoc, Set<String> apiPaths) {
-		Elements seeAlso = javadoc.select("dt:has(.seeLabel)+dd a:has(code)");
+		var seeAlso = javadoc.select("dt:has(.seeLabel)+dd a:has(code)");
 
-		for (Element link : seeAlso) {
-			String href = link.absUrl("href");
+		for (var link : seeAlso) {
+			var href = link.absUrl("href");
 			apiPaths.add(href.substring(href.indexOf(API_PATH), href.lastIndexOf('.')));
 		}
 	}
 
 	private static String findSinceVersion(Elements javadoc) {
-		Element since = javadoc.select("dt:contains(Since)+dd").first();
-		return (since != null) ? since.text() : "1.0";
+	    var since = javadoc.select("dt:contains(Since)+dd").first();
+		return since != null ? since.text() : "1.0";
 	}
 
 	private static List<Source> loadSources(String pagePath, Set<String> srcPaths) {
-		List<Source> sources = new ArrayList<>(1 + srcPaths.size());
-		String sourceCode = loadSourceCode(pagePath);
-		String[] meta = sourceCode.split("<ui:define name=\"demo-meta\">");
-		String[] demo = sourceCode.split("<ui:define name=\"demo\">");
-		StringBuilder demoSourceCode = new StringBuilder();
+	    var sources = new ArrayList<Source>(1 + srcPaths.size());
+		var sourceCode = loadSourceCode(pagePath);
+		var meta = sourceCode.split("<ui:define name=\"demo-meta\">");
+		var demo = sourceCode.split("<ui:define name=\"demo\">");
+		var demoSourceCode = new StringBuilder();
 
 		if (meta.length > 1) {
 			// Yes, ugly, but it's faster than a XML parser and it's internal code anyway.
@@ -189,23 +186,23 @@ public class Page extends ListTreeModel<Page> {
 
 		if (demoSourceCode.length() > 0) {
 			// The 8 leading spaces are trimmed so that the whole demo code block is indented back.
-			String code = demoSourceCode.toString().replace("\n        ", "\n").trim();
+			var code = demoSourceCode.toString().replace("\n        ", "\n").trim();
 			sources.add(new Source("Demo", "xhtml", code));
 		}
 
-		for (String srcPath : srcPaths) {
-			String title = srcPath;
+		for (var srcPath : srcPaths) {
+			var title = srcPath;
 
 			if (title.contains("/")) {
-				title = title.substring(title.lastIndexOf('/') + 1, title.length());
+				title = title.substring(title.lastIndexOf('/') + 1);
 			}
 
 			if (title.endsWith(".java")) {
 				title = title.substring(0, title.indexOf('.'));
 			}
 
-			String type = srcPath.substring(srcPath.lastIndexOf('.') + 1);
-			String code = loadSourceCode((srcPath.startsWith("/") ? "" : "/WEB-INF/") + srcPath);
+			var type = srcPath.substring(srcPath.lastIndexOf('.') + 1);
+			var code = loadSourceCode((srcPath.startsWith("/") ? "" : "/WEB-INF/") + srcPath);
 			sources.add(new Source(title, type, code));
 		}
 
@@ -213,14 +210,14 @@ public class Page extends ListTreeModel<Page> {
 	}
 
 	private static String loadSourceCode(String path) {
-		InputStream input = getResourceAsStream(path);
+		var input = getResourceAsStream(path);
 
 		if (input == null) {
 			return "Source code is not available at " + path;
 		}
 
 		try {
-			return new String(toByteArray(input), "UTF-8").replace("\t", "    "); // Tabs are in HTML <pre> presented as 8 spaces, which is too much.
+			return new String(input.readAllBytes(), "UTF-8").replace("\t", "    "); // Tabs are in HTML <pre> presented as 8 spaces, which is too much.
 		}
 		catch (IOException e) {
 			throw new FacesException(format(ERROR_LOADING_PAGE_SOURCE, path), e);
@@ -261,15 +258,15 @@ public class Page extends ListTreeModel<Page> {
 
 	@Override
 	public boolean equals(Object other) {
-		return (other instanceof Page) && (title != null)
+		return other instanceof Page && title != null
 			? title.equals(((Page) other).title)
-			: (other == this);
+			: other == this;
 	}
 
 	@Override
 	public int hashCode() {
-		return (title != null)
-			? (getClass().hashCode() + title.hashCode())
+		return title != null
+			? getClass().hashCode() + title.hashCode()
 			: super.hashCode();
 	}
 
