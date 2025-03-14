@@ -76,13 +76,13 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>14.0.7</version>
+			<version>15.0.1</version>
 			<classifier>jakarta</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.18.1</version>
+			<version>1.19.1</version>
 		</dependency>
 	</dependencies>
 
