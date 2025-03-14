@@ -38,13 +38,13 @@
                     </li>
                     <li>All things which were during 4.x <code>@Deprecated</code> have been physically <strong>removed</strong>.</li>
                     <li>The two XML namespaces <code>xmlns:o="http://omnifaces.org/ui"</code> and <code>xmlns:of="http://omnifaces.org/functions"</code> have been merged into a single new XML namespace represented by URN instead of URI: <code><strong>xmlns:o="omnifaces"</strong></code></li>
-                    <li><code>JsfLabelMessageInterpolator</code> has been renamed to <code><strong>FacesLabelMessageInterpolator</strong></code></li>
-                    <li><code><strong>CombinedResourceHandler</strong></code> won't anymore generate crossorigin/integrity attribute, this has been split into CORSAwareResourceRenderer so it can also deal with non-combined resources</li>
+                    <li><h:link outcome="/validators/JsfLabelMessageInterpolator"><code>JsfLabelMessageInterpolator</code></h:link> has been renamed to <code><strong>FacesLabelMessageInterpolator</strong></code></li>
+                    <li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> won't anymore generate crossorigin/integrity attribute, this has been split into <code>CORSAwareResourceRenderer</code> so it can also deal with non-combined resources</li>
                 </ul>
             
                 <h3>Added in OmniFaces 5.0-M1</h3>
                 <ul>
-                    <li><os:githubLink issue="876" />CORSAwareResouceRenderer (showcase page TBD)</li>
+                    <li><os:githubLink issue="876" /><code>CORSAwareResouceRenderer</code> (showcase page TBD)</li>
                 </ul>
             </p:tab>
         </p:tabView>
