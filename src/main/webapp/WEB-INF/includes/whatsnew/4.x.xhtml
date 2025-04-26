@@ -5,6 +5,23 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:os="http://omnifaces.org/showcase"
 >
+    <h2 id="4_6_2">What's new in OmniFaces 4.6.2?</h2>
+    <p><em>Release date: 26 April, 2025</em></p>
+
+    <h3>Changed in OmniFaces 4.6.2</h3>
+    <ul>
+        <li><os:githubLink issue="885" /><h:link outcome="/utils/Faces"><code>Faces(Local)#getBundleString()</code></h:link> now accepts varargs with <code>MessageFormat</code> params</li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 4.6.2</h3>
+    <ul>
+        <li><os:githubLink issue="891" /><h:link outcome="/resourcehandlers/PWAResourceHandler">PWA's <code>sw.js</code></h:link> won't anymore check external resources such as Google Analytics as that would otherwise result in potential CORS errors for nothing</li>
+        <li><os:githubLink issue="892" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> threw since 4.6 <code>ClassCastException</code> when converter ID was used instead of converter class (worked in 4.5.1 and before)</li>
+        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_8');return false;">Remaining fixes are same as in 3.14.8</a></li>
+    </ul>
+
+    <hr />
+
     <h2 id="4_6_1">What's new in OmniFaces 4.6.1?</h2>
     <p><em>Release date: 8 February, 2025</em></p>
 
