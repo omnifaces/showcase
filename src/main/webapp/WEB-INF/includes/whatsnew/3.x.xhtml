@@ -5,6 +5,17 @@
     xmlns:p="http://primefaces.org/ui"
     xmlns:os="http://omnifaces.org/showcase"
 >
+    <h2 id="3_14_9">What's new in OmniFaces 3.14.9?</h2>
+    <p><em>Release date: 1 June, 2025</em></p>
+
+    <h3 id="fixed_3_14_9">Fixed in OmniFaces 3.14.9</h3>
+    <ul>
+        <li><os:githubLink issue="895" /><h:link outcome="/components/inputFile"><code>&lt;o:inputFile&gt;</code></h:link> <code>accept</code> attribute incorrectly didn't support file extension format such as ".png", now it supports a comma separated string of both mime types and file extensions</li>
+        <li><os:githubLink issue="896" /><h:link outcome="/utils/Beans"><code>Beans#isProxy()</code></h:link> performed poorly, this has been improved and this positively impacts among others <h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> and <h:link outcome="/cdi/Param"><code>@Param</code></h:link></li>
+    </ul>
+
+    <hr />
+
     <h2 id="3_14_8">What's new in OmniFaces 3.14.8?</h2>
     <p><em>Release date: 26 April, 2025</em></p>
 
