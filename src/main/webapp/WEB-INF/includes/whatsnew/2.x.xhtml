@@ -10,7 +10,7 @@
 
     <h3 id="fixed_2_7_28">Fixed in OmniFaces 2.7.28</h3>
     <ul>
-        <li><os:githubLink issue="897" /><h:link outcome="/filters/CacheControlFilter"><code>CacheControlFilter</code></h:link> will now bypass the in Chrome 136 introduced BFCache (which unexpectedly ignores the <code>Cache-Control:no-cache,no-store,must-revalidate</code>, hereby causing among others <code>ViewExpiredException</code> problems on pages tied to <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> beans which are reopened via browser back button)</li>
+        <li><os:githubLink issue="897" /><h:link outcome="/filters/CacheControlFilter"><code>CacheControlFilter</code></h:link> will now bypass the in Chrome 136 introduced BFCache (which unexpectedly ignores the <code>Cache-Control:no-cache,no-store,must-revalidate</code>, hereby causing among others <code>ViewExpiredException</code> problems on pages tied to <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> beans which are reopened via browser back button within a browser-specific timeout)</li>
     </ul>
 
     <hr />
