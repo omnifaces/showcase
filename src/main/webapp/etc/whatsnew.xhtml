@@ -28,69 +28,7 @@
             </p:tab>
 
             <p:tab id="v5-BETA" title="5.x-BETA">
-                <h2>What's new in OmniFaces 5.0-M5?</h2>
-                <p><em>Release date: 9 November, 2025</em></p>
-
-                <h3>Added in OmniFaces 5.0-M5</h3>
-                <ul>
-                    <li><os:githubLink issue="907" /><code>@RateLimit</code> (showcase page TBD)</li>
-                </ul>
-
-                <h3>Changed in OmniFaces 5.0-M5</h3>
-                <ul>
-                    <li><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('4_7');return false;">All changes are same as in 4.7</a></li>
-                </ul>
-            
-                <hr />
-            
-                <h2>What's new in OmniFaces 5.0-M4?</h2>
-                <p><em>Release date: 8 June, 2025</em></p>
-            
-                <h3>Changed in OmniFaces 5.0-M4</h3>
-                <ul>
-                    <li><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('4_6_5');return false;">All changes are same as in 4.6.5</a></li>
-                </ul>
-            
-                <hr />
-            
-                <h2>What's new in OmniFaces 5.0-M3?</h2>
-                <p><em>Release date: 3 June, 2025</em></p>
-            
-                <h3>Changed in OmniFaces 5.0-M3</h3>
-                <ul>
-                    <li><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('4_6_4');return false;">All changes are same as in 4.6.4</a></li>
-                </ul>
-            
-                <hr />
-            
-                <h2>What's new in OmniFaces 5.0-M2?</h2>
-                <p><em>Release date: 1 January, 2025</em></p>
-            
-                <h3>Changed in OmniFaces 5.0-M2</h3>
-                <ul>
-                    <li><a href="#" onclick="PF('widget_versions').select(0);functions.scrollTo('4_6');return false;">All changes are same as in 4.6</a></li>
-                </ul>
-            
-                <hr />
-            
-                <h2>What's new in OmniFaces 5.0-M1?</h2>
-                <p><em>Release date: 24 November, 2024</em></p>
-
-                <h3>Major in OmniFaces 5.0</h3>
-                <ul class="important">
-                    <li>Alignment with Jakarta EE 11, so minimum dependencies have changed from Java 11, Faces 3.0, EL 4.0, Servlet 5.0, CDI 3.0, WS 2.0 and BV 3.0 to <strong>Java 17, Faces 4.1, EL 6.0, Servlet 6.1, CDI 4.1, WS 2.2 and BV 3.1</strong>;
-                        as of now, OmniFaces 5.0 is <em>technically</em> still backwards compatible with Faces 4.0, EL 4.0, Servlet 5.0, CDI 3.0, WS 2.0 and BV 3.0 as none of the newer features are actually being used, but that may thus change in the future.
-                    </li>
-                    <li>All things which were during 4.x <code>@Deprecated</code> have been physically <strong>removed</strong>.</li>
-                    <li>The two XML namespaces <code>xmlns:o="http://omnifaces.org/ui"</code> and <code>xmlns:of="http://omnifaces.org/functions"</code> have been merged into a single new XML namespace represented by URN instead of URI: <code><strong>xmlns:o="omnifaces"</strong></code></li>
-                    <li><h:link outcome="/validators/JsfLabelMessageInterpolator"><code>JsfLabelMessageInterpolator</code></h:link> has been renamed to <code><strong>FacesLabelMessageInterpolator</strong></code></li>
-                    <li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> won't anymore generate crossorigin/integrity attribute, this has been split into <code>CORSAwareResourceRenderer</code> so it can also deal with non-combined resources</li>
-                </ul>
-            
-                <h3>Added in OmniFaces 5.0-M1</h3>
-                <ul>
-                    <li><os:githubLink issue="876" /><code>CORSAwareResouceRenderer</code> (showcase page TBD)</li>
-                </ul>
+                <ui:include src="/WEB-INF/includes/whatsnew/5.x.xhtml" />
             </p:tab>
         </p:tabView>
     </ui:define>
