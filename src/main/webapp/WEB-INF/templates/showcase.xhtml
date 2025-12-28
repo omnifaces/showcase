@@ -57,8 +57,8 @@ The following metadata attributes are supported via this template (they're parse
 	</ui:define>
 
 	<ui:define name="content">
-		<p>
-			<div id="quickNavigation" faces:rendered="#{not page.deprecated}">
+		<p faces:rendered="#{not page.deprecated}">
+			<div id="quickNavigation">
 			 	<p:button id="prev" icon="pi pi-chevron-left" accesskey="[" title="Previous ( Alt+[ )" outcome="#{o:coalesce(page.previousSibling.viewId, '/index')}" />
 			 	<p:button id="next" icon="pi pi-chevron-right" accesskey="]" title="Next ( Alt+] )" outcome="#{o:coalesce(page.nextSibling.viewId, '/index')}" />
 			</div>

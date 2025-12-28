@@ -4,36 +4,16 @@
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:o="omnifaces"
 >
-	<ui:define name="meta">
-		<f:metadata>
-			<f:attribute name="api.path" value="validator/JsfLabelMessageInterpolator" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/validators/ValidateConstraintsBean.java,classes/org/omnifaces/showcase/model/ConstrainedEntity.java,classes/ValidationMessages.properties" />
-		</f:metadata>
-	</ui:define>
+    <ui:define name="meta">
+        <f:metadata>
+            <f:attribute name="deprecated" value="true" />
+        </f:metadata>
+    </ui:define>
 
-	<ui:define name="demo">
-		<p>
-			Enter more than 2 resp. 3 characters in the input fields below and press submit to trigger 
-			a validation error. Note how the field's label appears in the message, which originates from
-			<code>ValidationMessages.properties</code>.
-		</p>
-		
-		<h:form>
-			<h:messages />
-			
-			<h:panelGrid columns="2">
-				<o:outputLabel for="foo" value="Foo" />
-				<h:inputText id="foo" value="#{validateConstraintsBean.constrainedEntity.foo}" />
-
-				<o:outputLabel for="bar" value="Bar" />
-				<h:inputText id="bar" value="#{validateConstraintsBean.constrainedEntity.bar}" />
-				
-				<h:commandButton value="submit">
-					<f:ajax execute="@form" render="@form" />
-				</h:commandButton>
-				
-			</h:panelGrid>
-			
-		</h:form>
-	</ui:define>
+    <ui:define name="beforeDescription">
+        <h3>Renamed</h3>
+        <p>
+            The <code>JsfLabelMessageInterpolator</code> has been renamed to <a href="FacesLabelMessageInterpolator"><code>FacesLabelMessageInterpolator</code></a> since OmniFaces 5.0.
+        </p>            
+    </ui:define>
 </ui:composition>
