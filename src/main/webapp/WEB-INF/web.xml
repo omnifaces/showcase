@@ -58,6 +58,10 @@
 		<param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_CACHE_TTL</param-name>
 		<param-value>3628800</param-value> <!-- 6 weeks. -->
 	</context-param>
+    <context-param>
+        <param-name>org.omnifaces.COMBINED_RESOURCE_HANDLER_EXCLUDED_RESOURCES</param-name>
+        <param-value>jakarta.faces:faces.js</param-value>
+    </context-param>
 	<context-param>
 		<!--
 			All files in the 3 paths defined below will be scanned and made available
