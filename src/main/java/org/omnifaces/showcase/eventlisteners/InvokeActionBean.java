@@ -2,7 +2,6 @@ package org.omnifaces.showcase.eventlisteners;
 
 import static org.omnifaces.util.Utils.isEmpty;
 
-import java.io.IOException;
 import java.io.Serializable;
 
 import jakarta.faces.event.ComponentSystemEvent;
@@ -21,7 +20,7 @@ public class InvokeActionBean implements Serializable {
 	private String param;
 	private String input;
 
-	public void initParam() throws IOException {
+	public void initParam() {
 		if (!isEmpty(param)) {
 			System.out.println("InvokeActionBean.initParam() " + Faces.getCurrentPhaseId());
 			Messages.addFlashInfo("param", "Param \"{0}\" is successfully set and you have been redirected!", param);

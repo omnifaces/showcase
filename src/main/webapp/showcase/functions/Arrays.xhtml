@@ -1,11 +1,9 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:c="jakarta.tags.core"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -21,14 +19,14 @@
 	<ui:define name="demo">
 		<p>
 			Create a dummy array of size 5:
-			<ui:repeat value="#{of:createArray(5)}" varStatus="loop">
+			<ui:repeat value="#{o:createArray(5)}" varStatus="loop">
 				#{loop.index}#{!loop.last ? ', ' : ''}
 			</ui:repeat>
 		</p>
 
 		<p>
 			Create an integer array from 10 to 20:
-			<ui:repeat value="#{of:createIntegerArray(10, 20)}" var="i" varStatus="loop">
+			<ui:repeat value="#{o:createIntegerArray(10, 20)}" var="i" varStatus="loop">
 				#{i}#{!loop.last ? ', ' : ''}
 			</ui:repeat>
 		</p>
@@ -37,13 +35,13 @@
 			<p>
 				Create an integer array for <code>&lt;f:selectItems&gt;</code>:
 				<h:selectOneMenu value="#{functionsBean.day}">
-					<f:selectItems value="#{of:createIntegerArray(1, 31)}" />
+					<f:selectItems value="#{o:createIntegerArray(1, 31)}" />
 					<f:ajax render="day" />
 				</h:selectOneMenu>
 
-				<c:set var="year" value="#{of:formatDate(now, 'yyyy')}" />
+				<c:set var="year" value="#{o:formatDate(now, 'yyyy')}" />
 				<h:selectOneMenu value="#{functionsBean.year}">
-					<f:selectItems value="#{of:createIntegerArray(year, year - 10)}" />
+					<f:selectItems value="#{o:createIntegerArray(year, year - 10)}" />
 					<f:ajax render="year" />
 				</h:selectOneMenu>
 
@@ -55,7 +53,7 @@
 		<p>
 			Check if an array contains the specified value: 
 			<a href="?test=7&amp;test=42&amp;test=69">clicking here should print true</a>:
-			<strong>#{of:contains(paramValues.test, 42)}</strong>
+			<strong>#{o:contains(paramValues.test, 42)}</strong>
 		</p>
 	</ui:define>
 </ui:composition>

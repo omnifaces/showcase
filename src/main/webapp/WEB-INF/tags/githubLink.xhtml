@@ -1,8 +1,7 @@
 <ui:composition
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
-	xmlns:o="http://omnifaces.org/ui"
+	xmlns:o="omnifaces"
 >
 	<ui:repeat value="#{issue.split('\\s*,\\s*')}" var="_issue" rendered="#{not empty issue}">
 		<a href="https://github.com/omnifaces/omnifaces/issues/#{_issue}" title="View GitHub issue ##{_issue}" class="github code" target="_blank">##{_issue}</a> -

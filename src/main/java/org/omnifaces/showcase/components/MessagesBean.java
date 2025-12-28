@@ -21,11 +21,11 @@ public class MessagesBean {
 	}
 
 	public void showRandomMessages(int amount) {
-		Random random = new Random(System.nanoTime());
+		var random = new Random(System.nanoTime());
 
-		for (int i = 0; i < amount; i++) {
-			Severity severity = (Severity) FacesMessage.VALUES.get(random.nextInt(4));
-			String severityName = severity.toString().split("\\s")[0];
+		for (var i = 0; i < amount; i++) {
+			Severity severity = FacesMessage.VALUES.get(random.nextInt(4));
+			var severityName = severity.toString().split("\\s")[0];
 			Messages.addGlobal(severity, "This is a global {0} message", severityName);
 		}
 	}

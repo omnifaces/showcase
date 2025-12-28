@@ -2,10 +2,10 @@
 <facelet-taglib id="demo"
 	xmlns="https://jakarta.ee/xml/ns/jakartaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facelettaglibrary_4_0.xsd"
-	version="4.0"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facelettaglibrary_4_1.xsd"
+	version="4.1"
 >
-    <namespace>http://omnifaces.org/showcase</namespace>
+    <namespace>omnifaces.showcase</namespace>
     <composite-library-name>showcase</composite-library-name>
 
 	<!-- Demo tags, used in methodParam page only. -->

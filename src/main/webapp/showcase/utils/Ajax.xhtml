@@ -1,10 +1,9 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="omnifaces"
+	xmlns:p="primefaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -30,7 +29,7 @@
 		
 		<h3>Update specific UIData rows and columns programmatically (standard Faces example)</h3>
 		<h:form>
-			<h:dataTable binding="#{table1}" value="#{of:createArray(3)}" width="100%">
+			<h:dataTable binding="#{table1}" value="#{o:createArray(3)}" width="100%">
 				<h:column><f:facet name="header">col1</f:facet><h:panelGroup id="col1">#{now}</h:panelGroup></h:column>
 				<h:column><f:facet name="header">col2</f:facet><h:panelGroup id="col2">#{now}</h:panelGroup></h:column>
 				<h:column><f:facet name="header">col3</f:facet><h:panelGroup id="col3">#{now}</h:panelGroup></h:column>
@@ -52,7 +51,7 @@
 
 		<h3>Update specific UIData rows and columns programmatically (PrimeFaces example)</h3>
 		<h:form>
-			<p:dataTable binding="#{table2}" value="#{of:createArray(3)}">
+			<p:dataTable binding="#{table2}" value="#{o:createArray(3)}">
 				<p:column headerText="col1"><h:panelGroup id="col1">#{now}</h:panelGroup></p:column>
 				<p:column headerText="col2"><h:panelGroup id="col2">#{now}</h:panelGroup></p:column>
 				<p:column headerText="col3"><h:panelGroup id="col3">#{now}</h:panelGroup></p:column>

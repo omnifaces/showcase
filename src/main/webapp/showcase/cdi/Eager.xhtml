@@ -1,10 +1,8 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -49,9 +47,9 @@
 			application started.			
 		</p>
 		<blockquote>
-			Application started at: <strong>#{of:formatDateWithTimezone(myStartupBean.startupDate, 'd MMM yyyy HH:mm.ss.SSS', 'UTC')} UTC</strong>
+			Application started at: <strong>#{o:formatDateWithTimezone(myStartupBean.startupDate, 'd MMM yyyy HH:mm.ss.SSS', 'UTC')} UTC</strong>
 			<br/>
-			As comparison, the Faces <code>\#{startup}</code> is at: <strong>#{of:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm.ss.SSS', 'UTC')} UTC</strong>
+			As comparison, the Faces <code>\#{startup}</code> is at: <strong>#{o:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm.ss.SSS', 'UTC')} UTC</strong>
 		</blockquote>
 	</ui:define>
 </ui:composition>

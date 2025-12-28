@@ -10,7 +10,7 @@ import jakarta.inject.Inject;
 import org.omnifaces.util.Messages;
 
 @FacesConverter("someConverter")
-public class SomeConverter implements Converter {
+public class SomeConverter implements Converter<Object> {
 
 	@EJB
 	private SomeEJB ejb;

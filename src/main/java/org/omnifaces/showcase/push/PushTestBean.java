@@ -5,7 +5,6 @@ import static org.omnifaces.util.Faces.setSessionAttribute;
 import static org.omnifaces.util.Messages.addGlobalError;
 import static org.omnifaces.util.Messages.addGlobalInfo;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -23,7 +22,9 @@ import org.omnifaces.cdi.ViewScoped;
 @ViewScoped
 public class PushTestBean implements Serializable {
 
-	@Inject @Push
+	private static final long serialVersionUID = 1L;
+
+    @Inject @Push
 	private PushContext app;
 
 	@Inject @Push
@@ -32,7 +33,7 @@ public class PushTestBean implements Serializable {
 	@Inject @Push
 	private PushContext view;
 
-	public void open() throws IOException {
+	public void open() {
 		setSessionAttribute("pushTestUser", UUID.randomUUID().toString());
 		refresh();
 	}

@@ -11,7 +11,7 @@ import jakarta.inject.Inject;
 import org.omnifaces.util.Messages;
 
 @FacesValidator("someValidator")
-public class SomeValidator implements Validator {
+public class SomeValidator implements Validator<Object> {
 
 	@EJB
 	private SomeEJB ejb;

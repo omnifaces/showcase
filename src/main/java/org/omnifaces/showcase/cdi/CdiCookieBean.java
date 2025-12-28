@@ -1,6 +1,5 @@
 package org.omnifaces.showcase.cdi;
 
-import java.io.IOException;
 import java.util.UUID;
 
 import jakarta.enterprise.context.RequestScoped;
@@ -17,7 +16,7 @@ public class CdiCookieBean {
 	@Inject @Cookie
 	private String testCookie;
 
-	public void add() throws IOException {
+	public void add() {
 		Faces.addResponseCookie("testCookie", UUID.randomUUID().toString(), -1);
 		Faces.refresh();
 	}

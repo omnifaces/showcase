@@ -1,9 +1,8 @@
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:fn="jakarta.tags.functions"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="contentTitle">Error</ui:define>
 
@@ -11,7 +10,7 @@
 		<ui:insert name="errorContent">
 			<ul>
                 <li>UUID: <strong>#{requestScope['org.omnifaces.exception_uuid']}</strong></li>
-                <li>Date/time: #{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
+                <li>Date/time: #{o:formatDate(now, 'yyyy-MM-dd HH:mm:ss')}</li>
 				<li>User agent: #{header['user-agent']}</li>
 				<li>User IP: #{empty header['x-forwarded-for'] ? request.remoteAddr : fn:split(header['x-forwarded-for'], ',')[0]}</li>
 				<li>Request URI: <a href="#{requestScope['jakarta.servlet.error.request_uri']}">#{requestScope['jakarta.servlet.error.request_uri']}</a></li>
@@ -19,7 +18,7 @@
 				<li>Status code: #{requestScope['jakarta.servlet.error.status_code']}</li>
 				<li>Exception type: <code>#{requestScope['jakarta.servlet.error.exception_type']}</code></li>
 				<li>Exception message: <code>#{requestScope['jakarta.servlet.error.message']}</code></li>
-				<li>Stack trace: <pre><code>#{of:printStackTrace(requestScope['jakarta.servlet.error.exception'])}</code></pre></li>
+				<li>Stack trace: <pre><code>#{o:printStackTrace(requestScope['jakarta.servlet.error.exception'])}</code></pre></li>
 			</ul>
 		</ui:insert>
 		<h:outputScript rendered="#{faces.ajaxRequest}">scrollTo(0, 0);</h:outputScript>

@@ -1,11 +1,9 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:c="jakarta.tags.core"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -19,16 +17,16 @@
 			Collection of EL shortcut functions for obtaining information from the current HTTP request which isn't directly available via <code>\#{request}</code> and thus otherwise requires some string concatenating and/or substringing.
 		</p>
 		<p>
-			The difference between <code>\#{of:getRemoteAddr()}</code> and <code>\#{request.remoteAddr}</code> is that the OmniFaces function recognizes and filters <code>X-Forwarded-For</code> header coming from proxies.
+			The difference between <code>\#{o:getRemoteAddr()}</code> and <code>\#{request.remoteAddr}</code> is that the OmniFaces function recognizes and filters <code>X-Forwarded-For</code> header coming from proxies.
 		</p>
 	</ui:define>		
 	
 	<ui:define name="demo">
 		<ul>
-			<li>Request base URL: #{of:getRequestBaseURL()}</li>
-			<li>Request domain URL: #{of:getRequestDomainURL()}</li>
-			<li>Request URL with query string: #{of:getRequestURLWithQueryString()}</li>
-			<li>Remote addr: #{of:getRemoteAddr()}</li>
+			<li>Request base URL: #{o:getRequestBaseURL()}</li>
+			<li>Request domain URL: #{o:getRequestDomainURL()}</li>
+			<li>Request URL with query string: #{o:getRequestURLWithQueryString()}</li>
+			<li>Remote addr: #{o:getRemoteAddr()}</li>
 		</ul>
 	</ui:define>
 </ui:composition>

@@ -1,7 +1,5 @@
 package org.omnifaces.showcase.demo;
 
-import java.io.IOException;
-
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 
@@ -15,7 +13,7 @@ public class Auth {
 	private String username;
 	private String password;
 
-	public void login() throws IOException {
+	public void login() {
 		if ("password".equals(password)) {
 			Faces.invalidateSession(); // "good practice", minimizes risk in session fixation hack.
 			Faces.setSessionAttribute("user", username);
@@ -26,7 +24,7 @@ public class Auth {
 		}
 	}
 
-	public void logout() throws IOException {
+	public void logout() {
 		Faces.invalidateSession();
 		Faces.refresh();
 	}

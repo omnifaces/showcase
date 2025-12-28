@@ -10,7 +10,7 @@ import jakarta.faces.convert.FacesConverter;
 import org.omnifaces.util.Faces;
 
 @FacesConverter("testConverter")
-public class TestConverter implements Converter {
+public class TestConverter implements Converter<Object> {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {

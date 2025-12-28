@@ -10,16 +10,16 @@ import org.omnifaces.showcase.model.ExampleEntity;
 import org.omnifaces.util.Messages;
 
 @FacesConverter("exampleEntityConverter")
-public class ExampleEntityConverter implements Converter {
+public class ExampleEntityConverter implements Converter<ExampleEntity> {
 
 	@Override
-	public String getAsString(FacesContext context, UIComponent component, Object modelValue) {
-		Long id = (modelValue != null) ? ((ExampleEntity) modelValue).getId() : null;
+	public String getAsString(FacesContext context, UIComponent component, ExampleEntity modelValue) {
+		Long id = (modelValue != null) ? modelValue.getId() : null;
 		return (id != null) ? String.valueOf(id) : "";
 	}
 
 	@Override
-	public Object getAsObject(FacesContext context, UIComponent component, String submittedValue) {
+	public ExampleEntity getAsObject(FacesContext context, UIComponent component, String submittedValue) {
 		if (submittedValue == null || submittedValue.isEmpty()) {
 			return null;
 		}

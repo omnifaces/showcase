@@ -9,7 +9,7 @@ public class ProductCopier implements Copier {
 		Product original = (Product) object;
 		
 		// Just for the example, don't use the copy ctor, but set fields manually.
-		Product copy = new Product();
+		var copy = new Product();
 		copy.setNumber1(original.getNumber1());
 		copy.setNumber2(original.getNumber2());
 		

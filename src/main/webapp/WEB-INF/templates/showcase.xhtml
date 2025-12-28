@@ -21,17 +21,15 @@ The following metadata attributes are supported via this template (they're parse
              assumed relative to webcontent "/WEB-INF/" folder, else it will be assumed relative to webcontent root.
  -->
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:faces="jakarta.faces"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:c="jakarta.tags.core"
 	xmlns:fn="jakarta.tags.functions"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
-	xmlns:os="http://omnifaces.org/showcase"
+	xmlns:p="primefaces"
+	xmlns:o="omnifaces"
+	xmlns:os="omnifaces.showcase"
 >
 	<ui:define name="title">#{page.title} - OmniFaces Showcase</ui:define>
 
@@ -61,8 +59,8 @@ The following metadata attributes are supported via this template (they're parse
 	<ui:define name="content">
 		<p>
 			<div id="quickNavigation" faces:rendered="#{not page.deprecated}">
-			 	<p:button id="prev" icon="pi pi-chevron-left" accesskey="[" title="Previous ( Alt+[ )" outcome="#{of:coalesce(page.previousSibling.viewId, '/index')}" />
-			 	<p:button id="next" icon="pi pi-chevron-right" accesskey="]" title="Next ( Alt+] )" outcome="#{of:coalesce(page.nextSibling.viewId, '/index')}" />
+			 	<p:button id="prev" icon="pi pi-chevron-left" accesskey="[" title="Previous ( Alt+[ )" outcome="#{o:coalesce(page.previousSibling.viewId, '/index')}" />
+			 	<p:button id="next" icon="pi pi-chevron-right" accesskey="]" title="Next ( Alt+] )" outcome="#{o:coalesce(page.nextSibling.viewId, '/index')}" />
 			</div>
 			<small>Available since OmniFaces #{page.since}</small>
 		</p>

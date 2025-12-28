@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.toList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.model.SelectItem;
 import jakarta.faces.model.SelectItemGroup;
@@ -28,7 +29,7 @@ public class SelectItemGroupsBean implements Serializable {
 	public void init() {
 		categories = loadExampleCategories();
 		categorySelectItems = categories.stream().map(category -> {
-			SelectItemGroup group = new SelectItemGroup(category.getName());
+			var group = new SelectItemGroup(category.getName());
 			group.setSelectItems(category.getProducts().stream()
 				.map(product -> new SelectItem(product, product.getName()))
 				.toArray(SelectItem[]::new));
@@ -36,7 +37,7 @@ public class SelectItemGroupsBean implements Serializable {
 		}).collect(toList());
 	}
 
-	private List<Category> loadExampleCategories() {
+	private static List<Category> loadExampleCategories() {
 		List<Category> categories = new ArrayList<>();
 		categories.add(new Category("Animals", new Product("Cat"), new Product("Dog"), new Product("Parrot")));
 		categories.add(new Category("Cars", new Product("Alfa Romeo"), new Product("BMW"), new Product("Hyundai"), new Product("Toyota")));

@@ -28,7 +28,7 @@ public class CacheBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		String date = new Date().toString();
+		var date = new Date().toString();
 		items = new ArrayList<>();
 		items.add("A - " + date);
 		items.add("B - " + date);

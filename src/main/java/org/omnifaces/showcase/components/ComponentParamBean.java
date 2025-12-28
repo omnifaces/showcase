@@ -37,7 +37,7 @@ public class ComponentParamBean {
 		// causing a NPE.
 		int size = getStart() + 3;
 
-		for (int i = getStart(); i < size; i++) {
+		for (var i = getStart(); i < size; i++) {
 			listItems.add("item " + (i + 1));
 		}
 	}

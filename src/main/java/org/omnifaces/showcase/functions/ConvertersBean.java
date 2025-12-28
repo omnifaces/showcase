@@ -68,7 +68,7 @@ public class ConvertersBean {
 
 		@Override
 		public Iterator<Integer> iterator() {
-			return new Iterator<Integer>() {
+			return new Iterator<>() {
 
 				int index = 0;
 

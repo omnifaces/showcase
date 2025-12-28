@@ -14,7 +14,9 @@ import org.omnifaces.cdi.ViewScoped;
 @ViewScoped
 public class PushBean implements Serializable {
 
-	private static AtomicLong counter = new AtomicLong();
+	private static final long serialVersionUID = 1L;
+
+    private static AtomicLong counter = new AtomicLong();
 
 	private boolean connected;
 

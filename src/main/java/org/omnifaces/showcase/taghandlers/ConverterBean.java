@@ -18,7 +18,7 @@ public class ConverterBean {
 	public void init() {
 		locales = new ArrayList<>();
 
-		for (String language : new String[] { "en", "es", "fr", "de", "nl", "ar", "he", "zh" }) {
+		for (var language : new String[] { "en", "es", "fr", "de", "nl", "ar", "he", "zh" }) {
 			locales.add(new Locale(language));
 		}
 	}

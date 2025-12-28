@@ -3,7 +3,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:f="jakarta.faces.core" 
     xmlns:ui="jakarta.faces.facelets"
-	xmlns:o="http://omnifaces.org/ui"
+	xmlns:o="omnifaces"
 >
     <f:view contentType="text/xml">
     	<o:sitemapUrl viewId="/whatsnew" />

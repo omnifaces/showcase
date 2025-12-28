@@ -89,7 +89,7 @@ public class App {
 
 	private String loadIndex() {
 		try {
-			String index = scrape("https://omnifaces.org", "#main_content").outerHtml();
+			var index = scrape("https://omnifaces.org", "#main_content").outerHtml();
 			indexLastLoaded = LocalDate.now();
 			return index;
 		}
@@ -102,16 +102,16 @@ public class App {
 		Set<String> resourcePaths = getResourcePaths(SHOWCASE_PATH);
 		Set<String> groupPaths = new TreeSet<>(resourcePaths);
 
-		for (String groupPath : groupPaths) {
-			String groupName = groupPath.split("/")[2];
-			TreeModel<Page> group = new Page(groupName);
+		for (var groupPath : groupPaths) {
+			var groupName = groupPath.split("/")[2];
+			var group = new Page(groupName);
 			Set<String> pagePaths = new TreeSet<>(getResourcePaths(groupPath));
 
-			for (String pagePath : pagePaths) {
+			for (var pagePath : pagePaths) {
 				String viewId = stripPrefixPath(SHOWCASE_PATH, pagePath);
-				String extensionlessViewId = viewId.split("\\.xhtml$")[0];
-				String title = extensionlessViewId.split("/")[2];
-				Page page = new Page(pagePath, extensionlessViewId, title);
+				var extensionlessViewId = viewId.split("\\.xhtml$")[0];
+				var title = extensionlessViewId.split("/")[2];
+				var page = new Page(pagePath, extensionlessViewId, title);
 				pages.put(viewId, page);
 
 				if (!page.isDeprecated()) {

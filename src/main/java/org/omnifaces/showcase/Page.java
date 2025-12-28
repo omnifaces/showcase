@@ -128,7 +128,7 @@ public class Page extends ListTreeModel<Page> {
 
 			try {
 				// TODO: build javadoc.jar into webapp somehow and scrape from it instead.
-				return scrape(url, ".description>ul>li");
+				return scrape(url, ".class-description");
 			}
 			catch (IOException e) {
 				throw new FacesException(format(ERROR_LOADING_PAGE_DESCRIPTION, url), e);
@@ -155,7 +155,7 @@ public class Page extends ListTreeModel<Page> {
 	}
 
 	private static void fillApiPathsWithSeeAlso(Elements javadoc, Set<String> apiPaths) {
-		var seeAlso = javadoc.select("dt:has(.seeLabel)+dd a:has(code)");
+		var seeAlso = javadoc.select("dl.notes dt:contains(See Also)+dd a:has(code)");
 
 		for (var link : seeAlso) {
 			var href = link.absUrl("href");
@@ -164,7 +164,7 @@ public class Page extends ListTreeModel<Page> {
 	}
 
 	private static String findSinceVersion(Elements javadoc) {
-	    var since = javadoc.select("dt:contains(Since)+dd").first();
+	    var since = javadoc.select("dl.notes dt:contains(Since)+dd").first();
 		return since != null ? since.text() : "1.0";
 	}
 

@@ -1,9 +1,8 @@
 <ui:composition template="/WEB-INF/templates/layout.xhtml"
-    xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="jakarta.faces.html"
     xmlns:ui="jakarta.faces.facelets"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:os="http://omnifaces.org/showcase"
+    xmlns:p="primefaces"
+    xmlns:os="omnifaces.showcase"
 >
     <ui:define name="contentTitle">What's new in OmniFaces?</ui:define>
 
@@ -11,6 +10,10 @@
         <h:messages styleClass="messages" errorClass="error" globalOnly="true" />
 
         <p:tabView id="versions" dynamic="true">
+            <p:tab id="v5" title="5.x">
+                <ui:include src="/WEB-INF/includes/whatsnew/5.x.xhtml" />
+            </p:tab>
+
             <p:tab id="v4" title="4.x">
                 <ui:include src="/WEB-INF/includes/whatsnew/4.x.xhtml" />
             </p:tab>
@@ -25,10 +28,6 @@
 
             <p:tab id="v1" title="1.x">
                 <ui:include src="/WEB-INF/includes/whatsnew/1.x.xhtml" />
-            </p:tab>
-
-            <p:tab id="v5-BETA" title="5.x-BETA">
-                <ui:include src="/WEB-INF/includes/whatsnew/5.x.xhtml" />
             </p:tab>
         </p:tabView>
     </ui:define>

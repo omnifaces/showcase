@@ -1,11 +1,9 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:c="jakarta.tags.core"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -23,20 +21,20 @@
 		<f:view locale="#{localeManager.language}">
 			<p>
 				Format current date with system default timezone:
-				#{of:formatDate(now, 'yyyy-MM-dd HH:mm:ss z')}
+				#{o:formatDate(now, 'yyyy-MM-dd HH:mm:ss z')}
 			</p>
 			<p>
 				Format current date with GMT timezone:
-				#{of:formatDateWithTimezone(now, 'yyyy-MM-dd HH:mm:ss', 'GMT')}
+				#{o:formatDateWithTimezone(now, 'yyyy-MM-dd HH:mm:ss', 'GMT')}
 			</p>
 			<p>
-				<c:set var="threeMonthsLater" value="#{of:addMonths(now.zonedDateTime, 3)}" scope="request" />
+				<c:set var="threeMonthsLater" value="#{o:addMonths(now.zonedDateTime, 3)}" scope="request" />
 				Add 3 months to today and format it with system default timezone: 
-				#{of:formatDate(threeMonthsLater, 'yyyy-MM-dd HH:mm:ss z')}
+				#{o:formatDate(threeMonthsLater, 'yyyy-MM-dd HH:mm:ss z')}
 			</p>
 			<p>
 				Count months between the date representing "now" and the date representing "3 months later": 
-				#{of:monthsBetween(now, threeMonthsLater)} months
+				#{o:monthsBetween(now, threeMonthsLater)} months
 			</p>
 			
 			<hr />
@@ -46,9 +44,9 @@
 					Chosen month number:
 					<strong>#{functionsBean.month}</strong>
 					- Name:
-					<strong>#{of:getMonth(functionsBean.month)}</strong>
+					<strong>#{o:getMonth(functionsBean.month)}</strong>
 					- Short name:
-					<strong>#{of:getShortMonth(functionsBean.month)}</strong>
+					<strong>#{o:getShortMonth(functionsBean.month)}</strong>
 				</h:panelGroup>
 			</p>
 			<p>
@@ -56,9 +54,9 @@
 					Chosen day of week number:
 					<strong>#{functionsBean.dayOfWeek}</strong>
 					- Name:
-					<strong>#{of:getDayOfWeek(functionsBean.dayOfWeek)}</strong>
+					<strong>#{o:getDayOfWeek(functionsBean.dayOfWeek)}</strong>
 					- Short name:
-					<strong>#{of:getShortDayOfWeek(functionsBean.dayOfWeek)}</strong>
+					<strong>#{o:getShortDayOfWeek(functionsBean.dayOfWeek)}</strong>
 				</h:panelGroup>
 			</p>
 
@@ -66,28 +64,28 @@
 				<p>
 					Get all months for the current locale:
 					<h:selectOneMenu value="#{functionsBean.month}">
-						<f:selectItems value="#{of:getMonths()}" />
+						<f:selectItems value="#{o:getMonths()}" />
 						<f:ajax render=":month" />
 					</h:selectOneMenu>
 				</p>
 				<p>
 					Get all short months for the current locale:
 					<h:selectOneMenu value="#{functionsBean.month}">
-						<f:selectItems value="#{of:getShortMonths()}" />
+						<f:selectItems value="#{o:getShortMonths()}" />
 						<f:ajax render=":month" />
 					</h:selectOneMenu>
 				</p>
 				<p>
 					Get all days of week for the current locale:
 					<h:selectOneMenu value="#{functionsBean.dayOfWeek}">
-						<f:selectItems value="#{of:getDaysOfWeek()}" />
+						<f:selectItems value="#{o:getDaysOfWeek()}" />
 						<f:ajax render=":dayOfWeek" />
 					</h:selectOneMenu>
 				</p>
 				<p>
 					Get all short days of week for the current locale:
 					<h:selectOneMenu value="#{functionsBean.dayOfWeek}">
-						<f:selectItems value="#{of:getShortDaysOfWeek()}" />
+						<f:selectItems value="#{o:getShortDaysOfWeek()}" />
 						<f:ajax render=":dayOfWeek" />
 					</h:selectOneMenu>
 				</p>

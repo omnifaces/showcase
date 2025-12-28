@@ -22,22 +22,20 @@ The following application wide constants are available via this template:
  -->
 <!DOCTYPE html>
 <html lang="en"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:c="jakarta.tags.core"
 	xmlns:fn="jakarta.tags.functions"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:p="primefaces"
+	xmlns:o="omnifaces"
 >
 	<c:set var="_omniFacesVersionXYZ" value="#{app.omniFacesVersion.split('\\-')[0]}" scope="application" />
 	<c:set var="_omniFacesVersionXY" value="#{_omniFacesVersionXYZ.split('\\.')[0]}.#{_omniFacesVersionXYZ.split('\\.')[1]}" scope="application" />
 	<c:set var="_apiURL" value="https://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : _omniFacesVersionXY}/" scope="application" />
 	<c:set var="_vdlURL" value="https://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : _omniFacesVersionXY}/" scope="application" />
-	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? '4.x' : app.omniFacesVersion}/src/main/java/" scope="application" />
-	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? '4.x' : app.omniFacesVersion}/src/main/resources/META-INF/resources/omnifaces/" scope="application" />
+	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? '5.x' : app.omniFacesVersion}/src/main/java/" scope="application" />
+	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? '5.x' : app.omniFacesVersion}/src/main/resources/META-INF/resources/omnifaces/" scope="application" />
 
     <ui:insert name="meta"/>
 
@@ -119,7 +117,7 @@ The following application wide constants are available via this template:
 					PrimeFaces #{app.primeFacesVersion}<br/>
 					#{app.serverVersion}<br/>
 				</p>
-				<p>Server (re)started at #{of:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm', 'UTC')} UTC</p>
+				<p>Server (re)started at #{o:formatDateWithTimezone(startup, 'd MMM yyyy HH:mm', 'UTC')} UTC</p>
 			</p:panel>
 		</div>
 	</h:body>

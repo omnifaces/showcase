@@ -1,10 +1,8 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -20,35 +18,35 @@
 	<ui:define name="demo">
 		<p>
 			Format a given amount of bytes with IEC binary unit: 
-			#{of:formatBytes(1023)}, #{of:formatBytes(1024)}, #{of:formatBytes(500000)}, #{of:formatBytes(1048576)}
+			#{o:formatBytes(1023)}, #{o:formatBytes(1024)}, #{o:formatBytes(500000)}, #{o:formatBytes(1048576)}
 		</p>
 		<p>
 			Format a number as currency using given currency symbol:
-			#{of:formatCurrency(123.4567, '$')}
+			#{o:formatCurrency(123.4567, '$')}
 		</p>
 		<p>
 			Format a number using given pattern:
-			#{of:formatNumber(123.4567, '#.00')}
+			#{o:formatNumber(123.4567, '#.00')}
 		</p>
 		<p>
 			Format a number using locale-default pattern:
-			#{of:formatNumberDefault(123.4567)}
+			#{o:formatNumberDefault(123.4567)}
 		</p>
 		<p>
 			Format a number using locale-default pattern of given locale:
-			#{of:formatNumberDefaultForLocale(123.4567, 'nl_NL')}
+			#{o:formatNumberDefaultForLocale(123.4567, 'nl_NL')}
 		</p>
 		<p>
 			Format a number as percent:
-			#{of:formatPercent(0.123)}
+			#{o:formatPercent(0.123)}
 		</p>
 		<p>
 			Format a number as thousands:
-			#{of:formatThousands(1004)}, #{of:formatThousands(1005)}, #{of:formatThousands(9994)}, #{of:formatThousands(9995000)}
+			#{o:formatThousands(1004)}, #{o:formatThousands(1005)}, #{o:formatThousands(9994)}, #{o:formatThousands(9995000)}
 		</p>
 		<p>
 			Format a number as thousands with unit:
-			#{of:formatThousandsUnit(1004, 'W')}, #{of:formatThousandsUnit(1005, 'W')}, #{of:formatThousandsUnit(9994, 'W')}, #{of:formatThousandsUnit(9995000, 'W')}
+			#{o:formatThousandsUnit(1004, 'W')}, #{o:formatThousandsUnit(1005, 'W')}, #{o:formatThousandsUnit(9994, 'W')}, #{o:formatThousandsUnit(9995000, 'W')}
 		</p>
 	</ui:define>
 </ui:composition>

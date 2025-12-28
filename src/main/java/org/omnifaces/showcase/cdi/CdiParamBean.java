@@ -84,7 +84,7 @@ public class CdiParamBean {
 
 	@SuppressWarnings("unchecked")
 	public static <T> T copy(T source) {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		var baos = new ByteArrayOutputStream();
 		T copy = null;
 
 		try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {

@@ -8,7 +8,6 @@ import java.util.TreeMap;
 
 import org.omnifaces.cdi.GraphicImageBean;
 import org.omnifaces.util.Faces;
-import org.omnifaces.util.Utils;
 
 @GraphicImageBean
 public class Images {
@@ -31,7 +30,7 @@ public class Images {
 	public byte[] getContent(Long id) throws IOException {
 		// Note: this is a dummy example. In reality, you should be able to return the desired byte[] content from some
 		// service class by given ID.
-		return Utils.toByteArray(Faces.getResourceAsStream("/resources/layout/img/OmniFaces-logo-90x90-" + IMAGES.get(id) + ".png"));
+		return Faces.getResourceAsStream("/resources/layout/img/OmniFaces-logo-90x90-" + IMAGES.get(id) + ".png").readAllBytes();
 	}
 
 	public Long[] getIds() {

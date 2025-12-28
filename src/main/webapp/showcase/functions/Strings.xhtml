@@ -1,11 +1,9 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:c="jakarta.tags.core"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -26,19 +24,19 @@
 		<c:set var="string5" value="&lt;p&gt;string &lt;strong class='class'&gt;with &lt;em attr&gt;some&lt;/em&gt;&lt;/strong&gt; &lt;abbr&gt;HTML&lt;/abbr&gt;&lt;/p&gt;" />
 
 		<p>
-			Abbreviate a long string: #{of:abbreviate(string1, 20)}
+			Abbreviate a long string: #{o:abbreviate(string1, 20)}
 		</p>
 		<p>
-			Capitalize a string: #{of:capitalize(string2)}
+			Capitalize a string: #{o:capitalize(string2)}
 		</p>
 		<p>
-			Concat 2 strings: #{of:concat(string2, string3)}
+			Concat 2 strings: #{o:concat(string2, string3)}
 		</p>
 		<p>
-			Regex-replace a string: #{of:replaceAll(string1, '\\b', '&#x201D;')}
+			Regex-replace a string: #{o:replaceAll(string1, '\\b', '&#x201D;')}
 		</p>
 		<p>
-			Regex-match a string: #{of:matches(string2, '\\p{IsLatin}+')}
+			Regex-match a string: #{o:matches(string2, '\\p{IsLatin}+')}
 		</p>
 
 		<p>
@@ -46,16 +44,16 @@
 		</p>
 		<ul>
 			<li>
-				Create a pretty URL (part): #{of:prettyURL(string4)} 
-				<a href="#{of:prettyURL(string4)}">check link URL</a> (don't click :) )
+				Create a pretty URL (part): #{o:prettyURL(string4)} 
+				<a href="#{o:prettyURL(string4)}">check link URL</a> (don't click :) )
 			</li>
 			<li>
-				URL-encode with UTF-8: #{of:encodeURL(string4)} 
-				<a href="#{request.requestURI}?test=#{of:encodeURL(string4)}">click link</a>
+				URL-encode with UTF-8: #{o:encodeURL(string4)} 
+				<a href="#{request.requestURI}?test=#{o:encodeURL(string4)}">click link</a>
 			</li>
 			<li>
-				Escape for usage in JavaScript: #{of:escapeJS(string4)} 
-				<a href="javascript:alert('#{of:escapeJS(string4)}')">click to see alert</a>
+				Escape for usage in JavaScript: #{o:escapeJS(string4)} 
+				<a href="javascript:alert('#{o:escapeJS(string4)}')">click to see alert</a>
 			</li>
 		</ul>
 
@@ -63,15 +61,15 @@
 			Format strings in EL:
 		</p>
 		<ul>
-			<li>#{of:format1('one {0}', 'two')}</li>
-			<li>#{of:format2('one {0} three {1}', 'two', 'four')}</li>
-			<li>#{of:format3('one {0} three {1} five {2}', 'two', 'four', 'six')}</li>
-			<li>#{of:format4('one {0} three {1} five {2} seven {3}', 'two', 'four', 'six', 'eight')}</li>
-			<li>#{of:format5('one {0} three {1} five {2} seven {3} nine {4}', 'two', 'four', 'six', 'eight', 'ten')}</li>
+			<li>#{o:format1('one {0}', 'two')}</li>
+			<li>#{o:format2('one {0} three {1}', 'two', 'four')}</li>
+			<li>#{o:format3('one {0} three {1} five {2}', 'two', 'four', 'six')}</li>
+			<li>#{o:format4('one {0} three {1} five {2} seven {3}', 'two', 'four', 'six', 'eight')}</li>
+			<li>#{o:format5('one {0} three {1} five {2} seven {3} nine {4}', 'two', 'four', 'six', 'eight', 'ten')}</li>
 		</ul>
 
 		<p>
-			Strip tags from a string: #{of:stripTags(string5)}
+			Strip tags from a string: #{o:stripTags(string5)}
 		</p>
 	</ui:define>
 </ui:composition>

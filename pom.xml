@@ -8,11 +8,11 @@
 
 	<groupId>org.omnifaces</groupId>
 	<artifactId>showcase</artifactId>
-	<version>4.7.1</version>
+	<version>5.0</version>
 	<packaging>war</packaging>
 
 	<name>Omnifaces Showcase</name>
-	<description>Showcase for Faces 4.x utility library</description>
+	<description>Showcase for Faces 5.x utility library</description>
 	<url>https://showcase.omnifaces.org</url>
 	<organization>
 		<name>OmniFaces</name>
@@ -50,8 +50,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
 
 	<repositories>
@@ -65,24 +65,24 @@
 		<dependency>
 			<groupId>jakarta.platform</groupId>
 			<artifactId>jakarta.jakartaee-web-api</artifactId>
-			<version>10.0.0</version>
+			<version>11.0.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.omnifaces</groupId>
 			<artifactId>omnifaces</artifactId>
-			<version>4.7.1</version>
+			<version>5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>15.0.4</version>
+			<version>15.0.10</version>
 			<classifier>jakarta</classifier>
 		</dependency>
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.20.1</version>
+			<version>1.21.2</version>
 		</dependency>
 	</dependencies>
 
@@ -103,7 +103,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.4.0</version>
+				<version>3.5.1</version>
 			</plugin>
 		</plugins>
 	</build>

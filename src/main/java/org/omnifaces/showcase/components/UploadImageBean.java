@@ -6,8 +6,6 @@ import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import jakarta.servlet.http.Part;
 
-import org.omnifaces.util.Utils;
-
 @Named
 @RequestScoped // Can be @ViewScoped, but caution should be taken with byte[] property. You don't want to save it in session.
 public class UploadImageBean {
@@ -16,7 +14,7 @@ public class UploadImageBean {
 	private byte[] content;
 
 	public void read() throws IOException {
-		content = Utils.toByteArray(file.getInputStream());
+		content = file.getInputStream().readAllBytes();
 	}
 
 	public Part getFile() {

@@ -1,10 +1,8 @@
 <ui:composition template="/WEB-INF/templates/showcase.xhtml"
-	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="jakarta.faces.core"
 	xmlns:h="jakarta.faces.html"
 	xmlns:ui="jakarta.faces.facelets"
-	xmlns:o="http://omnifaces.org/ui"
-	xmlns:of="http://omnifaces.org/functions"
+	xmlns:o="omnifaces"
 >
 	<ui:define name="meta">
 		<f:metadata>
@@ -19,43 +17,43 @@
 	</ui:define>		
 	
 	<ui:define name="demo">
-		<h3>Using <code>of:xxxToList/Model()</code> functions</h3>
+		<h3>Using <code>o:xxxToList/Model()</code> functions</h3>
 		<p>
-			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code> using <code>\#{of:setToList()}</code>:
+			Convert <code>Set&lt;E&gt;</code> to <code>List&lt;E&gt;</code> using <code>\#{o:setToList()}</code>:
 			<strong>
-				<ui:repeat value="#{of:setToList(convertersBean.set)}" var="item" varStatus="loop">
+				<ui:repeat value="#{o:setToList(convertersBean.set)}" var="item" varStatus="loop">
 					#{item}#{!loop.last ? ', ' : ''}
 				</ui:repeat>
 			</strong>
 		</p>
 		<p>
-			Convert <code>Iterable&lt;E&gt;</code> to <code>List&lt;E&gt;</code> using <code>\#{of:iterableToList()}</code>:
+			Convert <code>Iterable&lt;E&gt;</code> to <code>List&lt;E&gt;</code> using <code>\#{o:iterableToList()}</code>:
 			<strong>
-				<ui:repeat value="#{of:iterableToList(convertersBean.iterable)}" var="item" varStatus="loop">
+				<ui:repeat value="#{o:iterableToList(convertersBean.iterable)}" var="item" varStatus="loop">
 					#{item}#{!loop.last ? ', ' : ''}
 				</ui:repeat>
 			</strong>
 		</p>
 		<p>
-			(Alternative) Convert <code>Iterable&lt;E&gt;</code> to <code>DataModel&lt;E&gt;</code> using <code>\#{of:iterableToModel()}</code>:
+			(Alternative) Convert <code>Iterable&lt;E&gt;</code> to <code>DataModel&lt;E&gt;</code> using <code>\#{o:iterableToModel()}</code>:
 			<strong>
-				<ui:repeat value="#{of:iterableToModel(convertersBean.iterable)}" var="item" varStatus="loop">
+				<ui:repeat value="#{o:iterableToModel(convertersBean.iterable)}" var="item" varStatus="loop">
 					#{item}#{!loop.last ? ', ' : ''}
 				</ui:repeat>
 			</strong>
 		</p>
 		<p>
-			(Alternative) Convert <code>Set&lt;E&gt;</code> to <code>DataModel&lt;E&gt;</code> using <code>\#{of:iterableToModel()}</code>:
+			(Alternative) Convert <code>Set&lt;E&gt;</code> to <code>DataModel&lt;E&gt;</code> using <code>\#{o:iterableToModel()}</code>:
 			<strong>
-				<ui:repeat value="#{of:iterableToModel(convertersBean.set)}" var="item" varStatus="loop">
+				<ui:repeat value="#{o:iterableToModel(convertersBean.set)}" var="item" varStatus="loop">
 					#{item}#{!loop.last ? ', ' : ''}
 				</ui:repeat>
 			</strong>
 		</p>
 		<p>
-			Convert <code>Map&lt;K, V&gt;</code> to <code>List&lt;Entry&lt;K, V&gt;&gt;</code> using <code>\#{of:mapToList()}</code>:
+			Convert <code>Map&lt;K, V&gt;</code> to <code>List&lt;Entry&lt;K, V&gt;&gt;</code> using <code>\#{o:mapToList()}</code>:
 			<strong>
-				<ui:repeat value="#{of:mapToList(convertersBean.map)}" var="entry" varStatus="loop">
+				<ui:repeat value="#{o:mapToList(convertersBean.map)}" var="entry" varStatus="loop">
 					#{entry.key}=#{entry.value}#{!loop.last ? ', ' : ''}
 				</ui:repeat>
 			</strong>
@@ -63,7 +61,7 @@
 		
 		<hr />
 
-		<h3>Just to show EL 2.2 ability to invoke non-getter methods, so that <code>of:xxxToList()</code> are not necessary</h3>
+		<h3>Just to show EL 2.2 ability to invoke non-getter methods, so that <code>o:xxxToList()</code> are not necessary</h3>
 		<p>
 			Use <code>\#{bean.set.toArray()}</code> directly:
 			<strong>
@@ -83,28 +81,28 @@
 		
 		<hr />
 		
-		<h3>Using <code>of:joinXxx()</code> functions</h3>
+		<h3>Using <code>o:joinXxx()</code> functions</h3>
 		<p>
-			Join array to string using <code>\#{of:joinArray()}</code>: 
-			<strong>#{of:joinArray(convertersBean.array, ', ')}</strong>
+			Join array to string using <code>\#{o:joinArray()}</code>: 
+			<strong>#{o:joinArray(convertersBean.array, ', ')}</strong>
 		</p>
 		<p>
-			Join collection to string using <code>\#{of:joinCollection()}</code>:
-			<strong>#{of:joinCollection(convertersBean.set, ', ')}</strong>
+			Join collection to string using <code>\#{o:joinCollection()}</code>:
+			<strong>#{o:joinCollection(convertersBean.set, ', ')}</strong>
 		</p>
 		<p>
-			Join map to string using <code>\#{of:joinMap()}</code>: 
-			<strong>#{of:joinMap(convertersBean.map, '=', ', ')}</strong>
+			Join map to string using <code>\#{o:joinMap()}</code>: 
+			<strong>#{o:joinMap(convertersBean.map, '=', ', ')}</strong>
 		</p>
 		
 		<hr />
 		
-		<h3>Using <code>of:splitXxx()</code> functions</h3>
+		<h3>Using <code>o:splitXxx()</code> functions</h3>
 		<p>
 			Split an array of 9 elements into a 3-column div.
 		</p>
 		<div>
-			<ui:repeat value="#{of:splitArray(convertersBean.bigArray, 3)}" var="subArray">
+			<ui:repeat value="#{o:splitArray(convertersBean.bigArray, 3)}" var="subArray">
 				<div>
 					<ui:repeat value="#{subArray}" var="item">
 						<span>#{item}</span>
@@ -115,7 +113,7 @@
 		<p>
 			Split a list of 9 elements into 3 lists.
 		</p>
-		<ui:repeat value="#{of:splitList(convertersBean.bigList, 3)}" var="subList">
+		<ui:repeat value="#{o:splitList(convertersBean.bigList, 3)}" var="subList">
 			<ul>
 				<ui:repeat value="#{subList}" var="item">
 					<li>#{item}</li>
@@ -129,10 +127,10 @@
 		<p>
 			The following should represent valid JavaScript variables:
 		</p>
-		<pre class="prettyprint"><code class="lang-javascript"> var array = #{of:toJson(convertersBean.array)};
- var collection = #{of:toJson(convertersBean.set)};
- var map = #{of:toJson(convertersBean.map)};
- var exampleEntities = #{of:toJson(selectItemsBean.exampleEntities)};
- var serverDate = new Date(#{of:toJson(now)});</code></pre>
+		<pre class="prettyprint"><code class="lang-javascript"> var array = #{o:toJson(convertersBean.array)};
+ var collection = #{o:toJson(convertersBean.set)};
+ var map = #{o:toJson(convertersBean.map)};
+ var exampleEntities = #{o:toJson(selectItemsBean.exampleEntities)};
+ var serverDate = new Date(#{o:toJson(now)});</code></pre>
 	</ui:define>
 </ui:composition>

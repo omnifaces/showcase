@@ -14,7 +14,9 @@ import org.omnifaces.showcase.model.ExampleEntity;
 @ViewScoped
 public class SkipValidatorsBean implements Serializable {
 
-	private List<ExampleEntity> items;
+	private static final long serialVersionUID = 1L;
+
+    private List<ExampleEntity> items;
 
 	@PostConstruct
 	public void init() {
