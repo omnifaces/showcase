@@ -158,7 +158,7 @@ public class Page extends ListTreeModel<Page> {
 		var seeAlso = javadoc.select("dl.notes dt:contains(See Also)+dd a:has(code)");
 
 		for (var link : seeAlso) {
-			var href = link.absUrl("href");
+			var href = link.absUrl("href").split("#", 2)[0];
 			apiPaths.add(href.substring(href.indexOf(API_PATH), href.lastIndexOf('.')));
 		}
 	}
