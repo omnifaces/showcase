@@ -13,7 +13,7 @@
         <li>Alignment with Jakarta EE 11, so minimum dependencies have changed from Java 11, Faces 3.0, EL 4.0, Servlet 5.0, CDI 3.0, WS 2.0 and BV 3.0 to <strong>Java 17, Faces 4.1, EL 6.0, Servlet 6.1, CDI 4.1, WS 2.2, BV 3.1 and SEC 4.0</strong></li>
         <li>All things which were during 4.x <code>@Deprecated</code> have been physically <strong>removed</strong>.</li>
         <li>The two XML namespaces <code>xmlns:o="http://omnifaces.org/ui"</code> and <code>xmlns:of="http://omnifaces.org/functions"</code> have been merged into a single new XML namespace represented by URN instead of URI: <code><strong>xmlns:o="omnifaces"</strong></code></li>
-        <li><code>JsfLabelMessageInterpolator</code> has been renamed to <h:link outcome="/validators/FacesLabelMessageInterpolator"><code><strong>FacesLabelMessageInterpolator</strong></code></h:link></li>
+        <li><code>JsfLabelMessageInterpolator</code> has been renamed to <h:link outcome="/validators/FacesLabelMessageInterpolator"><code>FacesLabelMessageInterpolator</code></h:link></li>
         <li><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> won't anymore generate crossorigin/integrity attribute, this has been split into <h:link outcome="/renderers/CorsAwareResourceRenderer"><code>CorsAwareResourceRenderer</code></h:link> so it can also deal with non-combined resources</li>
     </ul>
 

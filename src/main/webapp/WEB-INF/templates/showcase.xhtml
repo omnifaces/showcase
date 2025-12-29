@@ -95,7 +95,7 @@ The following metadata attributes are supported via this template (they're parse
 
 		<p:panel id="documentation" header="Documentation &amp; Sources" rendered="#{not empty page.documentation}">
 			<os:listdocs header="VDL documentation" paths="vdl" url="#{_vdlURL}#{path}.html" label="#{fn:replace(path,'/', ':')}" />
-			<os:listdocs header="API documentation" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path,'/', '.')}" /> 
+			<os:listdocs header="API documentation" paths="api" url="#{_apiURL}#{path}.html" label="#{fn:replace(path.substring('org.omnifaces/'.length()),'/', '.')}" /> 
 			<os:listdocs header="Java source code" paths="src" url="#{_srcURL}#{path}.java" label="#{fn:replace(path,'/', '.')}" />
 			<os:listdocs header="JavaScript source code" paths="js" url="#{_jsURL}#{path}" label="#{app.getFileName(path)}" />
 		</p:panel>
