@@ -147,6 +147,7 @@ code,
 	max-width: none;
 	min-width: 0;
 	padding: .4em .2em;
+    word-break: break-word;
 }
 
 #content a:hover, 
@@ -162,7 +163,6 @@ code,
 	border-radius: .2em;
 	box-shadow: 0 0 .5em rgba(0,0,0,.1);
 	background-color: #fff;
-	word-break: break-word;
 }
 
 #content pre {
@@ -192,11 +192,11 @@ code,
 }
 
 #content .ui-panel-content .block table tr:nth-child(odd) {
-	background-color: #fafafa;
+    background-color: #eaeaea;
 }
 
 #content .ui-panel-content .block table tr:nth-child(even) {
-	background-color: #eaeaea;
+    background-color: #fafafa;
 }
 
 #content .ui-tabs {
@@ -382,6 +382,11 @@ code,
 
 .important {
 	background: #ff9;
+}
+
+#quick-reference + table {
+    font-size: .75em;
+    width: 100%;
 }
 
 
