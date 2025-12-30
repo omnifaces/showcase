@@ -384,7 +384,7 @@ code,
 	background: #ff9;
 }
 
-#quick-reference + table {
+#compatibility-matrix + table {
     font-size: .75em;
     width: 100%;
 }
