@@ -191,12 +191,13 @@ code,
 	background: 0;
 }
 
-#content .ui-panel-content .block table tr:nth-child(odd) {
-    background-color: #eaeaea;
+#content .ui-panel-content .block table tbody tr:nth-child(odd) {
+    background-color: #fafafa;
 }
 
-#content .ui-panel-content .block table tr:nth-child(even) {
-    background-color: #fafafa;
+#content .ui-panel-content .block table thead tr,
+#content .ui-panel-content .block table tbody tr:nth-child(even) {
+    background-color: #eaeaea;
 }
 
 #content .ui-tabs {
