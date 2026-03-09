@@ -4,6 +4,17 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="4_7_2">What's new in OmniFaces 4.7.2?</h2>
+    <p><em>Release date: 9 March, 2026</em></p>
+
+    <h3>Fixed in OmniFaces 4.7.2</h3>
+    <ul>
+        <li><os:githubLink issue="928" /><h:link outcome="/filters/CompressedResponseFilter"><code>CompressedResponseFilter</code></h:link> will now delegate underlying <code>IOException</code> when wrapping underlying output stream fails (e.g. connection reset), so servers can correctly deal with it (e.g. suppress logging)</li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_13');return false;">Remaining fixes are same as in 3.14.13</a></li>
+    </ul>
+
+    <hr />
+
     <h2 id="4_7_1">What's new in OmniFaces 4.7.1?</h2>
     <p><em>Release date: 6 December, 2025</em></p>
 
@@ -33,7 +44,7 @@
 
     <h3>Fixed in OmniFaces 4.7</h3>
     <ul>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_12');return false;">All fixes are same as in 3.14.12</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_12');return false;">All fixes are same as in 3.14.12</a></li>
     </ul>
 
     <hr />
@@ -43,7 +54,7 @@
 
     <h3>Fixed in OmniFaces 4.6.5</h3>
     <ul>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_11');return false;">All fixes are same as in 3.14.11</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_11');return false;">All fixes are same as in 3.14.11</a></li>
     </ul>
 
     <hr />
@@ -53,7 +64,7 @@
 
     <h3>Fixed in OmniFaces 4.6.4</h3>
     <ul>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_10');return false;">All fixes are same as in 3.14.10</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_10');return false;">All fixes are same as in 3.14.10</a></li>
     </ul>
 
     <hr />
@@ -63,7 +74,7 @@
 
     <h3>Fixed in OmniFaces 4.6.3</h3>
     <ul>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_9');return false;">All fixes are same as in 3.14.9</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_9');return false;">All fixes are same as in 3.14.9</a></li>
     </ul>
 
     <hr />
@@ -80,7 +91,7 @@
     <ul>
         <li><os:githubLink issue="891" /><h:link outcome="/resourcehandlers/PWAResourceHandler">PWA's <code>sw.js</code></h:link> won't anymore check external resources such as Google Analytics as that would otherwise result in potential CORS errors for nothing</li>
         <li><os:githubLink issue="892" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> threw since 4.6 <code>ClassCastException</code> when converter ID was used instead of converter class (worked in 4.5.1 and before)</li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_8');return false;">Remaining fixes are same as in 3.14.8</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_8');return false;">Remaining fixes are same as in 3.14.8</a></li>
     </ul>
 
     <hr />
@@ -115,7 +126,7 @@
     <ul>
         <li><os:githubLink issue="862" />Fix <code>ClassNotFoundException</code>code> during startup when a <code>web.xml</code> entry representing a class contains a XML comment</li>
         <li><os:githubLink issue="790" /><h:link outcome="/exceptionhandlers/FullAjaxExceptionHandler"><code>FullAjaxExceptionHandler</code></h:link> should not auto-register the <h:link outcome="/filters/FacesExceptionFilter"><code>FacesExceptionFilter</code></h:link> when a custom one is already registered</li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_7');return false;">Remaining fixes are same as in 3.14.7</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_7');return false;">Remaining fixes are same as in 3.14.7</a></li>
     </ul>
 
     <hr />
@@ -155,7 +166,7 @@
     <h3>Fixed in OmniFaces 4.5</h3>
     <ul>
         <li><os:githubLink issue="823" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> corner case threadsafety bug has been fixed (won't happen in normal production environment with standard web browsers, but only in unit test environment when bean is programmatically accessed by parallel threads)</li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_6');return false;">Remaining fixes are same as in 3.14.6</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_6');return false;">Remaining fixes are same as in 3.14.6</a></li>
     </ul>
 
     <hr />
@@ -185,7 +196,7 @@
 
     <h3>Fixed in OmniFaces 4.4</h3>
     <ul>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_5');return false;">Remaining fixes are same as in 3.14.5</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_5');return false;">Remaining fixes are same as in 3.14.5</a></li>
     </ul>
 
     <hr />
@@ -203,7 +214,7 @@
     <h3>Fixed in OmniFaces 4.3</h3>
     <ul>
         <li><os:githubLink issue="774" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> failed to reconnect when connection is lost since 4.0 and threw <code>Unknown channel: undefined</code> because the JS -> TS migration was not done right in <code>Push.ts</code></li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_4');return false;">Remaining fixes are same as in 3.14.4</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_4');return false;">Remaining fixes are same as in 3.14.4</a></li>
     </ul>
 
     <hr />
@@ -222,13 +233,13 @@
     <h3>Changed in OmniFaces 4.2</h3>
     <ul>
         <li><os:githubLink issue="745" /><code>Utils#encodeURI()</code>, which is internally used by among others <h:link outcome="/functions/Strings"><code>\#{of:encodeURI()}</code></h:link>, <h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link>, and <h:link outcome="/servlets/FileServlet"><code>FileServlet</code></h:link>, now uses RFC 3986 instead of RFC 2396</li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('changed_3_14_3');return false;">Remaining changes are same as in 3.14.3</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('changed_3_14_3');return false;">Remaining changes are same as in 3.14.3</a></li>
     </ul>
 
     <h3>Fixed in OmniFaces 4.2</h3>
     <ul>
         <li><os:githubLink issue="755" /><h:link outcome="/components/highlight"><code>&lt;o:highlight&gt;</code></h:link> accidentally stopped working since 4.0 because it was overlooked in <code>OmniFaces.ts</code> during the JS -> TS migration</li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_3');return false;">Remaining fixes are same as in 3.14.3</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_3');return false;">Remaining fixes are same as in 3.14.3</a></li>
     </ul>
 
     <hr />
@@ -246,7 +257,7 @@
         <li><os:githubLink issue="707" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>sw.js</code></h:link> requests unnecessarily triggered creation, building and rendering of a second <code>UIViewRoot</code> of the associated view, including any view scoped beans</li>
         <li><os:githubLink issue="728" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> failed to resolve resources when <code>jakarta.faces.AUTOMATIC_EXTENSIONLESS_MAPPING</code> was enabled</li>
         <li><os:githubLink issue="729" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload unnecessarily threw an exception in MyFaces 4.x due to impl changes in their side</li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_2');return false;">Remaining fixes are same as in 3.14.2</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_2');return false;">Remaining fixes are same as in 3.14.2</a></li>
     </ul>
 
     <hr />
@@ -257,7 +268,7 @@
     <h3>Fixed in OmniFaces 4.0.1</h3>
     <ul>
         <li><os:githubLink issue="715" /><h:link outcome="/managedbeans/now"><code>\#{now}</code></h:link> and <h:link outcome="/managedbeans/startup"><code>\#{startup}</code></h:link> weren't compatible with <h:link outcome="/functions/Dates"><code>of:xxx()</code></h:link> date functions</li>
-        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_3_14_1');return false;">Remaining fixes are same as in 3.14.1</a></li>
+        <li><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('fixed_3_14_1');return false;">Remaining fixes are same as in 3.14.1</a></li>
     </ul>
 
     <hr />
@@ -286,7 +297,7 @@
         </li>
     </ul>
 
-    <p><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('3_14');return false;">OmniFaces 4.0 is basically the Jakartified version of OmniFaces 3.14 with the following changes:</a></p>
+    <p><a href="#" onclick="PF('widget_versions').select(2);functions.scrollTo('3_14');return false;">OmniFaces 4.0 is basically the Jakartified version of OmniFaces 3.14 with the following changes:</a></p>
 
     <h3>Added in OmniFaces 4.0</h3>
     <ul>

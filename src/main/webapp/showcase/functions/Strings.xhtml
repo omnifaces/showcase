@@ -35,9 +35,12 @@
 		<p>
 			Regex-replace a string: #{o:replaceAll(string1, '\\b', '&#x201D;')}
 		</p>
-		<p>
-			Regex-match a string: #{o:matches(string2, '\\p{IsLatin}+')}
-		</p>
+        <p>
+            Regex-match a string: #{o:matches(string2, '\\p{IsLatin}+')}
+        </p>
+        <p>
+            Flag emoji based on country code: NL: #{o:flagEmoji('NL')}, US: #{o:flagEmoji('US')}, CW: #{o:flagEmoji('CW')}
+        </p>
 
 		<p>
 			Following functions deal with the following string: "#{string4}"
