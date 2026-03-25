@@ -8,7 +8,59 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="cdi/push/Sse" />
 			<f:attribute name="vdl.paths" value="o/sse" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/SseBean.java,/demo/sse-stats.xhtml,/WEB-INF/includes/demo/push-stats-pageView.xhtml,classes/org/omnifaces/showcase/push/SseStatsBean.java" />
 			<f:attribute name="js.paths" value="omnifaces.js/Push.ts,omnifaces.js/Util.ts" />
 		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Server time push</h3>
+		<p>
+			Below is a live display of the last server timestamp pushed via SSE.
+			Press the button to push the current server time to all connected clients.
+			To see it in action, open the same page in multiple tabs/windows/browsers.
+		</p>
+
+		<h1><span id="sseTime">-</span></h1>
+
+		<h:form>
+			<h:commandButton value="push server time!" action="#{sseBean.send}">
+				<f:ajax />
+			</h:commandButton>
+		</h:form>
+
+
+		<!-- NOTE: having inline script in XHTML like below is bad practice. -->
+		<!-- It's included directly in XHTML just for sake of demo. -->
+		<!-- In real world code, put it in a JS file :) -->
+
+		<script>
+			function updateTime(message) {
+				$("#sseTime").text(message);
+			}
+
+			function onSseClose(code) {
+				if (code == -1) {
+					alert("Oops! Your browser doesn't seem to support SSE. The push functionality won't work.");
+				}
+				else if (code != 200) {
+					alert("Oops! SSE connection has been closed with code " + code + "! Reload the page.");
+				}
+			}
+		</script>
+
+		<!-- End of bad practice ;) -->
+
+
+		<o:sse channel="sseDemo" onmessage="updateTime" onclose="onSseClose" />
+
+		<h3>Realtime stats (via SSE)</h3>
+		<p>
+			You can find here another example of SSE push:
+			<h:link value="realtime stats via SSE" outcome="/sse-stats" />.
+			This example is equivalent to the <h:link value="WebSocket-based stats" outcome="/push-stats" /> demo,
+			but uses <code>&lt;o:sse&gt;</code> instead of <code>&lt;o:socket&gt;</code>.
+			It makes use of CDI events with <code>BeanManager#fireEvent()</code> and <code>@Observes</code>.
+		</p>
 	</ui:define>
 </ui:composition>

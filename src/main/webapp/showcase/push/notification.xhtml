@@ -8,7 +8,65 @@
 		<f:metadata>
 			<f:attribute name="api.path" value="cdi/push/Notification" />
 			<f:attribute name="vdl.paths" value="o/notification" />
+			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/push/NotificationBean.java" />
 			<f:attribute name="js.paths" value="omnifaces.js/Notification.ts,omnifaces.js/Push.ts,omnifaces.js/Util.ts" />
 		</f:metadata>
+	</ui:define>
+
+	<ui:define name="demo">
+		<h3>Prerequisites</h3>
+		<p>
+			Browser notifications require explicit user permission. Press the button below to request permission.
+			The current permission status is shown next to it.
+		</p>
+		<p>
+			<h:button value="Request notification permission" onclick="OmniFaces.Notification.requestPermission();return false;" />
+			Permission: <strong><span id="permissionStatus"></span></strong>
+		</p>
+
+
+		<!-- NOTE: having inline script in XHTML like below is bad practice. -->
+		<!-- It's included directly in XHTML just for sake of demo. -->
+		<!-- In real world code, put it in a JS file :) -->
+
+		<script>
+			function updatePermissionStatus(permission) {
+				$("#permissionStatus").text(permission);
+			}
+
+			function showUnsupported() {
+				$("#permissionStatus").text("unsupported");
+			}
+
+			document.addEventListener("DOMContentLoaded", function() {
+				$("#permissionStatus").text(OmniFaces.Notification.getPermission());
+			});
+		</script>
+
+		<!-- End of bad practice ;) -->
+
+
+		<h3>Basic notification</h3>
+		<p>
+			Press the button below to push a basic browser notification from the server.
+			The notification will appear as a native OS notification.
+		</p>
+		<h:form>
+			<h:commandButton value="Send notification!" action="#{notificationBean.sendBasic}">
+				<f:ajax />
+			</h:commandButton>
+		</h:form>
+
+		<h3>Notification with URL</h3>
+		<p>
+			Press the button below to push a notification that navigates to the showcase homepage when clicked.
+		</p>
+		<h:form>
+			<h:commandButton value="Send notification with link!" action="#{notificationBean.sendWithUrl}">
+				<f:ajax />
+			</h:commandButton>
+		</h:form>
+
+		<o:notification channel="notificationDemo" onpermissionchange="updatePermissionStatus" onunsupported="showUnsupported" />
 	</ui:define>
 </ui:composition>

@@ -92,6 +92,12 @@ input.error, select.error, textarea.error {
 	background-color: #fee;
 }
 
+
+p > a[href^=\/],
+li > a[href^=\/] {
+  margin-left: .25em;
+}
+
 pre, 
 code,
 .code {

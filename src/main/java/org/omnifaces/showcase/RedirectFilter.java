@@ -30,17 +30,15 @@ import org.omnifaces.filter.HttpFilter;
  * Make sure that HTTP is 301-redirected to HTTPS.
  * The default security constraint does only a 302.
  */
-@WebFilter("/*")
+@WebFilter(urlPatterns = "/*", asyncSupported = true)
 public class RedirectFilter extends HttpFilter {
 
 	@Override
 	public void doFilter(HttpServletRequest request, HttpServletResponse response, HttpSession session, FilterChain chain) throws ServletException, IOException {
-		if (!request.isSecure())
-		{
+		if (!request.isSecure()) {
 			redirectPermanent(response, getRequestURLWithQueryString(request).replaceFirst("http:", "https:").replaceFirst(":8080", ":8443"));
 		}
-		else
-		{
+		else {
 			chain.doFilter(request, response);
 		}
 	}

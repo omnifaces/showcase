@@ -4,13 +4,14 @@
 	xmlns:ui="jakarta.faces.facelets"
 	xmlns:o="omnifaces"
 >
-	<ui:define name="contentTitle">Push - Stats</ui:define>
+	<ui:define name="contentTitle">Socket - Stats</ui:define>
 
 	<ui:define name="content">
 		<p>
 			This demo page shows last #{pushStatsBean.maxLastPageViews} page views (on current server node; only requests with a valid referrer).
 			Every new page view will be pushed to top of below list and oldest (bottom) entry will be removed.
-			Source code of this page can be found in <h:link value="o:socket showcase page" outcome="/push/socket" />.
+			Source code of this page can be found in
+			<h:link value="o:socket showcase page" outcome="/push/socket" />.
 		</p>
 
 

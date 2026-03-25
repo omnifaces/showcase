@@ -1,0 +1,75 @@
+<ui:composition template="/WEB-INF/templates/layout.xhtml"
+	xmlns:f="jakarta.faces.core"
+	xmlns:h="jakarta.faces.html"
+	xmlns:ui="jakarta.faces.facelets"
+	xmlns:o="omnifaces"
+>
+	<ui:define name="contentTitle">SSE - Stats</ui:define>
+
+	<ui:define name="content">
+		<p>
+			This demo page shows last #{sseStatsBean.maxLastPageViews} page views (on current server node; only requests with a valid referrer).
+			Every new page view will be pushed to top of below list and oldest (bottom) entry will be removed.
+			This is the SSE-based equivalent of the
+            <h:link value="WebSocket-based stats" outcome="/socket-stats" /> demo.
+			Source code of this page can be found in
+            <h:link value="o:sse showcase page" outcome="/push/sse" />.
+		</p>
+
+
+		<!-- NOTE: having inline script and style in XHTML like below is bad practice. -->
+		<!-- They're included directly in XHTML just for sake of demo. -->
+		<!-- In real world code, put them in a JS and CSS file :) -->
+
+		<style>
+			#sseStats {
+				list-style-type: none;
+				padding: .5em;
+				font-size: .8em;
+				background: #fff;
+			}
+
+			#sseStats li {
+				padding: .5em;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			#sseStats:not(.inversed) li:nth-child(odd),
+			#sseStats.inversed li:nth-child(even) {
+				background: #eee;
+			}
+		</style>
+
+		<script>
+			function updateSseStats(pageView) {
+				var $pageViewTemplate = $($("#ssePageViewTemplate").html());
+				$pageViewTemplate.find(".timestamp").text(pageView.timestamp);
+				$pageViewTemplate.find(".uri").text(pageView.uri).attr("href", pageView.uri);
+				$pageViewTemplate.find(".userHash").text(pageView.userHash);
+				$pageViewTemplate.find(".userAgent").text(pageView.userAgent);
+				$pageViewTemplate.find(".referrer").text(pageView.referrer);
+
+				var $sseStats = $("#sseStats");
+				$pageViewTemplate.hide().prependTo($sseStats.toggleClass("inversed")).slideDown();
+				$sseStats.children().slice($sseStats.data("max")).slideUp(function() { $(this).remove(); });
+			}
+		</script>
+
+		<!-- End of bad practice ;) -->
+
+
+		<ul id="sseStats" data-max="#{sseStatsBean.maxLastPageViews}">
+			<ui:repeat value="#{lastSsePageViews}" var="pageView">
+				<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+			</ui:repeat>
+		</ul>
+
+		<script id="ssePageViewTemplate" type="text/html">
+			<ui:include src="/WEB-INF/includes/demo/push-stats-pageView.xhtml" />
+		</script>
+
+		<o:sse channel="sseStats" onmessage="updateSseStats" />
+	</ui:define>
+</ui:composition>
