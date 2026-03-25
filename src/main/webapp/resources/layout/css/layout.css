@@ -93,11 +93,6 @@ input.error, select.error, textarea.error {
 }
 
 
-p > a[href^=\/],
-li > a[href^=\/] {
-  margin-left: .25em;
-}
-
 pre, 
 code,
 .code {
@@ -154,6 +149,11 @@ code,
 	min-width: 0;
 	padding: .4em .2em;
     word-break: break-word;
+}
+
+#content p > a[href^=\/],
+#content li > a[href^=\/] {
+  margin-left: .25em;
 }
 
 #content a:hover, 
