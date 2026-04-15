@@ -4,6 +4,126 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2>What's new in OmniFaces 1.14.2?</h2>
+    <p><em>Release date: 15 April 2026</em></p>
+
+    <h3 id="fixed_1_14_2">Fixed in OmniFaces 1.14.2</h3>
+    <ul>
+        <li><os:githubLink commit="b1816bd" /><h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link> fixed potential EL injection when using wildcard mapping</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.14.1?</h2>
+    <p><em>Release date: 20 May 2017</em></p>
+
+    <h3 id="fixed_1_14_1">Fixed in OmniFaces 1.14.1</h3>
+    <ul>
+        <li><os:githubLink issue="378" />Removed accidentally introduced Java 1.7 dependencies</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.14?</h2>
+    <p><em>Release date: 1 July 2016</em></p>
+
+    <h3 id="changed_1_14">Changed in OmniFaces 1.14</h3>
+    <ul>
+        <li><os:githubLink issue="223,266" /><h:link outcome="/cdi/Param"><code>@Param</code></h:link> now also supports injecting multi-valued parameters declared as typed <code>List</code> or array like <code>List&lt;String&gt;</code>, <code>List&lt;Foo&gt;</code>, <code>String[]</code> and <code>int[]</code></li>
+        <li><os:githubLink issue="243" />OmniFaces does not anymore require <code>/META-INF/context.xml</code> when running on Tomcat+Weld</li>
+    </ul>
+
+    <h3 id="fixed_1_14">Fixed in OmniFaces 1.14</h3>
+    <ul>
+        <li><os:githubLink issue="273" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> no need to re-combine on ajax requests with partial rendering</li>
+        <li><os:githubLink issue="269" />Improved workaround for <a href="https://stackoverflow.com/q/36719434/157882">possible Google Chrome bug</a> when <h:link outcome="/servlets/FileServlet"><code>FileServlet</code></h:link> is used with Gzip enabled</li>
+        <li><os:githubLink commit="a4e2414" /><h:link outcome="/components/form"><code>&lt;o:form&gt;</code></h:link> action URL didn't point to context path on error pages</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.13?</h2>
+    <p><em>Release date: 1 April 2016</em></p>
+
+    <h3 id="changed_1_13">Changed in OmniFaces 1.13</h3>
+    <ul>
+        <li><os:githubLink issue="218" /><h:link outcome="/components/commandScript"><code>&lt;o:commandScript&gt;</code></h:link> now supports declaring a namespaced function name</li>
+    </ul>
+
+    <h3 id="fixed_1_13">Fixed in OmniFaces 1.13</h3>
+    <ul>
+        <li><os:githubLink issue="199" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> failed to unload when bean is constructed for first time during postback on same view</li>
+        <li><os:githubLink issue="208" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> didn't physically remove server side JSF view state during unload, and fixed corner case when stateless JSF is used</li>
+        <li><os:githubLink issue="225" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> failed on string concatenated properties like <code>#{bean[foo += bar]}</code></li>
+        <li><os:githubLink issue="226" /><h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> failed to resolve <code>#{cc}</code> when nested in composite component</li>
+        <li><os:githubLink commit="4ee8431" /><h:link outcome="/components/form"><code>&lt;o:form useRequestURI&gt;</code></h:link> failed when being inside e.g. error page</li>
+        <li><os:githubLink commit="d63dd85" /><h:link outcome="/utils/Components"><code>Components#addScriptResource()</code></h:link> had a corner case state saving bug</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.12.1?</h2>
+    <p><em>Release date: 26 November 2015</em></p>
+
+    <h3 id="fixed_1_12_1">Fixed in OmniFaces 1.12.1</h3>
+    <ul>
+        <li><os:githubLink commit="9d834a6" />Fixed broken FacesViews initialization</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.12?</h2>
+    <p><em>Release date: 24 November 2015</em></p>
+
+    <h3 id="fixed_1_12">Fixed in OmniFaces 1.12</h3>
+    <ul>
+        <li><os:githubLink issue="175" />TomEE compatibility: be less strict on CDI 1.1 requirement</li>
+        <li><os:githubLink issue="127,179" /><h:link outcome="/utils/Ajax"><code>Ajax#updateRow()</code></h:link> failed in paginated tables and p:columns</li>
+        <li><os:githubLink issue="182" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> didn't check wildcard resource names</li>
+        <li><os:githubLink issue="183" /><h:link outcome="/contexts/OmniPartialViewContext"><code>OmniPartialViewContext</code></h:link> failed to handle <code>web.xml</code> form login page redirect in MyFaces 2.2+</li>
+        <li><os:githubLink commit="d82d6a0" /><h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> generated illegal URL when OpenWebBeans managed bean is used</li>
+        <li><os:githubLink commit="553de1b" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload failed in MyFaces because it didn't invoke ViewScopeEventListener</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.11?</h2>
+    <p><em>Release date: 3 June 2015</em></p>
+
+    <h3 id="fixed_1_11">Fixed in OmniFaces 1.11</h3>
+    <ul>
+        <li><os:githubLink issue="126" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> broke on containers where <code>OutputStream#write(byte[])</code> delegates to <code>write(byte)</code></li>
+        <li><os:githubLink issue="131" />Inappropriate <code>Boolean</code> return type on <code>isXxx()</code> getters in some components</li>
+        <li><os:githubLink issue="132" /><h:link outcome="/managedbeans/startup"><code>#{startup}</code></h:link> wasn't eagerly initialized</li>
+        <li><os:githubLink issue="133" />CDI validation failed in Tomcat + OpenWebBeans</li>
+        <li><os:githubLink issue="134" /><code>#{cc}</code> resolved wrong in composite components with nested children</li>
+        <li><os:githubLink commit="e406bd4" /><h:link outcome="/components/param"><code>&lt;o:param&gt;</code></h:link> for output format failed in MyFaces by rendering children anyway</li>
+        <li><os:githubLink commit="500019e" /><h:link outcome="/converters/SelectItemsIndexConverter"><code>SelectItemsIndexConverter</code></h:link> didn't properly update when new items are added during invoke application</li>
+    </ul>
+
+    <hr />
+
+    <h2>What's new in OmniFaces 1.10?</h2>
+    <p><em>Release date: 24 November 2014</em></p>
+
+    <h3 id="changed_1_10">Changed in OmniFaces 1.10</h3>
+    <ul>
+        <li><os:githubLink commit="e40fb7b" /><h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link> and <h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> can now be conditionally disabled via a <code>web.xml</code> context param supporting a request based EL expression</li>
+    </ul>
+
+    <h3 id="fixed_1_10">Fixed in OmniFaces 1.10</h3>
+    <ul>
+        <li><os:githubLink issue="51" /><h:link outcome="/taghandlers/massAttribute"><code>&lt;o:massAttribute&gt;</code></h:link> was applied on children of parent instead of own children</li>
+        <li><os:githubLink issue="54" />All resource handlers (CDN, Combined and Unmapped) are made better compatible with component libraries which don't override all 3 <code>createResource()</code> methods</li>
+        <li><os:githubLink issue="58" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> didn't remember response content type during reset</li>
+        <li><os:githubLink issue="63" /><h:link outcome="/eventlisteners/ResetInputAjaxActionListener"><code>ResetInputAjaxActionListener</code></h:link> compatibility with RichFaces 4.5</li>
+        <li><os:githubLink issue="65" /><h:link outcome="/filters/GzipResponseFilter"><code>GzipResponseFilter</code></h:link> is made better compatible with Servlet 3.1 containers</li>
+        <li><os:githubLink commit="dbfe9ac" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> generated wrong ID when recombining an already combined resource</li>
+        <li><os:githubLink commit="9026224" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> failed in MyFaces when resource name contains <code>~</code></li>
+    </ul>
+
+    <hr />
+
     <h2>What's new in OmniFaces 1.8.3?</h2>
     <p><em>Release date: 3 June, 2015</em></p>
     <h3>Fixed in OmniFaces 1.8.3</h3>
