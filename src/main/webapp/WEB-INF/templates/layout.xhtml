@@ -18,8 +18,8 @@ The following application wide constants are available via this template:
 * #{_omniFacesVersionXY}: The currently running OmniFaces X.Y version, without "SNAPSHOT" suffix if any.
 * #{_apiURL}: The version-specific URL to API documentation at "https://omnifaces.org/docs/javadoc/<version>/".
 * #{_vdlURL}: The version-specific URL to VDL documentation at "https://omnifaces.org/docs/vdldoc/<version>/".
-* #{_srcURL}: The version-specific URL to source code at "https://github.com/omnifaces/omnifaces/blob/<version>/src/main/java".
-* #{_jsURL}: The version-specific URL to source code at "https://github.com/omnifaces/omnifaces/blob/<version>/src/main/ts/src".
+* #{_srcURL}: The version-specific URL to source code at "https://github.com/omnifaces/omnifaces/blob/<version>/src/main/java/".
+* #{_jsURL}: The version-specific URL to source code at "https://github.com/omnifaces/omnifaces/blob/<version>/src/main/ts/src/".
  -->
 <!DOCTYPE html>
 <html lang="en"
@@ -36,7 +36,7 @@ The following application wide constants are available via this template:
 	<c:set var="_apiURL" value="https://omnifaces.org/docs/javadoc/#{app.snapshot ? 'current' : _omniFacesVersionXY}/" scope="application" />
 	<c:set var="_vdlURL" value="https://omnifaces.org/docs/vdldoc/#{app.snapshot ? 'current' : _omniFacesVersionXY}/" scope="application" />
 	<c:set var="_srcURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? '5.x' : app.omniFacesVersion}/src/main/java/" scope="application" />
-	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? '5.x' : app.omniFacesVersion}/src/main/ts/src" scope="application" />
+	<c:set var="_jsURL" value="https://github.com/omnifaces/omnifaces/blob/#{app.snapshot ? '5.x' : app.omniFacesVersion}/src/main/ts/src/" scope="application" />
 
     <ui:insert name="meta"/>
 
