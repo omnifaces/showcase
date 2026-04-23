@@ -27,10 +27,6 @@
 		<param-value>true</param-value> <!-- https://balusc.omnifaces.org/2015/10/the-empty-string-madness.html -->
 	</context-param>
 	<context-param>
-    	<param-name>jakarta.faces.PROJECT_STAGE</param-name>
-    	<param-value>Development</param-value>
-	</context-param>
-	<context-param>
     	<param-name>jakarta.faces.SERIALIZE_SERVER_STATE</param-name>
     	<param-value>true</param-value> <!-- Mojarra defaults to false and MyFaces to true. Let's align out.  -->
 	</context-param>
