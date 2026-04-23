@@ -4,6 +4,29 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="5.3">What's new in OmniFaces 5.3?</h2>
+    <p><em>Release date: 23 Apr, 2026</em></p>
+
+    <h3>Added in OmniFaces 5.3</h3>
+    <ul>
+        <li><os:githubLink issue="15" /><h:link outcome="/components/lazyPanel"><code>&lt;o:lazyPanel&gt;</code></h:link> which defers rendering of its children until the panel has scrolled into view</li>
+    </ul>
+
+    <h3>Changed in OmniFaces 5.3</h3>
+    <ul>
+        <li>Automated source code formatting via <a href="https://github.com/diffplug/spotless">Spotless</a> and <a href="https://eslint.style/">Stylistic</a></li>
+        <li>TypeScript sources have been reorganized into their own <code>src/main/ts</code> subfolder</li>
+        <li><code>browserify</code> and <code>closure-compiler-maven-plugin</code> have been replaced by <a href="https://esbuild.github.io/"><code>esbuild</code></a></li>
+        <li><a href="https://github.com/omnifaces/vdlgen"><code>Vdlgen</code></a> now also runs during Eclipse incremental builds, so workspace resolution into sandbox projects continues to work</li>
+    </ul>
+
+    <h3>Fixed in OmniFaces 5.3</h3>
+    <ul>
+        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_4_7_6');return false;">All fixes are same as in 4.7.6</a></li>
+    </ul>
+
+    <hr />
+
     <h2 id="5.2.3">What's new in OmniFaces 5.2.3?</h2>
     <p><em>Release date: 15 Apr, 2026</em></p>
 
