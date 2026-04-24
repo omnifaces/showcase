@@ -4,6 +4,16 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="3_14_19">What's new in OmniFaces 3.14.19?</h2>
+    <p><em>Release date: 24 April 2026</em></p>
+
+    <h3 id="fixed_3_14_19">Fixed in OmniFaces 3.14.19</h3>
+    <ul>
+        <li><os:githubLink issue="952" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload NPE fix has been further refined: pending view state removal is now only applied when <code>web.xml</code> has the <code>&lt;distributable&gt;</code> flag set and the <code>ViewHandler</code> doesn't wrap Spring WebFlow <code>FlowViewHandler</code>.</li>
+    </ul>
+
+    <hr />
+
     <h2 id="3_14_18">What's new in OmniFaces 3.14.18?</h2>
     <p><em>Release date: 23 April 2026</em></p>
 
