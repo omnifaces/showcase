@@ -46,4 +46,19 @@ public class AjaxBean {
 		Ajax.updateColumn(table, index);
 	}
 
+	private String input;
+
+	public void validate() {
+		// NOOP. This action only runs when validation passed. The OmniFaces.Ajax.validationFailed
+		// flag lets the client side react to a validation failure even when this didn't run.
+	}
+
+	public String getInput() {
+		return input;
+	}
+
+	public void setInput(String input) {
+		this.input = input;
+	}
+
 }

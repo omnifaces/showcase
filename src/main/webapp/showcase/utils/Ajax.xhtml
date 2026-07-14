@@ -89,10 +89,30 @@
 			function showData() {
 				var data = OmniFaces.Ajax.data;
 				var $showData = $("#showData");
-				
+
 				$.each(data, function(key, value) {
 					$("&lt;li&gt;").text(key + "=" + JSON.stringify(value)).appendTo($showData);
 				});
+			}
+		</h:outputScript>
+
+		<hr />
+
+		<h3>React to a validation failure at the client side</h3>
+		<h:form id="validationForm">
+			<h:inputText id="input" value="#{ajaxBean.input}" required="true" />
+			<h:commandButton value="submit" action="#{ajaxBean.validate}">
+				<f:ajax execute="@form" render="@form" onevent="showValidationFailed" />
+			</h:commandButton>
+			<h:message for="input" />
+		</h:form>
+		<p>Submit with an empty field to let validation fail; <code>OmniFaces.Ajax.validationFailed</code> then becomes <code>true</code>. It is exposed in every OmniFaces ajax response, so the client side can react even when the action method didn't run.</p>
+		<p id="showValidationFailed"></p>
+		<h:outputScript>
+			function showValidationFailed(data) {
+				if (data.status === "success") {
+					$("#showValidationFailed").text("OmniFaces.Ajax.validationFailed = " + OmniFaces.Ajax.validationFailed);
+				}
 			}
 		</h:outputScript>
 	</ui:define>
