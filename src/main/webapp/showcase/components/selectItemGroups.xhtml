@@ -6,33 +6,14 @@
 >
 	<ui:define name="meta">
 		<f:metadata>
-			<f:attribute name="api.path" value="component/model/SelectItemGroups" />
-			<f:attribute name="vdl.paths" value="o/selectItemGroups" />
-			<f:attribute name="src.paths" value="classes/org/omnifaces/showcase/components/SelectItemGroupsBean.java,classes/org/omnifaces/showcase/model/Category.java,classes/org/omnifaces/showcase/model/Product.java" />
+			<f:attribute name="deprecated" value="true" />
 		</f:metadata>
 	</ui:define>
 
-	<ui:define name="demo">
-		<h:form>
-			<h2>Manually creating new SelectItemGroup()</h2>
-			<h:selectOneMenu value="#{selectItemGroupsBean.selectedProduct}" converter="omnifaces.SelectItemsConverter">
-				<f:selectItem itemValue="#{null}" itemLabel="Select ..." />
-				<f:selectItems value="#{selectItemGroupsBean.categorySelectItems}" />
-				<f:ajax render="selectedProduct" />
-			</h:selectOneMenu>
-			<p>Selected product: <strong><h:outputText id="selectedProduct" value="#{selectItemGroupsBean.selectedProduct.name}" /></strong></p>
-		</h:form>
-		
-		<h:form>
-			<h2>Using &lt;o:selectItemGroups&gt;</h2>
-			<h:selectOneMenu value="#{selectItemGroupsBean.selectedProduct}" converter="omnifaces.SelectItemsConverter">
-				<f:selectItem itemValue="#{null}" itemLabel="Select ..." />
-				<o:selectItemGroups value="#{selectItemGroupsBean.categories}" var="category" itemLabel="#{category.name}">
-					<f:selectItems value="#{category.products}" var="product" itemLabel="#{product.name}" />
-				</o:selectItemGroups>
-				<f:ajax render="selectedProduct" />
-			</h:selectOneMenu>
-			<p>Selected product: <strong><h:outputText id="selectedProduct" value="#{selectItemGroupsBean.selectedProduct.name}" /></strong></p>
-		</h:form>		
- 	</ui:define>
+	<ui:define name="beforeDescription">
+		<p class="highlighted">
+			This component is <strong>deprecated</strong> since OmniFaces 5.4 because the standard <code><a href="https://jakarta.ee/specifications/faces/4.0/vdldoc/f/selectitemgroups">&lt;f:selectItemGroups&gt;</a></code>, introduced in Faces 4.0, offers equivalent functionality.
+			This component will be <strong>removed</strong> in a future OmniFaces version.
+		</p>
+	</ui:define>
 </ui:composition>
