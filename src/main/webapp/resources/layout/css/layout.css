@@ -151,11 +151,6 @@ code,
     word-break: break-word;
 }
 
-#content p > a[href^=\/],
-#content li > a[href^=\/] {
-  margin-left: .25em;
-}
-
 #content a:hover, 
 #content a.active {
 	text-decoration: underline;
