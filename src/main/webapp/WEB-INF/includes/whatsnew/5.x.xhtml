@@ -9,7 +9,7 @@
 
     <h3>Fixed in OmniFaces 5.4.1</h3>
     <ul>
-        <li><os:githubLink issue="969" />Various internal performance optimizations reducing per-request and per-render allocations across <h:link outcome="/converters/SelectItemsConverter"><code>SelectItemsConverter</code></h:link>, <code>&lt;o:outputFormat&gt;</code>, <h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link>, <code>FacesViewsViewHandler</code>, <code>CallbackPhaseListener</code>, <h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> and <code>OmniRenderKit</code></li>
+        <li><os:githubLink issue="969" />Various internal performance optimizations reducing per-request and per-render allocations across <h:link outcome="/converters/SelectItemsConverter"><code>SelectItemsConverter</code></h:link>, <h:link outcome="/components/outputFormat"><code>&lt;o:outputFormat&gt;</code></h:link>, <h:link outcome="/resourcehandlers/CDNResourceHandler"><code>CDNResourceHandler</code></h:link>, <h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViewsViewHandler</code></h:link>, <h:link outcome="/utils/Events"><code>CallbackPhaseListener</code></h:link>, <h:link outcome="/components/tree"><code>&lt;o:tree&gt;</code></h:link> and <h:link outcome="/renderers/CorsAwareResourceRenderer"><code>OmniRenderKit</code></h:link></li>
         <li><os:githubLink issue="970" />Restored compatibility with <code>quarkus-omnifaces</code> by making <code>ViewScopeStorageInSession.ActiveBeanStorages</code> public</li>
     </ul>
 
