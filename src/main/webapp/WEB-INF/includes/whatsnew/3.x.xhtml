@@ -4,6 +4,20 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="3_14_23">What's new in OmniFaces 3.14.23?</h2>
+    <p><em>Release date: 23 July 2026</em></p>
+
+    <h3 id="fixed_3_14_23">Fixed in OmniFaces 3.14.23</h3>
+    <ul>
+        <li><os:githubLink commit="c43eef0" /><h:link outcome="/components/hashParam"><code>&lt;o:hashParam&gt;</code></h:link> value is now escaped when written into the ajax callback script (GHSA-fp43-vj7g-pg92)</li>
+        <li><os:githubLink commit="a52b924" /><h:link outcome="/resourcehandlers/SourceMapResourceHandler"><code>SourceMapResourceHandler</code></h:link> cache is now bounded to prevent unbounded growth from crafted requests (GHSA-fp43-vj7g-pg92)</li>
+        <li><os:githubLink issue="973" /><h:link outcome="/validators/validateUniqueColumn"><code>&lt;o:validateUniqueColumn&gt;</code></h:link> did not detect duplicates in rows which were not submitted</li>
+        <li><os:githubLink issue="971" />Fixed a nullpointer exception in <code>Hacks</code> when an error page itself threw an exception (error in error) in an application without PrimeFaces installed</li>
+        <li><a href="#" onclick="PF('widget_versions').select(3);functions.scrollTo('fixed_2_7_33');return false;">Remaining fixes are same as in 2.7.33</a></li>
+    </ul>
+
+    <hr />
+
     <h2 id="3_14_22">What's new in OmniFaces 3.14.22?</h2>
     <p><em>Release date: 14 July 2026</em></p>
 
