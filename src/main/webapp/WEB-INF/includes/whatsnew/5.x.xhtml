@@ -4,20 +4,31 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
-    <h2 id="5.4.3">What's new in OmniFaces 5.4.3?</h2>
+    <h2 id="5_4_4">What's new in OmniFaces 5.4.4?</h2>
+    <p><em>Release date: 29 Jul, 2026</em></p>
+
+    <h3 id="fixed_5_4_4">Fixed in OmniFaces 5.4.4</h3>
+    <ul>
+        <li><os:githubLink issue="975" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> session and view scoped channels failed to connect in Quarkus because it doesn't expose the HTTP session during the web socket handshake</li>
+        <li><os:githubLink issue="976" /><h:link outcome="/push/sse"><code>&lt;o:sse&gt;</code></h:link> and <h:link outcome="/push/notification"><code>&lt;o:notification&gt;</code></h:link> didn't work in Quarkus at all, and <h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> still required the <code>org.omnifaces.SOCKET_ENDPOINT_ENABLED</code> context parameter there</li>
+    </ul>
+
+    <hr />
+
+    <h2 id="5_4_3">What's new in OmniFaces 5.4.3?</h2>
     <p><em>Release date: 28 Jul, 2026</em></p>
 
-    <h3 id="fixed_5.4.3">Fixed in OmniFaces 5.4.3</h3>
+    <h3 id="fixed_5_4_3">Fixed in OmniFaces 5.4.3</h3>
     <ul>
         <li><os:githubLink commit="78fe2b6" /><h:link outcome="/push/sse"><code>&lt;o:sse&gt;</code></h:link> and <h:link outcome="/push/notification"><code>&lt;o:notification&gt;</code></h:link> session and view scoped channels are now restricted to their owning HTTP session (GHSA-w3w6-9m25-g88p)</li>
     </ul>
 
     <hr />
 
-    <h2 id="5.4.2">What's new in OmniFaces 5.4.2?</h2>
+    <h2 id="5_4_2">What's new in OmniFaces 5.4.2?</h2>
     <p><em>Release date: 23 Jul, 2026</em></p>
 
-    <h3 id="fixed_5.4.2">Fixed in OmniFaces 5.4.2</h3>
+    <h3 id="fixed_5_4_2">Fixed in OmniFaces 5.4.2</h3>
     <ul>
         <li><os:githubLink issue="969" />Further internal performance optimizations reducing per-request and per-render allocations across class level <h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link>, <h:link outcome="/components/graphicImage"><code>&lt;o:graphicImage&gt;</code></h:link> and <code>Beans</code></li>
         <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_4_7_12');return false;">Remaining fixes are same as in 4.7.12</a></li>
@@ -25,7 +36,7 @@
 
     <hr />
 
-    <h2 id="5.4.1">What's new in OmniFaces 5.4.1?</h2>
+    <h2 id="5_4_1">What's new in OmniFaces 5.4.1?</h2>
     <p><em>Release date: 15 Jul, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.4.1</h3>
@@ -36,7 +47,7 @@
 
     <hr />
 
-    <h2 id="5.4">What's new in OmniFaces 5.4?</h2>
+    <h2 id="5_4">What's new in OmniFaces 5.4?</h2>
     <p><em>Release date: 14 Jul, 2026</em></p>
 
     <h3>Added in OmniFaces 5.4</h3>
@@ -61,7 +72,7 @@
 
     <hr />
 
-    <h2 id="5.3.4">What's new in OmniFaces 5.3.4?</h2>
+    <h2 id="5_3_4">What's new in OmniFaces 5.3.4?</h2>
     <p><em>Release date: 20 May, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.3.4</h3>
@@ -71,7 +82,7 @@
 
     <hr />
 
-    <h2 id="5.3.3">What's new in OmniFaces 5.3.3?</h2>
+    <h2 id="5_3_3">What's new in OmniFaces 5.3.3?</h2>
     <p><em>Release date: 27 Apr, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.3.3</h3>
@@ -81,7 +92,7 @@
 
     <hr />
 
-    <h2 id="5.3.2">What's new in OmniFaces 5.3.2?</h2>
+    <h2 id="5_3_2">What's new in OmniFaces 5.3.2?</h2>
     <p><em>Release date: 24 Apr, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.3.2</h3>
@@ -91,7 +102,7 @@
 
     <hr />
 
-    <h2 id="5.3.1">What's new in OmniFaces 5.3.1?</h2>
+    <h2 id="5_3_1">What's new in OmniFaces 5.3.1?</h2>
     <p><em>Release date: 23 Apr, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.3.1</h3>
@@ -101,7 +112,7 @@
 
     <hr />
 
-    <h2 id="5.3">What's new in OmniFaces 5.3?</h2>
+    <h2 id="5_3">What's new in OmniFaces 5.3?</h2>
     <p><em>Release date: 23 Apr, 2026</em></p>
 
     <h3>Added in OmniFaces 5.3</h3>
@@ -124,7 +135,7 @@
 
     <hr />
 
-    <h2 id="5.2.3">What's new in OmniFaces 5.2.3?</h2>
+    <h2 id="5_2_3">What's new in OmniFaces 5.2.3?</h2>
     <p><em>Release date: 15 Apr, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.2.3</h3>
@@ -134,7 +145,7 @@
 
     <hr />
 
-    <h2 id="5.2.2">What's new in OmniFaces 5.2.2?</h2>
+    <h2 id="5_2_2">What's new in OmniFaces 5.2.2?</h2>
     <p><em>Release date: 14 Apr, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.2.2</h3>
@@ -144,7 +155,7 @@
 
     <hr />
 
-    <h2 id="5.2.1">What's new in OmniFaces 5.2.1?</h2>
+    <h2 id="5_2_1">What's new in OmniFaces 5.2.1?</h2>
     <p><em>Release date: 9 Apr, 2026</em></p>
 
     <h3>Fixed in OmniFaces 5.2.1</h3>
@@ -155,7 +166,7 @@
 
     <hr />
 
-    <h2 id="5.2">What's new in OmniFaces 5.2?</h2>
+    <h2 id="5_2">What's new in OmniFaces 5.2?</h2>
     <p><em>Release date: 25 March, 2026</em></p>
 
     <h3>Added in OmniFaces 5.2</h3>
@@ -180,7 +191,7 @@
 
     <hr />
 
-    <h2 id="5.1">What's new in OmniFaces 5.1?</h2>
+    <h2 id="5_1">What's new in OmniFaces 5.1?</h2>
     <p><em>Release date: 9 March, 2026</em></p>
 
     <h3>Added in OmniFaces 5.1</h3>
