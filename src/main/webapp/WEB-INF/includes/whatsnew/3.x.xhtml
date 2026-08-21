@@ -4,6 +4,18 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="3_14_24">What's new in OmniFaces 3.14.24?</h2>
+    <p><em>Release date: 21 August 2026</em></p>
+
+    <h3 id="fixed_3_14_24">Fixed in OmniFaces 3.14.24</h3>
+    <ul>
+        <li><os:githubLink issue="990" /><h:link outcome="/taghandlers/massAttribute"><code>&lt;o:massAttribute&gt;</code></h:link> didn't apply the attribute to components created by the tag body itself during the render time refresh of a partial state saved view</li>
+        <li><os:githubLink issue="989" />The <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload beacon is now answered with a 204 instead of an empty 200, so that a browser can no longer mistake it for the response of the page being navigated to</li>
+        <li><os:githubLink issue="987" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>PWAResourceHandler</code></h:link> served stale resources from the service worker cache forever because the cache bust version was stripped off the cacheable resource URLs and the lookup key</li>
+    </ul>
+
+    <hr />
+
     <h2 id="3_14_23">What's new in OmniFaces 3.14.23?</h2>
     <p><em>Release date: 23 July 2026</em></p>
 
