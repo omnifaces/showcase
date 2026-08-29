@@ -4,6 +4,22 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="5_5_1">What's new in OmniFaces 5.5.1?</h2>
+    <p><em>Release date: 29 Aug, 2026</em></p>
+
+    <h3 id="removed_5_5_1">Removed in OmniFaces 5.5.1</h3>
+    <ul>
+        <li><os:githubLink issue="991" />The <code>SocketPushContextProducer</code> which was deprecated since 5.2 in favor of <code>PushContextProducer</code>, see also <h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link></li>
+    </ul>
+
+    <h3 id="fixed_5_5_1">Fixed in OmniFaces 5.5.1</h3>
+    <ul>
+        <li><os:githubLink issue="992" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> caused Mojarra to log an unresolved navigation case warning when the outcome resolved to a dynamic route segment</li>
+        <li><os:githubLink issue="968" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> now only adds the <code>crossorigin</code> attribute to resources served from another origin, as forcing CORS mode on a same origin resource made jQuery 4 load ajax delivered head resources asynchronously and thus break PrimeFaces widget init scripts of components rendered for the first time during an ajax request.</li>
+    </ul>
+
+    <hr />
+
     <h2 id="5_5">What's new in OmniFaces 5.5?</h2>
     <p><em>Release date: 21 Aug, 2026</em></p>
 
