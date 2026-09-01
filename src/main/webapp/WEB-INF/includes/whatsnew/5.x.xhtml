@@ -4,6 +4,18 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="5_5_2">What's new in OmniFaces 5.5.2?</h2>
+    <p><em>Release date: 1 Sep, 2026</em></p>
+
+    <h3 id="fixed_5_5_2">Fixed in OmniFaces 5.5.2</h3>
+    <ul>
+        <li><os:githubLink issue="994" /><h:link outcome="/resourcehandlers/PWAResourceHandler"><code>PWAResourceHandler</code></h:link> implicitly created an HTTP session; it won't do that anymore so is is also useable on stateless views</li>
+        <li><os:githubLink issue="995" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> <code>OmniFaces.Push.open()</code> broke since 5.2; it won't anymore throw JS error</li>
+        <li><os:githubLink issue="996" /><h:link outcome="/push/socket"><code>&lt;o:socket&gt;</code></h:link> and <h:link outcome="/push/sse"><code>&lt;o:sse&gt;</code></h:link> implicitly created an HTTP session even when <code>scope="application"</code>; it won't do that anymore so they are also useable on stateless views</li>
+    </ul>
+
+    <hr />
+
     <h2 id="5_5_1">What's new in OmniFaces 5.5.1?</h2>
     <p><em>Release date: 29 Aug, 2026</em></p>
 
