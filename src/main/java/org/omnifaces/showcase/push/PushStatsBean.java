@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.enterprise.inject.Model;
 import jakarta.enterprise.inject.Produces;
@@ -14,11 +15,10 @@ import jakarta.inject.Named;
 
 import org.omnifaces.cdi.Push;
 import org.omnifaces.cdi.PushContext;
-import org.omnifaces.cdi.Startup;
 import org.omnifaces.showcase.PageView;
 
 @Named
-@Startup
+@ApplicationScoped
 public class PushStatsBean {
 
 	private static final int MAX_LAST_PAGE_VIEWS = 20;
