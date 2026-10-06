@@ -4,6 +4,17 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="3_14_26">What's new in OmniFaces 3.14.26?</h2>
+    <p><em>Release date: 6 October 2026</em></p>
+
+    <h3 id="fixed_3_14_26">Fixed in OmniFaces 3.14.26</h3>
+    <ul>
+        <li><os:githubLink issue="1012" />The <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload destroyed beans which were still in use by a concurrent request on the same view</li>
+        <li><os:githubLink issue="1009" />The <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> unload now carries its parameters in request headers, so that the beans and the view state are also freed when the browser cuts off the request body</li>
+    </ul>
+
+    <hr />
+
     <h2 id="3_14_25">What's new in OmniFaces 3.14.25?</h2>
     <p><em>Release date: 20 September 2026</em></p>
 
