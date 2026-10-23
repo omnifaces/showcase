@@ -4,6 +4,18 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="3_14_28">What's new in OmniFaces 3.14.28?</h2>
+    <p><em>Release date: 23 October 2026</em></p>
+
+    <h3 id="fixed_3_14_28">Fixed in OmniFaces 3.14.28</h3>
+    <ul>
+        <li><os:githubLink issue="1017" /><h:link outcome="/validators/validateBean"><code>&lt;o:validateBean&gt;</code></h:link> <code>showMessageFor="@violating"</code> now accepts a fallback such as <code>"@violating @global"</code> for class level constraint violations and violations without a matching input</li>
+        <li><os:githubLink issue="1019" /><code>WebXml</code> failed to initialize when an <code>&lt;exception-type&gt;</code> class was not visible to the class loader of OmniFaces itself, e.g. in Quarkus dev mode</li>
+        <li><os:githubLink issue="1023" />The <h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> beans of a view which is never rendered, e.g. because of a redirect, a forward, a download or an exception, were never destroyed</li>
+    </ul>
+
+    <hr />
+
     <h2 id="3_14_27">What's new in OmniFaces 3.14.27?</h2>
     <p><em>Release date: 9 October 2026</em></p>
 
