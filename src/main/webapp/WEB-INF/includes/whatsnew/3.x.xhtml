@@ -4,6 +4,16 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="3_14_29">What's new in OmniFaces 3.14.29?</h2>
+    <p><em>Release date: 7 November 2026</em></p>
+
+    <h3 id="fixed_3_14_29">Fixed in OmniFaces 3.14.29</h3>
+    <ul>
+        <li><os:githubLink issue="1027" /><h:link outcome="/taghandlers/importFunctions"><code>&lt;o:importFunctions&gt;</code></h:link> without <code>var</code> used the outer class name as EL function prefix for a nested type in binary notation such as <code>com.example.Outer$Inner</code></li>
+    </ul>
+
+    <hr />
+
     <h2 id="3_14_28">What's new in OmniFaces 3.14.28?</h2>
     <p><em>Release date: 23 October 2026</em></p>
 
@@ -64,8 +74,8 @@
 
     <h3 id="fixed_3_14_23">Fixed in OmniFaces 3.14.23</h3>
     <ul>
-        <li><os:githubLink commit="c43eef0" /><h:link outcome="/components/hashParam"><code>&lt;o:hashParam&gt;</code></h:link> value is now escaped when written into the ajax callback script (GHSA-fp43-vj7g-pg92)</li>
-        <li><os:githubLink commit="a52b924" /><h:link outcome="/resourcehandlers/SourceMapResourceHandler"><code>SourceMapResourceHandler</code></h:link> cache is now bounded to prevent unbounded growth from crafted requests (GHSA-fp43-vj7g-pg92)</li>
+        <li><os:githubLink commit="c43eef0" /><h:link outcome="/components/hashParam"><code>&lt;o:hashParam&gt;</code></h:link> value is now escaped when written into the ajax callback script (GHSA-7qfp-gggj-2fv4)</li>
+        <li><os:githubLink commit="a52b924" /><h:link outcome="/resourcehandlers/SourceMapResourceHandler"><code>SourceMapResourceHandler</code></h:link> cache is now bounded to prevent unbounded growth from crafted requests (GHSA-3r7q-f6gv-vv3q)</li>
         <li><os:githubLink issue="973" /><h:link outcome="/validators/validateUniqueColumn"><code>&lt;o:validateUniqueColumn&gt;</code></h:link> did not detect duplicates in rows which were not submitted</li>
         <li><os:githubLink issue="971" />Fixed a nullpointer exception in <code>Hacks</code> when an error page itself threw an exception (error in error) in an application without PrimeFaces installed</li>
         <li><a href="#" onclick="PF('widget_versions').select(3);functions.scrollTo('fixed_2_7_33');return false;">Remaining fixes are same as in 2.7.33</a></li>

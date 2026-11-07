@@ -4,6 +4,18 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="5_5_7">What's new in OmniFaces 5.5.7?</h2>
+    <p><em>Release date: 7 Nov, 2026</em></p>
+
+    <h3 id="fixed_5_5_7">Fixed in OmniFaces 5.5.7</h3>
+    <ul>
+        <li><os:githubLink commit="1e6a5a1, b839b93, b054f60" /><h:link outcome="/cdi/RateLimit"><code>@RateLimit</code></h:link> without <code>clientId</code> now uses the client IP address as resolved by the servlet container instead of the client controlled <code>X-Forwarded-For</code> header, bounds its counters by the new <code>org.omnifaces.RATE_LIMITER_MAX_TRACKED_COUNTERS</code> context param, and gives each annotated method its own counter (GHSA-wg34-2pgp-vx43) <span class="important">(so when running behind a reverse proxy, configure the servlet container to resolve the client IP address from trusted proxies, such as Tomcat's <code>RemoteIpValve</code>!)</span></li>
+        <li><os:githubLink issue="1028" /><h:link outcome="/cdi/ViewScoped"><code>@ViewScoped</code></h:link> beans were not destroyed on unload with Mojarra 5</li>
+        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_4_7_18');return false;">Remaining fixes are same as in 4.7.18</a></li>
+    </ul>
+
+    <hr />
+
     <h2 id="5_5_6">What's new in OmniFaces 5.5.6?</h2>
     <p><em>Release date: 23 Oct, 2026</em></p>
 
@@ -30,7 +42,7 @@
 
     <h3 id="fixed_5_5_4">Fixed in OmniFaces 5.5.4</h3>
     <ul>
-        <li><os:githubLink commit="4f0eac5" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> now retains only the most recently used combined resource identifiers, so that an application which derives resource names from request data can no longer grow the cache without bound</li>
+        <li><os:githubLink commit="4f0eac5" /><h:link outcome="/resourcehandlers/CombinedResourceHandler"><code>CombinedResourceHandler</code></h:link> now retains only the most recently used combined resource identifiers, so that an application which derives resource names from request data can no longer grow the cache without bound (GHSA-2689-9hm6-wm9q)</li>
         <li><os:githubLink commit="3b9494a" />The <code>computeIfAbsent</code>, <code>computeIfPresent</code>, <code>compute</code> and <code>merge</code> methods of <code>LruCache</code> are now atomic, so that the function is applied exactly once and a computed value can no longer be discarded without reaching the eviction listener</li>
         <li><os:githubLink commit="4aa9cc8" />Each operation of the <h:link outcome="/components/cache"><code>&lt;o:cache&gt;</code></h:link> provider interface must now be atomic, and the default provider implements it as such</li>
         <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_4_7_14');return false;">Remaining fixes are same as in 4.7.14</a></li>
@@ -119,7 +131,7 @@
 
     <h3 id="fixed_5_4_3">Fixed in OmniFaces 5.4.3</h3>
     <ul>
-        <li><os:githubLink commit="78fe2b6" /><h:link outcome="/push/sse"><code>&lt;o:sse&gt;</code></h:link> and <h:link outcome="/push/notification"><code>&lt;o:notification&gt;</code></h:link> session and view scoped channels are now restricted to their owning HTTP session (GHSA-w3w6-9m25-g88p)</li>
+        <li><os:githubLink commit="78fe2b6" /><h:link outcome="/push/sse"><code>&lt;o:sse&gt;</code></h:link> and <h:link outcome="/push/notification"><code>&lt;o:notification&gt;</code></h:link> session and view scoped channels are now restricted to their owning HTTP session (GHSA-w3w6-9m25-g88p, CVE-2026-109549)</li>
     </ul>
 
     <hr />
