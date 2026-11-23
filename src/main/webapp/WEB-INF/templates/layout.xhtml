@@ -56,6 +56,15 @@ The following application wide constants are available via this template:
 			gtag('config', 'G-S9KQNK2TNY');
 		</script>
 		<h:outputScript library="jakarta.faces" name="faces.js" target="head" />
+		<c:choose>
+			<c:when test="#{noindex}">
+				<meta name="robots" content="noindex" />
+			</c:when>
+			<c:otherwise>
+				<o:url var="_canonicalURL" />
+				<link rel="canonical" href="#{empty canonicalURL ? _canonicalURL : canonicalURL}" />
+			</c:otherwise>
+		</c:choose>
 	</h:head>
 
 	<h:body>
