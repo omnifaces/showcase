@@ -4,6 +4,18 @@
     xmlns:p="primefaces"
     xmlns:os="omnifaces.showcase"
 >
+    <h2 id="5_5_8">What's new in OmniFaces 5.5.8?</h2>
+    <p><em>Release date: 23 Nov, 2026</em></p>
+
+    <h3 id="fixed_5_5_8">Fixed in OmniFaces 5.5.8</h3>
+    <ul>
+        <li><os:githubLink issue="1030" /><h:link outcome="/cdi/RateLimit"><code>@RateLimit</code></h:link> recommended a retry delay which could end just before the time window expired, so the retry was rejected again</li>
+        <li><os:githubLink issue="1035" /><h:link outcome="/facesviews/ExtensionlessURLs"><code>FacesViews</code></h:link> dynamic routes ignored the excluded paths of <code>org.omnifaces.FACES_VIEWS_SCAN_PATHS</code></li>
+        <li><a href="#" onclick="PF('widget_versions').select(1);functions.scrollTo('fixed_4_7_19');return false;">Remaining fixes are same as in 4.7.19</a></li>
+    </ul>
+
+    <hr />
+
     <h2 id="5_5_7">What's new in OmniFaces 5.5.7?</h2>
     <p><em>Release date: 7 Nov, 2026</em></p>
 
